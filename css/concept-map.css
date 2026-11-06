@@ -811,6 +811,12 @@
   text-anchor: middle;
   dominant-baseline: central;
 }
+/* Prose callout numbers would read as step numbers on a map: show a map's
+   callout marker only while its prose number is hovered, focused or pinned. */
+.map-ui .callout:not([data-callout-active]),
+.map-ui [data-figure-callout]:not(:has(> .callout[data-callout-active])) {
+  display: none;
+}
 .map-ui .node[data-callout-active] rect {
   stroke: var(--accent);
   stroke-width: 2.6;

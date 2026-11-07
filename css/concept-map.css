@@ -10,6 +10,7 @@
   --page: var(--pw-page);
   --browser: var(--pw-browser);
   --app: var(--pw-test);
+  --protocol: var(--pw-protocol);
   --fail: var(--pw-fail);
   min-width: 0;
 }

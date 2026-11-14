@@ -512,7 +512,7 @@
   color: var(--muted-fg);
 }
 
-.map-ui .seg.tracks {
+.map-ui .seg.scenarios {
   flex-wrap: wrap;
 }
 .map-ui .node.fail rect {

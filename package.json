@@ -13,6 +13,7 @@
   },
   "files": [
     "dist/",
+    "src/",
     "css/",
     "resolved-map.schema.json",
     "README.md",

@@ -134,7 +134,8 @@ external runtime checks, and bare Node builtins are detected via dependency
 classification. Two negative probes failed before the fix and pass after it;
 a positive schema-owned Zod probe also passes. Full suite includes these probes.
 
-Deferred minor: declaration/JavaScript source maps reference source paths excluded
-from the published tarball; source debugging/navigation may not find those files.
-This does not affect runtime or declaration resolution. Embedding sources or
-changing declaration-map policy is a follow-up, not an extra production change.
+Source maps: JavaScript and declaration maps point at `../src/*.ts`. A
+published version cannot be changed, so this was fixed before 0.1.0 rather
+than deferred (review): `src/` is in `files`, and `scripts/guards.mjs` fails
+when maps are on and `src/` is not published. Editors now go to definition in
+the TypeScript source.

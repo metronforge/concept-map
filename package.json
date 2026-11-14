@@ -1,0 +1,75 @@
+{
+  "name": "@metronforge/concept-map",
+  "version": "0.1.0",
+  "description": "Server-rendered concept maps with an accessible browser player",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metronforge/concept-map.git"
+  },
+  "engines": {
+    "node": ">=22.14"
+  },
+  "files": [
+    "dist/",
+    "css/",
+    "resolved-map.schema.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./css": "./css/concept-map.css",
+    "./resolved-map.schema.json": "./resolved-map.schema.json"
+  },
+  "peerDependencies": {
+    "zod": "^4"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.core.json",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint src",
+    "dependencies:check": "depcruise src --config .dependency-cruiser.cjs",
+    "contracts:check": "node scripts/guards.mjs && node scripts/budgets.mjs",
+    "schema": "node scripts/schema.mjs",
+    "schema:check": "node scripts/schema.mjs --check",
+    "api:check": "api-extractor run",
+    "api:update": "api-extractor run --local",
+    "size": "size-limit",
+    "demo:build": "node scripts/build-demo.mjs",
+    "test:browser": "playwright test",
+    "test:mutation": "stryker run",
+    "pack:check": "npm pack --dry-run && publint && attw --pack --profile esm-only --exclude-entrypoints ./css",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run dependencies:check && npm run build && npm run schema:check && npm run test && npm run api:check && npm run contracts:check && npm run size && npm run pack:check && npm run demo:build",
+    "prepare": "git config core.hooksPath .githooks"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@eslint/js": "^10.0.1",
+    "@fast-check/vitest": "0.5.0",
+    "@microsoft/api-extractor": "^7.60.1",
+    "@playwright/test": "1.64.1",
+    "@size-limit/preset-small-lib": "^14.3.0",
+    "@stryker-mutator/core": "^10.1.1",
+    "@stryker-mutator/vitest-runner": "^10.1.1",
+    "dependency-cruiser": "^18.7.2",
+    "eslint": "^10.15.0",
+    "fast-check": "4.10.2",
+    "prettier": "^3.6.2",
+    "publint": "^0.3.25",
+    "size-limit": "^14.3.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.72.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.0",
+    "zod": "4.6.7"
+  }
+}

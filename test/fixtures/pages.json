@@ -1,0 +1,117 @@
+[
+  {
+    "id": "0-1",
+    "figureId": "anatomy-map",
+    "path": "/0-anatomy/0-1-anatomy-of-a-test/"
+  },
+  {
+    "id": "1-1",
+    "figureId": "call-reply-map",
+    "path": "/1-messages/1-1-one-call-two-processes/"
+  },
+  {
+    "id": "1-2",
+    "figureId": "context-tree-map",
+    "path": "/1-messages/1-2-browser-context-page-frame/"
+  },
+  {
+    "id": "1-3",
+    "figureId": "two-worlds-map",
+    "path": "/1-messages/1-3-two-worlds/"
+  },
+  {
+    "id": "2-1",
+    "figureId": "click-loops-map",
+    "path": "/2-actions/2-1-two-loops/"
+  },
+  {
+    "id": "2-2",
+    "figureId": "locator-recipe-map",
+    "path": "/2-actions/2-2-locator-is-a-recipe/"
+  },
+  {
+    "id": "2-3",
+    "figureId": "stable-frames-map",
+    "path": "/2-actions/2-3-stable-is-measured/"
+  },
+  {
+    "id": "2-4",
+    "figureId": "hit-target-map",
+    "path": "/2-actions/2-4-who-gets-the-click/"
+  },
+  {
+    "id": "2-5",
+    "figureId": "force-skips-map",
+    "path": "/2-actions/2-5-what-force-skips/"
+  },
+  {
+    "id": "2-6",
+    "figureId": "navigation",
+    "path": "/2-actions/2-6-waiting-for-navigation/"
+  },
+  {
+    "id": "3-1",
+    "figureId": "request-handlers-map",
+    "path": "/3-network/3-1-who-answers-a-request/"
+  },
+  {
+    "id": "3-2",
+    "figureId": "har-response-map",
+    "path": "/3-network/3-2-har-as-a-response-source/"
+  },
+  {
+    "id": "3-3",
+    "figureId": "api-requests-map",
+    "path": "/3-network/3-3-api-requests/"
+  },
+  {
+    "id": "4-1",
+    "figureId": "project-phases-map",
+    "path": "/4-runner/4-1-config-and-projects/"
+  },
+  {
+    "id": "4-2",
+    "figureId": "fixture-lifecycle-map",
+    "path": "/4-runner/4-2-custom-fixtures/"
+  },
+  {
+    "id": "4-3",
+    "figureId": "worker-groups-map",
+    "path": "/4-runner/4-3-workers-and-parallel/"
+  },
+  {
+    "id": "4-4",
+    "figureId": "retry-outcomes-map",
+    "path": "/4-runner/4-4-retries-and-flaky/"
+  },
+  {
+    "id": "4-5",
+    "figureId": "fixture-choices-map",
+    "path": "/4-runner/4-5-option-and-auto-fixtures/"
+  },
+  {
+    "id": "4-6",
+    "figureId": "timeout-budgets-map",
+    "path": "/4-runner/4-6-timeouts/"
+  },
+  {
+    "id": "5-1",
+    "figureId": "assertions-map",
+    "path": "/5-expect/5-1-three-ways-to-wait/"
+  },
+  {
+    "id": "5-2",
+    "figureId": "report-replay",
+    "path": "/5-expect/5-2-reporters-and-merge/"
+  },
+  {
+    "id": "6-1",
+    "figureId": "trace-recording-map",
+    "path": "/6-tracing/6-1-what-a-trace-records/"
+  },
+  {
+    "id": "6-2",
+    "figureId": "recorder-map",
+    "path": "/6-tracing/6-2-recorder/"
+  }
+]

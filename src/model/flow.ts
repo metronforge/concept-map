@@ -1,6 +1,6 @@
-import type { ResolvedMap } from "../schema";
-import type { LogLine } from "./frame";
-import { pathEnds, type Point } from "./path";
+import type { ResolvedMap } from "../schema.js";
+import type { LogLine } from "./frame.js";
+import { pathEnds, type Point } from "./path.js";
 export type Segment =
   | { type: "pause"; duration: number; at: Point }
   | { type: "jump"; duration: number; from: Point; to: Point }

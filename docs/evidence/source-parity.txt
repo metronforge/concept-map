@@ -1,0 +1,1 @@
+All production files except the public barrel equal filtered source after removing .js import suffixes.

@@ -7,17 +7,17 @@ import {
   initialState,
   type Action,
   type PlayerState,
-} from "../../src/lib/concept-map/model/state";
-import { derive } from "../../src/lib/concept-map/model/frame";
-import { planFlow, reducedFlow } from "../../src/lib/concept-map/model/flow";
+} from "../../src/model/state";
+import { derive } from "../../src/model/frame";
+import { planFlow, reducedFlow } from "../../src/model/flow";
 import {
   fitNodeLabels,
   fitEdgeLabel,
   labelMinimum,
-} from "../../src/lib/concept-map/model/labels";
-import { pathEnds } from "../../src/lib/concept-map/model/path";
+} from "../../src/model/labels";
+import { pathEnds } from "../../src/model/path";
 import { handMaps, mapArbitrary, resolvedFixture } from "./arbitraries/map";
-import type { ResolvedMap } from "../../src/lib/concept-map/schema";
+import type { ResolvedMap } from "../../src/schema";
 
 const maps = [...handMaps(), ...resolvedMaps().map((m) => m.map)];
 interface Model extends PlayerState {

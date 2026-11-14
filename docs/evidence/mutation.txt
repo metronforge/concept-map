@@ -1,0 +1,1209 @@
+
+> @metronforge/concept-map@0.1.0 test:mutation
+> stryker run
+
+22:59:14 (327662) INFO ProjectReader Found 9 of 364 file(s) to be mutated.
+22:59:14 (327662) INFO Instrumenter Instrumented 9 source file(s) with 828 mutant(s)
+22:59:15 (327662) INFO ConcurrencyTokenProvider Creating 2 test runner process(es).
+22:59:16 (327662) INFO DryRunExecutor Starting initial test run (vitest test runner with "perTest" coverage analysis). This may take a while.
+22:59:22 (327662) INFO DryRunExecutor Initial test run succeeded. Ran 41 tests in 5 seconds (net 1948.520479 ms, overhead 3309.479521 ms).
+
+All tests
+  animator.test.ts
+    ✓ animator exposes step-start, travel, arrival and dwell-end in the old order [line 68] (killed 2)
+    ~ stop cancels both token animations and prevents later hooks [line 103] (covered 138)
+    ~ reverse travel animates distance from 100% to 0% on the authored path [line 119] (covered 138)
+    ~ a cancelled playback cannot clear the next playback's path styles [line 143] (covered 138)
+  golden.test.ts
+    ✓ all renderer outputs equal the frozen pre-extraction book oracle [line 13] (killed 269)
+  invariants.test.ts
+    ~ I1 closed for finite integer go actions (with seed=-1251031714) [line 11] (covered 14)
+    ✓ I1 counterexample: a number action can produce NaN or a fractional index [line 20] (killed 7)
+    ~ I3 derive is deterministic on adapter-validated maps (with seed=400127029) [line 28] (covered 176)
+    ~ I4 revealed grows within each scenario in step mode (with seed=1340213733) [line 41] (covered 176)
+    ~ I5 counterexample: schema and book warning permit current outside revealed [line 61] (covered 101)
+    ~ I6 adapter-validated hop references exist and reducedFlow computes a final result (with seed=-2030515357) [line 67] (covered 168)
+    ✓ I3/I6 counterexample: resolved schema accepts dangling references [line 87] (killed 5)
+    ✓ I7 counterexample: resolved rich text is trusted HTML, not escaped plain text [line 95] (killed 10)
+  model.test.ts
+    ~ state follows a small independent command model (with seed=-570554871) [line 102] (covered 30)
+    ~ derive preserves revealed sets, current and panel rules (with seed=187246103) [line 115] (covered 203)
+    ✓ edge badge partitions > neutral case and first-revealing-step numbering [line 130] (killed 37)
+    ✓ edge badge partitions > no badge position [line 134] (killed 8)
+    ✓ edge badge partitions > edge badges disabled in step but enabled in all [line 136] (killed 5)
+    ~ edge badge partitions > revealed by display alone has no first step and no badge [line 144] (covered 93)
+    ✓ edge badge partitions > repeat replaces current edge badge, all shows both [line 153] (killed 20)
+    ✓ edge badge partitions > node badge uses first current node for an edgeless step [line 162] (killed 22)
+    ~ flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550) [line 171] (covered 138)
+    ✓ flow timings, initial pause, reverse path and failed dwell [line 196] (killed 80)
+    ✓ reduced flow preserves failure-without-visit and empty-log ageing [line 230] (killed 25)
+    ✓ path endpoints support absolute, relative, cubic, arc and closed paths [line 256] (killed 18)
+    ✓ label fitting restores baselines and wraps words exactly [line 270] (killed 56)
+    ~ jump duration follows center-to-path distance and its minimum (with seed=-1659246248) [line 293] (covered 138)
+    ~ jumps under two units are skipped [line 305] (covered 134)
+    ~ a first revealing step implies the edge is revealed (with seed=678177055) [line 315] (covered 176)
+    ~ flow plans and reduced routes retain authored hop order, steps and logs (with seed=1425268251) [line 328] (covered 168)
+    ✓ derive invariants hold exhaustively for every published map [line 355] (killed 43)
+  render.test.ts
+    ~ literal Unicode survives marks escaping and cannot create tags (with seed=104966100) [line 20] (covered 28)
+    ~ code, emphasis and strong preserve their full Unicode content (with seed=-1282064041) [line 33] (covered 88)
+    ✓ inline examples, nesting, unmatched delimiters and literal builtin [line 42] (killed 76)
+    ~ SVG attributes, labels and panel plain text escape untrusted strings (with seed=699531239) [line 57] (covered 268)
+    ~ SVG starts with initial frame classes, stable group order and permanent callouts [line 88] (covered 168)
+    ~ panel markup keeps step details before controls, all-step list before flow log [line 108] (covered 253)
+    ✓ panel controls are real buttons; the live status carries only count and title [line 134] (killed 2)
+    ~ concept rows are not tab stops; their link and button are [line 147] (covered 28)
+    ~ concept references resolve stable step ids to numeric DOM positions [line 152] (covered 33)
+    ~ concept and deeper renderers escape plain labels and attributes (with seed=375241405) [line 161] (covered 57)
+
+[Survived] ArrayDeclaration
+src/model/flow.ts:32:22
+-       flow = s.flow ?? [];
++       flow = s.flow ?? ["Stryker was here"];
+Tests ran:
+    flow plans and reduced routes retain authored hop order, steps and logs (with seed=1425268251)
+    I6 adapter-validated hop references exist and reducedFlow computes a final result (with seed=-2030515357)
+
+
+[Survived] EqualityOperator
+src/model/flow.ts:43:9
+-       if (distance < 2) return;
++       if (distance <= 2) return;
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 7 more tests!
+
+
+[Survived] ArithmeticOperator
+src/model/flow.ts:46:31
+-         duration: Math.max(120, distance / 0.28),
++         duration: Math.max(120, distance * 0.28),
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 6 more tests!
+
+
+[Survived] ArithmeticOperator
+src/model/flow.ts:60:33
+-           duration: Math.max(220, geo.length(h.edge) / 0.28),
++           duration: Math.max(220, geo.length(h.edge) * 0.28),
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 7 more tests!
+
+
+[Survived] CallExpression
+src/model/flow.ts:67:12
+-       } else jump(center(h.node));
++       } else ;
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 6 more tests!
+
+
+[Survived] ArrowFunction
+src/model/flow.ts:71:31
+-         step: s.steps.findIndex((t) => t.id === h.step),
++         step: s.steps.findIndex(() => undefined),
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/model/flow.ts:71:38
+-         step: s.steps.findIndex((t) => t.id === h.step),
++         step: s.steps.findIndex((t) => true),
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 7 more tests!
+
+
+[Survived] ConditionalExpression
+src/model/flow.ts:71:38
+-         step: s.steps.findIndex((t) => t.id === h.step),
++         step: s.steps.findIndex((t) => false),
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 7 more tests!
+
+
+[Survived] EqualityOperator
+src/model/flow.ts:71:38
+-         step: s.steps.findIndex((t) => t.id === h.step),
++         step: s.steps.findIndex((t) => t.id !== h.step),
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 7 more tests!
+
+
+[Survived] BooleanLiteral
+src/model/flow.ts:74:13
+-         fail: !!h.fail,
++         fail: !h.fail,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 7 more tests!
+
+
+[Survived] BooleanLiteral
+src/model/flow.ts:74:14
+-         fail: !!h.fail,
++         fail: !h.fail,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    jump duration follows center-to-path distance and its minimum (with seed=-1659246248)
+  and 7 more tests!
+
+
+[Survived] MethodExpression
+src/model/flow.ts:89:13
+-         kind: text.startsWith("Error") ? ("err" as const) : ("new" as const),
++         kind: text.endsWith("Error") ? ("err" as const) : ("new" as const),
+Tests ran:
+    reduced flow preserves failure-without-visit and empty-log ageing
+    flow plans and reduced routes retain authored hop order, steps and logs (with seed=1425268251)
+    I6 adapter-validated hop references exist and reducedFlow computes a final result (with seed=-2030515357)
+
+
+[Survived] StringLiteral
+src/model/flow.ts:89:29
+-         kind: text.startsWith("Error") ? ("err" as const) : ("new" as const),
++         kind: text.startsWith("") ? ("err" as const) : ("new" as const),
+Tests ran:
+    reduced flow preserves failure-without-visit and empty-log ageing
+    flow plans and reduced routes retain authored hop order, steps and logs (with seed=1425268251)
+    I6 adapter-validated hop references exist and reducedFlow computes a final result (with seed=-2030515357)
+
+
+[Survived] ArrayDeclaration
+src/model/flow.ts:109:29
+-     for (const h of s.flow ?? []) {
++     for (const h of s.flow ?? ["Stryker was here"]) {
+Tests ran:
+    flow plans and reduced routes retain authored hop order, steps and logs (with seed=1425268251)
+    I6 adapter-validated hop references exist and reducedFlow computes a final result (with seed=-2030515357)
+
+
+[Survived] ArithmeticOperator
+src/model/frame.ts:50:22
+-     const upto = all ? steps.length - 1 : state.step;
++     const upto = all ? steps.length + 1 : state.step;
+Tests ran:
+    derive preserves revealed sets, current and panel rules (with seed=187246103)
+    edge badge partitions > edge badges disabled in step but enabled in all
+    edge badge partitions > repeat replaces current edge badge, all shows both
+  and 4 more tests!
+
+
+[Survived] ArrayDeclaration
+src/model/frame.ts:59:33
+-     const current = new Set(all ? [] : steps[state.step].current);
++     const current = new Set(all ? ["Stryker was here"] : steps[state.step].current);
+Tests ran:
+    derive preserves revealed sets, current and panel rules (with seed=187246103)
+    edge badge partitions > edge badges disabled in step but enabled in all
+    edge badge partitions > repeat replaces current edge badge, all shows both
+  and 4 more tests!
+
+
+[Survived] ArrayDeclaration
+src/model/frame.ts:60:38
+-     const currentEdges = new Set(all ? [] : steps[state.step].edges);
++     const currentEdges = new Set(all ? ["Stryker was here"] : steps[state.step].edges);
+Tests ran:
+    derive preserves revealed sets, current and panel rules (with seed=187246103)
+    edge badge partitions > edge badges disabled in step but enabled in all
+    edge badge partitions > repeat replaces current edge badge, all shows both
+  and 4 more tests!
+
+
+[Survived] ArrayDeclaration
+src/model/frame.ts:86:36
+-     const repeat = s.repeatBadges ?? [];
++     const repeat = s.repeatBadges ?? ["Stryker was here"];
+Tests ran:
+    derive preserves revealed sets, current and panel rules (with seed=187246103)
+    a first revealing step implies the edge is revealed (with seed=678177055)
+    derive invariants hold exhaustively for every published map
+  and 3 more tests!
+
+
+[Survived] ArrayDeclaration
+src/model/frame.ts:90:57
+-       if (edge.label) edgeLabels[id] = { revealed, lines: [edge.label.text] };
++       if (edge.label) edgeLabels[id] = { revealed, lines: [] };
+Tests ran:
+    derive preserves revealed sets, current and panel rules (with seed=187246103)
+    a first revealing step implies the edge is revealed (with seed=678177055)
+    derive invariants hold exhaustively for every published map
+  and 4 more tests!
+
+
+[Survived] OptionalChaining
+src/model/frame.ts:111:44
+-       if ((!all && index !== state.step) || !steps[index]?.edges.includes(b.edge))
++       if ((!all && index !== state.step) || !steps[index].edges.includes(b.edge))
+Tests ran:
+    derive preserves revealed sets, current and panel rules (with seed=187246103)
+    edge badge partitions > repeat replaces current edge badge, all shows both
+    a first revealing step implies the edge is revealed (with seed=678177055)
+  and 6 more tests!
+
+
+[Survived] ConditionalExpression
+src/model/labels.ts:11:5
+-       main.y >= y &&
++       true &&
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] EqualityOperator
+src/model/labels.ts:11:5
+-       main.y >= y &&
++       main.y > y &&
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] EqualityOperator
+src/model/labels.ts:12:5
+-       main.y + main.height <= tag.y &&
++       main.y + main.height < tag.y &&
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] ConditionalExpression
+src/model/labels.ts:13:5
+-       tag.y + tag.height <= y + h
++       true
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] EqualityOperator
+src/model/labels.ts:13:5
+-       tag.y + tag.height <= y + h
++       tag.y + tag.height < y + h
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] ArithmeticOperator
+src/model/labels.ts:13:5
+-       tag.y + tag.height <= y + h
++       tag.y - tag.height <= y + h
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] ArithmeticOperator
+src/model/labels.ts:17:20
+-     const top = y + (h - main.height - gap - tag.height) / 2;
++     const top = y + (h - main.height + gap - tag.height) / 2;
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] ArithmeticOperator
+src/model/labels.ts:20:10
+-       tag: baseline.tag + top + main.height + gap - tag.y,
++       tag: baseline.tag + top + main.height - gap - tag.y,
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] EqualityOperator
+src/model/labels.ts:30:7
+-     if (measuredWidth <= viewBoxWidth - x - 6 || !text.includes(" ")) return null;
++     if (measuredWidth < viewBoxWidth - x - 6 || !text.includes(" ")) return null;
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] ArithmeticOperator
+src/model/labels.ts:30:24
+-     if (measuredWidth <= viewBoxWidth - x - 6 || !text.includes(" ")) return null;
++     if (measuredWidth <= viewBoxWidth - x + 6 || !text.includes(" ")) return null;
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[Survived] StringLiteral
+src/model/labels.ts:30:63
+-     if (measuredWidth <= viewBoxWidth - x - 6 || !text.includes(" ")) return null;
++     if (measuredWidth <= viewBoxWidth - x - 6 || !text.includes("")) return null;
+Tests ran:
+    label fitting restores baselines and wraps words exactly
+
+
+[NoCoverage] ArrayDeclaration
+src/model/path.ts:7:10
+-       ) ?? [];
++       ) ?? ["Stryker was here"];
+
+[NoCoverage] StringLiteral
+src/model/path.ts:34:23
+-         throw new Error(`Invalid SVG path: ${path}`);
++         throw new Error(``);
+
+[NoCoverage] StringLiteral
+src/model/path.ts:37:23
+-         throw new Error(`Invalid SVG path: ${path}`);
++         throw new Error(``);
+
+[NoCoverage] StringLiteral
+src/model/path.ts:54:31
+-     if (!first) throw new Error(`SVG path needs a moveto: ${path}`);
++     if (!first) throw new Error(``);
+
+[Survived] Regex
+src/model/path.ts:6:7
+-         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
++         /[a-df-zA-DF-Z]|[-+]?(?:\d\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:6:7
+-         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
++         /[a-df-zA-DF-Z]|[-+]?(?:\D*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:6:7
+-         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
++         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:6:7
+-         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
++         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\D+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:6:7
+-         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
++         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d\.?\d*)(?:[eE][-+]?\d+)?/g,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:6:7
+-         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
++         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]\d+)?/g,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:6:7
+-         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
++         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][^-+]?\d+)?/g,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:6:7
+-         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
++         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d)?/g,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:6:7
+-         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g,
++         /[a-df-zA-DF-Z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\D+)?/g,
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/model/path.ts:20:15
+-       command = "",
++       command = "Stryker was here!",
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] ArrayDeclaration
+src/model/path.ts:22:20
+-       start: Point = [0, 0],
++       start: Point = [],
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/model/path.ts:25:9
+-       if (/^[a-z]$/i.test(tokens[i])) command = tokens[i++];
++       if (true) command = tokens[i++];
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:25:9
+-       if (/^[a-z]$/i.test(tokens[i])) command = tokens[i++];
++       if (/[a-z]$/i.test(tokens[i])) command = tokens[i++];
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:25:9
+-       if (/^[a-z]$/i.test(tokens[i])) command = tokens[i++];
++       if (/^[a-z]/i.test(tokens[i])) command = tokens[i++];
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/model/path.ts:29:17
+-         command = "";
++         command = "Stryker was here!";
+Tests ran:
+    path endpoints support absolute, relative, cubic, arc and closed paths
+
+
+[Survived] ConditionalExpression
+src/model/path.ts:33:9
+-       if (!count || i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
++       if (false)
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] LogicalOperator
+src/model/path.ts:33:9
+-       if (!count || i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
++       if ((!count || i + count > tokens.length) && /^[a-z]$/i.test(tokens[i]))
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/model/path.ts:33:9
+-       if (!count || i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
++       if (false || /^[a-z]$/i.test(tokens[i]))
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] LogicalOperator
+src/model/path.ts:33:9
+-       if (!count || i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
++       if (!count && i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/model/path.ts:33:19
+-       if (!count || i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
++       if (!count || false || /^[a-z]$/i.test(tokens[i]))
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] ArithmeticOperator
+src/model/path.ts:33:19
+-       if (!count || i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
++       if (!count || i - count > tokens.length || /^[a-z]$/i.test(tokens[i]))
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:33:48
+-       if (!count || i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
++       if (!count || i + count > tokens.length || /[a-z]$/i.test(tokens[i]))
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] Regex
+src/model/path.ts:33:48
+-       if (!count || i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
++       if (!count || i + count > tokens.length || /^[a-z]/i.test(tokens[i]))
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/model/path.ts:36:9
+-       if (values.some((n) => !Number.isFinite(n)))
++       if (false)
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] MethodExpression
+src/model/path.ts:36:9
+-       if (values.some((n) => !Number.isFinite(n)))
++       if (values.every(n => !Number.isFinite(n)))
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] ArrowFunction
+src/model/path.ts:36:21
+-       if (values.some((n) => !Number.isFinite(n)))
++       if (values.some(() => undefined))
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] StringLiteral
+src/model/path.ts:51:28
+-         command = relative ? "l" : "L";
++         command = relative ? "" : "L";
+Tests ran:
+    path endpoints support absolute, relative, cubic, arc and closed paths
+
+
+[Survived] StringLiteral
+src/model/path.ts:51:34
+-         command = relative ? "l" : "L";
++         command = relative ? "l" : "";
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] ConditionalExpression
+src/model/path.ts:54:7
+-     if (!first) throw new Error(`SVG path needs a moveto: ${path}`);
++     if (false) throw new Error(`SVG path needs a moveto: ${path}`);
+Tests ran:
+    flow lengths change travel duration, never hops, logs, pauses or jumps (with seed=-921984550)
+    flow timings, initial pause, reverse path and failed dwell
+    path endpoints support absolute, relative, cubic, arc and closed paths
+  and 8 more tests!
+
+
+[Survived] ArithmeticOperator
+src/model/state.ts:21:66
+-   const clamp = (n: number, count: number) => Math.max(0, Math.min(count - 1, n));
++   const clamp = (n: number, count: number) => Math.max(0, Math.min(count + 1, n));
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+    I1 closed for finite integer go actions (with seed=-1251031714)
+    I1 counterexample: a number action can produce NaN or a fractional index
+
+
+[Survived] ConditionalExpression
+src/model/state.ts:28:5
+-       case "reset":
+-         return { ...initialState };
++       case "reset":
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] ObjectLiteral
+src/model/state.ts:29:14
+-         return { ...initialState };
++         return {};
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] StringLiteral
+src/model/state.ts:28:10
+-       case "reset":
++       case "":
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+    I1 closed for finite integer go actions (with seed=-1251031714)
+    I1 counterexample: a number action can produce NaN or a fractional index
+
+
+[Survived] ConditionalExpression
+src/model/state.ts:30:5
+-       case "mode":
+-         return { ...s, mode: a.mode };
++       case "mode":
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] ObjectLiteral
+src/model/state.ts:31:14
+-         return { ...s, mode: a.mode };
++         return {};
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] StringLiteral
+src/model/state.ts:30:10
+-       case "mode":
++       case "":
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+    I1 closed for finite integer go actions (with seed=-1251031714)
+    I1 counterexample: a number action can produce NaN or a fractional index
+
+
+[Survived] ConditionalExpression
+src/model/state.ts:32:5
+-       case "scenario":
+-         return { ...s, scenario: clamp(a.index, map.scenarios.length), step: 0 };
++       case "scenario":
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] ObjectLiteral
+src/model/state.ts:33:14
+-         return { ...s, scenario: clamp(a.index, map.scenarios.length), step: 0 };
++         return {};
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] ConditionalExpression
+src/model/state.ts:34:5
+-       case "concept": {
+-         const scenario = clamp(a.scenario, map.scenarios.length);
+-         return {
+-           scenario,
+-           step: clamp(a.step, map.scenarios[scenario].steps.length),
+-           mode: "step",
+-         };
+-       }
++       case "concept":
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] StringLiteral
+src/model/state.ts:32:10
+-       case "scenario":
++       case "":
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+    I1 closed for finite integer go actions (with seed=-1251031714)
+    I1 counterexample: a number action can produce NaN or a fractional index
+
+
+[Survived] BlockStatement
+src/model/state.ts:34:21
+-       case "concept": {
+-         const scenario = clamp(a.scenario, map.scenarios.length);
+-         return {
+-           scenario,
+-           step: clamp(a.step, map.scenarios[scenario].steps.length),
+-           mode: "step",
+-         };
+-       }
++       case "concept": {}
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] StringLiteral
+src/model/state.ts:34:10
+-       case "concept": {
++       case "": {
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+    I1 closed for finite integer go actions (with seed=-1251031714)
+    I1 counterexample: a number action can produce NaN or a fractional index
+
+
+[Survived] ObjectLiteral
+src/model/state.ts:36:14
+-         return {
+-           scenario,
+-           step: clamp(a.step, map.scenarios[scenario].steps.length),
+-           mode: "step",
+-         };
++         return {};
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] StringLiteral
+src/model/state.ts:39:15
+-           mode: "step",
++           mode: "",
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] ObjectLiteral
+src/model/state.ts:43:14
+-         return {
+-           ...s,
+-           step: clamp(
+-             a.type === "go" ? a.step : s.step + (a.type === "next" ? 1 : -1),
+-             map.scenarios[s.scenario].steps.length,
+-           ),
+-         };
++         return {};
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+    I1 closed for finite integer go actions (with seed=-1251031714)
+    I1 counterexample: a number action can produce NaN or a fractional index
+
+
+[Survived] ConditionalExpression
+src/model/state.ts:46:11
+-             a.type === "go" ? a.step : s.step + (a.type === "next" ? 1 : -1),
++             true ? a.step : s.step + (a.type === "next" ? 1 : -1),
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+    I1 closed for finite integer go actions (with seed=-1251031714)
+    I1 counterexample: a number action can produce NaN or a fractional index
+
+
+[Survived] ArithmeticOperator
+src/model/state.ts:46:38
+-             a.type === "go" ? a.step : s.step + (a.type === "next" ? 1 : -1),
++             a.type === "go" ? a.step : s.step - (a.type === "next" ? 1 : -1),
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] ConditionalExpression
+src/model/state.ts:46:48
+-             a.type === "go" ? a.step : s.step + (a.type === "next" ? 1 : -1),
++             a.type === "go" ? a.step : s.step + (true ? 1 : -1),
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] ConditionalExpression
+src/model/state.ts:46:48
+-             a.type === "go" ? a.step : s.step + (a.type === "next" ? 1 : -1),
++             a.type === "go" ? a.step : s.step + (false ? 1 : -1),
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] EqualityOperator
+src/model/state.ts:46:48
+-             a.type === "go" ? a.step : s.step + (a.type === "next" ? 1 : -1),
++             a.type === "go" ? a.step : s.step + (a.type !== "next" ? 1 : -1),
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] StringLiteral
+src/model/state.ts:46:59
+-             a.type === "go" ? a.step : s.step + (a.type === "next" ? 1 : -1),
++             a.type === "go" ? a.step : s.step + (a.type === "" ? 1 : -1),
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[Survived] UnaryOperator
+src/model/state.ts:46:72
+-             a.type === "go" ? a.step : s.step + (a.type === "next" ? 1 : -1),
++             a.type === "go" ? a.step : s.step + (a.type === "next" ? 1 : +1),
+Tests ran:
+    state follows a small independent command model (with seed=-570554871)
+
+
+[NoCoverage] Regex
+src/render/inline.ts:12:30
+-       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] ?? "")) {
++       if (input[i] === "\\" && /[^*`\\]/.test(input[i + 1] ?? "")) {
+
+[NoCoverage] LogicalOperator
+src/render/inline.ts:12:44
+-       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] ?? "")) {
++       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] && "")) {
+
+[NoCoverage] ArithmeticOperator
+src/render/inline.ts:12:50
+-       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] ?? "")) {
++       if (input[i] === "\\" && /[*`\\]/.test(input[i - 1] ?? "")) {
+
+[NoCoverage] StringLiteral
+src/render/inline.ts:12:60
+-       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] ?? "")) {
++       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] ?? "Stryker was here!")) {
+
+[NoCoverage] BlockStatement
+src/render/inline.ts:12:65
+-       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] ?? "")) {
+-         i++;
+-         continue;
+-       }
++       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] ?? "")) {}
+
+[NoCoverage] UpdateOperator
+src/render/inline.ts:13:7
+-         i++;
++         i--;
+
+[NoCoverage] BlockStatement
+src/render/inline.ts:16:27
+-       if (input[i] === "`") {
+-         const end = input.indexOf("`", i + 1);
+-         if (end >= 0) {
+-           i = end;
+-           continue;
+-         }
+-       }
++       if (input[i] === "`") {}
+
+[NoCoverage] StringLiteral
+src/render/inline.ts:17:33
+-         const end = input.indexOf("`", i + 1);
++         const end = input.indexOf("", i + 1);
+
+[NoCoverage] ArithmeticOperator
+src/render/inline.ts:17:38
+-         const end = input.indexOf("`", i + 1);
++         const end = input.indexOf("`", i - 1);
+
+[NoCoverage] ConditionalExpression
+src/render/inline.ts:18:11
+-         if (end >= 0) {
++         if (true) {
+
+[NoCoverage] ConditionalExpression
+src/render/inline.ts:18:11
+-         if (end >= 0) {
++         if (false) {
+
+[NoCoverage] EqualityOperator
+src/render/inline.ts:18:11
+-         if (end >= 0) {
++         if (end > 0) {
+
+[NoCoverage] EqualityOperator
+src/render/inline.ts:18:11
+-         if (end >= 0) {
++         if (end < 0) {
+
+[NoCoverage] BlockStatement
+src/render/inline.ts:18:21
+-         if (end >= 0) {
+-           i = end;
+-           continue;
+-         }
++         if (end >= 0) {}
+
+[NoCoverage] UpdateOperator
+src/render/inline.ts:29:7
+-         i++;
++         i--;
+
+[NoCoverage] StringLiteral
+src/render/inline.ts:41:54
+-       if (ch === "\\" && /[*`\\]/.test(input[i + 1] ?? "")) {
++       if (ch === "\\" && /[*`\\]/.test(input[i + 1] ?? "Stryker was here!")) {
+
+[Survived] Regex
+src/render/inline.ts:9:16
+-     text.replace(/[\\*`]/g, "\\$&");
++     text.replace(/[^\\*`]/g, "\\$&");
+Tests ran:
+    literal Unicode survives marks escaping and cannot create tags (with seed=104966100)
+    code, emphasis and strong preserve their full Unicode content (with seed=-1282064041)
+    SVG attributes, labels and panel plain text escape untrusted strings (with seed=699531239)
+  and 1 more test!
+
+
+[Survived] StringLiteral
+src/render/inline.ts:9:27
+-     text.replace(/[\\*`]/g, "\\$&");
++     text.replace(/[\\*`]/g, "");
+Tests ran:
+    literal Unicode survives marks escaping and cannot create tags (with seed=104966100)
+    code, emphasis and strong preserve their full Unicode content (with seed=-1282064041)
+    SVG attributes, labels and panel plain text escape untrusted strings (with seed=699531239)
+  and 1 more test!
+
+
+[Survived] EqualityOperator
+src/render/inline.ts:11:23
+-     for (let i = start; i < input.length; i++) {
++     for (let i = start; i <= input.length; i++) {
+Tests ran:
+    code, emphasis and strong preserve their full Unicode content (with seed=-1282064041)
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] ConditionalExpression
+src/render/inline.ts:12:9
+-       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] ?? "")) {
++       if (false) {
+Tests ran:
+    code, emphasis and strong preserve their full Unicode content (with seed=-1282064041)
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] StringLiteral
+src/render/inline.ts:12:22
+-       if (input[i] === "\\" && /[*`\\]/.test(input[i + 1] ?? "")) {
++       if (input[i] === "" && /[*`\\]/.test(input[i + 1] ?? "")) {
+Tests ran:
+    code, emphasis and strong preserve their full Unicode content (with seed=-1282064041)
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] ConditionalExpression
+src/render/inline.ts:16:9
+-       if (input[i] === "`") {
++       if (false) {
+Tests ran:
+    code, emphasis and strong preserve their full Unicode content (with seed=-1282064041)
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] StringLiteral
+src/render/inline.ts:16:22
+-       if (input[i] === "`") {
++       if (input[i] === "") {
+Tests ran:
+    code, emphasis and strong preserve their full Unicode content (with seed=-1282064041)
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] ArithmeticOperator
+src/render/inline.ts:24:34
+-         const end = closing(input, i + 2, "**");
++         const end = closing(input, i - 2, "**");
+Tests ran:
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] StringLiteral
+src/render/inline.ts:24:41
+-         const end = closing(input, i + 2, "**");
++         const end = closing(input, i + 2, "");
+Tests ran:
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] ConditionalExpression
+src/render/inline.ts:25:11
+-         if (end >= 0) {
++         if (true) {
+Tests ran:
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] ConditionalExpression
+src/render/inline.ts:25:11
+-         if (end >= 0) {
++         if (false) {
+Tests ran:
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] EqualityOperator
+src/render/inline.ts:25:11
+-         if (end >= 0) {
++         if (end > 0) {
+Tests ran:
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] BlockStatement
+src/render/inline.ts:25:21
+-         if (end >= 0) {
+-           i = end + 1;
+-           continue;
+-         }
++         if (end >= 0) {}
+Tests ran:
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] ArithmeticOperator
+src/render/inline.ts:26:13
+-           i = end + 1;
++           i = end - 1;
+Tests ran:
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] EqualityOperator
+src/render/inline.ts:48:11
+-         if (end >= 0) {
++         if (end > 0) {
+Tests ran:
+    code, emphasis and strong preserve their full Unicode content (with seed=-1282064041)
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[Survived] EqualityOperator
+src/render/inline.ts:57:11
+-         if (end >= 0) {
++         if (end > 0) {
+Tests ran:
+    code, emphasis and strong preserve their full Unicode content (with seed=-1282064041)
+    inline examples, nesting, unmatched delimiters and literal builtin
+
+
+[NoCoverage] StringLiteral
+src/render/panel.ts:45:402
+-     details += `<div class="refs"><div class="src"><h3>${esc(ui.source)}</h3><ul>${p.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("")}</ul></div>${p.deeper.length ? `<div><h3>${esc(ui.goDeeper)}</h3><ul>${p.deeper.map((d) => `<li><a href="${esc(d.href)}" target="_blank" rel="noopener">${esc(d.title)}</a></li>`).join("")}</ul></div>` : ""}</div>`;
++     details += `<div class="refs"><div class="src"><h3>${esc(ui.source)}</h3><ul>${p.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("")}</ul></div>${p.deeper.length ? `<div><h3>${esc(ui.goDeeper)}</h3><ul>${p.deeper.map((d) => `<li><a href="${esc(d.href)}" target="_blank" rel="noopener">${esc(d.title)}</a></li>`).join("")}</ul></div>` : "Stryker was here!"}</div>`;
+
+[NoCoverage] BlockStatement
+src/render/panel.ts:66:3
+-   ) {
+-     const p = parts(map, frame, strings);
+-     return { head: p.lead + p.controls, more: p.details };
+-   }
++   ) {}
+
+[NoCoverage] ObjectLiteral
+src/render/panel.ts:68:10
+-     return { head: p.lead + p.controls, more: p.details };
++     return {};
+
+[NoCoverage] ArithmeticOperator
+src/render/panel.ts:68:18
+-     return { head: p.lead + p.controls, more: p.details };
++     return { head: p.lead - p.controls, more: p.details };
+
+[Survived] ConditionalExpression
+src/render/svg.ts:47:9
+-       if (!n) continue;
++       if (false) continue;
+Tests ran:
+    all renderer outputs equal the frozen pre-extraction book oracle
+    SVG attributes, labels and panel plain text escape untrusted strings (with seed=699531239)
+    SVG starts with initial frame classes, stable group order and permanent callouts
+
+
+Ran 1.95 tests per mutant on average.
+--------------|------------------|----------|-----------|------------|----------|----------|
+              | % Mutation score |          |           |            |          |          |
+File          |  total | covered | # killed | # timeout | # survived | # no cov | # errors |
+--------------|--------|---------|----------|-----------|------------|----------|----------|
+All files     |  85.02 |   87.56 |      689 |        15 |        100 |       24 |        0 |
+ model        |  81.84 |   82.53 |      388 |         4 |         83 |        4 |        0 |
+  flow.ts     |  81.58 |   81.58 |       62 |         0 |         14 |        0 |        0 |
+  frame.ts    |  97.04 |   97.04 |      197 |         0 |          6 |        0 |        0 |
+  labels.ts   |  83.58 |   83.58 |       56 |         0 |         11 |        0 |        0 |
+  path.ts     |  67.00 |   69.79 |       63 |         4 |         29 |        4 |        0 |
+  state.ts    |  30.30 |   30.30 |       10 |         0 |         23 |        0 |        0 |
+ render       |  89.40 |   94.83 |      301 |        11 |         17 |       20 |        0 |
+  concepts.ts | 100.00 |  100.00 |       31 |         0 |          0 |        0 |        0 |
+  inline.ts   |  74.40 |   85.32 |       82 |        11 |         16 |       16 |        0 |
+  panel.ts    |  96.43 |  100.00 |      108 |         0 |          0 |        4 |        0 |
+  svg.ts      |  98.77 |   98.77 |       80 |         0 |          1 |        0 |        0 |
+--------------|--------|---------|----------|-----------|------------|----------|----------|
+23:04:26 (327662) INFO MutationTestReportHelper Final mutation score of 85.02 is greater than or equal to break threshold 0
+23:04:26 (327662) INFO JsonReporter Your report can be found at: file:///workspace/concept-map/reports/mutation/mutation.json
+23:04:26 (327662) INFO HtmlReporter Your report can be found at: file:///workspace/concept-map/reports/mutation/mutation.html
+23:04:26 (327662) INFO MutationTestExecutor Done in 5 minutes and 12 seconds.

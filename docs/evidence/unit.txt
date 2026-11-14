@@ -1,0 +1,16 @@
+
+> @metronforge/concept-map@0.1.0 test
+> vitest run
+
+
+ RUN  v5.1.0 /workspace/concept-map
+
+
+ Test Files  6 passed (6)
+      Tests  45 passed (45)
+   Start at  23:08:36
+   Duration  5.07s (import 54%, tests 27%, transform 19%)
+
+    Isolate  6 workers spawned · ~348ms startup each (spawn + environment, per file)
+             at least ~348ms faster with isolate: false — reuses workers across files instead of one per file
+

@@ -1,6 +1,6 @@
 import { expect, test, vi } from "vitest";
-import { WebAnimator } from "../../src/lib/concept-map/dom/animator";
-import { planFlow } from "../../src/lib/concept-map/model/flow";
+import { WebAnimator } from "../../src/dom/animator";
+import { planFlow } from "../../src/model/flow";
 import { resolvedFixture } from "./arbitraries/map";
 class FakeAnimation {
   finished: Promise<void>;

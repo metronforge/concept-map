@@ -1,0 +1,398 @@
+
+> illustrated-playwright@0.1.0 verify
+> npm run format:check && npm run check && npm run test:unit && npm run test:drift && npm run test:sources && npm run sources:check && npm run build && playwright test
+
+
+> illustrated-playwright@0.1.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> illustrated-playwright@0.1.0 check
+> astro check && tsc -p tsconfig.model.json
+
+22:53:45 [content] Syncing content
+22:53:46 [content] Synced content
+22:53:46 [types] Generated 1.94s
+22:53:46 [check] Getting diagnostics for Astro files in /tmp/concept-map-book/illustrated-playwright...
+Result (80 files):
+- 0 errors
+- 0 warnings
+- 0 hints
+
+
+> illustrated-playwright@0.1.0 test:unit
+> vitest run
+
+
+ RUN  v5.1.0 /tmp/concept-map-book/illustrated-playwright
+
+
+ Test Files  9 passed (9)
+      Tests  108 passed (108)
+   Start at  22:53:54
+   Duration  3.75s (import 59%, tests 30%, transform 11%)
+
+
+> illustrated-playwright@0.1.0 test:drift
+> node --test tests/kit-drift.test.mjs
+
+✔ classifies all four outcomes with the check-kits whitespace rule (88.891573ms)
+✔ reports file changes separately from byte-identical linked lines, including kitless spreads (79.184486ms)
+✔ rejects quotes that were never present in the pinned range (74.335716ms)
+✔ keeps all-same spreads visible without expanding their facts (78.870628ms)
+✔ limits the issue body and retains affected spread headings (117.197975ms)
+✔ keeps changed facts listed when moved facts no longer fit (114.701052ms)
+✔ quote lists require every member, even when one member still exists (70.577241ms)
+✔ byte comparison detects CRLF and final newline differences (72.89033ms)
+﹣ local pinned clone compared with itself has only same facts (0.124205ms) # SKIP
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 757.665846
+
+> illustrated-playwright@0.1.0 test:sources
+> node --test tests/source-links.test.mjs
+
+✔ accepts unchanged linked text moved to a new line (102.927955ms)
+✔ rejects a missing target source file (86.312416ms)
+✔ rejects source ranges outside the file (93.837799ms)
+✔ rejects a stale tag in a page even when its file exists (92.275969ms)
+✔ rejects changed linked text until the exact old and new texts are reviewed in LOG (164.089114ms)
+✔ a reviewed change cannot authorize different source bytes (92.813492ms)
+✔ unknown new links require an explicit reviewed new-source entry (156.908446ms)
+✔ rejects a checkout whose HEAD does not match the source pin (83.572695ms)
+✔ rejects source path traversal (88.613423ms)
+✔ rejects malformed line anchors instead of treating them as file links (125.443963ms)
+✔ an untracked file does not exist in the pinned source tree (91.616627ms)
+✔ allows baseline links only in the release-changes data file (97.06073ms)
+✔ a baseline URL copied outside release data still fails (92.626939ms)
+✔ rejects baseline links at lookalike path components/appendix/changes.ts (86.598103ms)
+✔ rejects baseline links at lookalike path components/appendix/data/changes.tsx (89.673168ms)
+✔ rejects baseline links at lookalike path components/appendix/data/other.ts (86.045429ms)
+✔ baseline ranges are checked in the old checkout (87.954916ms)
+✔ baseline links require a source file in the old checkout (120.291424ms)
+✔ untracked old files cannot authorize baseline links (108.669654ms)
+✔ baseline source paths cannot escape their checkout (92.820401ms)
+✔ only the manifest baseline tag is allowed in release data (87.96383ms)
+✔ advancing the baseline invalidates last edition's links (86.869062ms)
+✔ a baseline equal to current never waives current-link review (89.271834ms)
+✔ E9 collects authored SourceRefs in steps, code and concepts with the pin (102.092975ms)
+✔ E9 rejects missing files and out-of-range authored lines (162.008005ms)
+✔ E9 rejects malformed authored ranges and path escapes (309.032831ms)
+✔ E9 authored refs keep the existing exact reviewed-source requirement (95.446017ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3038.135674
+
+> illustrated-playwright@0.1.0 sources:check
+> node scripts/check-source-links.mjs
+
+Source links OK: 2605 links, 548 targets; 277 unchanged, 202 moved, 64 explicitly reviewed.
+
+> illustrated-playwright@0.1.0 build
+> astro build
+
+22:54:07 [content] Syncing content
+22:54:07 [content] Synced content
+22:54:07 [types] Generated 1.02s
+22:54:07 [build] output: "static"
+22:54:07 [build] mode: "static"
+22:54:07 [build] directory: /tmp/concept-map-book/illustrated-playwright/dist/
+22:54:07 [build] Collecting build info...
+22:54:07 [build] ✓ Completed in 1.23s.
+22:54:07 [build] Building static entrypoints...
+22:54:08 [vite] ✓ built in 1.13s
+22:54:08 [vite] ✓ built in 57ms
+22:54:08 [build] Rearranging server assets...
+
+ generating static routes
+22:54:08 [WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+22:54:09   ├─ /404.html22:54:09 [WARN] [content] Entry docs → 404 was not found.
+ (+33ms)
+22:54:09   ├─ /0-anatomy/0-1-anatomy-of-a-test/index.html (+34ms)
+22:54:09   ├─ /1-messages/index.html (+7ms)
+22:54:09   ├─ /1-messages/1-1-one-call-two-processes/index.html (+15ms)
+22:54:09   ├─ /1-messages/1-2-browser-context-page-frame/index.html (+12ms)
+22:54:09   ├─ /1-messages/1-3-two-worlds/index.html (+28ms)
+22:54:09   ├─ /2-actions/index.html (+6ms)
+22:54:09   ├─ /2-actions/2-1-two-loops/index.html (+12ms)
+22:54:09   ├─ /2-actions/2-2-locator-is-a-recipe/index.html (+9ms)
+22:54:09   ├─ /2-actions/2-3-stable-is-measured/index.html (+10ms)
+22:54:09   ├─ /2-actions/2-4-who-gets-the-click/index.html (+9ms)
+22:54:09   ├─ /2-actions/2-5-what-force-skips/index.html (+8ms)
+22:54:09   ├─ /2-actions/2-6-waiting-for-navigation/index.html (+9ms)
+22:54:09   ├─ /3-network/index.html (+4ms)
+22:54:09   ├─ /3-network/3-1-who-answers-a-request/index.html (+8ms)
+22:54:09   ├─ /3-network/3-2-har-as-a-response-source/index.html (+15ms)
+22:54:09   ├─ /3-network/3-3-api-requests/index.html (+11ms)
+22:54:09   ├─ /4-runner/index.html (+4ms)
+22:54:09   ├─ /4-runner/4-1-config-and-projects/index.html (+7ms)
+22:54:09   ├─ /4-runner/4-2-custom-fixtures/index.html (+8ms)
+22:54:09   ├─ /4-runner/4-3-workers-and-parallel/index.html (+7ms)
+22:54:09   ├─ /4-runner/4-4-retries-and-flaky/index.html (+8ms)
+22:54:09   ├─ /4-runner/4-5-option-and-auto-fixtures/index.html (+9ms)
+22:54:09   ├─ /4-runner/4-6-timeouts/index.html (+9ms)
+22:54:09   ├─ /5-expect/index.html (+3ms)
+22:54:09   ├─ /5-expect/5-1-three-ways-to-wait/index.html (+15ms)
+22:54:09   ├─ /5-expect/5-2-reporters-and-merge/index.html (+10ms)
+22:54:09   ├─ /6-tracing/index.html (+3ms)
+22:54:09   ├─ /6-tracing/6-1-what-a-trace-records/index.html (+9ms)
+22:54:09   ├─ /6-tracing/6-2-recorder/index.html (+8ms)
+22:54:09   ├─ /appendices/browsers/index.html (+4ms)
+22:54:09   ├─ /appendices/call-log/index.html (+4ms)
+22:54:09   ├─ /appendices/changes/index.html (+5ms)
+22:54:09   ├─ /appendices/event-loop/index.html (+3ms)
+22:54:09   ├─ /appendices/questions/index.html (+3ms)
+22:54:09   ├─ /docs-vs-code/index.html (+3ms)
+22:54:09   ├─ /how-to-read/index.html (+3ms)
+22:54:09   ├─ /index.html (+6ms)
+22:54:09   ├─ /index-of-terms/index.html (+11ms)
+22:54:09   ├─ /map/index.html (+5ms)
+22:54:09   ├─ /method/index.html (+4ms)
+22:54:09 ✓ Completed in 437ms.
+
+22:54:09 [build] ✓ Completed in 1.68s.
+22:54:09 [starlight:pagefind] Building search index with Pagefind...
+22:54:09 [starlight:pagefind] Found 41 HTML files.
+22:54:09 [starlight:pagefind] Finished building search index in 99ms.
+22:54:09 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+22:54:09 [build] 41 page(s) built in 3.01s
+22:54:09 [build] Complete!
+[WebServer] (node:315449) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 210 tests using 2 workers
+
+(node:315473) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:315474) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓    2 tests/book.spec.ts:31:3 › spread opens in dark theme (2.9s)
+  ✓    1 tests/book.spec.ts:31:3 › spread opens in light theme (3.0s)
+  ✓    3 tests/book.spec.ts:51:1 › 390px viewport has no horizontal overflow (1.1s)
+  ✓    4 tests/book.spec.ts:60:1 › cover credits Playwright and every page can be indexed (1.6s)
+  ✓    6 tests/book.spec.ts:124:3 › book shell is readable in light theme (1.1s)
+  ✓    7 tests/book.spec.ts:124:3 › book shell is readable in dark theme (1.3s)
+  ✓    8 tests/book.spec.ts:201:1 › spread preserves prototype prose and code verbatim (1.4s)
+  ✓    9 tests/book.spec.ts:252:1 › spread page shows its title once and no page outline (1.4s)
+  ✓   10 tests/book.spec.ts:266:1 › desktop figure puts diagram and scenario panel side by side (1.1s)
+  ✓   11 tests/book.spec.ts:316:1 › index has three sections and use() filters every list (725ms)
+  ✓   12 tests/book.spec.ts:336:3 › index without JavaScript › all lists remain readable and linked (1.7s)
+  ✓   13 tests/book.spec.ts:358:1 › registry contains every spread comparison and starts with differs (622ms)
+  ✓    5 tests/book.spec.ts:90:1 › internal links on every generated page return 200 (10.3s)
+  ✓   15 tests/book.spec.ts:390:1 › author research is not part of the public build (303ms)
+  ✓   14 tests/book.spec.ts:371:1 › spread pagination skips all stub pages (1.0s)
+  ✓   16 tests/book.spec.ts:411:5 › index-of-terms is readable at 390px in dark (795ms)
+  ✓   18 tests/book.spec.ts:411:5 › docs-vs-code is readable at 390px in dark (543ms)
+  ✓   17 tests/book.spec.ts:411:5 › index-of-terms is readable at 1280px in light (1.2s)
+  ✓   19 tests/book.spec.ts:411:5 › docs-vs-code is readable at 1280px in light (895ms)
+  ✓   20 tests/book.spec.ts:411:5 › how-to-read is readable at 390px in dark (671ms)
+  ✓   21 tests/book.spec.ts:411:5 › how-to-read is readable at 1280px in light (787ms)
+  ✓   22 tests/book.spec.ts:439:1 › index lists each message once and reviewed concepts with spread titles (664ms)
+  ✓   23 tests/book.spec.ts:471:1 › docs-vs-code registry fits a phone without side scrolling (809ms)
+  ✓   24 tests/book.spec.ts:507:1 › cover cards in one row start their descriptions on one line (1.0s)
+  ✓   25 tests/book.spec.ts:528:1 › sidebar numbers every spread and has no stub in a part with spreads (1.3s)
+  ✓   27 tests/book.spec.ts:607:1 › callout links keep keyboard focus through SVG redraws (853ms)
+  ✓   28 tests/book.spec.ts:627:1 › a semantic node visibly highlights with its prose callout (589ms)
+  ✓   29 tests/book.spec.ts:644:1 › phone callout keeps sentence punctuation on the badge line (603ms)
+  ✓   26 tests/book.spec.ts:562:1 › callout hover and taps highlight the element, reduced motion scroll is instant (3.2s)
+  ✓   30 tests/book.spec.ts:670:1 › callout highlighting reaches shapes inside a semantic group (1.1s)
+  ✓   32 tests/book.spec.ts:767:3 › book map links every spread once at 390px in dark (2.0s)
+  ✓   31 tests/book.spec.ts:694:1 › cover leads with a live figure and reading route before its catalogue (3.6s)
+  ✓   34 tests/book.spec.ts:858:3 › method explains the pinned sources at 390px in dark (765ms)
+  ✓   35 tests/book.spec.ts:858:3 › method explains the pinned sources at 1280px in light (1.1s)
+  ✓   33 tests/book.spec.ts:767:3 › book map links every spread once at 1280px in light (2.6s)
+  ✓   36 tests/book.spec.ts:905:1 › hit Whole flows reserve failure styling for failed checks (1.1s)
+  ✓   37 tests/book.spec.ts:937:3 › reporter manual cumulative logs preserve original output · Merge replay (1.6s)
+  ✓   39 tests/book.spec.ts:967:1 › incremental manual logs retain previous context and repeated retry messages (899ms)
+  ✓   38 tests/book.spec.ts:937:3 › reporter manual cumulative logs preserve original output · Reporter error (1.5s)
+  ✓   40 tests/book.spec.ts:1011:1 › multiple maps keep controls, keyboard and SVG references independent (1.4s)
+  ✓   41 tests/book.spec.ts:1061:1 › two worlds map preserves original scenario output and every principal step (2.1s)
+  ✓   43 tests/book.spec.ts:1225:5 › part 1 overview: 390px geometry (594ms)
+  ✓   42 tests/book.spec.ts:1154:3 › part 1 overview: links, header, sidebar and indexing (1.4s)
+  ✓   44 tests/book.spec.ts:1225:5 › part 1 overview: 375px geometry (637ms)
+  ✓   45 tests/book.spec.ts:1299:3 › part 1 overview: pointer and keyboard share highlights (1.3s)
+  ✓   46 tests/book.spec.ts:1336:3 › part 1 overview: static links work without JavaScript (1.2s)
+  ✓   48 tests/book.spec.ts:1225:5 › part 2 overview: 390px geometry (506ms)
+  ✓   47 tests/book.spec.ts:1154:3 › part 2 overview: links, header, sidebar and indexing (1.5s)
+  ✓   49 tests/book.spec.ts:1225:5 › part 2 overview: 375px geometry (504ms)
+  ✓   50 tests/book.spec.ts:1299:3 › part 2 overview: pointer and keyboard share highlights (1.1s)
+  ✓   51 tests/book.spec.ts:1336:3 › part 2 overview: static links work without JavaScript (1.2s)
+  ✓   53 tests/book.spec.ts:1225:5 › part 3 overview: 390px geometry (606ms)
+  ✓   54 tests/book.spec.ts:1225:5 › part 3 overview: 375px geometry (498ms)
+  ✓   52 tests/book.spec.ts:1154:3 › part 3 overview: links, header, sidebar and indexing (1.4s)
+  ✓   55 tests/book.spec.ts:1299:3 › part 3 overview: reading list keyboard navigation (762ms)
+  ✓   56 tests/book.spec.ts:1336:3 › part 3 overview: static links work without JavaScript (1.2s)
+  ✓   58 tests/book.spec.ts:1225:5 › part 4 overview: 390px geometry (569ms)
+  ✓   57 tests/book.spec.ts:1154:3 › part 4 overview: links, header, sidebar and indexing (1.4s)
+  ✓   59 tests/book.spec.ts:1225:5 › part 4 overview: 375px geometry (642ms)
+  ✓   60 tests/book.spec.ts:1299:3 › part 4 overview: pointer and keyboard share highlights (1.3s)
+  ✓   61 tests/book.spec.ts:1336:3 › part 4 overview: static links work without JavaScript (1.3s)
+  ✓   63 tests/book.spec.ts:1225:5 › part 5 overview: 390px geometry (509ms)
+  ✓   62 tests/book.spec.ts:1154:3 › part 5 overview: links, header, sidebar and indexing (1.2s)
+  ✓   64 tests/book.spec.ts:1225:5 › part 5 overview: 375px geometry (662ms)
+  ✓   65 tests/book.spec.ts:1299:3 › part 5 overview: reading list keyboard navigation (835ms)
+  ✓   66 tests/book.spec.ts:1336:3 › part 5 overview: static links work without JavaScript (1.9s)
+  ✓   68 tests/book.spec.ts:1225:5 › part 6 overview: 390px geometry (999ms)
+  ✓   67 tests/book.spec.ts:1154:3 › part 6 overview: links, header, sidebar and indexing (2.8s)
+  ✓   69 tests/book.spec.ts:1225:5 › part 6 overview: 375px geometry (1.1s)
+  ✓   70 tests/book.spec.ts:1299:3 › part 6 overview: reading list keyboard navigation (1.7s)
+  ✓   71 tests/book.spec.ts:1336:3 › part 6 overview: static links work without JavaScript (2.6s)
+  ✓   72 tests/book.spec.ts:1348:1 › overview presentation: lists stand alone when relations do not span three spreads (1.9s)
+  ✓   73 tests/book.spec.ts:1361:1 › overview presentation: code is semantic in intro and reading descriptions (1.1s)
+  ✓   74 tests/book.spec.ts:1370:1 › overview presentation: map fits content and abilities have full desktop width (1.1s)
+  ✓   75 tests/book.spec.ts:1402:1 › part 4 map: five retained edges keep labels clear of unrelated paths (1.5s)
+  ✓   76 tests/book.spec.ts:1451:1 › 2.6 compact map fits 900 units and numbers every Whole-map step (2.9s)
+  ✓   77 tests/book.spec.ts:1517:1 › 2.6 edge label boxes stay clear of every foreign edge (2.5s)
+  ✓   78 tests/book.spec.ts:1563:1 › reviewed edge captions stay clear of lane and frame outlines (3.6s)
+  ✓   80 tests/book.spec.ts:1708:1 › all spread maps and the cover omit check numbers from node labels (5.9s)
+  ✓   81 tests/book.spec.ts:1738:1 › 4.6 Whole map edge captions do not overlap at either font size (1.3s)
+  ✓   82 tests/book.spec.ts:1764:1 › 2.4 compact map fits 900 and numbers every edge step in Whole map (1.8s)
+  ✓   83 tests/book.spec.ts:1848:1 › 2.4 captions clear paths and keep 30 units at the right, including wider fonts (4.8s)
+  ✓   84 tests/book.spec.ts:2070:1 › book follows the current source pin and updates in place (870ms)
+Map labels above 20 units: []
+  ✓   79 tests/book.spec.ts:1620:1 › all map edge labels stay within 20 units of their own paths (17.5s)
+  ✓   85 tests/book.spec.ts:2092:3 › normal click checks non-inert after enabled · / (1.0s)
+  ✓   86 tests/book.spec.ts:2092:3 › normal click checks non-inert after enabled · /2-actions/2-1-two-loops/ (1.1s)
+  ✓   87 tests/book.spec.ts:2092:3 › normal click checks non-inert after enabled · /2-actions/2-3-stable-is-measured/ (998ms)
+  ✓   88 tests/book.spec.ts:2115:1 › WebKit default stability uses one equal comparison (908ms)
+  ✓   89 tests/book.spec.ts:2128:1 › force explains that the non-inert prerequisite is skipped (770ms)
+  ✓   91 tests/book.spec.ts:2183:1 › current Docs vs code register keeps nine reviewed findings (566ms)
+  ✓   92 tests/book.spec.ts:2202:1 › inert index alias reaches each actionability spread (794ms)
+  ✓   90 tests/book.spec.ts:2139:1 › updated prerequisite captions stay clear of every lane and frame outline (2.4s)
+  ✓   93 tests/book.spec.ts:2220:1 › browser appendix sidebar follows part 6 and precedes the index (683ms)
+  ✓   94 tests/book.spec.ts:2241:1 › browser appendix source rows cite the pin and an existing spread (693ms)
+  ✓   96 tests/book.spec.ts:2319:1 › browser appendix measurements include the current source pin (804ms)
+  ✓   97 tests/book.spec.ts:2332:1 › browser appendix bounds proxy authentication with the replaced-header case (613ms)
+  ✓   95 tests/book.spec.ts:2274:1 › browser appendix measured rows expose complete laboratory provenance (2.3s)
+  ✓   98 tests/book.spec.ts:2351:1 › browser appendix distinguishes a visible registration from its activation (646ms)
+  ✓   99 tests/book.spec.ts:2371:1 › browser appendix keeps laboratory references private and evidence kinds distinct (841ms)
+  ✓  100 tests/book.spec.ts:2395:3 › browser appendix fits 375px with readable evidence in light (836ms)
+  ✓  101 tests/book.spec.ts:2395:3 › browser appendix fits 375px with readable evidence in dark (688ms)
+  ✓  103 tests/book.spec.ts:2455:1 › browser appendix method paragraph links the measured-result scope (885ms)
+  ✓  102 tests/book.spec.ts:2431:1 › browser appendix sits in the reading order after part 6 (1.4s)
+  ✓  104 tests/book.spec.ts:2519:1 › call-log appendix follows the browser appendix in sidebar and reading order (1.3s)
+  ✓  105 tests/book.spec.ts:2557:1 › call-log appendix covers every published message or an exact reasoned exclusion (1.8s)
+  ✓  106 tests/book.spec.ts:2582:1 › call-log appendix has no orphan entries and links every spread that uses each message (1.2s)
+  ✓  108 tests/book.spec.ts:2653:1 › call-log appendix keeps distinct waits and truncated strict errors unambiguous (197ms)
+  ✓  109 tests/book.spec.ts:2679:3 › call-log appendix fits 375px with readable wrapping in light (490ms)
+  ✓  110 tests/book.spec.ts:2679:3 › call-log appendix fits 375px with readable wrapping in dark (487ms)
+  ✓  111 tests/book.spec.ts:2723:1 › call-log appendix explains Node prefixes once and has no internal number or map (749ms)
+  ✓  112 tests/book.spec.ts:2742:1 › call-log appendix keeps performing-action meaning valid for forced clicks (484ms)
+  ✓  113 tests/book.spec.ts:2766:1 › release-changes appendix follows call-log lines in sidebar and reading order (756ms)
+  ✓  114 tests/book.spec.ts:2803:1 › release-changes appendix reads both version labels from edition metadata (490ms)
+  ✓  107 tests/book.spec.ts:2599:1 › call-log appendix renders the templates, existing spread anchors and pinned producers (4.6s)
+  ✓  116 tests/book.spec.ts:2866:1 › release-changes appendix covers every REVIEW text-change verdict (658ms)
+  ✓  115 tests/book.spec.ts:2818:1 › release-changes appendix gives both sources and valid spread anchors for each behavior (1.2s)
+  ✓  117 tests/book.spec.ts:2884:1 › release-changes appendix separates pre-existing corrections with current evidence (704ms)
+  ✓  118 tests/book.spec.ts:2911:1 › release-changes appendix qualifies the other spreads and links official notes (578ms)
+  ✓  119 tests/book.spec.ts:2927:3 › release-changes appendix fits 375px with readable evidence in light (458ms)
+  ✓  120 tests/book.spec.ts:2927:3 › release-changes appendix fits 375px with readable evidence in dark (620ms)
+  ✓  121 tests/book.spec.ts:2960:1 › release-changes appendix has no internal number, concept map or Bun tutorial (691ms)
+  ✓  123 tests/book.spec.ts:3014:1 › event-loop appendix answers six questions with pinned source, Node and spread links (738ms)
+  ✓  124 tests/book.spec.ts:3057:1 › event-loop appendix measured blocks retain complete fixed provenance and the current pin (836ms)
+  ✓  122 tests/book.spec.ts:2973:1 › event-loop appendix is first in Appendices and follows 6.2 (2.6s)
+  ✓  125 tests/book.spec.ts:3095:1 › event-loop appendix distinguishes after-click from after-emission (759ms)
+  ✓  126 tests/book.spec.ts:3106:1 › event-loop appendix keeps lab private and uses the research Node documentation version (636ms)
+  ✓  127 tests/book.spec.ts:3134:1 › event-loop appendix puts each measured block directly after its supporting paragraph (753ms)
+  ✓  128 tests/book.spec.ts:3145:3 › event-loop appendix fits 375px with readable text in light (554ms)
+  ✓  129 tests/book.spec.ts:3145:3 › event-loop appendix fits 375px with readable text in dark (623ms)
+  ✓  130 tests/book.spec.ts:3183:1 › index delegates covered messages to Call-log lines and keeps uncovered symptoms (706ms)
+  ✓  131 tests/book.spec.ts:3234:1 › index filters remaining entries and keeps the call-log link when no entries match (1.1s)
+  ✓  133 tests/book.spec.ts:3279:1 › questions appendix links every spread at least once (291ms)
+  ✓  134 tests/book.spec.ts:3293:1 › questions appendix renders every entry and fits a phone (458ms)
+  ✓  135 tests/book.spec.ts:3322:1 › map figure announces only the step, and concept rows are not tab stops (1.1s)
+  ✓  132 tests/book.spec.ts:3255:1 › questions appendix answers with each target page's own title (6.2s)
+  ✓  136 tests/player-layers.spec.ts:36:7 › @player 0-1 1280px light › every scenario, step and mode equals derive; keyboard, focus and page lifecycle (3.7s)
+  ✓  137 tests/player-layers.spec.ts:226:7 › @player 0-1 1280px light › animation follows paths, logs and hop steps; replay and selection cancel (3.7s)
+  ✓  139 tests/player-layers.spec.ts:36:7 › @player 0-1 390px dark › every scenario, step and mode equals derive; keyboard, focus and page lifecycle (2.9s)
+  ✓  138 tests/player-layers.spec.ts:395:7 › @player 0-1 1280px light › reduced flows are immediate; concepts and callouts support pointer and focus (7.8s)
+  ✓  140 tests/player-layers.spec.ts:226:7 › @player 0-1 390px dark › animation follows paths, logs and hop steps; replay and selection cancel (3.6s)
+  ✓  142 tests/player-layers.spec.ts:36:7 › @player 2-1 1280px light › every scenario, step and mode equals derive; keyboard, focus and page lifecycle (3.2s)
+  ✓  141 tests/player-layers.spec.ts:395:7 › @player 0-1 390px dark › reduced flows are immediate; concepts and callouts support pointer and focus (7.9s)
+  ✓  143 tests/player-layers.spec.ts:226:7 › @player 2-1 1280px light › animation follows paths, logs and hop steps; replay and selection cancel (5.2s)
+  ✓  145 tests/player-layers.spec.ts:36:7 › @player 2-1 390px dark › every scenario, step and mode equals derive; keyboard, focus and page lifecycle (2.9s)
+  ✓  144 tests/player-layers.spec.ts:395:7 › @player 2-1 1280px light › reduced flows are immediate; concepts and callouts support pointer and focus (7.4s)
+  ✓  146 tests/player-layers.spec.ts:226:7 › @player 2-1 390px dark › animation follows paths, logs and hop steps; replay and selection cancel (5.0s)
+  ✓  148 tests/player-layers.spec.ts:36:7 › @player 2-4 1280px light › every scenario, step and mode equals derive; keyboard, focus and page lifecycle (3.0s)
+  ✓  147 tests/player-layers.spec.ts:395:7 › @player 2-1 390px dark › reduced flows are immediate; concepts and callouts support pointer and focus (7.3s)
+  ✓  149 tests/player-layers.spec.ts:226:7 › @player 2-4 1280px light › animation follows paths, logs and hop steps; replay and selection cancel (3.1s)
+  ✓  151 tests/player-layers.spec.ts:36:7 › @player 2-4 390px dark › every scenario, step and mode equals derive; keyboard, focus and page lifecycle (3.0s)
+  ✓  150 tests/player-layers.spec.ts:395:7 › @player 2-4 1280px light › reduced flows are immediate; concepts and callouts support pointer and focus (5.5s)
+  ✓  152 tests/player-layers.spec.ts:226:7 › @player 2-4 390px dark › animation follows paths, logs and hop steps; replay and selection cancel (3.5s)
+  ✓  153 tests/player-layers.spec.ts:395:7 › @player 2-4 390px dark › reduced flows are immediate; concepts and callouts support pointer and focus (5.9s)
+  ✓  154 tests/player-layers.spec.ts:36:7 › @player 5-2 1280px light › every scenario, step and mode equals derive; keyboard, focus and page lifecycle (2.8s)
+  ✓  155 tests/player-layers.spec.ts:226:7 › @player 5-2 1280px light › animation follows paths, logs and hop steps; replay and selection cancel (4.3s)
+  ✓  156 tests/player-layers.spec.ts:395:7 › @player 5-2 1280px light › reduced flows are immediate; concepts and callouts support pointer and focus (5.7s)
+  ✓  157 tests/player-layers.spec.ts:36:7 › @player 5-2 390px dark › every scenario, step and mode equals derive; keyboard, focus and page lifecycle (2.9s)
+  ✓  158 tests/player-layers.spec.ts:226:7 › @player 5-2 390px dark › animation follows paths, logs and hop steps; replay and selection cancel (3.9s)
+  ✓  160 tests/player.spec.ts:3:1 › @player facade state events, version guard and destroy (899ms)
+  ✓  161 tests/player.spec.ts:82:1 › @player injected arrival/done animator completes route and clears transient state (809ms)
+  ✓  162 tests/player.spec.ts:148:1 › @player mapchange listeners can destroy or supersede dispatch without starting stale flows (834ms)
+  ✓  159 tests/player-layers.spec.ts:395:7 › @player 5-2 390px dark › reduced flows are immediate; concepts and callouts support pointer and focus (5.6s)
+  ✓  163 tests/spreads.spec.ts:28:7 › @spread 0-1 anatomy-map 390px › layout, every step, labels, controls, callouts and accessible description (2.5s)
+  ✓  164 tests/spreads.spec.ts:28:7 › @spread 0-1 anatomy-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.3s)
+  ✓  166 tests/spreads.spec.ts:28:7 › @spread 1-1 call-reply-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.1s)
+  ✓  165 tests/spreads.spec.ts:28:7 › @spread 1-1 call-reply-map 390px › layout, every step, labels, controls, callouts and accessible description (2.6s)
+  ✓  167 tests/spreads.spec.ts:28:7 › @spread 1-2 context-tree-map 390px › layout, every step, labels, controls, callouts and accessible description (2.5s)
+  ✓  168 tests/spreads.spec.ts:28:7 › @spread 1-2 context-tree-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.4s)
+  ✓  170 tests/spreads.spec.ts:28:7 › @spread 1-3 two-worlds-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.1s)
+  ✓  169 tests/spreads.spec.ts:28:7 › @spread 1-3 two-worlds-map 390px › layout, every step, labels, controls, callouts and accessible description (2.5s)
+  ✓  172 tests/spreads.spec.ts:28:7 › @spread 2-1 click-loops-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.6s)
+  ✓  171 tests/spreads.spec.ts:28:7 › @spread 2-1 click-loops-map 390px › layout, every step, labels, controls, callouts and accessible description (2.8s)
+  ✓  174 tests/spreads.spec.ts:28:7 › @spread 2-2 locator-recipe-map 1280px › layout, every step, labels, controls, callouts and accessible description (1.9s)
+  ✓  173 tests/spreads.spec.ts:28:7 › @spread 2-2 locator-recipe-map 390px › layout, every step, labels, controls, callouts and accessible description (2.3s)
+  ✓  176 tests/spreads.spec.ts:28:7 › @spread 2-3 stable-frames-map 1280px › layout, every step, labels, controls, callouts and accessible description (1.9s)
+  ✓  175 tests/spreads.spec.ts:28:7 › @spread 2-3 stable-frames-map 390px › layout, every step, labels, controls, callouts and accessible description (2.3s)
+  ✓  178 tests/spreads.spec.ts:28:7 › @spread 2-4 hit-target-map 1280px › layout, every step, labels, controls, callouts and accessible description (1.9s)
+  ✓  177 tests/spreads.spec.ts:28:7 › @spread 2-4 hit-target-map 390px › layout, every step, labels, controls, callouts and accessible description (2.2s)
+  ✓  180 tests/spreads.spec.ts:28:7 › @spread 2-5 force-skips-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.0s)
+  ✓  179 tests/spreads.spec.ts:28:7 › @spread 2-5 force-skips-map 390px › layout, every step, labels, controls, callouts and accessible description (2.2s)
+  ✓  182 tests/spreads.spec.ts:28:7 › @spread 2-6 navigation 1280px › layout, every step, labels, controls, callouts and accessible description (2.3s)
+  ✓  181 tests/spreads.spec.ts:28:7 › @spread 2-6 navigation 390px › layout, every step, labels, controls, callouts and accessible description (2.7s)
+  ✓  183 tests/spreads.spec.ts:28:7 › @spread 3-1 request-handlers-map 390px › layout, every step, labels, controls, callouts and accessible description (2.2s)
+  ✓  184 tests/spreads.spec.ts:28:7 › @spread 3-1 request-handlers-map 1280px › layout, every step, labels, controls, callouts and accessible description (1.9s)
+  ✓  186 tests/spreads.spec.ts:28:7 › @spread 3-2 har-response-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.1s)
+  ✓  185 tests/spreads.spec.ts:28:7 › @spread 3-2 har-response-map 390px › layout, every step, labels, controls, callouts and accessible description (2.3s)
+  ✓  188 tests/spreads.spec.ts:28:7 › @spread 3-3 api-requests-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.0s)
+  ✓  187 tests/spreads.spec.ts:28:7 › @spread 3-3 api-requests-map 390px › layout, every step, labels, controls, callouts and accessible description (2.5s)
+  ✓  189 tests/spreads.spec.ts:28:7 › @spread 4-1 project-phases-map 390px › layout, every step, labels, controls, callouts and accessible description (2.2s)
+  ✓  190 tests/spreads.spec.ts:28:7 › @spread 4-1 project-phases-map 1280px › layout, every step, labels, controls, callouts and accessible description (1.9s)
+  ✓  192 tests/spreads.spec.ts:28:7 › @spread 4-2 fixture-lifecycle-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.2s)
+  ✓  191 tests/spreads.spec.ts:28:7 › @spread 4-2 fixture-lifecycle-map 390px › layout, every step, labels, controls, callouts and accessible description (2.7s)
+  ✓  194 tests/spreads.spec.ts:28:7 › @spread 4-3 worker-groups-map 1280px › layout, every step, labels, controls, callouts and accessible description (1.8s)
+  ✓  193 tests/spreads.spec.ts:28:7 › @spread 4-3 worker-groups-map 390px › layout, every step, labels, controls, callouts and accessible description (2.2s)
+  ✓  196 tests/spreads.spec.ts:28:7 › @spread 4-4 retry-outcomes-map 1280px › layout, every step, labels, controls, callouts and accessible description (1.9s)
+  ✓  195 tests/spreads.spec.ts:28:7 › @spread 4-4 retry-outcomes-map 390px › layout, every step, labels, controls, callouts and accessible description (2.1s)
+  ✓  198 tests/spreads.spec.ts:28:7 › @spread 4-5 fixture-choices-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.4s)
+  ✓  197 tests/spreads.spec.ts:28:7 › @spread 4-5 fixture-choices-map 390px › layout, every step, labels, controls, callouts and accessible description (2.7s)
+  ✓  200 tests/spreads.spec.ts:28:7 › @spread 4-6 timeout-budgets-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.1s)
+  ✓  199 tests/spreads.spec.ts:28:7 › @spread 4-6 timeout-budgets-map 390px › layout, every step, labels, controls, callouts and accessible description (2.5s)
+  ✓  202 tests/spreads.spec.ts:28:7 › @spread 5-1 assertions-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.2s)
+  ✓  201 tests/spreads.spec.ts:28:7 › @spread 5-1 assertions-map 390px › layout, every step, labels, controls, callouts and accessible description (2.5s)
+  ✓  204 tests/spreads.spec.ts:28:7 › @spread 5-2 report-replay 1280px › layout, every step, labels, controls, callouts and accessible description (2.0s)
+  ✓  203 tests/spreads.spec.ts:28:7 › @spread 5-2 report-replay 390px › layout, every step, labels, controls, callouts and accessible description (2.4s)
+  ✓  206 tests/spreads.spec.ts:28:7 › @spread 6-1 trace-recording-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.0s)
+  ✓  205 tests/spreads.spec.ts:28:7 › @spread 6-1 trace-recording-map 390px › layout, every step, labels, controls, callouts and accessible description (2.5s)
+  ✓  208 tests/spreads.spec.ts:28:7 › @spread 6-2 recorder-map 1280px › layout, every step, labels, controls, callouts and accessible description (2.1s)
+  ✓  207 tests/spreads.spec.ts:28:7 › @spread 6-2 recorder-map 390px › layout, every step, labels, controls, callouts and accessible description (2.4s)
+  ✓  210 tests/spreads.spec.ts:28:7 › @spread 2-1 cover-click-loops-map 1280px › layout, every step, labels, controls, callouts and accessible description (1.2s)
+  ✓  209 tests/spreads.spec.ts:28:7 › @spread 2-1 cover-click-loops-map 390px › layout, every step, labels, controls, callouts and accessible description (1.6s)
+
+  210 passed (3.6m)
+::notice title=🎭 Playwright Run Summary::  210 passed (3.6m)
+
+real	4m7.939s
+user	3m41.680s
+sys	0m56.809s

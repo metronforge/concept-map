@@ -1,0 +1,39 @@
+
+ RUN  v5.1.0 /workspace/concept-map
+
+ ❯ test/unit/architecture.test.ts (3 tests | 2 failed) 1601ms
+   × dependency guard rejects external runtime import through the public barrel 645ms
+   × dependency guard rejects bare Node builtins in the model 444ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/unit/architecture.test.ts > dependency guard rejects external runtime import through the public barrel
+AssertionError: expected [] to include 'no-external-runtime-outside-schema'
+ ❯ test/unit/architecture.test.ts:23:59
+     21| }
+     22| test('dependency guard rejects external runtime import through the pub…
+     23|  expect(probe('src/index.ts','export { z } from "zod";')).toContain('n…
+       |                                                           ^
+     24| });
+     25| test('dependency guard rejects bare Node builtins in the model',()=>{
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  test/unit/architecture.test.ts > dependency guard rejects bare Node builtins in the model
+AssertionError: expected [] to include 'no-external-runtime-outside-schema'
+ ❯ test/unit/architecture.test.ts:26:115
+     24| });
+     25| test('dependency guard rejects bare Node builtins in the model',()=>{
+     26|  expect(probe('src/model/probe.ts','import { readFileSync } from "fs";…
+       |                                                                                                                   ^
+     27| });
+     28| test('dependency guard permits schema-owned Zod import',()=>{
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  23:15:35
+   Duration  1.78s (tests 98%, transform 1%, import 1%)
+

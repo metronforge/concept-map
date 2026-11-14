@@ -1,6 +1,6 @@
-import type { ResolvedMap } from "../schema";
-import type { Frame } from "../model/frame";
-import { escapeHtml as esc } from "./inline";
+import type { ResolvedMap } from "../schema.js";
+import type { Frame } from "../model/frame.js";
+import { escapeHtml as esc } from "./inline.js";
 export const defaultStrings = {
   replay: "Replay the flow",
   callLog: "Call log",

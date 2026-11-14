@@ -1,0 +1,210 @@
+{
+  "format": 2,
+  "spread": "2.1",
+  "title": "Fixture map",
+  "viewBox": [
+    200,
+    200
+  ],
+  "lanes": {
+    "client": {
+      "label": "Client",
+      "layer": "client",
+      "y": 0,
+      "h": 200
+    }
+  },
+  "frames": {
+    "outer": {
+      "label": "Frame",
+      "box": [
+        0,
+        0,
+        100,
+        180
+      ],
+      "showWith": [
+        "a"
+      ]
+    }
+  },
+  "nodes": {
+    "a": {
+      "label": "A",
+      "layer": "client",
+      "lane": "client",
+      "box": [
+        10,
+        10,
+        50,
+        30
+      ]
+    },
+    "b": {
+      "label": "B",
+      "layer": "server",
+      "lane": "client",
+      "box": [
+        10,
+        100,
+        50,
+        30
+      ]
+    }
+  },
+  "edges": {
+    "ab": {
+      "from": "a",
+      "to": "b",
+      "path": "M35 40 V100",
+      "badge": [
+        35,
+        70
+      ]
+    }
+  },
+  "definitions": {
+    "call": {
+      "term": "Call",
+      "text": "A call"
+    }
+  },
+  "code": {
+    "call": {
+      "title": "Source",
+      "lines": [
+        "await call()"
+      ]
+    }
+  },
+  "scenarios": [
+    {
+      "id": "normal",
+      "label": "Normal",
+      "display": {
+        "counterLabel": true,
+        "edges": "progressive",
+        "edgeBadges": true,
+        "nodeBadges": false,
+        "log": "incremental"
+      },
+      "steps": [
+        {
+          "id": "start",
+          "title": "Start",
+          "text": "Start here",
+          "show": [
+            "a"
+          ],
+          "current": [
+            "a"
+          ],
+          "edges": [],
+          "defs": [
+            "call"
+          ],
+          "code": "call",
+          "sources": [
+            {
+              "label": "a.ts:1-2",
+              "url": "https://example.com/a.ts#L1-L2"
+            }
+          ],
+          "deeper": [
+            {
+              "title": "2.2 More",
+              "href": "/more/"
+            }
+          ]
+        },
+        {
+          "id": "end",
+          "title": "End",
+          "text": "End here",
+          "show": [
+            "b"
+          ],
+          "current": [
+            "b"
+          ],
+          "edges": [
+            "ab"
+          ],
+          "defs": [],
+          "sources": [
+            {
+              "label": "a.ts:1-2",
+              "url": "https://example.com/a.ts#L1-L2"
+            }
+          ],
+          "deeper": [
+            {
+              "title": "2.2 More",
+              "href": "/more/"
+            }
+          ]
+        }
+      ],
+      "flow": [
+        {
+          "node": "a",
+          "step": "start",
+          "log": []
+        },
+        {
+          "node": "b",
+          "step": "end",
+          "log": [
+            "done"
+          ],
+          "edge": "ab"
+        }
+      ],
+      "repeatBadges": [
+        {
+          "edge": "ab",
+          "step": "end",
+          "at": [
+            40,
+            80
+          ]
+        }
+      ]
+    }
+  ],
+  "conceptScenario": "normal",
+  "concepts": [
+    {
+      "label": "Concepts",
+      "layer": "client",
+      "items": [
+        {
+          "definition": "call",
+          "short": "call",
+          "nodes": [
+            "a"
+          ],
+          "step": {
+            "step": "start"
+          },
+          "source": {
+            "label": "a.ts:1-2",
+            "url": "https://example.com/a.ts#L1-L2"
+          }
+        }
+      ]
+    }
+  ],
+  "callouts": {
+    "1": [
+      "a"
+    ]
+  },
+  "deeper": [
+    {
+      "title": "2.2 More",
+      "href": "/more/",
+      "why": "Learn more"
+    }
+  ]
+}

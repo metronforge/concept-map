@@ -1,23 +1,11 @@
-import { parse, stringify } from "yaml";
-import { authoredFixture } from "./fixtures/map";
 import { expect, test } from "vitest";
 import { test as property, fc } from "@fast-check/vitest";
-import {
-  renderInline,
-  escapeHtml,
-  escapeMarks,
-} from "../../src/lib/concept-map/render/inline";
-import { renderSvg } from "../../src/lib/concept-map/render/svg";
-import {
-  renderPanel,
-  statusText,
-} from "../../src/lib/concept-map/render/panel";
-import {
-  renderConcepts,
-  renderDeeper,
-} from "../../src/lib/concept-map/render/concepts";
-import { derive } from "../../src/lib/concept-map/model/frame";
-import { initialState } from "../../src/lib/concept-map/model/state";
+import { renderInline, escapeHtml, escapeMarks } from "../../src/render/inline";
+import { renderSvg } from "../../src/render/svg";
+import { renderPanel, statusText } from "../../src/render/panel";
+import { renderConcepts, renderDeeper } from "../../src/render/concepts";
+import { derive } from "../../src/model/frame";
+import { initialState } from "../../src/model/state";
 import { handMaps, resolvedFixture } from "./arbitraries/map";
 const unicode = fc.string({ unit: "binary", maxLength: 100 });
 /** Decode just our renderer's four entities, after removing its allowed tags. */
@@ -170,17 +158,6 @@ test("concept references resolve stable step ids to numeric DOM positions", () =
   expect(renderDeeper(m)).toContain("Learn more");
 });
 
-property.prop([unicode])(
-  "authored YAML survives parse/serialize/parse without changing text",
-  (value) => {
-    const m = authoredFixture();
-    m.title = value;
-    m.scenarios[0].steps[0].text = value;
-    const first = parse(stringify(m));
-    expect(first).toEqual(m);
-    expect(parse(stringify(first))).toEqual(first);
-  },
-);
 property.prop([unicode])(
   "concept and deeper renderers escape plain labels and attributes",
   (value) => {

@@ -1,4 +1,4 @@
-import type { Point } from "./path";
+import type { Point } from "./path.js";
 export const labelMinimum = (viewBoxWidth: number, renderedWidth: number) =>
   (10.55 * viewBoxWidth) / renderedWidth;
 export function fitNodeLabels(

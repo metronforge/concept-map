@@ -1,5 +1,5 @@
-import type { ResolvedMap } from "../schema";
-import { escapeHtml as esc } from "./inline";
+import type { ResolvedMap } from "../schema.js";
+import { escapeHtml as esc } from "./inline.js";
 export function renderConcepts(map: ResolvedMap): string {
   return `<div class="concepts">${map.concepts
     .map(

@@ -1,4 +1,4 @@
-import type { ResolvedMap } from "../schema";
+import type { ResolvedMap } from "../schema.js";
 export type Mode = "step" | "all";
 export interface PlayerState {
   scenario: number;

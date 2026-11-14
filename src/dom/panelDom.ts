@@ -1,11 +1,11 @@
-import type { ResolvedMap } from "../schema";
-import type { Frame, LogLine } from "../model/frame";
+import type { ResolvedMap } from "../schema.js";
+import type { Frame, LogLine } from "../model/frame.js";
 import {
   renderPanelParts,
   statusText,
   defaultStrings,
   type UiStrings,
-} from "../render/panel";
+} from "../render/panel.js";
 export class PanelDom {
   readonly head: HTMLElement;
   readonly more: HTMLElement;

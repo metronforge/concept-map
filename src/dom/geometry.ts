@@ -1,5 +1,5 @@
-import type { ResolvedMap } from "../schema";
-import { labelMinimum, fitNodeLabels, fitEdgeLabel } from "../model/labels";
+import type { ResolvedMap } from "../schema.js";
+import { labelMinimum, fitNodeLabels, fitEdgeLabel } from "../model/labels.js";
 export interface Geometry {
   pathLength(edge: string): number;
   pointAt(edge: string, t: number): [number, number];

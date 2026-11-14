@@ -1,0 +1,11 @@
+node_modules
+dist
+demo-dist
+playwright-report
+test-results
+reports
+coverage
+.stryker-tmp
+resolved-map.schema.json
+etc
+test/fixtures

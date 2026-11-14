@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
-import type { ResolvedMap } from "../src/lib/concept-map/schema";
-import { reducedFlow } from "../src/lib/concept-map/model/flow";
+import type { ResolvedMap } from "../../src/schema";
+import { reducedFlow } from "../../src/model/flow";
 import {
   domSnapshot,
   expectedSnapshot,
@@ -392,7 +392,7 @@ for (const mapId of references)
           ).toBe(0);
         }
       });
-      test("reduced flows are immediate; concepts and callouts support pointer and focus", async ({
+      test("I6 reduced flows are immediate; concepts support pointer and focus", async ({
         page,
       }) => {
         await page.emulateMedia({ reducedMotion: "reduce" });
@@ -460,27 +460,7 @@ for (const mapId of references)
             String(step ? step - 1 : 1),
           );
         }
-        for (const marker of await root.locator("svg .callout").all())
-          await expect(marker).toBeHidden();
-        for (const n of Object.keys(map.callouts)) {
-          const prose = page.locator(`[data-prose-callout="${n}"]`).first();
-          if (layout.width === 390) await prose.tap();
-          else await prose.click();
-          for (const id of map.callouts[n])
-            await expect(root.locator(`[data-node="${id}"]`)).toHaveAttribute(
-              "data-callout-active",
-              "",
-            );
-          const marker = root.locator(`[data-figure-callout="${n}"]`);
-          await expect(marker).toBeVisible();
-          if (layout.width === 390) await marker.tap();
-          else await marker.click();
-          await expect(
-            page
-              .locator(`[data-callout-paragraph-active] [data-callout="${n}"]`)
-              .first(),
-          ).toBeVisible();
-        }
+        // Prose callouts belong to the book adapter and remain in book integration tests.
       });
     });
   }

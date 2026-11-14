@@ -1,0 +1,11 @@
+node_modules/
+dist/
+demo-dist/
+playwright-report/
+test-results/
+coverage/
+reports/
+.stryker-tmp/
+*.tgz
+.superpowers/
+.demo/

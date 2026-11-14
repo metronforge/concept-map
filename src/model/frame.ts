@@ -1,5 +1,5 @@
-import type { ResolvedMap } from "../schema";
-import type { PlayerState } from "./state";
+import type { ResolvedMap } from "../schema.js";
+import type { PlayerState } from "./state.js";
 export interface LogLine {
   text: string;
   kind: "old" | "new" | "err";

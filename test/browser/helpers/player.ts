@@ -1,9 +1,8 @@
-import { readdirSync, readFileSync } from "node:fs";
-import { resolve, relative } from "node:path";
+import pages from "../../fixtures/pages.json" with { type: "json" };
 import type { Page } from "@playwright/test";
-import type { ResolvedMap } from "../../src/lib/concept-map/schema";
-import type { PlayerState } from "../../src/lib/concept-map/model/state";
-import { derive } from "../../src/lib/concept-map/model/frame";
+import type { ResolvedMap } from "../../../src/schema";
+import type { PlayerState } from "../../../src/model/state";
+import { derive } from "../../../src/model/frame";
 export const plain = (html: string) =>
   html
     .replace(/<\/?(?:code|em|strong)>/g, "")
@@ -11,29 +10,11 @@ export const plain = (html: string) =>
     .replace(/&gt;/g, ">")
     .replace(/&lt;/g, "<")
     .replace(/&amp;/g, "&");
-const files = (dir: string): string[] =>
-  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
-    e.isDirectory() ? files(resolve(dir, e.name)) : [resolve(dir, e.name)],
-  );
-export const mapPages = files(resolve("src/content/docs"))
-  .filter((f) => f.endsWith(".mdx"))
-  .flatMap((file) => {
-    const figure = readFileSync(file, "utf8").match(
-      /<MapFigure\s+map="([^"]+)"\s+id="([^"]+)"/,
-    );
-    const path = relative(resolve("src/content/docs"), file)
-      .replace(/(?:^|\/)index\.mdx$/, "")
-      .replace(/\.mdx$/, "");
-    return figure
-      ? [
-          {
-            mapId: figure[1],
-            figureId: figure[2],
-            path: path ? `/${path}/` : "/",
-          },
-        ]
-      : [];
-  });
+export const mapPages = pages.map((p) => ({
+  mapId: p.id,
+  figureId: p.figureId,
+  path: p.path,
+}));
 export function expectedSnapshot(map: ResolvedMap, state: PlayerState) {
   const f = derive(map, state),
     p = f.panel;

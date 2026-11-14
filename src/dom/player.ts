@@ -1,17 +1,17 @@
-import type { ResolvedMap } from "../schema";
+import type { ResolvedMap } from "../schema.js";
 import {
   initialState,
   reduce,
   type PlayerState,
   type Action,
-} from "../model/state";
-import { derive, type LogLine } from "../model/frame";
-import { planFlow, reducedFlow, appendLog } from "../model/flow";
-import type { UiStrings } from "../render/panel";
-import { SvgDom } from "./svgDom";
-import { PanelDom } from "./panelDom";
-import { geometry, sizeLabels, type Geometry } from "./geometry";
-import { WebAnimator, type Animator, type Playback } from "./animator";
+} from "../model/state.js";
+import { derive, type LogLine } from "../model/frame.js";
+import { planFlow, reducedFlow, appendLog } from "../model/flow.js";
+import type { UiStrings } from "../render/panel.js";
+import { SvgDom } from "./svgDom.js";
+import { PanelDom } from "./panelDom.js";
+import { geometry, sizeLabels, type Geometry } from "./geometry.js";
+import { WebAnimator, type Animator, type Playback } from "./animator.js";
 const bindings = new WeakMap<MapPlayer, Set<() => void>>();
 export class MapPlayer {
   private current: PlayerState = { ...initialState };

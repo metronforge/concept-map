@@ -1,0 +1,9 @@
+
+ RUN  v5.1.0 /workspace/concept-map
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  23:16:12
+   Duration  1.92s (tests 98%, transform 1%, import 1%)
+

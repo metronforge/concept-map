@@ -1,0 +1,9 @@
+[
+  {
+    "name": "stage A mixed entry (D6)",
+    "path": "dist/index.js",
+    "limit": "10712 B",
+    "ignore": ["zod"],
+    "gzip": true
+  }
+]

@@ -1,7 +1,7 @@
-import type { ResolvedMap } from "../schema";
-import { derive, type Frame, type Badge } from "../model/frame";
-import { initialState } from "../model/state";
-import { escapeHtml as esc } from "./inline";
+import type { ResolvedMap } from "../schema.js";
+import { derive, type Frame, type Badge } from "../model/frame.js";
+import { initialState } from "../model/state.js";
+import { escapeHtml as esc } from "./inline.js";
 export function renderBadges(badges: Badge[]): string {
   return badges
     .map(

@@ -1,0 +1,13 @@
+{
+  "src/dom/animator.ts:play": 105,
+  "src/dom/animator.ts:function@46": 73,
+  "src/dom/geometry.ts:sizeLabels": 55,
+  "src/dom/player.ts": 318,
+  "src/dom/player.ts:function@29": 52,
+  "src/dom/player.ts:startFlow": 68,
+  "src/dom/player.ts:connectConcepts": 46,
+  "src/model/flow.ts:planFlow": 58,
+  "src/model/frame.ts:derive": 135,
+  "src/model/path.ts:pathEnds": 54,
+  "src/schema.ts:mapSchema": 120
+}

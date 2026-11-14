@@ -6,9 +6,7 @@ test("@player facade state events, version guard and destroy", async ({
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/2-actions/2-1-two-loops/");
-  const moduleUrl = await page
-    .locator('script[src*="MapFigure"]')
-    .getAttribute("src");
+  const moduleUrl = "/assets/player.js";
   const result = await page.evaluate(async (moduleUrl) => {
     const { MapPlayer } = await import(new URL(moduleUrl!, location.href).href);
     const original = document.querySelector<HTMLElement>(
@@ -83,9 +81,7 @@ test("@player injected arrival/done animator completes route and clears transien
   page,
 }) => {
   await page.goto("/2-actions/2-1-two-loops/");
-  const moduleUrl = await page
-    .locator('script[src*="MapFigure"]')
-    .getAttribute("src");
+  const moduleUrl = "/assets/player.js";
   const result = await page.evaluate(async (moduleUrl) => {
     const { MapPlayer } = await import(new URL(moduleUrl!, location.href).href);
     const original = document.querySelector<HTMLElement>(
@@ -149,9 +145,7 @@ test("@player mapchange listeners can destroy or supersede dispatch without star
   page,
 }) => {
   await page.goto("/2-actions/2-1-two-loops/");
-  const moduleUrl = await page
-    .locator('script[src*="MapFigure"]')
-    .getAttribute("src");
+  const moduleUrl = "/assets/player.js";
   const result = await page.evaluate(async (moduleUrl) => {
     const { MapPlayer } = await import(new URL(moduleUrl!, location.href).href);
     const original = document.querySelector<HTMLElement>(

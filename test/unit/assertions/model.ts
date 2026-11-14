@@ -1,6 +1,6 @@
 import { expect } from "vitest";
-import type { ResolvedMap } from "../../../src/lib/concept-map/schema";
-import { derive } from "../../../src/lib/concept-map/model/frame";
+import type { ResolvedMap } from "../../../src/schema";
+import { derive } from "../../../src/model/frame";
 export function checkDerive(map: ResolvedMap) {
   map.scenarios.forEach((s, scenario) => {
     let previousNodes: string[] = [],

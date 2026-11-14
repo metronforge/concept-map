@@ -1,6 +1,6 @@
-import type { Frame } from "../model/frame";
-import type { reducedFlow } from "../model/flow";
-import { renderBadges } from "../render/svg";
+import type { Frame } from "../model/frame.js";
+import type { reducedFlow } from "../model/flow.js";
+import { renderBadges } from "../render/svg.js";
 let markerSequence = 0;
 export class SvgDom {
   readonly nodes: Record<string, SVGGElement>;

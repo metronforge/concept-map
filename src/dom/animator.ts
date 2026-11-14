@@ -1,5 +1,5 @@
-import type { FlowPlan, Segment } from "../model/flow";
-import type { ResolvedMap } from "../schema";
+import type { FlowPlan, Segment } from "../model/flow.js";
+import type { ResolvedMap } from "../schema.js";
 export interface Playback {
   stop(): void;
   readonly finished: Promise<void>;

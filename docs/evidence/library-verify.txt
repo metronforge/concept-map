@@ -1,0 +1,239 @@
+
+> @metronforge/concept-map@0.1.0 verify
+> npm run format:check && npm run lint && npm run typecheck && npm run dependencies:check && npm run build && npm run schema:check && npm run test && npm run api:check && npm run contracts:check && npm run size && npm run pack:check && npm run demo:build
+
+
+> @metronforge/concept-map@0.1.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> @metronforge/concept-map@0.1.0 lint
+> eslint src
+
+
+> @metronforge/concept-map@0.1.0 typecheck
+> tsc -p tsconfig.json --noEmit && tsc -p tsconfig.core.json
+
+
+> @metronforge/concept-map@0.1.0 dependencies:check
+> depcruise src --config .dependency-cruiser.cjs
+
+
+✔ no dependency violations found (17 modules, 51 dependencies cruised)
+
+
+> @metronforge/concept-map@0.1.0 build
+> tsc -p tsconfig.json
+
+
+> @metronforge/concept-map@0.1.0 schema:check
+> node scripts/schema.mjs --check
+
+
+> @metronforge/concept-map@0.1.0 test
+> vitest run
+
+
+ RUN  v5.1.0 /workspace/concept-map
+
+
+ Test Files  7 passed (7)
+      Tests  48 passed (48)
+   Start at  23:16:21
+   Duration  2.81s (tests 51%, import 46%, transform 3%)
+
+
+> @metronforge/concept-map@0.1.0 api:check
+> api-extractor run
+
+
+api-extractor 7.60.1  - https://api-extractor.com/
+
+Using configuration from ./api-extractor.json
+Analysis will use the bundled TypeScript version 6.0.3
+
+API Extractor completed successfully
+
+> @metronforge/concept-map@0.1.0 contracts:check
+> node scripts/guards.mjs && node scripts/budgets.mjs
+
+Runtime dependencies, stage-A exports and CSS contract passed
+Complexity budgets pass with exact stage-A legacy exceptions
+
+> @metronforge/concept-map@0.1.0 size
+> size-limit
+
+- Adding to empty rolldown project
+✔ Adding to empty rolldown project
+
+  Package size is 1.01 kB less than limit
+  Size limit: 10.71 kB
+  Size:       9.7 kB   with all dependencies, minified and gzipped
+
+
+> @metronforge/concept-map@0.1.0 pack:check
+> npm pack --dry-run && publint && attw --pack --profile esm-only --exclude-entrypoints ./css
+
+
+> @metronforge/concept-map@0.1.0 prepare
+> git config core.hooksPath .githooks
+
+npm notice
+npm notice 📦  @metronforge/concept-map@0.1.0
+npm notice Tarball Contents
+npm notice 1.1kB LICENSE
+npm notice 4.9kB README.md
+npm notice 18.3kB css/concept-map.css
+npm notice 815B dist/dom/animator.d.ts
+npm notice 964B dist/dom/animator.d.ts.map
+npm notice 4.8kB dist/dom/animator.js
+npm notice 4.4kB dist/dom/animator.js.map
+npm notice 582B dist/dom/geometry.d.ts
+npm notice 619B dist/dom/geometry.d.ts.map
+npm notice 2.4kB dist/dom/geometry.js
+npm notice 3.0kB dist/dom/geometry.js.map
+npm notice 601B dist/dom/panelDom.d.ts
+npm notice 663B dist/dom/panelDom.d.ts.map
+npm notice 2.5kB dist/dom/panelDom.js
+npm notice 2.7kB dist/dom/panelDom.js.map
+npm notice 1.3kB dist/dom/player.d.ts
+npm notice 1.4kB dist/dom/player.d.ts.map
+npm notice 10.9kB dist/dom/player.js
+npm notice 12.2kB dist/dom/player.js.map
+npm notice 762B dist/dom/svgDom.d.ts
+npm notice 820B dist/dom/svgDom.d.ts.map
+npm notice 2.9kB dist/dom/svgDom.js
+npm notice 4.0kB dist/dom/svgDom.js.map
+npm notice 980B dist/index.d.ts
+npm notice 933B dist/index.d.ts.map
+npm notice 641B dist/index.js
+npm notice 635B dist/index.js.map
+npm notice 1.1kB dist/model/flow.d.ts
+npm notice 1.3kB dist/model/flow.d.ts.map
+npm notice 2.6kB dist/model/flow.js
+npm notice 3.8kB dist/model/flow.js.map
+npm notice 1.5kB dist/model/frame.d.ts
+npm notice 1.9kB dist/model/frame.d.ts.map
+npm notice 4.7kB dist/model/frame.js
+npm notice 6.6kB dist/model/frame.js.map
+npm notice 552B dist/model/labels.d.ts
+npm notice 696B dist/model/labels.d.ts.map
+npm notice 1.0kB dist/model/labels.js
+npm notice 1.6kB dist/model/labels.js.map
+npm notice 226B dist/model/path.d.ts
+npm notice 253B dist/model/path.d.ts.map
+npm notice 1.8kB dist/model/path.js
+npm notice 2.3kB dist/model/path.js.map
+npm notice 643B dist/model/state.d.ts
+npm notice 854B dist/model/state.d.ts.map
+npm notice 965B dist/model/state.js
+npm notice 1.3kB dist/model/state.js.map
+npm notice 217B dist/render/concepts.d.ts
+npm notice 271B dist/render/concepts.d.ts.map
+npm notice 1.2kB dist/render/concepts.js
+npm notice 1.5kB dist/render/concepts.js.map
+npm notice 363B dist/render/inline.d.ts
+npm notice 298B dist/render/inline.d.ts.map
+npm notice 2.2kB dist/render/inline.js
+npm notice 2.8kB dist/render/inline.js.map
+npm notice 964B dist/render/panel.d.ts
+npm notice 573B dist/render/panel.d.ts.map
+npm notice 4.3kB dist/render/panel.js
+npm notice 4.7kB dist/render/panel.js.map
+npm notice 323B dist/render/svg.d.ts
+npm notice 412B dist/render/svg.d.ts.map
+npm notice 3.7kB dist/render/svg.js
+npm notice 4.6kB dist/render/svg.js.map
+npm notice 12.4kB dist/schema.d.ts
+npm notice 1.0kB dist/schema.d.ts.map
+npm notice 4.6kB dist/schema.js
+npm notice 5.8kB dist/schema.js.map
+npm notice 2.6kB package.json
+npm notice 18.9kB resolved-map.schema.json
+npm notice Tarball Details
+npm notice name: @metronforge/concept-map
+npm notice version: 0.1.0
+npm notice filename: metronforge-concept-map-0.1.0.tgz
+npm notice package size: 41.2 kB
+npm notice unpacked size: 195.4 kB
+npm notice shasum: e90def68cd2f6036cfc5fb42af1e26a53871c1bd
+npm notice integrity: sha512-JxdJP2nSGSbIP[...]DwaMagH+tsa1Q==
+npm notice total files: 69
+npm notice
+metronforge-concept-map-0.1.0.tgz
+Running publint v0.3.25 for @metronforge/concept-map...
+Packing files with `npm pack`...
+Linting...
+All good!
+
+@metronforge/concept-map v0.1.0
+
+Build tools:
+- @arethetypeswrong/cli@^0.18.5
+- typescript@^5.9.3
+- vite@8.3.8
+- @microsoft/api-extractor@^7.60.1
+
+ (ignoring resolutions: 'node10', 'node16-cjs')
+
+(ignored per resolution) ⚠️ A require call resolved to an ESM JavaScript file, which is an error in Node and some bundlers. CommonJS consumers will need to use a dynamic import. https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/CJSResolvesToESM.md
+
+
+"@metronforge/concept-map"
+
+node16 (from ESM): 🟢 (ESM)
+bundler: 🟢
+node10: (ignored) 🟢
+node16 (from CJS): (ignored) ⚠️ ESM (dynamic import only)
+
+***********************************
+
+"@metronforge/concept-map/resolved-map.schema.json"
+
+node16 (from ESM): 🟢 (JSON)
+bundler: 🟢 (JSON)
+node10: (ignored) 🟢 (JSON)
+node16 (from CJS): (ignored) 🟢 (JSON)
+
+***********************************
+
+> @metronforge/concept-map@0.1.0 demo:build
+> node scripts/build-demo.mjs
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 162 modules transformed.
+rendering chunks...
+computing gzip size...
+demo-dist/index.html                                              1.43 kB │ gzip:  0.53 kB
+demo-dist/1-messages/1-3-two-worlds/index.html                   38.32 kB │ gzip:  6.53 kB
+demo-dist/4-runner/4-4-retries-and-flaky/index.html              41.66 kB │ gzip:  7.68 kB
+demo-dist/4-runner/4-1-config-and-projects/index.html            42.90 kB │ gzip:  7.21 kB
+demo-dist/1-messages/1-1-one-call-two-processes/index.html       45.46 kB │ gzip:  7.35 kB
+demo-dist/4-runner/4-5-option-and-auto-fixtures/index.html       47.52 kB │ gzip:  8.37 kB
+demo-dist/2-actions/2-2-locator-is-a-recipe/index.html           48.02 kB │ gzip:  7.39 kB
+demo-dist/1-messages/1-2-browser-context-page-frame/index.html   50.08 kB │ gzip:  7.72 kB
+demo-dist/2-actions/2-5-what-force-skips/index.html              50.09 kB │ gzip:  7.62 kB
+demo-dist/3-network/3-1-who-answers-a-request/index.html         50.97 kB │ gzip:  6.93 kB
+demo-dist/4-runner/4-3-workers-and-parallel/index.html           52.52 kB │ gzip:  7.79 kB
+demo-dist/6-tracing/6-2-recorder/index.html                      52.83 kB │ gzip:  7.58 kB
+demo-dist/2-actions/2-3-stable-is-measured/index.html            54.48 kB │ gzip:  7.71 kB
+demo-dist/4-runner/4-6-timeouts/index.html                       55.57 kB │ gzip:  8.26 kB
+demo-dist/2-actions/2-6-waiting-for-navigation/index.html        58.25 kB │ gzip:  8.66 kB
+demo-dist/2-actions/2-1-two-loops/index.html                     59.14 kB │ gzip:  9.87 kB
+demo-dist/2-actions/2-4-who-gets-the-click/index.html            61.98 kB │ gzip:  8.45 kB
+demo-dist/5-expect/5-1-three-ways-to-wait/index.html             62.83 kB │ gzip:  9.25 kB
+demo-dist/3-network/3-3-api-requests/index.html                  66.40 kB │ gzip:  7.66 kB
+demo-dist/3-network/3-2-har-as-a-response-source/index.html      66.50 kB │ gzip:  7.73 kB
+demo-dist/0-anatomy/0-1-anatomy-of-a-test/index.html             66.82 kB │ gzip: 10.73 kB
+demo-dist/5-expect/5-2-reporters-and-merge/index.html            67.43 kB │ gzip:  8.19 kB
+demo-dist/6-tracing/6-1-what-a-trace-records/index.html          68.11 kB │ gzip:  8.67 kB
+demo-dist/4-runner/4-2-custom-fixtures/index.html                70.84 kB │ gzip:  8.09 kB
+demo-dist/assets/MapFigure-CjPSObr0.css                          14.87 kB │ gzip:  3.28 kB
+demo-dist/assets/player.js                                        0.07 kB │ gzip:  0.09 kB
+demo-dist/assets/modulepreload-polyfill-P2Xu9kJm.js               0.67 kB │ gzip:  0.38 kB
+demo-dist/assets/MapFigure-BfShxfXw.js                          115.88 kB │ gzip: 34.30 kB
+
+✓ built in 253ms

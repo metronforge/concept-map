@@ -8,14 +8,17 @@ import {
   escapeMarks,
 } from "../../src/lib/concept-map/render/inline";
 import { renderSvg } from "../../src/lib/concept-map/render/svg";
-import { renderPanel } from "../../src/lib/concept-map/render/panel";
+import {
+  renderPanel,
+  statusText,
+} from "../../src/lib/concept-map/render/panel";
 import {
   renderConcepts,
   renderDeeper,
 } from "../../src/lib/concept-map/render/concepts";
 import { derive } from "../../src/lib/concept-map/model/frame";
 import { initialState } from "../../src/lib/concept-map/model/state";
-import { resolvedFixture } from "./arbitraries/map";
+import { handMaps, resolvedFixture } from "./arbitraries/map";
 const unicode = fc.string({ unit: "binary", maxLength: 100 });
 /** Decode just our renderer's four entities, after removing its allowed tags. */
 function text(html: string) {
@@ -139,6 +142,24 @@ test("panel markup keeps step details before controls, all-step list before flow
     all.indexOf('data-role="flowlog"'),
   );
   expect(all).toContain('data-go="1"');
+});
+test("panel controls are real buttons; the live status carries only count and title", () => {
+  const [, m] = handMaps();
+  const last = m.scenarios[0].steps.length - 1;
+  const frame = derive(m, { scenario: 0, step: last, mode: "step" });
+  const panel = renderPanel(m, frame);
+  expect(panel).toMatch(
+    /<button type="button"[^>]*data-role="nextscenario">Short<\/button>/,
+  );
+  expect(panel).not.toContain('href="#"');
+  expect(statusText(frame)).toBe(`${frame.panel.count}: ${frame.panel.title}`);
+  const all = derive(m, { scenario: 0, step: 0, mode: "all" });
+  expect(statusText(all)).toMatch(/^Whole map · /);
+});
+test("concept rows are not tab stops; their link and button are", () => {
+  const html = renderConcepts(resolvedFixture());
+  expect(html).toMatch(/<li data-nodes="[^"]*">/);
+  expect(html).not.toContain("tabindex");
 });
 test("concept references resolve stable step ids to numeric DOM positions", () => {
   const m = resolvedFixture();

@@ -17,6 +17,11 @@ export const defaultStrings = {
   hint: "Use ‹ › or the bars to move through this figure. Keyboard: ← →.",
 };
 export type UiStrings = typeof defaultStrings;
+/** Plain text for the figure's live status: announced on each step or view
+ *  change instead of the whole panel, so controls and hints stay silent. */
+export function statusText(frame: Frame): string {
+  return `${frame.panel.count}: ${frame.panel.title}`;
+}
 function parts(map: ResolvedMap, frame: Frame, overrides: Partial<UiStrings>) {
   const ui = { ...defaultStrings, ...overrides },
     p = frame.panel;
@@ -43,7 +48,7 @@ function parts(map: ResolvedMap, frame: Frame, overrides: Partial<UiStrings>) {
   return {
     lead: `<div class="count">${esc(p.count)}</div><h2>${esc(p.title)}</h2><p>${p.html}</p>`,
     details,
-    controls: `<div class="stepper" role="group" aria-label="${esc(ui.stepsGroup)}"><button type="button" class="sbtn" data-role="back" aria-label="${esc(ui.previousStep)}"${p.canBack ? "" : " disabled"}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button><ol class="segs">${steps.map((title, n) => `<li><button type="button" data-seg="${n}" aria-label="${esc(ui.step)} ${n + 1}: ${esc(title)}"${n === index ? ' aria-current="step"' : ""} class="${n < index ? "done" : n === index ? "now" : ""}"></button></li>`).join("")}</ol><button type="button" class="sbtn fwd" data-role="next" aria-label="${esc(ui.nextStep)}"${p.canNext ? "" : " disabled"}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div><div class="hint">${p.nextScenario ? `${esc(ui.nextScenario)} <a href="#" data-role="nextscenario">${esc(p.nextScenario)}</a>. ` : ""}${esc(ui.hint)}</div>`,
+    controls: `<div class="stepper" role="group" aria-label="${esc(ui.stepsGroup)}"><button type="button" class="sbtn" data-role="back" aria-label="${esc(ui.previousStep)}"${p.canBack ? "" : " disabled"}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button><ol class="segs">${steps.map((title, n) => `<li><button type="button" data-seg="${n}" aria-label="${esc(ui.step)} ${n + 1}: ${esc(title)}"${n === index ? ' aria-current="step"' : ""} class="${n < index ? "done" : n === index ? "now" : ""}"></button></li>`).join("")}</ol><button type="button" class="sbtn fwd" data-role="next" aria-label="${esc(ui.nextStep)}"${p.canNext ? "" : " disabled"}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div><div class="hint">${p.nextScenario ? `${esc(ui.nextScenario)} <button type="button" class="linkbtn" data-role="nextscenario">${esc(p.nextScenario)}</button>. ` : ""}${esc(ui.hint)}</div>`,
   };
 }
 export function renderPanel(

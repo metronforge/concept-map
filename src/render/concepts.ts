@@ -10,7 +10,7 @@ export function renderConcepts(map: ResolvedMap): string {
               (s) => s.id === (c.step.scenario ?? map.conceptScenario),
             )!;
             const index = scenario.steps.findIndex((s) => s.id === c.step.step);
-            return `<li data-nodes="${esc(c.nodes.join(" "))}" tabindex="0"><span class="term">${esc(map.definitions[c.definition].term)}</span><span class="def">${c.short}</span><span class="meta"><a href="${esc(c.source.url)}" title="${esc(c.source.label)}">Source ↗</a><button type="button" data-step="${index}"${c.step.scenario ? ` data-concept-scenario="${esc(c.step.scenario)}"` : ""}>Step ${index + 1}</button></span></li>`;
+            return `<li data-nodes="${esc(c.nodes.join(" "))}"><span class="term">${esc(map.definitions[c.definition].term)}</span><span class="def">${c.short}</span><span class="meta"><a href="${esc(c.source.url)}" title="${esc(c.source.label)}">Source ↗</a><button type="button" data-step="${index}"${c.step.scenario ? ` data-concept-scenario="${esc(c.step.scenario)}"` : ""}>Step ${index + 1}</button></span></li>`;
           })
           .join("")}</ul></section>`,
     )

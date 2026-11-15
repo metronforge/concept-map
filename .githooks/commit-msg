@@ -1,0 +1,4 @@
+#!/bin/sh
+# Conventional Commits for every commit on a branch (AGENTS.md).
+set -eu
+exec node "$(git rev-parse --show-toplevel)/scripts/commit-msg.mjs" "$1"

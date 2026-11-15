@@ -1,6 +1,6 @@
 {
   "name": "@metronforge/concept-map",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Server-rendered concept maps with an accessible browser player",
   "type": "module",
   "license": "MIT",

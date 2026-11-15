@@ -53,6 +53,8 @@ both engines lay out the 23 book maps (geometry stripped to sources) and the
 coffee-shop example; screenshots side by side, edge crossings, bends, area,
 time and bundle size. The author decides on the screenshots.
 
+Decided: dagre is the default engine; see ADR 0022.
+
 ## Consequences
 
 - Invariant I10: `layout` is deterministic (same source and engine version,

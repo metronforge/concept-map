@@ -28,7 +28,9 @@ function dagreGraph(graph: LayoutGraph, nodes: LayoutNode[]) {
       {
         width: e.label?.width ?? 0,
         height: e.label?.height ?? 0,
-        labelpos: "c",
+        // Self-edges already have a separate dummy label lane.
+        labelpos: e.from === e.to ? "c" : "r",
+        labeloffset: 12,
       },
       `e:${e.id}`,
     );

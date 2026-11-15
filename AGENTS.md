@@ -22,6 +22,11 @@ work, not a formality.
 - Title: `type: summary` or `type(scope): summary`, lower case after the
   colon, imperative, no period, at most 72 characters.
 - One pull request per task item. Do not push to `main`.
+- Every pull request targets `main`. Never target another pull request's
+  branch: if work depends on a pull request that is not merged yet, wait for
+  the merge, rebase on `main`, then open the pull request. A pull request
+  aimed at another branch merges into that branch, and its change never
+  reaches `main`.
 
 ### Plain language
 

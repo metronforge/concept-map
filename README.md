@@ -60,17 +60,22 @@ Colours and fonts come from custom properties, listed in
 
 A complete page is in [`scripts/build-demo.mjs`](scripts/build-demo.mjs).
 
-## Trusted input only
+## Format 3
 
-Text fields of a resolved map (step text, definitions, notes) are HTML and are
-inserted as is. Build maps with your own adapter from content you control; do
-not pass JSON from users or other sites. The schema checks structure, not
-references between nodes or HTML safety.
+Maps declare their own layers and use `id` instead of `spread`. Text fields are
+plain text with inline code, emphasis and strong marks; the renderers escape
+HTML. [Format and migration guide](docs/FORMAT.md).
+
+`SourceMapSchema` accepts maps without coordinates. `ResolvedMapSchema` requires
+geometry for playback. Automatic layout is a subsequent task; supply resolved
+geometry for now. Parse maps to apply optional-field defaults. Layer references
+are checked, but other cross-references and URL policy remain the host adapter's
+responsibility.
 
 ## Stability
 
 Before 1.0 any minor version may change the API. The data format has its own
-number (`format: 2`); the layer names are still those of the book. The planned
+number (`format: 3`); format 2 is no longer accepted. The planned
 changes are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and
 [docs/DEBT.md](docs/DEBT.md).
 
@@ -80,6 +85,7 @@ changes are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and
 | --------------------------------------------------- | -------------------------------------------- |
 | `@metronforge/concept-map`                          | schema, model, renderers and the `MapPlayer` |
 | `@metronforge/concept-map/css`                      | the player stylesheet                        |
+| `@metronforge/concept-map/source-map.schema.json`   | JSON Schema of the source map                |
 | `@metronforge/concept-map/resolved-map.schema.json` | JSON Schema of the resolved map              |
 
 ## Links

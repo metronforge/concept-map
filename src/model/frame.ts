@@ -14,7 +14,7 @@ export type StepPanel = {
   kind: "step";
   count: string;
   title: string;
-  html: string;
+  text: string;
   log: LogLine[];
   fix?: string;
   code?: ResolvedMap["code"][string];
@@ -146,7 +146,7 @@ export function derive(map: ResolvedMap, state: PlayerState): Frame {
       kind: "step",
       count: `${s.display.counterLabel ? s.label + " · " : ""}Step ${state.step + 1} of ${steps.length}`,
       title: t.title,
-      html: t.text,
+      text: t.text,
       log: [
         ...before.map((text) => ({ text, kind: "old" as const })),
         ...(t.log ?? []).map((text) => ({

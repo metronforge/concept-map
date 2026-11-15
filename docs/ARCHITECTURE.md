@@ -16,6 +16,8 @@ docs. A new name needs a glossary entry in the same change.
 
 Words of this document:
 
+- **source map** — format-3 meaning without geometry; see [FORMAT.md](FORMAT.md).
+- **layer** — a map-declared identifier and label, styled by the host.
 - **core** — `schema`, `model`, `render`: pure functions over immutable data.
 - **shell** — `dom`: everything that touches a browser.
 - **port** — an interface the shell needs from the outside world
@@ -36,7 +38,8 @@ Words of this document:
 
 - The library knows only the resolved map. It has no word for Playwright,
   spreads, pages or Starlight.
-- **Shared kernel**: `mapSchema(leaf)`, the structural schema with three
+- **Shared kernel**: `sourceMapSchema(leaf)` (meaning) and `mapSchema(leaf)`
+  (resolved geometry), structural schemas with three
   open leaves (`text`, `source`, `deeper`). The book builds its authored
   schema from it; the library builds `ResolvedMapSchema` from it.
 - The resolved map is plain JSON: it is rendered on a server, serialised into
@@ -100,12 +103,12 @@ Rules, each enforced in CI (ADR 0003):
 The public surface is four contracts. Each has one source file, one test,
 and a place in the versioning policy (ADR 0004).
 
-| Contract       | Source of truth                                                 | Checked by                                                                                    |
-| -------------- | --------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Data format    | `schema` → generated `resolved-map.schema.json`, field `format` | freshness check in CI; book maps as fixtures                                                  |
-| TypeScript API | entry points `.` and `./dom`                                    | `api-extractor` report `etc/concept-map.api.md` in the repository; a change shows in the diff |
-| DOM contract   | `docs/DOM.md` (from SPEC §6): elements, `data-*`, classes, ARIA | browser tests assert the table, not ad-hoc selectors                                          |
-| Styling        | `docs/CSS.md`: custom properties `--cmap-*`                     | a test lists properties used in `css/` and compares with the doc                              |
+| Contract       | Source of truth                                                   | Checked by                                                                                    |
+| -------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Data format    | `schema` → generated source/resolved JSON Schemas, field `format` | freshness check in CI; book maps as fixtures                                                  |
+| TypeScript API | entry points `.` and `./dom`                                      | `api-extractor` report `etc/concept-map.api.md` in the repository; a change shows in the diff |
+| DOM contract   | `docs/DOM.md` (from SPEC §6): elements, `data-*`, classes, ARIA   | browser tests assert the table, not ad-hoc selectors                                          |
+| Styling        | `docs/CSS.md`: custom properties `--cmap-*`                       | a test lists properties used in `css/` and compares with the doc                              |
 
 ## 6. Invariants
 
@@ -132,7 +135,9 @@ fold of `reduce` side by side (I2). Mutation testing (Stryker) on `model`
 and `render` measures the tests; the threshold is set from the first
 measured score and only goes up (ADR 0008).
 
-## 7. Known debt in the current code
+## 7. Stage-A debt baseline
+
+D1 is resolved by format 3 (ADR 0013); see `docs/DEBT.md` for current status.
 
 Found by reading `src/lib/concept-map` at `main` b5adf04. Stage A moves the
 code unchanged and records these in `docs/DEBT.md`; later stages remove them

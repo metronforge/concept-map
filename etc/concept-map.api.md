@@ -150,73 +150,73 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
     source: S;
     deeper: D;
 }): z.ZodObject<{
-    format: z.ZodLiteral<2>;
-    spread: z.ZodString;
-    title: z.ZodString;
-    viewBox: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
-    lanes: z.ZodRecord<z.ZodString, z.ZodObject<{
+    definitions: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        term: z.ZodString;
+        text: T;
+    }, z.core.$strip>>>;
+    code: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        title: z.ZodString;
+        source: z.ZodOptional<S>;
+        lines: z.ZodArray<z.ZodString>;
+    }, z.core.$strip>>>;
+    conceptScenario: z.ZodOptional<z.ZodString>;
+    concepts: z.ZodDefault<z.ZodArray<z.ZodObject<{
         label: z.ZodString;
-        layer: z.ZodEnum<{
-            runner: "runner";
-            client: "client";
-            server: "server";
-            page: "page";
-            browser: "browser";
-            app: "app";
-            fail: "fail";
-            test: "test";
-            protocol: "protocol";
-        }>;
+        layer: z.ZodString;
+        items: z.ZodArray<z.ZodObject<{
+            definition: z.ZodString;
+            short: T;
+            nodes: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            step: z.ZodObject<{
+                scenario: z.ZodOptional<z.ZodString>;
+                step: z.ZodString;
+            }, z.core.$strip>;
+            source: z.ZodOptional<S>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>>;
+    callouts: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodDefault<z.ZodArray<z.ZodString>>>>;
+    deeper: z.ZodDefault<z.ZodArray<D>>;
+    format: z.ZodLiteral<3>;
+    id: z.ZodString;
+    title: z.ZodString;
+    layers: z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+    }, z.core.$strip>>;
+    viewBox: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
+    lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        layer: z.ZodString;
         y: z.ZodNumber;
         h: z.ZodNumber;
         x: z.ZodOptional<z.ZodNumber>;
         w: z.ZodOptional<z.ZodNumber>;
-    }, z.core.$strip>>;
-    frames: z.ZodRecord<z.ZodString, z.ZodObject<{
+    }, z.core.$strict>>>;
+    frames: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
+        showWith: z.ZodDefault<z.ZodArray<z.ZodString>>;
         box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
-        showWith: z.ZodArray<z.ZodString>;
-    }, z.core.$strip>>;
+    }, z.core.$strict>>>;
     nodes: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
-        layer: z.ZodEnum<{
-            runner: "runner";
-            client: "client";
-            server: "server";
-            page: "page";
-            browser: "browser";
-            app: "app";
-            fail: "fail";
-            test: "test";
-            protocol: "protocol";
-        }>;
-        lane: z.ZodString;
-        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+        layer: z.ZodString;
+        lane: z.ZodOptional<z.ZodString>;
         tag: z.ZodOptional<z.ZodString>;
         mono: z.ZodOptional<z.ZodBoolean>;
         fail: z.ZodOptional<z.ZodBoolean>;
         custom: z.ZodOptional<z.ZodBoolean>;
-    }, z.core.$strip>>;
-    edges: z.ZodRecord<z.ZodString, z.ZodObject<{
+        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+    }, z.core.$strict>>;
+    edges: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
         from: z.ZodString;
         to: z.ZodString;
-        path: z.ZodString;
         dashed: z.ZodOptional<z.ZodBoolean>;
+        path: z.ZodString;
         badge: z.ZodOptional<z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>>;
         label: z.ZodOptional<z.ZodObject<{
             at: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
             text: z.ZodString;
         }, z.core.$strip>>;
-    }, z.core.$strip>>;
-    definitions: z.ZodRecord<z.ZodString, z.ZodObject<{
-        term: z.ZodString;
-        text: T;
-    }, z.core.$strip>>;
-    code: z.ZodRecord<z.ZodString, z.ZodObject<{
-        title: z.ZodString;
-        source: z.ZodOptional<S>;
-        lines: z.ZodArray<z.ZodString>;
-    }, z.core.$strip>>;
+    }, z.core.$strict>>>;
     scenarios: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
         label: z.ZodString;
@@ -242,20 +242,20 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
             id: z.ZodString;
             title: z.ZodString;
             text: T;
-            show: z.ZodArray<z.ZodString>;
-            current: z.ZodArray<z.ZodString>;
-            edges: z.ZodArray<z.ZodString>;
-            defs: z.ZodArray<z.ZodString>;
+            show: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            current: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            edges: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            defs: z.ZodDefault<z.ZodArray<z.ZodString>>;
             code: z.ZodOptional<z.ZodString>;
             log: z.ZodOptional<z.ZodArray<z.ZodString>>;
             fix: z.ZodOptional<T>;
-            sources: z.ZodArray<S>;
-            deeper: z.ZodArray<D>;
+            sources: z.ZodDefault<z.ZodArray<S>>;
+            deeper: z.ZodDefault<z.ZodArray<D>>;
         }, z.core.$strip>>;
         flow: z.ZodOptional<z.ZodArray<z.ZodObject<{
             node: z.ZodString;
             step: z.ZodString;
-            log: z.ZodArray<z.ZodString>;
+            log: z.ZodDefault<z.ZodArray<z.ZodString>>;
             edge: z.ZodOptional<z.ZodString>;
             reverse: z.ZodOptional<z.ZodBoolean>;
             fail: z.ZodOptional<z.ZodBoolean>;
@@ -264,39 +264,9 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
             edge: z.ZodString;
             step: z.ZodString;
             at: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
-        }, z.core.$strip>>>;
+        }, z.core.$strict>>>;
     }, z.core.$strip>>;
-    conceptScenario: z.ZodString;
-    concepts: z.ZodArray<z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodEnum<{
-            runner: "runner";
-            client: "client";
-            server: "server";
-            page: "page";
-            browser: "browser";
-            app: "app";
-            fail: "fail";
-            test: "test";
-            protocol: "protocol";
-        }>;
-        items: z.ZodArray<z.ZodObject<{
-            definition: z.ZodString;
-            short: T;
-            nodes: z.ZodArray<z.ZodString>;
-            step: z.ZodObject<{
-                scenario: z.ZodOptional<z.ZodString>;
-                step: z.ZodString;
-            }, z.core.$strip>;
-            source: S;
-        }, z.core.$strip>>;
-    }, z.core.$strip>>;
-    callouts: z.ZodRecord<z.ZodString, z.ZodArray<z.ZodString>>;
-    deeper: z.ZodArray<z.ZodObject<{
-        spread: D;
-        why: T;
-    }, z.core.$strip>>;
-}, z.core.$strip>;
+}, z.core.$strict>;
 
 // @public (undocumented)
 export type Mode = "step" | "all";
@@ -365,76 +335,78 @@ export type ResolvedMap = z.infer<typeof ResolvedMapSchema>;
 
 // @public (undocumented)
 export const ResolvedMapSchema: z.ZodObject<{
-    format: z.ZodLiteral<2>;
-    spread: z.ZodString;
-    title: z.ZodString;
-    viewBox: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
-    lanes: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodEnum<{
-            runner: "runner";
-            client: "client";
-            server: "server";
-            page: "page";
-            browser: "browser";
-            app: "app";
-            fail: "fail";
-            test: "test";
-            protocol: "protocol";
-        }>;
-        y: z.ZodNumber;
-        h: z.ZodNumber;
-        x: z.ZodOptional<z.ZodNumber>;
-        w: z.ZodOptional<z.ZodNumber>;
-    }, z.core.$strip>>;
-    frames: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
-        showWith: z.ZodArray<z.ZodString>;
-    }, z.core.$strip>>;
-    nodes: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodEnum<{
-            runner: "runner";
-            client: "client";
-            server: "server";
-            page: "page";
-            browser: "browser";
-            app: "app";
-            fail: "fail";
-            test: "test";
-            protocol: "protocol";
-        }>;
-        lane: z.ZodString;
-        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
-        tag: z.ZodOptional<z.ZodString>;
-        mono: z.ZodOptional<z.ZodBoolean>;
-        fail: z.ZodOptional<z.ZodBoolean>;
-        custom: z.ZodOptional<z.ZodBoolean>;
-    }, z.core.$strip>>;
-    edges: z.ZodRecord<z.ZodString, z.ZodObject<{
-        from: z.ZodString;
-        to: z.ZodString;
-        path: z.ZodString;
-        dashed: z.ZodOptional<z.ZodBoolean>;
-        badge: z.ZodOptional<z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>>;
-        label: z.ZodOptional<z.ZodObject<{
-            at: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
-            text: z.ZodString;
-        }, z.core.$strip>>;
-    }, z.core.$strip>>;
-    definitions: z.ZodRecord<z.ZodString, z.ZodObject<{
+    definitions: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
         term: z.ZodString;
         text: z.ZodString;
-    }, z.core.$strip>>;
-    code: z.ZodRecord<z.ZodString, z.ZodObject<{
+    }, z.core.$strip>>>;
+    code: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
         title: z.ZodString;
         source: z.ZodOptional<z.ZodObject<{
             label: z.ZodString;
             url: z.ZodURL;
         }, z.core.$strip>>;
         lines: z.ZodArray<z.ZodString>;
+    }, z.core.$strip>>>;
+    conceptScenario: z.ZodOptional<z.ZodString>;
+    concepts: z.ZodDefault<z.ZodArray<z.ZodObject<{
+        label: z.ZodString;
+        layer: z.ZodString;
+        items: z.ZodArray<z.ZodObject<{
+            definition: z.ZodString;
+            short: z.ZodString;
+            nodes: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            step: z.ZodObject<{
+                scenario: z.ZodOptional<z.ZodString>;
+                step: z.ZodString;
+            }, z.core.$strip>;
+            source: z.ZodOptional<z.ZodObject<{
+                label: z.ZodString;
+                url: z.ZodURL;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>>;
+    callouts: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodDefault<z.ZodArray<z.ZodString>>>>;
+    format: z.ZodLiteral<3>;
+    id: z.ZodString;
+    title: z.ZodString;
+    layers: z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
     }, z.core.$strip>>;
+    viewBox: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
+    lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        layer: z.ZodString;
+        y: z.ZodNumber;
+        h: z.ZodNumber;
+        x: z.ZodOptional<z.ZodNumber>;
+        w: z.ZodOptional<z.ZodNumber>;
+    }, z.core.$strict>>>;
+    frames: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        showWith: z.ZodDefault<z.ZodArray<z.ZodString>>;
+        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+    }, z.core.$strict>>>;
+    nodes: z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        layer: z.ZodString;
+        lane: z.ZodOptional<z.ZodString>;
+        tag: z.ZodOptional<z.ZodString>;
+        mono: z.ZodOptional<z.ZodBoolean>;
+        fail: z.ZodOptional<z.ZodBoolean>;
+        custom: z.ZodOptional<z.ZodBoolean>;
+        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+    }, z.core.$strict>>;
+    edges: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        from: z.ZodString;
+        to: z.ZodString;
+        dashed: z.ZodOptional<z.ZodBoolean>;
+        path: z.ZodString;
+        badge: z.ZodOptional<z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>>;
+        label: z.ZodOptional<z.ZodObject<{
+            at: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
+            text: z.ZodString;
+        }, z.core.$strip>>;
+    }, z.core.$strict>>>;
     scenarios: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
         label: z.ZodString;
@@ -460,26 +432,26 @@ export const ResolvedMapSchema: z.ZodObject<{
             id: z.ZodString;
             title: z.ZodString;
             text: z.ZodString;
-            show: z.ZodArray<z.ZodString>;
-            current: z.ZodArray<z.ZodString>;
-            edges: z.ZodArray<z.ZodString>;
-            defs: z.ZodArray<z.ZodString>;
+            show: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            current: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            edges: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            defs: z.ZodDefault<z.ZodArray<z.ZodString>>;
             code: z.ZodOptional<z.ZodString>;
             log: z.ZodOptional<z.ZodArray<z.ZodString>>;
             fix: z.ZodOptional<z.ZodString>;
-            sources: z.ZodArray<z.ZodObject<{
+            sources: z.ZodDefault<z.ZodArray<z.ZodObject<{
                 label: z.ZodString;
                 url: z.ZodURL;
-            }, z.core.$strip>>;
-            deeper: z.ZodArray<z.ZodObject<{
+            }, z.core.$strip>>>;
+            deeper: z.ZodDefault<z.ZodArray<z.ZodObject<{
                 title: z.ZodString;
                 href: z.ZodString;
-            }, z.core.$strip>>;
+            }, z.core.$strip>>>;
         }, z.core.$strip>>;
         flow: z.ZodOptional<z.ZodArray<z.ZodObject<{
             node: z.ZodString;
             step: z.ZodString;
-            log: z.ZodArray<z.ZodString>;
+            log: z.ZodDefault<z.ZodArray<z.ZodString>>;
             edge: z.ZodOptional<z.ZodString>;
             reverse: z.ZodOptional<z.ZodBoolean>;
             fail: z.ZodOptional<z.ZodBoolean>;
@@ -488,43 +460,251 @@ export const ResolvedMapSchema: z.ZodObject<{
             edge: z.ZodString;
             step: z.ZodString;
             at: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
-        }, z.core.$strip>>>;
+        }, z.core.$strict>>>;
     }, z.core.$strip>>;
-    conceptScenario: z.ZodString;
-    concepts: z.ZodArray<z.ZodObject<{
+    deeper: z.ZodDefault<z.ZodArray<z.ZodObject<{
+        title: z.ZodString;
+        href: z.ZodString;
+        why: z.ZodString;
+    }, z.core.$strip>>>;
+}, z.core.$strict>;
+
+// @public (undocumented)
+export type SourceMap = z.infer<typeof SourceMapSchema>;
+
+// @public (undocumented)
+export const SourceMapSchema: z.ZodObject<{
+    definitions: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        term: z.ZodString;
+        text: z.ZodString;
+    }, z.core.$strip>>>;
+    code: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        title: z.ZodString;
+        source: z.ZodOptional<z.ZodObject<{
+            label: z.ZodString;
+            url: z.ZodURL;
+        }, z.core.$strip>>;
+        lines: z.ZodArray<z.ZodString>;
+    }, z.core.$strip>>>;
+    conceptScenario: z.ZodOptional<z.ZodString>;
+    concepts: z.ZodDefault<z.ZodArray<z.ZodObject<{
         label: z.ZodString;
-        layer: z.ZodEnum<{
-            runner: "runner";
-            client: "client";
-            server: "server";
-            page: "page";
-            browser: "browser";
-            app: "app";
-            fail: "fail";
-            test: "test";
-            protocol: "protocol";
-        }>;
+        layer: z.ZodString;
         items: z.ZodArray<z.ZodObject<{
             definition: z.ZodString;
             short: z.ZodString;
-            nodes: z.ZodArray<z.ZodString>;
+            nodes: z.ZodDefault<z.ZodArray<z.ZodString>>;
             step: z.ZodObject<{
                 scenario: z.ZodOptional<z.ZodString>;
                 step: z.ZodString;
             }, z.core.$strip>;
-            source: z.ZodObject<{
+            source: z.ZodOptional<z.ZodObject<{
                 label: z.ZodString;
                 url: z.ZodURL;
-            }, z.core.$strip>;
+            }, z.core.$strip>>;
         }, z.core.$strip>>;
+    }, z.core.$strip>>>;
+    callouts: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodDefault<z.ZodArray<z.ZodString>>>>;
+    format: z.ZodLiteral<3>;
+    id: z.ZodString;
+    title: z.ZodString;
+    layers: z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
     }, z.core.$strip>>;
-    callouts: z.ZodRecord<z.ZodString, z.ZodArray<z.ZodString>>;
-    deeper: z.ZodArray<z.ZodObject<{
+    lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        layer: z.ZodString;
+    }, z.core.$strict>>>;
+    frames: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        showWith: z.ZodDefault<z.ZodArray<z.ZodString>>;
+    }, z.core.$strict>>>;
+    nodes: z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        layer: z.ZodString;
+        lane: z.ZodOptional<z.ZodString>;
+        tag: z.ZodOptional<z.ZodString>;
+        mono: z.ZodOptional<z.ZodBoolean>;
+        fail: z.ZodOptional<z.ZodBoolean>;
+        custom: z.ZodOptional<z.ZodBoolean>;
+    }, z.core.$strict>>;
+    edges: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        from: z.ZodString;
+        to: z.ZodString;
+        label: z.ZodOptional<z.ZodString>;
+        dashed: z.ZodOptional<z.ZodBoolean>;
+    }, z.core.$strict>>>;
+    scenarios: z.ZodArray<z.ZodObject<{
+        id: z.ZodString;
+        label: z.ZodString;
+        display: z.ZodPrefault<z.ZodObject<{
+            counterLabel: z.ZodDefault<z.ZodBoolean>;
+            edges: z.ZodDefault<z.ZodEnum<{
+                progressive: "progressive";
+                all: "all";
+            }>>;
+            edgeBadges: z.ZodDefault<z.ZodBoolean>;
+            nodeBadges: z.ZodDefault<z.ZodBoolean>;
+            log: z.ZodDefault<z.ZodEnum<{
+                incremental: "incremental";
+                cumulative: "cumulative";
+            }>>;
+        }, z.core.$strip>>;
+        nodeLabels: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+        whole: z.ZodOptional<z.ZodObject<{
+            title: z.ZodOptional<z.ZodString>;
+            text: z.ZodOptional<z.ZodString>;
+        }, z.core.$strip>>;
+        steps: z.ZodArray<z.ZodObject<{
+            id: z.ZodString;
+            title: z.ZodString;
+            text: z.ZodString;
+            show: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            current: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            edges: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            defs: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            code: z.ZodOptional<z.ZodString>;
+            log: z.ZodOptional<z.ZodArray<z.ZodString>>;
+            fix: z.ZodOptional<z.ZodString>;
+            sources: z.ZodDefault<z.ZodArray<z.ZodObject<{
+                label: z.ZodString;
+                url: z.ZodURL;
+            }, z.core.$strip>>>;
+            deeper: z.ZodDefault<z.ZodArray<z.ZodObject<{
+                title: z.ZodString;
+                href: z.ZodString;
+            }, z.core.$strip>>>;
+        }, z.core.$strip>>;
+        flow: z.ZodOptional<z.ZodArray<z.ZodObject<{
+            node: z.ZodString;
+            step: z.ZodString;
+            log: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            edge: z.ZodOptional<z.ZodString>;
+            reverse: z.ZodOptional<z.ZodBoolean>;
+            fail: z.ZodOptional<z.ZodBoolean>;
+        }, z.core.$strip>>>;
+        repeatBadges: z.ZodOptional<z.ZodArray<z.ZodObject<{
+            edge: z.ZodString;
+            step: z.ZodString;
+        }, z.core.$strict>>>;
+    }, z.core.$strip>>;
+    deeper: z.ZodDefault<z.ZodArray<z.ZodObject<{
         title: z.ZodString;
         href: z.ZodString;
         why: z.ZodString;
+    }, z.core.$strip>>>;
+}, z.core.$strict>;
+
+// @public
+export function sourceMapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.ZodType>(leaf: {
+    text: T;
+    source: S;
+    deeper: D;
+}): z.ZodObject<{
+    definitions: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        term: z.ZodString;
+        text: T;
+    }, z.core.$strip>>>;
+    code: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        title: z.ZodString;
+        source: z.ZodOptional<S>;
+        lines: z.ZodArray<z.ZodString>;
+    }, z.core.$strip>>>;
+    conceptScenario: z.ZodOptional<z.ZodString>;
+    concepts: z.ZodDefault<z.ZodArray<z.ZodObject<{
+        label: z.ZodString;
+        layer: z.ZodString;
+        items: z.ZodArray<z.ZodObject<{
+            definition: z.ZodString;
+            short: T;
+            nodes: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            step: z.ZodObject<{
+                scenario: z.ZodOptional<z.ZodString>;
+                step: z.ZodString;
+            }, z.core.$strip>;
+            source: z.ZodOptional<S>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>>;
+    callouts: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodDefault<z.ZodArray<z.ZodString>>>>;
+    deeper: z.ZodDefault<z.ZodArray<D>>;
+    format: z.ZodLiteral<3>;
+    id: z.ZodString;
+    title: z.ZodString;
+    layers: z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
     }, z.core.$strip>>;
-}, z.core.$strip>;
+    lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        layer: z.ZodString;
+    }, z.core.$strict>>>;
+    frames: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        showWith: z.ZodDefault<z.ZodArray<z.ZodString>>;
+    }, z.core.$strict>>>;
+    nodes: z.ZodRecord<z.ZodString, z.ZodObject<{
+        label: z.ZodString;
+        layer: z.ZodString;
+        lane: z.ZodOptional<z.ZodString>;
+        tag: z.ZodOptional<z.ZodString>;
+        mono: z.ZodOptional<z.ZodBoolean>;
+        fail: z.ZodOptional<z.ZodBoolean>;
+        custom: z.ZodOptional<z.ZodBoolean>;
+    }, z.core.$strict>>;
+    edges: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+        from: z.ZodString;
+        to: z.ZodString;
+        label: z.ZodOptional<z.ZodString>;
+        dashed: z.ZodOptional<z.ZodBoolean>;
+    }, z.core.$strict>>>;
+    scenarios: z.ZodArray<z.ZodObject<{
+        id: z.ZodString;
+        label: z.ZodString;
+        display: z.ZodPrefault<z.ZodObject<{
+            counterLabel: z.ZodDefault<z.ZodBoolean>;
+            edges: z.ZodDefault<z.ZodEnum<{
+                progressive: "progressive";
+                all: "all";
+            }>>;
+            edgeBadges: z.ZodDefault<z.ZodBoolean>;
+            nodeBadges: z.ZodDefault<z.ZodBoolean>;
+            log: z.ZodDefault<z.ZodEnum<{
+                incremental: "incremental";
+                cumulative: "cumulative";
+            }>>;
+        }, z.core.$strip>>;
+        nodeLabels: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+        whole: z.ZodOptional<z.ZodObject<{
+            title: z.ZodOptional<z.ZodString>;
+            text: z.ZodOptional<T>;
+        }, z.core.$strip>>;
+        steps: z.ZodArray<z.ZodObject<{
+            id: z.ZodString;
+            title: z.ZodString;
+            text: T;
+            show: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            current: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            edges: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            defs: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            code: z.ZodOptional<z.ZodString>;
+            log: z.ZodOptional<z.ZodArray<z.ZodString>>;
+            fix: z.ZodOptional<T>;
+            sources: z.ZodDefault<z.ZodArray<S>>;
+            deeper: z.ZodDefault<z.ZodArray<D>>;
+        }, z.core.$strip>>;
+        flow: z.ZodOptional<z.ZodArray<z.ZodObject<{
+            node: z.ZodString;
+            step: z.ZodString;
+            log: z.ZodDefault<z.ZodArray<z.ZodString>>;
+            edge: z.ZodOptional<z.ZodString>;
+            reverse: z.ZodOptional<z.ZodBoolean>;
+            fail: z.ZodOptional<z.ZodBoolean>;
+        }, z.core.$strip>>>;
+        repeatBadges: z.ZodOptional<z.ZodArray<z.ZodObject<{
+            edge: z.ZodString;
+            step: z.ZodString;
+        }, z.core.$strict>>>;
+    }, z.core.$strip>>;
+}, z.core.$strict>;
 
 // @public
 export function statusText(frame: Frame): string;

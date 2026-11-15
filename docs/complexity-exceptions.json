@@ -8,6 +8,5 @@
   "src/dom/player.ts:connectConcepts": 46,
   "src/model/flow.ts:planFlow": 58,
   "src/model/frame.ts:derive": 135,
-  "src/model/path.ts:pathEnds": 54,
-  "src/schema.ts:mapSchema": 120
+  "src/model/path.ts:pathEnds": 54
 }

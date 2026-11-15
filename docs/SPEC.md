@@ -1,3 +1,7 @@
+> Historical format-2/book specification. For the current data format and
+> glossary additions, [FORMAT.md](FORMAT.md) and ADRs 0006, 0011 and 0013 take
+> precedence. The player interaction rules below remain applicable.
+
 # Concept map format v2 and the map player
 
 Status: draft for implementation (task: `TASK.md` in this folder).

@@ -7,6 +7,7 @@ assert.deepEqual(Object.keys(pkg.exports), [
   ".",
   "./css",
   "./resolved-map.schema.json",
+  "./source-map.schema.json",
 ]);
 const ts = JSON.parse(readFileSync("tsconfig.json", "utf8")).compilerOptions;
 if (ts.sourceMap || ts.declarationMap)
@@ -27,4 +28,4 @@ assert.deepEqual(
   documented,
   "CSS contract must list exactly the exposed custom properties",
 );
-console.log("Runtime dependencies, stage-A exports and CSS contract passed");
+console.log("Runtime dependencies, format-3 exports and CSS contract passed");

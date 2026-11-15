@@ -14,7 +14,12 @@ export default [
     },
   },
   {
-    files: ["src/schema.ts", "src/model/**/*.ts", "src/render/**/*.ts"],
+    files: [
+      "src/schema.ts",
+      "src/schema/**/*.ts",
+      "src/model/**/*.ts",
+      "src/render/**/*.ts",
+    ],
     rules: {
       "no-restricted-syntax": [
         "error",

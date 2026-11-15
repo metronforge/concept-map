@@ -16,11 +16,11 @@ export function renderSvg(
 ): string {
   const frame = options.frame ?? derive(map, initialState),
     marker = esc(
-      options.markerId ?? `map-arrow-${map.spread.replaceAll(".", "-")}`,
+      options.markerId ?? `map-arrow-${map.id.replaceAll(".", "-")}`,
     );
   let html = `<svg viewBox="0 0 ${map.viewBox.join(" ")}" role="img" aria-label="${esc(map.title)}"><defs><marker id="${marker}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="var(--muted-fg)"></path></marker></defs><g data-map-layers>`;
   for (const [id, l] of Object.entries(map.lanes))
-    html += `<g class="lane${frame.lanes[id].revealed ? "" : " ghost"}" data-lane="${esc(id)}" style="--c:var(--${esc(l.layer)})"><rect x="${l.x ?? 6}" y="${l.y}" width="${l.w ?? map.viewBox[0] - 12}" height="${l.h}" rx="6"></rect><text x="16" y="${l.y + 16}">${esc(l.label)}</text></g>`;
+    html += `<g class="lane${frame.lanes[id].revealed ? "" : " ghost"}" data-lane="${esc(id)}" style="--c:var(--cmap-layer-${esc(l.layer)},var(--cmap-layer))"><rect x="${l.x ?? 6}" y="${l.y}" width="${l.w ?? map.viewBox[0] - 12}" height="${l.h}" rx="6"></rect><text x="16" y="${l.y + 16}">${esc(l.label)}</text></g>`;
   for (const [id, f] of Object.entries(map.frames)) {
     const [x, y, w, h] = f.box;
     html += `<g class="frame${frame.frames[id].revealed ? "" : " ghost"}" data-frame="${esc(id)}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5"></rect><text x="${x + w - 8}" y="${y + 16}" text-anchor="end">${esc(f.label)}</text></g>`;
@@ -35,7 +35,7 @@ export function renderSvg(
     const numbers = Object.entries(map.callouts)
       .filter(([, ids]) => ids.includes(id))
       .map(([number]) => number);
-    html += `<g class="node${n.custom ? " custom" : ""}${n.fail ? " fail" : ""}${f.revealed ? "" : " ghost"}${f.current ? " cur" : ""}" style="--c:var(--${esc(n.layer)})" data-node="${esc(id)}"${numbers.length ? ` data-callout="${esc(numbers.join(" "))}"` : ""}><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5"></rect><text x="${x + 10}" y="${y + (n.tag ? 17 : h / 2 + 4.5)}" class="${n.mono ? "mono" : ""}">${esc(f.label)}</text>${n.tag ? `<text x="${x + 10}" y="${y + 32}" class="tag">${esc(n.tag)}</text>` : ""}</g>`;
+    html += `<g class="node${n.custom ? " custom" : ""}${n.fail ? " fail" : ""}${f.revealed ? "" : " ghost"}${f.current ? " cur" : ""}" style="--c:var(--cmap-layer-${esc(n.layer)},var(--cmap-layer))" data-node="${esc(id)}"${numbers.length ? ` data-callout="${esc(numbers.join(" "))}"` : ""}><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5"></rect><text x="${x + 10}" y="${y + (n.tag ? 17 : h / 2 + 4.5)}" class="${n.mono ? "mono" : ""}">${esc(f.label)}</text>${n.tag ? `<text x="${x + 10}" y="${y + 32}" class="tag">${esc(n.tag)}</text>` : ""}</g>`;
   }
   html += `</g><g data-map-edge-labels>`;
   for (const [id, e] of Object.entries(map.edges))

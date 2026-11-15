@@ -162,3 +162,39 @@ test("I9 property: destroy aborts owned listeners, disconnects observer and make
     { numRuns: 5 },
   );
 });
+
+test("format 3 host layer colours reach nodes, lanes and concept dots", async ({
+  page,
+}) => {
+  await page.goto(mapPages[0].path);
+  const colours = await page.evaluate(() => {
+    const figure = document.querySelector<HTMLElement>('[data-figure="map"]')!;
+    const map = JSON.parse(
+      figure.querySelector("[data-map-data]")!.textContent!,
+    );
+    const node = figure.querySelector<SVGGElement>("[data-node]")!;
+    const lane = figure.querySelector<SVGGElement>("[data-lane]")!;
+    for (const layer of [
+      map.nodes[node.dataset.node!].layer,
+      map.lanes[lane.dataset.lane!].layer,
+    ])
+      figure.style.setProperty(`--cmap-layer-${layer}`, "#123456");
+    const concepts = document.querySelector<HTMLElement>(
+      "[data-map-concepts]",
+    )!;
+    concepts.style.setProperty(
+      `--cmap-layer-${map.concepts[0].layer}`,
+      "#123456",
+    );
+    return {
+      node: getComputedStyle(node).getPropertyValue("--c").trim(),
+      lane: getComputedStyle(lane).getPropertyValue("--c").trim(),
+      dot: getComputedStyle(concepts.querySelector(".dot")!).backgroundColor,
+    };
+  });
+  expect(colours).toEqual({
+    node: "#123456",
+    lane: "#123456",
+    dot: "rgb(18, 52, 86)",
+  });
+});

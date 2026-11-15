@@ -92,12 +92,12 @@ test("I3/I6 counterexample: resolved schema accepts dangling references", () => 
   map.scenarios[0].steps[0].show = ["absent"];
   expect(() => derive(ResolvedMapSchema.parse(map), initialState)).toThrow();
 });
-test("I7 counterexample: resolved rich text is trusted HTML, not escaped plain text", () => {
+test("I7 resolved inline leaves escape HTML instead of trusting it", () => {
   const map = resolvedFixture();
   map.scenarios[0].steps[0].text = '<em data-proof="trusted">markup</em>';
   const parsed = ResolvedMapSchema.parse(map);
   expect(renderPanel(parsed, derive(parsed, initialState))).toContain(
-    '<em data-proof="trusted">markup</em>',
+    "&lt;em data-proof=&quot;trusted&quot;&gt;markup&lt;/em&gt;",
   );
 });
 

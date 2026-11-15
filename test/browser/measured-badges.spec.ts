@@ -78,7 +78,7 @@ test("font readiness refits measured badges without another player action", asyn
   await page.addStyleTag({ path: "css/concept-map.css" });
   await page.addStyleTag({
     content:
-      "@font-face{font-family:LateBadge;src:url(/late-font.ttf)}.map-figure{display:block}.map-ui .etext{font-family:LateBadge,monospace;font-size:16px!important;letter-spacing:1px}",
+      "@font-face{font-family:LateBadge;src:url(/late-font.ttf);size-adjust:150%}.map-figure{display:block}.map-ui .etext{font-family:LateBadge,monospace;font-size:16px!important;letter-spacing:1px}",
   });
   const source = JSON.parse(readFileSync("examples/door/map.json", "utf8"));
   await page.evaluate(async (source) => {

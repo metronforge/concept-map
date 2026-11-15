@@ -103,3 +103,7 @@ The generic `mapSchema(leaf)` kernel now also uses format 3, generic layers,
 `id`, defaults and direct root deeper leaves; book adapters must migrate in
 their own repository. Links remain structured data, never inline HTML. Hosts
 must still validate cross-references and apply their URL policy to imported maps.
+
+The optional top-level `direction` is `down` or `right`. It selects the layout axis
+for both engines; omission keeps the downward layout. Resolved maps retain their
+supplied geometry.

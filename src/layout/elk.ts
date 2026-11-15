@@ -15,7 +15,6 @@ import type {
 import { engineNodes, laneBoxes } from "./lanes.js";
 const elkOptions = {
   "elk.algorithm": "layered",
-  "elk.direction": "DOWN",
   "elk.edgeRouting": "ORTHOGONAL",
   "elk.randomSeed": "1",
   "elk.separateConnectedComponents": "false",
@@ -23,11 +22,13 @@ const elkOptions = {
   "elk.layered.spacing.nodeNodeBetweenLayers": "64",
   "elk.spacing.nodeNode": "32",
 };
+// ELK skips empty label text; a placeholder retains geometry for size-only labels.
 function elkGraph(graph: LayoutGraph, nodes: LayoutNode[]): ElkNode {
   return {
     id: "$root",
     layoutOptions: {
       ...elkOptions,
+      "elk.direction": graph.direction === "right" ? "RIGHT" : "DOWN",
       "elk.partitioning.activate": String(graph.lanes.length > 0),
     },
     children: nodes.map((n) => ({
@@ -51,7 +52,8 @@ function elkGraph(graph: LayoutGraph, nodes: LayoutNode[]): ElkNode {
             labels: [
               {
                 id: `$label:${e.id}`,
-                text: "",
+                text: e.label.text || "label",
+                layoutOptions: { "elk.edgeLabels.placement": "CENTER" },
                 width: e.label.width,
                 height: e.label.height,
               },

@@ -19,14 +19,15 @@ export interface LayoutEdge {
   id: string;
   from: string;
   to: string;
-  label?: LabelSize;
+  label?: LabelSize & { text?: string };
 }
-/** Lanes are ordered top to bottom. Nodes without a lane follow the last lane. */
+/** Lanes follow the layout direction. Unassigned nodes follow the last lane. */
 export interface LayoutLane {
   id: string;
   label: LabelSize;
 }
 export interface LayoutGraph {
+  direction?: "down" | "right";
   nodes: readonly LayoutNode[];
   edges: readonly LayoutEdge[];
   lanes: readonly LayoutLane[];

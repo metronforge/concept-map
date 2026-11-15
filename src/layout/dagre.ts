@@ -13,7 +13,7 @@ function dagreGraph(graph: LayoutGraph, nodes: LayoutNode[]) {
     multigraph: true,
   });
   g.setGraph({
-    rankdir: "TB",
+    rankdir: graph.direction === "right" ? "LR" : "TB",
     ranksep: 64,
     nodesep: 32,
     marginx: 16,

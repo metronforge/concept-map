@@ -9,3 +9,6 @@ reports/
 *.tgz
 .superpowers/
 .demo/
+comparison-dist/
+output/
+.playwright-cli/

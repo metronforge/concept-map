@@ -1,0 +1,54 @@
+name: Layout comparison
+on:
+  push:
+    branches: [docs/layout-comparison]
+  pull_request:
+    paths:
+      - "scripts/comparison/**"
+      - "src/layout/**"
+      - "src/schema*"
+      - "src/schema/**"
+      - "src/render/**"
+      - "css/**"
+      - "test/fixtures/**"
+      - "package*.json"
+      - ".github/workflows/comparison.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: comparison-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run comparison:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: layout-comparison
+          path: comparison-dist/
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/docs/layout-comparison'
+        with:
+          path: comparison-dist/
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/docs/layout-comparison'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy comparison only
+        id: deployment
+        uses: actions/deploy-pages@v4

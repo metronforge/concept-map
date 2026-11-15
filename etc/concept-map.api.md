@@ -179,6 +179,10 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
     format: z.ZodLiteral<3>;
     id: z.ZodString;
     title: z.ZodString;
+    direction: z.ZodOptional<z.ZodEnum<{
+        down: "down";
+        right: "right";
+    }>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
     }, z.core.$strip>>;
@@ -369,6 +373,10 @@ export const ResolvedMapSchema: z.ZodObject<{
     format: z.ZodLiteral<3>;
     id: z.ZodString;
     title: z.ZodString;
+    direction: z.ZodOptional<z.ZodEnum<{
+        down: "down";
+        right: "right";
+    }>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
     }, z.core.$strip>>;
@@ -508,6 +516,10 @@ export const SourceMapSchema: z.ZodObject<{
     format: z.ZodLiteral<3>;
     id: z.ZodString;
     title: z.ZodString;
+    direction: z.ZodOptional<z.ZodEnum<{
+        down: "down";
+        right: "right";
+    }>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
     }, z.core.$strip>>;
@@ -630,6 +642,10 @@ export function sourceMapSchema<T extends z.ZodType, S extends z.ZodType, D exte
     format: z.ZodLiteral<3>;
     id: z.ZodString;
     title: z.ZodString;
+    direction: z.ZodOptional<z.ZodEnum<{
+        down: "down";
+        right: "right";
+    }>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
     }, z.core.$strip>>;

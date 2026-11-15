@@ -332,6 +332,7 @@ select {
   }
 }
 .player {
+  position: relative;
   --cmap-font-sans: ComparisonSans, sans-serif;
   --cmap-font-mono: ComparisonMono, monospace;
 }

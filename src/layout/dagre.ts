@@ -1,4 +1,4 @@
-import { graphlib, layout as runLayout } from "@dagrejs/dagre";
+import dagre from "@dagrejs/dagre";
 import type { GraphLabel, NodeLabel, EdgeLabel, Point } from "@dagrejs/dagre";
 import type {
   LayoutEngine,
@@ -9,7 +9,7 @@ import type {
 } from "./types.js";
 import { engineNodes, partitionDagre } from "./lanes.js";
 function dagreGraph(graph: LayoutGraph, nodes: LayoutNode[]) {
-  const g = new graphlib.Graph<GraphLabel, NodeLabel, EdgeLabel, Point>({
+  const g = new dagre.graphlib.Graph<GraphLabel, NodeLabel, EdgeLabel, Point>({
     multigraph: true,
   });
   g.setGraph({
@@ -39,7 +39,7 @@ export const dagreEngine: LayoutEngine = {
   async layout(graph) {
     const nodes = engineNodes(graph);
     const g = dagreGraph(graph, nodes);
-    runLayout(g);
+    dagre.layout(g);
     const result: LayoutResult = { nodes: {}, edges: {}, lanes: {} };
     for (const n of nodes) {
       const b = g.node(`n:${n.id}`);

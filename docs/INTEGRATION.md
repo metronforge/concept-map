@@ -2,7 +2,8 @@
 
 All three ways use the same light-DOM figure, controls and player. Load the
 package stylesheet once. The host can override the `--cmap-*` properties.
-No framework or layout engine is loaded by these entry points.
+No framework is loaded. A layout engine loads only for a source map with an
+explicit `layout` attribute.
 
 ## Render on the server, then connect the player
 
@@ -78,8 +79,21 @@ is retained in the figure's embedded JSON; use `map` or `src` for later changes.
 
 ## Supply layout for a source map
 
-Resolved maps play immediately. A source map needs a function supplied by the
-host. Dagre is the default choice; importing the element alone never loads it:
+Resolved maps play immediately without downloading either engine. To display a
+source map without coordinates, select an engine explicitly:
+
+```html
+<concept-map src="coffee.json" layout="dagre"></concept-map>
+```
+
+`layout="elk"` selects ELK instead. Importing the element alone loads neither
+engine. The layout entry and selected adapter load through dynamic imports only
+when a source map needs them. Bundlers must preserve code splitting to retain
+this download behavior. Changing the attribute retries the original source,
+including inline JSON that has already been replaced by rendered markup.
+
+Alternatively, supply a function. `element.layout` takes priority over the
+attribute. Dagre remains the recommended default:
 
 ```js
 import "@metronforge/concept-map/element";
@@ -91,9 +105,21 @@ element.layout = (source) => layout(source, dagreEngine);
 element.map = sourceMap;
 ```
 
-Without `element.layout`, a source map rejects with an explanatory error.
-Changing the callback retries the current input. Returned maps are validated.
-Engine loading strategies and framework wrappers remain separate work.
+Without an attribute or `element.layout`, a source map keeps the same explanatory
+error. An unknown attribute value reports the supported names. A ready map or a
+supplied callback bypasses attribute validation and automatic imports. Changing
+the callback retries the current input. Returned maps are validated. Imports
+are shared by the browser's module cache; failed or superseded loads never mount
+an obsolete result. Framework wrappers remain separate work.
+
+For a published version that includes this feature, a plain HTML page can load
+`https://esm.sh/@metronforge/concept-map@VERSION/element` as a module script.
+The CDN must serve the selected optional engine peer as well. Use a pinned version
+and load the package CSS separately. Before publication, the same CDN supports a
+GitHub source entry: `https://esm.sh/gh/metronforge/concept-map@COMMIT/src/element.ts`.
+Replace `VERSION` or `COMMIT` with the intended release or full commit id. See
+[esm.sh's registry documentation](https://github.com/esm-dev/esm.sh#supported-registries).
+The live network check is recorded in the pull request.
 
 ## Move existing imports
 

@@ -82,6 +82,30 @@ Examples from this repository:
 When a pull request mixes types, split it. If it cannot be split, use the
 type with the largest effect on users.
 
+## Visual acceptance
+
+A change that can alter what a reader sees (rendering, layout, CSS, the
+player, the examples) is accepted on pictures, not only on numbers.
+
+- **Checks on the examples in all three browsers** (Chromium, Firefox,
+  WebKit), in every step of every scenario and in whole-map mode:
+  - no arrow label is crossed by a line, a box or a step number;
+  - no step number covers a label or a box;
+  - no self-transition loop or label touches another box;
+  - map text is not smaller than the page text and not more than 1.25 times
+    larger; a wide map shrinks to the container without horizontal
+    scrolling at 390 px.
+    Positions are measured in the browser with real fonts after
+    `document.fonts.ready`; font tables are an estimate for server rendering,
+    never the proof.
+- **Before/after screenshots** of the three examples at 1280 and 390 px in
+  the pull request description, light theme, and dark theme when colours or
+  CSS change.
+- A check that passes in one browser and fails in another is a failure. Do
+  not open a pull request until CI is green in all three.
+- Do not relax a visual check or regenerate a snapshot to make a change
+  pass; explain the difference in the description instead.
+
 ## What goes into the changelog
 
 release-please writes `CHANGELOG.md` from the merged pull requests. **Every

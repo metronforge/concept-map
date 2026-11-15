@@ -1,4 +1,4 @@
-import { mapData } from "../render/data.js";
+import { canHydrate } from "../render/hydration.js";
 import type { ResolvedMap } from "../schema.js";
 import { renderFigure, type FigureOptions } from "../render/figure.js";
 import { MapPlayer, connectConcepts } from "./player.js";
@@ -20,7 +20,8 @@ export function mount(
   if (existing) mounted.get(existing)?.destroy();
   const markup = renderFigure(map, options);
   let root = existing;
-  if (!root || !matchesMap(root, map)) {
+  const data = root?.querySelector(":scope > script[data-map-data]");
+  if (!root || !canHydrate(data ? (data.textContent ?? "") : undefined, map)) {
     if (existing === element) {
       const template = element.ownerDocument.createElement("template");
       template.innerHTML = markup;
@@ -42,14 +43,4 @@ export function mount(
   mounted.set(element, player);
   mounted.set(root, player);
   return player;
-}
-
-function matchesMap(root: HTMLElement, map: ResolvedMap): boolean {
-  const data = root.querySelector(":scope > script[data-map-data]");
-  if (!data) return false;
-  try {
-    return mapData(JSON.parse(data.textContent ?? "")) === mapData(map);
-  } catch {
-    return false;
-  }
 }

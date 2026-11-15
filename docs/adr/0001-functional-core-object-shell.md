@@ -35,6 +35,7 @@ services: there is nothing for them to do.
 
 ## Consequences
 
-- Lint forbids classes in `schema`, `model`, `render`.
+- Lint forbids classes in `schema`, `model`, `render` and `layout`, including
+  engine adapters. Browser lifecycle classes stay in the shell.
 - The facade may not contain decisions: anything testable without a browser
   belongs in the core.

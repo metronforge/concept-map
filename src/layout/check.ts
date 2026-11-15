@@ -1,3 +1,4 @@
+import { layoutLevel } from "../schema/level.js";
 import { SourceMapSchema, ResolvedMapSchema } from "../schema.js";
 import { LayoutResultSchema } from "../schema/layout.js";
 import type { SourceMap, ResolvedMap } from "../schema.js";
@@ -10,11 +11,10 @@ function path(parts: PropertyKey[]): string {
     .join("");
 }
 export function parseMap(input: unknown): SourceMap | ResolvedMap {
-  const resolved =
-    typeof input === "object" && input !== null && "viewBox" in input;
-  const result = resolved
-    ? ResolvedMapSchema.safeParse(input)
-    : SourceMapSchema.safeParse(input);
+  const result =
+    layoutLevel(input) === "resolved"
+      ? ResolvedMapSchema.safeParse(input)
+      : SourceMapSchema.safeParse(input);
   if (!result.success)
     throw new Error(
       result.error.issues

@@ -1,4 +1,5 @@
 import { expect, test } from "vitest";
+import { ESLint } from "eslint";
 import {
   mkdtempSync,
   mkdirSync,
@@ -17,6 +18,12 @@ function probe(file: string, source: string) {
     mkdirSync(dirname(join(dir, file)), { recursive: true });
     mkdirSync(join(dir, "src/layout"), { recursive: true });
     writeFileSync(join(dir, "src/layout/index.ts"), "export const value = 1;");
+    mkdirSync(join(dir, "src/element"), { recursive: true });
+    for (const target of ["src/element.ts", "src/element/input.ts"])
+      writeFileSync(
+        join(dir, target),
+        "export const value = 1; export interface Marker { id: string }",
+      );
     symlinkSync(join(root, "node_modules"), join(dir, "node_modules"), "dir");
     writeFileSync(
       join(dir, "tsconfig.json"),
@@ -90,4 +97,34 @@ test("element loader permits dynamic imports but rejects static layout imports",
       'export const load = () => import("../layout/index.js");',
     ),
   ).toContain("player-no-layout-runtime");
+});
+
+for (const entry of ["../element.js", "../element/input.js"]) {
+  test(`DOM cannot import element entry ${entry}`, () => {
+    for (const source of [
+      `export { value } from "${entry}";`,
+      `export const load = () => import("${entry}");`,
+      `export type { Marker } from "${entry}";`,
+    ])
+      expect(probe("src/dom/probe.ts", source)).toContain("dom-no-element");
+  });
+}
+test("layout lint rejects class declarations and expressions", async () => {
+  const eslint = new ESLint({ cwd: root });
+  for (const source of [
+    "export class Engine {}",
+    "export const Engine = class {};",
+  ]) {
+    const [result] = await eslint.lintText(source, {
+      filePath: "src/layout/probe.ts",
+    });
+    expect(
+      result.messages.some((m) => m.message === "Core uses pure functions"),
+    ).toBe(true);
+  }
+  const [result] = await eslint.lintText(
+    "export function layout() { return {}; }",
+    { filePath: "src/layout/probe.ts" },
+  );
+  expect(result.errorCount).toBe(0);
 });

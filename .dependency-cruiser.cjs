@@ -1,6 +1,12 @@
 module.exports = {
   forbidden: [
     {
+      name: "dom-no-element",
+      severity: "error",
+      from: { path: "^src/dom/" },
+      to: { path: "^src/element([.]ts$|/)" },
+    },
+    {
       name: "layout-only-schema",
       severity: "error",
       from: { path: "^src/layout/" },

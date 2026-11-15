@@ -79,3 +79,11 @@ The resolver derives frames, labels, badges, repeat badges and the viewport.
 Regenerate the table with `python3 scripts/font-metrics.py` (Pillow) and format
 it with Prettier. The browser regression loads the pinned DejaVu Sans fixture,
 so its five-percent Cyrillic tolerance is independent of installed host fonts.
+
+Both adapters try compact self-transitions on all four sides of each node,
+keeping measured labels beside their loops and checking neighboring node boxes
+and earlier loops with a twelve-unit margin. If a crowded graph has no clear
+compact candidate, the adapters retain the original engine routing for all
+self-transitions in that graph. This conservative fallback preserves existing
+routes instead of introducing known collisions; it is not general obstacle
+routing, and those exceptional loops may be larger than their nodes.

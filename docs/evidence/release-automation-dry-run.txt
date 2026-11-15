@@ -1,0 +1,78 @@
+❯ Fetching release-please-config.json from branch feat/release-automation
+❯ Fetching .release-please-manifest.json from branch feat/release-automation
+✔ Building pull requests
+✔ Building strategies by path
+❯ .: node
+✔ Collecting release commit SHAs
+❯ release search depth: 400
+❯ Fetching releases with cursor undefined
+❯ Found release for path ., v0.1.1
+❯ release for path: ., version: 0.1.1, sha: 9a315304cabc9be67172acc3d9e824004593e7df
+✔ Collecting commits since all latest releases
+❯ commit search depth: 500
+❯ Set(1) { '9a315304cabc9be67172acc3d9e824004593e7df' }
+❯ Fetching merge commits on branch feat/release-automation with cursor: undefined
+❯ Backfilling file list for commit: 45f742aaa8ce72fd8115940ec368d4d8b952dd8e
+❯ Found 7 files
+❯ Backfilling file list for commit: 4c4bc77e874f57b70e9ed6d26f9f661b3962c337
+❯ Found 3 files
+❯ Backfilling file list for commit: 5ffd799c570c25f9862285fe610af0ac512396c2
+❯ Found 89 files
+❯ Backfilling file list for commit: 3d5f246a3172ae17d6034169e35b92ad441ab499
+❯ Found 5 files
+❯ Backfilling file list for commit: 03b3a5f5b1e42df684ead71064c4d7fbdbe55b6e
+❯ Found 27 files
+❯ Backfilling file list for commit: 324538df9127758d93a51da338085195eac40690
+❯ Found 1 files
+❯ Backfilling file list for commit: c84d1f12d96c1fe71aaaf1e24441a69bd9bde31a
+❯ Found 1 files
+✔ Splitting 3 commits by path
+✔ Building candidate release pull request for path: .
+❯ type: node
+❯ targetBranch: feat/release-automation
+❯ commit could not be parsed: ed8217703d1f2e6d3a897b13dd6419677367b729 README for users; move development and release notes out
+❯ error message: Error: unexpected token ' ' at 1:7, valid tokens [(, !, :]
+❯ commits: 4
+✔ Considering: 4 commits
+❯ component: 
+❯ pull request title pattern: undefined
+❯ componentNoSpace: undefined
+❯ Fetching package.json from branch feat/release-automation
+Would open 1 pull requests
+fork: false
+title: chore(feat/release-automation): release 0.2.0
+branch: release-please--branches--feat/release-automation--components--concept-map
+draft: false
+body: :robot: I have created a release *beep* *boop*
+---
+
+
+## [0.2.0](https://github.com/metronforge/concept-map/compare/v0.1.1...v0.2.0) (2026-11-15)
+
+
+### Features
+
+* automate releases ([45f742a](https://github.com/metronforge/concept-map/commit/45f742aaa8ce72fd8115940ec368d4d8b952dd8e))
+
+---
+This PR was generated with [Release Please](https://github.com/googleapis/release-please). See [documentation](https://github.com/googleapis/release-please#release-please).
+updates: 7
+❯ Fetching package-lock.json from branch feat/release-automation
+✔ updating from 0.1.1 to 0.2.0
+❯ Fetching npm-shrinkwrap.json from branch feat/release-automation
+⚠ file npm-shrinkwrap.json did not exist
+❯ Fetching samples/package.json from branch feat/release-automation
+⚠ file samples/package.json did not exist
+❯ Fetching CHANGELOG.md from branch feat/release-automation
+❯ Fetching package.json from branch feat/release-automation
+✔ updating from 0.1.1 to 0.2.0
+❯ Fetching changelog.json from branch feat/release-automation
+⚠ file changelog.json did not exist
+❯ Fetching .release-please-manifest.json from branch feat/release-automation
+  package-lock.json:  [class PackageLockJson]
+  npm-shrinkwrap.json:  [class PackageLockJson]
+  samples/package.json:  [class SamplesPackageJson extends DefaultUpdater]
+  CHANGELOG.md:  [class Changelog extends DefaultUpdater]
+  package.json:  [class PackageJson extends DefaultUpdater]
+  changelog.json:  [class ChangelogJson extends DefaultUpdater]
+  .release-please-manifest.json:  [class ReleasePleaseManifest extends DefaultUpdater]

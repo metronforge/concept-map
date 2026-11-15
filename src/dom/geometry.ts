@@ -1,6 +1,11 @@
 import { fitBadges } from "./badgeDom.js";
 import type { ResolvedMap } from "../schema.js";
-import { labelMinimum, fitNodeLabels, fitEdgeLabel } from "../model/labels.js";
+import {
+  labelMinimum,
+  naturalMapWidth,
+  fitNodeLabels,
+  fitEdgeLabel,
+} from "../model/labels.js";
 export interface Geometry {
   pathLength(edge: string): number;
   pointAt(edge: string, t: number): [number, number];
@@ -24,10 +29,17 @@ export function geometry(svg: SVGSVGElement): Geometry {
     textBox: (el) => el.getBBox(),
   };
 }
+function sizeMap(root: HTMLElement, svg: SVGSVGElement, viewBoxWidth: number) {
+  const fontSize = parseFloat(
+    root.ownerDocument.defaultView!.getComputedStyle(root).fontSize,
+  );
+  svg.setAttribute("width", String(naturalMapWidth(viewBoxWidth, fontSize)));
+  return svg.getBoundingClientRect().width;
+}
 /** Measurements are browser-owned; all fitting decisions are pure model math. */
 export function sizeLabels(root: HTMLElement, map: ResolvedMap, geo: Geometry) {
   const svg = root.querySelector<SVGSVGElement>(".map svg")!;
-  const width = svg.getBoundingClientRect().width;
+  const width = sizeMap(root, svg, map.viewBox[0]);
   if (width)
     root.style.setProperty(
       "--map-label-min",

@@ -38,3 +38,12 @@ Book spacing remains the host's responsibility.
 
 The old frame colour input becomes `--cmap-frame`, and the successful code-line
 colour becomes `--cmap-success`. Their neutral defaults are unchanged.
+
+The SVG's natural width scales its viewBox by the figure's computed font size
+relative to the layout's 10.5-unit edge labels. Server rendering assumes 16px
+page text; mounting updates the width after fonts are ready and on resize.
+Small diagrams therefore keep labels near page-text size. Larger diagrams shrink
+to fit their container. The diagram is centered with `max-width: 100%` and
+`height: auto`. Width is an SVG presentation attribute, so ordinary host CSS
+such as `.map-ui .map svg { width: 100%; }` can override it without `!important`
+or inline style permissions.

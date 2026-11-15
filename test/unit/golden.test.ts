@@ -10,7 +10,8 @@ import {
   renderDeeper,
 } from "../../src/index";
 import type { PlayerState } from "../../src/index";
-test("all 1050 book renders preserve the oracle apart from documented layer CSS names", () => {
+test("all 1050 book renders preserve the oracle apart from documented presentation attributes", () => {
+  // Natural sizing adds only a root width presentation attribute; drawing stays unchanged.
   // ADR 0006 changes only these colour references. Never regenerate the oracle.
   expect(golden).toHaveLength(1050);
   const maps = Object.fromEntries(
@@ -23,10 +24,12 @@ test("all 1050 book renders preserve the oracle apart from documented layer CSS 
       createHash("sha256")
         .update(
           JSON.stringify([
-            renderSvg(map, { frame }).replace(
-              /style="--c:var\(--cmap-layer-([A-Za-z][A-Za-z0-9_-]*),var\(--cmap-layer\)\)"/g,
-              'style="--c:var(--$1)"',
-            ),
+            renderSvg(map, { frame })
+              .replace(`<svg width="${(map.viewBox[0] * 16) / 10.5}" `, "<svg ")
+              .replace(
+                /style="--c:var\(--cmap-layer-([A-Za-z][A-Za-z0-9_-]*),var\(--cmap-layer\)\)"/g,
+                'style="--c:var(--$1)"',
+              ),
             renderPanel(map, frame),
             renderConcepts(map).replace(
               /style="--c:var\(--cmap-layer-([A-Za-z][A-Za-z0-9_-]*),var\(--cmap-layer\)\)"/g,

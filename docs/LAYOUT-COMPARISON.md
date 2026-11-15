@@ -1,7 +1,7 @@
 # Layout comparison
 
 [Open the comparison page](https://metronforge.github.io/concept-map/).
-The source of this preview is the `docs/layout-comparison` branch. Its commit and
+The page is rebuilt and published from `main` after every merge. Its commit and
 build date are shown on the page; the author has not selected a default engine.
 
 The page shows all 23 book maps and an English coffee-shop map, each with manual,

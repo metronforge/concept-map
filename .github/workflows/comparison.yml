@@ -1,7 +1,7 @@
 name: Layout comparison
 on:
   push:
-    branches: [docs/layout-comparison]
+    branches: [main]
   pull_request:
     paths:
       - "scripts/comparison/**"
@@ -35,11 +35,11 @@ jobs:
           name: layout-comparison
           path: comparison-dist/
       - uses: actions/upload-pages-artifact@v3
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/docs/layout-comparison'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:
           path: comparison-dist/
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/docs/layout-comparison'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:

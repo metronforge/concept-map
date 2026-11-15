@@ -8,13 +8,15 @@ import {
   readFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 const root = resolve(".");
 function probe(file: string, source: string) {
   const dir = mkdtempSync(join(tmpdir(), "concept-map-guard-"));
   try {
-    mkdirSync(join(dir, "src/model"), { recursive: true });
+    mkdirSync(dirname(join(dir, file)), { recursive: true });
+    mkdirSync(join(dir, "src/layout"), { recursive: true });
+    writeFileSync(join(dir, "src/layout/index.ts"), "export const value = 1;");
     symlinkSync(join(root, "node_modules"), join(dir, "node_modules"), "dir");
     writeFileSync(
       join(dir, "tsconfig.json"),
@@ -67,4 +69,25 @@ test("dependency guard permits schema-owned Zod import", () => {
       'import { z } from "zod"; export const value = z.string();',
     ),
   ).toEqual([]);
+});
+
+test("element loader permits dynamic imports but rejects static layout imports", () => {
+  expect(
+    probe(
+      "src/element/layout.ts",
+      'export const load = () => import("../layout/index.js");',
+    ),
+  ).toEqual([]);
+  expect(
+    probe(
+      "src/element/layout.ts",
+      'import { value } from "../layout/index.js"; export { value };',
+    ),
+  ).toContain("element-layout-imports-are-dynamic");
+  expect(
+    probe(
+      "src/dom/probe.ts",
+      'export const load = () => import("../layout/index.js");',
+    ),
+  ).toContain("player-no-layout-runtime");
 });

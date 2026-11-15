@@ -13,9 +13,28 @@ module.exports = {
       to: { path: "node_modules/(@dagrejs/dagre|elkjs)" },
     },
     {
+      name: "element-layout-imports-are-dynamic",
+      severity: "error",
+      from: { path: "^src/element/layout[.]ts$" },
+      to: {
+        path: "^src/layout/",
+        dependencyTypesNot: ["type-only", "dynamic-import"],
+      },
+    },
+    {
+      name: "element-layout-only-public-entries",
+      severity: "error",
+      from: { path: "^src/element/layout[.]ts$" },
+      to: {
+        path: "^src/layout/",
+        pathNot: "^src/layout/(index|dagre|elk)[.]ts$",
+        dependencyTypesNot: ["type-only"],
+      },
+    },
+    {
       name: "player-no-layout-runtime",
       severity: "error",
-      from: { path: "^src/", pathNot: "^src/layout/" },
+      from: { path: "^src/", pathNot: "^src/(layout/|element/layout[.]ts$)" },
       to: { path: "^src/layout/", dependencyTypesNot: ["type-only"] },
     },
 

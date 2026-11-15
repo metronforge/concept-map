@@ -75,7 +75,6 @@ export class MapPlayer {
     this.resize = new ResizeObserver(fit);
     this.resize.observe(this.svg.svg);
     this.render();
-    fit();
     void root.ownerDocument.fonts.ready.then(fit);
   }
   get state(): PlayerState {
@@ -176,6 +175,7 @@ export class MapPlayer {
     const frame = derive(this.map, this.current);
     this.svg.applyFrame(frame);
     this.panel.applyFrame(this.map, frame);
+    sizeLabels(this.root, this.map, this.geo);
     this.root
       .querySelectorAll<HTMLElement>("[data-scenario]")
       .forEach((b) =>

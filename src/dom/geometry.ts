@@ -1,3 +1,4 @@
+import { fitBadges } from "./badgeDom.js";
 import type { ResolvedMap } from "../schema.js";
 import { labelMinimum, fitNodeLabels, fitEdgeLabel } from "../model/labels.js";
 export interface Geometry {
@@ -53,6 +54,15 @@ export function sizeLabels(root: HTMLElement, map: ResolvedMap, geo: Geometry) {
     label.setAttribute("y", String(fitted.main));
     tag.setAttribute("y", String(fitted.tag));
   });
+  fitEdgeLabels(root, map, svg);
+  fitBadges(svg);
+}
+
+function fitEdgeLabels(
+  root: HTMLElement,
+  map: ResolvedMap,
+  svg: SVGSVGElement,
+) {
   svg.querySelectorAll<SVGTextElement>(".etext").forEach((label) => {
     const edge = map.edges[label.dataset.edge!];
     if (!edge.label) return;

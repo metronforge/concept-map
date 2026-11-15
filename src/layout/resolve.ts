@@ -8,6 +8,7 @@ import type {
   LayoutPoint,
 } from "./types.js";
 import { bounds, midpoint } from "./geometry.js";
+import { badgePositions } from "./badges.js";
 import { measured } from "./graph.js";
 function frameBoxes(
   map: SourceMap,
@@ -38,11 +39,13 @@ function viewport(
   graph: LayoutGraph,
   result: LayoutResult,
   frames: Record<string, LayoutBox>,
+  badges: Record<string, LayoutPoint>,
 ): LayoutBox {
   const boxes = [
     ...Object.values(result.nodes),
     ...Object.values(result.lanes),
     ...Object.values(frames),
+    ...Object.values(badges).map(([x, y]): LayoutBox => [x - 8, y - 8, 16, 16]),
   ];
   for (const e of graph.edges) {
     const r = result.edges[e.id];
@@ -64,13 +67,14 @@ function edgeGeometry(
   graph: LayoutGraph,
   result: LayoutResult,
   move: (p: LayoutPoint) => LayoutPoint,
+  badges: Record<string, LayoutPoint>,
 ) {
   return Object.fromEntries(
     graph.edges.map((e) => {
       const source = map.edges[e.id],
         r = result.edges[e.id];
       const points = r.points.map(move),
-        badge = midpoint(points);
+        badge = move(badges[e.id]);
       const label = move(r.label ?? midpoint(r.points));
       return [
         e.id,
@@ -116,13 +120,14 @@ export function resolveGeometry(
   measure: LabelMeasurer,
 ): ResolvedMap {
   const frames = frameBoxes(map, result, measure),
-    b = viewport(graph, result, frames);
+    badges = badgePositions(graph, result),
+    b = viewport(graph, result, frames, badges);
   const move = ([x, y]: LayoutPoint): LayoutPoint => [
     x - b[0] + 16,
     y - b[1] + 16,
   ];
   const box = ([x, y, w, h]: LayoutBox): LayoutBox => [...move([x, y]), w, h];
-  const edges = edgeGeometry(map, graph, result, move);
+  const edges = edgeGeometry(map, graph, result, move, badges);
   return ResolvedMapSchema.parse({
     ...map,
     viewBox: [b[2] + 32, b[3] + 32],

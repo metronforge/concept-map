@@ -37,7 +37,8 @@ does not provide this semantic validation.
 
 ## Measurement
 
-The default DOM-free measurer uses a committed DejaVu Sans ASCII advance table,
+The default DOM-free measurer uses a committed DejaVu Sans advance table covering ASCII, printable Latin-1, Latin Extended-A,
+Greek/Coptic, Cyrillic and General Punctuation,
 a fixed mono advance and a conservative one-em fallback for other characters.
 It measures plain text without evaluating markup. It is deterministic, but cannot
 guarantee a match to arbitrary host fonts. The font attribution is shipped beside
@@ -72,3 +73,7 @@ orthogonal routing. Dagre lays out the graph, stacks lane groups, translates
 within-lane routes and generates orthogonal cross-lane routes. Empty lanes reserve
 space via internal anchors. These are constraints, not claims about visual quality.
 The resolver derives frames, labels, badges, repeat badges and the viewport.
+
+Regenerate the table with `python3 scripts/font-metrics.py` (Pillow) and format
+it with Prettier. The browser regression loads the pinned DejaVu Sans fixture,
+so its five-percent Cyrillic tolerance is independent of installed host fonts.

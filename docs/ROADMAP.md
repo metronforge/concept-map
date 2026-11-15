@@ -21,6 +21,14 @@ automatic layout, engine choice, custom element, examples in three domains
   build-time layout), with an example for each.
 - The book moves to format 3 (in the book repository).
 
+## 0.3.0 — layouts that read like hand-drawn ones
+
+- **Layout pipeline** ([ADR 0025](adr/0025-layout-pipeline.md)): stages with
+  one problem description; author intent (order, main path, return arrows)
+  reaches the engine; labels and step numbers placed by one stage for every
+  engine; a quality report shared by authors, tests and the comparison page;
+  then relations and sketches ([ADR 0021](adr/0021-layout-levels.md)).
+
 ## 0.3.0 — algorithms and state machines
 
 - **State panel** ([ADR 0018](adr/0018-state-panel.md)): variable values for

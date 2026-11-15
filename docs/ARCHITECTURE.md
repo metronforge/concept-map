@@ -155,6 +155,14 @@ fold of `reduce` side by side (I2). Mutation testing (Stryker) on `model`
 and `render` measures the tests; the threshold is set from the first
 measured score and only goes up (ADR 0008).
 
+## 6a. Layout pipeline (proposed for 0.3.0)
+
+[ADR 0025](adr/0025-layout-pipeline.md) proposes to replace the single layout
+port by stages — validate, measure, intent, place, route, label, shape,
+report — over one `LayoutProblem` with typed constraints, with three ports
+(`Measurer`, `Placer`, `Router`) and invariants I11–I16. Until it is accepted
+and built, the module table above describes the code.
+
 ## 7. Stage-A debt baseline
 
 D1 is resolved by format 3 (ADR 0013); see `docs/DEBT.md` for current status.

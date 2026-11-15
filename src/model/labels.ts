@@ -1,4 +1,7 @@
 import type { Point } from "./path.js";
+// Layout measures edge labels at 10.5 units; scale the drawing to page text.
+export const naturalMapWidth = (viewBoxWidth: number, fontSize = 16) =>
+  (viewBoxWidth * fontSize) / 10.5;
 export const labelMinimum = (viewBoxWidth: number, renderedWidth: number) =>
   (10.55 * viewBoxWidth) / renderedWidth;
 export function fitNodeLabels(

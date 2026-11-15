@@ -1,3 +1,4 @@
+import { naturalMapWidth } from "../model/labels.js";
 import type { ResolvedMap } from "../schema.js";
 import { derive, type Frame, type Badge } from "../model/frame.js";
 import { initialState } from "../model/state.js";
@@ -18,7 +19,7 @@ export function renderSvg(
     marker = esc(
       options.markerId ?? `map-arrow-${map.id.replaceAll(".", "-")}`,
     );
-  let html = `<svg style="max-width:${map.viewBox[0]}px" viewBox="0 0 ${map.viewBox.join(" ")}" role="img" aria-label="${esc(map.title)}"><defs><marker id="${marker}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="var(--muted-fg)"></path></marker></defs><g data-map-layers>`;
+  let html = `<svg width="${naturalMapWidth(map.viewBox[0])}" viewBox="0 0 ${map.viewBox.join(" ")}" role="img" aria-label="${esc(map.title)}"><defs><marker id="${marker}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="var(--muted-fg)"></path></marker></defs><g data-map-layers>`;
   for (const [id, l] of Object.entries(map.lanes))
     html += `<g class="lane${frame.lanes[id].revealed ? "" : " ghost"}" data-lane="${esc(id)}" style="--c:var(--cmap-layer-${esc(l.layer)},var(--cmap-layer))"><rect x="${l.x ?? 6}" y="${l.y}" width="${l.w ?? map.viewBox[0] - 12}" height="${l.h}" rx="6"></rect><text x="${map.direction === "right" ? (l.x ?? 6) + 10 : 16}" y="${l.y + 16}">${esc(l.label)}</text></g>`;
   for (const [id, f] of Object.entries(map.frames)) {

@@ -10,8 +10,8 @@ import {
   renderDeeper,
 } from "../../src/index";
 import type { PlayerState } from "../../src/index";
-test("all 1050 book renders preserve the oracle apart from documented layer CSS names", () => {
-  // Natural-size caps change SVG sizing, not its drawing; normalize only that attribute.
+test("all 1050 book renders preserve the oracle apart from documented presentation attributes", () => {
+  // Natural sizing adds only a root width presentation attribute; drawing stays unchanged.
   // ADR 0006 changes only these colour references. Never regenerate the oracle.
   expect(golden).toHaveLength(1050);
   const maps = Object.fromEntries(
@@ -25,7 +25,7 @@ test("all 1050 book renders preserve the oracle apart from documented layer CSS 
         .update(
           JSON.stringify([
             renderSvg(map, { frame })
-              .replace(/ style="max-width:[0-9.]+px"/, "")
+              .replace(`<svg width="${(map.viewBox[0] * 16) / 10.5}" `, "<svg ")
               .replace(
                 /style="--c:var\(--cmap-layer-([A-Za-z][A-Za-z0-9_-]*),var\(--cmap-layer\)\)"/g,
                 'style="--c:var(--$1)"',

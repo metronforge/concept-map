@@ -57,38 +57,45 @@ type with the largest effect on users.
 
 ## What goes into the changelog
 
-release-please writes `CHANGELOG.md` from the squash commits on `main`. The
-squash commit is the pull request **title and description** (repository
-setting), so:
+release-please writes `CHANGELOG.md` from the merged pull requests. **Every
+pull request ends with a `## Changelog` section holding the exact entries**
+between `BEGIN_COMMIT_OVERRIDE` and `END_COMMIT_OVERRIDE`; release-please
+reads that block from the pull request instead of parsing the squash commit.
 
-- **The title is the changelog line.** Write it for a reader of the
-  changelog: `feat: add <concept-map> custom element`, not
-  `feat: item 5`.
-- **More user-visible changes in one pull request:** add one Conventional
-  line per change at the end of the description, each on its own line:
+Why: the squash commit carries the whole description, and release-please's
+parser trips on ordinary prose (a line such as
+`` `var(--cmap-layer-<id>,var(--cmap-layer))` `` made it drop the main entry of
+#7 and read the `Co-authored-by:` trailer as a change). The block is the only
+reliable input.
 
-  ```text
-  feat: add mount() for hosts without custom elements
-  fix(dom): keep focus on the scenario button after a step
-  ```
+```text
+## Changelog
 
-  Each becomes its own changelog entry.
+BEGIN_COMMIT_OVERRIDE
+feat!: add format 3 maps with generic layers and inline text
 
-- **Breaking change:** `!` in the type, and a footer explaining what users
-  must change:
+BREAKING CHANGE: maps must use format: 3 and declare their layers; format 2
+is not read. See docs/FORMAT.md.
 
-  ```text
-  BREAKING CHANGE: maps must declare their layers; format 2 is not read.
-  ```
+feat: add source-map validation and JSON Schema without geometry
+END_COMMIT_OVERRIDE
+```
 
-- Only `feat`, `fix`, `perf` and breaking changes appear in the changelog.
-  `docs`, `test`, `refactor`, `ci`, `build` and `chore` are kept in the git
-  history only.
-- Do not start any other line of the description with `type:`; it would be
-  read as a change. Put commands and logs in code blocks.
-- A wrong entry after merge: edit the merged pull request's description and
-  add the corrected lines between `BEGIN_COMMIT_OVERRIDE` and
-  `END_COMMIT_OVERRIDE`; release-please uses them instead of the commit.
+- One Conventional line per user-visible change, a blank line between
+  entries. The first line is normally the pull request title.
+- A breaking entry has `!` and a `BREAKING CHANGE:` paragraph directly after
+  it, saying what users must change.
+- Pull requests with no user-visible change (`docs`, `test`, `refactor`,
+  `ci`, `build`, `chore`) still end with the block, holding only the title.
+- The two marker words appear only once in the description, in this block:
+  release-please takes the text after the first occurrence.
+- Only `feat`, `fix`, `perf` and breaking entries appear in the changelog.
+- Write entries for a reader of the changelog: what the user gets, not
+  which task item it was.
+- A wrong entry after merge: edit the block in the merged pull request; the
+  open release pull request picks it up on the next push to `main`.
+- Do not merge the release pull request (`chore(main): release …`) yourself;
+  the author decides when a version is complete.
 
 ## Commits on a branch
 

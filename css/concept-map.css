@@ -208,6 +208,7 @@
 }
 .map-ui .panel.head {
   grid-area: head;
+  align-self: stretch;
   border-bottom: 0;
   border-radius: 8px 8px 0 0;
   padding-bottom: 6px;
@@ -218,6 +219,11 @@
   border-radius: 0 0 8px 8px;
   padding-top: 6px;
   align-self: start;
+}
+.map-ui .panel.head:has(+ .panel.more:empty) {
+  border-bottom: 1px solid var(--cmap-border);
+  border-radius: 8px;
+  padding-bottom: 16px;
 }
 .map-ui .panel.more:empty {
   display: none;
@@ -541,6 +547,10 @@
   fill: var(--cmap-fg);
 }
 .map-ui .etext {
+  paint-order: stroke;
+  stroke: var(--cmap-bg);
+  stroke-width: 4px;
+  stroke-linejoin: round;
   font: 500 9.5px var(--cmap-font-mono);
   fill: var(--cmap-muted-fg);
 }

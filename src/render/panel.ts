@@ -42,7 +42,8 @@ function parts(map: ResolvedMap, frame: Frame, overrides: Partial<UiStrings>) {
   }
   if (p.defs.length)
     details += `<div class="defs"><h3>${esc(ui.newOnMap)}</h3><dl>${p.defs.map((d) => `<div><dt>${esc(d.term)}</dt><dd>${renderInline(d.text)}</dd></div>`).join("")}</dl></div>`;
-  details += `<div class="refs"><div class="src"><h3>${esc(ui.source)}</h3><ul>${p.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("")}</ul></div>${p.deeper.length ? `<div><h3>${esc(ui.goDeeper)}</h3><ul>${p.deeper.map((d) => `<li><a href="${esc(d.href)}" target="_blank" rel="noopener">${esc(d.title)}</a></li>`).join("")}</ul></div>` : ""}</div>`;
+  if (p.sources.length || p.deeper.length)
+    details += `<div class="refs">${p.sources.length ? `<div class="src"><h3>${esc(ui.source)}</h3><ul>${p.sources.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></li>`).join("")}</ul></div>` : ""}${p.deeper.length ? `<div><h3>${esc(ui.goDeeper)}</h3><ul>${p.deeper.map((d) => `<li><a href="${esc(d.href)}" target="_blank" rel="noopener">${esc(d.title)}</a></li>`).join("")}</ul></div>` : ""}</div>`;
   const steps = map.scenarios[frame.state.scenario].steps.map((t) => t.title),
     index = frame.state.step;
   return {

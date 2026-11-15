@@ -52,12 +52,16 @@ the future release PR owns their updates.
 - `actionlint` **1.7.12**: all workflows passed.
 - `npm run verify`: passed, including all 48 unit tests, architecture/contract
   guards, schema/API freshness, package validation and size limit (9.7 kB).
-- Local browser run: all **104 Chromium/Firefox tests passed**. All 52 WebKit
-  tests could not launch because this workstation lacks `libavif.so.16`.
-  A direct `webkit.launch()` reproduced the missing-library error before any
-  application code ran. The GitHub workflow installs browser OS dependencies.
-- Repository pre-push hook: full verify and **52 Chromium tests passed**.
-- Full GitHub CI: [implementation run](https://github.com/metronforge/concept-map/actions/runs/43710681297).
+- Local browser run: **104 passed, 55 failed**. All 53 WebKit tests could not
+  launch because this workstation lacks `libavif.so.16`; a direct
+  `webkit.launch()` reproduced this before application code ran. Two Firefox
+  tests failed with ENOENT while saving trace artifacts during an overlapping
+  pre-push invocation using the same results directory.
+- Subsequent repository pre-push hook: full verify and **53 Chromium tests passed**.
+- Full GitHub CI: **passed, all 159 browser tests passed** in the
+  [implementation run](https://github.com/metronforge/concept-map/actions/runs/43710681297).
+  That isolated runner installs the browser OS dependencies; neither local
+  environment failure reproduced there.
 - Independent review: no blocking or important findings. The partial
   release-please failure recovery case was added to RELEASING.md.
 

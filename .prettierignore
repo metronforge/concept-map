@@ -10,3 +10,4 @@ resolved-map.schema.json
 source-map.schema.json
 etc
 test/fixtures
+CHANGELOG.md

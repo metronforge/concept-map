@@ -41,6 +41,9 @@ in ordinary words.
   reader may want to check (a page with results, a CI run), not for the
   explanation itself.
 - Short sentences, common words, no jargon that the change does not need.
+- English everywhere: code, docs, examples, fixtures and the comparison
+  pages. This is an international project. Other scripts appear only in tests
+  that check Unicode handling, such as label measurement.
 
 ### Choosing the type
 

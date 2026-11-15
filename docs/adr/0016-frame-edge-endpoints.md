@@ -1,6 +1,7 @@
 # ADR 0016: may frames be edge endpoints?
 
-Status: proposed — awaiting the author's decision; no runtime change authorized
+Status: accepted — option 2 with the proposed semantics (author, 2026-11-15);
+implementation after the default engine is chosen (task 0.2.0 item 4)
 
 ## Evidence and current contract
 
@@ -107,9 +108,16 @@ Required verification for a separately approved implementation:
   cases and explicit failures for any unsupported cases. No engine quality or
   default decision is inferred from these contract tests.
 
-## Decision requested
+## Decision
 
-The author chooses node-only endpoints, node-or-frame string endpoints, or tagged
-endpoints, and confirms whether the proposed visibility and flow restrictions are
-acceptable. Until then, retain the validator, fixtures and rendering as they are.
-This ADR does not start task 0.2.0 item 4 and contains no engine comparison.
+Option 2: `from` and `to` name a node or a frame. Unknown and ambiguous IDs are
+errors with the full path. `show`, `current`, `flow.node` and the other lists
+stay node-only; flow edges touching a frame are rejected until group animation
+is defined. Visibility stays as in "Proposed semantics".
+
+Implementation is a separate `feat` pull request after task item 4 has chosen
+the default engine, because routing frame-touching edges for source maps
+depends on it. That pull request first makes the open routing cases above
+concrete (attachment, nesting, empty frames, self-edges, source frame sizing)
+and then meets the verification list. Until then the validator, fixtures and
+rendering stay as they are.

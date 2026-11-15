@@ -11,3 +11,6 @@
 <!-- Commands run and their results; screenshots for visual changes. -->
 
 ## Not done
+
+<!-- Extra changelog entries (one Conventional line each) and
+BREAKING CHANGE: footer go here, at the very end. See AGENTS.md. -->

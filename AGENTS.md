@@ -49,6 +49,41 @@ Examples from this repository:
 When a pull request mixes types, split it. If it cannot be split, use the
 type with the largest effect on users.
 
+## What goes into the changelog
+
+release-please writes `CHANGELOG.md` from the squash commits on `main`. The
+squash commit is the pull request **title and description** (repository
+setting), so:
+
+- **The title is the changelog line.** Write it for a reader of the
+  changelog: `feat: add <concept-map> custom element`, not
+  `feat: item 5`.
+- **More user-visible changes in one pull request:** add one Conventional
+  line per change at the end of the description, each on its own line:
+
+  ```text
+  feat: add mount() for hosts without custom elements
+  fix(dom): keep focus on the scenario button after a step
+  ```
+
+  Each becomes its own changelog entry.
+
+- **Breaking change:** `!` in the type, and a footer explaining what users
+  must change:
+
+  ```text
+  BREAKING CHANGE: maps must declare their layers; format 2 is not read.
+  ```
+
+- Only `feat`, `fix`, `perf` and breaking changes appear in the changelog.
+  `docs`, `test`, `refactor`, `ci`, `build` and `chore` are kept in the git
+  history only.
+- Do not start any other line of the description with `type:`; it would be
+  read as a change. Put commands and logs in code blocks.
+- A wrong entry after merge: edit the merged pull request's description and
+  add the corrected lines between `BEGIN_COMMIT_OVERRIDE` and
+  `END_COMMIT_OVERRIDE`; release-please uses them instead of the commit.
+
 ## Commits on a branch
 
 Commit messages are checked by `.githooks/commit-msg` with the same format.

@@ -23,6 +23,28 @@ work, not a formality.
   colon, imperative, no period, at most 72 characters.
 - One pull request per task item. Do not push to `main`.
 
+### Plain language
+
+Titles, descriptions, commit messages and changelog entries are read by
+people who have not seen our planning documents. Write what changed and why
+in ordinary words.
+
+- Say what is different afterwards, not what kind of edit it was.
+  `renumber the proposed ADRs to 0018-0020` says nothing;
+  `docs: plan a state panel, traced runs and node shapes` does.
+- No internal references in titles or changelog entries: no ADR numbers,
+  task item numbers, debt or invariant codes (D7, I10), file names of
+  planning documents.
+- Descriptions are self-contained. Explain a decision in a sentence instead
+  of pointing to the document that holds it; a reader must understand the
+  pull request without opening anything else. Links are for evidence a
+  reader may want to check (a page with results, a CI run), not for the
+  explanation itself.
+- Short sentences, common words, no jargon that the change does not need.
+- English everywhere: code, docs, examples, fixtures and the comparison
+  pages. This is an international project. Other scripts appear only in tests
+  that check Unicode handling, such as label measurement.
+
 ### Choosing the type
 
 The type says what changes **for a user of the package**, not what kind of
@@ -101,7 +123,7 @@ END_COMMIT_OVERRIDE
 
 Commit messages are checked by `.githooks/commit-msg` with the same format.
 They are squashed away on merge, but the first one usually becomes the title,
-so write it as one.
+so write it as one. The plain-language rules apply to commits too.
 
 ## Pull request body
 

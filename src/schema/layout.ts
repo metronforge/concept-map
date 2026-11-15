@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 import { Box, Point } from "./primitives.js";
 export const LayoutResultSchema = z.strictObject({
   nodes: z.record(z.string(), Box),

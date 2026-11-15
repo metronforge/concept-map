@@ -11,7 +11,7 @@ remains open; ADR 0006 is accepted and implemented by format 3. The listed debts
 | D3   | flowId/log/playback and startFlow decisions in facade                                     | Exact complexity ceiling; ADR 0005 open                                           |
 | D4   | Geometry uses SVGGraphicsElement; ports colocated; geometry is a factory                  | Core DOM-free check excludes shell; split in B                                    |
 | D5   | Numeric positions and unbranded string IDs                                                | API report freezes current shapes; B decision                                     |
-| D6   | One mixed entry point                                                                     | exports guard allows only current entry/CSS/schema; B creates 0.2.0               |
+| D6   | One mixed entry point                                                                     | consumer budgets shake unused schemas; entry-point split remains item 5           |
 | D7   | Source refs validated by layout(); direct resolved schema/player input remains structural | Source-map D7 closed at layout boundary; I3/I6 still apply to direct schema input |
 | D8   | Resolved: rich leaves are inline source text, escaped by renderers                        | I7 escaping test and all-leaf rendering tests                                     |
 | D9   | Literal SSR/browser DOM differs: marker identity and measured label fitting               | I8 counterexample; semantic state comparisons and visual parity                   |

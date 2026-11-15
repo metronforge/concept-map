@@ -43,12 +43,11 @@ run; the full CI still gates publishing after it is merged.
 - Settings → General → Pull Requests: enable squash merging and use the
   **pull request title** as the default squash commit title. Use squash merging
   for this release policy; merge/rebase commits can carry different messages.
-- Protect `main` from direct pushes. Require **Validate PR title** for contributor
-  PRs alongside the existing CI checks. The title workflow uses
-  `pull_request_target`, so it takes effect after this configuration reaches
-  `main`. Account for the bot release PR's absent checks: the author must use
-  the repository's permitted merge/bypass procedure for that PR, after reviewing
-  its generated files. Do not disable contributor checks to release.
+- Ruleset `main` (Settings → Rules): pull request required, squash only,
+  linear history, no force push, no deletion. Status checks are **not**
+  required: the bot release PR gets no CI or title-check run, and a required
+  check would block it. Merge contributor PRs only when **CI** and **Validate
+  PR title** are green; the full CI gates publishing after the release PR.
 - npm package → Settings → Trusted Publisher: GitHub Actions,
   `metronforge/concept-map`, workflow **release.yml**, publishing allowed.
   Keep this filename: the trusted publisher is bound to it.

@@ -1,10 +1,5 @@
 # Changelog
 
-## Unreleased
-
-- README for users; development notes moved to CONTRIBUTING.md, the release
-  procedure to RELEASING.md.
-
 ## 0.1.1 — 2026-11-15
 
 - First release from GitHub Actions through npm trusted publishing (OIDC),

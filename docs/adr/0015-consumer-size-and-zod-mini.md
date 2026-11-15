@@ -1,6 +1,7 @@
 # ADR 0015: consumer bundle budgets and a Zod Mini decision
 
-Status: bundle-budget corrections proposed for this PR; Zod Mini pending author decision
+Status: accepted — budgets and packaging as below; Zod Mini: option 1, retain
+classic Zod (author, 2026-11-15)
 
 ## Context and measurements
 
@@ -67,3 +68,9 @@ functional API and `ZodMiniType` rather than classic `ZodType`. Its example size
 reductions are not measurements of this project's schemas. This PR neither
 migrates to Mini nor claims a Mini size result. The author must choose before any
 such implementation starts.
+
+## Decision
+
+The author accepts the packaging correction and the five budgets, and option 1:
+classic Zod stays the public schema kernel. Revisit only with a measurement
+showing the custom element (task item 5) is too heavy because of validation.

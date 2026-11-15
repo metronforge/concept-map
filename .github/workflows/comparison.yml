@@ -1,10 +1,11 @@
-name: Layout comparison
+name: Examples and layout comparison
 on:
   push:
     branches: [main]
   pull_request:
     paths:
       - "scripts/comparison/**"
+      - "examples/**"
       - "src/layout/**"
       - "src/schema*"
       - "src/schema/**"
@@ -35,11 +36,11 @@ jobs:
           name: layout-comparison
           path: comparison-dist/
       - uses: actions/upload-pages-artifact@v3
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         with:
           path: comparison-dist/
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -49,6 +50,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy comparison only
+      - name: Deploy examples and comparison
         id: deployment
         uses: actions/deploy-pages@v4

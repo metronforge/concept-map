@@ -4,6 +4,7 @@ import {
   writeFileSync,
   readFileSync,
   copyFileSync,
+  cpSync,
 } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { cpus, platform, arch } from "node:os";
@@ -155,3 +156,6 @@ await build({
 console.log(
   `Built ${report.maps.length} comparisons → ${destination}/index.html`,
 );
+
+// Copy runnable CDN pages unchanged: no bundler or generated geometry.
+cpSync("examples", `${destination}/examples`, { recursive: true });

@@ -1,66 +1,121 @@
-# @metronforge/concept-map
+# Coffee shop: a map you can play
 
-Concept maps that are rendered to SVG on the server and played step by step in
-the browser: scenarios, steps, a "whole map" mode with an animated flow,
-keyboard control, screen-reader status and reduced-motion support.
+Follow guest → cashier → barista, then switch from **Normal** to **Out of milk**.
+[Open the coffee shop](https://metronforge.github.io/concept-map/examples/coffee/)
+or copy its [HTML and JSON](examples/coffee/).
 
-Made for the book _The Illustrated Playwright_; usable anywhere.
+Save this source map as `map.json`. There are no coordinates:
+
+<!-- prettier-ignore -->
+```json
+{
+  "format": 3, "id": "coffee", "title": "Coffee shop", "direction": "right",
+  "layers": {"process": {"label": "Process"}},
+  "nodes": {
+    "guest": {"label": "Guest", "layer": "process"},
+    "cashier": {"label": "Cashier", "layer": "process"},
+    "barista": {"label": "Barista", "layer": "process"}
+  },
+  "edges": {
+    "order": {"from": "guest", "to": "cashier", "label": "Order"},
+    "ticket": {"from": "cashier", "to": "barista", "label": "Make coffee"},
+    "ready": {"from": "barista", "to": "guest", "label": "Coffee ready"},
+    "empty": {"from": "barista", "to": "cashier", "label": "Out of milk"},
+    "offer": {"from": "cashier", "to": "guest", "label": "Offer americano"}
+  },
+  "scenarios": [
+    {
+      "id": "normal", "label": "Normal",
+      "steps": [
+        {"id": "order", "title": "Place an order", "text": "The guest orders a coffee.", "show": ["guest", "cashier"], "current": ["cashier"], "edges": ["order"]},
+        {"id": "brew", "title": "Make coffee", "text": "The cashier sends the order to the barista.", "show": ["barista"], "current": ["barista"], "edges": ["ticket"]},
+        {"id": "serve", "title": "Serve coffee", "text": "The guest receives the coffee.", "show": [], "current": ["guest"], "edges": ["ready"]}
+      ],
+      "flow": [{"node": "guest", "step": "order", "log": []}, {"node": "cashier", "step": "order", "log": ["Order received."], "edge": "order"}, {"node": "barista", "step": "brew", "log": ["Making coffee."], "edge": "ticket"}, {"node": "guest", "step": "serve", "log": ["Coffee served."], "edge": "ready"}]
+    },
+    {
+      "id": "out-of-milk", "label": "Out of milk",
+      "steps": [
+        {"id": "order", "title": "Order a cappuccino", "text": "The barista receives an order for a cappuccino.", "show": ["guest", "cashier", "barista"], "current": ["barista"], "edges": ["order", "ticket"]},
+        {"id": "empty", "title": "Check the milk", "text": "The barista tells the cashier there is no milk.", "show": [], "current": ["barista"], "edges": ["empty"]},
+        {"id": "offer", "title": "Offer an alternative", "text": "The cashier offers an americano.", "show": [], "current": ["guest"], "edges": ["offer"]}
+      ],
+      "flow": [{"node": "guest", "step": "order", "log": []}, {"node": "cashier", "step": "order", "log": [], "edge": "order"}, {"node": "barista", "step": "order", "log": [], "edge": "ticket"}, {"node": "cashier", "step": "empty", "log": ["No milk left."], "edge": "empty"}, {"node": "guest", "step": "offer", "log": ["Offer an americano."], "edge": "offer"}]
+    }
+  ]
+}
+```
+
+Load the stylesheet, one module script and one element on an HTML page:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://esm.sh/gh/metronforge/concept-map@b989ffa568b74e53e0b29711ca0e909cc564fab5/css/concept-map.css"
+/>
+<script
+  type="module"
+  src="https://esm.sh/gh/metronforge/concept-map@b989ffa568b74e53e0b29711ca0e909cc564fab5/src/element.ts"
+></script>
+<concept-map src="./map.json" layout="dagre"></concept-map>
+```
+
+Serve the files over HTTP, for example with `python3 -m http.server 8000`.
+The [complete page](examples/coffee/index.html) adds a title, navigation and host styling.
+The element fetches the JSON, loads dagre when needed and provides scenarios,
+steps, an animated whole-map flow, keyboard controls and reduced-motion support.
+Ready maps with geometry do not download a layout engine.
+
+**Before the 0.2.0 release:** these URLs pin a main commit through esm.sh's GitHub
+support. After publication, replace them with
+`https://esm.sh/@metronforge/concept-map@0.2.0/css` and
+`https://esm.sh/@metronforge/concept-map@0.2.0/element`. The current npm release
+does not yet provide this integration.
+
+## Three ways to use the package
+
+1. **Plain HTML:** use `<concept-map>` as above. It also accepts inline JSON or
+   a `map` property and can hydrate server-rendered figures. Select `layout="elk"`
+   for ELK, or supply an `element.layout` function.
+2. **Browser code:** `mount(element, resolvedMap)` from `@metronforge/concept-map/dom`
+   renders an empty host or hydrates matching markup and returns a player.
+   Call `player.destroy()` when removing the host.
+3. **Server rendering:** `renderFigure(resolvedMap)` from `@metronforge/concept-map`
+   returns complete figure markup. Mount it in the browser to add interaction.
+
+The last two accept resolved maps. For source maps, call `layout(source, engine)`
+from `@metronforge/concept-map/layout` first. See [integration](docs/INTEGRATION.md)
+and [automatic layout](docs/LAYOUT.md).
+
+## More examples
+
+- [Door: a finite state machine](https://metronforge.github.io/concept-map/examples/door/) —
+  states, guarded transition labels and a self-transition. [Authoring notes](examples/door/README.md).
+- [Euclid's algorithm](https://metronforge.github.io/concept-map/examples/gcd/) —
+  a recorded loop with repeat badges and values in the log. [Authoring notes](examples/gcd/README.md).
+- [Layout comparison](https://metronforge.github.io/concept-map/) —
+  manual geometry, dagre and ELK side by side.
+
+Each example is a standalone HTML page plus a source JSON file. Its README records
+what the author had to work around; these notes inform the next release.
+
+## Install and style
 
 ```sh
 npm install @metronforge/concept-map zod
 ```
 
 ESM only, Node ≥ 22.14. `zod` 4 is a peer dependency. MIT.
-
-## Use
-
-Render a complete figure on the server:
-
-```js
-import { ResolvedMapSchema, renderFigure } from "@metronforge/concept-map";
-const map = ResolvedMapSchema.parse(data);
-const html = renderFigure(map, { id: "coffee" });
-```
-
-In the browser, mount a map into an empty host or hydrate its existing figure:
-
-```js
-import { mount } from "@metronforge/concept-map/dom";
-import "@metronforge/concept-map/css";
-const player = mount(document.querySelector("#map-host"), map);
-// player.destroy() when the host is removed
-```
-
-Or import `@metronforge/concept-map/element` and use
-`<concept-map src="coffee.json"></concept-map>`. The element also accepts inline
-JSON or a `map` property and upgrades server-rendered figures in place.
-See [integration and import migration](docs/INTEGRATION.md) for all three ways,
-input precedence, lifecycle, errors and explicit source-map layout.
-
-Colours and fonts come from custom properties, listed in
-[docs/CSS.md](docs/CSS.md):
-
-```css
-.map-ui {
-  --cmap-bg: white;
-  --cmap-fg: #202124;
-  --cmap-accent: #285bb5;
-}
-```
-
-A complete page is in [`scripts/build-demo.mjs`](scripts/build-demo.mjs).
+Install `@dagrejs/dagre` or `elkjs` when a bundled application uses that engine.
+Load `@metronforge/concept-map/css` separately; host colours and fonts use the
+custom properties in [docs/CSS.md](docs/CSS.md).
 
 ## Format 3
 
-Maps declare their own layers and use `id` instead of `spread`. Text fields are
-plain text with inline code, emphasis and strong marks; the renderers escape
-HTML. [Format and migration guide](docs/FORMAT.md).
-
-`SourceMapSchema` accepts maps without coordinates. `ResolvedMapSchema` requires
-geometry for playback. See [automatic layout](docs/LAYOUT.md) for source maps; supply resolved
-geometry for now. Parse maps to apply optional-field defaults. Layer references
-are checked, but other cross-references and URL policy remain the host adapter's
-responsibility.
+Maps declare their own layers and use plain text with inline code, emphasis and
+strong marks. HTML is escaped. `SourceMapSchema` validates maps without geometry;
+`ResolvedMapSchema` validates geometry for playback. `layout()` checks semantic
+references before running an engine. See the [format guide](docs/FORMAT.md).
 
 ## Stability
 

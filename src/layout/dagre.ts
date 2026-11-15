@@ -7,6 +7,7 @@ import type {
   LayoutGraph,
   LayoutNode,
 } from "./types.js";
+import { selfRoute } from "./self-route.js";
 import { engineNodes, partitionDagre } from "./lanes.js";
 function dagreGraph(graph: LayoutGraph, nodes: LayoutNode[]) {
   const g = new dagre.graphlib.Graph<GraphLabel, NodeLabel, EdgeLabel, Point>({
@@ -28,7 +29,9 @@ function dagreGraph(graph: LayoutGraph, nodes: LayoutNode[]) {
       {
         width: e.label?.width ?? 0,
         height: e.label?.height ?? 0,
-        labelpos: "c",
+        // Self-edges already have a separate dummy label lane.
+        labelpos: e.from === e.to ? "c" : "r",
+        labeloffset: 12,
       },
       `e:${e.id}`,
     );
@@ -56,6 +59,15 @@ export const dagreEngine: LayoutEngine = {
         w: `n:${e.to}`,
         name: `e:${e.id}`,
       });
+      if (e.from === e.to) {
+        result.edges[e.id] = selfRoute(
+          result.nodes[e.from],
+          [route.x ?? 0, route.y ?? 0],
+          e.label,
+          graph.direction === "right",
+        );
+        continue;
+      }
       result.edges[e.id] = {
         points: (route.points ?? []).map(
           (p: Point) => [p.x, p.y] as LayoutPoint,

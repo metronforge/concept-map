@@ -4,7 +4,7 @@ import type {
   LayoutResult,
   LayoutBox,
 } from "./types.js";
-import { bounds, crossLaneRoute, midpoint } from "./geometry.js";
+import { bounds, crossLaneRoute, besideRoute } from "./geometry.js";
 /** Empty partitions need an engine vertex to reserve their place. IDs cannot collide. */
 export function engineNodes(graph: LayoutGraph): LayoutNode[] {
   return [
@@ -107,7 +107,8 @@ function moveRoutes(
         result.nodes[e.to],
         axis === 0,
       );
-      if (e.label) route.label = midpoint(route.points);
+      if (e.label)
+        route.label = besideRoute(route.points, e.label.width, e.label.height);
     }
   }
 }

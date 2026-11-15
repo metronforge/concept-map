@@ -4,8 +4,9 @@ Status: comparison method for task 0.2.0 item 4; engine decision pending author 
 
 ## Input and presentation
 
-Compare all 23 book maps plus a Russian coffee-shop map with the scenarios
-«Обычный» and «Молоко закончилось». The coffee hand reference is authored
+Compare all 23 book maps plus an English coffee-shop map with Normal and Out of milk scenarios.
+The coffee source declares `direction: right`; book sources retain the downward
+default. The coffee hand reference is authored
 independently. Both engines receive the same strict SourceMap: remove viewBox,
 node/frame boxes, lane coordinates, edge paths/badges and label positions, and
 repeat-badge positions. Preserve all semantic fields and validate references.
@@ -16,10 +17,10 @@ endpoints await implementation (ADR 0016). Remove that edge and its step referen
 from a copy in all three columns; do not change the book fixture. Assert that it
 has no flow or repeat-badge references. Mark the exception on the page and in data.
 
-Render all three versions with the same library SVG renderer and pinned DejaVu
-fonts. Initially reveal all nodes/edges without step numbering; scenario/step
-controls apply the same derived visibility/current state, labels and step badges
-to all three, using each variant’s badge geometry.
+Each column runs the real MapPlayer with the same pinned DejaVu fonts. It starts
+in step mode and has its own scenario selector, step controls, Whole map mode,
+token animation, call log and replay. Coffee includes explicit flows for both
+scenarios. Shared buttons can switch all three columns to the same mode.
 Each preview fits its own viewBox into the same window: this is not a common
 physical scale. Provide native-size scrolling, separate SVGs and JSON downloads.
 
@@ -33,6 +34,11 @@ physical scale. Provide native-size scrolling, separate SVGs and JSON downloads.
   crossing can count three pairs. Do not claim this measures node/label overlaps.
 - **Bends:** changes of direction between nonzero polyline segments, including
   U-turns; repeated points and straight intermediate vertices do not count.
+- **Label overlaps:** count edge-label rectangles intersecting node boxes and
+  pairs of edge-label rectangles with positive overlap area. Exclude boundary
+  contact. Use the layout font metrics and baseline at native SVG size; do not
+  count node titles within their own blocks. Publish the involved IDs. Browser
+  label fitting and scenario visibility may change what is visible.
 - **Area:** viewBox width × height, including padding, in SVG user units squared.
 - **Time:** median of five sequential complete layout() calls after one warm-up
   per map/engine. Include validation, metrics-based label sizing, engine execution
@@ -47,24 +53,22 @@ physical scale. Provide native-size scrolling, separate SVGs and JSON downloads.
 
 All current paths use absolute M/L/H/V commands. The measurement parser fails on
 other commands rather than silently approximating curves. The page itself loads
-precomputed SVGs and a small interaction script, not layout engines. Raw result
+resolved maps and MapPlayer, not layout engines. Raw result
 JSON records commit, dirty state, date, lock hash, versions and machine details.
 
 ## Scope and limitations
 
-Compare current adapters without tuning or quality fixes. Dagre's post-layout
-lane stacking and ELK's native partitions differ by design (ADR 0014). Source
-frame boxes currently derive from showWith, which is not a complete containment
-description; manual frames can differ substantially (ADR 0016). Record these
-limitations rather than changing semantics during the comparison.
+The review explicitly requests fixing ELK label placement and adding optional
+layout direction before the author chooses an engine. The adapters now pass
+measured edge labels to ELK with real text and read its returned positions.
+There are no retained warnings for the old shared label anchor.
 
-Timing is environment-sensitive and is not a benchmark across engines' supported
-feature sets. The page's visual inspection is essential: the five requested
-numbers do not measure text collisions, edge/node overlap or semantic grouping.
-No aggregate score, ranking or default selection is generated. Coincident edge-label
-anchors are flagged per map and retained in the results: for example, the current
-ELK adapter returns all five coffee labels at the same anchor. This is evidence
-about the current adapter/configuration, not a claim that ELK cannot place labels.
+Dagre's post-layout lane grouping and ELK's native partitions still differ.
+Source frame boxes derive from showWith, which is not a complete containment
+description; manual frames can differ substantially. Timing depends on the
+machine. The overlap counts approximate text rectangles rather than exact glyph
+outlines. They do not measure edge/node overlap or semantic grouping. No combined
+score, ranking or default selection is generated.
 
 ## Publication
 

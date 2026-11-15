@@ -34,3 +34,18 @@ also fail when explicitly passed through layout; direct player input retains its
 existing contract. Synthetic property tests exercise both engines without
 performing the deferred book-map engine comparison. Existing hand-render goldens
 remain the compatibility evidence. See [the layout API](../LAYOUT.md).
+
+## Review update: direction and edge labels
+
+Maps may declare direction down or right; omission keeps existing downward
+behavior. The measured graph carries that optional value. Both adapters set their
+engine's direction and arrange declared lane partitions along that axis. Node and
+label dimensions remain unrotated. Rightward lanes reserve header space with
+internal anchors, and their titles follow the lane's x position. Hand geometry
+is still passed through unchanged. This is an axis choice, not an ordering
+constraint for cycles; the proposed relative-placement work remains separate.
+
+The ELK adapter now passes nonempty text as well as measured width and height for
+edge labels, requests centre placement and reads the returned label coordinates.
+ELK ignored the previous empty text. Size-only or empty labels use a placeholder
+inside the adapter; output text remains the original map's text.

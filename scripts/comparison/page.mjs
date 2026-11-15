@@ -1,8 +1,14 @@
 import { readFileSync } from "node:fs";
-import { renderSvg, derive, escapeHtml as esc } from "../../dist/index.js";
-const names = { manual: "Ручная", dagre: "dagre", elk: "ELK" };
+import {
+  renderSvg,
+  derive,
+  renderPanelParts,
+  statusText,
+  escapeHtml as esc,
+} from "../../dist/index.js";
+const names = { manual: "Hand layout", dagre: "dagre", elk: "ELK" };
 const num = (value) =>
-  new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 1 }).format(value);
+  new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(value);
 export function graphSvg(map, markerId, standalone = false) {
   const frame = derive(map, { scenario: 0, step: 0, mode: "all" });
   for (const field of ["nodes", "edges", "lanes", "frames", "edgeLabels"])
@@ -26,23 +32,34 @@ export function graphSvg(map, markerId, standalone = false) {
 }
 function cells(entry, name, bundles) {
   const { metrics: m, timing: t } = entry.variants[name];
-  return `<td>${m.crossings}</td><td>${m.bends}</td><td>${num(m.area)}<small>${num(m.width)} × ${num(m.height)}</small></td><td>${t ? `<span title="Мин–макс: ${num(t.min)}–${num(t.max)} мс">${num(t.median)} мс</span>` : "—"}</td>${bundles ? `<td>${name === "manual" ? "—" : `${num(bundles[name].gzip / 1024)} KiB`}</td>` : ""}`;
+  return `<td>${m.crossings}</td><td>${m.bends}</td><td>${m.labelNodeOverlaps}</td><td>${m.labelLabelOverlaps}</td><td>${num(m.area)}<small>${num(m.width)} × ${num(m.height)}</small></td><td>${t ? `<span title="Range: ${num(t.min)}–${num(t.max)} ms">${num(t.median)} ms</span>` : "—"}</td>${bundles ? `<td>${name === "manual" ? "—" : `${num(bundles[name].gzip / 1024)} KiB`}</td>` : ""}`;
+}
+const metricHeads =
+  "<th>Crossings</th><th>Bends</th><th>Labels / nodes</th><th>Labels / labels</th><th>Area, units²</th><th>Layout time</th>";
+function playerColumn(entry, name, map) {
+  const title = names[name],
+    frame = derive(map, { scenario: 0, step: 0, mode: "step" });
+  const panel = renderPanelParts(map, frame),
+    m = entry.variants[name].metrics;
+  return `<article class="variant" data-variant="${name}"><header><h3>${title}</h3><div><button type="button" data-zoom aria-pressed="false" aria-label="Native size: ${title}, ${entry.id}">1:1</button><a href="svg/${entry.id}-${name}.svg" target="_blank" rel="noopener">SVG ↗</a></div></header>
+    <div class="player map-ui" data-player tabindex="0" aria-label="${title}: ${esc(map.title)}">
+      <div class="player-controls"><label>Scenario <select data-scenario-select aria-label="Scenario: ${title}, ${entry.id}">${map.scenarios.map((s, i) => `<option value="${i}">${esc(s.label)}</option>`).join("")}</select></label><div class="seg" role="group" aria-label="View"><button type="button" data-mode="step" aria-pressed="true">By step</button><button type="button" data-mode="all" aria-pressed="false">Whole map</button></div></div>
+      <div class="canvas map" tabindex="0" aria-label="${title}: scroll diagram" style="--native-width:${map.viewBox[0]}px;--native-height:${map.viewBox[1]}px">${renderSvg(map, { frame, markerId: `${entry.id}-${name}` })}</div>
+      <p class="sr-only" role="status" data-map-status>${esc(statusText(frame))}</p>
+      <div class="panel head" data-role="panel">${panel.head}</div>
+      <details class="player-details"><summary>Details and call log</summary><div class="panel more" data-role="more">${panel.more}</div></details>
+    </div><footer><span>${m.crossings} crossings · ${m.bends} bends</span><a href="data/${entry.id}-${name}.json">JSON</a></footer></article>`;
 }
 function mapSection(entry, variants) {
-  return `<section class="comparison" id="map-${esc(entry.id)}" data-map="${esc(entry.id)}">
-    <header class="map-heading"><div><span class="eyebrow">${entry.id === "coffee" ? "ПРИМЕР" : `КНИГА · ${esc(entry.id)}`}</span><h2>${esc(entry.title)}</h2></div><a href="#summary">↑ Метрики</a></header>
+  return `<section class="comparison" id="map-${entry.id}" data-map="${entry.id}">
+    <header class="map-heading"><div><span class="eyebrow">${entry.id === "coffee" ? "EXAMPLE" : `BOOK · ${entry.id}`}</span><h2>${esc(entry.title)}</h2></div><a href="#summary">↑ Metrics</a></header>
     ${entry.note ? `<p class="note">${esc(entry.note)}</p>` : ""}
-    ${entry.observations?.length ? `<p class="note">Наложение подписей: ${entry.observations.map((o) => `${names[o.engine]} — одинаковая точка у ${o.edges.length} подписей (${o.edges.map(esc).join(", ")})`).join("; ")}. Это результат текущего адаптера, не исправленный в сравнении; площадь и число пересечений не учитывают читаемость текста.</p>` : ""}
-    <div class="controls"><label>Сценарий <select data-scenario><option value="all">Все узлы и рёбра</option>${entry.scenarios.map((s, i) => `<option value="${i}">${esc(s.label)}</option>`).join("")}</select></label><label>Шаг <select data-step disabled><option value="all">Все шаги</option></select></label><a href="data/${entry.id}-source.json">Исходная карта без геометрии ↗</a></div>
-    <p class="step-description" aria-live="polite">Нейтральный обзор всех узлов и рёбер; без нумерации шагов.</p>
-    <div class="triptych">${Object.entries(names)
-      .map(([name, title]) => {
-        const map = variants[name],
-          m = entry.variants[name].metrics;
-        return `<article class="variant" data-variant="${name}"><header><h3>${title}</h3><div><button type="button" data-zoom aria-pressed="false" aria-label="Масштаб 1:1: ${title}, ${esc(entry.id)}">1:1</button><a href="svg/${entry.id}-${name}.svg" target="_blank" rel="noopener" aria-label="Открыть SVG: ${title}, ${esc(entry.id)}">SVG ↗</a></div></header><div class="canvas map-ui" tabindex="0" aria-label="${title}: прокрутка схемы" style="--native-width:${map.viewBox[0]}px;--native-height:${map.viewBox[1]}px">${graphSvg(map, `${entry.id}-${name}`)}</div><footer><span>${m.crossings} пересеч. · ${m.bends} изломов</span><a href="data/${entry.id}-${name}.json">JSON</a></footer></article>`;
-      })
+    <div class="controls"><button type="button" data-all-columns="all">Whole map in all columns</button><button type="button" data-all-columns="step">By step in all columns</button><a href="data/${entry.id}-source.json">Source without coordinates ↗</a></div>
+    <p class="player-status" aria-live="polite">Loading players…</p>
+    <div class="triptych">${Object.keys(names)
+      .map((name) => playerColumn(entry, name, variants[name]))
       .join("")}</div>
-    <div class="table-wrap"><table class="local-metrics"><caption>Полная карта; метрики не меняются при выборе сценария</caption><thead><tr><th>Вариант</th><th>Пересечения</th><th>Изломы</th><th>Площадь, ед.²</th><th>Время раскладки</th></tr></thead><tbody>${Object.keys(
+    <div class="table-wrap"><table class="local-metrics"><caption>Complete map; measurements do not change with the selected scenario or step</caption><thead><tr><th>Version</th>${metricHeads}</tr></thead><tbody>${Object.keys(
       names,
     )
       .map((name) => `<tr><th>${names[name]}</th>${cells(entry, name)}</tr>`)
@@ -50,22 +67,22 @@ function mapSection(entry, variants) {
   </section>`;
 }
 function document(report) {
-  return `<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>Ручная · dagre · ELK — сравнение раскладок</title><link rel="icon" href="data:,"><link rel="stylesheet" href="concept-map.css"><link rel="stylesheet" href="page.css"><script src="client.js" type="module"></script></head><body>
-  <header class="hero"><span class="eyebrow">CONCEPT MAP · 0.2.0 / ПУНКТ 4</span><h1>Одна карта.<br>Три раскладки.</h1><p class="lead">23 карты книги и кофейня: ручная геометрия рядом с dagre и ELK. Основной движок выбирает автор по этим схемам — в коде выбор не сделан.</p><div class="hero-links"><a href="#map-coffee">Начать с кофейни ↓</a><a href="#summary">Сравнить метрики ↓</a><a href="metrics.json">Данные замеров JSON ↗</a></div><p class="provenance">${esc(report.revision.slice(0, 12))}${report.dirty ? " · рабочая копия" : ""} · ${esc(report.generatedAt)} · dagre ${esc(report.versions.dagre)} / ELK ${esc(report.versions.elk)}</p></header>
-  <main><aside class="note">Карта 2.1 показана без стрелки к рамке <code>timeout_outer</code> во всех трёх вариантах. Ручная кофейня — новый независимый эталон. Полосы, размеры подписей и маршруты соответствуют текущим адаптерам; исправления качества здесь не внесены.</aside>
-  <nav class="map-nav" aria-label="Карты">${report.maps.map((m) => `<a href="#map-${m.id}">${m.id === "coffee" ? "Кофейня" : m.id}</a>`).join("")}</nav>
-  <section id="method"><h2>Как читать сравнение</h2><div class="method-grid"><p><b>Одинаковый вход.</b> Автоматические версии получены только из исходных карт без viewBox, координат, путей и точек подписей. Ручная геометрия сохранена отдельно. Все схемы используют один шрифт DejaVu.</p><p><b>Масштаб.</b> По умолчанию каждая схема целиком вписана в одинаковое окно. Для чтения деталей нажмите 1:1 или откройте SVG. Вписанные схемы не имеют общего масштаба; сравнивайте площадь по числам.</p><p><b>Пересечения и изломы.</b> Считаются точки поперечного пересечения разных рёбер, по паре рёбер; стыки, касания, наложения и самопересечения исключены. Излом — смена направления полилинии, включая разворот. Перекрытия узлов и подписей оцените визуально.</p><p><b>Площадь и время.</b> Площадь — ширина × высота viewBox с полями. Время — медиана 5 полных layout() после одного прогрева для каждой карты и движка. Импорт движка, SVG и запись файлов исключены. Ручное время неизвестно, а не равно нулю.</p></div>
-  <details><summary>Среда, бандлы и ограничения</summary><p>${esc(report.environment.node)} · ${esc(report.environment.platform)} ${esc(report.environment.arch)} · ${esc(report.environment.cpu ?? "")}. Все прогоны последовательны; порядок движков чередуется по картам. Полные выборки времени и хеш lockfile доступны в JSON.</p><p>Бандл: самостоятельный браузерный ESM с layout(), адаптером, движком и Zod, minify + gzip level 9, без external-зависимостей. Не включает CSS, шрифты, карту и плеер. Это стоимость выполнения раскладки в браузере, не размер этой страницы: здесь показаны готовые SVG, движки не загружаются.</p><p>dagre: ${num(report.bundles.dagre.gzip / 1024)} KiB gzip (${num(report.bundles.dagre.raw / 1024)} KiB raw). ELK: ${num(report.bundles.elk.gzip / 1024)} KiB gzip (${num(report.bundles.elk.raw / 1024)} KiB raw). Размер одинаков для всех карт; прочерк у ручной версии означает «не применяется».</p><p>ELK использует нативные полосы. dagre размещает группы по полосам после раскладки и перестраивает межполосные рёбра. Рамки исходных карт строятся по showWith — это триггеры видимости, не полное описание вложенности. Отсюда возможны отличия от ручных рамок (ADR 0014/0016). Нет суммарного рейтинга и автоматического выбора победителя.</p></details></section>
-  <section id="summary"><h2>Все метрики</h2><div class="table-wrap"><table><caption>24 карты × 3 варианта. KiB = 1024 байта.</caption><thead><tr><th>Карта</th><th>Вариант</th><th>Пересечения</th><th>Изломы</th><th>Площадь, ед.²</th><th>Медиана layout()</th><th>Бандл + движок, gzip</th></tr></thead><tbody>${report.maps
+  return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>Hand layout · dagre · ELK — compare and play</title><link rel="icon" href="data:,"><link rel="stylesheet" href="concept-map.css"><link rel="stylesheet" href="page.css"><script src="client.js" type="module"></script></head><body>
+  <header class="hero"><span class="eyebrow">CONCEPT MAP · LAYOUT COMPARISON</span><h1>One map.<br>Three ways to place it.</h1><p class="lead">Play 23 book maps and a coffee-shop example using hand-drawn, dagre and ELK layouts. Choose a scenario in each column. Whole map plays its token animation; By step lets you inspect each step. The author has not chosen a default engine.</p><div class="hero-links"><a href="#map-coffee">Start with the coffee shop ↓</a><a href="#summary">Compare measurements ↓</a><a href="metrics.json">Measurements as JSON ↗</a></div><p class="provenance">${report.revision.slice(0, 12)}${report.dirty ? " · working copy" : ""} · ${esc(report.generatedAt)} · dagre ${report.versions.dagre} / ELK ${report.versions.elk}</p></header>
+  <main><aside class="note">Map 2.1 omits the arrow to a frame, <code>timeout_outer</code>, in all three versions. The coffee shop has an independent hand layout and uses <code>direction: right</code>. The other sources use the default downward direction.</aside>
+  <nav class="map-nav" aria-label="Maps">${report.maps.map((m) => `<a href="#map-${m.id}">${m.id === "coffee" ? "Coffee shop" : m.id}</a>`).join("")}</nav>
+  <section id="method"><h2>How to compare</h2><div class="method-grid"><p><b>Same source.</b> Both engines receive the same map without coordinates, paths or label positions. The hand layout is kept separately. Each column runs the same MapPlayer and uses the same DejaVu fonts.</p><p><b>Scale and playback.</b> Each diagram fits its own viewBox into the same window; these previews do not share a physical scale. Use 1:1 for detail. Whole map starts the scenario's flow, if it has one. Replay restarts it. Reduced-motion preferences are respected.</p><p><b>Crossings and bends.</b> Count transverse crossings between different edges, excluding endpoints, touching and overlapping segments. Bends count changes of direction. Area is viewBox width × height, including padding.</p><p><b>Label overlaps.</b> Labels / nodes counts edge-label rectangles intersecting node boxes. Labels / labels counts overlapping pairs of edge labels. Boundary contact is excluded. Counts use the same font metrics and baseline as layout at native size; browser fitting and scenario visibility can change the visible result. Node titles inside their own boxes are not counted.</p><p><b>Timing.</b> Median of five complete layout() calls after one warm-up for each map and engine. Import, rendering and file writes are excluded. Hand-drawing time is unknown, not zero. Full samples and overlap pairs are in the JSON.</p><p><b>Look beyond the numbers.</b> Frames derived from visibility triggers may differ from hand-drawn groups. The measurements do not rate meaning or reading order. There is no combined score or automatic winner.</p></div>
+  <details><summary>Environment and bundle sizes</summary><p>${esc(report.environment.node)} · ${esc(report.environment.platform)} ${esc(report.environment.arch)} · ${esc(report.environment.cpu ?? "")}. Runs are sequential; engine order alternates between maps.</p><p>The bundle includes layout(), its adapter, the engine and Zod, with no external dependencies. It is minified browser ESM compressed with gzip level 9. It excludes CSS, fonts, map data and MapPlayer. The page loads saved maps and MapPlayer; it does not load either layout engine.</p><p>dagre: ${num(report.bundles.dagre.gzip / 1024)} KiB gzip (${num(report.bundles.dagre.raw / 1024)} KiB raw). ELK: ${num(report.bundles.elk.gzip / 1024)} KiB gzip (${num(report.bundles.elk.raw / 1024)} KiB raw). Size is the same for every map; a dash means not applicable.</p></details></section>
+  <section id="summary"><h2>All measurements</h2><div class="table-wrap"><table><caption>24 maps × 3 versions. KiB = 1024 bytes.</caption><thead><tr><th>Map</th><th>Version</th>${metricHeads}<th>Bundle + engine, gzip</th></tr></thead><tbody>${report.maps
     .map((m) =>
       Object.keys(names)
         .map(
           (name) =>
-            `<tr><th><a href="#map-${m.id}">${m.id === "coffee" ? "Кофейня" : m.id}</a></th><td>${names[name]}</td>${cells(m, name, report.bundles)}</tr>`,
+            `<tr><th><a href="#map-${m.id}">${m.id === "coffee" ? "Coffee shop" : m.id}</a></th><td>${names[name]}</td>${cells(m, name, report.bundles)}</tr>`,
         )
         .join(""),
     )
     .join("")}</tbody></table></div></section>
-  ${report.maps.map((m) => m.html).join("\n")}</main><footer class="site-footer">Решение за автором. <a href="https://github.com/metronforge/concept-map">Исходный код и ADR ↗</a> · <a href="fonts/LICENSE.txt">Лицензия DejaVu</a></footer></body></html>`;
+  ${report.maps.map((m) => m.html).join("\n")}</main><footer class="site-footer">The author decides. <a href="https://github.com/metronforge/concept-map/pull/16">Review the changes ↗</a> · <a href="fonts/LICENSE.txt">DejaVu license</a></footer></body></html>`;
 }
 export const page = { mapSection, document };

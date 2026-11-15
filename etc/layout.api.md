@@ -42,7 +42,9 @@ export interface LayoutEdge {
     // (undocumented)
     id: string;
     // (undocumented)
-    label?: LabelSize;
+    label?: LabelSize & {
+        text?: string;
+    };
     // (undocumented)
     to: string;
 }
@@ -55,6 +57,8 @@ export interface LayoutEngine {
 
 // @public (undocumented)
 export interface LayoutGraph {
+    // (undocumented)
+    direction?: "down" | "right";
     // (undocumented)
     edges: readonly LayoutEdge[];
     // (undocumented)

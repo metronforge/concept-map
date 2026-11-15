@@ -44,11 +44,11 @@ test("2-1 exception changes exactly one edge and its step reference", () => {
     expect(edge).toEqual(map.edges[id]);
   expect(map.edges.timeout_outer.to).toBe("outer");
 });
-test("coffee hand geometry strips to the exact Russian source and both scenarios", () => {
+test("coffee hand geometry strips to the exact English source and both scenarios", () => {
   expect(stripGeometry(coffeeManual())).toEqual(coffeeSource);
   expect(coffeeSource.scenarios.map((s) => s.label)).toEqual([
-    "Обычный",
-    "Молоко закончилось",
+    "Normal",
+    "Out of milk",
   ]);
   expect(() => validateReferences(coffeeSource)).not.toThrow();
 });

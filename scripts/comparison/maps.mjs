@@ -49,7 +49,7 @@ export function bookMaps() {
       manual: comparisonCopy(map),
       note:
         id === "2-1"
-          ? "Во всех трёх версиях удалена только стрелка timeout_outer (timeout → рамка outer) и ссылка на неё в шаге. Поддержка концов-рёбер на рамках отложена по ADR 0016. Оригинал книги не изменён."
+          ? "All three versions omit only timeout_outer (timeout to the outer frame) and its step reference. Frame endpoints are not implemented yet. The original book fixture is unchanged."
           : "",
     }),
   );

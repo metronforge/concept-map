@@ -26,7 +26,15 @@ export function midpoint(points: LayoutPoint[]): LayoutPoint {
   }
   return [...points[0]];
 }
-export function crossLaneRoute(from: LayoutBox, to: LayoutBox): LayoutPoint[] {
+export function crossLaneRoute(
+  from: LayoutBox,
+  to: LayoutBox,
+  right = false,
+): LayoutPoint[] {
+  if (right) {
+    const swap = ([x, y, w, h]: LayoutBox): LayoutBox => [y, x, h, w];
+    return crossLaneRoute(swap(from), swap(to)).map(([x, y]) => [y, x]);
+  }
   const downward = from[1] < to[1];
   const a: LayoutPoint = [
     from[0] + from[2] / 2,

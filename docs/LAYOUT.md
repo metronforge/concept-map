@@ -66,9 +66,11 @@ The graph contains measured nodes, directed edges with optional measured labels,
 and lanes in declaration order. Results contain node/lane boxes and edge
 polylines; optional edge label positions are centres. Coordinates must be finite,
 boxes positive, IDs complete and exact, and nodes must fit their measured sizes
-and assigned lanes. Lanes are stacked top to bottom. Unassigned nodes follow them.
+and assigned lanes. Lanes follow the declared direction: top to bottom for `down`, left to right for
+`right`. Unassigned nodes follow them.
 
-Both adapters use downward layout. ELK uses native layered partitions and
+Both adapters accept the source map’s optional `direction: "down" | "right"`;
+omission means `down`. This sets the axis, not a required order for cyclic graphs. ELK uses native layered partitions and
 orthogonal routing. Dagre lays out the graph, stacks lane groups, translates
 within-lane routes and generates orthogonal cross-lane routes. Empty lanes reserve
 space via internal anchors. These are constraints, not claims about visual quality.

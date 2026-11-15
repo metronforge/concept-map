@@ -1,3 +1,4 @@
+import { labelOverlaps } from "./overlaps.mjs";
 const EPS = 1e-7;
 const sub = (a, b) => [a[0] - b[0], a[1] - b[1]];
 const cross = (a, b) => a[0] * b[1] - a[1] * b[0];
@@ -99,6 +100,7 @@ export function geometryMetrics(map) {
     }
   }
   return {
+    ...labelOverlaps(map),
     crossings: crossingCount,
     bends,
     area: map.viewBox[0] * map.viewBox[1],

@@ -23,6 +23,7 @@ export function sourceMapSchema<
     format: z.literal(3),
     id: z.string().min(1),
     title: z.string(),
+    direction: z.enum(["down", "right"]).optional(),
     layers: record(z.object({ label: z.string() })),
     lanes: record(Lane).default({}),
     frames: record(Frame).default({}),

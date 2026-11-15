@@ -61,6 +61,7 @@ export function layoutGraph(
   measure: LabelMeasurer,
 ): LayoutGraph {
   return {
+    direction: map.direction ?? "down",
     nodes: Object.keys(map.nodes).map((id) => nodeSize(map, id, measure)),
     edges: Object.entries(map.edges).map(([id, e]) => ({
       id,
@@ -69,7 +70,10 @@ export function layoutGraph(
       ...(e.label === undefined
         ? {}
         : {
-            label: measured(measure, e.label, { fontSize: 10.5, mono: true }),
+            label: {
+              ...measured(measure, e.label, { fontSize: 10.5, mono: true }),
+              text: e.label,
+            },
           }),
     })),
     lanes: Object.entries(map.lanes).map(([id, l]) => ({

@@ -70,9 +70,10 @@ export function checkedResult(
 }
 
 function checkLanes(graph: LayoutGraph, result: LayoutResult): void {
+  const axis = graph.direction === "right" ? 0 : 1;
   graph.lanes.slice(1).forEach((l, i) => {
     const prev = result.lanes[graph.lanes[i].id];
-    if (result.lanes[l.id][1] < prev[1] + prev[3])
+    if (result.lanes[l.id][axis] < prev[axis] + prev[axis + 2])
       throw new Error(
         `layout.lanes.${l.id}: lanes must be ordered and disjoint`,
       );

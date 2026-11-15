@@ -89,13 +89,14 @@ for (const [name, engine] of [
       fc.boolean(),
       fc.boolean(),
       fc.string({ maxLength: 24 }),
+      fc.constantFrom("down", "right"),
     ],
     {
       numRuns: 40,
     },
   )(
     `I10 ${name}: deterministic, schema-valid, reference-valid layout`,
-    async (count, lanes, cycle, label) => {
+    async (count, lanes, cycle, label, direction) => {
       const nodes = Object.fromEntries(
         Array.from({ length: count }, (_, i) => [
           `n${i}`,
@@ -116,6 +117,7 @@ for (const [name, engine] of [
       const source = SourceMapSchema.parse({
         format: 3,
         id: "generated",
+        direction,
         title: "Generated",
         layers: { service: { label: "Service" } },
         nodes,

@@ -6,7 +6,7 @@ for (const section of document.querySelectorAll("[data-map]")) {
   const ready = Promise.all(
     variants.map(async (variant) => {
       const response = await fetch(
-        `data/${section.dataset.map}-${variant.dataset.variant}.json`,
+        `data/${section.dataset.map}-${variant.dataset.variant}.json?v=${document.documentElement.dataset.build}`,
       );
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return { variant, map: await response.json() };

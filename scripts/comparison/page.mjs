@@ -67,7 +67,8 @@ function mapSection(entry, variants) {
   </section>`;
 }
 function document(report) {
-  return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>Hand layout · dagre · ELK — compare and play</title><link rel="icon" href="data:,"><link rel="stylesheet" href="concept-map.css"><link rel="stylesheet" href="page.css"><script src="client.js" type="module"></script></head><body>
+  const version = `${report.revision.slice(0, 12)}-${Date.parse(report.generatedAt)}`;
+  const html = `<!doctype html><html lang="en" data-build="${version}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><title>Hand layout · dagre · ELK — compare and play</title><link rel="icon" href="data:,"><link rel="stylesheet" href="concept-map.css"><link rel="stylesheet" href="page.css"><script src="client.js" type="module"></script></head><body>
   <header class="hero"><span class="eyebrow">CONCEPT MAP · LAYOUT COMPARISON</span><h1>One map.<br>Three ways to place it.</h1><p class="lead">Play 23 book maps and a coffee-shop example using hand-drawn, dagre and ELK layouts. Choose a scenario in each column. Whole map plays its token animation; By step lets you inspect each step. The author has not chosen a default engine.</p><div class="hero-links"><a href="#map-coffee">Start with the coffee shop ↓</a><a href="#summary">Compare measurements ↓</a><a href="metrics.json">Measurements as JSON ↗</a></div><p class="provenance">${report.revision.slice(0, 12)}${report.dirty ? " · working copy" : ""} · ${esc(report.generatedAt)} · dagre ${report.versions.dagre} / ELK ${report.versions.elk}</p></header>
   <main><aside class="note">Map 2.1 omits the arrow to a frame, <code>timeout_outer</code>, in all three versions. The coffee shop has an independent hand layout and uses <code>direction: right</code>. The other sources use the default downward direction.</aside>
   <nav class="map-nav" aria-label="Maps">${report.maps.map((m) => `<a href="#map-${m.id}">${m.id === "coffee" ? "Coffee shop" : m.id}</a>`).join("")}</nav>
@@ -84,5 +85,9 @@ function document(report) {
     )
     .join("")}</tbody></table></div></section>
   ${report.maps.map((m) => m.html).join("\n")}</main><footer class="site-footer">The author decides. <a href="https://github.com/metronforge/concept-map/pull/16">Review the changes ↗</a> · <a href="fonts/LICENSE.txt">DejaVu license</a></footer></body></html>`;
+  return html.replace(
+    /(href|src)="((?:data|svg|fonts)\/[^"?]+|metrics\.json|client\.js|page\.css|concept-map\.css)"/g,
+    (_, attribute, path) => `${attribute}="${path}?v=${version}"`,
+  );
 }
 export const page = { mapSection, document };

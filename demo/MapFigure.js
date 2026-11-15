@@ -9,3 +9,5 @@ for (const root of document.querySelectorAll('[data-figure="map"]')) {
   for (const container of document.querySelectorAll("[data-map-concepts]"))
     connectConcepts(player, container);
 }
+
+export { createDomMeasurer } from "../dist/dom/measureLabel.js";

@@ -159,3 +159,8 @@ one pull request each.
 - No `any`, no default exports, no `enum`, no classes in the core (lint).
 - A source file over 200 lines or a function over 40 needs a reason in the
   pull request.
+
+Layout is exposed through separate subpaths (ADR 0014). Its pure core depends
+only on schema; optional dagre/ELK imports belong exclusively to adapters.
+I10 is tested with generated synthetic graphs for both engines. Semantic source
+references are validated before measurement or engine execution. See [LAYOUT](LAYOUT.md).

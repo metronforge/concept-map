@@ -4,21 +4,21 @@ Baseline: metronforge-site-dev `81af868`. No behavior fixes in this extraction.
 Exception policy: ADR 0009. Stage B items require stage A merged; ADR 0005
 remains open; ADR 0006 is accepted and implemented by format 3. The listed debts are not waived invariants.
 
-| Debt | Existing exception                                                                           | Guard / future removal                                                     |
-| ---- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| D1   | Resolved: map-owned layers, id and generic layer colours                                     | Format-3 schemas and normalized frozen goldens; ADR 0013                   |
-| D2   | pagehide writes current directly, retaining all mode                                         | I2 executable counterexample; B routes through reduce                      |
-| D3   | flowId/log/playback and startFlow decisions in facade                                        | Exact complexity ceiling; ADR 0005 open                                    |
-| D4   | Geometry uses SVGGraphicsElement; ports colocated; geometry is a factory                     | Core DOM-free check excludes shell; split in B                             |
-| D5   | Numeric positions and unbranded string IDs                                                   | API report freezes current shapes; B decision                              |
-| D6   | One mixed entry point                                                                        | exports guard allows only current entry/CSS/schema; B creates 0.2.0        |
-| D7   | Resolved schema only validates structure; semantic refs are checked by book authored adapter | I3/I6 counterexamples; do not claim safe arbitrary schema input            |
-| D8   | Resolved: rich leaves are inline source text, escaped by renderers                           | I7 escaping test and all-leaf rendering tests                              |
-| D9   | Literal SSR/browser DOM differs: marker identity and measured label fitting                  | I8 counterexample; semantic state comparisons and visual parity            |
-| D10  | Renderers derive initial state and resolve positions                                         | Existing API and golden outputs; no layer refactor on A                    |
-| D11  | Core values mutable by convention, nested arrays can alias input                             | Types/API unchanged; no freezing/cloning on A                              |
-| D12  | Facade constructs concrete SvgDom/PanelDom, beyond injected Animator/Geometry                | Current API freeze; no speculative ports on A                              |
-| D13  | Legacy functions/files exceed budgets                                                        | Exact measured exceptions in complexity-exceptions.json; no growth allowed |
+| Debt | Existing exception                                                                        | Guard / future removal                                                            |
+| ---- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| D1   | Resolved: map-owned layers, id and generic layer colours                                  | Format-3 schemas and normalized frozen goldens; ADR 0013                          |
+| D2   | pagehide writes current directly, retaining all mode                                      | I2 executable counterexample; B routes through reduce                             |
+| D3   | flowId/log/playback and startFlow decisions in facade                                     | Exact complexity ceiling; ADR 0005 open                                           |
+| D4   | Geometry uses SVGGraphicsElement; ports colocated; geometry is a factory                  | Core DOM-free check excludes shell; split in B                                    |
+| D5   | Numeric positions and unbranded string IDs                                                | API report freezes current shapes; B decision                                     |
+| D6   | One mixed entry point                                                                     | exports guard allows only current entry/CSS/schema; B creates 0.2.0               |
+| D7   | Source refs validated by layout(); direct resolved schema/player input remains structural | Source-map D7 closed at layout boundary; I3/I6 still apply to direct schema input |
+| D8   | Resolved: rich leaves are inline source text, escaped by renderers                        | I7 escaping test and all-leaf rendering tests                                     |
+| D9   | Literal SSR/browser DOM differs: marker identity and measured label fitting               | I8 counterexample; semantic state comparisons and visual parity                   |
+| D10  | Renderers derive initial state and resolve positions                                      | Existing API and golden outputs; no layer refactor on A                           |
+| D11  | Core values mutable by convention, nested arrays can alias input                          | Types/API unchanged; no freezing/cloning on A                                     |
+| D12  | Facade constructs concrete SvgDom/PanelDom, beyond injected Animator/Geometry             | Current API freeze; no speculative ports on A                                     |
+| D13  | Legacy functions/files exceed budgets                                                     | Exact measured exceptions in complexity-exceptions.json; no growth allowed        |
 
 ## Invariants
 

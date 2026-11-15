@@ -101,3 +101,11 @@ so write it as one.
 Use [.github/pull_request_template.md](.github/pull_request_template.md):
 what changes for users, why, evidence (commands and results), what was not
 done and why.
+
+## Working plans
+
+Do not commit working plans, execution ledgers or skill-workflow files under
+`docs/superpowers/` (or elsewhere in the repository). Describe the implementation
+plan in the pull request instead. Keep temporary planning notes outside the
+tracked repository. Architecture decisions and reproducible verification
+evidence belong in their established documentation locations.

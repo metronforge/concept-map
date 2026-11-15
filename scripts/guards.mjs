@@ -2,12 +2,20 @@ import { readFileSync, readdirSync } from "node:fs";
 import assert from "node:assert/strict";
 const pkg = JSON.parse(readFileSync("package.json", "utf8"));
 assert.deepEqual(pkg.dependencies ?? {}, {});
-assert.deepEqual(pkg.peerDependencies, { zod: "^4" });
+assert.deepEqual(pkg.peerDependencies, {
+  zod: "^4",
+  "@dagrejs/dagre": "^3.1.3",
+  elkjs: "^0.12.1",
+});
 assert.deepEqual(Object.keys(pkg.exports), [
   ".",
   "./css",
   "./resolved-map.schema.json",
   "./source-map.schema.json",
+  "./layout",
+  "./layout/dagre",
+  "./layout/elk",
+  "./layout/browser",
 ]);
 const ts = JSON.parse(readFileSync("tsconfig.json", "utf8")).compilerOptions;
 if (ts.sourceMap || ts.declarationMap)
@@ -29,3 +37,8 @@ assert.deepEqual(
   "CSS contract must list exactly the exposed custom properties",
 );
 console.log("Runtime dependencies, format-3 exports and CSS contract passed");
+
+assert.deepEqual(pkg.peerDependenciesMeta, {
+  "@dagrejs/dagre": { optional: true },
+  elkjs: { optional: true },
+});

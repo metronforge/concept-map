@@ -67,7 +67,7 @@ plain text with inline code, emphasis and strong marks; the renderers escape
 HTML. [Format and migration guide](docs/FORMAT.md).
 
 `SourceMapSchema` accepts maps without coordinates. `ResolvedMapSchema` requires
-geometry for playback. Automatic layout is a subsequent task; supply resolved
+geometry for playback. See [automatic layout](docs/LAYOUT.md) for source maps; supply resolved
 geometry for now. Parse maps to apply optional-field defaults. Layer references
 are checked, but other cross-references and URL policy remain the host adapter's
 responsibility.

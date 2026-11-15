@@ -1,4 +1,10 @@
-# Rules for agents (Codex, Claude) in this repository
+# Rules for coding agents in this repository
+
+This file is the single source of instructions for every coding agent:
+Codex, Claude Code, Cursor, GitHub Copilot and others read `AGENTS.md`.
+Do not add tool-specific copies. If one tool ever needs extra rules, its own
+file imports this one (for Claude Code: a `CLAUDE.md` whose first line is
+`@AGENTS.md`) and adds only the difference.
 
 Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and the ADRs in
 [docs/adr/](docs/adr/) before changing code. The current task is under

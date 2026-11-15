@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Concept map: CDN layout check</title>
+  <style>
+    body {
+      font: 16px system-ui;
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 12px;
+    }
+    concept-map {
+      display: block;
+      container-type: inline-size;
+    }
+  </style>
+  <h1>CDN layout check</h1>
+  <p id="result" role="status">Loading the module from esm.sh…</p>
+  <concept-map layout="dagre"></concept-map>
+  <script type="module">
+    const query = new URLSearchParams(location.search);
+    const revision = query.get("revision");
+    const result = document.querySelector("#result");
+    try {
+      if (!/^[a-f0-9]{40}$/.test(revision ?? ""))
+        throw new Error("Pass a full GitHub commit id as ?revision=...");
+      const base = `https://esm.sh/gh/metronforge/concept-map@${revision}`;
+      const css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = `${base}/css/concept-map.css`;
+      document.head.append(css);
+      await import(`${base}/src/element.ts`);
+      const element = document.querySelector("concept-map");
+      const engine = query.get("engine") ?? "dagre";
+      if (engine === "none") element.removeAttribute("layout");
+      else element.setAttribute("layout", engine);
+      const source = {
+        format: 3,
+        id: "queue",
+        title: "Queue",
+        direction: "right",
+        layers: { service: { label: "Service" } },
+        nodes: {
+          guest: { label: "Guest", layer: "service" },
+          staff: { label: "Staff", layer: "service" },
+        },
+        edges: { order: { from: "guest", to: "staff", label: "Order" } },
+        scenarios: [
+          {
+            id: "normal",
+            label: "Normal",
+            steps: [
+              {
+                id: "order",
+                title: "Order",
+                text: "Order coffee",
+                show: ["guest", "staff"],
+                edges: ["order"],
+              },
+            ],
+          },
+        ],
+      };
+      const resolved = {
+        ...source,
+        viewBox: [440, 160],
+        nodes: {
+          guest: { ...source.nodes.guest, box: [20, 50, 120, 40] },
+          staff: { ...source.nodes.staff, box: [300, 50, 120, 40] },
+        },
+        edges: {
+          order: {
+            from: "guest",
+            to: "staff",
+            path: "M140 70 H300",
+            label: { text: "Order", at: [210, 60] },
+          },
+        },
+      };
+      if (query.get("kind") === "callback")
+        element.layout = async () => resolved;
+      element.map = query.get("kind") === "resolved" ? resolved : source;
+      await element.ready;
+      result.textContent = `${query.get("kind") ?? "source"} map ready (${engine})`;
+      document.documentElement.dataset.result = "ready";
+    } catch (error) {
+      result.textContent = error.message;
+      document.documentElement.dataset.result = "error";
+    }
+  </script>
+</html>

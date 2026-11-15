@@ -2,6 +2,7 @@ import pages from "../../fixtures/pages.json" with { type: "json" };
 import type { Page } from "@playwright/test";
 import type { ResolvedMap } from "../../../src/schema";
 import type { PlayerState } from "../../../src/model/state";
+import { renderInline } from "../../../src/render/inline";
 import { derive } from "../../../src/model/frame";
 export const plain = (html: string) =>
   html
@@ -23,7 +24,7 @@ export function expectedSnapshot(map: ResolvedMap, state: PlayerState) {
       ? {
           count: p.count,
           title: p.title,
-          text: plain(p.text).trim(),
+          text: plain(renderInline(p.text)).trim(),
           log: [],
           defs: [],
           sources: [],
@@ -33,9 +34,9 @@ export function expectedSnapshot(map: ResolvedMap, state: PlayerState) {
       : {
           count: p.count,
           title: p.title,
-          text: plain(p.html).trim(),
+          text: plain(renderInline(p.text)).trim(),
           log: p.log,
-          ...(p.fix ? { fix: "Fix: " + plain(p.fix) } : {}),
+          ...(p.fix ? { fix: "Fix: " + plain(renderInline(p.fix)) } : {}),
           ...(p.code
             ? {
                 code: {
@@ -45,7 +46,10 @@ export function expectedSnapshot(map: ResolvedMap, state: PlayerState) {
                 },
               }
             : {}),
-          defs: p.defs.map((d) => ({ term: d.term, text: plain(d.text) })),
+          defs: p.defs.map((d) => ({
+            term: d.term,
+            text: plain(renderInline(d.text)),
+          })),
           sources: p.sources.map((s) => s.url),
           deeper: p.deeper.map((d) => d.href),
           canBack: p.canBack,

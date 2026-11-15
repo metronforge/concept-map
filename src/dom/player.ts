@@ -36,9 +36,9 @@ export class MapPlayer {
       strings?: Partial<UiStrings>;
     } = {},
   ) {
-    if (map.format !== 2)
+    if (map.format !== 3)
       throw new Error(
-        `Unsupported concept map format ${map.format}; expected 2`,
+        `Unsupported concept map format ${map.format}; expected 3`,
       );
     const view = root.ownerDocument.defaultView!;
     this.svg = new SvgDom(root.querySelector<SVGSVGElement>(".map svg")!);

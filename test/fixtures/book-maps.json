@@ -2,8 +2,7 @@
   {
     "id": "0-1",
     "map": {
-      "format": 2,
-      "spread": "0.1",
+      "format": 3,
       "title": "Concept map of a Playwright test run",
       "viewBox": [
         424,
@@ -588,7 +587,7 @@
             {
               "id": "you-start-the-runner",
               "title": "You start the runner",
-              "text": "<code>npx playwright test</code> is the entry point. It starts the runner, the Node process that manages the whole run.",
+              "text": "`npx playwright test` is the entry point. It starts the runner, the Node process that manages the whole run.",
               "show": [
                 "cli"
               ],
@@ -615,7 +614,7 @@
             {
               "id": "the-runner-loads-the-config",
               "title": "The runner loads the config",
-              "text": "The runner loads <code>playwright.config</code> and validates it. Command-line options override config values. webServer and global setup run before any test.",
+              "text": "The runner loads `playwright.config` and validates it. Command-line options override config values. webServer and global setup run before any test.",
               "show": [
                 "config"
               ],
@@ -652,7 +651,7 @@
             {
               "id": "it-finds-tests-and-groups-them",
               "title": "It finds tests and groups them",
-              "text": "The runner keeps the test files that match <code>testMatch</code>. Tests with the same project and worker fixtures, from one file, form a group.",
+              "text": "The runner keeps the test files that match `testMatch`. Tests with the same project and worker fixtures, from one file, form a group.",
               "show": [
                 "files"
               ],
@@ -689,7 +688,7 @@
             {
               "id": "the-dispatcher-starts-a-worker",
               "title": "The dispatcher starts a worker",
-              "text": "The dispatcher has one slot per worker (the <code>workers</code> option). It forks a worker process and gives it a group of tests.",
+              "text": "The dispatcher has one slot per worker (the `workers` option). It forks a worker process and gives it a group of tests.",
               "show": [
                 "dispatch",
                 "test"
@@ -729,7 +728,7 @@
             {
               "id": "your-test-asks-for-fixtures",
               "title": "Your test asks for fixtures",
-              "text": "The worker runs its tests one after another. Your test names what it needs in its first argument: <code>async ({ page })</code>. Each name is a fixture.",
+              "text": "The worker runs its tests one after another. Your test names what it needs in its first argument: `async ({ page })`. Each name is a fixture.",
               "show": [],
               "current": [
                 "test"
@@ -754,7 +753,7 @@
             {
               "id": "fixtures-start-dependencies-firs",
               "title": "Fixtures start, dependencies first",
-              "text": "Before the test body, Playwright collects automatic fixtures and the ones you named. Dependencies start first: <code>playwright</code> → <code>browser</code> → <code>context</code> → <code>page</code>. Fixtures you add with <code>test.extend</code> join the same graph.",
+              "text": "Before the test body, Playwright collects automatic fixtures and the ones you named. Dependencies start first: `playwright` → `browser` → `context` → `page`. Fixtures you add with `test.extend` join the same graph.",
               "show": [
                 "pw",
                 "browserFx",
@@ -811,7 +810,7 @@
             {
               "id": "browser-launches-a-browser-proce",
               "title": "browser launches a browser process",
-              "text": "The <code>browser</code> fixture launches a browser, a separate process. It has worker scope: one browser serves every test in this worker.",
+              "text": "The `browser` fixture launches a browser, a separate process. It has worker scope: one browser serves every test in this worker.",
               "show": [
                 "Browser"
               ],
@@ -845,7 +844,7 @@
             {
               "id": "each-test-gets-a-new-context-and",
               "title": "Each test gets a new context and page",
-              "text": "<code>context</code> and <code>page</code> have test scope, the default. Every test gets a new context in the shared browser, and a page in that context.",
+              "text": "`context` and `page` have test scope, the default. Every test gets a new context in the shared browser, and a page in that context.",
               "show": [
                 "Context",
                 "Page"
@@ -888,7 +887,7 @@
             {
               "id": "page-goto-travels-to-your-app",
               "title": "page.goto travels to your app",
-              "text": "<code>await page.goto('/')</code> becomes a message from client to server. Both live in the worker process. The server tells the browser to navigate, and the page loads your app.",
+              "text": "`await page.goto('/')` becomes a message from client to server. Both live in the worker process. The server tells the browser to navigate, and the page loads your app.",
               "show": [
                 "client",
                 "server",
@@ -932,7 +931,7 @@
             {
               "id": "after-the-test-teardown-runs-in",
               "title": "After the test, teardown runs in reverse",
-              "text": "Fixtures tear down in reverse order: <code>page</code>, then <code>context</code>. The browser stays for the next test in this worker and closes when the worker stops.",
+              "text": "Fixtures tear down in reverse order: `page`, then `context`. The browser stays for the next test in this worker and closes when the worker stops.",
               "show": [],
               "current": [
                 "pageFx",
@@ -1083,7 +1082,7 @@
             {
               "id": "you-start-the-runner",
               "title": "You start the runner",
-              "text": "<code>npx playwright test</code> is the entry point. It starts the runner, the Node process that manages the whole run.",
+              "text": "`npx playwright test` is the entry point. It starts the runner, the Node process that manages the whole run.",
               "show": [
                 "cli"
               ],
@@ -1110,7 +1109,7 @@
             {
               "id": "the-runner-loads-the-config",
               "title": "The runner loads the config",
-              "text": "The runner loads <code>playwright.config</code> and validates it. Command-line options override config values. webServer and global setup run before any test.",
+              "text": "The runner loads `playwright.config` and validates it. Command-line options override config values. webServer and global setup run before any test.",
               "show": [
                 "config"
               ],
@@ -1147,7 +1146,7 @@
             {
               "id": "it-finds-tests-and-groups-them",
               "title": "It finds tests and groups them",
-              "text": "The runner keeps the test files that match <code>testMatch</code>. Tests with the same project and worker fixtures, from one file, form a group.",
+              "text": "The runner keeps the test files that match `testMatch`. Tests with the same project and worker fixtures, from one file, form a group.",
               "show": [
                 "files"
               ],
@@ -1184,7 +1183,7 @@
             {
               "id": "the-dispatcher-starts-a-worker",
               "title": "The dispatcher starts a worker",
-              "text": "The dispatcher has one slot per worker (the <code>workers</code> option). It forks a worker process and gives it a group of tests.",
+              "text": "The dispatcher has one slot per worker (the `workers` option). It forks a worker process and gives it a group of tests.",
               "show": [
                 "dispatch",
                 "test"
@@ -1224,7 +1223,7 @@
             {
               "id": "your-test-asks-for-request",
               "title": "Your test asks for request",
-              "text": "The worker runs its tests one after another. This test names one fixture: <code>async ({ request })</code>.",
+              "text": "The worker runs its tests one after another. This test names one fixture: `async ({ request })`.",
               "show": [],
               "current": [
                 "test"
@@ -1249,7 +1248,7 @@
             {
               "id": "request-needs-no-browser",
               "title": "request needs no browser",
-              "text": "<code>request</code> depends only on <code>playwright</code>. The browser, context and page fixtures do not run, so no browser starts.",
+              "text": "`request` depends only on `playwright`. The browser, context and page fixtures do not run, so no browser starts.",
               "show": [
                 "pw",
                 "request",
@@ -1295,7 +1294,7 @@
             {
               "id": "node-sends-the-http-request",
               "title": "Node sends the HTTP request",
-              "text": "<code>request.post('/api/login')</code> goes from client to server like a page call. The server sends the HTTP request from Node, with http or https.",
+              "text": "`request.post('/api/login')` goes from client to server like a page call. The server sends the HTTP request from Node, with http or https.",
               "show": [
                 "client",
                 "server",
@@ -1347,7 +1346,7 @@
             {
               "id": "the-request-fixture-owns-its-coo",
               "title": "The request fixture owns its cookie jar",
-              "text": "The response cookie goes into this API context’s own jar. Optionally, <code>storageState()</code> copies its cookies into a new browser context once; the two jars then stay separate. This API test itself needs no browser.",
+              "text": "The response cookie goes into this API context’s own jar. Optionally, `storageState()` copies its cookies into a new browser context once; the two jars then stay separate. This API test itself needs no browser.",
               "show": [
                 "apiCookies"
               ],
@@ -1395,7 +1394,7 @@
             {
               "id": "after-the-test-the-api-context-i",
               "title": "After the test, the API context is disposed",
-              "text": "When the test ends, the <code>request</code> fixture disposes its API context, with its cookies.",
+              "text": "When the test ends, the `request` fixture disposes its API context, with its cookies.",
               "show": [],
               "current": [
                 "request"
@@ -1513,7 +1512,7 @@
             {
               "id": "you-start-the-runner",
               "title": "You start the runner",
-              "text": "<code>npx playwright test</code> is the entry point. It starts the runner, the Node process that manages the whole run.",
+              "text": "`npx playwright test` is the entry point. It starts the runner, the Node process that manages the whole run.",
               "show": [
                 "cli"
               ],
@@ -1540,7 +1539,7 @@
             {
               "id": "the-runner-loads-the-config",
               "title": "The runner loads the config",
-              "text": "The runner loads <code>playwright.config</code> and validates it. Command-line options override config values. webServer and global setup run before any test.",
+              "text": "The runner loads `playwright.config` and validates it. Command-line options override config values. webServer and global setup run before any test.",
               "show": [
                 "config"
               ],
@@ -1577,7 +1576,7 @@
             {
               "id": "it-finds-tests-and-groups-them",
               "title": "It finds tests and groups them",
-              "text": "The runner keeps the test files that match <code>testMatch</code>. Tests with the same project and worker fixtures, from one file, form a group.",
+              "text": "The runner keeps the test files that match `testMatch`. Tests with the same project and worker fixtures, from one file, form a group.",
               "show": [
                 "files"
               ],
@@ -1614,7 +1613,7 @@
             {
               "id": "the-dispatcher-starts-a-worker",
               "title": "The dispatcher starts a worker",
-              "text": "The dispatcher has one slot per worker (the <code>workers</code> option). It forks a worker process and gives it a group of tests.",
+              "text": "The dispatcher has one slot per worker (the `workers` option). It forks a worker process and gives it a group of tests.",
               "show": [
                 "dispatch",
                 "test"
@@ -1654,7 +1653,7 @@
             {
               "id": "your-test-asks-for-fixtures",
               "title": "Your test asks for fixtures",
-              "text": "The worker runs its tests one after another. Your test names what it needs in its first argument: <code>async ({ page })</code>. Each name is a fixture.",
+              "text": "The worker runs its tests one after another. Your test names what it needs in its first argument: `async ({ page })`. Each name is a fixture.",
               "show": [],
               "current": [
                 "test"
@@ -1679,7 +1678,7 @@
             {
               "id": "fixtures-start-dependencies-firs",
               "title": "Fixtures start, dependencies first",
-              "text": "Before the test body, Playwright collects automatic fixtures and the ones you named. Dependencies start first: <code>playwright</code> → <code>browser</code> → <code>context</code> → <code>page</code>. Fixtures you add with <code>test.extend</code> join the same graph.",
+              "text": "Before the test body, Playwright collects automatic fixtures and the ones you named. Dependencies start first: `playwright` → `browser` → `context` → `page`. Fixtures you add with `test.extend` join the same graph.",
               "show": [
                 "pw",
                 "browserFx",
@@ -1735,7 +1734,7 @@
             {
               "id": "browser-launches-a-browser-proce",
               "title": "browser launches a browser process",
-              "text": "The <code>browser</code> fixture launches a browser, a separate process. It has worker scope: one browser serves every test in this worker.",
+              "text": "The `browser` fixture launches a browser, a separate process. It has worker scope: one browser serves every test in this worker.",
               "show": [
                 "Browser"
               ],
@@ -1769,7 +1768,7 @@
             {
               "id": "each-test-gets-a-new-context-and",
               "title": "Each test gets a new context and page",
-              "text": "<code>context</code> and <code>page</code> have test scope, the default. Every test gets a new context in the shared browser, and a page in that context.",
+              "text": "`context` and `page` have test scope, the default. Every test gets a new context in the shared browser, and a page in that context.",
               "show": [
                 "Context",
                 "Page"
@@ -1812,7 +1811,7 @@
             {
               "id": "page-request-shares-the-context",
               "title": "page.request shares the context’s cookies",
-              "text": "<code>page.request</code> belongs to the page’s browser context. It sends that context’s cookies and stores response cookies there.",
+              "text": "`page.request` belongs to the page’s browser context. It sends that context’s cookies and stores response cookies there.",
               "show": [
                 "pageRequest",
                 "cookies",
@@ -1862,7 +1861,7 @@
             {
               "id": "node-sends-the-request-not-the-p",
               "title": "Node sends the request, not the page",
-              "text": "<code>page.request.post('/api/login')</code> leaves from Node with <code>http</code> or <code>https</code>. <code>page.route</code> does not see it.",
+              "text": "`page.request.post('/api/login')` leaves from Node with `http` or `https`. `page.route` does not see it.",
               "show": [
                 "app"
               ],
@@ -1901,7 +1900,7 @@
             {
               "id": "the-response-cookie-goes-into-th",
               "title": "The response cookie goes into the context’s jar",
-              "text": "The API response’s <code>Set-Cookie</code> goes into the browser context’s jar, shared with the page.",
+              "text": "The API response’s `Set-Cookie` goes into the browser context’s jar, shared with the page.",
               "show": [],
               "current": [
                 "cookies",
@@ -1938,7 +1937,7 @@
             {
               "id": "a-cookie-login-carries-over-to-t",
               "title": "A cookie login carries over to the page",
-              "text": "<code>page.goto('/account')</code> sends the same cookie. When the app keeps its login in a cookie, the API login also logs in the page.",
+              "text": "`page.goto('/account')` sends the same cookie. When the app keeps its login in a cookie, the API login also logs in the page.",
               "show": [],
               "current": [
                 "cookies",
@@ -1978,7 +1977,7 @@
             {
               "id": "after-the-test-teardown-runs-in",
               "title": "After the test, teardown runs in reverse",
-              "text": "Fixtures tear down in reverse order: <code>page</code>, then <code>context</code>. The browser stays for the next test in this worker and closes when the worker stops.",
+              "text": "Fixtures tear down in reverse order: `page`, then `context`. The browser stays for the next test in this worker and closes when the worker stops.",
               "show": [],
               "current": [
                 "pageFx",
@@ -2449,14 +2448,34 @@
           "href": "/4-runner/4-5-option-and-auto-fixtures/",
           "why": "Option and automatic fixtures, and their order."
         }
-      ]
+      ],
+      "id": "0.1",
+      "layers": {
+        "runner": {
+          "label": "Runner"
+        },
+        "browser": {
+          "label": "Browser"
+        },
+        "app": {
+          "label": "App"
+        },
+        "client": {
+          "label": "Client"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "page": {
+          "label": "Page"
+        }
+      }
     }
   },
   {
     "id": "1-1",
     "map": {
-      "format": 2,
-      "spread": "1.1",
+      "format": 3,
       "title": "Numbered Playwright calls and independent browser messages",
       "viewBox": [
         424,
@@ -4165,14 +4184,28 @@
           "href": "/1-messages/1-2-browser-context-page-frame/",
           "why": "The objects named by protocol messages."
         }
-      ]
+      ],
+      "id": "1.1",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "browser": {
+          "label": "Browser"
+        },
+        "protocol": {
+          "label": "Protocol"
+        }
+      }
     }
   },
   {
     "id": "1-2",
     "map": {
-      "format": 2,
-      "spread": "1.2",
+      "format": 3,
       "title": "Logical browser, context, page and frame relationships",
       "viewBox": [
         360,
@@ -6087,14 +6120,31 @@
           "href": "/4-runner/4-2-custom-fixtures/",
           "why": "Fixture lifetimes and teardown."
         }
-      ]
+      ],
+      "id": "1.2",
+      "layers": {
+        "server": {
+          "label": "Server"
+        },
+        "browser": {
+          "label": "Browser"
+        },
+        "page": {
+          "label": "Page"
+        },
+        "client": {
+          "label": "Client"
+        },
+        "fail": {
+          "label": "Fail"
+        }
+      }
     }
   },
   {
     "id": "1-3",
     "map": {
-      "format": 2,
-      "spread": "1.3",
+      "format": 3,
       "title": "One frame: shared DOM, separate JavaScript worlds",
       "viewBox": [
         360,
@@ -7450,14 +7500,28 @@
           "href": "/2-actions/2-1-two-loops/",
           "why": "How element actions retry."
         }
-      ]
+      ],
+      "id": "1.3",
+      "layers": {
+        "server": {
+          "label": "Server"
+        },
+        "page": {
+          "label": "Page"
+        },
+        "browser": {
+          "label": "Browser"
+        },
+        "fail": {
+          "label": "Fail"
+        }
+      }
     }
   },
   {
     "id": "2-1",
     "map": {
-      "format": 2,
-      "spread": "2.1",
+      "format": 3,
       "title": "Concept map of locator.click(): the outer and the inner loop",
       "viewBox": [
         420,
@@ -7915,7 +7979,7 @@
             {
               "id": "you-call-click-on-a-locator",
               "title": "You call click() on a locator",
-              "text": "A locator is a recipe: a frame and a selector string. When you call <code>click()</code>, the locator passes that string to the frame.",
+              "text": "A locator is a recipe: a frame and a selector string. When you call `click()`, the locator passes that string to the frame.",
               "show": [
                 "call"
               ],
@@ -8014,7 +8078,7 @@
             {
               "id": "the-inner-loop-checks-this-eleme",
               "title": "The inner loop checks this element",
-              "text": "With one match, the inner loop starts a try. It checks <em>stable</em> first, then <em>visible</em>, <em>enabled</em> and <em>not inert</em>. The log still says “visible, enabled and stable”.",
+              "text": "With one match, the inner loop starts a try. It checks *stable* first, then *visible*, *enabled* and *not inert*. The log still says “visible, enabled and stable”.",
               "show": [
                 "stable",
                 "visible",
@@ -8229,7 +8293,7 @@
             {
               "id": "one-timeout-for-both-loops",
               "title": "One timeout for both loops",
-              "text": "Both loops share the action's deadline. When it runs out, the last call-log line says which check failed. You do not need <code>waitForTimeout</code> before a click.",
+              "text": "Both loops share the action's deadline. When it runs out, the last call-log line says which check failed. You do not need `waitForTimeout` before a click.",
               "show": [
                 "timeout"
               ],
@@ -9887,14 +9951,31 @@
           "href": "/4-runner/4-6-timeouts/",
           "why": "Action, test and fixture timeouts."
         }
-      ]
+      ],
+      "id": "2.1",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "browser": {
+          "label": "Browser"
+        },
+        "fail": {
+          "label": "Fail"
+        },
+        "page": {
+          "label": "Page"
+        }
+      }
     }
   },
   {
     "id": "2-2",
     "map": {
-      "format": 2,
-      "spread": "2.2",
+      "format": 3,
       "title": "A locator stores the recipe, engines find the elements",
       "viewBox": [
         420,
@@ -11701,14 +11782,25 @@
           "href": "/2-actions/2-4-who-gets-the-click/",
           "why": "How Playwright checks the click point."
         }
-      ]
+      ],
+      "id": "2.2",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "page": {
+          "label": "Page"
+        },
+        "server": {
+          "label": "Server"
+        }
+      }
     }
   },
   {
     "id": "2-3",
     "map": {
-      "format": 2,
-      "spread": "2.3",
+      "format": 3,
       "title": "Concept map: stable is a count of equal boxes",
       "viewBox": [
         420,
@@ -14050,14 +14142,28 @@
           "href": "/2-actions/2-5-what-force-skips/",
           "why": "Which checks force skips."
         }
-      ]
+      ],
+      "id": "2.3",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "page": {
+          "label": "Page"
+        },
+        "browser": {
+          "label": "Browser"
+        }
+      }
     }
   },
   {
     "id": "2-4",
     "map": {
-      "format": 2,
-      "spread": "2.4",
+      "format": 3,
       "title": "Concept map: a click checks what is under its point",
       "viewBox": [
         420,
@@ -16403,14 +16509,28 @@
           "href": "/2-actions/2-5-what-force-skips/",
           "why": "Which safeguards force skips."
         }
-      ]
+      ],
+      "id": "2.4",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "page": {
+          "label": "Page"
+        },
+        "browser": {
+          "label": "Browser"
+        }
+      }
     }
   },
   {
     "id": "2-5",
     "map": {
-      "format": 2,
-      "spread": "2.5",
+      "format": 3,
       "title": "Concept map: force skips safeguards, but still needs a click point",
       "viewBox": [
         420,
@@ -18276,14 +18396,31 @@
           "href": "/2-actions/2-4-who-gets-the-click/",
           "why": "The hit-target safeguards that force skips."
         }
-      ]
+      ],
+      "id": "2.5",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "browser": {
+          "label": "Browser"
+        },
+        "app": {
+          "label": "App"
+        },
+        "fail": {
+          "label": "Fail"
+        }
+      }
     }
   },
   {
     "id": "2-6",
     "map": {
-      "format": 2,
-      "spread": "2.6",
+      "format": 3,
       "title": "Concept map: what a click waits for after input",
       "viewBox": [
         420,
@@ -20497,14 +20634,28 @@
           "href": "/4-runner/4-6-timeouts/",
           "why": "The clocks that bound waits."
         }
-      ]
+      ],
+      "id": "2.6",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "browser": {
+          "label": "Browser"
+        },
+        "app": {
+          "label": "App"
+        }
+      }
     }
   },
   {
     "id": "3-1",
     "map": {
-      "format": 2,
-      "spread": "3.1",
+      "format": 3,
       "title": "Page handlers before context handlers: fallback and terminal decisions",
       "viewBox": [
         368,
@@ -22376,14 +22527,25 @@
           "href": "/3-network/3-2-har-as-a-response-source/",
           "why": "HAR as a response source."
         }
-      ]
+      ],
+      "id": "3.1",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "browser": {
+          "label": "Browser"
+        },
+        "fail": {
+          "label": "Fail"
+        }
+      }
     }
   },
   {
     "id": "3-2",
     "map": {
-      "format": 2,
-      "spread": "3.2",
+      "format": 3,
       "title": "HAR matching, recorded responses, missing entries and recording",
       "viewBox": [
         396,
@@ -24475,14 +24637,22 @@
           "href": "/3-network/3-1-who-answers-a-request/",
           "why": "How the next matching handler gets its turn."
         }
-      ]
+      ],
+      "id": "3.2",
+      "layers": {
+        "server": {
+          "label": "Server"
+        },
+        "client": {
+          "label": "Client"
+        }
+      }
     }
   },
   {
     "id": "3-3",
     "map": {
-      "format": 2,
-      "spread": "3.3",
+      "format": 3,
       "title": "API context ownership and server response body lifetime",
       "viewBox": [
         396,
@@ -26588,14 +26758,28 @@
           "href": "/4-runner/4-2-custom-fixtures/",
           "why": "Built on demand, torn down in reverse."
         }
-      ]
+      ],
+      "id": "3.3",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "runner": {
+          "label": "Runner"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "fail": {
+          "label": "Fail"
+        }
+      }
     }
   },
   {
     "id": "4-1",
     "map": {
-      "format": 2,
-      "spread": "4.1",
+      "format": 3,
       "title": "Configuration, project success gates and reverse run cleanup",
       "viewBox": [
         420,
@@ -28091,14 +28275,25 @@
           "href": "/4-runner/4-3-workers-and-parallel/",
           "why": "How project test groups reach workers."
         }
-      ]
+      ],
+      "id": "4.1",
+      "layers": {
+        "runner": {
+          "label": "Runner"
+        },
+        "app": {
+          "label": "App"
+        },
+        "test": {
+          "label": "Test"
+        }
+      }
     }
   },
   {
     "id": "4-2",
     "map": {
-      "format": 2,
-      "spread": "4.2",
+      "format": 3,
       "title": "Fixture setup, use and teardown",
       "viewBox": [
         424,
@@ -30886,7 +31081,7 @@
             {
               "id": "worker-fixture-account-cannot-de",
               "title": "worker fixture \"account\" cannot depend on a test fixture \"page\" defined in <builtin>.",
-              "text": "worker fixture &quot;account&quot; cannot depend on a test fixture &quot;page&quot; defined in &lt;builtin&gt;.",
+              "text": "worker fixture \"account\" cannot depend on a test fixture \"page\" defined in <builtin>.",
               "show": [
                 "validation",
                 "requestScope"
@@ -31113,14 +31308,19 @@
           "href": "/4-runner/4-5-option-and-auto-fixtures/",
           "why": "Automatic fixture setup."
         }
-      ]
+      ],
+      "id": "4.2",
+      "layers": {
+        "runner": {
+          "label": "Runner"
+        }
+      }
     }
   },
   {
     "id": "4-3",
     "map": {
-      "format": 2,
-      "spread": "4.3",
+      "format": 3,
       "title": "Groups, whole-group shards and worker processes",
       "viewBox": [
         424,
@@ -33087,14 +33287,19 @@
           "href": "/4-runner/4-4-retries-and-flaky/",
           "why": "New attempts in new workers."
         }
-      ]
+      ],
+      "id": "4.3",
+      "layers": {
+        "runner": {
+          "label": "Runner"
+        }
+      }
     }
   },
   {
     "id": "4-4",
     "map": {
-      "format": 2,
-      "spread": "4.4",
+      "format": 3,
       "title": "Retries, serial suites and separate repeatEach tests",
       "viewBox": [
         424,
@@ -34567,14 +34772,28 @@
           "href": "/4-runner/4-3-workers-and-parallel/",
           "why": "Groups, dispatch and worker reuse."
         }
-      ]
+      ],
+      "id": "4.4",
+      "layers": {
+        "runner": {
+          "label": "Runner"
+        },
+        "app": {
+          "label": "App"
+        },
+        "fail": {
+          "label": "Fail"
+        },
+        "test": {
+          "label": "Test"
+        }
+      }
     }
   },
   {
     "id": "4-5",
     "map": {
-      "format": 2,
-      "spread": "4.5",
+      "format": 3,
       "title": "Options, automatic fixture roots and report visibility",
       "viewBox": [
         424,
@@ -34940,7 +35159,7 @@
         },
         "example-0-2": {
           "term": "Example state",
-          "text": "Function override · baseURL · async ({}, use) =&gt; { ·   await use(undefined); · } · Supplied value · undefined · test.use undefined would give B"
+          "text": "Function override · baseURL · async ({}, use) => { ·   await use(undefined); · } · Supplied value · undefined · test.use undefined would give B"
         },
         "example-0-3": {
           "term": "Example state",
@@ -34964,19 +35183,19 @@
         },
         "example-2-0": {
           "term": "Example state",
-          "text": "Runs: setup → use → teardown · title: 'Login' · same setup · Report steps · Fixture &quot;Login&quot; · ↳ seed · Both steps visible"
+          "text": "Runs: setup → use → teardown · title: 'Login' · same setup · Report steps · Fixture \"Login\" · ↳ seed · Both steps visible"
         },
         "example-2-1": {
           "term": "Example state",
-          "text": "Runs: setup → use → teardown · box: true · same setup · Report steps: grouped away · Fixture &quot;Login&quot; · hidden · ↳ seed · hidden · Tracing can still receive steps"
+          "text": "Runs: setup → use → teardown · box: true · same setup · Report steps: grouped away · Fixture \"Login\" · hidden · ↳ seed · hidden · Tracing can still receive steps"
         },
         "example-2-2": {
           "term": "Example state",
-          "text": "Runs: setup → use → teardown · box: 'self' · same setup · Report steps · Fixture &quot;Login&quot; · hidden · ↳ seed · visible · Only the wrapper is removed"
+          "text": "Runs: setup → use → teardown · box: 'self' · same setup · Report steps · Fixture \"Login\" · hidden · ↳ seed · visible · Only the wrapper is removed"
         },
         "example-2-3": {
           "term": "Example state",
-          "text": "Runs: setup → use → teardown · Override without options · same setup · Report steps · Fixture &quot;Login&quot; · visible · ↳ seed · visible · Title kept, box dropped"
+          "text": "Runs: setup → use → teardown · Override without options · same setup · Report steps · Fixture \"Login\" · visible · ↳ seed · visible · Title kept, box dropped"
         }
       },
       "code": {
@@ -36197,14 +36416,25 @@
           "href": "/4-runner/4-6-timeouts/",
           "why": "Fixture timing and timeout descriptions."
         }
-      ]
+      ],
+      "id": "4.5",
+      "layers": {
+        "runner": {
+          "label": "Runner"
+        },
+        "app": {
+          "label": "App"
+        },
+        "fail": {
+          "label": "Fail"
+        }
+      }
     }
   },
   {
     "id": "4-6",
     "map": {
-      "format": 2,
-      "spread": "4.6",
+      "format": 3,
       "title": "Test, fixture and action clocks spend separate remaining budgets",
       "viewBox": [
         424,
@@ -38098,14 +38328,25 @@
           "href": "/0-anatomy/0-1-anatomy-of-a-test/",
           "why": "Worker and server layer in the process picture."
         }
-      ]
+      ],
+      "id": "4.6",
+      "layers": {
+        "runner": {
+          "label": "Runner"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "app": {
+          "label": "App"
+        }
+      }
     }
   },
   {
     "id": "5-1",
     "map": {
-      "format": 2,
-      "spread": "5.1",
+      "format": 3,
       "title": "Each wait repeats a different piece of work",
       "viewBox": [
         396,
@@ -38468,11 +38709,11 @@
         },
         "example12": {
           "term": "Example state",
-          "text": "expect(async () =&gt; { … }).toPass() · toPass: repeat every line · await write() · const count = await readCount() · expect(count).toBe(2) fails · toPass tries again after 100 ms · count = 1 · failed assertion throws"
+          "text": "expect(async () => { … }).toPass() · toPass: repeat every line · await write() · const count = await readCount() · expect(count).toBe(2) fails · toPass tries again after 100 ms · count = 1 · failed assertion throws"
         },
         "example13": {
           "term": "Example state",
-          "text": "expect(async () =&gt; { … }).toPass() · toPass: repeat every line · await write() · runs again · const count = await readCount() · expect(count).toBe(2) passes ✓ · toPass passes ✓ · count = 2 · write() ran twice in this example"
+          "text": "expect(async () => { … }).toPass() · toPass: repeat every line · await write() · runs again · const count = await readCount() · expect(count).toBe(2) passes ✓ · toPass passes ✓ · count = 2 · write() ran twice in this example"
         },
         "example20": {
           "term": "Example state",
@@ -38488,15 +38729,15 @@
         },
         "example30": {
           "term": "Example state",
-          "text": "expect(async () =&gt; { … }).toPass() · toPass: repeat every line · const count = 1 · expect(count).toBe(2) fails · throws; next line does not run · toPass tries again after 100 ms · use expect.soft to keep going · after a failed assertion"
+          "text": "expect(async () => { … }).toPass() · toPass: repeat every line · const count = 1 · expect(count).toBe(2) fails · throws; next line does not run · toPass tries again after 100 ms · use expect.soft to keep going · after a failed assertion"
         },
         "example31": {
           "term": "Example state",
-          "text": "expect(async () =&gt; { … }).toPass() · toPass: run the block · const count = 1 · expect.soft(count).toBe(2) fails · next line runs · soft failure recorded; no throw · the block keeps running · the test has a recorded failure · ✗ failed test"
+          "text": "expect(async () => { … }).toPass() · toPass: run the block · const count = 1 · expect.soft(count).toBe(2) fails · next line runs · soft failure recorded; no throw · the block keeps running · the test has a recorded failure · ✗ failed test"
         },
         "example32": {
           "term": "Example state",
-          "text": "expect(async () =&gt; { … }).toPass() · toPass: run the block · const count = 1 · expect.soft(count).toBe(2) fails · next line runs · toPass passes ✓; no retry · the block finished without throwing · the soft failure stays recorded · ✗ failed test"
+          "text": "expect(async () => { … }).toPass() · toPass: run the block · const count = 1 · expect.soft(count).toBe(2) fails · next line runs · toPass passes ✓; no retry · the block finished without throwing · the soft failure stays recorded · ✗ failed test"
         }
       },
       "code": {
@@ -40382,14 +40623,31 @@
           "href": "/4-runner/4-6-timeouts/",
           "why": "Each clock spends its own remaining budget."
         }
-      ]
+      ],
+      "id": "5.1",
+      "layers": {
+        "runner": {
+          "label": "Runner"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "page": {
+          "label": "Page"
+        },
+        "client": {
+          "label": "Client"
+        },
+        "app": {
+          "label": "App"
+        }
+      }
     }
   },
   {
     "id": "5-2",
     "map": {
-      "format": 2,
-      "spread": "5.2",
+      "format": 3,
       "title": "Reporters, shard ZIPs and merge replay",
       "viewBox": [
         420,
@@ -42688,14 +42946,22 @@
           "href": "/4-runner/4-4-retries-and-flaky/",
           "why": "A retry is a new attempt in a new worker."
         }
-      ]
+      ],
+      "id": "5.2",
+      "layers": {
+        "app": {
+          "label": "App"
+        },
+        "runner": {
+          "label": "Runner"
+        }
+      }
     }
   },
   {
     "id": "6-1",
     "map": {
-      "format": 2,
-      "spread": "6.1",
+      "format": 3,
       "title": "What a trace records",
       "viewBox": [
         420,
@@ -44944,14 +45210,28 @@
           "href": "/5-expect/5-2-reporters-and-merge/",
           "why": "Saved runner events and reporter replay."
         }
-      ]
+      ],
+      "id": "6.1",
+      "layers": {
+        "client": {
+          "label": "Client"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "page": {
+          "label": "Page"
+        },
+        "runner": {
+          "label": "Runner"
+        }
+      }
     }
   },
   {
     "id": "6-2",
     "map": {
-      "format": 2,
-      "spread": "6.2",
+      "format": 3,
       "title": "Codegen records what you meant",
       "viewBox": [
         420,
@@ -46723,7 +47003,19 @@
           "href": "/6-tracing/6-1-what-a-trace-records/",
           "why": "Calls and selected snapshots."
         }
-      ]
+      ],
+      "id": "6.2",
+      "layers": {
+        "page": {
+          "label": "Page"
+        },
+        "server": {
+          "label": "Server"
+        },
+        "client": {
+          "label": "Client"
+        }
+      }
     }
   }
 ]

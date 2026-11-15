@@ -10,7 +10,9 @@ import {
   renderDeeper,
 } from "../../src/index";
 import type { PlayerState } from "../../src/index";
-test("all renderer outputs equal the frozen pre-extraction book oracle", () => {
+test("all 1050 book renders preserve the oracle apart from documented layer CSS names", () => {
+  // ADR 0006 changes only these colour references. Never regenerate the oracle.
+  expect(golden).toHaveLength(1050);
   const maps = Object.fromEntries(
     resolvedMaps().map(({ id, map }) => [id, map]),
   );
@@ -21,9 +23,16 @@ test("all renderer outputs equal the frozen pre-extraction book oracle", () => {
       createHash("sha256")
         .update(
           JSON.stringify([
-            renderSvg(map, { frame }),
+            renderSvg(map, { frame }).replace(
+              /style="--c:var\(--cmap-layer-([A-Za-z][A-Za-z0-9_-]*),var\(--cmap-layer\)\)"/g,
+              'style="--c:var(--$1)"',
+            ),
             renderPanel(map, frame),
-            renderConcepts(map),
+            renderConcepts(map).replace(
+              /style="--c:var\(--cmap-layer-([A-Za-z][A-Za-z0-9_-]*),var\(--cmap-layer\)\)"/g,
+              (_, layer) =>
+                `style="--c:var(--pw-${layer === "app" ? "test" : layer})"`,
+            ),
             renderDeeper(map),
           ]),
         )

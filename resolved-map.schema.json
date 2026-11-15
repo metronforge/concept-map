@@ -4,31 +4,35 @@
   "properties": {
     "format": {
       "type": "number",
-      "const": 2
+      "const": 3
     },
-    "spread": {
-      "type": "string"
+    "id": {
+      "type": "string",
+      "minLength": 1
     },
     "title": {
       "type": "string"
     },
-    "viewBox": {
-      "type": "array",
-      "prefixItems": [
-        {
-          "type": "number",
-          "exclusiveMinimum": 0
+    "layers": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          }
         },
-        {
-          "type": "number",
-          "exclusiveMinimum": 0
-        }
-      ],
-      "items": false,
-      "minItems": 2,
-      "maxItems": 2
+        "required": [
+          "label"
+        ]
+      }
     },
     "lanes": {
+      "default": {},
       "type": "object",
       "propertyNames": {
         "type": "string",
@@ -42,17 +46,7 @@
           },
           "layer": {
             "type": "string",
-            "enum": [
-              "runner",
-              "client",
-              "server",
-              "page",
-              "browser",
-              "app",
-              "fail",
-              "test",
-              "protocol"
-            ]
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
           },
           "y": {
             "type": "number"
@@ -79,6 +73,7 @@
       }
     },
     "frames": {
+      "default": {},
       "type": "object",
       "propertyNames": {
         "type": "string",
@@ -89,6 +84,14 @@
         "properties": {
           "label": {
             "type": "string"
+          },
+          "showWith": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            }
           },
           "box": {
             "type": "array",
@@ -111,19 +114,11 @@
             "items": false,
             "minItems": 4,
             "maxItems": 4
-          },
-          "showWith": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
-            }
           }
         },
         "required": [
           "label",
-          "box",
-          "showWith"
+          "box"
         ],
         "additionalProperties": false
       }
@@ -142,21 +137,23 @@
           },
           "layer": {
             "type": "string",
-            "enum": [
-              "runner",
-              "client",
-              "server",
-              "page",
-              "browser",
-              "app",
-              "fail",
-              "test",
-              "protocol"
-            ]
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
           },
           "lane": {
             "type": "string",
             "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "mono": {
+            "type": "boolean"
+          },
+          "fail": {
+            "type": "boolean"
+          },
+          "custom": {
+            "type": "boolean"
           },
           "box": {
             "type": "array",
@@ -179,30 +176,18 @@
             "items": false,
             "minItems": 4,
             "maxItems": 4
-          },
-          "tag": {
-            "type": "string"
-          },
-          "mono": {
-            "type": "boolean"
-          },
-          "fail": {
-            "type": "boolean"
-          },
-          "custom": {
-            "type": "boolean"
           }
         },
         "required": [
           "label",
           "layer",
-          "lane",
           "box"
         ],
         "additionalProperties": false
       }
     },
     "edges": {
+      "default": {},
       "type": "object",
       "propertyNames": {
         "type": "string",
@@ -218,26 +203,6 @@
           "to": {
             "type": "string",
             "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
-          },
-          "path": {
-            "type": "string"
-          },
-          "dashed": {
-            "type": "boolean"
-          },
-          "badge": {
-            "type": "array",
-            "prefixItems": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "number"
-              }
-            ],
-            "items": false,
-            "minItems": 2,
-            "maxItems": 2
           },
           "label": {
             "type": "object",
@@ -263,80 +228,33 @@
             "required": [
               "at",
               "text"
+            ]
+          },
+          "dashed": {
+            "type": "boolean"
+          },
+          "path": {
+            "type": "string"
+          },
+          "badge": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
             ],
-            "additionalProperties": false
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
           }
         },
         "required": [
           "from",
           "to",
           "path"
-        ],
-        "additionalProperties": false
-      }
-    },
-    "definitions": {
-      "type": "object",
-      "propertyNames": {
-        "type": "string",
-        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
-      },
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "term": {
-            "type": "string"
-          },
-          "text": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "term",
-          "text"
-        ],
-        "additionalProperties": false
-      }
-    },
-    "code": {
-      "type": "object",
-      "propertyNames": {
-        "type": "string",
-        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
-      },
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
-          },
-          "source": {
-            "type": "object",
-            "properties": {
-              "label": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string",
-                "format": "uri"
-              }
-            },
-            "required": [
-              "label",
-              "url"
-            ],
-            "additionalProperties": false
-          },
-          "lines": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "title",
-          "lines"
         ],
         "additionalProperties": false
       }
@@ -355,6 +273,7 @@
             "type": "string"
           },
           "display": {
+            "default": {},
             "type": "object",
             "properties": {
               "counterLabel": {
@@ -385,15 +304,7 @@
                   "cumulative"
                 ]
               }
-            },
-            "required": [
-              "counterLabel",
-              "edges",
-              "edgeBadges",
-              "nodeBadges",
-              "log"
-            ],
-            "additionalProperties": false
+            }
           },
           "nodeLabels": {
             "type": "object",
@@ -414,8 +325,7 @@
               "text": {
                 "type": "string"
               }
-            },
-            "additionalProperties": false
+            }
           },
           "steps": {
             "minItems": 1,
@@ -434,6 +344,7 @@
                   "type": "string"
                 },
                 "show": {
+                  "default": [],
                   "type": "array",
                   "items": {
                     "type": "string",
@@ -441,6 +352,7 @@
                   }
                 },
                 "current": {
+                  "default": [],
                   "type": "array",
                   "items": {
                     "type": "string",
@@ -448,6 +360,7 @@
                   }
                 },
                 "edges": {
+                  "default": [],
                   "type": "array",
                   "items": {
                     "type": "string",
@@ -455,6 +368,7 @@
                   }
                 },
                 "defs": {
+                  "default": [],
                   "type": "array",
                   "items": {
                     "type": "string",
@@ -475,6 +389,7 @@
                   "type": "string"
                 },
                 "sources": {
+                  "default": [],
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -490,11 +405,11 @@
                     "required": [
                       "label",
                       "url"
-                    ],
-                    "additionalProperties": false
+                    ]
                   }
                 },
                 "deeper": {
+                  "default": [],
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -509,23 +424,15 @@
                     "required": [
                       "title",
                       "href"
-                    ],
-                    "additionalProperties": false
+                    ]
                   }
                 }
               },
               "required": [
                 "id",
                 "title",
-                "text",
-                "show",
-                "current",
-                "edges",
-                "defs",
-                "sources",
-                "deeper"
-              ],
-              "additionalProperties": false
+                "text"
+              ]
             }
           },
           "flow": {
@@ -542,6 +449,7 @@
                   "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
                 },
                 "log": {
+                  "default": [],
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -560,10 +468,8 @@
               },
               "required": [
                 "node",
-                "step",
-                "log"
-              ],
-              "additionalProperties": false
+                "step"
+              ]
             }
           },
           "repeatBadges": {
@@ -606,10 +512,73 @@
         "required": [
           "id",
           "label",
-          "display",
           "steps"
-        ],
-        "additionalProperties": false
+        ]
+      }
+    },
+    "definitions": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "term",
+          "text"
+        ]
+      }
+    },
+    "code": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "label",
+              "url"
+            ]
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "title",
+          "lines"
+        ]
       }
     },
     "conceptScenario": {
@@ -617,6 +586,7 @@
       "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
     },
     "concepts": {
+      "default": [],
       "type": "array",
       "items": {
         "type": "object",
@@ -626,17 +596,7 @@
           },
           "layer": {
             "type": "string",
-            "enum": [
-              "runner",
-              "client",
-              "server",
-              "page",
-              "browser",
-              "app",
-              "fail",
-              "test",
-              "protocol"
-            ]
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
           },
           "items": {
             "type": "array",
@@ -651,6 +611,7 @@
                   "type": "string"
                 },
                 "nodes": {
+                  "default": [],
                   "type": "array",
                   "items": {
                     "type": "string",
@@ -671,8 +632,7 @@
                   },
                   "required": [
                     "step"
-                  ],
-                  "additionalProperties": false
+                  ]
                 },
                 "source": {
                   "type": "object",
@@ -688,18 +648,14 @@
                   "required": [
                     "label",
                     "url"
-                  ],
-                  "additionalProperties": false
+                  ]
                 }
               },
               "required": [
                 "definition",
                 "short",
-                "nodes",
-                "step",
-                "source"
-              ],
-              "additionalProperties": false
+                "step"
+              ]
             }
           }
         },
@@ -707,16 +663,17 @@
           "label",
           "layer",
           "items"
-        ],
-        "additionalProperties": false
+        ]
       }
     },
     "callouts": {
+      "default": {},
       "type": "object",
       "propertyNames": {
         "type": "string"
       },
       "additionalProperties": {
+        "default": [],
         "type": "array",
         "items": {
           "type": "string",
@@ -725,6 +682,7 @@
       }
     },
     "deeper": {
+      "default": [],
       "type": "array",
       "items": {
         "type": "object",
@@ -743,27 +701,34 @@
           "title",
           "href",
           "why"
-        ],
-        "additionalProperties": false
+        ]
       }
+    },
+    "viewBox": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
     }
   },
   "required": [
     "format",
-    "spread",
+    "id",
     "title",
-    "viewBox",
-    "lanes",
-    "frames",
+    "layers",
     "nodes",
-    "edges",
-    "definitions",
-    "code",
     "scenarios",
-    "conceptScenario",
-    "concepts",
-    "callouts",
-    "deeper"
+    "viewBox"
   ],
   "additionalProperties": false
 }

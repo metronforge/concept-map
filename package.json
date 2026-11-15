@@ -15,6 +15,7 @@
     "dist/",
     "src/",
     "css/",
+    "source-map.schema.json",
     "resolved-map.schema.json",
     "README.md",
     "LICENSE"
@@ -26,7 +27,8 @@
       "import": "./dist/index.js"
     },
     "./css": "./css/concept-map.css",
-    "./resolved-map.schema.json": "./resolved-map.schema.json"
+    "./resolved-map.schema.json": "./resolved-map.schema.json",
+    "./source-map.schema.json": "./source-map.schema.json"
   },
   "peerDependencies": {
     "zod": "^4"

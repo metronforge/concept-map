@@ -4,5 +4,10 @@
     "lib": ["ES2023"],
     "noEmit": true
   },
-  "include": ["src/schema.ts", "src/model/**/*.ts", "src/render/**/*.ts"]
+  "include": [
+    "src/schema.ts",
+    "src/schema/**/*.ts",
+    "src/model/**/*.ts",
+    "src/render/**/*.ts"
+  ]
 }

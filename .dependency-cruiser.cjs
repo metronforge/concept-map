@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "no-external-runtime-outside-schema",
       severity: "error",
-      from: { path: "^src/", pathNot: "^src/schema[.]ts$" },
+      from: { path: "^src/", pathNot: "^src/schema([.]ts$|/)" },
       to: {
         dependencyTypes: [
           "core",
@@ -18,17 +18,20 @@ module.exports = {
       },
     },
     {
-      name: "schema-no-local-imports",
+      name: "schema-no-other-module-imports",
       severity: "error",
-      from: { path: "^src/schema[.]ts$" },
-      to: { path: "^src/" },
+      from: { path: "^src/schema([.]ts$|/)" },
+      to: { path: "^src/", pathNot: "^src/schema([.]ts$|/)" },
     },
     { name: "no-cycles", severity: "error", from: {}, to: { circular: true } },
     {
       name: "schema-only-zod",
       severity: "error",
-      from: { path: "^src/schema[.]ts$" },
-      to: { pathNot: "node_modules/zod", dependencyTypesNot: ["type-only"] },
+      from: { path: "^src/schema([.]ts$|/)" },
+      to: {
+        pathNot: "node_modules/zod|^src/schema([.]ts$|/)",
+        dependencyTypesNot: ["type-only"],
+      },
     },
     {
       name: "model-no-shell-or-render",
@@ -46,7 +49,7 @@ module.exports = {
       name: "model-schema-types-only",
       severity: "error",
       from: { path: "^src/model/" },
-      to: { path: "^src/schema[.]ts$", dependencyTypesNot: ["type-only"] },
+      to: { path: "^src/schema([.]ts$|/)", dependencyTypesNot: ["type-only"] },
     },
   ],
   options: {

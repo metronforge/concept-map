@@ -1,0 +1,599 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "format": {
+      "type": "number",
+      "const": 3
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "layers": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label"
+        ]
+      }
+    },
+    "lanes": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "layer": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          }
+        },
+        "required": [
+          "label",
+          "layer"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "frames": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "showWith": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            }
+          }
+        },
+        "required": [
+          "label"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "nodes": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "layer": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "lane": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "mono": {
+            "type": "boolean"
+          },
+          "fail": {
+            "type": "boolean"
+          },
+          "custom": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "label",
+          "layer"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "to": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "dashed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "from",
+          "to"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "scenarios": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "display": {
+            "default": {},
+            "type": "object",
+            "properties": {
+              "counterLabel": {
+                "default": true,
+                "type": "boolean"
+              },
+              "edges": {
+                "default": "progressive",
+                "type": "string",
+                "enum": [
+                  "progressive",
+                  "all"
+                ]
+              },
+              "edgeBadges": {
+                "default": true,
+                "type": "boolean"
+              },
+              "nodeBadges": {
+                "default": false,
+                "type": "boolean"
+              },
+              "log": {
+                "default": "incremental",
+                "type": "string",
+                "enum": [
+                  "incremental",
+                  "cumulative"
+                ]
+              }
+            }
+          },
+          "nodeLabels": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "whole": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          },
+          "steps": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "show": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                  }
+                },
+                "current": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                  }
+                },
+                "edges": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                  }
+                },
+                "defs": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                  }
+                },
+                "code": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "log": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "fix": {
+                  "type": "string"
+                },
+                "sources": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "url"
+                    ]
+                  }
+                },
+                "deeper": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string"
+                      },
+                      "href": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "href"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "text"
+              ]
+            }
+          },
+          "flow": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "node": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "step": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "log": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "edge": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "reverse": {
+                  "type": "boolean"
+                },
+                "fail": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "node",
+                "step"
+              ]
+            }
+          },
+          "repeatBadges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "edge": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "step": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                }
+              },
+              "required": [
+                "edge",
+                "step"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "steps"
+        ]
+      }
+    },
+    "definitions": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "term",
+          "text"
+        ]
+      }
+    },
+    "code": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "label",
+              "url"
+            ]
+          },
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "title",
+          "lines"
+        ]
+      }
+    },
+    "conceptScenario": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+    },
+    "concepts": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "layer": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "definition": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "short": {
+                  "type": "string"
+                },
+                "nodes": {
+                  "default": [],
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                  }
+                },
+                "step": {
+                  "type": "object",
+                  "properties": {
+                    "scenario": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                    },
+                    "step": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                    }
+                  },
+                  "required": [
+                    "step"
+                  ]
+                },
+                "source": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "url"
+                  ]
+                }
+              },
+              "required": [
+                "definition",
+                "short",
+                "step"
+              ]
+            }
+          }
+        },
+        "required": [
+          "label",
+          "layer",
+          "items"
+        ]
+      }
+    },
+    "callouts": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "default": [],
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        }
+      }
+    },
+    "deeper": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "href": {
+            "type": "string"
+          },
+          "why": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "href",
+          "why"
+        ]
+      }
+    }
+  },
+  "required": [
+    "format",
+    "id",
+    "title",
+    "layers",
+    "nodes",
+    "scenarios"
+  ],
+  "additionalProperties": false
+}

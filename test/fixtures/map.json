@@ -1,6 +1,5 @@
 {
-  "format": 2,
-  "spread": "2.1",
+  "format": 3,
   "title": "Fixture map",
   "viewBox": [
     200,
@@ -206,5 +205,14 @@
       "href": "/more/",
       "why": "Learn more"
     }
-  ]
+  ],
+  "id": "2.1",
+  "layers": {
+    "client": {
+      "label": "Client"
+    },
+    "server": {
+      "label": "Server"
+    }
+  }
 }

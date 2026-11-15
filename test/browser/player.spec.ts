@@ -18,7 +18,7 @@ test("@player facade state events, version guard and destroy", async ({
     const map = JSON.parse(root.querySelector("[data-map-data]")!.textContent!);
     let versionError = "";
     try {
-      new MapPlayer(root, { ...map, format: 3 });
+      new MapPlayer(root, { ...map, format: 2 });
     } catch (error) {
       versionError = String(error);
     }
@@ -47,7 +47,7 @@ test("@player facade state events, version guard and destroy", async ({
     player.destroy();
     return { versionError, hidden, state, changes, highlighted };
   }, moduleUrl);
-  expect(result.versionError).toMatch(/format 3.*expected 2/);
+  expect(result.versionError).toMatch(/format 2.*expected 3/);
   expect(result.hidden).toEqual({ scenario: 0, step: 0, mode: "all" });
   expect(result.state).toEqual({ scenario: 0, step: 0, mode: "step" });
   expect(result.changes).toEqual([

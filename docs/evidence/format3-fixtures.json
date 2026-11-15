@@ -1,0 +1,163 @@
+[
+  {
+    "id": "0-1",
+    "inlineLeaves": 72,
+    "goldenStates": 64,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "1-1",
+    "inlineLeaves": 45,
+    "goldenStates": 42,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "1-2",
+    "inlineLeaves": 49,
+    "goldenStates": 42,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "1-3",
+    "inlineLeaves": 47,
+    "goldenStates": 32,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "2-1",
+    "inlineLeaves": 62,
+    "goldenStates": 52,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "2-2",
+    "inlineLeaves": 45,
+    "goldenStates": 54,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "2-3",
+    "inlineLeaves": 48,
+    "goldenStates": 50,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "2-4",
+    "inlineLeaves": 44,
+    "goldenStates": 44,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "2-5",
+    "inlineLeaves": 48,
+    "goldenStates": 42,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "2-6",
+    "inlineLeaves": 57,
+    "goldenStates": 44,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "3-1",
+    "inlineLeaves": 56,
+    "goldenStates": 42,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "3-2",
+    "inlineLeaves": 61,
+    "goldenStates": 42,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "3-3",
+    "inlineLeaves": 54,
+    "goldenStates": 40,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "4-1",
+    "inlineLeaves": 41,
+    "goldenStates": 40,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "4-2",
+    "inlineLeaves": 70,
+    "goldenStates": 94,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "4-3",
+    "inlineLeaves": 54,
+    "goldenStates": 40,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "4-4",
+    "inlineLeaves": 46,
+    "goldenStates": 32,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "4-5",
+    "inlineLeaves": 57,
+    "goldenStates": 40,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "4-6",
+    "inlineLeaves": 59,
+    "goldenStates": 46,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "5-1",
+    "inlineLeaves": 60,
+    "goldenStates": 42,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "5-2",
+    "inlineLeaves": 64,
+    "goldenStates": 48,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "6-1",
+    "inlineLeaves": 66,
+    "goldenStates": 42,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  },
+  {
+    "id": "6-2",
+    "inlineLeaves": 58,
+    "goldenStates": 36,
+    "unchangedGeometryAndMeaning": true,
+    "sourceSchema": "pass"
+  }
+]

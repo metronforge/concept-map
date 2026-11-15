@@ -1,33 +1,19 @@
 :where(.map-ui) {
   --cmap-accent: #285bb5;
   --cmap-accent-low: #e8eef8;
-  --cmap-app: #526a8a;
+  --cmap-layer: #526a8a;
+  --cmap-frame: #526a8a;
+  --cmap-success: #526a8a;
+  --cmap-fail: #526a8a;
   --cmap-bg: #ffffff;
   --cmap-border: #b4b8be;
-  --cmap-browser: #526a8a;
-  --cmap-client: #526a8a;
-  --cmap-fail: #526a8a;
   --cmap-fg: #202124;
   --cmap-font-mono: monospace;
   --cmap-font-sans: system-ui, sans-serif;
   --cmap-muted: #f2f3f5;
   --cmap-muted-fg: #666666;
   --cmap-node: #ffffff;
-  --cmap-page: #526a8a;
-  --cmap-protocol: #526a8a;
-  --cmap-runner: #526a8a;
-  --cmap-server: #526a8a;
-  --cmap-test: #526a8a;
   --cmap-text-accent: #285bb5;
-  --runner: var(--cmap-runner);
-  --client: var(--cmap-client);
-  --server: var(--cmap-server);
-  --page: var(--cmap-page);
-  --browser: var(--cmap-browser);
-  --app: var(--cmap-app);
-  --protocol: var(--cmap-protocol);
-  --fail: var(--cmap-fail);
-  --test: var(--cmap-test);
   --muted-fg: var(--cmap-muted-fg);
   min-width: 0;
 }
@@ -113,7 +99,7 @@
 }
 .map-ui .frame rect {
   fill: none;
-  stroke: color-mix(in srgb, var(--cmap-runner) 40%, var(--cmap-bg));
+  stroke: color-mix(in srgb, var(--cmap-frame) 40%, var(--cmap-bg));
   stroke-dasharray: 4 3;
 }
 .map-ui .frame text {
@@ -712,7 +698,7 @@
   color: var(--cmap-fail);
 }
 .map-ui .code .good {
-  color: var(--cmap-server);
+  color: var(--cmap-success);
 }
 .map-ui .prose {
   margin-top: 40px;

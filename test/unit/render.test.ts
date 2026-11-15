@@ -79,7 +79,7 @@ property.prop([unicode])(
     m.scenarios[0].steps[0].title = unsafe;
     m.code.call.title = unsafe;
     m.code.call.lines = [unsafe];
-    m.scenarios[0].steps[0].text = renderInline(escapeMarks(unsafe));
+    m.scenarios[0].steps[0].text = escapeMarks(unsafe);
     const panel = renderPanel(m, derive(m, initialState));
     expect(panel).toContain(escapeHtml(unsafe));
     expect(panel).not.toContain(unsafe);
@@ -166,11 +166,11 @@ property.prop([unicode])(
     m.concepts[0].label = unsafe;
     m.definitions.call.term = unsafe;
     m.concepts[0].items[0].source = { label: unsafe, url: unsafe };
-    m.concepts[0].items[0].short = renderInline(escapeMarks(unsafe));
+    m.concepts[0].items[0].short = escapeMarks(unsafe);
     m.deeper[0] = {
       title: unsafe,
       href: unsafe,
-      why: renderInline(escapeMarks(unsafe)),
+      why: escapeMarks(unsafe),
     };
     for (const html of [renderConcepts(m), renderDeeper(m)]) {
       expect(html).toContain(escapeHtml(unsafe));

@@ -15,6 +15,6 @@ test("all 23 exported book maps conform to the resolved structure", () => {
 });
 test("committed resolved JSON schema equals the generated schema", () => {
   expect(JSON.parse(readFileSync("resolved-map.schema.json", "utf8"))).toEqual(
-    z.toJSONSchema(ResolvedMapSchema, { target: "draft-2020-12" }),
+    z.toJSONSchema(ResolvedMapSchema, { target: "draft-2020-12", io: "input" }),
   );
 });

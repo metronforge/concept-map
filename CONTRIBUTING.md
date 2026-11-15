@@ -1,5 +1,8 @@
 # Contributing
 
+Pull request titles, commit messages and the changelog follow
+[AGENTS.md](AGENTS.md); the rules there apply to people as well as agents.
+
 Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and the decision records in
 [docs/adr/](docs/adr/) first. Known debt is listed in
 [docs/DEBT.md](docs/DEBT.md).

@@ -46,3 +46,22 @@ for (const direction of ["down", "right"] as const)
       ).toBeGreaterThanOrEqual(64);
     });
   }
+
+test("dagre keeps a self-transition label in its reserved gap", async () => {
+  const { readFileSync } = await import("node:fs");
+  const { layout, measureLabel } = await import("../../../src/layout/index");
+  const source = JSON.parse(readFileSync("examples/door/map.json", "utf8"));
+  const map = await layout(source, dagreEngine),
+    label = map.edges.blocked.label!;
+  const size = measureLabel(label.text, { fontSize: 10.5, mono: true });
+  for (const {
+    box: [x, y, w, h],
+  } of Object.values(map.nodes)) {
+    expect(
+      label.at[0] + size.width <= x ||
+        label.at[0] >= x + w ||
+        label.at[1] <= y ||
+        label.at[1] - size.height >= y + h,
+    ).toBe(true);
+  }
+});

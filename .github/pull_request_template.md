@@ -1,10 +1,10 @@
-<!-- Title: Conventional Commits, see AGENTS.md. It becomes the changelog line. -->
+<!-- Title: Conventional Commits in plain words (see AGENTS.md). It becomes the changelog line. -->
 
 ## What changes for users
 
 ## Why
 
-<!-- Task item, ADR, debt item. -->
+<!-- In plain words, self-contained: the problem and why this solves it. No ADR, task item or debt codes. -->
 
 ## Evidence
 

@@ -1,5 +1,6 @@
 import type {
   LayoutBox,
+  LayoutPoint,
   LayoutGraph,
   LayoutResult,
   LayoutRoute,
@@ -13,6 +14,7 @@ export function routeSelfEdges(
   result: LayoutResult,
 ): LayoutResult {
   const reserved: LayoutBox[] = [];
+  const edges = { ...result.edges };
   for (const edge of graph.edges) {
     if (edge.from !== edge.to) continue;
     const box = result.nodes[edge.from];
@@ -24,14 +26,27 @@ export function routeSelfEdges(
       ...[1, -1].map((side) => selfRoute(box, edge.label, side)),
       ...[-1, 1].map((side) => verticalRoute(box, edge.label, side)),
     ];
-    candidates.sort(
-      (a, b) =>
-        interference(a, edge.label, neighbors) -
-        interference(b, edge.label, neighbors),
+    const selected = candidates.find(
+      (route) => interference(route, edge.label, neighbors) === 0,
     );
-    result.edges[edge.id] = candidates[0];
-    reserved.push(routeBounds(candidates[0], edge.label));
+    if (!selected) return originalRoutes(graph, result);
+    edges[edge.id] = selected;
+    reserved.push(routeBounds(selected, edge.label));
   }
+  result.edges = edges;
+  return result;
+}
+
+/** A crowded graph keeps its engine routing, rather than receiving known collisions. */
+function originalRoutes(
+  graph: LayoutGraph,
+  result: LayoutResult,
+): LayoutResult {
+  for (const edge of graph.edges)
+    if (!result.edges[edge.id])
+      throw new Error(
+        `Self-edge “${edge.id}”: no clear compact route and no original engine route`,
+      );
   return result;
 }
 
@@ -111,4 +126,43 @@ function interference(
         Math.max(0, Math.min(y + h + 12, ny + nh) - Math.max(y - 12, ny)),
     0,
   );
+}
+
+/** Dagre 3 returns a folded path for self-edges; use its reserved label lane. */
+export function reservedSelfRoute(
+  box: LayoutBox,
+  center: LayoutPoint,
+  label: LabelSize | undefined,
+  right: boolean,
+): LayoutRoute {
+  const [x, y, w, h] = box;
+  if (right) {
+    const bottom = Math.max(
+      y + h + 24,
+      center[1] - (label?.height ?? 0) / 2 - 12,
+    );
+    return {
+      points: [
+        [x + w / 3, y + h],
+        [x + w / 3, bottom],
+        [x + (w * 2) / 3, bottom],
+        [x + (w * 2) / 3, y + h],
+      ],
+      ...(label
+        ? { label: [center[0], bottom + 12 + label.height / 2] as LayoutPoint }
+        : {}),
+    };
+  }
+  const side = Math.max(x + w + 24, center[0] - (label?.width ?? 0) / 2 - 12);
+  return {
+    points: [
+      [x + w, y + h / 3],
+      [side, y + h / 3],
+      [side, y + (h * 2) / 3],
+      [x + w, y + (h * 2) / 3],
+    ],
+    ...(label
+      ? { label: [side + 12 + label.width / 2, center[1]] as LayoutPoint }
+      : {}),
+  };
 }

@@ -96,3 +96,105 @@ test("two self-transitions keep separate compact loops and labels", () => {
         Math.min(...route.points.map(([, y]) => y)),
     ).toBeLessThanOrEqual(40);
 });
+
+for (const original of [true, false])
+  test(`a surrounded node preserves original routing when available ${original}`, () => {
+    const graph: LayoutGraph = {
+      nodes: [{ id: "a", width: 80, height: 40 }],
+      edges: [
+        { id: "loop", from: "a", to: "a", label: { width: 100, height: 14 } },
+      ],
+      lanes: [],
+    };
+    const result: LayoutResult = {
+      nodes: {
+        a: [0, 0, 80, 40],
+        left: [-104, 0, 80, 40],
+        right: [104, 0, 80, 40],
+        top: [0, -80, 80, 40],
+        bottom: [0, 80, 80, 40],
+      },
+      edges: original
+        ? {
+            loop: {
+              points: [
+                [80, 8],
+                [95, 8],
+                [95, -120],
+                [15, -120],
+                [15, 0],
+              ],
+              label: [40, -140],
+            },
+          }
+        : {},
+      lanes: {},
+    };
+    const before = structuredClone(result);
+    if (original) expect(routeSelfEdges(graph, result)).toEqual(before);
+    else
+      expect(() => routeSelfEdges(graph, result)).toThrow(
+        /no clear compact route/,
+      );
+  });
+
+test("five self-transitions retain distinct engine routes if compact sides run out", () => {
+  const graph: LayoutGraph = {
+    nodes: [{ id: "a", width: 80, height: 40 }],
+    edges: Array.from({ length: 5 }, (_, i) => ({
+      id: String(i),
+      from: "a",
+      to: "a",
+      label: { width: 100, height: 14 },
+    })),
+    lanes: [],
+  };
+  const result: LayoutResult = {
+    nodes: { a: [0, 0, 80, 40] },
+    edges: {},
+    lanes: {},
+  };
+  for (const [i, edge] of graph.edges.entries())
+    result.edges[edge.id] = {
+      points: [
+        [80, 5 + i * 5],
+        [150 + i * 130, 5 + i * 5],
+        [150 + i * 130, 35],
+        [80, 35],
+      ],
+      label: [180 + i * 130, 20],
+    };
+  const before = structuredClone(result);
+  expect(routeSelfEdges(graph, result)).toEqual(before);
+  expect(
+    new Set(Object.values(result.edges).map((route) => JSON.stringify(route)))
+      .size,
+  ).toBe(5);
+});
+
+for (const name of ["dagre", "elk"] as const)
+  test(`${name}: five self-transitions retain distinct paths and labels`, async () => {
+    const engine =
+      name === "dagre"
+        ? (await import("../../../src/layout/dagre")).dagreEngine
+        : (await import("../../../src/layout/elk")).elkEngine;
+    const graph: LayoutGraph = {
+      direction: "right",
+      nodes: [{ id: "a", width: 80, height: 40 }],
+      edges: Array.from({ length: 5 }, (_, i) => ({
+        id: String(i),
+        from: "a",
+        to: "a",
+        label: { text: `Retry ${i}`, width: 100, height: 14 },
+      })),
+      lanes: [],
+    };
+    const result = await engine.layout(graph);
+    const routes = Object.values(result.edges);
+    expect(
+      new Set(routes.map((route) => JSON.stringify(route.points))).size,
+    ).toBe(5);
+    expect(
+      new Set(routes.map((route) => JSON.stringify(route.label))).size,
+    ).toBe(5);
+  });

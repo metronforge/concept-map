@@ -20,7 +20,10 @@ as a `file:` URL: the component fetches its JSON. Internet access is needed for 
   It can still produce crowded routes; no coordinates are patched by the page.
 - Initial and final pseudostates use short ordinary rectangular nodes (Start and End). There are no circle, bullseye or diamond shapes, and the source format does not offer a custom node size.
 - The transition labels are text, not executable guards or actions. The scenario records a path; it does not simulate arbitrary input events.
-- The locked-door push is a real self-edge, traversed once in the authored flow. Step text explains that the state does not change.
+- The locked-door push is a real self-edge, traversed once in the authored flow.
+  In the current dagre output its route appears as a detached segment beside
+  Locked rather than a loop attached to the box. The step text and log explicitly
+  say that the state stays Locked; the page does not patch the generated path.
 
 - The page stacks the diagram and explanation and gives the SVG a minimum width.
   A narrow viewport scrolls the diagram instead of shrinking transition labels.

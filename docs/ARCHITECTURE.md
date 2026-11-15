@@ -18,11 +18,25 @@ Words of this document:
 
 - **source map** — format-3 meaning without geometry; see [FORMAT.md](FORMAT.md).
 - **layer** — a map-declared identifier and label, styled by the host.
-- **core** — `schema`, `model`, `render`: pure functions over immutable data.
-- **shell** — `dom`: everything that touches a browser.
+- **core** — `schema`, `model`, `render`, `layout`: functions over data, with no DOM.
+  Decisions are pure; layout receives an engine through its port.
+- **shell** — `dom` and `element`: browser reads, writes and lifecycle.
 - **port** — an interface the shell needs from the outside world
   (`Animator`, `Geometry`).
-- **adapter** — a class that implements a port with browser APIs.
+- **adapter** — an implementation of a port: a browser class or a layout engine adapter.
+- **figure** — the complete map markup: diagram, scenario and mode controls,
+  explanation, log and embedded map data, produced by `renderFigure`.
+- **mount** — attach a player to a host: hydrate matching figure markup or
+  render a new figure, then connect browser interaction (`./dom`).
+- **hydrate** — keep an existing figure whose embedded map data matches the
+  requested map and attach interaction to it.
+- **element** — the `<concept-map>` custom element, registered by `./element`;
+  it reads inputs and manages a player's browser lifecycle.
+- **layout engine** — an implementation of `LayoutEngine` that places a graph's
+  nodes and routes its edges, supplied to `layout()` through an adapter.
+- **layout level** — `source` (meaning without geometry) or `resolved` (meaning
+  with geometry). The schema module selects the level from geometry presence;
+  selection is not validation of the geometry.
 
 ## 2. Contexts
 
@@ -36,7 +50,8 @@ Words of this document:
  authored-schema, resolve-map
 ```
 
-- The library knows only the resolved map. It has no word for Playwright,
+- The library accepts source and resolved maps; playback uses resolved maps.
+  It has no word for Playwright,
   spreads, pages or Starlight.
 - **Shared kernel**: `sourceMapSchema(leaf)` (meaning) and `mapSchema(leaf)`
   (resolved geometry), structural schemas with three
@@ -50,28 +65,31 @@ Words of this document:
 ```text
 schema  ◄──  model  ◄──  render  ◄──  dom  ◄──  element
 (format)     (state,     (strings:    (ports,    (<concept-map>,
-             frame,      SVG, HTML,   adapters,  mount)
-             flow)       text form)   MapPlayer)
+             frame,      SVG, HTML,   adapters,  inputs)
+             flow)       text form)   MapPlayer,
+                                      mount)
    ▲
    └──  layout  ◄──  layout/dagre, layout/elk
         (source map → resolved map through the LayoutEngine port; ADR 0011)
 ```
 
-| Module         | Responsibility                                                                                                                | May import        |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| `schema`       | The format: Zod schemas, inferred types, branded ids                                                                          | `zod`             |
-| `model`        | Player state and transitions (`reduce`), what is shown for a state (`derive`), the flow plan (`planFlow`), label fitting math | `schema` (types)  |
-| `render`       | Frame → strings. No state, no decisions about what is shown                                                                   | `schema`, `model` |
-| `dom/ports`    | Interfaces only; no DOM types in signatures                                                                                   | `model` (types)   |
-| `dom/adapters` | `WebAnimator`, browser geometry, `SvgDom`, `PanelDom`                                                                         | everything above  |
-| `dom/player`   | `MapPlayer`: wiring only — event → action → `reduce` → `derive` → adapters                                                    | everything above  |
-| `element`      | `mount(element, map)` and the `<concept-map>` custom element (ADR 0010)                                                       | everything above  |
-| `layout`       | Source map → resolved map; the `LayoutEngine` port; no engine code                                                            | `schema`          |
-| `layout/*`     | One adapter per engine (dagre, ELK); the only modules that import an engine                                                   | `layout`          |
+| Module         | Responsibility                                                                                                                                | May import                                                  |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `schema`       | The format: Zod schemas, inferred types, branded ids, layout level                                                                            | `zod`                                                       |
+| `model`        | Player state and transitions (`reduce`), what is shown for a state (`derive`), the flow plan (`planFlow`), label fitting math, input priority | `schema` (types)                                            |
+| `render`       | Frame → strings; pure comparison of embedded data for hydration. No player state                                                              | `schema`, `model`                                           |
+| `dom/ports`    | Interfaces only; no DOM types in signatures                                                                                                   | `model` (types)                                             |
+| `dom/adapters` | `WebAnimator`, browser geometry, `SvgDom`, `PanelDom`                                                                                         | everything above                                            |
+| `dom/player`   | `MapPlayer`: wiring only — event → action → `reduce` → `derive` → adapters                                                                    | everything above                                            |
+| `dom/mount`    | Read existing figure data, ask the core whether to hydrate, write markup and attach `MapPlayer`                                               | `schema` (types), `model`, `render`, `dom`                  |
+| `element`      | `<concept-map>`: read inputs, ask the core to choose, fetch/parse, resolve and call `mount`; manage lifecycle                                 | `schema`, `model`, `dom`; selected layout entry dynamically |
+| `layout`       | Source map → resolved map; the `LayoutEngine` port; no engine code                                                                            | `schema`                                                    |
+| `layout/*`     | One adapter per engine (dagre, ELK); the only modules that import an engine                                                                   | `layout`                                                    |
 
 Rules, each enforced in CI (ADR 0003):
 
-1. Imports follow the arrows; no cycles (`dependency-cruiser`).
+1. Imports follow the arrows; no cycles (`dependency-cruiser`). `dom` cannot
+   import the `element` entry or its implementation, including type-only imports.
 2. The core compiles with `lib` without DOM (`tsconfig.core.json`).
 3. Entry point `.` exports only the core; `./dom` exports the shell and
    `mount`; `./element` registers the custom element. This resolves debt D6.
@@ -84,7 +102,9 @@ Rules, each enforced in CI (ADR 0003):
 
 - **Core: values and functions.** The resolved map, `PlayerState`, `Frame`
   and `FlowPlan` are immutable data. `reduce`, `derive`, `planFlow` and the
-  renderers are pure.
+  renderers are pure. Input priority lives in `model/input`; the figure reuse
+  decision lives in `render/hydration`. Browser code supplies data and performs
+  the selected action; discarded inputs are never parsed.
 - **Player state is the one aggregate.** Its commands are the `Action`
   union; `reduce` is the only place that changes it; its invariants are §6.
 - **Value objects are branded types** made only by the schema: `NodeId`,
@@ -157,7 +177,8 @@ one pull request each.
 - Size: six consumer scenarios have gzip limits (`size-limit`), including
   Zod when validation is used. Limits are the measured baseline plus 10%;
   see ADR 0015. The player budget now uses `./dom`; the component budget includes Zod.
-- No `any`, no default exports, no `enum`, no classes in the core (lint).
+- No `any`, no default exports, no `enum`, no classes in the core, including
+  `src/layout` and its adapters (lint).
 - A source file over 200 lines or a function over 40 needs a reason in the
   pull request.
 

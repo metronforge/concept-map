@@ -19,6 +19,7 @@ export default [
       "src/schema/**/*.ts",
       "src/model/**/*.ts",
       "src/render/**/*.ts",
+      "src/layout/**/*.ts",
     ],
     rules: {
       "no-restricted-syntax": [

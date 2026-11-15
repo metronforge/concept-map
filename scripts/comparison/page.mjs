@@ -25,7 +25,7 @@ export function graphSvg(map, markerId, standalone = false) {
     "\n@font-face{font-family:ComparisonSans;src:url(../fonts/DejaVuSans.ttf)}@font-face{font-family:ComparisonMono;src:url(../fonts/DejaVuSansMono.ttf)}.map-ui{--cmap-font-sans:ComparisonSans;--cmap-font-mono:ComparisonMono}";
   return svg
     .replace(
-      "<svg ",
+      /^<svg width="[^"]*" /,
       `<svg xmlns="http://www.w3.org/2000/svg" class="map-ui" width="${map.viewBox[0]}" height="${map.viewBox[1]}" `,
     )
     .replace("<defs>", `<style>${style}</style><defs>`);

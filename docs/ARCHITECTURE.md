@@ -1,8 +1,7 @@
 # Architecture of `@metronforge/concept-map`
 
-Status: accepted, with ADR 0005 and 0006 open. The author approved it by
-merging the pull request that set this status. It becomes
-`docs/ARCHITECTURE.md` of the library. Decisions and
+Status: accepted; ADR 0005 open; ADR 0006 and 0010–0012 accepted for 0.2.0
+when the author merges the pull request that adds them. Decisions and
 their rejected alternatives are in [adr/](adr/); this file states the result.
 
 The aim: every rule here is either checked by a tool in CI or written down
@@ -46,10 +45,13 @@ Words of this document:
 ## 3. Modules and the dependency rule
 
 ```text
-schema  ◄──  model  ◄──  render  ◄──  dom
-(format)     (state,     (strings:    (ports, adapters,
-             frame,      SVG, HTML,   facade MapPlayer)
-             flow)       text form)
+schema  ◄──  model  ◄──  render  ◄──  dom  ◄──  element
+(format)     (state,     (strings:    (ports,    (<concept-map>,
+             frame,      SVG, HTML,   adapters,  mount)
+             flow)       text form)   MapPlayer)
+   ▲
+   └──  layout  ◄──  layout/dagre, layout/elk
+        (source map → resolved map through the LayoutEngine port; ADR 0011)
 ```
 
 | Module         | Responsibility                                                                                                                | May import        |
@@ -60,6 +62,9 @@ schema  ◄──  model  ◄──  render  ◄──  dom
 | `dom/ports`    | Interfaces only; no DOM types in signatures                                                                                   | `model` (types)   |
 | `dom/adapters` | `WebAnimator`, browser geometry, `SvgDom`, `PanelDom`                                                                         | everything above  |
 | `dom/player`   | `MapPlayer`: wiring only — event → action → `reduce` → `derive` → adapters                                                    | everything above  |
+| `element`      | `mount(element, map)` and the `<concept-map>` custom element (ADR 0010)                                                       | everything above  |
+| `layout`       | Source map → resolved map; the `LayoutEngine` port; no engine code                                                            | `schema`          |
+| `layout/*`     | One adapter per engine (dagre, ELK); the only modules that import an engine                                                   | `layout`          |
 
 Rules, each enforced in CI (ADR 0003):
 
@@ -68,7 +73,9 @@ Rules, each enforced in CI (ADR 0003):
 3. Entry point `.` exports only the core; `./dom` exports the shell. This
    is the target: stage A ships the single mixed entry point `.` as listed
    debt D6, and stage B splits it.
-4. Runtime dependencies: `zod` (peer) and nothing else.
+4. Runtime dependencies: `zod` (peer). A layout engine is imported only by
+   its adapter under `layout/` and is an optional peer dependency (ADR 0011);
+   the player entry points never load one.
 
 ## 4. Where objects, where functions (ADR 0001)
 

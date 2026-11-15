@@ -1,6 +1,7 @@
 # ADR 0006: the format carries no book vocabulary
 
-Status: open — decide in stage C
+Status: accepted for 0.2.0 (format 3). Decided by the first outside user:
+a map about a coffee shop cannot be written with Playwright layer names.
 
 ## Context
 
@@ -19,8 +20,8 @@ Format 3:
 - The book adapter maps its layers and `--pw-*` colours; authored YAML does
   not change.
 
-## To decide
+## Decision
 
-Whether to do it before 1.0 only, and whether format 2 stays readable for
-one release. Until then D1 is listed debt and the README says the layer
-list is not stable.
+Format 3 as proposed, together with the source format of ADR 0011. Format 2
+is not read by 0.2.0: the book's adapter emits format 3 when the book
+upgrades.

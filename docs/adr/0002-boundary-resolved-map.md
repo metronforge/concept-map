@@ -1,6 +1,7 @@
 # ADR 0002: the boundary is the resolved map
 
-Status: accepted (approved by the author by merging the pull request that set this status)
+Status: accepted; amended by ADR 0011 (the library also accepts a source map
+without geometry). The resolved map stays the input of the player.
 
 ## Context
 

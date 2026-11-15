@@ -27,7 +27,11 @@ the released SHA in the same workflow.
 - [x] Read architecture, ADR 0006 and ADRs 0010–0012; confirm clean base e12e39c.
 - [x] Run baseline unit tests (48 passing).
 - [x] Add title check, release-please config/manifest and same-run publish chain.
-- [ ] Rewrite RELEASING.md, including settings and retry instructions.
-- [ ] Validate workflow syntax, version policy, full verify and browser tests.
-- [ ] Push feature branch and dry-run release-please against it; retain evidence.
-- [ ] Review the diff, commit evidence, push the branch and stop after item 1.
+- [x] Rewrite RELEASING.md, including settings and retry instructions.
+- [x] Validate workflow syntax, version policy, full verify and browser tests.
+- [x] Push feature branch and dry-run release-please against it; retain evidence.
+- [x] Review the diff, commit evidence, push the branch and stop after item 1.
+
+Validation details and the local WebKit environment limitation are recorded in
+[the evidence](../../evidence/release-automation.md). The author creates the PR;
+no release was published during implementation.

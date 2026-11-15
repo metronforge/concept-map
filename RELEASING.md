@@ -66,6 +66,11 @@ run; the full CI still gates publishing after it is merged.
 - **The tag/version check or a real CI defect fails:** investigate the exact
   released SHA. Fix through a new PR and let release-please propose the next
   version. Do not move an existing release tag to newer code.
+- **release-please fails after creating the GitHub Release:** inspect its log
+  and the release first. Rerunning it may find the release already exists and
+  skip publishing. If the original run has no successful release-please job
+  with outputs to reuse, fix the cause through a PR and release the next
+  version; do not delete or retag the existing release to force a retry.
 - **`npm publish` fails with 404 or 403:** check the trusted publisher's repository
   and workflow filename, and the publish job's `id-token: write` permission.
 - **A retry says the version already exists:** check npm and provenance first;
@@ -80,7 +85,7 @@ credential from `gh auth token` via a file descriptor, not a literal token in
 the command line; the example uses Bash or Zsh):
 
 ```sh
-npx release-please@17 manifest-pr \
+npx release-please@17 release-pr \
   --token <(gh auth token) \
   --repo-url=metronforge/concept-map \
   --target-branch=feat/release-automation \

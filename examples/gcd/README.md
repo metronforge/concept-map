@@ -22,8 +22,8 @@ as a `file:` URL: the component fetches its JSON. Internet access is needed for 
 - Values of a, b and r live in step text and log lines until a state panel exists.
 - The b = 0? test is a rectangular node until diamond shapes exist. Repeat badges name the same loop edge at three steps; their positions come from layout, not coordinates in the source.
 
-- The page stacks the diagram and explanation and gives the SVG a minimum width.
-  A narrow viewport scrolls the diagram instead of shrinking transition labels.
+- The page stacks the diagram and explanation and caps the SVG at its natural width.
+  A narrow viewport shrinks the diagram to fit without horizontal scrolling.
 - Automatic step badges can cover edge text in Whole map mode. Step by step
   and the written explanation remain useful when a label is obscured.
 

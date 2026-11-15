@@ -25,8 +25,8 @@ as a `file:` URL: the component fetches its JSON. Internet access is needed for 
   Locked rather than a loop attached to the box. The step text and log explicitly
   say that the state stays Locked; the page does not patch the generated path.
 
-- The page stacks the diagram and explanation and gives the SVG a minimum width.
-  A narrow viewport scrolls the diagram instead of shrinking transition labels.
+- The page stacks the diagram and explanation and caps the SVG at its natural width.
+  A narrow viewport shrinks the diagram to fit without horizontal scrolling.
 - Automatic step badges can cover edge text in Whole map mode. Step by step
   and the written explanation remain useful when a label is obscured.
 

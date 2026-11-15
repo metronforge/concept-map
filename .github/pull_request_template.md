@@ -12,5 +12,10 @@
 
 ## Not done
 
-<!-- Extra changelog entries (one Conventional line each) and
-BREAKING CHANGE: footer go here, at the very end. See AGENTS.md. -->
+## Changelog
+
+<!-- Exact entries, see AGENTS.md. Breaking: `!` plus a BREAKING CHANGE: paragraph. -->
+
+BEGIN_COMMIT_OVERRIDE
+type: summary
+END_COMMIT_OVERRIDE

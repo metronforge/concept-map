@@ -102,5 +102,8 @@
     "elkjs": {
       "optional": true
     }
-  }
+  },
+  "sideEffects": [
+    "./css/*.css"
+  ]
 }

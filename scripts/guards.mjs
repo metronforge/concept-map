@@ -1,3 +1,4 @@
+import sizeCases from "../.size-limit.js";
 import { readFileSync, readdirSync } from "node:fs";
 import assert from "node:assert/strict";
 const pkg = JSON.parse(readFileSync("package.json", "utf8"));
@@ -42,3 +43,13 @@ assert.deepEqual(pkg.peerDependenciesMeta, {
   "@dagrejs/dagre": { optional: true },
   elkjs: { optional: true },
 });
+
+assert.deepEqual(pkg.sideEffects, ["./css/*.css"]);
+for (const check of sizeCases) {
+  assert.ok(check.limit, "Every consumer scenario needs a size limit");
+  assert.deepEqual(
+    check.modifyRolldownConfig({ external: ["zod"] }).external,
+    [],
+    "Measure peers, including Zod, rather than externalizing them",
+  );
+}

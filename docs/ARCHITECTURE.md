@@ -154,8 +154,9 @@ one pull request each.
 
 ## 8. Budgets
 
-- Size: `.` and `./dom` each have a gzip limit (`size-limit`), set from the
-  first build plus 10%.
+- Size: five consumer scenarios have gzip limits (`size-limit`), including
+  Zod when validation is used. Limits are the measured baseline plus 10%;
+  see ADR 0015. No budget is claimed for the not-yet-shipped `./dom`.
 - No `any`, no default exports, no `enum`, no classes in the core (lint).
 - A source file over 200 lines or a function over 40 needs a reason in the
   pull request.

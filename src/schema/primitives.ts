@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 
 export const Id = z.string().regex(/^[A-Za-z][A-Za-z0-9_-]*$/);
 export const Point = z.tuple([z.number(), z.number()]);

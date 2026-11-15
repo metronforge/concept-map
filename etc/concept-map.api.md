@@ -4,7 +4,7 @@
 
 ```ts
 
-import { z } from 'zod';
+import * as z from 'zod';
 
 // @public (undocumented)
 export type Action = {

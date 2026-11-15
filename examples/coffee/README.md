@@ -25,8 +25,10 @@ as a `file:` URL: the component fetches its JSON. Internet access is needed for 
 - Automatic step badges can cover edge text in Whole map mode. Step by step
   and the written explanation remain useful when a label is obscured.
 
-The 0.2.0 package is not published yet, so both the module and stylesheet use
-main commit `b989ffa568b74e53e0b29711ca0e909cc564fab5` through esm.sh's GitHub support. After release,
-replace those two URLs with the pinned npm version (`/element` and `/css`).
+The module and stylesheet use the published npm version 0.2.0 through esm.sh:
+
+- Module: `https://esm.sh/@metronforge/concept-map@0.2.0/element`
+- Stylesheet: `https://esm.sh/@metronforge/concept-map@0.2.0/css`
+
 The page also supplies a readable width, a container for the player and host colours;
 the package CSS is loaded separately from the script.

@@ -13,6 +13,7 @@ import type {
   LayoutPoint,
 } from "./types.js";
 import { engineNodes, laneBoxes } from "./lanes.js";
+import { routeSelfEdges } from "./self-route.js";
 const elkOptions = {
   "elk.algorithm": "layered",
   "elk.edgeRouting": "ORTHOGONAL",
@@ -106,7 +107,7 @@ export const elkEngine: LayoutEngine = {
       result.lanes = laneBoxes(graph, nodes, result.nodes);
       for (const n of nodes)
         if (n.id.startsWith("$")) delete result.nodes[n.id];
-      return result;
+      return routeSelfEdges(graph, result);
     }
   },
 };

@@ -74,3 +74,13 @@ such implementation starts.
 The author accepts the packaging correction and the five budgets, and option 1:
 classic Zod stays the public schema kernel. Revisit only with a measurement
 showing the custom element (task item 5) is too heavy because of validation.
+
+## Integration budget
+
+The browser player scenario now imports `MapPlayer` and `connectConcepts` from
+`./dom`; its measured 7,711 bytes gzip and 8,483-byte limit are unchanged.
+A sixth scenario loads the complete `./element` entry with a resolved map. It
+includes registration, markup, mounting, validation and Zod, with no engine:
+36,954 bytes gzip, limited to 40,650 bytes (10% headroom, rounded up). The peer
+externalization override applies to this scenario too. Existing limits are not
+raised. CSS remains a separate host import, as in the player scenario.

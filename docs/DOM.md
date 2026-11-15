@@ -124,3 +124,11 @@ the book's integration suite.
   }
 ]
 -->
+
+## Complete figures and mounting
+
+`renderFigure` supplies this structure, including its own concepts and embedded
+JSON. Hosts no longer need to copy a template. `mount` and `<concept-map>` share
+it; see [integration](INTEGRATION.md). The figure's `data-map-id` records the map
+id. `[data-map-status]` uses `.map-status` for visually hidden announcements.
+Per-player SVG marker ids are intentionally unique after hydration.

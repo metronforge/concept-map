@@ -5,6 +5,7 @@
     "noEmit": true
   },
   "include": [
+    "src/index.ts",
     "src/schema.ts",
     "src/schema/**/*.ts",
     "src/model/**/*.ts",

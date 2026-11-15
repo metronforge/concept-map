@@ -1,4 +1,4 @@
-import { MapPlayer } from "../../dist/index.js";
+import { MapPlayer } from "../../dist/dom/index.js";
 const players = new Map();
 for (const section of document.querySelectorAll("[data-map]")) {
   const mounted = [];

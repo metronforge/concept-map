@@ -1,6 +1,3 @@
-export { MapPlayer, connectConcepts } from "./dom/player.js";
-export type { Animator, Playback, FlowHooks } from "./dom/animator.js";
-export type { Geometry } from "./dom/geometry.js";
 export { derive } from "./model/frame.js";
 export { reduce, initialState } from "./model/state.js";
 export { planFlow, reducedFlow } from "./model/flow.js";
@@ -21,3 +18,6 @@ export {
 } from "./schema.js";
 export { statusText } from "./render/panel.js";
 export { escapeHtml } from "./render/inline.js";
+
+export { renderFigure } from "./render/figure.js";
+export type { FigureOptions } from "./render/figure.js";

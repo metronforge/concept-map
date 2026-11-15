@@ -64,8 +64,8 @@ module.exports = {
     {
       name: "core-no-shell",
       severity: "error",
-      from: { path: "^src/(schema|model|render)" },
-      to: { path: "^src/dom/" },
+      from: { path: "^src/(index[.]ts$|schema|model|render)" },
+      to: { path: "^src/(dom/|element)" },
     },
     {
       name: "model-schema-types-only",

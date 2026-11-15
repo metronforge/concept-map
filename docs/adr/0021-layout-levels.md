@@ -1,6 +1,7 @@
 # ADR 0021: four levels of layout, from automatic to hand-placed
 
-Status: proposed
+Status: accepted (author, 2026-11-15). The open questions below are settled
+while building relative placement, each with its own record.
 
 ## Context
 

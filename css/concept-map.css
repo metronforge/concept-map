@@ -541,6 +541,10 @@
   fill: var(--cmap-fg);
 }
 .map-ui .etext {
+  paint-order: stroke;
+  stroke: var(--cmap-bg);
+  stroke-width: 4px;
+  stroke-linejoin: round;
   font: 500 9.5px var(--cmap-font-mono);
   fill: var(--cmap-muted-fg);
 }

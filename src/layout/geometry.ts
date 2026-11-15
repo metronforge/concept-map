@@ -44,3 +44,29 @@ export function crossLaneRoute(
   const y = (a[1] + b[1]) / 2;
   return [a, [a[0], y], [b[0], y], b];
 }
+
+/** Place a label beside the longest segment of a rerouted partition edge. */
+export function besideRoute(
+  points: LayoutPoint[],
+  width: number,
+  height: number,
+): LayoutPoint {
+  let a = points[0],
+    b = points[1],
+    longest = -1;
+  for (let i = 1; i < points.length; i++) {
+    const length = Math.hypot(
+      points[i][0] - points[i - 1][0],
+      points[i][1] - points[i - 1][1],
+    );
+    if (length > longest) {
+      a = points[i - 1];
+      b = points[i];
+      longest = length;
+    }
+  }
+  const nx = longest > 0 ? -(b[1] - a[1]) / longest : 1;
+  const ny = longest > 0 ? (b[0] - a[0]) / longest : 0;
+  const offset = (Math.abs(nx) * width) / 2 + (Math.abs(ny) * height) / 2 + 12;
+  return [(a[0] + b[0]) / 2 + nx * offset, (a[1] + b[1]) / 2 + ny * offset];
+}

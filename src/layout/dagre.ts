@@ -28,7 +28,8 @@ function dagreGraph(graph: LayoutGraph, nodes: LayoutNode[]) {
       {
         width: e.label?.width ?? 0,
         height: e.label?.height ?? 0,
-        labelpos: "c",
+        labelpos: "r",
+        labeloffset: 12,
       },
       `e:${e.id}`,
     );

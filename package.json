@@ -76,7 +76,7 @@
     "demo:build": "node scripts/build-demo.mjs",
     "test:browser": "playwright test",
     "test:mutation": "stryker run",
-    "pack:check": "npm pack --dry-run && publint && attw --pack --profile esm-only --exclude-entrypoints ./css",
+    "pack:check": "npm pack --dry-run && publint && attw --pack --profile esm-only --exclude-entrypoints ./css && node --test test/package/element-consumers.test.mjs",
     "verify": "npm run format:check && npm run lint && npm run typecheck && npm run dependencies:check && npm run build && npm run schema:check && npm run test && npm run api:check && npm run contracts:check && npm run size && npm run pack:check && npm run demo:build",
     "prepare": "git config core.hooksPath .githooks",
     "comparison:build": "npm run build && node scripts/comparison/build.mjs"

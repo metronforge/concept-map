@@ -84,3 +84,9 @@ includes registration, markup, mounting, validation and Zod, with no engine:
 36,954 bytes gzip, limited to 40,650 bytes (10% headroom, rounded up). The peer
 externalization override applies to this scenario too. Existing limits are not
 raised. CSS remains a separate host import, as in the player scenario.
+
+For lazy element layout (ADR 0024), the component scenario selects the
+`element` build entry. Size Limit follows its static chunk imports and excludes
+its dynamic imports. All dependencies are still bundled, including Zod and the
+optional engines; only deferred downloads are excluded from the ready-map
+scenario. The 40,650-byte limit is unchanged.

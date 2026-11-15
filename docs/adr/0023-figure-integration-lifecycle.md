@@ -19,7 +19,8 @@ Disconnect destroys playback and aborts fetch; reconnect starts fresh. Changing
 input ignores stale asynchronous results. A delayed inline script is supported.
 
 The element validates incoming maps with Zod. A resolved map loads no engine.
-A source map uses the host's `layout` callback; documentation uses dagre, the
+Initially, a source map used only the host's `layout` callback (ADR 0024
+adds explicit lazy engine selection); documentation uses dagre, the
 default chosen in ADR 0022. This keeps engine loading out of this task and makes
 the pre-resolved component's size independent of either engine. Merely importing
 `./layout` does not mutate global registration state.

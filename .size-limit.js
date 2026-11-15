@@ -3,6 +3,7 @@ const cases = [
   {
     name: "web component (pre-resolved map; with Zod)",
     path: "dist/element.js",
+    entry: ["element"],
     gzip: true,
     limit: "40650 B",
   },

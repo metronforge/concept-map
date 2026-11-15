@@ -9,8 +9,9 @@ import {
 
 /** A light-DOM player. Import the element entry point to register it. */
 export class ConceptMapElement extends HTMLElement {
-  static readonly observedAttributes = ["src"];
+  static readonly observedAttributes = ["src", "layout"];
   private assigned?: MapInput;
+  private inline?: unknown;
   private resolver?: MapLayout;
   private active?: MapPlayer;
   private request?: AbortController;
@@ -97,9 +98,15 @@ export class ConceptMapElement extends HTMLElement {
   private async load(signal: AbortSignal): Promise<MapPlayer | undefined> {
     try {
       if (signal.aborted) return;
-      const input = await readInput(this, this.assigned, signal);
+      const input = await readInput(this, this.assigned, signal, this.inline);
       if (input === undefined || signal.aborted) return;
-      const map = await resolveInput(input, this.resolver);
+      if (this.assigned === undefined && !this.hasAttribute("src"))
+        this.inline = input;
+      const map = await resolveInput(
+        input,
+        this.resolver,
+        this.getAttribute("layout"),
+      );
       if (signal.aborted || !this.isConnected) return;
       this.observer.disconnect();
       this.active = mount(this, map);

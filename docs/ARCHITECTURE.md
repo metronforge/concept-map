@@ -77,7 +77,8 @@ Rules, each enforced in CI (ADR 0003):
    `mount`; `./element` registers the custom element. This resolves debt D6.
 4. Runtime dependencies: `zod` (peer). A layout engine is imported only by
    its adapter under `layout/` and is an optional peer dependency (ADR 0011);
-   the player entry points never load one.
+   the core and DOM player entry points never load one. The element may
+   dynamically load the selected adapter for a source map (ADR 0024).
 
 ## 4. Where objects, where functions (ADR 0001)
 

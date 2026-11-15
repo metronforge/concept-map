@@ -23,12 +23,12 @@ automatic layout, engine choice, custom element, examples in three domains
 
 ## 0.3.0 — algorithms and state machines
 
-- **State panel** ([ADR 0017](adr/0017-state-panel.md)): variable values for
+- **State panel** ([ADR 0018](adr/0018-state-panel.md)): variable values for
   every flow hop, changes highlighted.
-- **Trace from execution** ([ADR 0018](adr/0018-trace-from-execution.md)):
+- **Trace from execution** ([ADR 0019](adr/0019-trace-from-execution.md)):
   run a real implementation with trace points and build scenarios from the
   record, so the animation cannot disagree with the code.
-- **Node shapes and nesting** ([ADR 0019](adr/0019-node-shapes-and-nesting.md)):
+- **Node shapes and nesting** ([ADR 0020](adr/0020-node-shapes-and-nesting.md)):
   initial / final / choice pseudostates; composite states laid out inside
   their parent.
 

@@ -1,4 +1,4 @@
-# ADR 0019: node shapes and nesting
+# ADR 0020: node shapes and nesting
 
 Status: proposed for 0.3.0
 

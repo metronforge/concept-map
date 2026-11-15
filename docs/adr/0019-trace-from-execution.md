@@ -1,4 +1,4 @@
-# ADR 0018: scenarios traced from a real execution
+# ADR 0019: scenarios traced from a real execution
 
 Status: proposed for 0.3.0
 
@@ -37,7 +37,7 @@ const scenario = rec.scenario({ id: "gcd-48-18", label: "gcd(48, 18)" });
   previous node to this one, named explicitly only when two edges connect
   the same pair.
 - `scenario()` returns a format-3 scenario: steps (one per hop or grouped by
-  marked boundaries), flow, log, state (ADR 0017), repeat badges from repeated
+  marked boundaries), flow, log, state (ADR 0018), repeat badges from repeated
   edges.
 - The result is checked against the map like any source map: an unknown node
   or a missing edge is an error naming the hop.

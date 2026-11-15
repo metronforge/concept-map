@@ -1,4 +1,4 @@
-# ADR 0017: a state panel for flow hops
+# ADR 0018: a state panel for flow hops
 
 Status: proposed for 0.3.0
 

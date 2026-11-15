@@ -139,14 +139,16 @@ an adapter except entry points and the element's dynamic import.
 
 ### 4. Invariants
 
-| #   | Invariant                                                                                       |
-| --- | ----------------------------------------------------------------------------------------------- |
-| I11 | Every stage is deterministic; equal input gives equal output (extends I10 to each stage)        |
-| I12 | After _place_: no two node boxes overlap, every node lies in its group                          |
-| I13 | Every `required` constraint holds in the result, or layout fails naming it                      |
-| I14 | _Label_ returns the cheapest candidate; a remaining hard overlap appears in the report          |
-| I15 | The report is a pure function of the resolved map; tests and diagnostics call the same function |
-| I16 | `refine` never changes a node box or the view box                                               |
+| #   | Invariant                                                                                                                                                |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| I11 | Every stage is deterministic; equal input gives equal output (extends I10 to each stage)                                                                 |
+| I12 | After _place_: no two node boxes overlap, every node lies in its group                                                                                   |
+| I13 | Every `required` constraint holds in the result, or layout fails naming it                                                                               |
+| I14 | _Label_ returns the cheapest candidate; a remaining hard overlap appears in the report                                                                   |
+| I15 | The report is a pure function of the source map and the resolved map and reads nothing a proposer produced; tests and diagnostics call the same function |
+| I17 | Every status of relative placement comes with a witness that `check` accepts, for all generated systems                                                  |
+| I18 | Scaling a map leaves its report unchanged                                                                                                                |
+| I16 | `refine` never changes a node box or the view box                                                                                                        |
 
 ### 5. Engines and dependencies
 
@@ -181,6 +183,68 @@ sizes are measured before solving, so they are constants.
 This needs no general linear-programming solver and no dependency. If maps
 ever need arbitrary linear constraints with priorities, a solver can stand
 behind the same port.
+
+### 7. Propose and check
+
+The same author's Affine-Bundle Solver separates a fast, untrusted router that
+proposes an answer from a strict checker that recomputes every claim from the
+source data and never reads a number the router produced. Layout has the same
+shape: engines and our own solver propose; a checker decides. The rules below
+are taken from that design.
+
+- **The checker reads only the source map and the resolved geometry.** It
+  never reads what an engine or a stage says about itself. An adapter's
+  statement "this constraint is supported" is a capability, not evidence: every
+  `required` constraint is verified on the result (I13 is the checker's job).
+  A change that lets a proposer's output feed the checker changes the
+  soundness argument, not just the code.
+- **Three operations, chosen by the function called, not by a mode:**
+  `layout` proposes a resolved map; `check(source, resolved)` judges any
+  resolved map, whoever made it — an engine, the relations solver, a hand
+  drawing, an edited file; `explain` returns the witnesses. A successful
+  `layout` does not mean the result was checked, and success never invents
+  acceptance.
+- **Refusal and result are different statements.** "The engine failed or ran
+  out of time" says nothing about the map. "These relations do not determine
+  the layout" and "these relations contradict each other" are checked facts
+  about the map. They are different outcomes with different types, never one
+  error class.
+- **Status is part of the result of relative placement**: `determined`,
+  `underdetermined`, `contradictory`. Relations are taken one at a time in
+  the order written, and each gets a verdict: it adds information, it is
+  redundant but agrees, or it contradicts — after which the state is closed
+  and later relations are not judged. The final status does not depend on the
+  order; which relation is called redundant does.
+- **Every status carries a witness that the checker can verify without the
+  solver:**
+
+| Status          | Witness                                                            | Check                          |
+| --------------- | ------------------------------------------------------------------ | ------------------------------ |
+| determined      | the coordinates                                                    | substitute into every relation |
+| most compact    | for each coordinate, a chain of tight relations back to the anchor | add the gaps along the chain   |
+| contradictory   | a cycle of relations whose sum states `0 ≥ c` with `c > 0`         | add the relations of the cycle |
+| underdetermined | a set of boxes that can shift together without breaking a relation | substitute the shift           |
+
+The contradiction witness is the error message; the chain answers "why is
+this box here".
+
+- **Exact arithmetic instead of a refusal band.** Relations have coefficients
+  ±1, so solving is additions and comparisons. Measured sizes are rounded up
+  to a grid of 1/64 unit before solving; then double arithmetic is exact and
+  no "cannot decide" outcome is needed in the solver.
+- **Two thresholds where measurement is inexact.** The quality report judges
+  overlaps of drawn text, where browsers differ by fractions of a pixel. A
+  single threshold flips between browsers. Each check has a band: `clear`
+  when the gap is at least the margin, `defect` when the overlap exceeds the
+  tolerance, `tight` in between — reported as such, never rounded to either
+  side.
+- **Scale-free thresholds.** Margins and tolerances are fractions of the font
+  size, and a test shows that scaling a map does not change its report.
+- **The report is a profile, not a score.** Its numbers are separate facts
+  about different defects. Their sum or minimum is not a rule for choosing an
+  engine: hard defects decide first, then the author's eye.
+- **Fields that are not reproducible** (layout time) are excluded from every
+  comparison.
 
 No engine is written here. All engines stay optional and are loaded only by
 their adapter.

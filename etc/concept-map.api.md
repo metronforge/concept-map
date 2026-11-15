@@ -29,36 +29,16 @@ export type Action = {
 };
 
 // @public (undocumented)
-export interface Animator {
-    // Warning: (ae-forgotten-export) The symbol "FlowPlan" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    play(plan: FlowPlan, hooks: FlowHooks): Playback;
-}
-
-// @public (undocumented)
-export function connectConcepts(player: MapPlayer, container: HTMLElement): () => void;
-
-// @public (undocumented)
 export function derive(map: ResolvedMap, state: PlayerState): Frame;
 
 // @public (undocumented)
 export const escapeHtml: (text: string) => string;
 
 // @public (undocumented)
-export interface FlowHooks {
+export interface FigureOptions {
+    id?: string;
     // (undocumented)
-    onDone(): void;
-    // (undocumented)
-    onHop(i: number): void;
-    // (undocumented)
-    onHopEnd?(i: number): void;
-    // (undocumented)
-    onHopStart?(i: number): void;
-    // Warning: (ae-forgotten-export) The symbol "Segment" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    onSegment?(segment: Segment): void;
+    strings?: Partial<UiStrings>;
 }
 
 // @public (undocumented)
@@ -101,48 +81,7 @@ export interface Frame {
 }
 
 // @public (undocumented)
-export interface Geometry {
-    // (undocumented)
-    pathLength(edge: string): number;
-    // (undocumented)
-    pointAt(edge: string, t: number): [number, number];
-    // (undocumented)
-    textBox(el: SVGGraphicsElement): {
-        x: number;
-        y: number;
-        width: number;
-        height: number;
-    };
-}
-
-// @public (undocumented)
 export const initialState: Readonly<PlayerState>;
-
-// @public (undocumented)
-export class MapPlayer {
-    constructor(root: HTMLElement, map: ResolvedMap, options?: {
-        animator?: Animator;
-        geometry?: Geometry;
-        reducedMotion?: boolean;
-        strings?: Partial<UiStrings>;
-    });
-    // (undocumented)
-    destroy(): void;
-    // (undocumented)
-    dispatch(action: Action): void;
-    // (undocumented)
-    highlight(nodes: string[], on: boolean): void;
-    // (undocumented)
-    readonly map: ResolvedMap;
-    // (undocumented)
-    readonly reducedMotion: boolean;
-    // (undocumented)
-    replay(): void;
-    // (undocumented)
-    readonly root: HTMLElement;
-    // (undocumented)
-    get state(): PlayerState;
-}
 
 // @public
 export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.ZodType>(leaf: {
@@ -275,18 +214,12 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
 // @public (undocumented)
 export type Mode = "step" | "all";
 
+// Warning: (ae-forgotten-export) The symbol "FlowPlan" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export function planFlow(map: ResolvedMap, scenario: number, geo: {
     length(edge: string): number;
 }): FlowPlan;
-
-// @public (undocumented)
-export interface Playback {
-    // (undocumented)
-    readonly finished: Promise<void>;
-    // (undocumented)
-    stop(): void;
-}
 
 // @public (undocumented)
 export interface PlayerState {
@@ -315,6 +248,9 @@ export function renderConcepts(map: ResolvedMap): string;
 
 // @public (undocumented)
 export function renderDeeper(map: ResolvedMap): string;
+
+// @public
+export function renderFigure(map: ResolvedMap, options?: FigureOptions): string;
 
 // @public
 export function renderInline(input: string): string;

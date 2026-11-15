@@ -44,6 +44,14 @@
     "./layout/browser": {
       "types": "./dist/dom/measureLabel.d.ts",
       "import": "./dist/dom/measureLabel.js"
+    },
+    "./dom": {
+      "types": "./dist/dom/index.d.ts",
+      "import": "./dist/dom/index.js"
+    },
+    "./element": {
+      "types": "./dist/element.d.ts",
+      "import": "./dist/element.js"
     }
   },
   "peerDependencies": {
@@ -106,6 +114,7 @@
     }
   },
   "sideEffects": [
-    "./css/*.css"
+    "./css/*.css",
+    "./dist/element.js"
   ]
 }

@@ -2,6 +2,8 @@ import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 const base = ExtractorConfig.loadFile("api-extractor.json");
 for (const [name, entry] of Object.entries({
   "concept-map": "index",
+  dom: "dom/index",
+  element: "element",
   layout: "layout/index",
   dagre: "layout/dagre",
   elk: "layout/elk",

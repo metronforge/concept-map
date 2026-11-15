@@ -73,9 +73,8 @@ Rules, each enforced in CI (ADR 0003):
 
 1. Imports follow the arrows; no cycles (`dependency-cruiser`).
 2. The core compiles with `lib` without DOM (`tsconfig.core.json`).
-3. Entry point `.` exports only the core; `./dom` exports the shell. This
-   is the target: stage A ships the single mixed entry point `.` as listed
-   debt D6, and stage B splits it.
+3. Entry point `.` exports only the core; `./dom` exports the shell and
+   `mount`; `./element` registers the custom element. This resolves debt D6.
 4. Runtime dependencies: `zod` (peer). A layout engine is imported only by
    its adapter under `layout/` and is an optional peer dependency (ADR 0011);
    the player entry points never load one.
@@ -154,9 +153,9 @@ one pull request each.
 
 ## 8. Budgets
 
-- Size: five consumer scenarios have gzip limits (`size-limit`), including
+- Size: six consumer scenarios have gzip limits (`size-limit`), including
   Zod when validation is used. Limits are the measured baseline plus 10%;
-  see ADR 0015. No budget is claimed for the not-yet-shipped `./dom`.
+  see ADR 0015. The player budget now uses `./dom`; the component budget includes Zod.
 - No `any`, no default exports, no `enum`, no classes in the core (lint).
 - A source file over 200 lines or a function over 40 needs a reason in the
   pull request.

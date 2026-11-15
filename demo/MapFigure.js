@@ -1,4 +1,4 @@
-import { MapPlayer, connectConcepts } from "../dist/index.js";
+import { MapPlayer, connectConcepts } from "../dist/dom/index.js";
 import "../css/concept-map.css";
 export { MapPlayer, connectConcepts };
 for (const root of document.querySelectorAll('[data-figure="map"]')) {

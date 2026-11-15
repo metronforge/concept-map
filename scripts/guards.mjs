@@ -17,6 +17,8 @@ assert.deepEqual(Object.keys(pkg.exports), [
   "./layout/dagre",
   "./layout/elk",
   "./layout/browser",
+  "./dom",
+  "./element",
 ]);
 const ts = JSON.parse(readFileSync("tsconfig.json", "utf8")).compilerOptions;
 if (ts.sourceMap || ts.declarationMap)
@@ -44,7 +46,7 @@ assert.deepEqual(pkg.peerDependenciesMeta, {
   elkjs: { optional: true },
 });
 
-assert.deepEqual(pkg.sideEffects, ["./css/*.css"]);
+assert.deepEqual(pkg.sideEffects, ["./css/*.css", "./dist/element.js"]);
 for (const check of sizeCases) {
   assert.ok(check.limit, "Every consumer scenario needs a size limit");
   assert.deepEqual(

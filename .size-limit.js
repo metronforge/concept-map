@@ -1,10 +1,16 @@
 // Size Limit externalizes peer dependencies by default. Measure actual consumer bytes.
 const cases = [
   {
+    name: "web component (pre-resolved map; with Zod)",
+    path: "dist/element.js",
+    gzip: true,
+    limit: "40650 B",
+  },
+  {
     name: "browser player (pre-resolved map)",
-    path: "dist/index.js",
+    path: "dist/dom/index.js",
     import: {
-      "dist/index.js": "{ MapPlayer, connectConcepts }",
+      "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
     limit: "8483 B",

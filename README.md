@@ -14,38 +14,28 @@ ESM only, Node ≥ 22.14. `zod` 4 is a peer dependency. MIT.
 
 ## Use
 
-On the server, render the figure from a resolved map:
+Render a complete figure on the server:
 
 ```js
-import {
-  ResolvedMapSchema,
-  derive,
-  initialState,
-  renderSvg,
-  renderPanelParts,
-} from "@metronforge/concept-map";
-
-const map = ResolvedMapSchema.parse(resolvedMap);
-const frame = derive(map, initialState);
-const svg = renderSvg(map, { frame, markerId: "map-arrow" });
-const panel = renderPanelParts(map, frame); // { head, more }
+import { ResolvedMapSchema, renderFigure } from "@metronforge/concept-map";
+const map = ResolvedMapSchema.parse(data);
+const html = renderFigure(map, { id: "coffee" });
 ```
 
-Put `svg` and the panel into the figure markup described in
-[docs/DOM.md](docs/DOM.md), and embed the map as JSON
-(`JSON.stringify(map).replaceAll("<", "\\u003c")`).
-
-In the browser, start the player:
+In the browser, mount a map into an empty host or hydrate its existing figure:
 
 ```js
-import { MapPlayer } from "@metronforge/concept-map";
+import { mount } from "@metronforge/concept-map/dom";
 import "@metronforge/concept-map/css";
-
-const root = document.querySelector('[data-figure="map"]');
-const map = JSON.parse(root.querySelector("[data-map-data]").textContent);
-const player = new MapPlayer(root, map);
-// player.destroy() when the figure is removed
+const player = mount(document.querySelector("#map-host"), map);
+// player.destroy() when the host is removed
 ```
+
+Or import `@metronforge/concept-map/element` and use
+`<concept-map src="coffee.json"></concept-map>`. The element also accepts inline
+JSON or a `map` property and upgrades server-rendered figures in place.
+See [integration and import migration](docs/INTEGRATION.md) for all three ways,
+input precedence, lifecycle, errors and explicit source-map layout.
 
 Colours and fonts come from custom properties, listed in
 [docs/CSS.md](docs/CSS.md):
@@ -81,12 +71,14 @@ changes are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and
 
 ## Exports
 
-| Entry                                               | Contents                                     |
-| --------------------------------------------------- | -------------------------------------------- |
-| `@metronforge/concept-map`                          | schema, model, renderers and the `MapPlayer` |
-| `@metronforge/concept-map/css`                      | the player stylesheet                        |
-| `@metronforge/concept-map/source-map.schema.json`   | JSON Schema of the source map                |
-| `@metronforge/concept-map/resolved-map.schema.json` | JSON Schema of the resolved map              |
+| Entry                                               | Contents                                         |
+| --------------------------------------------------- | ------------------------------------------------ |
+| `@metronforge/concept-map`                          | schemas, model and server renderers              |
+| `@metronforge/concept-map/dom`                      | `mount`, `MapPlayer`, concepts and browser ports |
+| `@metronforge/concept-map/element`                  | registers `<concept-map>`                        |
+| `@metronforge/concept-map/css`                      | the player stylesheet                            |
+| `@metronforge/concept-map/source-map.schema.json`   | JSON Schema of the source map                    |
+| `@metronforge/concept-map/resolved-map.schema.json` | JSON Schema of the resolved map                  |
 
 ## Links
 

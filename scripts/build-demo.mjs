@@ -9,6 +9,8 @@ import { resolve } from "node:path";
 import { build } from "vite";
 import {
   renderSvg,
+  renderFigure,
+  ResolvedMapSchema,
   renderPanelParts,
   renderConcepts,
   derive,
@@ -21,7 +23,17 @@ const pages = JSON.parse(readFileSync("test/fixtures/pages.json", "utf8"));
 rmSync(".demo", { recursive: true, force: true });
 mkdirSync(".demo");
 copyFileSync("demo/MapFigure.js", ".demo/MapFigure.js");
-const inputs = [];
+copyFileSync("demo/integration.js", ".demo/integration.js");
+const integrationMap = ResolvedMapSchema.parse(
+  maps.find((entry) => entry.id === "2-1").map,
+);
+mkdirSync(".demo/integration");
+writeFileSync(".demo/integration/map.json", JSON.stringify(integrationMap));
+writeFileSync(
+  ".demo/integration/index.html",
+  `<!doctype html><html lang="en"><meta charset="utf-8"><title>Integration checks</title><style>body{font:16px system-ui}#server,#browser,concept-map{display:block;width:700px}</style><div id="server">${renderFigure(integrationMap)}</div><div id="browser"></div><concept-map id="element">${renderFigure(integrationMap)}</concept-map></html>`,
+);
+const inputs = [resolve(".demo/integration/index.html")];
 for (const { id, map } of maps) {
   const entry = pages.find((p) => p.id === id),
     path = ".demo" + entry.path + "index.html";
@@ -53,8 +65,11 @@ await build({
             .map((p, i) => ["page" + i, p]),
         ),
         player: resolve(".demo/MapFigure.js"),
+        integration: resolve(".demo/integration.js"),
       },
       output: { entryFileNames: "assets/[name].js" },
     },
   },
 });
+
+copyFileSync(".demo/integration/map.json", "demo-dist/integration/map.json");

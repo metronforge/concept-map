@@ -1,0 +1,187 @@
+{
+  "format": 3,
+  "id": "door",
+  "title": "Door: a finite state machine",
+  "direction": "right",
+  "layers": {
+    "process": {
+      "label": "Process"
+    }
+  },
+  "nodes": {
+    "start": {
+      "label": "Start",
+      "layer": "process"
+    },
+    "closed": {
+      "label": "Closed",
+      "layer": "process"
+    },
+    "open": {
+      "label": "Open",
+      "layer": "process"
+    },
+    "locked": {
+      "label": "Locked",
+      "layer": "process"
+    },
+    "end": {
+      "label": "End",
+      "layer": "process"
+    }
+  },
+  "edges": {
+    "start": {
+      "from": "start",
+      "to": "closed",
+      "label": "init [true] / reset"
+    },
+    "open": {
+      "from": "closed",
+      "to": "open",
+      "label": "push [unlocked] / open"
+    },
+    "close": {
+      "from": "open",
+      "to": "closed",
+      "label": "pull [true] / close"
+    },
+    "lock": {
+      "from": "closed",
+      "to": "locked",
+      "label": "turnKey [key] / lock"
+    },
+    "unlock": {
+      "from": "locked",
+      "to": "closed",
+      "label": "turnKey [key] / unlock"
+    },
+    "blocked": {
+      "from": "locked",
+      "to": "locked",
+      "label": "push [locked] / rattle"
+    },
+    "finish": {
+      "from": "closed",
+      "to": "end",
+      "label": "finish [done] / stop"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "locked-door",
+      "label": "Try to open a locked door",
+      "display": {
+        "edgeBadges": false
+      },
+      "steps": [
+        {
+          "id": "start",
+          "title": "Start closed",
+          "text": "Start is an ordinary node standing in for an initial state.",
+          "show": ["start", "closed"],
+          "current": ["closed"],
+          "edges": ["start"]
+        },
+        {
+          "id": "lock",
+          "title": "Lock the door",
+          "text": "Turn the key: the door becomes locked.",
+          "show": ["locked"],
+          "current": ["locked"],
+          "edges": ["lock"]
+        },
+        {
+          "id": "try",
+          "title": "Try to open it",
+          "text": "Pushing a locked door rattles the handle. The self-transition leaves the door locked.",
+          "show": [],
+          "current": ["locked"],
+          "edges": ["blocked"],
+          "log": ["push [locked] / rattle", "State stays Locked."]
+        },
+        {
+          "id": "unlock",
+          "title": "Unlock with the key",
+          "text": "Turn the key again to unlock the door.",
+          "show": [],
+          "current": ["closed"],
+          "edges": ["unlock"]
+        },
+        {
+          "id": "open",
+          "title": "Open the door",
+          "text": "Push the unlocked door.",
+          "show": ["open"],
+          "current": ["open"],
+          "edges": ["open"]
+        },
+        {
+          "id": "close",
+          "title": "Close the door",
+          "text": "Pull the door closed.",
+          "show": [],
+          "current": ["closed"],
+          "edges": ["close"]
+        },
+        {
+          "id": "end",
+          "title": "Finish the demonstration",
+          "text": "End is an ordinary node standing in for a final state.",
+          "show": ["end"],
+          "current": ["end"],
+          "edges": ["finish"]
+        }
+      ],
+      "flow": [
+        {
+          "node": "start",
+          "step": "start",
+          "log": []
+        },
+        {
+          "node": "closed",
+          "step": "start",
+          "log": ["State: Closed"],
+          "edge": "start"
+        },
+        {
+          "node": "locked",
+          "step": "lock",
+          "log": ["State: Locked"],
+          "edge": "lock"
+        },
+        {
+          "node": "locked",
+          "step": "try",
+          "log": ["push [locked] / rattle; state stays Locked"],
+          "edge": "blocked"
+        },
+        {
+          "node": "closed",
+          "step": "unlock",
+          "log": ["State: Closed"],
+          "edge": "unlock"
+        },
+        {
+          "node": "open",
+          "step": "open",
+          "log": ["State: Open"],
+          "edge": "open"
+        },
+        {
+          "node": "closed",
+          "step": "close",
+          "log": ["State: Closed"],
+          "edge": "close"
+        },
+        {
+          "node": "end",
+          "step": "end",
+          "log": ["Demonstration finished."],
+          "edge": "finish"
+        }
+      ]
+    }
+  ]
+}

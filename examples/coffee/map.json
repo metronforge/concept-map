@@ -1,0 +1,170 @@
+{
+  "format": 3,
+  "id": "coffee",
+  "title": "Coffee shop",
+  "direction": "right",
+  "layers": {
+    "process": {
+      "label": "Process"
+    }
+  },
+  "nodes": {
+    "guest": {
+      "label": "Guest",
+      "layer": "process"
+    },
+    "cashier": {
+      "label": "Cashier",
+      "layer": "process"
+    },
+    "barista": {
+      "label": "Barista",
+      "layer": "process"
+    }
+  },
+  "edges": {
+    "order": {
+      "from": "guest",
+      "to": "cashier",
+      "label": "Order"
+    },
+    "ticket": {
+      "from": "cashier",
+      "to": "barista",
+      "label": "Make coffee"
+    },
+    "ready": {
+      "from": "barista",
+      "to": "guest",
+      "label": "Coffee ready"
+    },
+    "empty": {
+      "from": "barista",
+      "to": "cashier",
+      "label": "Out of milk"
+    },
+    "offer": {
+      "from": "cashier",
+      "to": "guest",
+      "label": "Offer americano"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "normal",
+      "label": "Normal",
+      "steps": [
+        {
+          "id": "order",
+          "title": "Place an order",
+          "text": "The guest orders a coffee.",
+          "show": ["guest", "cashier"],
+          "current": ["cashier"],
+          "edges": ["order"]
+        },
+        {
+          "id": "brew",
+          "title": "Make coffee",
+          "text": "The cashier sends the order to the barista.",
+          "show": ["barista"],
+          "current": ["barista"],
+          "edges": ["ticket"]
+        },
+        {
+          "id": "serve",
+          "title": "Serve coffee",
+          "text": "The guest receives the coffee.",
+          "show": [],
+          "current": ["guest"],
+          "edges": ["ready"]
+        }
+      ],
+      "flow": [
+        {
+          "node": "guest",
+          "step": "order",
+          "log": []
+        },
+        {
+          "node": "cashier",
+          "step": "order",
+          "log": ["Order received."],
+          "edge": "order"
+        },
+        {
+          "node": "barista",
+          "step": "brew",
+          "log": ["Making coffee."],
+          "edge": "ticket"
+        },
+        {
+          "node": "guest",
+          "step": "serve",
+          "log": ["Coffee served."],
+          "edge": "ready"
+        }
+      ]
+    },
+    {
+      "id": "out-of-milk",
+      "label": "Out of milk",
+      "steps": [
+        {
+          "id": "order",
+          "title": "Order a cappuccino",
+          "text": "The barista receives an order for a cappuccino.",
+          "show": ["guest", "cashier", "barista"],
+          "current": ["barista"],
+          "edges": ["order", "ticket"]
+        },
+        {
+          "id": "empty",
+          "title": "Check the milk",
+          "text": "The barista tells the cashier there is no milk.",
+          "show": [],
+          "current": ["barista"],
+          "edges": ["empty"]
+        },
+        {
+          "id": "offer",
+          "title": "Offer an alternative",
+          "text": "The cashier offers an americano.",
+          "show": [],
+          "current": ["guest"],
+          "edges": ["offer"]
+        }
+      ],
+      "flow": [
+        {
+          "node": "guest",
+          "step": "order",
+          "log": []
+        },
+        {
+          "node": "cashier",
+          "step": "order",
+          "log": [],
+          "edge": "order"
+        },
+        {
+          "node": "barista",
+          "step": "order",
+          "log": [],
+          "edge": "ticket"
+        },
+        {
+          "node": "cashier",
+          "step": "empty",
+          "log": ["No milk left."],
+          "edge": "empty"
+        },
+        {
+          "node": "guest",
+          "step": "offer",
+          "log": ["Offer an americano."],
+          "edge": "offer"
+        }
+      ]
+    }
+  ]
+}

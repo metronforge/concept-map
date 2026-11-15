@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Euclid's greatest common divisor</title>
+    <link rel="icon" href="data:," />
+    <link
+      rel="stylesheet"
+      href="https://esm.sh/gh/metronforge/concept-map@b989ffa568b74e53e0b29711ca0e909cc564fab5/css/concept-map.css"
+    />
+    <style>
+      body {
+        font: 16px/1.6 system-ui;
+        max-width: 960px;
+        margin: 32px auto;
+        padding: 0 16px;
+        color: #182536;
+        background: #faf9f6;
+      }
+      a {
+        color: #24558c;
+      }
+      concept-map {
+        display: block;
+        container-type: inline-size;
+      }
+      .map-ui {
+        --cmap-bg: #fff;
+        --cmap-fg: #182536;
+        --cmap-border: #c4cbd2;
+        --cmap-muted-fg: #526174;
+        --cmap-layer-process: #39766b;
+      }
+      .map-figure {
+        margin: 28px 0;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "map" "head" "more";
+        grid-template-rows: auto;
+        row-gap: 12px;
+      }
+      .map-figure > section {
+        display: block;
+      }
+      .map-ui .map {
+        overflow-x: auto;
+      }
+      .map-ui .map svg {
+        min-width: 600px;
+      }
+    </style>
+    <script
+      type="module"
+      src="https://esm.sh/gh/metronforge/concept-map@b989ffa568b74e53e0b29711ca0e909cc564fab5/src/element.ts"
+    ></script>
+  </head>
+  <body>
+    <nav aria-label="Examples">
+      <a href="../coffee/">Coffee shop</a> · <a href="../door/">Door</a> ·
+      <a href="../gcd/">Euclid</a> · <a href="../../">Layout comparison</a>
+    </nav>
+    <h1>Euclid's greatest common divisor</h1>
+    <p>
+      Follow a recorded run of Euclid’s algorithm. Compare three turns of the
+      loop with an input that needs no loop.
+    </p>
+    <p>
+      Use Step by step to inspect the explanation, or Whole map to play the
+      flow. Replay starts it again. Scroll the diagram horizontally on a narrow
+      screen.
+    </p>
+    <concept-map src="./map.json" layout="dagre"></concept-map>
+    <p>
+      <a href="./map.json">Source map without coordinates</a> ·
+      <a href="./README.md">Authoring notes</a>
+    </p>
+    <noscript
+      >Enable JavaScript to play the map, or open the source map
+      above.</noscript
+    >
+  </body>
+</html>

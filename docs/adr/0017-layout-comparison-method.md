@@ -1,6 +1,6 @@
 # ADR 0017: comparable layout evidence, without choosing an engine
 
-Status: comparison method for task 0.2.0 item 4; engine decision pending author review
+Status: accepted comparison method; the author chose dagre in ADR 0022
 
 ## Input and presentation
 
@@ -72,9 +72,14 @@ score, ranking or default selection is generated.
 
 ## Publication
 
-`npm run comparison:build` creates comparison-dist/. CI uploads it as an artifact
-for reproducibility and deploys the comparison branch to GitHub Pages for direct
-viewing without an archive. Pull-request builds never deploy; only an explicit
-push/dispatch on docs/layout-comparison can update the preview. The Pages URL is
-recorded in the PR. Keep generated assets out of the source branch and npm package.
-Stop for the author's engine decision after publishing; do not begin integration.
+`npm run comparison:build` creates comparison-dist/, with the comparison at
+its root and the unchanged standalone CDN pages under examples/. CI uploads
+that directory as an artifact and publishes it to GitHub Pages on main.
+Pull-request builds never deploy. A maintainer can explicitly dispatch the
+workflow on a branch for pre-merge publication; the github-pages environment
+must permit that specific branch. Remove temporary branch permission after
+publication. Generated assets stay out of the source branch and npm package.
+
+The standalone examples pin a main commit through esm.sh while 0.2.0 is
+unpublished. After release, their module and CSS URLs can switch to the pinned
+npm version. The comparison remains available alongside them.

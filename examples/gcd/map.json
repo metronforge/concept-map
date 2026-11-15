@@ -1,0 +1,244 @@
+{
+  "format": 3,
+  "id": "gcd",
+  "title": "Euclid's greatest common divisor",
+  "direction": "down",
+  "layers": {
+    "process": {
+      "label": "Process"
+    }
+  },
+  "nodes": {
+    "input": {
+      "label": "Input a, b",
+      "layer": "process"
+    },
+    "test": {
+      "label": "b = 0?",
+      "layer": "process"
+    },
+    "remainder": {
+      "label": "r = a mod b",
+      "layer": "process"
+    },
+    "update": {
+      "label": "a ← b, b ← r",
+      "layer": "process"
+    },
+    "result": {
+      "label": "Return a",
+      "layer": "process"
+    }
+  },
+  "edges": {
+    "input": {
+      "from": "input",
+      "to": "test",
+      "label": "Start"
+    },
+    "no": {
+      "from": "test",
+      "to": "remainder",
+      "label": "No"
+    },
+    "assign": {
+      "from": "remainder",
+      "to": "update",
+      "label": "Assign"
+    },
+    "loop": {
+      "from": "update",
+      "to": "test",
+      "label": "Repeat"
+    },
+    "yes": {
+      "from": "test",
+      "to": "result",
+      "label": "Yes"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "gcd-48-18",
+      "label": "gcd(48, 18)",
+      "display": {
+        "log": "cumulative"
+      },
+      "steps": [
+        {
+          "id": "input",
+          "title": "Read the input",
+          "text": "a = 48, b = 18.",
+          "show": ["input", "test"],
+          "current": ["test"],
+          "edges": ["input"]
+        },
+        {
+          "id": "turn-1",
+          "title": "Loop 1",
+          "text": "48 mod 18 = 12. Assign a = 18, b = 12; check b again.",
+          "show": ["remainder", "update"],
+          "current": ["test"],
+          "edges": ["no", "assign", "loop"],
+          "log": ["48 mod 18 = 12", "a = 18, b = 12"]
+        },
+        {
+          "id": "turn-2",
+          "title": "Loop 2",
+          "text": "18 mod 12 = 6. Assign a = 12, b = 6; check b again.",
+          "show": ["remainder", "update"],
+          "current": ["test"],
+          "edges": ["no", "assign", "loop"],
+          "log": ["18 mod 12 = 6", "a = 12, b = 6"]
+        },
+        {
+          "id": "turn-3",
+          "title": "Loop 3",
+          "text": "12 mod 6 = 0. Assign a = 6, b = 0; check b again.",
+          "show": ["remainder", "update"],
+          "current": ["test"],
+          "edges": ["no", "assign", "loop"],
+          "log": ["12 mod 6 = 0", "a = 6, b = 0"]
+        },
+        {
+          "id": "result",
+          "title": "Return the result",
+          "text": "b = 0, so return a = 6.",
+          "show": ["result"],
+          "current": ["result"],
+          "edges": ["yes"],
+          "log": ["gcd(48, 18) = 6"]
+        }
+      ],
+      "flow": [
+        {
+          "node": "input",
+          "step": "input",
+          "log": ["a = 48, b = 18"]
+        },
+        {
+          "node": "test",
+          "step": "input",
+          "log": [],
+          "edge": "input"
+        },
+        {
+          "node": "remainder",
+          "step": "turn-1",
+          "log": ["48 mod 18 = 12"],
+          "edge": "no"
+        },
+        {
+          "node": "update",
+          "step": "turn-1",
+          "log": ["a = 18, b = 12"],
+          "edge": "assign"
+        },
+        {
+          "node": "test",
+          "step": "turn-1",
+          "log": [],
+          "edge": "loop"
+        },
+        {
+          "node": "remainder",
+          "step": "turn-2",
+          "log": ["18 mod 12 = 6"],
+          "edge": "no"
+        },
+        {
+          "node": "update",
+          "step": "turn-2",
+          "log": ["a = 12, b = 6"],
+          "edge": "assign"
+        },
+        {
+          "node": "test",
+          "step": "turn-2",
+          "log": [],
+          "edge": "loop"
+        },
+        {
+          "node": "remainder",
+          "step": "turn-3",
+          "log": ["12 mod 6 = 0"],
+          "edge": "no"
+        },
+        {
+          "node": "update",
+          "step": "turn-3",
+          "log": ["a = 6, b = 0"],
+          "edge": "assign"
+        },
+        {
+          "node": "test",
+          "step": "turn-3",
+          "log": [],
+          "edge": "loop"
+        },
+        {
+          "node": "result",
+          "step": "result",
+          "log": ["gcd(48, 18) = 6"],
+          "edge": "yes"
+        }
+      ],
+      "repeatBadges": [
+        {
+          "edge": "loop",
+          "step": "turn-1"
+        },
+        {
+          "edge": "loop",
+          "step": "turn-2"
+        },
+        {
+          "edge": "loop",
+          "step": "turn-3"
+        }
+      ]
+    },
+    {
+      "id": "gcd-5-0",
+      "label": "gcd(5, 0)",
+      "steps": [
+        {
+          "id": "input",
+          "title": "Read the input",
+          "text": "a = 5, b = 0.",
+          "show": ["input", "test"],
+          "current": ["test"],
+          "edges": ["input"]
+        },
+        {
+          "id": "result",
+          "title": "Skip the loop",
+          "text": "b is already 0, so return a = 5.",
+          "show": ["result"],
+          "current": ["result"],
+          "edges": ["yes"],
+          "log": ["gcd(5, 0) = 5"]
+        }
+      ],
+      "flow": [
+        {
+          "node": "input",
+          "step": "input",
+          "log": ["a = 5, b = 0"]
+        },
+        {
+          "node": "test",
+          "step": "input",
+          "log": [],
+          "edge": "input"
+        },
+        {
+          "node": "result",
+          "step": "result",
+          "log": ["gcd(5, 0) = 5"],
+          "edge": "yes"
+        }
+      ]
+    }
+  ]
+}

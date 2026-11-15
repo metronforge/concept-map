@@ -8,6 +8,7 @@
     "src/schema.ts",
     "src/schema/**/*.ts",
     "src/model/**/*.ts",
-    "src/render/**/*.ts"
+    "src/render/**/*.ts",
+    "src/layout/**/*.ts"
   ]
 }

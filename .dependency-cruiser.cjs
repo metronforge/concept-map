@@ -1,9 +1,31 @@
 module.exports = {
   forbidden: [
     {
+      name: "layout-only-schema",
+      severity: "error",
+      from: { path: "^src/layout/" },
+      to: { path: "^src/", pathNot: "^src/(layout/|schema([.]ts$|/))" },
+    },
+    {
+      name: "engines-only-adapters",
+      severity: "error",
+      from: { path: "^src/", pathNot: "^src/layout/(dagre|elk)[.]ts$" },
+      to: { path: "node_modules/(@dagrejs/dagre|elkjs)" },
+    },
+    {
+      name: "player-no-layout-runtime",
+      severity: "error",
+      from: { path: "^src/", pathNot: "^src/layout/" },
+      to: { path: "^src/layout/", dependencyTypesNot: ["type-only"] },
+    },
+
+    {
       name: "no-external-runtime-outside-schema",
       severity: "error",
-      from: { path: "^src/", pathNot: "^src/schema([.]ts$|/)" },
+      from: {
+        path: "^src/",
+        pathNot: "^src/schema([.]ts$|/)|^src/layout/(dagre|elk)[.]ts$",
+      },
       to: {
         dependencyTypes: [
           "core",

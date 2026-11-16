@@ -1,3 +1,5 @@
+import type { Placer } from "./ports.js";
+import { problemGraph } from "./build-problem.js";
 import dagre from "@dagrejs/dagre";
 import type { GraphLabel, NodeLabel, EdgeLabel, Point } from "@dagrejs/dagre";
 import type {
@@ -37,8 +39,10 @@ function dagreGraph(graph: LayoutGraph, nodes: LayoutNode[]) {
     );
   return g;
 }
-/** Explicit Dagre adapter; never imported by the player or layout entry point. */
-export const dagreEngine: LayoutEngine = {
+const adapter: LayoutEngine & Placer = {
+  name: "dagre",
+  capabilities: { direction: "preferred", lanes: "required" },
+  place: (problem) => adapter.layout(problemGraph(problem)),
   async layout(graph) {
     const nodes = engineNodes(graph);
     const g = dagreGraph(graph, nodes);
@@ -79,3 +83,6 @@ export const dagreEngine: LayoutEngine = {
     return routeSelfEdges(graph, partitionDagre(graph, nodes, result));
   },
 };
+
+/** Explicit Dagre adapter; never imported by the player or layout entry point. */
+export const dagreEngine: LayoutEngine = adapter;

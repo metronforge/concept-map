@@ -163,6 +163,18 @@ report — over one `LayoutProblem` with typed constraints, with three ports
 (`Measurer`, `Placer`, `Router`) and invariants I11–I16. Until it is built, the module table above describes the code;
 [tasks/0.3.0.md](tasks/0.3.0.md) orders the work.
 
+The measured `LayoutProblem` and internal `Placer` port now share the input
+between dagre and ELK. Direction is preferred; lane containment and order are
+required and independently verified from source intent and resolved geometry
+in `layout/stages/constraints`. The quality report uses that same checker and
+retains its reading-direction facts. Legacy `LayoutEngine` implementations
+are bridged through their existing graph contract. Capability refusal, engine
+failure and rejected results have distinct plain-data outcomes.
+Only `layout/errors.ts` may declare classes in the core: the public boundary
+converts outcomes to data-carrying exceptions there. The checker returns
+constraint verdicts in its report, including for invalid hand drawings. The
+remaining measurement, routing and label stages follow in later items.
+
 ## 7. Stage-A debt baseline
 
 D1 is resolved by format 3 (ADR 0013); see `docs/DEBT.md` for current status.
@@ -186,7 +198,8 @@ one pull request each.
   Zod when validation is used. Limits are the measured baseline plus 10%;
   see ADR 0015. The player budget now uses `./dom`; the component budget includes Zod.
 - No `any`, no default exports, no `enum`, no classes in the core, including
-  `src/layout` and its adapters (lint).
+  `src/layout` and its adapters, except the boundary exceptions in
+  `src/layout/errors.ts` (lint).
 - A source file over 200 lines or a function over 40 needs a reason in the
   pull request.
 

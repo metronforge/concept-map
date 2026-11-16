@@ -54,28 +54,6 @@ export function checkedResult(
     const b = result.nodes[n.id];
     if (b[2] + 1e-6 < n.width || b[3] + 1e-6 < n.height)
       throw new Error(`layout.nodes.${n.id}: box smaller than measured label`);
-    if (n.lane) {
-      const l = result.lanes[n.lane];
-      if (
-        b[0] < l[0] ||
-        b[1] < l[1] ||
-        b[0] + b[2] > l[0] + l[2] + 1e-6 ||
-        b[1] + b[3] > l[1] + l[3] + 1e-6
-      )
-        throw new Error(`layout.nodes.${n.id}: outside lane “${n.lane}”`);
-    }
   }
-  checkLanes(graph, result);
   return result;
-}
-
-function checkLanes(graph: LayoutGraph, result: LayoutResult): void {
-  const axis = graph.direction === "right" ? 0 : 1;
-  graph.lanes.slice(1).forEach((l, i) => {
-    const prev = result.lanes[graph.lanes[i].id];
-    if (result.lanes[l.id][axis] < prev[axis] + prev[axis + 2])
-      throw new Error(
-        `layout.lanes.${l.id}: lanes must be ordered and disjoint`,
-      );
-  });
 }

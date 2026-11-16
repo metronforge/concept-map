@@ -21,6 +21,7 @@ export default [
       "src/render/**/*.ts",
       "src/layout/**/*.ts",
     ],
+    ignores: ["src/layout/errors.ts"],
     rules: {
       "no-restricted-syntax": [
         "error",

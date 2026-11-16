@@ -87,3 +87,37 @@ compact candidate, the adapters retain the original engine routing for all
 self-transitions in that graph. This conservative fallback preserves existing
 routes instead of introducing known collisions; it is not general obstacle
 routing, and those exceptional loops may be larger than their nodes.
+
+Internally, pure measurement builds one `LayoutProblem` for every placer:
+measured nodes and arrow labels, lane groups, and typed constraints. Direction
+is preferred; ordered, disjoint lanes containing their assigned nodes are
+required. Both built-in placers declare these capabilities. The existing
+`LayoutEngine` interface and adapter exports are unchanged; custom engines
+are bridged using the direction and lane obligations of that interface.
+
+Before placement, unsupported required constraints name the constraint and
+placer in an error. Unsupported preferences are listed in the internal
+placement outcome. An engine exception, an unsupported capability, and a
+rejected result are separate tagged outcomes. After placement, the
+checker verifies lanes from the original source and resolved geometry, even
+without `strict`; `check(source, resolved)` uses the same rule. It uses the
+renderer's viewport defaults for hand-drawn lanes without explicit widths.
+Direction remains descriptive in the existing `reading` report. No new
+constraint hints or placement algorithms are added here.
+
+### Layout errors and constraint reports
+
+`check(source, resolved)` returns `constraints` verdicts with `kind`,
+`strength`, `holds` and `message`. A broken required lane rule adds one to
+`hard`; it does not throw. This applies to hand drawings too. Direction still
+uses the existing `reading` facts, not a forward-edge requirement.
+
+`layout()` converts pipeline data to exceptions at its public boundary:
+`EngineFailedError` carries `placer` and `cause`, `ResultRejectedError`
+carries `placer` and `constraint` for a rejected proposed drawing, and
+`UnsupportedConstraintsError` carries `placer` and `constraints`.
+`LayoutDefectsError` retains its name and full `report` for strict quality
+failures. They extend `LayoutError`, which carries `kind` and `data`.
+All classes and their `is…` guards are exported by the layout entry point.
+Guards check names and kinds rather than prototypes, so duplicate bundles
+work. Rejection of a drawing is not proof that the map is contradictory.

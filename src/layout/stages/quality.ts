@@ -1,3 +1,4 @@
+import type { ConstraintVerdict } from "../problem.js";
 import type { LabelMeasurer } from "../types.js";
 import type { Reading } from "./reading.js";
 
@@ -24,7 +25,9 @@ export interface Contact {
  * decide first, then the author's eye.
  */
 export interface LayoutReport {
-  /** Number of contacts in the `defect` band. */
+  /** Independent verdicts for required map constraints. */
+  constraints: ConstraintVerdict[];
+  /** Hard contacts plus broken required constraints. */
   hard: number;
   /** Places where two arrows pass through each other. */
   crossings: { count: number; pairs: [string, string][] };

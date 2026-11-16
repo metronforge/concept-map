@@ -1,3 +1,4 @@
+import type { ResolvedMap } from "../schema.js";
 import type { Point } from "./path.js";
 // Layout measures edge labels at 10.5 units; scale the drawing to page text.
 export const naturalMapWidth = (viewBoxWidth: number, fontSize = 16) =>
@@ -36,5 +37,17 @@ export function fitEdgeLabel(
     text: word + (index < words.length - 1 ? " " : ""),
     x,
     y: y + (index - (words.length - 1) / 2) * fontSize,
+  }));
+}
+
+export function wrappedLines(
+  size: NonNullable<ResolvedMap["measurement"]>["labels"][string],
+  [x, y]: [number, number],
+) {
+  const { lines, lineHeight } = size.wrap!;
+  return lines.map((text, index) => ({
+    text,
+    x,
+    y: y + (index - (lines.length - 1) / 2) * lineHeight,
   }));
 }

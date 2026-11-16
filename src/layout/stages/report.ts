@@ -1,6 +1,6 @@
 import { checkConstraints } from "./constraints.js";
 import type { ResolvedMap, SourceMap } from "../../schema.js";
-import { measureLabel } from "../measure.js";
+import { asMeasurer } from "../measure.js";
 import { drawn, TEXT } from "./drawn.js";
 import {
   crossingPairs,
@@ -29,12 +29,8 @@ export function check(
   const size = options.textSize ?? TEXT;
   const margin = (options.margin ?? 0.25) * size;
   const tolerance = (options.tolerance ?? 0.1) * size;
-  const shapes = drawn(
-    source,
-    resolved,
-    size,
-    options.measureLabel ?? measureLabel,
-  );
+  const measurer = asMeasurer(options.measureLabel);
+  const shapes = drawn(source, resolved, size, measurer.measure.bind(measurer));
   const judge: Judge = (list, a, b, gap) => {
     if (gap >= margin) return;
     const band = gap < -tolerance ? "defect" : "tight";

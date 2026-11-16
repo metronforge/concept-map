@@ -17,7 +17,8 @@ export function measured(
     !Number.isFinite(size.width) ||
     size.width < 0 ||
     !Number.isFinite(size.height) ||
-    size.height <= 0
+    size.height <= 0 ||
+    !validMetrics(size)
   )
     throw new Error(`Invalid label measurement for “${text}”`);
   return size;
@@ -71,7 +72,11 @@ export function layoutGraph(
         ? {}
         : {
             label: {
-              ...measured(measure, e.label, { fontSize: 10.5, mono: true }),
+              ...measured(measure, e.label, {
+                fontSize: 10.5,
+                mono: true,
+                edge: id,
+              }),
               text: e.label,
             },
           }),
@@ -85,4 +90,23 @@ export function layoutGraph(
       }),
     })),
   };
+}
+
+function validMetrics(size: LabelSize): boolean {
+  if (
+    [size.left, size.ascent, size.padding].some(
+      (n) => n !== undefined && !Number.isFinite(n),
+    )
+  )
+    return false;
+  if (size.padding !== undefined && size.padding < 0) return false;
+  const wrap = size.wrap;
+  return (
+    !wrap ||
+    (Array.isArray(wrap.lines) &&
+      wrap.lines.length > 0 &&
+      wrap.lines.every((line) => typeof line === "string") &&
+      Number.isFinite(wrap.lineHeight) &&
+      wrap.lineHeight > 0)
+  );
 }

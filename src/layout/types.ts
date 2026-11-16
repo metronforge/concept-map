@@ -1,16 +1,8 @@
+import type { Measurer, LabelMeasurer, LabelSize } from "./measurement.js";
+export type { LabelMeasurer, LabelSize, LabelStyle } from "./measurement.js";
 /** Coordinates in SVG user units, relative to the graph origin. */
 export type LayoutPoint = [number, number];
 export type LayoutBox = [number, number, number, number];
-export interface LabelSize {
-  width: number;
-  height: number;
-}
-export interface LabelStyle {
-  fontSize: number;
-  mono: boolean;
-  letterSpacing?: number;
-}
-export type LabelMeasurer = (text: string, style: LabelStyle) => LabelSize;
 export interface LayoutNode extends LabelSize {
   id: string;
   lane?: string;
@@ -46,7 +38,7 @@ export interface LayoutEngine {
   layout(graph: LayoutGraph): Promise<LayoutResult>;
 }
 export interface LayoutOptions {
-  measureLabel?: LabelMeasurer;
+  measureLabel?: LabelMeasurer | Measurer;
   /**
    * Check the result with `check` and throw `LayoutDefectsError` when it has
    * hard defects: covered labels, step numbers over labels or boxes, lines

@@ -1,7 +1,7 @@
 import type { ResolvedMap, SourceMap } from "../schema.js";
 import { validateReferences } from "../schema/references.js";
 import { parseMap } from "./check.js";
-import { measureLabel } from "./measure.js";
+import { asMeasurer } from "./measure.js";
 import { buildProblem, problemGraph } from "./build-problem.js";
 import { asPlacer } from "./legacy.js";
 import { place } from "./place.js";
@@ -15,9 +15,11 @@ import {
   LayoutDefectsError,
 } from "./errors.js";
 export * from "./errors.js";
+export type { Measurer } from "./ports.js";
+export { refine } from "./stages/refine.js";
 export type { ConstraintVerdict } from "./problem.js";
 export type * from "./types.js";
-export { measureLabel } from "./measure.js";
+export { measureLabel, fontTableMeasurer } from "./measure.js";
 export { validateReferences } from "../schema/references.js";
 export { check, describeDefects } from "./stages/report.js";
 export type {
@@ -37,7 +39,8 @@ export async function layout(
 ): Promise<ResolvedMap> {
   const map = parseMap(input);
   validateReferences(map);
-  const measure = options.measureLabel ?? measureLabel;
+  const measurer = asMeasurer(options.measureLabel);
+  const measure = measurer.measure.bind(measurer);
   if ("viewBox" in map) return strict(map, map, measure, options);
   const problem = buildProblem(map, measure);
   const graph = problemGraph(problem);
@@ -47,6 +50,16 @@ export async function layout(
   if (outcome.kind === "unsupported-constraints")
     throw new UnsupportedConstraintsError(outcome);
   const resolved = resolveGeometry(map, graph, outcome.result, measure);
+  resolved.measurement = {
+    name: measurer.name,
+    labels: Object.fromEntries(
+      graph.edges.flatMap((e) => {
+        if (!e.label) return [];
+        const { text, ...size } = e.label;
+        return [[e.id, size]];
+      }),
+    ),
+  };
   const rejected = checkConstraints(map, resolved).find((c) => !c.holds);
   if (rejected)
     throw new ResultRejectedError({
@@ -62,7 +75,7 @@ export async function layout(
 async function strict(
   source: SourceMap | ResolvedMap,
   resolved: ResolvedMap,
-  measure: NonNullable<LayoutOptions["measureLabel"]>,
+  measure: import("./types.js").LabelMeasurer,
   options: LayoutOptions,
 ): Promise<ResolvedMap> {
   if (!options.strict) return resolved;

@@ -126,6 +126,20 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
         label: z.ZodString;
     }, z.core.$strip>>;
     viewBox: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
+    measurement: z.ZodOptional<z.ZodObject<{
+        name: z.ZodString;
+        labels: z.ZodRecord<z.ZodString, z.ZodObject<{
+            width: z.ZodNumber;
+            height: z.ZodNumber;
+            left: z.ZodOptional<z.ZodNumber>;
+            ascent: z.ZodOptional<z.ZodNumber>;
+            padding: z.ZodOptional<z.ZodNumber>;
+            wrap: z.ZodOptional<z.ZodObject<{
+                lines: z.ZodArray<z.ZodString>;
+                lineHeight: z.ZodNumber;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
         layer: z.ZodString;
@@ -317,6 +331,20 @@ export const ResolvedMapSchema: z.ZodObject<{
         label: z.ZodString;
     }, z.core.$strip>>;
     viewBox: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
+    measurement: z.ZodOptional<z.ZodObject<{
+        name: z.ZodString;
+        labels: z.ZodRecord<z.ZodString, z.ZodObject<{
+            width: z.ZodNumber;
+            height: z.ZodNumber;
+            left: z.ZodOptional<z.ZodNumber>;
+            ascent: z.ZodOptional<z.ZodNumber>;
+            padding: z.ZodOptional<z.ZodNumber>;
+            wrap: z.ZodOptional<z.ZodObject<{
+                lines: z.ZodArray<z.ZodString>;
+                lineHeight: z.ZodNumber;
+            }, z.core.$strip>>;
+        }, z.core.$strip>>;
+    }, z.core.$strip>>;
     lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
         layer: z.ZodString;

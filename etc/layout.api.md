@@ -18,7 +18,7 @@ export function check(source: SourceMap | ResolvedMap, resolved: ResolvedMap, op
 // @public (undocumented)
 export interface CheckOptions {
     margin?: number;
-    measureLabel?: LabelMeasurer;
+    measureLabel?: LabelMeasurer | Measurer;
     textSize?: number;
     tolerance?: number;
 }
@@ -65,6 +65,9 @@ export class EngineFailedError extends LayoutError<"engine-failed", {
 }
 
 // @public
+export const fontTableMeasurer: Measurer;
+
+// @public
 export const isEngineFailedError: (value: unknown) => value is EngineFailedError;
 
 // @public
@@ -85,13 +88,22 @@ export type LabelMeasurer = (text: string, style: LabelStyle) => LabelSize;
 // @public (undocumented)
 export interface LabelSize {
     // (undocumented)
+    ascent?: number;
+    // (undocumented)
     height: number;
+    left?: number;
+    padding?: number;
     // (undocumented)
     width: number;
+    wrap?: {
+        lines: string[];
+        lineHeight: number;
+    };
 }
 
 // @public (undocumented)
 export interface LabelStyle {
+    edge?: string;
     // (undocumented)
     fontSize: number;
     // (undocumented)
@@ -175,7 +187,7 @@ export interface LayoutNode extends LabelSize {
 // @public (undocumented)
 export interface LayoutOptions {
     // (undocumented)
-    measureLabel?: LabelMeasurer;
+    measureLabel?: LabelMeasurer | Measurer;
     strict?: boolean;
 }
 
@@ -231,6 +243,17 @@ export interface LayoutRoute {
 
 // @public
 export const measureLabel: LabelMeasurer;
+
+// @public
+export interface Measurer {
+    // (undocumented)
+    measure: LabelMeasurer;
+    // (undocumented)
+    readonly name: string;
+}
+
+// @public
+export function refine(map: ResolvedMap, measurer: Measurer): ResolvedMap;
 
 // @public
 export class ResultRejectedError extends LayoutError<"result-rejected", {

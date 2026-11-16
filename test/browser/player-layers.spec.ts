@@ -38,9 +38,16 @@ for (const mapId of references)
       }) => {
         await page.goto(entry.path);
         const root = page.locator('[data-figure="map"]');
-        const map: ResolvedMap = await root
-          .locator("[data-map-data]")
-          .evaluate((e) => JSON.parse(e.textContent!));
+        const map: ResolvedMap = await root.evaluate(async (root) => {
+          const { players } = await import(
+            new URL("/assets/player.js", location.href).href
+          );
+          await document.fonts.ready;
+          await new Promise((resolve) =>
+            requestAnimationFrame(() => requestAnimationFrame(resolve)),
+          );
+          return players.find((player) => player.root === root).map;
+        });
         const captures = await root.evaluate((root, source) => {
           const read = new Function("root", `return (${source})(root)`);
           const map = JSON.parse(

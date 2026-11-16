@@ -50,12 +50,20 @@ function labels(
 ): Drawn["labels"] {
   return Object.entries(resolved.edges).flatMap(([id, e]) => {
     if (!e.label?.text) return [];
-    const m = measure(e.label.text, { fontSize: size, mono: true });
+    const m = measure(e.label.text, { fontSize: size, mono: true, edge: id });
     // Text is drawn from its left baseline; the baseline sits a third of the
     // line height below the centre.
     const [x, y] = e.label.at;
     return [
-      { id, box: [x, y - (m.height * 5) / 6, m.width, m.height] as Rect },
+      {
+        id,
+        box: [
+          x + (m.left ?? 0),
+          y - (m.ascent ?? (m.height * 5) / 6),
+          m.width,
+          m.height,
+        ] as Rect,
+      },
     ];
   });
 }

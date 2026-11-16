@@ -1,3 +1,4 @@
+import { Measurement } from "./schema/measurement.js";
 import * as z from "zod";
 import {
   Id,
@@ -41,6 +42,7 @@ export function mapSchema<
 >(leaf: { text: T; source: S; deeper: D }) {
   return sourceMapSchema(leaf).extend({
     viewBox: z.tuple([z.number().positive(), z.number().positive()]),
+    measurement: Measurement,
     lanes: record(
       Lane.extend({
         y: z.number(),

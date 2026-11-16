@@ -49,7 +49,7 @@ export interface LayoutReport {
 
 export interface CheckOptions {
   /** Text measurement; the built-in font table by default. */
-  measureLabel?: LabelMeasurer;
+  measureLabel?: LabelMeasurer | import("../ports.js").Measurer;
   /** Font size of arrow labels in map units; every threshold is relative to it. */
   textSize?: number;
   /** Minimum clear gap, in em. Default 0.25. */

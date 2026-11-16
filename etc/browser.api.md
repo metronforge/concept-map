@@ -9,6 +9,11 @@
 // @public
 export function createDomMeasurer(host: HTMLElement): LabelMeasurer;
 
+// Warning: (ae-forgotten-export) The symbol "Measurer" needs to be exported by the entry point measureLabel.d.ts
+//
+// @public
+export function domMeasurer(host: HTMLElement): Measurer;
+
 // (No @packageDocumentation comment for this package)
 
 ```

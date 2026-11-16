@@ -78,7 +78,7 @@ test("font readiness refits measured badges without another player action", asyn
   await page.addStyleTag({ path: "css/concept-map.css" });
   await page.addStyleTag({
     content:
-      "@font-face{font-family:LateBadge;src:url(/late-font.ttf);size-adjust:150%}.map-figure{display:block}.map-ui .etext{font-family:LateBadge,monospace;font-size:16px!important;letter-spacing:1px}",
+      "@font-face{font-family:LateBadge;src:url(/late-font.ttf);size-adjust:150%}.map-figure{display:block}.map-ui .etext{font-family:LateBadge,monospace!important;font-size:16px!important;letter-spacing:1px}",
   });
   const source = JSON.parse(readFileSync("examples/door/map.json", "utf8"));
   await page.evaluate(async (source) => {
@@ -93,16 +93,16 @@ test("font readiness refits measured badges without another player action", asyn
     el.player.dispatch({ type: "mode", mode: "all" });
   }, source);
   expect(await page.evaluate(() => document.fonts.status)).toBe("loading");
-  const before = await page
-    .locator(".badge")
-    .evaluateAll((es) => es.map((e) => e.getAttribute("transform")));
+  const before = await page.evaluate(
+    () => document.querySelector("concept-map")!.player.map.measurement,
+  );
   release();
   await page.evaluate(() => document.fonts.ready);
   await expect
     .poll(() =>
-      page
-        .locator(".badge")
-        .evaluateAll((es) => es.map((e) => e.getAttribute("transform"))),
+      page.evaluate(
+        () => document.querySelector("concept-map")!.player.map.measurement,
+      ),
     )
     .not.toEqual(before);
   const overlaps = await page.evaluate(() => {

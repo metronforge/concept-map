@@ -60,3 +60,35 @@ test("Cyrillic server widths match DejaVu Sans in the browser within five percen
     expect(Math.abs(server - width) / width, text).toBeLessThanOrEqual(0.05);
   }
 });
+
+test("equal arrow text is measured in its own wrapping context", async ({
+  page,
+}) => {
+  await page.goto("/integration/");
+  const result = await page.evaluate(async () => {
+    const { domMeasurer } = await import("/assets/integration.js");
+    const host = document.createElement("div");
+    host.innerHTML =
+      '<svg><text class="etext" data-edge="wide" style="font:20px monospace">same text</text><text class="etext" data-edge="narrow" style="font:20px monospace"><tspan>same </tspan><tspan>text</tspan></text></svg>';
+    document.body.append(host);
+    const m = domMeasurer(host);
+    const wide = m.measure("same text", {
+      fontSize: 10.5,
+      mono: true,
+      edge: "wide",
+    });
+    const narrow = m.measure("same text", {
+      fontSize: 10.5,
+      mono: true,
+      edge: "narrow",
+    });
+    const children = host.querySelectorAll("*").length;
+    host.remove();
+    return { wide, narrow, children };
+  });
+  expect(result.narrow.width).toBeLessThan(result.wide.width);
+  expect(result.narrow.height).toBeGreaterThan(result.wide.height);
+  expect(result.narrow.wrap?.lines).toEqual(["same ", "text"]);
+  expect(result.wide.wrap).toBeUndefined();
+  expect(result.children).toBe(5);
+});

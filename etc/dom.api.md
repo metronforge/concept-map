@@ -50,7 +50,8 @@ export interface Geometry {
 
 // @public (undocumented)
 export class MapPlayer {
-    constructor(root: HTMLElement, map: ResolvedMap, options?: {
+    // Warning: (ae-forgotten-export) The symbol "ResolvedMap" needs to be exported by the entry point index.d.ts
+    constructor(root: HTMLElement, drawnMap: ResolvedMap, options?: {
         animator?: Animator;
         geometry?: Geometry;
         reducedMotion?: boolean;
@@ -64,10 +65,8 @@ export class MapPlayer {
     dispatch(action: Action): void;
     // (undocumented)
     highlight(nodes: string[], on: boolean): void;
-    // Warning: (ae-forgotten-export) The symbol "ResolvedMap" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
-    readonly map: ResolvedMap;
+    get map(): ResolvedMap;
     // (undocumented)
     readonly reducedMotion: boolean;
     // (undocumented)
@@ -98,7 +97,7 @@ export interface Playback {
 
 // Warnings were encountered during analysis:
 //
-// src/dom/player.ts:36:7 - (ae-forgotten-export) The symbol "UiStrings" needs to be exported by the entry point index.d.ts
+// src/dom/player.ts:37:7 - (ae-forgotten-export) The symbol "UiStrings" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -16,7 +16,11 @@ function probe(file: string, source: string) {
   const dir = mkdtempSync(join(tmpdir(), "concept-map-guard-"));
   try {
     mkdirSync(dirname(join(dir, file)), { recursive: true });
-    mkdirSync(join(dir, "src/layout"), { recursive: true });
+    mkdirSync(join(dir, "src/layout/stages"), { recursive: true });
+    writeFileSync(
+      join(dir, "src/layout/stages/refine.ts"),
+      "export const value = 1;",
+    );
     writeFileSync(join(dir, "src/layout/index.ts"), "export const value = 1;");
     mkdirSync(join(dir, "src/element"), { recursive: true });
     for (const target of ["src/element.ts", "src/element/input.ts"])
@@ -96,7 +100,7 @@ test("element loader permits dynamic imports but rejects static layout imports",
       "src/dom/probe.ts",
       'export const load = () => import("../layout/index.js");',
     ),
-  ).toContain("player-no-layout-runtime");
+  ).toContain("player-only-pure-refinement");
 });
 
 for (const entry of ["../element.js", "../element/input.js"]) {
@@ -127,4 +131,15 @@ test("layout lint rejects class declarations and expressions", async () => {
     { filePath: "src/layout/probe.ts" },
   );
   expect(result.errorCount).toBe(0);
+});
+
+test("only the DOM refinement bridge may import the pure layout stage", () => {
+  const source = 'export { value } from "../layout/stages/refine.js";';
+  expect(probe("src/dom/refine.ts", source)).toEqual([]);
+  expect(probe("src/model/probe.ts", source)).toContain(
+    "player-only-pure-refinement",
+  );
+  expect(
+    probe("src/dom/refine.ts", 'export { value } from "../layout/index.js";'),
+  ).toContain("refinement-only-pure-stage");
 });

@@ -57,6 +57,15 @@ away from labels after fonts load; those changes are not part of this report.
 | book 6-1     | 0    | 0             | 0            | 0           | 0            | 0          | 0           | 0          | 1         | 0.714             |
 | book 6-2     | 1    | 0             | 0            | 1           | 0            | 0          | 0           | 0          | 0         | 1                 |
 
+## The author's rule on box edges
+
+A step number or a label must not cross the edge of a box, even by a couple
+of units. The tolerance of 0.1 em (about one unit at the default size) only
+absorbs the fraction of a pixel by which browsers place text differently; it
+is not room for drawings. So the hand-drawn maps 2-3 and 4-5, where step
+numbers overlap neighbouring boxes by about 2 units, are reported as defects
+on purpose.
+
 ## What the defects are
 
 The defects found on the examples are visible in the player:

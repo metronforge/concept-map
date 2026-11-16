@@ -1,5 +1,7 @@
 # Coffee shop: a map you can play
 
+![The coffee shop map in Whole map mode: a dot travels from the guest to the cashier, the barista and back](https://raw.githubusercontent.com/metronforge/concept-map/main/docs/media/coffee-whole-map.gif)
+
 Follow guest → cashier → barista, then switch from **Normal** to **Out of milk**.
 [Open the coffee shop](https://metronforge.github.io/concept-map/examples/coffee/)
 or copy its [HTML and JSON](examples/coffee/).

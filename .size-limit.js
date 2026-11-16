@@ -42,7 +42,18 @@ const cases = [
       "dist/layout/index.js": "{ layout, measureLabel }",
     },
     gzip: true,
-    limit: "32620 B",
+    // +2.4 kB for the quality check. It is loaded with a dynamic import only
+    // for { strict: true }; size-limit counts that chunk too.
+    limit: "35000 B",
+  },
+  {
+    name: "layout check (quality report with font tables, without Zod)",
+    path: "dist/layout/stages/report.js",
+    import: {
+      "dist/layout/stages/report.js": "{ check }",
+    },
+    gzip: true,
+    limit: "5400 B",
   },
   {
     name: "complete root API (with Zod)",

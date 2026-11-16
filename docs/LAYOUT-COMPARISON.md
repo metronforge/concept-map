@@ -8,7 +8,7 @@ The page shows all 23 book maps and an English coffee-shop map, each with manual
 dagre and ELK geometry. Each column runs MapPlayer with its own scenario selector, By step and Whole map
 modes, token animation and replay. Use the 1:1 button to inspect labels and routes.
 The coffee source uses `direction: right` and has Normal and Out of milk flows.
-The tables also count edge-label overlaps with nodes and other edge labels. Metrics cover the entire map regardless of the selected state.
+The tables show the library's quality report (`check` from `@metronforge/concept-map/layout`): hard defects, crossings and the share of the first scenario's arrows that follow the reading direction, plus bends and area. Metrics cover the entire map regardless of the selected state.
 The arrow `timeout_outer` in map 2.1 is excluded from all three columns and clearly
 marked; original fixtures are unchanged.
 

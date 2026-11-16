@@ -1,0 +1,314 @@
+{
+  "coffee dagre": {
+    "hard": 1,
+    "crossings": {
+      "count": 1,
+      "pairs": [["ready", "offer"]]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:offer",
+          "b": "line:offer",
+          "band": "defect",
+          "gap": -2.312
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667
+    },
+    "text": {
+      "width": 50.4,
+      "height": 18.3
+    }
+  },
+  "coffee elk": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667
+    },
+    "text": {
+      "width": 63.64,
+      "height": 15.64
+    }
+  },
+  "door dagre": {
+    "hard": 3,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:close",
+          "b": "line:open",
+          "band": "defect",
+          "gap": -1.908
+        },
+        {
+          "a": "label:lock",
+          "b": "line:lock",
+          "band": "defect",
+          "gap": -1.853
+        },
+        {
+          "a": "label:unlock",
+          "b": "line:unlock",
+          "band": "defect",
+          "gap": -2.343
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 6,
+      "forward": 4,
+      "share": 0.667
+    },
+    "text": {
+      "width": 78.5,
+      "height": 26.7
+    }
+  },
+  "door elk": {
+    "hard": 1,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": [
+        {
+          "a": "step:open",
+          "b": "step:close",
+          "band": "tight",
+          "gap": 0.196
+        },
+        {
+          "a": "step:lock",
+          "b": "step:unlock",
+          "band": "defect",
+          "gap": -0.424
+        }
+      ]
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 6,
+      "forward": 4,
+      "share": 0.667
+    },
+    "text": {
+      "width": 90.69,
+      "height": 22.02
+    }
+  },
+  "gcd dagre": {
+    "hard": 6,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": [
+        {
+          "a": "step:loop",
+          "b": "repeat:0:turn-1",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "step:loop",
+          "b": "repeat:0:turn-2",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "step:loop",
+          "b": "repeat:0:turn-3",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "repeat:0:turn-1",
+          "b": "repeat:0:turn-2",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "repeat:0:turn-1",
+          "b": "repeat:0:turn-3",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "repeat:0:turn-2",
+          "b": "repeat:0:turn-3",
+          "band": "defect",
+          "gap": -1.524
+        }
+      ]
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 4,
+      "share": 0.8
+    },
+    "text": {
+      "width": 30.99,
+      "height": 38.65
+    }
+  },
+  "gcd elk": {
+    "hard": 6,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:input",
+          "b": "line:input",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:no",
+          "b": "line:no",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:loop",
+          "b": "line:loop",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:yes",
+          "b": "line:yes",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": [
+        {
+          "a": "step:loop",
+          "b": "repeat:0:turn-1",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "step:loop",
+          "b": "repeat:0:turn-2",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "step:loop",
+          "b": "repeat:0:turn-3",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "repeat:0:turn-1",
+          "b": "repeat:0:turn-2",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "repeat:0:turn-1",
+          "b": "repeat:0:turn-3",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "repeat:0:turn-2",
+          "b": "repeat:0:turn-3",
+          "band": "defect",
+          "gap": -1.524
+        }
+      ]
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 4,
+      "share": 0.8
+    },
+    "text": {
+      "width": 29.9,
+      "height": 56.93
+    }
+  }
+}

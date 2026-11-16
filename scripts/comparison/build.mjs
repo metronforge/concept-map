@@ -72,7 +72,10 @@ for (const { id, manual, note } of inputs) {
     throw new Error(`${id}: comparison text must be English`);
   validateReferences(source);
   const entry = { id, title: manual.title, note, variants: {} };
-  entry.variants.manual = { metrics: geometryMetrics(manual), timing: null };
+  entry.variants.manual = {
+    metrics: geometryMetrics(source, manual),
+    timing: null,
+  };
   const variants = { manual };
   // Alternate order across maps to avoid always measuring one engine first.
   const engines = [
@@ -102,7 +105,7 @@ for (const { id, manual, note } of inputs) {
     }
     variants[name] = warm;
     entry.variants[name] = {
-      metrics: geometryMetrics(warm),
+      metrics: geometryMetrics(source, warm),
       timing: {
         samples,
         median: [...samples].sort((a, b) => a - b)[2],

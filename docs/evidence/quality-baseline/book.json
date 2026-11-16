@@ -1,0 +1,1170 @@
+{
+  "0-1": {
+    "hard": 4,
+    "crossings": {
+      "count": 5,
+      "pairs": [
+        ["mk_ctx", "shared"],
+        ["mk_page", "shared"],
+        ["server_page", "shared"],
+        ["server_page", "request_cookies"]
+      ]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:shared",
+          "b": "line:mk_page",
+          "band": "defect",
+          "gap": -1.815
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:shared",
+          "b": "node:apiCookies",
+          "band": "tight",
+          "gap": 0.143
+        }
+      ]
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:shared",
+          "b": "step:mk_page",
+          "band": "tight",
+          "gap": 0.143
+        }
+      ],
+      "boxes": [
+        {
+          "a": "node:cli",
+          "b": "step:cli_config",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:files",
+          "b": "step:files_dispatch",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:apiCookies",
+          "b": "step:mk_ctx",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:apiCookies",
+          "b": "step:mk_page",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "node:client",
+          "b": "step:client_server",
+          "band": "tight",
+          "gap": 0.095
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": [
+        {
+          "a": "node:apiCookies",
+          "b": "line:mk_page",
+          "band": "defect",
+          "gap": -5.524
+        },
+        {
+          "a": "node:apiCookies",
+          "b": "line:shared",
+          "band": "defect",
+          "gap": -1.619
+        }
+      ]
+    },
+    "reading": {
+      "edges": 14,
+      "forward": 9,
+      "share": 0.643
+    },
+    "text": {
+      "width": 40.38,
+      "height": 70.1
+    }
+  },
+  "1-1": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:request",
+          "b": "step:request",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:prefix",
+          "b": "step:prefix",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 9,
+      "forward": 4,
+      "share": 0.444
+    },
+    "text": {
+      "width": 40.38,
+      "height": 46.67
+    }
+  },
+  "1-2": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:browserA",
+          "b": "step:browserA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:contextA",
+          "b": "step:contextA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:pageA",
+          "b": "step:pageA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:mainA",
+          "b": "step:mainA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:childA",
+          "b": "step:childA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:browserB",
+          "b": "step:browserB",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:contextB",
+          "b": "step:contextB",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:pageB",
+          "b": "step:pageB",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:mainB",
+          "b": "step:mainB",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:childB",
+          "b": "step:childB",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 12,
+      "forward": 10,
+      "share": 0.833
+    },
+    "text": {
+      "width": 34.29,
+      "height": 57.33
+    }
+  },
+  "1-3": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": [
+        {
+          "a": "label:globals",
+          "b": "node:main",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "label:dom",
+          "b": "node:utility",
+          "band": "tight",
+          "gap": 0.238
+        }
+      ]
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:globals",
+          "b": "step:globals",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:dom",
+          "b": "step:dom",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 3,
+      "share": 0.6
+    },
+    "text": {
+      "width": 34.29,
+      "height": 51.43
+    }
+  },
+  "2-1": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 9,
+      "forward": 5,
+      "share": 0.556
+    },
+    "text": {
+      "width": 40,
+      "height": 56.38
+    }
+  },
+  "2-2": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 10,
+      "forward": 9,
+      "share": 0.9
+    },
+    "text": {
+      "width": 40,
+      "height": 90.48
+    }
+  },
+  "2-3": {
+    "hard": 5,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:next",
+          "b": "line:next",
+          "band": "tight",
+          "gap": 0.181
+        },
+        {
+          "a": "label:then",
+          "b": "line:then",
+          "band": "defect",
+          "gap": -0.122
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:measure",
+          "b": "step:measure",
+          "band": "tight",
+          "gap": 0.036
+        }
+      ],
+      "boxes": [
+        {
+          "a": "node:box",
+          "b": "step:first",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:stored",
+          "b": "step:first",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:compare",
+          "b": "step:changed",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:changed",
+          "b": "step:changed",
+          "band": "defect",
+          "gap": -0.19
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 14,
+      "forward": 9,
+      "share": 0.643
+    },
+    "text": {
+      "width": 40,
+      "height": 83.43
+    }
+  },
+  "2-4": {
+    "hard": 0,
+    "crossings": {
+      "count": 3,
+      "pairs": [
+        ["collect", "blocked"],
+        ["blocked", "retry"]
+      ]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:miss",
+          "b": "step:miss",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:again",
+          "b": "step:again",
+          "band": "tight",
+          "gap": 0.185
+        }
+      ],
+      "boxes": [
+        {
+          "a": "node:pre",
+          "b": "step:install",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "node:event",
+          "b": "step:collect",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 12,
+      "forward": 10,
+      "share": 0.833
+    },
+    "text": {
+      "width": 40,
+      "height": 85.71
+    }
+  },
+  "2-5": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 9,
+      "forward": 9,
+      "share": 1
+    },
+    "text": {
+      "width": 40,
+      "height": 88.57
+    }
+  },
+  "2-6": {
+    "hard": 1,
+    "crossings": {
+      "count": 1,
+      "pairs": [["skip", "url_load"]]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:subscribe",
+          "b": "step:listens",
+          "band": "defect",
+          "gap": -0.381
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 12,
+      "forward": 11,
+      "share": 0.917
+    },
+    "text": {
+      "width": 40,
+      "height": 85.71
+    }
+  },
+  "3-1": {
+    "hard": 1,
+    "crossings": {
+      "count": 1,
+      "pairs": [["cn", "cr"]]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:df",
+          "b": "line:df",
+          "band": "tight",
+          "gap": 0.143
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:df",
+          "b": "node:failed",
+          "band": "tight",
+          "gap": 0.181
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": [
+        {
+          "a": "step:cn",
+          "b": "step:df",
+          "band": "defect",
+          "gap": -0.498
+        }
+      ]
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 7,
+      "forward": 7,
+      "share": 1
+    },
+    "text": {
+      "width": 35.05,
+      "height": 46.67
+    }
+  },
+  "3-2": {
+    "hard": 0,
+    "crossings": {
+      "count": 1,
+      "pairs": [["hr", "mf"]]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:mf",
+          "b": "step:mf",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 4,
+      "share": 0.8
+    },
+    "text": {
+      "width": 37.71,
+      "height": 46.67
+    }
+  },
+  "3-3": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 4,
+      "forward": 0,
+      "share": 0
+    },
+    "text": {
+      "width": 37.71,
+      "height": 58.57
+    }
+  },
+  "4-1": {
+    "hard": 0,
+    "crossings": {
+      "count": 1,
+      "pairs": [["global_setup", "ready_server"]]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": [
+        {
+          "a": "label:probe_ready",
+          "b": "node:probe",
+          "band": "tight",
+          "gap": 0.238
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:probe",
+          "b": "step:probe_ready",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 8,
+      "forward": 6,
+      "share": 0.75
+    },
+    "text": {
+      "width": 40,
+      "height": 58.67
+    }
+  },
+  "4-2": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 11,
+      "forward": 5,
+      "share": 0.455
+    },
+    "text": {
+      "width": 40.38,
+      "height": 60.76
+    }
+  },
+  "4-3": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:tests",
+          "b": "step:next",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "node:next",
+          "b": "step:next",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "node:next",
+          "b": "step:last",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "node:last",
+          "b": "step:last",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 13,
+      "forward": 8,
+      "share": 0.615
+    },
+    "text": {
+      "width": 40.38,
+      "height": 70.86
+    }
+  },
+  "4-4": {
+    "hard": 0,
+    "crossings": {
+      "count": 4,
+      "pairs": [
+        ["failed_later", "later_stop"],
+        ["failed_stop", "dispatch_fresh"],
+        ["stop_budget", "fresh_retry"],
+        ["dispatch_fresh", "later_stop"]
+      ]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:first",
+          "b": "step:first_failed",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "node:failed",
+          "b": "step:first_failed",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "node:failed",
+          "b": "step:failed_later",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "node:later",
+          "b": "step:failed_later",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 11,
+      "forward": 7,
+      "share": 0.636
+    },
+    "text": {
+      "width": 40.38,
+      "height": 60.95
+    }
+  },
+  "4-5": {
+    "hard": 2,
+    "crossings": {
+      "count": 1,
+      "pairs": [["default_config", "reset_config"]]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:config_describe",
+          "b": "step:config_describe",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "label:worker_test",
+          "b": "step:worker_test",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:test_requested",
+          "b": "step:test_requested",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:hooks_teardown",
+          "b": "step:hooks_teardown",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "boxes": [
+        {
+          "a": "node:describe",
+          "b": "step:describe_reset",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:reset",
+          "b": "step:reset_config",
+          "band": "defect",
+          "gap": -0.381
+        },
+        {
+          "a": "node:value",
+          "b": "step:function_value",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 8,
+      "forward": 4,
+      "share": 0.5
+    },
+    "text": {
+      "width": 40.38,
+      "height": 71.43
+    }
+  },
+  "4-6": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:setup_body",
+          "b": "step:setup_body",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 10,
+      "forward": 5,
+      "share": 0.5
+    },
+    "text": {
+      "width": 40.38,
+      "height": 52.95
+    }
+  },
+  "5-1": {
+    "hard": 0,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 9,
+      "forward": 1,
+      "share": 0.111
+    },
+    "text": {
+      "width": 37.71,
+      "height": 64.76
+    }
+  },
+  "5-2": {
+    "hard": 0,
+    "crossings": {
+      "count": 1,
+      "pairs": [["toList", "toBlob"]]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:caught",
+          "b": "step:caught",
+          "band": "tight",
+          "gap": -0.095
+        },
+        {
+          "a": "label:save",
+          "b": "step:save",
+          "band": "tight",
+          "gap": -0.095
+        },
+        {
+          "a": "label:include",
+          "b": "step:include",
+          "band": "tight",
+          "gap": -0.095
+        },
+        {
+          "a": "label:patchIds",
+          "b": "step:patchIds",
+          "band": "tight",
+          "gap": -0.095
+        },
+        {
+          "a": "label:dispatch",
+          "b": "step:dispatch",
+          "band": "tight",
+          "gap": -0.095
+        },
+        {
+          "a": "label:pass",
+          "b": "step:pass",
+          "band": "tight",
+          "gap": -0.095
+        },
+        {
+          "a": "label:fail",
+          "b": "step:fail",
+          "band": "tight",
+          "gap": -0.095
+        }
+      ],
+      "boxes": [
+        {
+          "a": "node:ids",
+          "b": "step:offset",
+          "band": "tight",
+          "gap": -0.095
+        },
+        {
+          "a": "node:workers",
+          "b": "step:offset",
+          "band": "tight",
+          "gap": 0.095
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 10,
+      "forward": 9,
+      "share": 0.9
+    },
+    "text": {
+      "width": 40,
+      "height": 47.05
+    }
+  },
+  "6-1": {
+    "hard": 0,
+    "crossings": {
+      "count": 1,
+      "pairs": [["start", "save"]]
+    },
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": [
+        {
+          "a": "label:start",
+          "b": "node:start",
+          "band": "tight",
+          "gap": -0.048
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:chunk",
+          "b": "step:calls",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "node:calls",
+          "b": "step:calls",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "node:start",
+          "b": "step:save",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "node:save",
+          "b": "step:save",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 7,
+      "forward": 5,
+      "share": 0.714
+    },
+    "text": {
+      "width": 40,
+      "height": 51.62
+    }
+  },
+  "6-2": {
+    "hard": 1,
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:check",
+          "b": "line:check",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:calls",
+          "b": "node:generate",
+          "band": "defect",
+          "gap": -0.429
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "reading": {
+      "edges": 4,
+      "forward": 4,
+      "share": 1
+    },
+    "text": {
+      "width": 40,
+      "height": 48.57
+    }
+  }
+}

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/metronforge/concept-map/compare/v0.2.0...v0.2.1) (2026-11-16)
+
+
+### Bug Fixes
+
+* update the package version in the README and examples on each release ([7e34d8c](https://github.com/metronforge/concept-map/commit/7e34d8cfb644a6b4a03480233faddac4e377e393))
+
 ## [0.2.0](https://github.com/metronforge/concept-map/compare/v0.1.1...v0.2.0) (2026-11-15)
 
 

@@ -55,11 +55,11 @@ Load the stylesheet, one module script and one element on an HTML page:
 ```html
 <link
   rel="stylesheet"
-  href="https://esm.sh/@metronforge/concept-map@0.2.0/css"
+  href="https://esm.sh/@metronforge/concept-map@0.2.1/css"
 />
 <script
   type="module"
-  src="https://esm.sh/@metronforge/concept-map@0.2.0/element"
+  src="https://esm.sh/@metronforge/concept-map@0.2.1/element"
 ></script>
 <concept-map src="./map.json" layout="dagre"></concept-map>
 ```

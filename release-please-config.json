@@ -5,6 +5,16 @@
   "bump-patch-for-minor-pre-major": false,
   "include-component-in-tag": false,
   "packages": {
-    ".": {}
+    ".": {
+      "extra-files": [
+        "README.md",
+        "examples/coffee/README.md",
+        "examples/coffee/index.html",
+        "examples/door/README.md",
+        "examples/door/index.html",
+        "examples/gcd/README.md",
+        "examples/gcd/index.html"
+      ]
+    }
   }
 }

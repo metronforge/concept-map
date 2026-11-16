@@ -50,6 +50,8 @@ Save this source map as `map.json`. There are no coordinates:
 
 Load the stylesheet, one module script and one element on an HTML page:
 
+<!-- x-release-please-start-version -->
+
 ```html
 <link
   rel="stylesheet"
@@ -61,6 +63,8 @@ Load the stylesheet, one module script and one element on an HTML page:
 ></script>
 <concept-map src="./map.json" layout="dagre"></concept-map>
 ```
+
+<!-- x-release-please-end -->
 
 Serve the files over HTTP, for example with `python3 -m http.server 8000`.
 The [complete page](examples/coffee/index.html) adds a title, navigation and host styling.

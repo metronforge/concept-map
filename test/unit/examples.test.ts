@@ -7,6 +7,10 @@ import { reducedFlow } from "../../src/model/flow.js";
 
 const read = (name: string, file: string) =>
   readFileSync(`examples/${name}/${file}`, "utf8");
+const pkg = JSON.parse(readFileSync("package.json", "utf8")) as {
+  version: string;
+};
+const cdn = `https://esm.sh/@metronforge/concept-map@${pkg.version}`;
 const source = (name: string) =>
   SourceMapSchema.parse(JSON.parse(read(name, "map.json")));
 
@@ -20,17 +24,11 @@ describe("standalone examples", () => {
       expect(html.match(/<script\b/g)).toHaveLength(1);
       expect(html.match(/<concept-map\b/g)).toHaveLength(1);
       expect(html).toMatch(/<concept-map src="\.\/map\.json" layout="dagre">/);
-      expect(html).toContain(
-        'src="https://esm.sh/@metronforge/concept-map@0.2.0/element"',
-      );
-      expect(html).toContain(
-        'href="https://esm.sh/@metronforge/concept-map@0.2.0/css"',
-      );
+      expect(html).toContain(`src="${cdn}/element"`);
+      expect(html).toContain(`href="${cdn}/css"`);
       const readme = read(name, "README.md");
       for (const entry of ["element", "css"])
-        expect(readme).toContain(
-          `https://esm.sh/@metronforge/concept-map@0.2.0/${entry}`,
-        );
+        expect(readme).toContain(`${cdn}/${entry}`);
       for (const scenario of resolved.scenarios) {
         for (let i = 1; i < (scenario.flow?.length ?? 0); i++) {
           const hop = scenario.flow![i];
@@ -71,4 +69,34 @@ describe("standalone examples", () => {
       "locked",
     );
   });
+});
+
+describe("pinned package versions", () => {
+  const config = JSON.parse(
+    readFileSync("release-please-config.json", "utf8"),
+  ) as { packages: { ".": { "extra-files": string[] } } };
+  const files = config.packages["."]["extra-files"];
+
+  it("lists every file that pins a version", () => {
+    for (const name of ["coffee", "door", "gcd"])
+      for (const file of ["index.html", "README.md"])
+        expect(files).toContain(`examples/${name}/${file}`);
+    expect(files).toContain("README.md");
+  });
+
+  it.each(files)(
+    "%s pins the current version only inside release-please blocks",
+    (file) => {
+      const text = readFileSync(file, "utf8");
+      const outside = text.replace(
+        /<!-- x-release-please-start-version -->[\s\S]*?<!-- x-release-please-end -->/g,
+        "",
+      );
+      expect(outside).not.toMatch(/concept-map@\d+\.\d+\.\d+/);
+      expect(outside).not.toMatch(/npm version \d+\.\d+\.\d+/);
+      const pins = [...text.matchAll(/concept-map@(\d+\.\d+\.\d+)/g)];
+      expect(pins.length).toBeGreaterThan(0);
+      for (const pin of pins) expect(pin[1]).toBe(pkg.version);
+    },
+  );
 });

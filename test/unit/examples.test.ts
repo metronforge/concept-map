@@ -20,9 +20,17 @@ describe("standalone examples", () => {
       expect(html.match(/<script\b/g)).toHaveLength(1);
       expect(html.match(/<concept-map\b/g)).toHaveLength(1);
       expect(html).toMatch(/<concept-map src="\.\/map\.json" layout="dagre">/);
-      expect(html).toMatch(
-        /https:\/\/esm\.sh\/gh\/metronforge\/concept-map@[a-f0-9]{40}\/src\/element\.ts/,
+      expect(html).toContain(
+        'src="https://esm.sh/@metronforge/concept-map@0.2.0/element"',
       );
+      expect(html).toContain(
+        'href="https://esm.sh/@metronforge/concept-map@0.2.0/css"',
+      );
+      const readme = read(name, "README.md");
+      for (const entry of ["element", "css"])
+        expect(readme).toContain(
+          `https://esm.sh/@metronforge/concept-map@0.2.0/${entry}`,
+        );
       for (const scenario of resolved.scenarios) {
         for (let i = 1; i < (scenario.flow?.length ?? 0); i++) {
           const hop = scenario.flow![i];

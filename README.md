@@ -51,11 +51,11 @@ Load the stylesheet, one module script and one element on an HTML page:
 ```html
 <link
   rel="stylesheet"
-  href="https://esm.sh/gh/metronforge/concept-map@b989ffa568b74e53e0b29711ca0e909cc564fab5/css/concept-map.css"
+  href="https://esm.sh/@metronforge/concept-map@0.2.0/css"
 />
 <script
   type="module"
-  src="https://esm.sh/gh/metronforge/concept-map@b989ffa568b74e53e0b29711ca0e909cc564fab5/src/element.ts"
+  src="https://esm.sh/@metronforge/concept-map@0.2.0/element"
 ></script>
 <concept-map src="./map.json" layout="dagre"></concept-map>
 ```
@@ -65,12 +65,6 @@ The [complete page](examples/coffee/index.html) adds a title, navigation and hos
 The element fetches the JSON, loads dagre when needed and provides scenarios,
 steps, an animated whole-map flow, keyboard controls and reduced-motion support.
 Ready maps with geometry do not download a layout engine.
-
-**Before the 0.2.0 release:** these URLs pin a main commit through esm.sh's GitHub
-support. After publication, replace them with
-`https://esm.sh/@metronforge/concept-map@0.2.0/css` and
-`https://esm.sh/@metronforge/concept-map@0.2.0/element`. The current npm release
-does not yet provide this integration.
 
 ## Three ways to use the package
 
@@ -86,6 +80,26 @@ does not yet provide this integration.
 The last two accept resolved maps. For source maps, call `layout(source, engine)`
 from `@metronforge/concept-map/layout` first. See [integration](docs/INTEGRATION.md)
 and [automatic layout](docs/LAYOUT.md).
+
+## Lay out on the server
+
+Install the optional engine with `npm install @dagrejs/dagre`. Read the source
+map, resolve its geometry, then render the complete figure:
+
+```js
+import { readFile } from "node:fs/promises";
+import { layout } from "@metronforge/concept-map/layout";
+import { dagreEngine } from "@metronforge/concept-map/layout/dagre";
+import { renderFigure } from "@metronforge/concept-map";
+
+const map = JSON.parse(await readFile("map.json", "utf8"));
+const resolvedMap = await layout(map, dagreEngine);
+const html = renderFigure(resolvedMap);
+```
+
+`dagreEngine` is an object, not a function: pass it directly to `layout`, without
+calling it. Include `html` in the server response and load the package stylesheet.
+Use `mount` in the browser to add interaction.
 
 ## More examples
 

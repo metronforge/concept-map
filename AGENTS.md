@@ -98,9 +98,14 @@ player, the examples) is accepted on pictures, not only on numbers.
     Positions are measured in the browser with real fonts after
     `document.fonts.ready`; font tables are an estimate for server rendering,
     never the proof.
-- **Before/after screenshots** of the three examples at 1280 and 390 px in
-  the pull request description, light theme, and dark theme when colours or
-  CSS change.
+- **Screenshots only where the picture changes.** When the drawing is proven
+  unchanged (identical resolved maps, unchanged quality baseline), add none.
+  When it changes, show before and after of the examples that changed only:
+  one browser, 1280 px, light theme; add 390 px only when the narrow layout
+  changes, and dark theme only when colours or CSS change. Never commit
+  screenshots to the repository, and do not add tests whose only job is to
+  take them; the browser checks above are the proof, pictures are for the
+  reader.
 - A check that passes in one browser and fails in another is a failure. Do
   not open a pull request until CI is green in all three.
 - Do not relax a visual check or regenerate a snapshot to make a change

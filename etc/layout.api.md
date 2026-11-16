@@ -6,6 +6,38 @@
 
 import * as z from 'zod';
 
+// @public
+export type Band = "clear" | "tight" | "defect";
+
+// Warning: (ae-forgotten-export) The symbol "SourceMap" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ResolvedMap" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function check(source: SourceMap | ResolvedMap, resolved: ResolvedMap, options?: CheckOptions): LayoutReport;
+
+// @public (undocumented)
+export interface CheckOptions {
+    margin?: number;
+    measureLabel?: LabelMeasurer;
+    textSize?: number;
+    tolerance?: number;
+}
+
+// @public
+export interface Contact {
+    a: string;
+    b: string;
+    // (undocumented)
+    band: Exclude<Band, "clear">;
+    gap: number;
+}
+
+// @public
+export function describeDefects(report: LayoutReport): string[];
+
+// @public
+export const isLayoutDefectsError: (e: unknown) => e is LayoutDefectsError;
+
 // @public (undocumented)
 export type LabelMeasurer = (text: string, style: LabelStyle) => LabelSize;
 
@@ -27,13 +59,18 @@ export interface LabelStyle {
     mono: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "ResolvedMap" needs to be exported by the entry point index.d.ts
-//
 // @public
 export function layout(input: unknown, engine: LayoutEngine, options?: LayoutOptions): Promise<ResolvedMap>;
 
 // @public (undocumented)
 export type LayoutBox = [number, number, number, number];
+
+// @public
+export interface LayoutDefectsError extends Error {
+    // (undocumented)
+    name: "LayoutDefectsError";
+    report: LayoutReport;
+}
 
 // @public (undocumented)
 export interface LayoutEdge {
@@ -87,10 +124,39 @@ export interface LayoutNode extends LabelSize {
 export interface LayoutOptions {
     // (undocumented)
     measureLabel?: LabelMeasurer;
+    strict?: boolean;
 }
 
 // @public
 export type LayoutPoint = [number, number];
+
+// @public
+export interface LayoutReport {
+    crossings: {
+        count: number;
+        pairs: [string, string][];
+    };
+    hard: number;
+    labels: {
+        labels: Contact[];
+        lines: Contact[];
+        boxes: Contact[];
+    };
+    lines: {
+        boxes: Contact[];
+    };
+    // Warning: (ae-forgotten-export) The symbol "Reading" needs to be exported by the entry point index.d.ts
+    reading: Reading;
+    steps: {
+        labels: Contact[];
+        boxes: Contact[];
+        steps: Contact[];
+    };
+    text: {
+        width: number;
+        height: number;
+    };
+}
 
 // @public
 export interface LayoutResult {

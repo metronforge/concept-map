@@ -47,4 +47,10 @@ export interface LayoutEngine {
 }
 export interface LayoutOptions {
   measureLabel?: LabelMeasurer;
+  /**
+   * Check the result with `check` and throw `LayoutDefectsError` when it has
+   * hard defects: covered labels, step numbers over labels or boxes, lines
+   * over boxes. Hand-drawn maps are checked too.
+   */
+  strict?: boolean;
 }

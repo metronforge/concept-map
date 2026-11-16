@@ -107,6 +107,28 @@ const html = renderFigure(resolvedMap);
 calling it. Include `html` in the server response and load the package stylesheet.
 Use `mount` in the browser to add interaction.
 
+### Check a drawing
+
+`check(source, resolved)` judges any laid-out map, whether an engine, a hand
+drawing or an edited file produced it. It reports separate facts, not a score:
+
+```js
+import { check } from "@metronforge/concept-map/layout";
+
+const report = check(map, resolvedMap);
+report.hard; // contacts that are clearly defects
+report.labels.lines; // arrow labels crossed by a line
+report.steps.steps; // step numbers on top of each other
+report.crossings.count;
+report.reading.share; // first scenario's arrows that point down or right
+```
+
+Each contact is `tight` or `defect`; clear ones are not listed. Thresholds are
+fractions of the arrow-label text size, so scaling a map does not change its
+report. `layout(map, dagreEngine, { strict: true })` runs the same check and
+throws an error carrying the report when there are hard defects. Text is
+measured with built-in font tables; pass `measureLabel` to use your own.
+
 ## More examples
 
 - [Door: a finite state machine](https://metronforge.github.io/concept-map/examples/door/) —
@@ -151,6 +173,7 @@ changes are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and
 | `@metronforge/concept-map`                          | schemas, model and server renderers              |
 | `@metronforge/concept-map/dom`                      | `mount`, `MapPlayer`, concepts and browser ports |
 | `@metronforge/concept-map/element`                  | registers `<concept-map>`                        |
+| `@metronforge/concept-map/layout`                   | `layout`, `check` and `measureLabel`             |
 | `@metronforge/concept-map/css`                      | the player stylesheet                            |
 | `@metronforge/concept-map/source-map.schema.json`   | JSON Schema of the source map                    |
 | `@metronforge/concept-map/resolved-map.schema.json` | JSON Schema of the resolved map                  |

@@ -1,3 +1,5 @@
+import type { Placer } from "./ports.js";
+import { problemGraph } from "./build-problem.js";
 import ELK from "elkjs/lib/elk.bundled.js";
 import type {
   ElkNode,
@@ -86,8 +88,10 @@ function route(edge: ElkExtendedEdge): LayoutRoute {
       : {}),
   };
 }
-/** Native ELK layered partitions and orthogonal routing; no default engine chosen. */
-export const elkEngine: LayoutEngine = {
+const adapter: LayoutEngine & Placer = {
+  name: "elk",
+  capabilities: { direction: "preferred", lanes: "required" },
+  place: (problem) => adapter.layout(problemGraph(problem)),
   async layout(graph) {
     const nodes = engineNodes(graph),
       elk = new (ELK as unknown as { new (): ElkApi })();
@@ -111,3 +115,6 @@ export const elkEngine: LayoutEngine = {
     }
   },
 };
+
+/** Native ELK layered partitions and orthogonal routing; no default engine chosen. */
+export const elkEngine: LayoutEngine = adapter;

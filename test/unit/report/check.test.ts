@@ -127,6 +127,13 @@ function scaled(m: ResolvedMap, k: number): ResolvedMap {
   const c = structuredClone(m);
   const p = ([x, y]: number[]) => [x * k, y * k] as [number, number];
   c.viewBox = [m.viewBox[0] * k, m.viewBox[1] * k];
+  for (const [id, lane] of Object.entries(c.lanes)) {
+    const original = m.lanes[id];
+    lane.x = (original.x ?? 6) * k;
+    lane.w = (original.w ?? m.viewBox[0] - 12) * k;
+    lane.y *= k;
+    lane.h *= k;
+  }
   for (const n of Object.values(c.nodes))
     n.box = n.box.map((v) => v * k) as typeof n.box;
   for (const e of Object.values(c.edges)) {

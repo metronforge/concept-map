@@ -1,3 +1,4 @@
+import { checkConstraints } from "./constraints.js";
 import type { ResolvedMap, SourceMap } from "../../schema.js";
 import { measureLabel } from "../measure.js";
 import { drawn, TEXT } from "./drawn.js";
@@ -41,6 +42,7 @@ export function check(
   };
   const report: LayoutReport = {
     hard: 0,
+    constraints: checkConstraints(source, resolved),
     crossings: crossingPairs(shapes),
     labels: labelContacts(shapes, judge),
     steps: stepContacts(shapes, judge),
@@ -51,9 +53,11 @@ export function check(
       height: Math.round((resolved.viewBox[1] / size) * 100) / 100,
     },
   };
-  report.hard = contactLists(report)
-    .flatMap(([, list]) => list)
-    .filter((c) => c.band === "defect").length;
+  report.hard =
+    contactLists(report)
+      .flatMap(([, list]) => list)
+      .filter((c) => c.band === "defect").length +
+    report.constraints.filter((c) => !c.holds).length;
   return report;
 }
 
@@ -72,9 +76,14 @@ function contactLists(report: LayoutReport): [string, Contact[]][] {
 
 /** List the hard defects of a report in words, one per line. */
 export function describeDefects(report: LayoutReport): string[] {
-  return contactLists(report).flatMap(([what, list]) =>
-    list
-      .filter((c) => c.band === "defect")
-      .map((c) => `${what}: ${c.a} and ${c.b} (${-c.gap} em)`),
-  );
+  return report.constraints
+    .filter((c) => !c.holds)
+    .map((c) => c.message)
+    .concat(
+      contactLists(report).flatMap(([what, list]) =>
+        list
+          .filter((c) => c.band === "defect")
+          .map((c) => `${what}: ${c.a} and ${c.b} (${-c.gap} em)`),
+      ),
+    );
 }

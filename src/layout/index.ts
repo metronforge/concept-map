@@ -1,11 +1,21 @@
 import type { ResolvedMap, SourceMap } from "../schema.js";
 import { validateReferences } from "../schema/references.js";
-import { parseMap, checkedResult } from "./check.js";
+import { parseMap } from "./check.js";
 import { measureLabel } from "./measure.js";
-import { layoutGraph } from "./graph.js";
+import { buildProblem, problemGraph } from "./build-problem.js";
+import { asPlacer } from "./legacy.js";
+import { place } from "./place.js";
+import { checkConstraints } from "./stages/constraints.js";
 import { resolveGeometry } from "./resolve.js";
 import type { LayoutEngine, LayoutOptions } from "./types.js";
-import type { LayoutReport } from "./stages/report.js";
+import {
+  EngineFailedError,
+  ResultRejectedError,
+  UnsupportedConstraintsError,
+  LayoutDefectsError,
+} from "./errors.js";
+export * from "./errors.js";
+export type { ConstraintVerdict } from "./problem.js";
 export type * from "./types.js";
 export { measureLabel } from "./measure.js";
 export { validateReferences } from "../schema/references.js";
@@ -16,16 +26,6 @@ export type {
   Contact,
   LayoutReport,
 } from "./stages/report.js";
-
-/** Thrown by `layout` with `strict` when the drawing has hard defects. */
-export interface LayoutDefectsError extends Error {
-  name: "LayoutDefectsError";
-  /** Every finding, not only the hard ones. */
-  report: LayoutReport;
-}
-/** True for the error `layout` throws with `strict`. */
-export const isLayoutDefectsError = (e: unknown): e is LayoutDefectsError =>
-  e instanceof Error && e.name === "LayoutDefectsError" && "report" in e;
 
 /** Validate first, then measure and lay out; complete hand geometry is retained.
  * `layout` proposes a drawing; `check` judges it. Success here does not mean
@@ -39,12 +39,21 @@ export async function layout(
   validateReferences(map);
   const measure = options.measureLabel ?? measureLabel;
   if ("viewBox" in map) return strict(map, map, measure, options);
-  const graph = layoutGraph(map, measure);
-  const result = checkedResult(
-    await engine.layout(JSON.parse(JSON.stringify(graph)) as typeof graph),
-    graph,
-  );
-  const resolved = resolveGeometry(map, graph, result, measure);
+  const problem = buildProblem(map, measure);
+  const graph = problemGraph(problem);
+  const placer = asPlacer(engine);
+  const outcome = await place(problem, placer);
+  if (outcome.kind === "engine-failed") throw new EngineFailedError(outcome);
+  if (outcome.kind === "unsupported-constraints")
+    throw new UnsupportedConstraintsError(outcome);
+  const resolved = resolveGeometry(map, graph, outcome.result, measure);
+  const rejected = checkConstraints(map, resolved).find((c) => !c.holds);
+  if (rejected)
+    throw new ResultRejectedError({
+      placer: placer.name,
+      constraint: rejected.kind,
+      message: rejected.message,
+    });
   validateReferences(resolved);
   return strict(map, resolved, measure, options);
 }
@@ -60,10 +69,8 @@ async function strict(
   const { check, describeDefects } = await import("./stages/report.js");
   const report = check(source, resolved, { measureLabel: measure });
   if (!report.hard) return resolved;
-  throw Object.assign(
-    new Error(
-      `The layout has hard defects:\n${describeDefects(report).join("\n")}`,
-    ),
-    { name: "LayoutDefectsError" as const, report },
+  throw new LayoutDefectsError(
+    report,
+    `The layout has hard defects:\n${describeDefects(report).join("\n")}`,
   );
 }

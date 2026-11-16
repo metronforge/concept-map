@@ -44,7 +44,8 @@ const cases = [
     gzip: true,
     // +2.4 kB for the quality check. It is loaded with a dynamic import only
     // for { strict: true }; size-limit counts that chunk too.
-    limit: "35000 B",
+    // +900 B for shared problem negotiation, boundary errors and lane verdicts.
+    limit: "35900 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",
@@ -53,7 +54,8 @@ const cases = [
       "dist/layout/stages/report.js": "{ check }",
     },
     gzip: true,
-    limit: "5400 B",
+    // +400 B for the source-based lane verdicts.
+    limit: "5800 B",
   },
   {
     name: "complete root API (with Zod)",

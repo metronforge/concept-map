@@ -1,6 +1,7 @@
 {
   "coffee dagre": {
     "hard": 1,
+    "constraints": [],
     "crossings": {
       "count": 1,
       "pairs": [["ready", "offer"]]
@@ -37,6 +38,7 @@
   },
   "coffee elk": {
     "hard": 0,
+    "constraints": [],
     "crossings": {
       "count": 0,
       "pairs": []
@@ -66,6 +68,7 @@
   },
   "door dagre": {
     "hard": 3,
+    "constraints": [],
     "crossings": {
       "count": 0,
       "pairs": []
@@ -114,6 +117,7 @@
   },
   "door elk": {
     "hard": 1,
+    "constraints": [],
     "crossings": {
       "count": 0,
       "pairs": []
@@ -156,6 +160,7 @@
   },
   "gcd dagre": {
     "hard": 6,
+    "constraints": [],
     "crossings": {
       "count": 0,
       "pairs": []
@@ -222,6 +227,7 @@
   },
   "gcd elk": {
     "hard": 6,
+    "constraints": [],
     "crossings": {
       "count": 0,
       "pairs": []

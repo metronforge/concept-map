@@ -1,0 +1,40 @@
+import type { SourceMap } from "../schema.js";
+import type { LabelMeasurer, LayoutGraph } from "./types.js";
+import type { LayoutProblem } from "./problem.js";
+import { layoutGraph } from "./graph.js";
+
+export function buildProblem(
+  map: SourceMap,
+  measure: LabelMeasurer,
+): LayoutProblem {
+  const graph = layoutGraph(map, measure);
+  const direction = map.direction ?? "down";
+  return {
+    nodes: graph.nodes,
+    edges: graph.edges,
+    groups: graph.lanes,
+    constraints: [
+      { kind: "direction", strength: "preferred", direction },
+      ...(graph.lanes.length
+        ? [
+            {
+              kind: "lanes" as const,
+              strength: "required" as const,
+              direction,
+              lanes: graph.lanes.map((l) => l.id),
+            },
+          ]
+        : []),
+    ],
+  };
+}
+/** Bridge to the established graph contract without changing its measurements. */
+export function problemGraph(problem: LayoutProblem): LayoutGraph {
+  const direction = problem.constraints.find((c) => c.kind === "direction");
+  return {
+    direction: direction?.direction ?? "down",
+    nodes: problem.nodes,
+    edges: problem.edges,
+    lanes: problem.groups,
+  };
+}

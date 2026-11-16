@@ -24,6 +24,18 @@ export interface CheckOptions {
 }
 
 // @public
+export interface ConstraintVerdict {
+    // (undocumented)
+    holds: boolean;
+    // (undocumented)
+    kind: "lanes";
+    // (undocumented)
+    message: string;
+    // (undocumented)
+    strength: "required";
+}
+
+// @public
 export interface Contact {
     a: string;
     b: string;
@@ -36,7 +48,36 @@ export interface Contact {
 export function describeDefects(report: LayoutReport): string[];
 
 // @public
-export const isLayoutDefectsError: (e: unknown) => e is LayoutDefectsError;
+export class EngineFailedError extends LayoutError<"engine-failed", {
+    placer: string;
+    cause: unknown;
+    message: string;
+}> {
+    constructor(data: {
+        placer: string;
+        cause: unknown;
+        message: string;
+    });
+    // (undocumented)
+    readonly cause: unknown;
+    // (undocumented)
+    readonly placer: string;
+}
+
+// @public
+export const isEngineFailedError: (value: unknown) => value is EngineFailedError;
+
+// @public
+export const isLayoutDefectsError: (value: unknown) => value is LayoutDefectsError;
+
+// @public
+export const isLayoutError: (value: unknown) => value is LayoutError;
+
+// @public
+export const isResultRejectedError: (value: unknown) => value is ResultRejectedError;
+
+// @public
+export const isUnsupportedConstraintsError: (value: unknown) => value is UnsupportedConstraintsError;
 
 // @public (undocumented)
 export type LabelMeasurer = (text: string, style: LabelStyle) => LabelSize;
@@ -66,10 +107,12 @@ export function layout(input: unknown, engine: LayoutEngine, options?: LayoutOpt
 export type LayoutBox = [number, number, number, number];
 
 // @public
-export interface LayoutDefectsError extends Error {
+export class LayoutDefectsError extends LayoutError<"layout-defects", LayoutReport> {
+    constructor(report: LayoutReport, message: string);
     // (undocumented)
     name: "LayoutDefectsError";
-    report: LayoutReport;
+    // (undocumented)
+    readonly report: LayoutReport;
 }
 
 // @public (undocumented)
@@ -90,6 +133,15 @@ export interface LayoutEdge {
 export interface LayoutEngine {
     // (undocumented)
     layout(graph: LayoutGraph): Promise<LayoutResult>;
+}
+
+// @public
+export class LayoutError<K extends string = string, D = unknown> extends Error {
+    constructor(kind: K, data: D, message: string);
+    // (undocumented)
+    readonly data: D;
+    // (undocumented)
+    readonly kind: K;
 }
 
 // @public (undocumented)
@@ -132,6 +184,7 @@ export type LayoutPoint = [number, number];
 
 // @public
 export interface LayoutReport {
+    constraints: ConstraintVerdict[];
     crossings: {
         count: number;
         pairs: [string, string][];
@@ -178,6 +231,49 @@ export interface LayoutRoute {
 
 // @public
 export const measureLabel: LabelMeasurer;
+
+// @public
+export class ResultRejectedError extends LayoutError<"result-rejected", {
+    placer: string;
+    constraint: string;
+    message: string;
+}> {
+    constructor(data: {
+        placer: string;
+        constraint: string;
+        message: string;
+    });
+    // (undocumented)
+    readonly constraint: string;
+    // (undocumented)
+    readonly placer: string;
+}
+
+// @public
+export class UnsupportedConstraintsError extends LayoutError<"unsupported-constraints", {
+    placer: string;
+    constraints: readonly {
+        kind: string;
+        strength: "required" | "preferred";
+    }[];
+    message: string;
+}> {
+    constructor(data: {
+        placer: string;
+        constraints: readonly {
+            kind: string;
+            strength: "required" | "preferred";
+        }[];
+        message: string;
+    });
+    // (undocumented)
+    readonly constraints: readonly {
+        kind: string;
+        strength: "required" | "preferred";
+    }[];
+    // (undocumented)
+    readonly placer: string;
+}
 
 // Warning: (ae-forgotten-export) The symbol "MapData" needs to be exported by the entry point index.d.ts
 //

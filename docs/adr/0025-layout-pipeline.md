@@ -114,7 +114,9 @@ resolved map
 - **Report.** A pure function of the resolved map: crossings, labels covered,
   numbers covering labels, loops touching boxes, share of the main path that
   follows the reading direction, text scale. The same function serves the
-  author (`layout()` returns it; `strict` turns hard defects into errors), the
+  author (`check(source, resolved)`, exported next to `layout`; `layout()`
+  keeps returning only the map, and its `strict` option runs the check and
+  turns hard defects into errors), the
   browser tests of AGENTS.md "Visual acceptance", and the comparison page. The
   hand-drawn book maps give the baseline.
 

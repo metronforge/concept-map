@@ -40,7 +40,7 @@ export function domMeasurer(host: HTMLElement): Measurer {
           style.edge ? el.dataset.edge === style.edge : el.textContent === text,
       );
       if (!text || !label || !style.mono || style.fontSize !== 10.5)
-        return fallback(text, style);
+        return { ...fallback(text, style), uncertainty: style.fontSize / 64 };
       return measureArrow(host, label);
     },
   };
@@ -76,6 +76,7 @@ function measureArrow(host: HTMLElement, label: SVGTextElement) {
       width: Math.max(...sizes.map((s) => s.width)),
       height: sizes[0].height + (sizes.length - 1) * lineHeight,
       ascent: (sizes[0].height * 5) / 6 + ((sizes.length - 1) * lineHeight) / 2,
+      uncertainty: lineHeight / 64,
       ...(lines.length ? { wrap: { lines, lineHeight } } : {}),
     };
     return { ...size, padding: paintPadding(label, size, lineHeight) };

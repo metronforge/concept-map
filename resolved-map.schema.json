@@ -761,6 +761,10 @@
                 "type": "number",
                 "minimum": 0
               },
+              "uncertainty": {
+                "type": "number",
+                "minimum": 0
+              },
               "wrap": {
                 "type": "object",
                 "properties": {

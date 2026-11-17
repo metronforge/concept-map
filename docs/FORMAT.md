@@ -85,7 +85,9 @@ host adapter's responsibility (D7); JSON Schema alone cannot check references.
 `name` (for example `font-table`, `dom`, or a host's measurer name) and `labels`,
 a record keyed by arrow id. Each entry has `width` and `height` in map units.
 Browser measurements may also have `left` and `ascent`, the bounds relative to
-the text baseline, `padding` for paint outside the text line box, and `wrap: { lines, lineHeight }` for wrapped text.
+the text baseline, `padding` for paint outside the text line box,
+`uncertainty` for boundary measurement error in map units, and
+`wrap: { lines, lineHeight }` for wrapped text.
 
 These values let `refine(map, measurer)` retain each label's centre when its
 font changes, including after serialization. Refinement updates the record.

@@ -83,6 +83,16 @@ refines after fonts become ready, after later fonts load and on resize.
 node-text fitting and the SVG's size; only the core chooses arrow-label and
 step-number positions.
 
+Measurements may include `uncertainty`, an allowance for Euclidean boundary displacement in
+map units. The DOM adapter uses 1/64 of the rendered font size for subpixel
+measurement differences. This is an allowance, not a guarantee that different
+fonts have equal metrics. The checker adds the allowances of the text blocks
+in a contact: it calls the contact `clear` or `defect` only when the whole
+gap interval lies in that band, otherwise `tight`. Each recorded contact
+includes its nominal `gap` and, when nonzero, `uncertainty`, both in em.
+The checker measures independently; it never trusts saved uncertainty.
+Font tables and legacy functions omit the allowance, preserving their reports.
+
 `refine` is pure: it returns a new map, preserves label centres, and moves a
 step number only when it covers measured text, its paint clearance, or a node box. It uses the
 existing outward candidate search. Node boxes, lanes, frames, paths and the

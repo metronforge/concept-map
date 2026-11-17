@@ -240,6 +240,13 @@ this box here".
   when the gap is at least the margin, `defect` when the overlap exceeds the
   tolerance, `tight` in between — reported as such, never rounded to either
   side.
+  A measurer may supply a boundary-error allowance. For text contacts, the
+  checker sums those allowances and judges the resulting gap interval:
+  `clear` or `defect` only when the whole interval qualifies, otherwise
+  `tight`. The report retains the nominal gap and the allowance. The DOM
+  adapter uses 1/64 em for subpixel variation; font-table reports keep zero.
+  This does not promise identical verdicts for arbitrary fonts, and saved
+  measurement metadata is never evidence for the checker.
 - **Scale-free thresholds.** Margins and tolerances are fractions of the font
   size, and a test shows that scaling a map does not change its report.
 - **The report is a profile, not a score.** Its numbers are separate facts

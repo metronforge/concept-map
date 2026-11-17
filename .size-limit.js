@@ -58,8 +58,8 @@ const cases = [
     },
     gzip: true,
     // +400 B for the source-based lane verdicts.
-    // +100 B for object measurers and baseline offsets.
-    limit: "5900 B",
+    // +350 B for object measurers, validated metrics and uncertainty intervals.
+    limit: "6150 B",
   },
   {
     name: "complete root API (with Zod)",

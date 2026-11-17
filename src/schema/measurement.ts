@@ -10,6 +10,7 @@ export const Measurement = z
         left: z.number().optional(),
         ascent: z.number().optional(),
         padding: z.number().nonnegative().optional(),
+        uncertainty: z.number().nonnegative().optional(),
         wrap: z
           .object({
             lines: z.array(z.string()).min(1),

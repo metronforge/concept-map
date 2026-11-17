@@ -7,24 +7,27 @@ step and whole-map view and checks that the SVG uses the map's label and
 number positions. The JSON contains full reports, measurements and the ids
 of moved labels and numbers. Server quality baselines are unchanged.
 
-## Unresolved browser disagreement
+## Measurement uncertainty
 
-The equality test deliberately fails for door with dagre in Firefox.
-The `close` label and its own route have a gap of −0.099 em in Chromium and
-WebKit (`tight`) and −0.101 em in Firefox (`defect`). The unchanged checker
-threshold is −0.1 em. The same font loaded from the bundled DejaVu Sans file
-was also tried: another contact, `lock` against `unlock`, still straddled the
-threshold. That experiment is not used as acceptance evidence.
+Hard-defect identities agree in all three browsers. The DOM adapter supplies
+an allowance of 1/64 of the rendered font size for Euclidean boundary
+measurement error. This is a chosen typographic allowance, not a proven bound
+for arbitrary fonts. The checker adds the allowances of both text blocks in
+a contact. It reports `clear` or `defect` only when the entire gap interval
+qualifies; otherwise it reports `tight`. Each contact retains its nominal gap
+and its uncertainty in em. Font-table reports retain zero uncertainty.
 
-Label centres and the checker bands remain unchanged. Making this test pass
-requires the author's decision about the constraints on this task; the
-implementation does not silently waive the equality requirement.
+For example, the door/dagre `close` label against its own route measures
+−0.099 em in Chromium and WebKit and −0.101 em in Firefox. All three intervals
+cross the −0.1 em cutoff, so all report `tight`. No label centre, route or
+checker cutoff was moved to obtain agreement. The checker remeasures text;
+it never trusts the resolved map's saved uncertainty.
 
 | Map    | Engine | Font table | Chromium | Firefox | WebKit |
 | ------ | ------ | ---------: | -------: | ------: | -----: |
 | coffee | dagre  |          1 |        1 |       1 |      1 |
 | coffee | ELK    |          0 |        0 |       0 |      0 |
-| door   | dagre  |          3 |        6 |       7 |      6 |
+| door   | dagre  |          3 |        6 |       6 |      6 |
 | door   | ELK    |          1 |        4 |       4 |      4 |
 | gcd    | dagre  |          6 |        6 |       6 |      6 |
 | gcd    | ELK    |          6 |        6 |       6 |      6 |
@@ -38,8 +41,7 @@ The records' `extraDefects` arrays name every new contact.
 
 For door with dagre, `lock` reaches the `unlock` route and `finish` reaches
 `close`. The first clear candidates for the `open` and `close` numbers overlap
-each other after moving away from enlarged labels. Firefox additionally
-reports `close` against its own route, as described above. The three existing
+each other after moving away from enlarged labels. The three existing
 line/label contacts remain. Number-to-number avoidance belongs to the next
 placement stage; this item retains the existing candidate search.
 
@@ -68,6 +70,4 @@ Reproduce the reports with:
 FONT_EVIDENCE_DIR=/tmp/font-reports npx playwright test test/browser/refine.spec.ts
 ```
 
-Each test also attaches its JSON report to the Playwright results. The
-current Firefox failure is intentional evidence of the unresolved condition,
-not an accepted snapshot update.
+Each test also attaches its JSON report to the Playwright results.

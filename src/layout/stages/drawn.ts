@@ -1,5 +1,6 @@
 import type { ResolvedMap, SourceMap } from "../../schema.js";
 import type { LabelMeasurer } from "../types.js";
+import { measured } from "../graph.js";
 import { polylines } from "./paths.js";
 import type { Rect, Vec } from "./plane.js";
 
@@ -12,7 +13,7 @@ const STEP_RADIUS = 8;
 export interface Drawn {
   nodes: { id: string; box: Rect }[];
   edges: { id: string; from: string; to: string; lines: Vec[][] }[];
-  labels: { id: string; box: Rect }[];
+  labels: { id: string; box: Rect; uncertainty: number }[];
   steps: { id: string; at: Vec }[];
   radius: number;
 }
@@ -50,13 +51,18 @@ function labels(
 ): Drawn["labels"] {
   return Object.entries(resolved.edges).flatMap(([id, e]) => {
     if (!e.label?.text) return [];
-    const m = measure(e.label.text, { fontSize: size, mono: true, edge: id });
+    const m = measured(measure, e.label.text, {
+      fontSize: size,
+      mono: true,
+      edge: id,
+    });
     // Text is drawn from its left baseline; the baseline sits a third of the
     // line height below the centre.
     const [x, y] = e.label.at;
     return [
       {
         id,
+        uncertainty: m.uncertainty ?? 0,
         box: [
           x + (m.left ?? 0),
           y - (m.ascent ?? (m.height * 5) / 6),

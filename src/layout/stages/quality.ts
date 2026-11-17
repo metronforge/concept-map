@@ -18,6 +18,8 @@ export interface Contact {
   band: Exclude<Band, "clear">;
   /** Gap in em of arrow-label text; negative when the two overlap. */
   gap: number;
+  /** Measurement allowance on either side of gap, in em; omitted when exact. */
+  uncertainty?: number;
 }
 
 /**

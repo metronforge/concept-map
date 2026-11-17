@@ -14,7 +14,8 @@
             "a": "label:offer",
             "b": "line:offer",
             "band": "defect",
-            "gap": -2.313
+            "gap": -2.313,
+            "uncertainty": 0.016
           }
         ],
         "boxes": []
@@ -44,30 +45,35 @@
           "width": 31.609375,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "ticket": {
           "width": 69.546875,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "ready": {
           "width": 75.859375,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "empty": {
           "width": 69.546875,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "offer": {
           "width": 94.828125,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         }
       }
@@ -103,31 +109,36 @@
             "a": "label:order",
             "b": "line:order",
             "band": "tight",
-            "gap": 0.22
+            "gap": 0.22,
+            "uncertainty": 0.017
           },
           {
             "a": "label:ticket",
             "b": "line:ticket",
             "band": "tight",
-            "gap": 0.22
+            "gap": 0.22,
+            "uncertainty": 0.017
           },
           {
             "a": "label:ready",
             "b": "line:ready",
             "band": "tight",
-            "gap": 0.22
+            "gap": 0.22,
+            "uncertainty": 0.017
           },
           {
             "a": "label:empty",
             "b": "line:empty",
             "band": "tight",
-            "gap": 0.22
+            "gap": 0.22,
+            "uncertainty": 0.017
           },
           {
             "a": "label:offer",
             "b": "line:offer",
             "band": "tight",
-            "gap": 0.22
+            "gap": 0.22,
+            "uncertainty": 0.017
           }
         ],
         "boxes": []
@@ -157,30 +168,35 @@
           "width": 35.09375,
           "height": 13.984375,
           "ascent": 11.653645833333334,
+          "uncertainty": 0.182270375,
           "padding": 5.656854249492381
         },
         "ticket": {
           "width": 77.203125,
           "height": 13.984375,
           "ascent": 11.653645833333334,
+          "uncertainty": 0.182270375,
           "padding": 5.656854249492381
         },
         "ready": {
           "width": 84.21875,
           "height": 13.984375,
           "ascent": 11.653645833333334,
+          "uncertainty": 0.182270375,
           "padding": 5.656854249492381
         },
         "empty": {
           "width": 77.203125,
           "height": 13.984375,
           "ascent": 11.653645833333334,
+          "uncertainty": 0.182270375,
           "padding": 5.656854249492381
         },
         "offer": {
           "width": 105.265625,
           "height": 13.984375,
           "ascent": 11.653645833333334,
+          "uncertainty": 0.182270375,
           "padding": 5.656854249492381
         }
       }
@@ -216,37 +232,43 @@
             "a": "label:close",
             "b": "line:open",
             "band": "defect",
-            "gap": -3.326
+            "gap": -3.326,
+            "uncertainty": 0.021
           },
           {
             "a": "label:close",
             "b": "line:close",
             "band": "tight",
-            "gap": -0.099
+            "gap": -0.099,
+            "uncertainty": 0.021
           },
           {
             "a": "label:lock",
             "b": "line:lock",
             "band": "defect",
-            "gap": -2.564
+            "gap": -2.564,
+            "uncertainty": 0.021
           },
           {
             "a": "label:lock",
             "b": "line:unlock",
             "band": "defect",
-            "gap": -1.342
+            "gap": -1.342,
+            "uncertainty": 0.021
           },
           {
             "a": "label:unlock",
             "b": "line:unlock",
             "band": "defect",
-            "gap": -2.564
+            "gap": -2.564,
+            "uncertainty": 0.021
           },
           {
             "a": "label:finish",
             "b": "line:close",
             "band": "defect",
-            "gap": -0.601
+            "gap": -0.601,
+            "uncertainty": 0.021
           }
         ],
         "boxes": []
@@ -283,36 +305,42 @@
           "width": 164.4375,
           "height": 17.25,
           "ascent": 14.375,
+          "uncertainty": 0.224839171875,
           "padding": 5.656854249492381
         },
         "open": {
           "width": 190.40625,
           "height": 17.25,
           "ascent": 14.375,
+          "uncertainty": 0.224839171875,
           "padding": 5.656854249492381
         },
         "close": {
           "width": 164.4375,
           "height": 17.25,
           "ascent": 14.375,
+          "uncertainty": 0.224839171875,
           "padding": 5.656854249492381
         },
         "lock": {
           "width": 173.09375,
           "height": 17.25,
           "ascent": 14.375,
+          "uncertainty": 0.224839171875,
           "padding": 5.656854249492381
         },
         "unlock": {
           "width": 190.40625,
           "height": 17.25,
           "ascent": 14.375,
+          "uncertainty": 0.224839171875,
           "padding": 5.656854249492381
         },
         "blocked": {
           "width": 77.890625,
           "height": 60.419121,
           "ascent": 35.959560499999995,
+          "uncertainty": 0.224839171875,
           "wrap": {
             "lines": ["push ", "[locked] ", "/ ", "rattle"],
             "lineHeight": 14.389707
@@ -323,6 +351,7 @@
           "width": 173.09375,
           "height": 17.25,
           "ascent": 14.375,
+          "uncertainty": 0.224839171875,
           "padding": 5.656854249492381
         }
       }
@@ -372,37 +401,43 @@
             "a": "label:start",
             "b": "line:start",
             "band": "tight",
-            "gap": -0.063
+            "gap": -0.063,
+            "uncertainty": 0.025
           },
           {
             "a": "label:open",
             "b": "line:open",
             "band": "tight",
-            "gap": -0.063
+            "gap": -0.063,
+            "uncertainty": 0.025
           },
           {
             "a": "label:close",
             "b": "line:close",
             "band": "defect",
-            "gap": -0.158
+            "gap": -0.158,
+            "uncertainty": 0.025
           },
           {
             "a": "label:lock",
             "b": "line:lock",
             "band": "defect",
-            "gap": -0.616
+            "gap": -0.616,
+            "uncertainty": 0.025
           },
           {
             "a": "label:unlock",
             "b": "line:unlock",
             "band": "defect",
-            "gap": -0.158
+            "gap": -0.158,
+            "uncertainty": 0.025
           },
           {
             "a": "label:finish",
             "b": "line:finish",
             "band": "tight",
-            "gap": -0.063
+            "gap": -0.063,
+            "uncertainty": 0.025
           }
         ],
         "boxes": []
@@ -439,36 +474,42 @@
           "width": 190,
           "height": 19.921875,
           "ascent": 16.6015625,
+          "uncertainty": 0.259754859375,
           "padding": 5.656854249492381
         },
         "open": {
           "width": 220,
           "height": 19.921875,
           "ascent": 16.6015625,
+          "uncertainty": 0.259754859375,
           "padding": 5.656854249492381
         },
         "close": {
           "width": 190,
           "height": 19.921875,
           "ascent": 16.6015625,
+          "uncertainty": 0.259754859375,
           "padding": 5.656854249492381
         },
         "lock": {
           "width": 200,
           "height": 19.921875,
           "ascent": 16.6015625,
+          "uncertainty": 0.259754859375,
           "padding": 5.656854249492381
         },
         "unlock": {
           "width": 220,
           "height": 19.921875,
           "ascent": 16.6015625,
+          "uncertainty": 0.259754859375,
           "padding": 5.656854249492381
         },
         "blocked": {
           "width": 90,
           "height": 69.79480799999999,
           "ascent": 41.538028999999995,
+          "uncertainty": 0.259754859375,
           "wrap": {
             "lines": ["push ", "[locked] ", "/ ", "rattle"],
             "lineHeight": 16.624311
@@ -479,6 +520,7 @@
           "width": 200,
           "height": 19.921875,
           "ascent": 16.6015625,
+          "uncertainty": 0.259754859375,
           "padding": 5.656854249492381
         }
       }
@@ -587,30 +629,35 @@
           "width": 31.609375,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "no": {
           "width": 12.65625,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "assign": {
           "width": 37.9375,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "loop": {
           "width": 37.9375,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "yes": {
           "width": 18.96875,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         }
       }
@@ -654,25 +701,29 @@
             "a": "label:input",
             "b": "line:input",
             "band": "tight",
-            "gap": 0.19
+            "gap": 0.19,
+            "uncertainty": 0.016
           },
           {
             "a": "label:no",
             "b": "line:no",
             "band": "tight",
-            "gap": 0.19
+            "gap": 0.19,
+            "uncertainty": 0.016
           },
           {
             "a": "label:loop",
             "b": "line:loop",
             "band": "tight",
-            "gap": 0.19
+            "gap": 0.19,
+            "uncertainty": 0.016
           },
           {
             "a": "label:yes",
             "b": "line:yes",
             "band": "tight",
-            "gap": 0.19
+            "gap": 0.19,
+            "uncertainty": 0.016
           }
         ],
         "boxes": []
@@ -739,30 +790,35 @@
           "width": 31.609375,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "no": {
           "width": 12.65625,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "assign": {
           "width": 37.9375,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "loop": {
           "width": 37.9375,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         },
         "yes": {
           "width": 18.96875,
           "height": 12.59375,
           "ascent": 10.494791666666666,
+          "uncertainty": 0.1640625,
           "padding": 5.656854249492381
         }
       }

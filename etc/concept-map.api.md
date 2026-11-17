@@ -134,6 +134,7 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
             left: z.ZodOptional<z.ZodNumber>;
             ascent: z.ZodOptional<z.ZodNumber>;
             padding: z.ZodOptional<z.ZodNumber>;
+            uncertainty: z.ZodOptional<z.ZodNumber>;
             wrap: z.ZodOptional<z.ZodObject<{
                 lines: z.ZodArray<z.ZodString>;
                 lineHeight: z.ZodNumber;
@@ -339,6 +340,7 @@ export const ResolvedMapSchema: z.ZodObject<{
             left: z.ZodOptional<z.ZodNumber>;
             ascent: z.ZodOptional<z.ZodNumber>;
             padding: z.ZodOptional<z.ZodNumber>;
+            uncertainty: z.ZodOptional<z.ZodNumber>;
             wrap: z.ZodOptional<z.ZodObject<{
                 lines: z.ZodArray<z.ZodString>;
                 lineHeight: z.ZodNumber;

@@ -94,12 +94,13 @@ export function layoutGraph(
 
 function validMetrics(size: LabelSize): boolean {
   if (
-    [size.left, size.ascent, size.padding].some(
+    [size.left, size.ascent, size.padding, size.uncertainty].some(
       (n) => n !== undefined && !Number.isFinite(n),
     )
   )
     return false;
   if (size.padding !== undefined && size.padding < 0) return false;
+  if (size.uncertainty !== undefined && size.uncertainty < 0) return false;
   const wrap = size.wrap;
   return (
     !wrap ||

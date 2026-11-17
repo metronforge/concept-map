@@ -42,6 +42,7 @@ export interface Contact {
     // (undocumented)
     band: Exclude<Band, "clear">;
     gap: number;
+    uncertainty?: number;
 }
 
 // @public
@@ -93,6 +94,7 @@ export interface LabelSize {
     height: number;
     left?: number;
     padding?: number;
+    uncertainty?: number;
     // (undocumented)
     width: number;
     wrap?: {

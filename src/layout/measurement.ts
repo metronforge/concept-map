@@ -6,6 +6,8 @@ export interface LabelSize {
   ascent?: number;
   /** Painted halo outside the ink bounds, used when placing numbers. */
   padding?: number;
+  /** Allowance for Euclidean boundary displacement, in map units; zero if omitted. */
+  uncertainty?: number;
   /** Optional browser wrapping, measured as one centred text block. */
   wrap?: { lines: string[]; lineHeight: number };
 }

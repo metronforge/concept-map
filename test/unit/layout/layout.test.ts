@@ -74,7 +74,9 @@ for (const [name, engine] of [
     );
     expect(map.edges.ab.path).toMatch(/^M.*L/);
     expect(map.edges.ab.label?.text).toBe("orders coffee");
-    expect(map.scenarios[0].repeatBadges![0].at).toEqual(map.edges.ab.badge);
+    const [x, y] = map.scenarios[0].repeatBadges![0].at;
+    const [bx, by] = map.edges.ab.badge!;
+    expect(Math.hypot(x - bx, y - by)).toBeGreaterThanOrEqual(16);
     expect(map.frames.outer.box[0]).toBeLessThan(map.nodes.a.box[0]);
     expect(map.lanes.empty.y).toBeGreaterThanOrEqual(
       map.lanes.client.y + map.lanes.client.h,

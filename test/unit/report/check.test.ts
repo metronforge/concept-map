@@ -196,18 +196,23 @@ describe("strict layout", () => {
     ).resolves.toBeDefined();
   });
   it("throws the report when a drawing has hard defects", async () => {
-    const error = await layout(source("gcd"), dagreEngine, {
+    const broken = map((m) => {
+      m.scenarios[0].repeatBadges = [{ edge: "ab", step: "end", at: [35, 70] }];
+    });
+    const error = await layout(broken, dagreEngine, {
       strict: true,
     }).catch((e: unknown) => e);
     expect(isLayoutDefectsError(error)).toBe(true);
     if (!isLayoutDefectsError(error)) return;
     expect(error.report.hard).toBeGreaterThan(0);
     expect(error.message).toMatch(
-      /step numbers overlap: step:loop and repeat:0:turn-1/,
+      /step numbers overlap: step:ab and repeat:0:end/,
     );
   });
   it("checks hand-drawn maps too", async () => {
-    const hand = book.find(({ id }) => id === "2-3")!.map;
+    const hand = map((m) => {
+      m.edges.ab.badge = [35, 25];
+    });
     await expect(
       layout(hand, dagreEngine, { strict: true, measureLabel }),
     ).rejects.toThrow(/step number covers a box/);

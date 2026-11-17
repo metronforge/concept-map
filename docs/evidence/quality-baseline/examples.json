@@ -1,6 +1,6 @@
 {
   "coffee dagre": {
-    "hard": 1,
+    "hard": 0,
     "constraints": [],
     "crossings": {
       "count": 1,
@@ -12,8 +12,8 @@
         {
           "a": "label:offer",
           "b": "line:offer",
-          "band": "defect",
-          "gap": -2.312
+          "band": "tight",
+          "gap": 0.189
         }
       ],
       "boxes": []
@@ -67,32 +67,33 @@
     }
   },
   "door dagre": {
-    "hard": 3,
+    "hard": 0,
     "constraints": [],
     "crossings": {
       "count": 0,
       "pairs": []
     },
     "labels": {
-      "labels": [],
-      "lines": [
+      "labels": [
         {
           "a": "label:close",
-          "b": "line:open",
-          "band": "defect",
-          "gap": -1.908
-        },
+          "b": "label:finish",
+          "band": "tight",
+          "gap": 0.174
+        }
+      ],
+      "lines": [
         {
           "a": "label:lock",
           "b": "line:lock",
-          "band": "defect",
-          "gap": -1.853
+          "band": "tight",
+          "gap": 0.042
         },
         {
           "a": "label:unlock",
           "b": "line:unlock",
-          "band": "defect",
-          "gap": -2.343
+          "band": "tight",
+          "gap": 0.121
         }
       ],
       "boxes": []
@@ -116,7 +117,7 @@
     }
   },
   "door elk": {
-    "hard": 1,
+    "hard": 0,
     "constraints": [],
     "crossings": {
       "count": 0,
@@ -130,20 +131,7 @@
     "steps": {
       "labels": [],
       "boxes": [],
-      "steps": [
-        {
-          "a": "step:open",
-          "b": "step:close",
-          "band": "tight",
-          "gap": 0.196
-        },
-        {
-          "a": "step:lock",
-          "b": "step:unlock",
-          "band": "defect",
-          "gap": -0.424
-        }
-      ]
+      "steps": []
     },
     "lines": {
       "boxes": []
@@ -159,7 +147,7 @@
     }
   },
   "gcd dagre": {
-    "hard": 6,
+    "hard": 0,
     "constraints": [],
     "crossings": {
       "count": 0,
@@ -173,44 +161,7 @@
     "steps": {
       "labels": [],
       "boxes": [],
-      "steps": [
-        {
-          "a": "step:loop",
-          "b": "repeat:0:turn-1",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "step:loop",
-          "b": "repeat:0:turn-2",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "step:loop",
-          "b": "repeat:0:turn-3",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "repeat:0:turn-1",
-          "b": "repeat:0:turn-2",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "repeat:0:turn-1",
-          "b": "repeat:0:turn-3",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "repeat:0:turn-2",
-          "b": "repeat:0:turn-3",
-          "band": "defect",
-          "gap": -1.524
-        }
-      ]
+      "steps": []
     },
     "lines": {
       "boxes": []
@@ -226,7 +177,7 @@
     }
   },
   "gcd elk": {
-    "hard": 6,
+    "hard": 0,
     "constraints": [],
     "crossings": {
       "count": 0,
@@ -265,44 +216,7 @@
     "steps": {
       "labels": [],
       "boxes": [],
-      "steps": [
-        {
-          "a": "step:loop",
-          "b": "repeat:0:turn-1",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "step:loop",
-          "b": "repeat:0:turn-2",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "step:loop",
-          "b": "repeat:0:turn-3",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "repeat:0:turn-1",
-          "b": "repeat:0:turn-2",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "repeat:0:turn-1",
-          "b": "repeat:0:turn-3",
-          "band": "defect",
-          "gap": -1.524
-        },
-        {
-          "a": "repeat:0:turn-2",
-          "b": "repeat:0:turn-3",
-          "band": "defect",
-          "gap": -1.524
-        }
-      ]
+      "steps": []
     },
     "lines": {
       "boxes": []

@@ -1,52 +1,43 @@
-import type { LayoutPoint as Point } from "../types.js";
-export interface BadgeObstacle {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}
-function clearOf(
-  [x, y]: Point,
-  radius: number,
-  box: BadgeObstacle,
-  margin = 3,
-): boolean {
+import type { LayoutPoint as Point, LayoutBox as Box } from "../types.js";
+import { badgeCandidates } from "./badge-candidates.js";
+
+export function clearOf([x, y]: Point, [left, top, w, h]: Box, margin: number) {
   return (
     Math.hypot(
-      Math.max(box.x - x, 0, x - box.x - box.width),
-      Math.max(box.y - y, 0, y - box.y - box.height),
+      Math.max(left - x, 0, x - left - w),
+      Math.max(top - y, 0, y - top - h),
     ) >=
-    radius + margin
+    8 + margin
   );
 }
-/** Keep clear numbers; otherwise search outward for space beside text and boxes. */
+
+/** Keep clear numbers; otherwise take the nearest clear candidate. */
 export function placeBadge(
   origin: Point,
-  radius: number,
-  labels: BadgeObstacle[],
-  bounds: BadgeObstacle,
-  obstacles: BadgeObstacle[] = [],
-  searchLabels: BadgeObstacle[] = labels,
+  obstacles: Box[],
+  bounds: Point,
+  search: Box[] = obstacles,
 ): Point {
-  if ([...labels, ...obstacles].every((box) => clearOf(origin, radius, box, 0)))
-    return origin;
+  if (obstacles.every((box) => clearOf(origin, box, 0))) return origin;
   const clear = ([x, y]: Point) =>
-    x - radius >= bounds.x &&
-    y - radius >= bounds.y &&
-    x + radius <= bounds.x + bounds.width &&
-    y + radius <= bounds.y + bounds.height &&
-    [...searchLabels, ...obstacles].every((box) =>
-      clearOf([x, y], radius, box),
-    );
-  const limit = Math.hypot(bounds.width, bounds.height);
-  for (let distance = 4; distance <= limit; distance += 4)
-    for (let angle = 0; angle < 16; angle++) {
-      const radians = (angle * Math.PI) / 8;
-      const candidate: Point = [
-        origin[0] + Math.cos(radians) * distance,
-        origin[1] + Math.sin(radians) * distance,
-      ];
-      if (clear(candidate)) return candidate;
-    }
-  return origin;
+    x >= 8 &&
+    y >= 8 &&
+    x <= bounds[0] - 8 &&
+    y <= bounds[1] - 8 &&
+    search.every((box) => clearOf([x, y], box, 3));
+  return firstClear(
+    badgeCandidates(origin, Math.hypot(...bounds)),
+    clear,
+    origin,
+  );
+}
+
+/** All number candidates are ordered by movement cost before this search. */
+export function firstClear(
+  candidates: Iterable<Point>,
+  clear: (point: Point) => boolean,
+  fallback: Point,
+): Point {
+  for (const candidate of candidates) if (clear(candidate)) return candidate;
+  return fallback;
 }

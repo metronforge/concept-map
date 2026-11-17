@@ -29,7 +29,9 @@ export type Action = {
 };
 
 // @public (undocumented)
-export function derive(map: ResolvedMap, state: PlayerState): Frame;
+export function derive(map: ResolvedMap, state: PlayerState, options?: {
+    labelsInPanel?: boolean;
+}): Frame;
 
 // @public (undocumented)
 export const escapeHtml: (text: string) => string;

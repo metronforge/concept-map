@@ -1,3 +1,4 @@
+import { arcPoints } from "./arcs.js";
 import type { Vec } from "./plane.js";
 
 const CURVE_STEPS = 16;
@@ -10,6 +11,7 @@ const arity: Record<string, number> = {
   s: 4,
   q: 4,
   t: 2,
+  a: 7,
 };
 const same = (a: Vec, b: Vec) => Math.hypot(a[0] - b[0], a[1] - b[1]) < 1e-7;
 const mirror = (control: Vec, about: Vec): Vec => [
@@ -69,7 +71,13 @@ function draw(pen: Pen, lower: string, v: number[], rel: boolean) {
     pen.control && kinds.includes(pen.previous)
       ? mirror(pen.control, pen.point)
       : pen.point;
-  if (lower === "c") cubic(pen, at(v[0], v[1]), at(v[2], v[3]), at(v[4], v[5]));
+  if (lower === "a") {
+    const end = at(v[5], v[6]);
+    arcPoints(pen.point, end, v).forEach((point) => push(pen, point));
+    pen.point = end;
+    pen.control = undefined;
+  } else if (lower === "c")
+    cubic(pen, at(v[0], v[1]), at(v[2], v[3]), at(v[4], v[5]));
   else if (lower === "s")
     cubic(pen, smooth("cs"), at(v[0], v[1]), at(v[2], v[3]));
   else if (lower === "q") quadratic(pen, at(v[0], v[1]), at(v[2], v[3]));
@@ -113,8 +121,7 @@ const tokenize = (path: string) =>
   [];
 
 /**
- * An SVG path as polylines, one per subpath. Curves become 16 chords each;
- * arcs are refused, because no renderer or book map draws them yet.
+ * An SVG path as polylines, one per subpath. Curves and arcs use 16 chords each.
  */
 export function polylines(path: string): Vec[][] {
   const tokens = tokenize(path);
@@ -125,12 +132,12 @@ export function polylines(path: string): Vec[][] {
   while (i < tokens.length) {
     if (/^[a-z]$/i.test(tokens[i])) command = tokens[i++];
     const lower = command.toLowerCase();
-    if (lower === "a") throw fail("Arc commands are not supported by check");
     if (lower === "z") {
       close(pen);
       command = "";
       continue;
     }
+    if (lower === "a") splitArcFlags(tokens, i);
     const count = arity[lower];
     if (!count || i + count > tokens.length || /^[a-z]$/i.test(tokens[i]))
       throw fail("Invalid SVG path");
@@ -147,6 +154,15 @@ export function polylines(path: string): Vec[][] {
     else draw(pen, lower, v, rel);
   }
   if (pen.line.length > 1) pen.lines.push(pen.line);
-  if (!pen.lines.length) throw fail("SVG path has no segment");
   return pen.lines;
+}
+
+/** SVG permits adjacent one-character flags, followed immediately by x. */
+function splitArcFlags(tokens: string[], start: number) {
+  for (const offset of [3, 4]) {
+    const index = start + offset,
+      token = tokens[index];
+    if (token?.length > 1 && /^[01]/.test(token))
+      tokens.splice(index, 1, token[0], token.slice(1));
+  }
 }

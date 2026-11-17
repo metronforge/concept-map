@@ -149,6 +149,12 @@ npm install @metronforge/concept-map zod
 
 ESM only, Node ≥ 22.14. `zod` 4 is a peer dependency. MIT.
 Install `@dagrejs/dagre` or `elkjs` when a bundled application uses that engine.
+When arrow labels still collide after browser refinement, the player shows
+their text beside step numbers in the panel. Whole-map mode groups the labels
+by step. It checks again after resizing and restores labels to drawings that
+have room. Hand-drawn boxes and routes stay fixed. See
+[labels in the panel](docs/LAYOUT.md#arrow-labels-in-the-panel).
+
 Load `@metronforge/concept-map/css` separately; host colours and fonts use the
 custom properties in [docs/CSS.md](docs/CSS.md).
 

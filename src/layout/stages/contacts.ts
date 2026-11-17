@@ -50,7 +50,7 @@ export function labelContacts(d: Drawn, judge: Judge): LayoutReport["labels"] {
 export function stepContacts(d: Drawn, judge: Judge): LayoutReport["steps"] {
   const out: LayoutReport["steps"] = { labels: [], boxes: [], steps: [] };
   const r = d.radius;
-  d.steps.forEach((step, i) => {
+  [...d.steps, ...d.nodeSteps].forEach((step) => {
     for (const label of d.labels)
       judge(
         out.labels,
@@ -58,6 +58,8 @@ export function stepContacts(d: Drawn, judge: Judge): LayoutReport["steps"] {
         step.id,
         circleRectGap(step.at, r, label.box),
       );
+  });
+  d.steps.forEach((step, i) => {
     for (const n of d.nodes)
       judge(
         out.boxes,

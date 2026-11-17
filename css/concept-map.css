@@ -203,6 +203,7 @@
   grid-area: map;
 }
 .map-ui .panel {
+  overflow-wrap: anywhere;
   border: 1px solid var(--cmap-border);
   border-radius: 8px;
   padding: 18px 18px 16px;
@@ -910,4 +911,44 @@
 }
 .map-ui[data-map-id] {
   position: relative;
+}
+
+/* Arrow text leaves crowded drawings, keeping its step number in the panel. */
+.map-ui .arrow-labels {
+  list-style: none;
+  padding: 10px 0 0;
+  margin: 0 0 14px;
+  border-top: 1px solid var(--cmap-border);
+  display: grid;
+  gap: 8px;
+}
+.map-ui .arrow-labels li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.map-ui .arrow-labels .n {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.2px solid var(--cmap-muted-fg);
+  font: 600 11px/22px var(--cmap-font-mono);
+  text-align: center;
+}
+.map-ui .arrow-labels .label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: inherit;
+}
+.map-ui .arrow-labels code {
+  font-size: 1em;
+}
+.map-ui .all .arrow-labels {
+  margin: 0 4px 12px;
+  padding: 4px 0 8px;
+  border-top: 0;
+}
+.map-ui .all:has(.arrow-labels) > ol > li > button {
+  font-weight: 600;
 }

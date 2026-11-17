@@ -1,3 +1,4 @@
+import { renderPanelLabels } from "../render/panel-labels.js";
 import type { ResolvedMap } from "../schema.js";
 import type { Frame, LogLine } from "../model/frame.js";
 import {
@@ -43,6 +44,25 @@ export class PanelDom {
           : (this.root.querySelector<HTMLElement>('[aria-current="step"]') ??
             this.root);
       target.focus({ preventScroll: true });
+    }
+  }
+  /** Update only label rows, preserving controls, focus and running playback. */
+  refreshLabels(frame: Frame) {
+    this.root.querySelectorAll(".arrow-labels").forEach((row) => row.remove());
+    const labels = frame.panel.arrowLabels;
+    if (frame.panel.kind === "all") {
+      this.more
+        .querySelectorAll<HTMLElement>("[data-li]")
+        .forEach((row) =>
+          row.insertAdjacentHTML(
+            "beforeend",
+            renderPanelLabels(labels, Number(row.dataset.li) + 1),
+          ),
+        );
+    } else {
+      this.head
+        .querySelector("p")!
+        .insertAdjacentHTML("afterend", renderPanelLabels(labels));
     }
   }
   markStep(index: number) {

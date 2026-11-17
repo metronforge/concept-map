@@ -1,4 +1,6 @@
 import type { ResolvedMap } from "../schema.js";
+import { check } from "../layout/stages/report.js";
+import { labelsInPanel } from "../layout/stages/presentation.js";
 import { refine } from "../layout/stages/refine.js";
 import { domMeasurer } from "./measureLabel.js";
 import { sizeLabels, type Geometry } from "./geometry.js";
@@ -13,7 +15,7 @@ export function refineDrawing(
   geo: Geometry,
   svg: SvgDom,
   state: PlayerState,
-): ResolvedMap {
+): { map: ResolvedMap; labelsInPanel: boolean } {
   sizeLabels(root, map, geo, true);
   const result = refine(map, domMeasurer(root));
   for (const [id, edge] of Object.entries(result.edges)) {
@@ -21,7 +23,11 @@ export function refineDrawing(
     svg.labels[id].setAttribute("x", String(edge.label.at[0]));
     svg.labels[id].setAttribute("y", String(edge.label.at[1]));
   }
-  svg.applyFrame(derive(result, state));
   sizeLabels(root, result, geo);
-  return result;
+  const panel = labelsInPanel(
+    result,
+    check(map, result, { measureLabel: domMeasurer(root) }),
+  );
+  svg.applyFrame(derive(result, state, { labelsInPanel: panel }));
+  return { map: result, labelsInPanel: panel };
 }

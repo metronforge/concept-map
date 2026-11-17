@@ -174,8 +174,9 @@ Only `layout/errors.ts` may declare classes in the core: the public boundary
 converts outcomes to data-carrying exceptions there. The checker returns
 constraint verdicts in its report, including for invalid hand drawings. The `Measurer` port now accepts the deterministic table adapter, DOM
 measurements, or legacy functions. Pure `layout/stages/refine` remeasures arrow
-labels and places step numbers. The DOM player may import this pure stage,
-but still cannot import engines or the layout entry at runtime. Browser code
+labels and places step numbers. The DOM player may import the pure refinement, report and presentation stages,
+but still cannot import engines or the layout entry at runtime. After refinement,
+the report selects whether arrow text stays in the drawing or moves to the panel. Browser code
 owns font access and wrapping; the core owns arrow-label and number positions.
 The resolved measurement record preserves label centres across serialization;
 the checker measures independently. Routing and general label placement
@@ -200,9 +201,9 @@ one pull request each.
 
 ## 8. Budgets
 
-- Size: six consumer scenarios have gzip limits (`size-limit`), including
-  Zod when validation is used. Limits are the measured baseline plus 10%;
-  see ADR 0015. The player budget now uses `./dom`; the component budget includes Zod.
+- Size: seven consumer scenarios have gzip limits (`size-limit`), including
+  Zod when validation is used. Raised limits use measured gzip size plus at most 1 kB and at most 3%,
+  whichever is smaller (AGENTS.md). ADR 0015 records the initial baselines. The player budget now uses `./dom`; the component budget includes Zod.
 - No `any`, no default exports, no `enum`, no classes in the core, including
   `src/layout` and its adapters, except the boundary exceptions in
   `src/layout/errors.ts` (lint).

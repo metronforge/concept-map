@@ -62,12 +62,11 @@ describe("SVG paths", () => {
     ]);
     expect(polylines("M0 0 L1 1 M5 5 l1 0")).toHaveLength(2);
   });
-  it("turn curves into chords and refuse arcs", () => {
+  it("turn curves into chords", () => {
     const [line] = polylines("M0,0 C0,10 10,10 10,0");
     expect(line).toHaveLength(17);
     expect(line[8][1]).toBeCloseTo(7.5);
     expect(polylines("M0,0 Q5,10 10,0 T20,0")[0]).toHaveLength(33);
-    expect(() => polylines("M0,0 A5,5 0 0 1 10,0")).toThrow(/Arc/);
     expect(() => polylines("L1,1")).toThrow(/moveto/);
   });
 });

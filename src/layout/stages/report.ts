@@ -1,6 +1,6 @@
 import { checkConstraints } from "./constraints.js";
 import type { ResolvedMap, SourceMap } from "../../schema.js";
-import { asMeasurer } from "../measure.js";
+import { measureMono } from "../text-size.js";
 import { drawn, TEXT } from "./drawn.js";
 import {
   crossingPairs,
@@ -27,8 +27,13 @@ export function check(
   const size = options.textSize ?? TEXT;
   const margin = (options.margin ?? 0.25) * size;
   const tolerance = (options.tolerance ?? 0.1) * size;
-  const measurer = asMeasurer(options.measureLabel);
-  const shapes = drawn(source, resolved, size, measurer.measure.bind(measurer));
+  const input = options.measureLabel;
+  const measure = !input
+    ? measureMono
+    : typeof input === "function"
+      ? input
+      : input.measure.bind(input);
+  const shapes = drawn(source, resolved, size, measure);
   const judge = judgeContacts(shapes, size, margin, tolerance);
   const report: LayoutReport = {
     hard: 0,

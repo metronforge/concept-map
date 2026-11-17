@@ -27,6 +27,7 @@ export class MapPlayer {
   private flowId = 0;
   private log: LogLine[] = [];
   private destroyed = false;
+  private panelLabels = false;
   constructor(
     readonly root: HTMLElement,
     private drawnMap: ResolvedMap,
@@ -65,14 +66,23 @@ export class MapPlayer {
     });
   }
   private fit(map: ResolvedMap) {
-    if (!this.destroyed)
-      this.drawnMap = refineDrawing(
-        this.root,
-        map,
-        this.geo,
-        this.svg,
-        this.current,
+    if (this.destroyed) return;
+    const result = refineDrawing(
+      this.root,
+      map,
+      this.geo,
+      this.svg,
+      this.current,
+    );
+    this.drawnMap = result.map;
+    if (this.panelLabels !== result.labelsInPanel) {
+      this.panelLabels = result.labelsInPanel;
+      this.panel.refreshLabels(
+        derive(this.map, this.current, {
+          labelsInPanel: this.panelLabels,
+        }),
       );
+    }
   }
   private listen(view: Window) {
     view.addEventListener(
@@ -191,7 +201,9 @@ export class MapPlayer {
   };
   private render() {
     this.stopFlow();
-    const frame = derive(this.map, this.current);
+    const frame = derive(this.map, this.current, {
+      labelsInPanel: this.panelLabels,
+    });
     this.svg.applyFrame(frame);
     this.panel.applyFrame(this.map, frame);
     sizeLabels(this.root, this.map, this.geo);

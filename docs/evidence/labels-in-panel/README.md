@@ -61,24 +61,27 @@ Chromium before/after pictures were captured at 1280 and 390 px in light and
 dark host themes. Only changed pairs are included: coffee/dagre and door/dagre
 at both widths, coffee/ELK and door/ELK at 390 px. GCD and the remaining wide
 pictures are pixel-identical, so they are omitted. The 24 PNGs and a comparison
-HTML index are kept outside the repository in `before-after.zip` for the pull
-request; no screenshot-only test is committed.
+HTML index are kept outside the repository in `before-after.zip` for the
+author. They are not uploaded to GitHub and do not hold up review; no
+screenshot-only test is committed.
 
 ## Package size
 
-The author explicitly approved updating affected limits to the final measured
-gzip sizes plus 10%. The player now carries the independent quality checker;
-it still imports no engine and adds no runtime dependency. The checker uses
+The author approved the affected budget increases. Each new limit is the
+measured gzip size plus `min(1000, floor(size * 0.03))` bytes, so the margin is
+at most 1 kB and at most 3%, rounded down to whole bytes. The player now carries
+the independent quality checker; it still imports no engine and adds no runtime
+dependency. The checker uses
 its existing mono font metrics directly, avoiding unused proportional font
 tables in the player. Panel derivation was separated from map geometry so the
 existing complexity limits did not need increases.
 
-| Consumer                              | Measured gzip bytes | Previous limit | Approved limit |
-| ------------------------------------- | ------------------: | -------------: | -------------: |
-| Pre-resolved component, including Zod |              48,225 |         42,350 |         53,048 |
-| Browser player                        |              14,329 |          9,883 |         15,762 |
-| Server rendering                      |               4,229 |          4,188 |          4,652 |
-| Layout with a host-supplied engine    |              36,803 |         36,250 |         40,484 |
+| Consumer                              | Measured gzip bytes | Previous limit | Margin | New limit |
+| ------------------------------------- | ------------------: | -------------: | -----: | --------: |
+| Pre-resolved component, including Zod |              48,225 |         42,350 |  1,000 |    49,225 |
+| Browser player                        |              14,329 |          9,883 |    429 |    14,758 |
+| Server rendering                      |               4,229 |          4,188 |    126 |     4,355 |
+| Layout with a host-supplied engine    |              36,803 |         36,250 |  1,000 |    37,803 |
 
 Other size limits are unchanged. The standalone checker is 4,701 bytes gzip,
 under its existing 6,150-byte limit.

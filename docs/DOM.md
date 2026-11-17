@@ -132,3 +132,16 @@ JSON. Hosts no longer need to copy a template. `mount` and `<concept-map>` share
 it; see [integration](INTEGRATION.md). The figure's `data-map-id` records the map
 id. `[data-map-status]` uses `.map-status` for visually hidden announcements.
 Per-player SVG marker ids are intentionally unique after hydration.
+
+## Arrow labels in the panel
+
+When arrow text cannot fit, `[data-map-edge-labels]` has `visibility="hidden"`
+and `aria-hidden="true"`. Both attributes are removed when labels return to
+the drawing. `.etext[data-edge]` elements retain their text and coordinates for
+measurement, but are not an additional accessible copy.
+
+`.arrow-labels` is a list beneath the step explanation, before the navigation
+controls. Each row has `.n` for its step number and `.label` for inline text.
+In whole-map mode the list is inside the corresponding `[data-li]`, after its
+step-selection button. Steps without labelled arrows have no list. Resizing
+updates these rows without replacing buttons, links, or the flow log.

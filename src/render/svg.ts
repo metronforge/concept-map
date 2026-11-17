@@ -39,7 +39,7 @@ export function renderSvg(
       .map(([number]) => number);
     html += `<g class="node${n.custom ? " custom" : ""}${n.fail ? " fail" : ""}${f.revealed ? "" : " ghost"}${f.current ? " cur" : ""}" style="--c:var(--cmap-layer-${esc(n.layer)},var(--cmap-layer))" data-node="${esc(id)}"${numbers.length ? ` data-callout="${esc(numbers.join(" "))}"` : ""}><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5"></rect><text x="${x + 10}" y="${y + (n.tag ? 17 : h / 2 + 4.5)}" class="${n.mono ? "mono" : ""}">${esc(f.label)}</text>${n.tag ? `<text x="${x + 10}" y="${y + 32}" class="tag">${esc(n.tag)}</text>` : ""}</g>`;
   }
-  html += `</g><g data-map-edge-labels>`;
+  html += `</g><g data-map-edge-labels${frame.panel.arrowLabels ? ' visibility="hidden" aria-hidden="true"' : ""}>`;
   for (const [id, e] of Object.entries(map.edges))
     if (e.label)
       html += `<text x="${e.label.at[0]}" y="${e.label.at[1]}" class="etext${frame.edgeLabels[id].revealed ? "" : " ghost"}" data-edge="${esc(id)}">${renderArrowLabel(map, id)}</text>`;

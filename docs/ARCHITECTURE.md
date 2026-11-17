@@ -174,8 +174,9 @@ Only `layout/errors.ts` may declare classes in the core: the public boundary
 converts outcomes to data-carrying exceptions there. The checker returns
 constraint verdicts in its report, including for invalid hand drawings. The `Measurer` port now accepts the deterministic table adapter, DOM
 measurements, or legacy functions. Pure `layout/stages/refine` remeasures arrow
-labels and places step numbers. The DOM player may import this pure stage,
-but still cannot import engines or the layout entry at runtime. Browser code
+labels and places step numbers. The DOM player may import the pure refinement, report and presentation stages,
+but still cannot import engines or the layout entry at runtime. After refinement,
+the report selects whether arrow text stays in the drawing or moves to the panel. Browser code
 owns font access and wrapping; the core owns arrow-label and number positions.
 The resolved measurement record preserves label centres across serialization;
 the checker measures independently. Routing and general label placement

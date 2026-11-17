@@ -15,6 +15,7 @@ export interface Drawn {
   edges: { id: string; from: string; to: string; lines: Vec[][] }[];
   labels: { id: string; box: Rect; uncertainty: number }[];
   steps: { id: string; at: Vec }[];
+  nodeSteps: { id: string; at: Vec }[];
   radius: number;
 }
 
@@ -40,6 +41,7 @@ export function drawn(
     })),
     labels: labels(resolved, size, measure),
     steps: steps(resolved),
+    nodeSteps: nodeSteps(resolved, size),
     radius: (STEP_RADIUS / TEXT) * size,
   };
 }
@@ -105,4 +107,23 @@ function sameStructure(source: SourceMap | ResolvedMap, resolved: ResolvedMap) {
         `check: edge “${id}” connects different nodes in the resolved map`,
       );
   }
+}
+
+/** Node step numbers intentionally sit on their box, but must not cover labels. */
+function nodeSteps(map: ResolvedMap, size: number): Drawn["nodeSteps"] {
+  const inset = (2 * size) / TEXT;
+  return map.scenarios.flatMap((scenario, i) =>
+    !scenario.display.nodeBadges
+      ? []
+      : scenario.steps.flatMap((step) => {
+          if (step.edges.length || !step.current.length) return [];
+          const [x, y, w] = map.nodes[step.current[0]].box;
+          return [
+            {
+              id: `node-step:${i}:${step.id}`,
+              at: [x + w - inset, y + inset] as Vec,
+            },
+          ];
+        }),
+  );
 }

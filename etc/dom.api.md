@@ -97,7 +97,7 @@ export interface Playback {
 
 // Warnings were encountered during analysis:
 //
-// src/dom/player.ts:37:7 - (ae-forgotten-export) The symbol "UiStrings" needs to be exported by the entry point index.d.ts
+// src/dom/player.ts:38:7 - (ae-forgotten-export) The symbol "UiStrings" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

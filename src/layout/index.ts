@@ -17,6 +17,7 @@ import {
 import { placeAnnotations } from "./stages/placement.js";
 export * from "./errors.js";
 export type { Measurer } from "./ports.js";
+export { labelsInPanel } from "./stages/presentation.js";
 export { refine } from "./stages/refine.js";
 export type { ConstraintVerdict } from "./problem.js";
 export type * from "./types.js";

@@ -36,6 +36,14 @@ export class SvgDom {
     ];
   }
   applyFrame(frame: Frame) {
+    const labels = this.svg.querySelector("[data-map-edge-labels]")!;
+    if (frame.panel.arrowLabels) {
+      labels.setAttribute("visibility", "hidden");
+      labels.setAttribute("aria-hidden", "true");
+    } else {
+      labels.removeAttribute("visibility");
+      labels.removeAttribute("aria-hidden");
+    }
     for (const [id, n] of Object.entries(frame.nodes)) {
       this.nodes[id].classList.toggle("ghost", !n.revealed);
       this.nodes[id].classList.toggle("cur", n.current);

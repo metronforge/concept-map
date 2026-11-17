@@ -1,38 +1,14 @@
+import { derivePanel, type StepPanel, type AllPanel } from "./panel.js";
+export type { LogLine, StepPanel, AllPanel } from "./panel.js";
+import { panelLabels } from "./panel-labels.js";
 import type { ResolvedMap } from "../schema.js";
 import type { PlayerState } from "./state.js";
-export interface LogLine {
-  text: string;
-  kind: "old" | "new" | "err";
-}
 export interface Badge {
   x: number;
   y: number;
   n: number;
   current: boolean;
 }
-export type StepPanel = {
-  kind: "step";
-  count: string;
-  title: string;
-  text: string;
-  log: LogLine[];
-  fix?: string;
-  code?: ResolvedMap["code"][string];
-  defs: ResolvedMap["definitions"][string][];
-  sources: ResolvedMap["scenarios"][number]["steps"][number]["sources"];
-  deeper: ResolvedMap["scenarios"][number]["steps"][number]["deeper"];
-  canBack: boolean;
-  canNext: boolean;
-  nextScenario?: string;
-};
-export type AllPanel = {
-  kind: "all";
-  count: string;
-  title: string;
-  text: string;
-  steps: string[];
-  hasFlowLog: boolean;
-};
 export interface Frame {
   state: PlayerState;
   nodes: Record<string, { revealed: boolean; current: boolean; label: string }>;
@@ -43,7 +19,11 @@ export interface Frame {
   badges: Badge[];
   panel: StepPanel | AllPanel;
 }
-export function derive(map: ResolvedMap, state: PlayerState): Frame {
+export function derive(
+  map: ResolvedMap,
+  state: PlayerState,
+  options: { labelsInPanel?: boolean } = {},
+): Frame {
   const s = map.scenarios[state.scenario],
     steps = s.steps,
     all = state.mode === "all";
@@ -123,50 +103,7 @@ export function derive(map: ResolvedMap, state: PlayerState): Frame {
         current: !all && i === state.step,
       });
     });
-  let panel: Frame["panel"];
-  if (all)
-    panel = {
-      kind: "all",
-      count: `Whole map · ${steps.length} step${steps.length > 1 ? "s" : ""}`,
-      title: s.whole?.title ?? s.label,
-      text: `${s.whole?.text ?? "The numbers follow the order of the steps."} Choose a step to walk through it.`,
-      steps: steps.map((t) => t.title),
-      hasFlowLog: (s.flow ?? []).some((h) => h.log.length > 0),
-    };
-  else {
-    const t = steps[state.step];
-    const before =
-      t.log?.length && s.display.log !== "cumulative"
-        ? steps
-            .slice(Math.max(0, state.step - 1), state.step)
-            .flatMap((t) => t.log ?? [])
-            .slice(-3)
-        : [];
-    panel = {
-      kind: "step",
-      count: `${s.display.counterLabel ? s.label + " · " : ""}Step ${state.step + 1} of ${steps.length}`,
-      title: t.title,
-      text: t.text,
-      log: [
-        ...before.map((text) => ({ text, kind: "old" as const })),
-        ...(t.log ?? []).map((text) => ({
-          text,
-          kind: text.startsWith("Error") ? ("err" as const) : ("new" as const),
-        })),
-      ],
-      ...(t.fix ? { fix: t.fix } : {}),
-      ...(t.code ? { code: map.code[t.code] } : {}),
-      defs: t.defs.map((id) => map.definitions[id]),
-      sources: t.sources,
-      deeper: t.deeper,
-      canBack: state.step > 0,
-      canNext: state.step < steps.length - 1,
-      ...(state.step === steps.length - 1 &&
-      state.scenario < map.scenarios.length - 1
-        ? { nextScenario: map.scenarios[state.scenario + 1].label }
-        : {}),
-    };
-  }
+  const panel = derivePanel(map, state);
   return {
     state: { ...state },
     nodes,
@@ -175,6 +112,8 @@ export function derive(map: ResolvedMap, state: PlayerState): Frame {
     edges,
     edgeLabels,
     badges,
-    panel,
+    panel: options.labelsInPanel
+      ? { ...panel, arrowLabels: panelLabels(map, state) }
+      : panel,
   };
 }

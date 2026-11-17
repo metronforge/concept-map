@@ -79,7 +79,8 @@ const report = check(source, drawn, { measureLabel: measurer });
 `domMeasurer` reads the player's actual arrow-label font and wrapping when
 markup is present, and otherwise uses the host's font variables. The player
 refines after fonts become ready, after later fonts load and on resize.
-`player.map` is the resolved map it draws. DOM code still handles text wrapping,
+`player.map` retains the refined geometry and all semantic arrow labels,
+including labels currently presented in the panel. DOM code still handles text wrapping,
 node-text fitting and the SVG's size; only the core chooses arrow-label and
 step-number positions.
 
@@ -101,6 +102,46 @@ existing outward candidate search. Node boxes, lanes, frames, paths and the
 view box stay unchanged. It does not fix lines crossing labels or overlapping
 numbers; `check` reports remaining defects. Measurement provenance occupies
 one optional resolved field, described in [FORMAT](FORMAT.md#text-measurements).
+
+### Arrow labels in the panel
+
+After refinement, `labelsInPanel(resolved, report)` returns true for hard
+arrow-label contacts with lines, boxes, other labels or step numbers. Tight
+contacts and unrelated defects do not trigger it. The player checks again on
+resize and font changes; clear drawings regain their labels. Boxes, lanes,
+frames, routes and the view box stay fixed.
+
+```ts
+import { labelsInPanel } from "@metronforge/concept-map/layout";
+import { derive, renderSvg, renderPanelParts } from "@metronforge/concept-map";
+
+const frame = derive(drawn, state, {
+  labelsInPanel: labelsInPanel(drawn, report),
+});
+const svg = renderSvg(drawn, { frame });
+const panel = renderPanelParts(drawn, frame);
+```
+
+The selected frame has `panel.arrowLabels`, an ordered list of `{ step, text }`.
+In step mode it contains the current step's labelled arrows, in authored order.
+Whole-map mode groups labels beneath each step title. An arrow used again appears
+beside each step that uses it. Empty labels produce no rows. Inline code, emphasis
+and strong text use the same escaped renderer as step explanations.
+
+The SVG label group becomes hidden and excluded from the accessibility tree;
+the text appears once in the panel. Hidden SVG elements remain available for
+measurement, so resizing can restore the drawing. Width and font changes update
+only label rows, preserving keyboard focus, playback, and the flow log.
+
+`check` judges the geometry supplied to it. To check a presentation with labels
+in the panel, copy the resolved map and omit its edge `label` fields; keep the
+original labels for rendering the panel. The browser acceptance checks read which
+SVG labels are actually visible before constructing that drawing.
+
+The checker includes node step numbers in label contacts. Their intentional
+contact with their own node is not a box defect. Hand-drawn SVG arcs are supported
+using 16 chords per arc, matching the approximation used for other curves;
+paths without a stroke contribute no line segments.
 
 ## Port contract
 

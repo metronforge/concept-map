@@ -47,3 +47,9 @@ to fit their container. The diagram is centered with `max-width: 100%` and
 `height: auto`. Width is an SVG presentation attribute, so ordinary host CSS
 such as `.map-ui .map svg { width: 100%; }` can override it without `!important`
 or inline style permissions.
+
+Arrow labels moved to the panel use `.arrow-labels`, `.n` and `.label`.
+Their text inherits the panel's font size, including inline code, and wraps
+within the container. Number circles and separators use the existing border,
+foreground and muted-foreground tokens. No new custom properties are required.
+Panel prose and titles also wrap long unbroken text at narrow widths.

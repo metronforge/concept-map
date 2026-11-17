@@ -6,7 +6,8 @@ const cases = [
     entry: ["element"],
     gzip: true,
     // +1700 B for browser refinement and its optional measurement schema.
-    limit: "42350 B",
+    // +3000 B for shared label placement and the checker's path geometry.
+    limit: "45350 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -16,7 +17,8 @@ const cases = [
     },
     gzip: true,
     // +1400 B for real-font measurement, pure refinement and wrapped replay.
-    limit: "9883 B",
+    // +2000 B for shared label placement and the checker's path geometry.
+    limit: "11883 B",
   },
   {
     name: "server render (pre-resolved map)",
@@ -49,7 +51,8 @@ const cases = [
     // +900 B for shared problem negotiation, boundary errors and lane verdicts.
     // +350 B for the measurement port, provenance and metric validation.
     // +450 B for shared number placement, replacing the legacy badge search.
-    limit: "36700 B",
+    // +550 B for route-aware label placement using the same geometry as check().
+    limit: "37250 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",

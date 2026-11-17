@@ -3,7 +3,7 @@ import type { Measurer } from "../ports.js";
 import type { LabelSize, LayoutPoint } from "../types.js";
 import { measureMono } from "../text-size.js";
 import { measured } from "../graph.js";
-import { placeNumbers } from "./number-placement.js";
+import { placeAnnotations } from "./placement.js";
 const style = { fontSize: 10.5, mono: true };
 
 function labels(map: ResolvedMap, measurer: Measurer) {
@@ -34,12 +34,12 @@ function labels(map: ResolvedMap, measurer: Measurer) {
   return { sizes, edges };
 }
 
-/** Re-measure text and move covered step numbers, keeping all fixed geometry.
+/** Re-measure text and place labels and numbers, keeping all fixed geometry.
  * Old maps without measurements use font-table sizes to recover label centres.
  * No input is mutated; the checker measures independently of this metadata. */
 export function refine(map: ResolvedMap, measurer: Measurer): ResolvedMap {
   const text = labels(map, measurer);
-  return placeNumbers({
+  return placeAnnotations({
     ...map,
     measurement: { name: measurer.name, labels: text.sizes },
     edges: text.edges,

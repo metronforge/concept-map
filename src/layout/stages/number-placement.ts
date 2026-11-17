@@ -2,7 +2,7 @@ import type { ResolvedMap } from "../../schema.js";
 import type { LayoutBox, LayoutPoint, LabelSize } from "../types.js";
 import { placeBadge } from "./badge-placement.js";
 
-function labelBox(
+export function labelBox(
   at: LayoutPoint,
   size: LabelSize,
   padding: number,

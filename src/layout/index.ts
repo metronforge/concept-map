@@ -14,7 +14,7 @@ import {
   UnsupportedConstraintsError,
   LayoutDefectsError,
 } from "./errors.js";
-import { placeNumbers } from "./stages/number-placement.js";
+import { placeAnnotations } from "./stages/placement.js";
 export * from "./errors.js";
 export type { Measurer } from "./ports.js";
 export { refine } from "./stages/refine.js";
@@ -69,7 +69,7 @@ export async function layout(
       message: rejected.message,
     });
   validateReferences(resolved);
-  return strict(map, placeNumbers(resolved), measure, options);
+  return strict(map, placeAnnotations(resolved), measure, options);
 }
 
 /** The check is loaded only for `strict`, so plain layout stays small. */

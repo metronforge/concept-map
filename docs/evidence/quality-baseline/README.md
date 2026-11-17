@@ -27,9 +27,9 @@ away from labels after fonts load; those changes are not part of this report.
 
 | Map          | Hard | Label × label | Label × line | Label × box | Step × label | Step × box | Step × step | Line × box | Crossings | Reading direction |
 | ------------ | ---- | ------------- | ------------ | ----------- | ------------ | ---------- | ----------- | ---------- | --------- | ----------------- |
-| coffee dagre | 1    | 0             | 1            | 0           | 0            | 0          | 0           | 0          | 1         | 0.667             |
+| coffee dagre | 0    | 0             | 0            | 0           | 0            | 0          | 0           | 0          | 1         | 0.667             |
 | coffee elk   | 0    | 0             | 0            | 0           | 0            | 0          | 0           | 0          | 0         | 0.667             |
-| door dagre   | 3    | 0             | 3            | 0           | 0            | 0          | 0           | 0          | 0         | 0.667             |
+| door dagre   | 0    | 0             | 0            | 0           | 0            | 0          | 0           | 0          | 0         | 0.667             |
 | door elk     | 0    | 0             | 0            | 0           | 0            | 0          | 0           | 0          | 0         | 0.667             |
 | gcd dagre    | 0    | 0             | 0            | 0           | 0            | 0          | 0           | 0          | 0         | 0.8               |
 | gcd elk      | 0    | 0             | 0            | 0           | 0            | 0          | 0           | 0          | 0         | 0.8               |
@@ -136,3 +136,47 @@ The browser suite checks every scenario, step and whole-map view at both widths.
 Pictures for this update are captured separately in Chromium, light theme:
 door/ELK and both gcd drawings at 1280 px, plus both door and gcd drawings
 at 390 px. They are not committed to the repository.
+
+## Shared label placement
+
+Layout and real-font refinement now place labels after numbers in the same
+annotation stage. A crossed label searches beside its own route first, then
+through a finite set of nearby positions bounded by the view box. A candidate
+nearer an unrelated arrow costs more than every candidate beside its own route.
+Candidates must clear boxes, labels, lines and placed numbers, including the
+measured paint padding around text; when none fits,
+the label stays where it was. Existing clear labels stay in place.
+
+Placement imports the same SVG path parser and segment/rectangle distances as
+`check()` (`paths.ts` and `plane.ts`); there is no second geometry implementation.
+The checker still measures text independently. A small positive clearance for
+new positions prevents floating-point contact from moving a label on the next
+refinement. The checker's thresholds and bands are unchanged.
+
+No route changes. Node boxes, lanes, frames and view boxes remain byte-identical.
+Server label changes are coffee/dagre's offer, and door/dagre's close, lock and
+unlock. Real fonts also move door's finish and additional narrow-view labels.
+The close label remains beside its own arrow, away from unrelated lines.
+
+| Map    | Engine | Server before → after | Browser 1280 px before → after | Browser 390 px before → after |
+| ------ | ------ | --------------------- | ------------------------------ | ----------------------------- |
+| coffee | dagre  | 1 → 0                 | 1 → 0                          | 5 → 0                         |
+| coffee | ELK    | 0 → 0                 | 0 → 0                          | 6 → 0                         |
+| door   | dagre  | 3 → 0                 | 5 → 0                          | 17 → 6                        |
+| door   | ELK    | 0 → 0                 | 3 → 0                          | 29 → 29                       |
+
+Gcd stays at zero for both engines and widths. Every browser column applies to
+Chromium, Firefox and WebKit. The 23 hand drawings retain their server reports
+(14 defects total). Their font-table refinement also never increases a count.
+Original real-font reports remain the subset reference; removed label pairs are
+asserted explicitly in `test/browser/removed-label-defects.ts`.
+
+The measured gzip sizes are layout 37,213 B (+600 B from shared number placement;
++968 B from the original 36,245 B), player 11,751 B (+1,895 B), and component
+45,103 B (+2,761 B). The authorized limits are 37,250 B, 11,883 B and 45,350 B.
+The added browser bytes pay for label search and the shared path/plane geometry;
+engine code remains outside the player. There is one number search.
+
+Pictures are kept outside the repository: Chromium, light theme, coffee/dagre
+and both door drawings at 1280 px; both coffee and door drawings at 390 px.
+Coffee pictures show the Out of milk scenario, where its moved label is visible.

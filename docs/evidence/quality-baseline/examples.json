@@ -1,6 +1,6 @@
 {
   "coffee dagre": {
-    "hard": 1,
+    "hard": 0,
     "constraints": [],
     "crossings": {
       "count": 1,
@@ -12,8 +12,8 @@
         {
           "a": "label:offer",
           "b": "line:offer",
-          "band": "defect",
-          "gap": -2.312
+          "band": "tight",
+          "gap": 0.189
         }
       ],
       "boxes": []
@@ -67,32 +67,33 @@
     }
   },
   "door dagre": {
-    "hard": 3,
+    "hard": 0,
     "constraints": [],
     "crossings": {
       "count": 0,
       "pairs": []
     },
     "labels": {
-      "labels": [],
-      "lines": [
+      "labels": [
         {
           "a": "label:close",
-          "b": "line:open",
-          "band": "defect",
-          "gap": -1.908
-        },
+          "b": "label:finish",
+          "band": "tight",
+          "gap": 0.174
+        }
+      ],
+      "lines": [
         {
           "a": "label:lock",
           "b": "line:lock",
-          "band": "defect",
-          "gap": -1.853
+          "band": "tight",
+          "gap": 0.042
         },
         {
           "a": "label:unlock",
           "b": "line:unlock",
-          "band": "defect",
-          "gap": -2.343
+          "band": "tight",
+          "gap": 0.121
         }
       ],
       "boxes": []

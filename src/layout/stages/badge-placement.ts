@@ -26,6 +26,7 @@ export function placeBadge(
   labels: BadgeObstacle[],
   bounds: BadgeObstacle,
   obstacles: BadgeObstacle[] = [],
+  searchLabels: BadgeObstacle[] = labels,
 ): Point {
   if ([...labels, ...obstacles].every((box) => clearOf(origin, radius, box, 0)))
     return origin;
@@ -34,7 +35,9 @@ export function placeBadge(
     y - radius >= bounds.y &&
     x + radius <= bounds.x + bounds.width &&
     y + radius <= bounds.y + bounds.height &&
-    [...labels, ...obstacles].every((box) => clearOf([x, y], radius, box));
+    [...searchLabels, ...obstacles].every((box) =>
+      clearOf([x, y], radius, box),
+    );
   const limit = Math.hypot(bounds.width, bounds.height);
   for (let distance = 4; distance <= limit; distance += 4)
     for (let angle = 0; angle < 16; angle++) {

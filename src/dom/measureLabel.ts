@@ -1,6 +1,12 @@
 import type { Measurer } from "../layout/ports.js";
 import { paintPadding } from "./textBounds.js";
 import type { LabelMeasurer } from "../layout/types.js";
+export type {
+  Measurer,
+  LabelMeasurer,
+  LabelSize,
+  LabelStyle,
+} from "../layout/measurement.js";
 /** Call after host.ownerDocument.fonts.ready; uses the host's --cmap font inputs. */
 export function createDomMeasurer(host: HTMLElement): LabelMeasurer {
   return (text, style) => {
@@ -56,26 +62,19 @@ function measureArrow(host: HTMLElement, label: SVGTextElement) {
     position: "absolute",
     visibility: "hidden",
     whiteSpace: "pre",
-    fontFamily: css.fontFamily,
-    fontWeight: css.fontWeight,
-    fontSize: css.fontSize,
-    letterSpacing: css.letterSpacing,
     lineHeight: "1.2",
   });
+  copyFont(span.style, css);
   host.append(span);
   try {
     const sizes = (lines.length ? lines : [label.textContent ?? ""]).map(
-      (text) => {
-        span.textContent = text || " ";
-        const rect = span.getBoundingClientRect();
-        return { width: text ? rect.width : 0, height: rect.height };
-      },
+      (text) => measureLine(span, text),
     );
     const lineHeight = parseFloat(css.fontSize);
     const size = {
       width: Math.max(...sizes.map((s) => s.width)),
       height: sizes[0].height + (sizes.length - 1) * lineHeight,
-      ascent: (sizes[0].height * 5) / 6 + ((sizes.length - 1) * lineHeight) / 2,
+      ascent: sizes[0].ascent + ((sizes.length - 1) * lineHeight) / 2,
       uncertainty: lineHeight / 64,
       ...(lines.length ? { wrap: { lines, lineHeight } } : {}),
     };
@@ -83,4 +82,39 @@ function measureArrow(host: HTMLElement, label: SVGTextElement) {
   } finally {
     span.remove();
   }
+}
+
+function copyFont(target: CSSStyleDeclaration, source: CSSStyleDeclaration) {
+  for (const key of [
+    "fontFamily",
+    "fontWeight",
+    "fontSize",
+    "fontStyle",
+    "fontStretch",
+    "fontVariantCaps",
+    "fontKerning",
+    "letterSpacing",
+    "wordSpacing",
+    "direction",
+    "textRendering",
+  ] as const)
+    target[key] = source[key];
+}
+
+function measureLine(span: HTMLSpanElement, text: string) {
+  span.textContent = text || " ";
+  const marker = span.ownerDocument.createElement("span");
+  Object.assign(marker.style, {
+    display: "inline-block",
+    width: "0",
+    height: "0",
+    verticalAlign: "baseline",
+  });
+  span.append(marker);
+  const rect = span.getBoundingClientRect();
+  return {
+    width: text ? rect.width : 0,
+    height: rect.height,
+    ascent: marker.getBoundingClientRect().top - rect.top,
+  };
 }

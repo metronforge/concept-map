@@ -1,5 +1,6 @@
 {
   "coffee dagre": {
+    "viewport": 1280,
     "report": {
       "hard": 1,
       "constraints": [],
@@ -44,37 +45,37 @@
         "order": {
           "width": 31.583328247070312,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "ticket": {
           "width": 69.48333740234375,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "ready": {
           "width": 75.80000305175781,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "empty": {
           "width": 69.48333740234375,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2.6833292643229214
         },
         "offer": {
           "width": 94.75,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         }
       }
     },
@@ -82,19 +83,15 @@
     "serverHard": 1,
     "moved": [
       "label:order",
-      "step:order",
       "label:ticket",
-      "step:ticket",
       "label:ready",
-      "step:ready",
       "label:empty",
-      "step:empty",
-      "label:offer",
-      "step:offer"
+      "label:offer"
     ],
     "extraDefects": []
   },
   "coffee elk": {
+    "viewport": 1280,
     "report": {
       "hard": 0,
       "constraints": [],
@@ -144,7 +141,22 @@
         "boxes": []
       },
       "steps": {
-        "labels": [],
+        "labels": [
+          {
+            "a": "label:ready",
+            "b": "step:ready",
+            "band": "tight",
+            "gap": 0.226,
+            "uncertainty": 0.017
+          },
+          {
+            "a": "label:empty",
+            "b": "step:empty",
+            "band": "tight",
+            "gap": 0.242,
+            "uncertainty": 0.017
+          }
+        ],
         "boxes": [],
         "steps": []
       },
@@ -167,37 +179,37 @@
         "order": {
           "width": 35.16667175292969,
           "height": 14,
-          "ascent": 11.666666666666666,
+          "ascent": 11,
           "uncertainty": 0.1823734375,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "ticket": {
           "width": 77.36666870117188,
           "height": 14,
-          "ascent": 11.666666666666666,
+          "ascent": 11,
           "uncertainty": 0.1823734375,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "ready": {
           "width": 84.39999389648438,
           "height": 14,
-          "ascent": 11.666666666666666,
+          "ascent": 11,
           "uncertainty": 0.1823734375,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "empty": {
           "width": 77.36666870117188,
           "height": 14,
-          "ascent": 11.666666666666666,
+          "ascent": 11,
           "uncertainty": 0.1823734375,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "offer": {
           "width": 105.5,
           "height": 14,
-          "ascent": 11.666666666666666,
+          "ascent": 11,
           "uncertainty": 0.1823734375,
-          "padding": 5.656854249492381
+          "padding": 2
         }
       }
     },
@@ -205,21 +217,18 @@
     "serverHard": 0,
     "moved": [
       "label:order",
-      "step:order",
       "label:ticket",
-      "step:ticket",
       "label:ready",
-      "step:ready",
       "label:empty",
-      "step:empty",
       "label:offer",
       "step:offer"
     ],
     "extraDefects": []
   },
   "door dagre": {
+    "viewport": 1280,
     "report": {
-      "hard": 6,
+      "hard": 5,
       "constraints": [],
       "crossings": {
         "count": 0,
@@ -276,14 +285,7 @@
       "steps": {
         "labels": [],
         "boxes": [],
-        "steps": [
-          {
-            "a": "step:open",
-            "b": "step:close",
-            "band": "defect",
-            "gap": -0.957
-          }
-        ]
+        "steps": []
       },
       "lines": {
         "boxes": []
@@ -304,55 +306,55 @@
         "start": {
           "width": 164.6666717529297,
           "height": 17.26666259765625,
-          "ascent": 14.388885498046875,
+          "ascent": 13.633331298828125,
           "uncertainty": 0.224853125,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "open": {
           "width": 190.6666717529297,
           "height": 17.26666259765625,
-          "ascent": 14.388885498046875,
+          "ascent": 13.633331298828125,
           "uncertainty": 0.224853125,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "close": {
           "width": 164.6666717529297,
           "height": 17.26666259765625,
-          "ascent": 14.388885498046875,
+          "ascent": 13.633331298828125,
           "uncertainty": 0.224853125,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "lock": {
           "width": 173.3333282470703,
           "height": 17.26666259765625,
-          "ascent": 14.388885498046875,
+          "ascent": 13.633331298828125,
           "uncertainty": 0.224853125,
-          "padding": 5.656854249492381
+          "padding": 2.3333384195963447
         },
         "unlock": {
           "width": 190.6666717529297,
           "height": 17.26666259765625,
-          "ascent": 14.388885498046875,
+          "ascent": 13.633331298828125,
           "uncertainty": 0.224853125,
-          "padding": 5.656854249492381
+          "padding": 2.3333282470703125
         },
         "blocked": {
           "width": 78,
           "height": 60.43846259765625,
-          "ascent": 35.97478549804687,
+          "ascent": 35.21923129882812,
           "uncertainty": 0.224853125,
           "wrap": {
             "lines": ["push ", "[locked] ", "/ ", "rattle"],
             "lineHeight": 14.3906
           },
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "finish": {
           "width": 173.3333282470703,
           "height": 17.26666259765625,
-          "ascent": 14.388885498046875,
+          "ascent": 13.633331298828125,
           "uncertainty": 0.224853125,
-          "padding": 5.656854249492381
+          "padding": 2
         }
       }
     },
@@ -361,19 +363,15 @@
       "a line crosses an arrow label: label:lock and line:lock",
       "a line crosses an arrow label: label:lock and line:unlock",
       "a line crosses an arrow label: label:unlock and line:unlock",
-      "a line crosses an arrow label: label:finish and line:close",
-      "step numbers overlap: step:open and step:close"
+      "a line crosses an arrow label: label:finish and line:close"
     ],
     "serverHard": 3,
     "moved": [
       "label:start",
       "step:start",
       "label:open",
-      "step:open",
       "label:close",
-      "step:close",
       "label:lock",
-      "step:lock",
       "label:unlock",
       "step:unlock",
       "label:blocked",
@@ -382,11 +380,11 @@
     ],
     "extraDefects": [
       "a line crosses an arrow label: label:lock and line:unlock",
-      "a line crosses an arrow label: label:finish and line:close",
-      "step numbers overlap: step:open and step:close"
+      "a line crosses an arrow label: label:finish and line:close"
     ]
   },
   "door elk": {
+    "viewport": 1280,
     "report": {
       "hard": 4,
       "constraints": [],
@@ -450,7 +448,7 @@
             "a": "step:open",
             "b": "step:unlock",
             "band": "defect",
-            "gap": -0.892
+            "gap": -0.423
           }
         ]
       },
@@ -473,55 +471,55 @@
         "start": {
           "width": 190.31666564941406,
           "height": 19.949996948242188,
-          "ascent": 16.62499745686849,
+          "ascent": 15.98333740234375,
           "uncertainty": 0.259765625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "open": {
           "width": 220.36666870117188,
           "height": 19.949996948242188,
-          "ascent": 16.62499745686849,
+          "ascent": 15.98333740234375,
           "uncertainty": 0.259765625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "close": {
           "width": 190.31666564941406,
           "height": 19.949996948242188,
-          "ascent": 16.62499745686849,
+          "ascent": 15.98333740234375,
           "uncertainty": 0.259765625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "lock": {
           "width": 200.3333282470703,
           "height": 19.949996948242188,
-          "ascent": 16.62499745686849,
+          "ascent": 15.98333740234375,
           "uncertainty": 0.259765625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "unlock": {
           "width": 220.36666870117188,
           "height": 19.949996948242188,
-          "ascent": 16.62499745686849,
+          "ascent": 15.98333740234375,
           "uncertainty": 0.259765625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "blocked": {
           "width": 90.14999389648438,
           "height": 69.82499694824219,
-          "ascent": 41.562497456868485,
+          "ascent": 40.92083740234375,
           "uncertainty": 0.259765625,
           "wrap": {
             "lines": ["push ", "[locked] ", "/ ", "rattle"],
             "lineHeight": 16.625
           },
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "finish": {
           "width": 200.3333282470703,
           "height": 19.949996948242188,
-          "ascent": 16.62499745686849,
+          "ascent": 15.98333740234375,
           "uncertainty": 0.259765625,
-          "padding": 5.656854249492381
+          "padding": 2
         }
       }
     },
@@ -555,6 +553,7 @@
     ]
   },
   "gcd dagre": {
+    "viewport": 1280,
     "report": {
       "hard": 6,
       "constraints": [],
@@ -628,37 +627,37 @@
         "input": {
           "width": 31.583328247070312,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "no": {
           "width": 12.633331298828125,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "assign": {
           "width": 37.899993896484375,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "loop": {
           "width": 37.899993896484375,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "yes": {
           "width": 18.949996948242188,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         }
       }
     },
@@ -673,20 +672,15 @@
     "serverHard": 6,
     "moved": [
       "label:input",
-      "step:input",
       "label:no",
       "label:assign",
       "label:loop",
-      "step:loop",
-      "label:yes",
-      "step:yes",
-      "repeat:0:turn-1",
-      "repeat:0:turn-2",
-      "repeat:0:turn-3"
+      "label:yes"
     ],
     "extraDefects": []
   },
   "gcd elk": {
+    "viewport": 1280,
     "report": {
       "hard": 6,
       "constraints": [],
@@ -789,37 +783,37 @@
         "input": {
           "width": 31.583328247070312,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "no": {
           "width": 12.633331298828125,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "assign": {
           "width": 37.899993896484375,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "loop": {
           "width": 37.899993896484375,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         },
         "yes": {
           "width": 18.949996948242188,
           "height": 12.600006103515625,
-          "ascent": 10.500005086263021,
+          "ascent": 9.800003051757812,
           "uncertainty": 0.1640625,
-          "padding": 5.656854249492381
+          "padding": 2
         }
       }
     },
@@ -834,15 +828,10 @@
     "serverHard": 6,
     "moved": [
       "label:input",
-      "step:input",
       "label:no",
       "label:assign",
       "label:loop",
-      "step:loop",
-      "label:yes",
-      "repeat:0:turn-1",
-      "repeat:0:turn-2",
-      "repeat:0:turn-3"
+      "label:yes"
     ],
     "extraDefects": []
   }

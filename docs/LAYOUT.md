@@ -92,6 +92,8 @@ gap interval lies in that band, otherwise `tight`. Each recorded contact
 includes its nominal `gap` and, when nonzero, `uncertainty`, both in em.
 The checker measures independently; it never trusts saved uncertainty.
 Font tables and legacy functions omit the allowance, preserving their reports.
+Uncertainty applies only to contacts involving text. Step numbers against
+boxes or other step numbers remain exact.
 
 `refine` is pure: it returns a new map, preserves label centres, and moves a
 step number only when it covers measured text, its paint clearance, or a node box. It uses the

@@ -1,7 +1,7 @@
 export interface LabelSize {
   width: number;
   height: number;
-  /** Ink bounds relative to the text baseline; omitted by font tables. */
+  /** Text-box offsets relative to the baseline; omitted by font tables. */
   left?: number;
   ascent?: number;
   /** Painted halo outside the ink bounds, used when placing numbers. */

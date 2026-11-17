@@ -174,3 +174,14 @@ test.each([
     }),
   ).toThrow(/measurement/);
 });
+
+test("rounded search clearance does not move an already clear number", () => {
+  const map = ResolvedMapSchema.parse(fixture);
+  map.edges.ab.label = { text: "go", at: [20, 64] };
+  map.edges.ab.badge = [10, 60];
+  const size = { width: 20, height: 12, padding: 1 };
+  map.measurement = { name: "paint", labels: { ab: size } };
+  expect(
+    refine(map, { name: "paint", measure: () => size }).edges.ab.badge,
+  ).toEqual([10, 60]);
+});

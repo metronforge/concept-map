@@ -9,6 +9,7 @@ const style = { fontSize: 10.5, mono: true };
 function labels(map: ResolvedMap, measurer: Measurer) {
   const sizes: Record<string, LabelSize> = {};
   const obstacles: BadgeObstacle[] = [];
+  const search: BadgeObstacle[] = [];
   const edges = Object.fromEntries(
     Object.entries(map.edges).map(([id, edge]) => {
       if (!edge.label) return [id, edge];
@@ -29,11 +30,16 @@ function labels(map: ResolvedMap, measurer: Measurer) {
           (previous.height - size.height) / 2,
       ];
       sizes[id] = size;
-      if (edge.label.text) obstacles.push(labelObstacle(at, size));
+      if (edge.label.text) {
+        obstacles.push(labelObstacle(at, size));
+        search.push(
+          labelObstacle(at, size, Math.ceil((size.padding ?? 0) / 4) * 4),
+        );
+      }
       return [id, { ...edge, label: { ...edge.label, at } }];
     }),
   );
-  return { sizes, obstacles, edges };
+  return { sizes, obstacles, search, edges };
 }
 
 /** Re-measure text and move covered step numbers, keeping all fixed geometry.
@@ -46,7 +52,7 @@ export function refine(map: ResolvedMap, measurer: Measurer): ResolvedMap {
   );
   const bounds = { x: 0, y: 0, width: map.viewBox[0], height: map.viewBox[1] };
   const badge = (at: LayoutPoint) =>
-    placeBadge(at, 8, text.obstacles, bounds, nodes);
+    placeBadge(at, 8, text.obstacles, bounds, nodes, text.search);
   return {
     ...map,
     measurement: { name: measurer.name, labels: text.sizes },
@@ -70,9 +76,11 @@ export function refine(map: ResolvedMap, measurer: Measurer): ResolvedMap {
   };
 }
 
-function labelObstacle(at: LayoutPoint, size: LabelSize): BadgeObstacle {
-  // Match the candidate search grid so subpixel paint bounds do not flip positions.
-  const padding = Math.ceil((size.padding ?? 0) / 4) * 4;
+function labelObstacle(
+  at: LayoutPoint,
+  size: LabelSize,
+  padding = size.padding ?? 0,
+): BadgeObstacle {
   return {
     x: at[0] + (size.left ?? 0) - padding,
     y: at[1] - (size.ascent ?? (size.height * 5) / 6) - padding,

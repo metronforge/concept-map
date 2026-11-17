@@ -12,11 +12,13 @@ for (const name of ["coffee", "door", "gcd"] as const)
     ["dagre", dagreEngine],
     ["elk", elkEngine],
   ] as const)
-    test(`${name} ${id}: complete resolved JSON is byte-identical to the baseline`, async () => {
+    test(`${name} ${id}: resolved JSON without measurement metadata is byte-identical to the baseline`, async () => {
       const source = JSON.parse(
         readFileSync(`examples/${name}/map.json`, "utf8"),
       );
-      const json = JSON.stringify(await layout(source, engine));
+      const { measurement, ...resolved } = await layout(source, engine);
+      expect(measurement?.name).toBe("font-table");
+      const json = JSON.stringify(resolved);
       expect(createHash("sha256").update(json).digest("hex")).toBe(
         hashes[`${name} ${id}`],
       );

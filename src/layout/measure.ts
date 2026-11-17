@@ -1,4 +1,5 @@
-import { sansRanges, monoAdvance } from "./font-metrics.js";
+import { measureMono, textSize } from "./text-size.js";
+import { sansRanges } from "./font-metrics.js";
 import type { LabelMeasurer } from "./types.js";
 function sansAdvance(codePoint: number): number {
   for (const [start, widths] of sansRanges) {
@@ -8,18 +9,20 @@ function sansAdvance(codePoint: number): number {
   return 1;
 }
 /** Deterministic server fallback. Hosts can inject DOM or their own font metrics. */
-export const measureLabel: LabelMeasurer = (text, style) => {
-  const lines = text.split(/\r?\n/);
-  const widths = lines.map((line) =>
-    [...line].reduce((sum, ch) => {
-      const advance = style.mono
-        ? monoAdvance
-        : sansAdvance(ch.codePointAt(0)!);
-      return sum + advance * style.fontSize + (style.letterSpacing ?? 0);
-    }, 0),
-  );
-  return {
-    width: Math.max(0, ...widths),
-    height: Math.max(1, lines.length) * style.fontSize * 1.2,
-  };
+export const measureLabel: LabelMeasurer = (text, style) =>
+  style.mono ? measureMono(text, style) : textSize(text, style, sansAdvance);
+
+/** The deterministic server adapter. */
+export const fontTableMeasurer: import("./ports.js").Measurer = {
+  name: "font-table",
+  measure: measureLabel,
 };
+
+/** Keep function-based host measurements working. */
+export function asMeasurer(
+  input: LabelMeasurer | import("./ports.js").Measurer = fontTableMeasurer,
+): import("./ports.js").Measurer {
+  return typeof input === "function"
+    ? { name: input === measureLabel ? "font-table" : "custom", measure: input }
+    : input;
+}

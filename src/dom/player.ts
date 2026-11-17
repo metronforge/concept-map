@@ -12,7 +12,8 @@ import { SvgDom } from "./svgDom.js";
 import { PanelDom } from "./panelDom.js";
 import { geometry, sizeLabels, type Geometry } from "./geometry.js";
 import { WebAnimator, type Animator, type Playback } from "./animator.js";
-const bindings = new WeakMap<MapPlayer, Set<() => void>>();
+import { bindings } from "./bindings.js";
+import { refineDrawing } from "./refine.js";
 export class MapPlayer {
   private current: PlayerState = { ...initialState };
   private readonly abort = new AbortController();
@@ -28,7 +29,7 @@ export class MapPlayer {
   private destroyed = false;
   constructor(
     readonly root: HTMLElement,
-    readonly map: ResolvedMap,
+    private drawnMap: ResolvedMap,
     options: {
       animator?: Animator;
       geometry?: Geometry;
@@ -36,6 +37,7 @@ export class MapPlayer {
       strings?: Partial<UiStrings>;
     } = {},
   ) {
+    const map = drawnMap;
     if (map.format !== 3)
       throw new Error(
         `Unsupported concept map format ${map.format}; expected 3`,
@@ -52,6 +54,27 @@ export class MapPlayer {
     bindings.set(this, new Set());
     root.addEventListener("click", this.click, { signal: this.abort.signal });
     root.addEventListener("keydown", this.key, { signal: this.abort.signal });
+    this.listen(view);
+    const fit = () => this.fit(map);
+    this.resize = new ResizeObserver(fit);
+    this.resize.observe(this.svg.svg);
+    this.render();
+    void root.ownerDocument.fonts.ready.then(fit);
+    root.ownerDocument.fonts.addEventListener("loadingdone", fit, {
+      signal: this.abort.signal,
+    });
+  }
+  private fit(map: ResolvedMap) {
+    if (!this.destroyed)
+      this.drawnMap = refineDrawing(
+        this.root,
+        map,
+        this.geo,
+        this.svg,
+        this.current,
+      );
+  }
+  private listen(view: Window) {
     view.addEventListener(
       "pagehide",
       () => {
@@ -69,13 +92,9 @@ export class MapPlayer {
       },
       { signal: this.abort.signal },
     );
-    const fit = () => {
-      if (!this.destroyed) sizeLabels(root, map, this.geo);
-    };
-    this.resize = new ResizeObserver(fit);
-    this.resize.observe(this.svg.svg);
-    this.render();
-    void root.ownerDocument.fonts.ready.then(fit);
+  }
+  get map(): ResolvedMap {
+    return this.drawnMap;
   }
   get state(): PlayerState {
     return { ...this.current };
@@ -269,50 +288,4 @@ export class MapPlayer {
       if (active()) throw error;
     });
   }
-}
-export function connectConcepts(
-  player: MapPlayer,
-  container: HTMLElement,
-): () => void {
-  if (!bindings.has(player)) return () => {};
-  const abort = new AbortController(),
-    signal = abort.signal;
-  for (const row of container.querySelectorAll<HTMLElement>("li[data-nodes]")) {
-    const highlight = (on: boolean) =>
-      player.highlight(row.dataset.nodes!.split(" "), on);
-    row.addEventListener("mouseenter", () => highlight(true), { signal });
-    row.addEventListener("mouseleave", () => highlight(false), { signal });
-    row.addEventListener("focusin", () => highlight(true), { signal });
-    row.addEventListener("focusout", () => highlight(false), { signal });
-    row.querySelector<HTMLElement>("[data-step]")?.addEventListener(
-      "click",
-      (event) => {
-        const button = event.currentTarget as HTMLElement;
-        const scenario = Math.max(
-          0,
-          player.map.scenarios.findIndex(
-            (s) =>
-              s.id ===
-              (button.dataset.conceptScenario ?? player.map.conceptScenario),
-          ),
-        );
-        const step = Number(button.dataset.step);
-        player.dispatch({ type: "concept", scenario, step });
-        player.root
-          .querySelector<HTMLElement>(`[data-seg="${player.state.step}"]`)
-          ?.focus({ preventScroll: true });
-        player.root.scrollIntoView({
-          behavior: player.reducedMotion ? "auto" : "smooth",
-          block: "start",
-        });
-      },
-      { signal },
-    );
-  }
-  const cleanup = () => {
-    abort.abort();
-    bindings.get(player)?.delete(cleanup);
-  };
-  bindings.get(player)!.add(cleanup);
-  return cleanup;
 }

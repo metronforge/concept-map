@@ -59,6 +59,49 @@ The host must be connected and visible, with the intended `--cmap-font-sans`
 and `--cmap-font-mono` values. Measurement removes its temporary elements.
 Different fonts or measurers can produce different geometry.
 
+### Refinement after fonts load
+
+`Measurer` is an object with a `name` and `measure(text, style)` method.
+`fontTableMeasurer` is the server adapter. Both `layout` and `check` accept
+this object or the existing plain function in `measureLabel`.
+`createDomMeasurer(host)` keeps returning a plain function.
+
+```ts
+import { refine, check } from "@metronforge/concept-map/layout";
+import { domMeasurer } from "@metronforge/concept-map/layout/browser";
+
+await host.ownerDocument.fonts.ready;
+const measurer = domMeasurer(host);
+const drawn = refine(resolved, measurer);
+const report = check(source, drawn, { measureLabel: measurer });
+```
+
+`domMeasurer` reads the player's actual arrow-label font and wrapping when
+markup is present, and otherwise uses the host's font variables. The player
+refines after fonts become ready, after later fonts load and on resize.
+`player.map` is the resolved map it draws. DOM code still handles text wrapping,
+node-text fitting and the SVG's size; only the core chooses arrow-label and
+step-number positions.
+
+Measurements may include `uncertainty`, an allowance for Euclidean boundary displacement in
+map units. The DOM adapter uses 1/64 of the rendered font size for subpixel
+measurement differences. This is an allowance, not a guarantee that different
+fonts have equal metrics. The checker adds the allowances of the text blocks
+in a contact: it calls the contact `clear` or `defect` only when the whole
+gap interval lies in that band, otherwise `tight`. Each recorded contact
+includes its nominal `gap` and, when nonzero, `uncertainty`, both in em.
+The checker measures independently; it never trusts saved uncertainty.
+Font tables and legacy functions omit the allowance, preserving their reports.
+Uncertainty applies only to contacts involving text. Step numbers against
+boxes or other step numbers remain exact.
+
+`refine` is pure: it returns a new map, preserves label centres, and moves a
+step number only when it covers measured text, its paint clearance, or a node box. It uses the
+existing outward candidate search. Node boxes, lanes, frames, paths and the
+view box stay unchanged. It does not fix lines crossing labels or overlapping
+numbers; `check` reports remaining defects. Measurement provenance occupies
+one optional resolved field, described in [FORMAT](FORMAT.md#text-measurements).
+
 ## Port contract
 
 `LayoutEngine.layout(LayoutGraph)` returns a promise of `LayoutResult`.

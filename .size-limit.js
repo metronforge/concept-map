@@ -5,7 +5,8 @@ const cases = [
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    limit: "40650 B",
+    // +1700 B for browser refinement and its optional measurement schema.
+    limit: "42350 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -14,7 +15,8 @@ const cases = [
       "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
-    limit: "8483 B",
+    // +1400 B for real-font measurement, pure refinement and wrapped replay.
+    limit: "9883 B",
   },
   {
     name: "server render (pre-resolved map)",
@@ -45,7 +47,8 @@ const cases = [
     // +2.4 kB for the quality check. It is loaded with a dynamic import only
     // for { strict: true }; size-limit counts that chunk too.
     // +900 B for shared problem negotiation, boundary errors and lane verdicts.
-    limit: "35900 B",
+    // +350 B for the measurement port, provenance and metric validation.
+    limit: "36250 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",
@@ -55,7 +58,8 @@ const cases = [
     },
     gzip: true,
     // +400 B for the source-based lane verdicts.
-    limit: "5800 B",
+    // +350 B for object measurers, validated metrics and uncertainty intervals.
+    limit: "6150 B",
   },
   {
     name: "complete root API (with Zod)",

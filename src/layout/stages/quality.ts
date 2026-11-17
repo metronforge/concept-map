@@ -18,6 +18,8 @@ export interface Contact {
   band: Exclude<Band, "clear">;
   /** Gap in em of arrow-label text; negative when the two overlap. */
   gap: number;
+  /** Measurement allowance on either side of gap, in em; omitted when exact. */
+  uncertainty?: number;
 }
 
 /**
@@ -49,7 +51,7 @@ export interface LayoutReport {
 
 export interface CheckOptions {
   /** Text measurement; the built-in font table by default. */
-  measureLabel?: LabelMeasurer;
+  measureLabel?: LabelMeasurer | import("../ports.js").Measurer;
   /** Font size of arrow labels in map units; every threshold is relative to it. */
   textSize?: number;
   /** Minimum clear gap, in em. Default 0.25. */

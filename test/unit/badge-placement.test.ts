@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { placeBadge } from "../../src/model/badge-placement";
+import { placeBadge } from "../../src/layout/stages/badge-placement";
 const bounds = { x: 0, y: 0, width: 200, height: 100 };
 test("a clear badge stays at its authored position", () => {
   expect(placeBadge([20, 20], 8, [], bounds)).toEqual([20, 20]);
@@ -19,7 +19,7 @@ test("measured text bounds move a badge with clearance while staying inside the 
   expect(y).toBeLessThanOrEqual(92);
 });
 
-test("node badges retain their attachment when no label collides", () => {
+test("a step number over a box moves even without a label", () => {
   const node = { x: 10, y: 10, width: 100, height: 36 };
-  expect(placeBadge([108, 12], 8, [], bounds, [node])).toEqual([108, 12]);
+  expect(placeBadge([108, 12], 8, [], bounds, [node])).not.toEqual([108, 12]);
 });

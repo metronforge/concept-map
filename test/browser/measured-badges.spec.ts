@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
+import { paintContacts } from "./paint-check";
 for (const width of [1280, 390])
   test(`real label bounds protect badges after fonts and navigation at ${width}px`, async ({
     page,
@@ -9,7 +10,7 @@ for (const width of [1280, 390])
     await page.addStyleTag({ path: "css/concept-map.css" });
     await page.addStyleTag({
       content:
-        ".map-figure{display:block;margin:0}.map-ui .etext{letter-spacing:1px}",
+        ".map-ui.map-figure{display:block;margin:0}.map-ui .etext{letter-spacing:1px}",
     });
     const source = JSON.parse(readFileSync("examples/door/map.json", "utf8"));
     source.scenarios[0].display.edgeBadges = true;
@@ -33,31 +34,27 @@ for (const width of [1280, 390])
         step,
       );
       await expect(page.locator(".badge circle")).not.toHaveCount(0);
-      await expect
-        .poll(async () =>
-          page.evaluate(() => {
-            const labels = [
-              ...document.querySelectorAll(".etext:not(.ghost)"),
-            ].map((e) => e.getBoundingClientRect());
-            return [...document.querySelectorAll(".badge circle")].filter(
-              (e) => {
-                const b = e.getBoundingClientRect(),
-                  x = b.x + b.width / 2,
-                  y = b.y + b.height / 2;
-                return labels.some(
-                  (t) =>
-                    Math.hypot(
-                      Math.max(t.left - x, 0, x - t.right),
-                      Math.max(t.top - y, 0, y - t.bottom),
-                    ) <
-                    b.width / 2 + 1,
-                );
-              },
-            ).length;
-          }),
-        )
-        .toBe(0);
+      await expect.poll(() => paintContacts(page)).toEqual([]);
     }
+    // A deliberately drawn collision must still fail this paint check.
+    await page.evaluate(async () => {
+      const { domMeasurer } = await import("/assets/integration.js");
+      const player = document.querySelector("concept-map")!.player;
+      const edge = player.map.edges.start;
+      const size = domMeasurer(player.root).measure(edge.label.text, {
+        fontSize: 10.5,
+        mono: true,
+        edge: "start",
+      });
+      edge.badge = [
+        edge.label.at[0] + size.width / 2,
+        edge.label.at[1] - size.ascent + size.height / 2,
+      ];
+      player.dispatch({ type: "mode", mode: "all" });
+    });
+    expect(
+      (await paintContacts(page)).some((contact) => contact.b === "step:start"),
+    ).toBe(true);
   });
 
 test("font readiness refits measured badges without another player action", async ({
@@ -78,7 +75,7 @@ test("font readiness refits measured badges without another player action", asyn
   await page.addStyleTag({ path: "css/concept-map.css" });
   await page.addStyleTag({
     content:
-      "@font-face{font-family:LateBadge;src:url(/late-font.ttf);size-adjust:150%}.map-figure{display:block}.map-ui .etext{font-family:LateBadge,monospace;font-size:16px!important;letter-spacing:1px}",
+      "@font-face{font-family:LateBadge;src:url(/late-font.ttf);size-adjust:150%}.map-ui.map-figure{display:block}.map-ui .etext{font-family:LateBadge,monospace!important;font-size:16px!important;letter-spacing:1px}",
   });
   const source = JSON.parse(readFileSync("examples/door/map.json", "utf8"));
   await page.evaluate(async (source) => {
@@ -93,35 +90,17 @@ test("font readiness refits measured badges without another player action", asyn
     el.player.dispatch({ type: "mode", mode: "all" });
   }, source);
   expect(await page.evaluate(() => document.fonts.status)).toBe("loading");
-  const before = await page
-    .locator(".badge")
-    .evaluateAll((es) => es.map((e) => e.getAttribute("transform")));
+  const before = await page.evaluate(
+    () => document.querySelector("concept-map")!.player.map.measurement,
+  );
   release();
   await page.evaluate(() => document.fonts.ready);
   await expect
     .poll(() =>
-      page
-        .locator(".badge")
-        .evaluateAll((es) => es.map((e) => e.getAttribute("transform"))),
+      page.evaluate(
+        () => document.querySelector("concept-map")!.player.map.measurement,
+      ),
     )
     .not.toEqual(before);
-  const overlaps = await page.evaluate(() => {
-    const labels = [...document.querySelectorAll(".etext:not(.ghost)")].map(
-      (e) => e.getBoundingClientRect(),
-    );
-    return [...document.querySelectorAll(".badge circle")].filter((e) => {
-      const b = e.getBoundingClientRect(),
-        x = b.x + b.width / 2,
-        y = b.y + b.height / 2;
-      return labels.some(
-        (t) =>
-          Math.hypot(
-            Math.max(t.left - x, 0, x - t.right),
-            Math.max(t.top - y, 0, y - t.bottom),
-          ) <
-          b.width / 2 + 1,
-      );
-    }).length;
-  });
-  expect(overlaps).toBe(0);
+  expect(await paintContacts(page)).toEqual([]);
 });

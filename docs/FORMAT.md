@@ -65,6 +65,7 @@ Source links are `{ label, url }`.
 
 | Field                     | Source               | Resolved                                  |
 | ------------------------- | -------------------- | ----------------------------------------- |
+| root `measurement`        | Absent               | Optional text measurement record          |
 | root `viewBox`            | Absent               | Required `[width, height]`                |
 | node `box`                | Absent               | Required `[x, y, width, height]`          |
 | lane `y`, `h`, `x`, `w`   | Absent               | `y`, `h` required; `x`, `w` optional      |
@@ -77,6 +78,22 @@ Source schemas reject geometry. The two exported JSON Schemas describe author
 input, including optional fields with defaults. Zod parsing supplies those
 defaults and validates layer references. Other cross-reference checks remain the
 host adapter's responsibility (D7); JSON Schema alone cannot check references.
+
+### Text measurements
+
+`measurement` is the only optional field added to resolved maps. It contains
+`name` (for example `font-table`, `dom`, or a host's measurer name) and `labels`,
+a record keyed by arrow id. Each entry has `width` and `height` in map units.
+Browser measurements may also have `left` and `ascent`, the bounds relative to
+the text baseline, `padding` for paint outside the text line box,
+`uncertainty` for boundary measurement error in map units, and
+`wrap: { lines, lineHeight }` for wrapped text.
+
+These values let `refine(map, measurer)` retain each label's centre when its
+font changes, including after serialization. Refinement updates the record.
+Maps without it remain valid; refinement uses font-table sizes to recover
+their original label centres. The quality checker measures text independently
+and never uses this record as proof that a drawing is good.
 
 ## Text and migration from format 2
 

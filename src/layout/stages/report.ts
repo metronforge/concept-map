@@ -1,19 +1,17 @@
 import { checkConstraints } from "./constraints.js";
 import type { ResolvedMap, SourceMap } from "../../schema.js";
-import { measureLabel } from "../measure.js";
+import { asMeasurer } from "../measure.js";
 import { drawn, TEXT } from "./drawn.js";
 import {
   crossingPairs,
   labelContacts,
   lineContacts,
   stepContacts,
-  type Judge,
 } from "./contacts.js";
+import { judgeContacts } from "./uncertainty.js";
 import { reading } from "./reading.js";
 import type { CheckOptions, Contact, LayoutReport } from "./quality.js";
 export type { Band, CheckOptions, Contact, LayoutReport } from "./quality.js";
-
-const round = (n: number) => Math.round(n * 1000) / 1000;
 
 /**
  * Judge a resolved map, whoever drew it: an engine, a hand drawing or an
@@ -29,17 +27,9 @@ export function check(
   const size = options.textSize ?? TEXT;
   const margin = (options.margin ?? 0.25) * size;
   const tolerance = (options.tolerance ?? 0.1) * size;
-  const shapes = drawn(
-    source,
-    resolved,
-    size,
-    options.measureLabel ?? measureLabel,
-  );
-  const judge: Judge = (list, a, b, gap) => {
-    if (gap >= margin) return;
-    const band = gap < -tolerance ? "defect" : "tight";
-    list.push({ a, b, band, gap: round(gap / size) });
-  };
+  const measurer = asMeasurer(options.measureLabel);
+  const shapes = drawn(source, resolved, size, measurer.measure.bind(measurer));
+  const judge = judgeContacts(shapes, size, margin, tolerance);
   const report: LayoutReport = {
     hard: 0,
     constraints: checkConstraints(source, resolved),

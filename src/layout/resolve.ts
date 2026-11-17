@@ -88,10 +88,7 @@ function edgeGeometry(
             ? {
                 label: {
                   text: source.label!,
-                  at: [
-                    label[0] - e.label.width / 2,
-                    label[1] + e.label.height / 3,
-                  ],
+                  at: labelBaseline(label, e.label),
                 },
               }
             : {}),
@@ -152,4 +149,17 @@ export function resolveGeometry(
     edges,
     scenarios: resolvedScenarios(map, (id) => edges[id].badge),
   });
+}
+
+function labelBaseline(
+  [x, y]: LayoutPoint,
+  size: import("./types.js").LabelSize,
+): LayoutPoint {
+  return [
+    x - size.width / 2 - (size.left ?? 0),
+    y +
+      (size.ascent === undefined
+        ? size.height / 3
+        : size.ascent - size.height / 2),
+  ];
 }

@@ -7,3 +7,5 @@ export interface Placer {
   readonly capabilities: Capabilities;
   place(problem: LayoutProblem): Promise<LayoutResult>;
 }
+
+export type { Measurer } from "./measurement.js";

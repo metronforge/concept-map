@@ -1,7 +1,8 @@
+import { connectConcepts } from "./concepts.js";
 import { canHydrate } from "../render/hydration.js";
 import type { ResolvedMap } from "../schema.js";
 import { renderFigure, type FigureOptions } from "../render/figure.js";
-import { MapPlayer, connectConcepts } from "./player.js";
+import { MapPlayer } from "./player.js";
 
 export type MountOptions = FigureOptions &
   ConstructorParameters<typeof MapPlayer>[2];

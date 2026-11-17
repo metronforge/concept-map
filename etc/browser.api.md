@@ -4,10 +4,50 @@
 
 ```ts
 
-// Warning: (ae-forgotten-export) The symbol "LabelMeasurer" needs to be exported by the entry point measureLabel.d.ts
-//
 // @public
 export function createDomMeasurer(host: HTMLElement): LabelMeasurer;
+
+// @public
+export function domMeasurer(host: HTMLElement): Measurer;
+
+// @public (undocumented)
+export type LabelMeasurer = (text: string, style: LabelStyle) => LabelSize;
+
+// @public (undocumented)
+export interface LabelSize {
+    // (undocumented)
+    ascent?: number;
+    // (undocumented)
+    height: number;
+    left?: number;
+    padding?: number;
+    uncertainty?: number;
+    // (undocumented)
+    width: number;
+    wrap?: {
+        lines: string[];
+        lineHeight: number;
+    };
+}
+
+// @public (undocumented)
+export interface LabelStyle {
+    edge?: string;
+    // (undocumented)
+    fontSize: number;
+    // (undocumented)
+    letterSpacing?: number;
+    // (undocumented)
+    mono: boolean;
+}
+
+// @public
+export interface Measurer {
+    // (undocumented)
+    measure: LabelMeasurer;
+    // (undocumented)
+    readonly name: string;
+}
 
 // (No @packageDocumentation comment for this package)
 

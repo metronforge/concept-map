@@ -38,10 +38,23 @@ module.exports = {
       },
     },
     {
-      name: "player-no-layout-runtime",
+      name: "player-only-pure-refinement",
       severity: "error",
-      from: { path: "^src/", pathNot: "^src/(layout/|element/layout[.]ts$)" },
+      from: {
+        path: "^src/",
+        pathNot: "^src/(layout/|element/layout[.]ts$|dom/refine[.]ts$)",
+      },
       to: { path: "^src/layout/", dependencyTypesNot: ["type-only"] },
+    },
+    {
+      name: "refinement-only-pure-stage",
+      severity: "error",
+      from: { path: "^src/dom/refine[.]ts$" },
+      to: {
+        path: "^src/layout/",
+        pathNot: "^src/layout/stages/refine[.]ts$",
+        dependencyTypesNot: ["type-only"],
+      },
     },
 
     {

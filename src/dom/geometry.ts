@@ -1,10 +1,10 @@
-import { fitBadges } from "./badgeDom.js";
 import type { ResolvedMap } from "../schema.js";
 import {
   labelMinimum,
   naturalMapWidth,
   fitNodeLabels,
   fitEdgeLabel,
+  wrappedLines,
 } from "../model/labels.js";
 export interface Geometry {
   pathLength(edge: string): number;
@@ -37,7 +37,12 @@ function sizeMap(root: HTMLElement, svg: SVGSVGElement, viewBoxWidth: number) {
   return svg.getBoundingClientRect().width;
 }
 /** Measurements are browser-owned; all fitting decisions are pure model math. */
-export function sizeLabels(root: HTMLElement, map: ResolvedMap, geo: Geometry) {
+export function sizeLabels(
+  root: HTMLElement,
+  map: ResolvedMap,
+  geo: Geometry,
+  rewrap = false,
+) {
   const svg = root.querySelector<SVGSVGElement>(".map svg")!;
   const width = sizeMap(root, svg, map.viewBox[0]);
   if (width)
@@ -66,26 +71,32 @@ export function sizeLabels(root: HTMLElement, map: ResolvedMap, geo: Geometry) {
     label.setAttribute("y", String(fitted.main));
     tag.setAttribute("y", String(fitted.tag));
   });
-  fitEdgeLabels(root, map, svg);
-  fitBadges(svg);
+  fitEdgeLabels(root, map, svg, rewrap);
 }
 
 function fitEdgeLabels(
   root: HTMLElement,
   map: ResolvedMap,
   svg: SVGSVGElement,
+  rewrap: boolean,
 ) {
   svg.querySelectorAll<SVGTextElement>(".etext").forEach((label) => {
     const edge = map.edges[label.dataset.edge!];
     if (!edge.label) return;
     label.textContent = edge.label.text;
-    const lines = fitEdgeLabel(
-      edge.label.text,
-      edge.label.at,
-      map.viewBox[0],
-      label.getComputedTextLength(),
-      parseFloat(getComputedStyle(label).fontSize),
-    );
+    const size = map.measurement?.labels[label.dataset.edge!];
+    const lines =
+      size && !rewrap
+        ? size.wrap
+          ? wrappedLines(size, edge.label.at)
+          : null
+        : fitEdgeLabel(
+            edge.label.text,
+            edge.label.at,
+            map.viewBox[0],
+            label.getComputedTextLength(),
+            parseFloat(getComputedStyle(label).fontSize),
+          );
     if (!lines) return;
     label.replaceChildren(
       ...lines.map((line) => {

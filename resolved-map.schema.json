@@ -726,6 +726,77 @@
       "items": false,
       "minItems": 2,
       "maxItems": 2
+    },
+    "measurement": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "labels": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "number",
+                "minimum": 0
+              },
+              "height": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "left": {
+                "type": "number"
+              },
+              "ascent": {
+                "type": "number"
+              },
+              "padding": {
+                "type": "number",
+                "minimum": 0
+              },
+              "uncertainty": {
+                "type": "number",
+                "minimum": 0
+              },
+              "wrap": {
+                "type": "object",
+                "properties": {
+                  "lines": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "lineHeight": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  }
+                },
+                "required": [
+                  "lines",
+                  "lineHeight"
+                ]
+              }
+            },
+            "required": [
+              "width",
+              "height"
+            ]
+          }
+        }
+      },
+      "required": [
+        "name",
+        "labels"
+      ]
     }
   },
   "required": [

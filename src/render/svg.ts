@@ -1,3 +1,4 @@
+import { renderArrowLabel } from "./arrow-label.js";
 import { naturalMapWidth } from "../model/labels.js";
 import type { ResolvedMap } from "../schema.js";
 import { derive, type Frame, type Badge } from "../model/frame.js";
@@ -41,7 +42,7 @@ export function renderSvg(
   html += `</g><g data-map-edge-labels>`;
   for (const [id, e] of Object.entries(map.edges))
     if (e.label)
-      html += `<text x="${e.label.at[0]}" y="${e.label.at[1]}" class="etext${frame.edgeLabels[id].revealed ? "" : " ghost"}" data-edge="${esc(id)}">${esc(e.label.text)}</text>`;
+      html += `<text x="${e.label.at[0]}" y="${e.label.at[1]}" class="etext${frame.edgeLabels[id].revealed ? "" : " ghost"}" data-edge="${esc(id)}">${renderArrowLabel(map, id)}</text>`;
   html += `</g><g data-map-badges>${renderBadges(frame.badges)}</g><g data-map-token><circle r="11" class="token-glow" visibility="hidden"></circle><circle r="6" class="token" visibility="hidden"></circle></g><g data-map-callouts>`;
   for (const [number, ids] of Object.entries(map.callouts)) {
     const n = map.nodes[ids[0]];

@@ -52,7 +52,8 @@ module.exports = {
       from: { path: "^src/dom/refine[.]ts$" },
       to: {
         path: "^src/layout/",
-        pathNot: "^src/layout/stages/(refine|report|presentation)[.]ts$",
+        pathNot:
+          "^src/layout/stages/(refine|report|label-check|presentation)[.]ts$",
         dependencyTypesNot: ["type-only"],
       },
     },

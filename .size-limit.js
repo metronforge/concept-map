@@ -5,11 +5,8 @@ const cases = [
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    // +1700 B for browser refinement and its optional measurement schema.
-    // +3000 B for shared label placement and the checker's path geometry.
-    // +4646 B over main for the panel fallback and its independent checker; author approved.
-    // Measured 48996 B + 1000 B margin (at most 1 kB and 3%, rounded down).
-    limit: "49996 B",
+    // Size audit before 0.3.0: measured 45231 B + margin (AGENTS.md "Size limits").
+    limit: "46231 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -18,11 +15,8 @@ const cases = [
       "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
-    // +1400 B for real-font measurement, pure refinement and wrapped replay.
-    // +2000 B for shared label placement and the checker's path geometry.
-    // +3493 B over main for the panel fallback and its independent checker; author approved.
-    // Measured 14929 B + 447 B margin (at most 1 kB and 3%, rounded down).
-    limit: "15376 B",
+    // Size audit before 0.3.0: measured 13745 B + margin (AGENTS.md "Size limits").
+    limit: "14157 B",
   },
   {
     name: "server render (pre-resolved map)",
@@ -32,8 +26,7 @@ const cases = [
         "{ renderSvg, renderPanelParts, renderConcepts, derive, initialState }",
     },
     gzip: true,
-    // +167 B over main for rendering numbered panel labels; author approved.
-    // Measured 4229 B + 126 B margin (at most 1 kB and 3%, rounded down).
+    // Size audit before 0.3.0: measured 4229 B + margin (AGENTS.md "Size limits").
     limit: "4355 B",
   },
   {
@@ -43,7 +36,8 @@ const cases = [
       "dist/index.js": "{ SourceMapSchema, ResolvedMapSchema }",
     },
     gzip: true,
-    limit: "29638 B",
+    // Size audit before 0.3.0: measured 27049 B + margin (AGENTS.md "Size limits").
+    limit: "27860 B",
   },
   {
     name: "layout port (with Zod; engine supplied by host)",
@@ -52,15 +46,8 @@ const cases = [
       "dist/layout/index.js": "{ layout, measureLabel }",
     },
     gzip: true,
-    // +2.4 kB for the quality check. It is loaded with a dynamic import only
-    // for { strict: true }; size-limit counts that chunk too.
-    // +900 B for shared problem negotiation, boundary errors and lane verdicts.
-    // +350 B for the measurement port, provenance and metric validation.
-    // +450 B for shared number placement, replacing the legacy badge search.
-    // +550 B for route-aware label placement using the same geometry as check().
-    // +1514 B over main for checking SVG arcs and node step numbers; author approved.
-    // Measured 37764 B + 1000 B margin (at most 1 kB and 3%, rounded down).
-    limit: "38764 B",
+    // Size audit before 0.3.0: measured 37803 B + margin (AGENTS.md "Size limits").
+    limit: "38803 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",
@@ -69,15 +56,15 @@ const cases = [
       "dist/layout/stages/report.js": "{ check }",
     },
     gzip: true,
-    // +400 B for the source-based lane verdicts.
-    // +350 B for object measurers, validated metrics and uncertainty intervals.
-    limit: "6150 B",
+    // Size audit before 0.3.0: measured 4747 B + margin (AGENTS.md "Size limits").
+    limit: "4889 B",
   },
   {
     name: "complete root API (with Zod)",
     path: "dist/index.js",
     gzip: true,
-    limit: "39159 B",
+    // Size audit before 0.3.0: measured 32743 B + margin (AGENTS.md "Size limits").
+    limit: "33725 B",
   },
 ];
 export default cases.map((check) => ({

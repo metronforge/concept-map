@@ -1,6 +1,6 @@
 import type { ResolvedMap, SourceMap } from "../../schema.js";
 import type { LabelMeasurer } from "../types.js";
-import { measured } from "../graph.js";
+import { measured } from "../measured.js";
 import { polylines } from "./paths.js";
 import type { Rect, Vec } from "./plane.js";
 

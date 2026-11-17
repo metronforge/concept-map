@@ -20,5 +20,5 @@ for start, end in ranges:
     for i in range(0, len(values), 8):
         out.append("    " + ", ".join(str(v) for v in values[i:i + 8]) + ",")
     out.append("  ]],")
-out.extend(["];", "export const monoAdvance = 0.602;", ""])
+out.extend(["];", ""])  # monoAdvance lives in src/layout/mono-metrics.ts
 Path("src/layout/font-metrics.ts").write_text("\n".join(out))

@@ -87,7 +87,7 @@ export const isUnsupportedConstraintsError: (value: unknown) => value is Unsuppo
 export type LabelMeasurer = (text: string, style: LabelStyle) => LabelSize;
 
 // @public
-export function labelsInPanel(map: ResolvedMap, report: LayoutReport): boolean;
+export function labelsInPanel(map: ResolvedMap, report: Pick<LayoutReport, "labels" | "steps">): boolean;
 
 // @public (undocumented)
 export interface LabelSize {

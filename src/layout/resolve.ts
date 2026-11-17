@@ -9,7 +9,7 @@ import type {
 } from "./types.js";
 import { bounds, midpoint } from "./geometry.js";
 import { badgePositions } from "./badges.js";
-import { measured } from "./graph.js";
+import { measured } from "./measured.js";
 function frameBoxes(
   map: SourceMap,
   result: LayoutResult,

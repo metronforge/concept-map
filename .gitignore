@@ -12,3 +12,6 @@ reports/
 comparison-dist/
 output/
 .playwright-cli/
+
+# Agent loop state (scripts/agent-loop)
+.loop/

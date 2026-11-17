@@ -59,13 +59,15 @@ function measureArrow(host: HTMLElement, label: SVGTextElement) {
   );
   const span = host.ownerDocument.createElement("span");
   Object.assign(span.style, {
-    position: "absolute",
+    position: "fixed",
+    top: "0",
+    left: "0",
     visibility: "hidden",
     whiteSpace: "pre",
     lineHeight: "1.2",
   });
   copyFont(span.style, css);
-  host.append(span);
+  host.ownerDocument.body.append(span);
   try {
     const sizes = (lines.length ? lines : [label.textContent ?? ""]).map(
       (text) => measureLine(span, text),
@@ -91,6 +93,9 @@ function copyFont(target: CSSStyleDeclaration, source: CSSStyleDeclaration) {
     "fontSize",
     "fontStyle",
     "fontStretch",
+    "fontSizeAdjust",
+    "fontFeatureSettings",
+    "fontVariationSettings",
     "fontVariantCaps",
     "fontKerning",
     "letterSpacing",

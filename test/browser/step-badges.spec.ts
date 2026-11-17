@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
+import { paintContacts } from "./paint-check.js";
 for (const example of ["coffee", "door", "gcd"])
   test(`${example}: visible badges do not cover label text`, async ({
     page,
@@ -7,7 +8,8 @@ for (const example of ["coffee", "door", "gcd"])
     await page.goto("/integration/");
     await page.addStyleTag({ path: "css/concept-map.css" });
     await page.addStyleTag({
-      content: ".map-figure{display:block}.map-ui .map svg{min-width:760px}",
+      content:
+        ".map-ui.map-figure{display:block}.map-ui .map svg{min-width:760px}",
     });
     const source = JSON.parse(
       readFileSync(`examples/${example}/map.json`, "utf8"),
@@ -21,6 +23,7 @@ for (const example of ["coffee", "door", "gcd"])
       el.setAttribute("layout", "dagre");
       document.body.append(el);
       await el.ready;
+      await document.fonts.ready;
     }, source);
     for (let scenario = 0; scenario < source.scenarios.length; scenario++) {
       await page.evaluate((scenario) => {
@@ -28,35 +31,6 @@ for (const example of ["coffee", "door", "gcd"])
         el.player.dispatch({ type: "scenario", index: scenario });
         el.player.dispatch({ type: "mode", mode: "all" });
       }, scenario);
-      const overlaps = await page.evaluate(() => {
-        const boxes = [...document.querySelectorAll(".etext:not(.ghost)")].map(
-          (e) => e.getBoundingClientRect(),
-        );
-        return [...document.querySelectorAll(".badge circle")].flatMap((e) => {
-          const b = e.getBoundingClientRect();
-          return boxes
-            .filter(
-              (t) =>
-                Math.hypot(
-                  Math.max(
-                    t.left - (b.x + b.width / 2),
-                    0,
-                    b.x + b.width / 2 - t.right,
-                  ),
-                  Math.max(
-                    t.top - (b.y + b.height / 2),
-                    0,
-                    b.y + b.height / 2 - t.bottom,
-                  ),
-                ) <
-                b.width / 2 + 1,
-            )
-            .map((t) => ({
-              badge: { x: b.x, y: b.y },
-              label: { x: t.x, y: t.y },
-            }));
-        });
-      });
-      expect(overlaps).toEqual([]);
+      expect(await paintContacts(page)).toEqual([]);
     }
   });

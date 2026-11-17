@@ -121,7 +121,7 @@ test("the DOM measurer reads the styled font's baseline and width", async ({
     const { domMeasurer } = await import("/assets/integration.js");
     const host = document.createElement("div");
     host.innerHTML =
-      '<svg><text class="etext" style="font:italic 700 20px serif;word-spacing:3px">same text</text></svg><span style="position:absolute;white-space:pre;font:italic 700 20px/1.2 serif;word-spacing:3px">same text<span style="display:inline-block;width:0;height:0;vertical-align:baseline"></span></span>';
+      '<svg><text class="etext" style="font:italic 700 20px serif;word-spacing:3px">same text</text></svg><span style="position:fixed;top:0;left:0;white-space:pre;font:italic 700 20px/1.2 serif;word-spacing:3px">same text<span style="display:inline-block;width:0;height:0;vertical-align:baseline"></span></span>';
     document.body.append(host);
     const span = host.lastElementChild!;
     const baseline =

@@ -5,8 +5,8 @@ const cases = [
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    // +1650 B for browser refinement and its optional measurement schema.
-    limit: "42300 B",
+    // +1700 B for browser refinement and its optional measurement schema.
+    limit: "42350 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -15,8 +15,8 @@ const cases = [
       "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
-    // +1350 B for real-font measurement, pure refinement and wrapped replay.
-    limit: "9833 B",
+    // +1400 B for real-font measurement, pure refinement and wrapped replay.
+    limit: "9883 B",
   },
   {
     name: "server render (pre-resolved map)",

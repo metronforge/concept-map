@@ -2,7 +2,7 @@ import type { ResolvedMap } from "../../schema.js";
 import type { Measurer } from "../ports.js";
 import type { LabelSize, LayoutPoint } from "../types.js";
 import { measureMono } from "../text-size.js";
-import { measured } from "../graph.js";
+import { measured } from "../measured.js";
 import { placeAnnotations } from "./placement.js";
 const style = { fontSize: 10.5, mono: true };
 

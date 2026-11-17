@@ -1,4 +1,4 @@
-import { monoAdvance } from "./font-metrics.js";
+import { monoAdvance } from "./mono-metrics.js";
 import type { LabelMeasurer, LabelStyle, LabelSize } from "./types.js";
 
 export function textSize(

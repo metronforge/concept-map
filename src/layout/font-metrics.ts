@@ -124,4 +124,3 @@ export const sansRanges: readonly (readonly [number, readonly number[]])[] = [
     ],
   ],
 ];
-export const monoAdvance = 0.602;

@@ -1,5 +1,5 @@
 import type { ResolvedMap } from "../schema.js";
-import { check } from "../layout/stages/report.js";
+import { checkLabels } from "../layout/stages/label-check.js";
 import { labelsInPanel } from "../layout/stages/presentation.js";
 import { refine } from "../layout/stages/refine.js";
 import { domMeasurer } from "./measureLabel.js";
@@ -26,7 +26,7 @@ export function refineDrawing(
   sizeLabels(root, result, geo);
   const panel = labelsInPanel(
     result,
-    check(map, result, { measureLabel: domMeasurer(root) }),
+    checkLabels(map, result, { measureLabel: domMeasurer(root) }),
   );
   svg.applyFrame(derive(result, state, { labelsInPanel: panel }));
   return { map: result, labelsInPanel: panel };

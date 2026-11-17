@@ -2,7 +2,10 @@ import type { ResolvedMap } from "../../schema.js";
 import type { LayoutReport } from "./quality.js";
 
 /** Keep fixed geometry readable by moving conflicting arrow text to the panel. */
-export function labelsInPanel(map: ResolvedMap, report: LayoutReport): boolean {
+export function labelsInPanel(
+  map: ResolvedMap,
+  report: Pick<LayoutReport, "labels" | "steps">,
+): boolean {
   const labelled = new Set(
     Object.entries(map.edges)
       .filter(([, edge]) => edge.label?.text)

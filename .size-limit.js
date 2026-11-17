@@ -48,7 +48,8 @@ const cases = [
     // for { strict: true }; size-limit counts that chunk too.
     // +900 B for shared problem negotiation, boundary errors and lane verdicts.
     // +350 B for the measurement port, provenance and metric validation.
-    limit: "36250 B",
+    // +450 B for shared number placement, replacing the legacy badge search.
+    limit: "36700 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",

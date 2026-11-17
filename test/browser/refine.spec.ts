@@ -4,6 +4,7 @@ import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { layout, check, describeDefects } from "../../src/layout/index";
 import { dagreEngine } from "../../src/layout/dagre";
 import { elkEngine } from "../../src/layout/elk";
+import { removedNumberDefects } from "./removed-number-defects";
 
 for (const width of [1280, 390])
   for (const name of ["coffee", "door", "gcd"])
@@ -150,12 +151,18 @@ for (const width of [1280, 390])
         }
         const reference = JSON.parse(
           readFileSync(
-            `docs/evidence/font-measurement/${width === 390 ? "390/" : ""}chromium.json`,
+            `docs/evidence/font-measurement/${width === 390 ? "390/" : ""}${info.project.name}.json`,
             "utf8",
           ),
         );
         const expected = reference[`${name} ${engine}`];
-        expect(defects).toEqual(expected.defects);
+        expect(
+          defects.filter((defect) => !expected.defects.includes(defect)),
+        ).toEqual([]);
+        for (const removed of removedNumberDefects(name, engine, width)) {
+          expect(expected.defects).toContain(removed);
+          expect(defects).not.toContain(removed);
+        }
         expect(result.report.hard).toBeLessThanOrEqual(
           evidence.serverHard + expected.extraDefects.length,
         );

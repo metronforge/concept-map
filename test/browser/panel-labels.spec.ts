@@ -17,9 +17,14 @@ test("resizing moves labels to the panel and restores them without changing stat
   map.scenarios[0].repeatBadges = [];
   map.edges.ab.label = {
     text: "Use `code` with *care* and **bold**",
-    at: [65, 65],
+    at: [65, 104],
   };
   map.viewBox = [600, 200];
+  // A 16-unit corridor fits wide-screen text, but cannot fit the larger text
+  // at 390 px, even after the shared placement stage searches for room.
+  map.nodes.a.box = [0, 0, 600, 92];
+  map.nodes.b.box = [0, 108, 600, 92];
+  map.edges.ab.path = "M35 92 V108";
   await page.evaluate(async (map) => {
     const { mount } = await import("/assets/integration.js");
     document.body.replaceChildren();

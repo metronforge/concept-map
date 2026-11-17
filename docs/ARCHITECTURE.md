@@ -201,9 +201,9 @@ one pull request each.
 
 ## 8. Budgets
 
-- Size: six consumer scenarios have gzip limits (`size-limit`), including
-  Zod when validation is used. Limits are the measured baseline plus 10%;
-  see ADR 0015. The player budget now uses `./dom`; the component budget includes Zod.
+- Size: seven consumer scenarios have gzip limits (`size-limit`), including
+  Zod when validation is used. Raised limits use measured gzip size plus at most 1 kB and at most 3%,
+  whichever is smaller (AGENTS.md). ADR 0015 records the initial baselines. The player budget now uses `./dom`; the component budget includes Zod.
 - No `any`, no default exports, no `enum`, no classes in the core, including
   `src/layout` and its adapters, except the boundary exceptions in
   `src/layout/errors.ts` (lint).

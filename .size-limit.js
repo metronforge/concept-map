@@ -7,7 +7,9 @@ const cases = [
     gzip: true,
     // +1700 B for browser refinement and its optional measurement schema.
     // +3000 B for shared label placement and the checker's path geometry.
-    limit: "45350 B",
+    // +4646 B over main for the panel fallback and its independent checker; author approved.
+    // Measured 48996 B + 1000 B margin (at most 1 kB and 3%, rounded down).
+    limit: "49996 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -18,7 +20,9 @@ const cases = [
     gzip: true,
     // +1400 B for real-font measurement, pure refinement and wrapped replay.
     // +2000 B for shared label placement and the checker's path geometry.
-    limit: "11883 B",
+    // +3493 B over main for the panel fallback and its independent checker; author approved.
+    // Measured 14929 B + 447 B margin (at most 1 kB and 3%, rounded down).
+    limit: "15376 B",
   },
   {
     name: "server render (pre-resolved map)",
@@ -28,7 +32,9 @@ const cases = [
         "{ renderSvg, renderPanelParts, renderConcepts, derive, initialState }",
     },
     gzip: true,
-    limit: "4188 B",
+    // +167 B over main for rendering numbered panel labels; author approved.
+    // Measured 4229 B + 126 B margin (at most 1 kB and 3%, rounded down).
+    limit: "4355 B",
   },
   {
     name: "source and resolved validation (with Zod)",
@@ -52,7 +58,9 @@ const cases = [
     // +350 B for the measurement port, provenance and metric validation.
     // +450 B for shared number placement, replacing the legacy badge search.
     // +550 B for route-aware label placement using the same geometry as check().
-    limit: "37250 B",
+    // +1514 B over main for checking SVG arcs and node step numbers; author approved.
+    // Measured 37764 B + 1000 B margin (at most 1 kB and 3%, rounded down).
+    limit: "38764 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",

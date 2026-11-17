@@ -98,18 +98,33 @@ player, the examples) is accepted on pictures, not only on numbers.
     Positions are measured in the browser with real fonts after
     `document.fonts.ready`; font tables are an estimate for server rendering,
     never the proof.
-- **Screenshots only where the picture changes.** When the drawing is proven
-  unchanged (identical resolved maps, unchanged quality baseline), add none.
-  When it changes, show before and after of the examples that changed only:
-  one browser, 1280 px, light theme; add 390 px only when the narrow layout
-  changes, and dark theme only when colours or CSS change. Never commit
-  screenshots to the repository, and do not add tests whose only job is to
-  take them; the browser checks above are the proof, pictures are for the
-  reader.
+- **Pictures only where the drawing changes, and only for the author.** When
+  the drawing is proven unchanged (identical resolved maps, unchanged quality
+  baseline), make none. When it changes, save before and after of the examples
+  that changed (one browser, 1280 px, light theme; 390 px only when the narrow
+  presentation changes, dark theme only when colours or CSS change) outside the
+  repository and give their paths to the author. Do not upload them to GitHub
+  and do not keep a pull request in draft for them. Never commit screenshots,
+  and do not add tests whose only job is to take them; the browser checks above
+  are the proof.
 - A check that passes in one browser and fails in another is a failure. Do
   not open a pull request until CI is green in all three.
 - Do not relax a visual check or regenerate a snapshot to make a change
   pass; explain the difference in the description instead.
+
+## Size limits
+
+`.size-limit.js` holds one gzip budget per way of using the package.
+
+- When a change needs a limit to rise, set it to the measured size plus a
+  margin of at most 1 KB and at most 3% of the measured size, whichever is
+  smaller (about 1 KB for the component and layout, 400 B for the player,
+  130 B for server rendering). A larger margin hides the next change that
+  should have been noticed.
+- A rise of more than 1 KB for one limit needs the author's approval, written
+  in the issue or the pull request. Say by how much and why in a comment next
+  to the limit and in the description.
+- Prefer making the code smaller: one shared implementation instead of two.
 
 ## What goes into the changelog
 

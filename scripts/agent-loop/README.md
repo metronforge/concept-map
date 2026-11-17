@@ -9,6 +9,7 @@ author. Everything an iteration knows comes from the repository and from
 | ------------- | ---------- | ------------------------------------------------ |
 | `task.md`     | the script | the issue text: goal, measure, limits            |
 | `progress.md` | the agent  | one entry per iteration: change, measure, lesson |
+| `COMMIT`      | the agent  | commit message for the change it kept            |
 | `DONE`        | the agent  | goal reached; first line is the PR title         |
 | `pr.md`       | the agent  | pull request body                                |
 | `STOP`        | the agent  | a question for the author, or no progress        |
@@ -20,7 +21,10 @@ scripts/agent-loop/run.sh 52 10       # up to 10
 AGENT_CMD='codex exec --sandbox workspace-write -' scripts/agent-loop/run.sh 52
 ```
 
-The agent works on the branch `loop/issue-<n>` and only commits. When it
+The agent works on the branch `loop/issue-<n>`. Its sandbox keeps `.git`
+read-only, so it leaves its change in the tree with a message in `COMMIT`, and
+the script commits after the iteration (the commit-msg hook still checks the
+message). When it
 writes `DONE`, the script pushes the branch (the pre-push hook runs the full
 checks) and opens a draft pull request. When it writes `STOP`, the script
 prints the question and exits with status 2; answer in `.loop/<n>/task.md` or

@@ -11,8 +11,11 @@ memory of earlier iterations: everything you know is in the repository and in
    enough to finish and verify in this iteration.
 4. Run `npm run verify` and the browser tests the task names. If they fail,
    fix the cause or revert your change; never leave the branch red.
-5. Measure again. Commit only if the checks pass and the measure is no worse,
-   with a Conventional Commits message in plain words.
+5. Measure again. If the checks pass and the measure is no worse, keep the
+   change in the working tree and write its commit message (Conventional
+   Commits, plain words) to {{STATE}}/COMMIT; the loop script commits it after
+   this iteration. You cannot write to .git yourself. Otherwise revert your
+   change and write no COMMIT.
 6. Append to {{STATE}}/progress.md: iteration number, the change, the measure
    before and after, and what you learned. Keep each entry under 15 lines.
 
@@ -24,10 +27,11 @@ Stop conditions, checked at the end of every iteration:
 - A decision belongs to the author (the task says which ones), or the task
   contradicts AGENTS.md, the ADRs or the code: write the question to
   {{STATE}}/STOP and stop.
-- Three iterations in a row without improving the measure: write what you
+- Three iterations in a row without improving the measure (an iteration
+  whose change you kept with a COMMIT counts as an improvement): write what you
   tried and what you suspect to {{STATE}}/STOP and stop.
 
-Never: push, open pull requests, edit files under {{STATE}} other than
-progress.md, DONE, STOP and pr.md, change thresholds or bands of check(),
+Never: commit, push, open pull requests, edit files under {{STATE}} other
+than progress.md, COMMIT, DONE, STOP and pr.md, change thresholds or bands of check(),
 regenerate recorded evidence to make a test pass, add complexity exceptions,
 or touch main.

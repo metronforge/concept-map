@@ -35,6 +35,16 @@ for i in $(seq 1 "$max"); do
   sed -e "s|{{STATE}}|.loop/$issue|g" -e "s|{{ITERATION}}|$i|g" \
     "$root/scripts/agent-loop/prompt.md" |
     bash -c "$agent" >>"$state/agent.log" 2>&1 || echo "agent exited with $?"
+  # The agent's sandbox keeps .git read-only, so the script commits for it.
+  if [[ -s $state/COMMIT ]]; then
+    git add -A
+    if git commit -q -F "$state/COMMIT"; then
+      echo "   committed: $(head -n 1 "$state/COMMIT")"
+    else
+      echo "   commit refused (see the message above); changes left in the tree"
+    fi
+    rm -f "$state/COMMIT"
+  fi
 done
 
 if [[ -f $state/STOP ]]; then

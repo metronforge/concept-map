@@ -700,7 +700,7 @@ export type UiStrings = typeof defaultStrings;
 
 // Warnings were encountered during analysis:
 //
-// src/model/flow.ts:100:3 - (ae-forgotten-export) The symbol "LogLine" needs to be exported by the entry point index.d.ts
+// src/model/flow.ts:95:3 - (ae-forgotten-export) The symbol "LogLine" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

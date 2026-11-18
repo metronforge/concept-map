@@ -9,7 +9,7 @@ class FakeAnimation {
   settled = false;
   cancelled = false;
   constructor(
-    readonly frames: Keyframe[],
+    public frames: Keyframe[],
     readonly options: KeyframeAnimationOptions,
   ) {
     this.finished = new Promise((resolve, reject) => {
@@ -17,6 +17,12 @@ class FakeAnimation {
       this.reject = reject;
     });
   }
+  currentTime = 75;
+  effect = {
+    setKeyframes: (frames: Keyframe[]) => {
+      this.frames = frames;
+    },
+  };
   finish() {
     if (!this.settled) {
       this.settled = true;
@@ -170,4 +176,110 @@ test("a cancelled playback cannot clear the next playback's path styles", async 
   expect(tokens[0].style.offsetPath).toBe('path("M35 40 V100")');
   next.stop();
   await Promise.all([first.finished, next.finished]);
+});
+
+for (const reverse of [false, true])
+  for (const phase of [0, 1, 2, 3, 4])
+    test(`retargets phase ${phase}, reverse=${reverse}, without replaying hooks`, async () => {
+      const { map, tokens, animator } = setup();
+      map.scenarios[0].flow![1].reverse = reverse;
+      const plan = planFlow(map, 0, { length: () => 60 });
+      const events: string[] = [];
+      let done = false;
+      const playback = animator.play(plan, {
+        onHopStart: (i) => events.push(`start:${i}`),
+        onHop: (i) => events.push(`hop:${i}`),
+        onHopEnd: (i) => events.push(`end:${i}`),
+        onDone: () => {
+          done = true;
+        },
+      });
+      for (let n = 0; tokens[0].animations.length <= phase && n < 30; n++) {
+        tokens.forEach((t) => t.animations.at(-1)!.finish());
+        await Promise.resolve();
+        await Promise.resolve();
+        await Promise.resolve();
+      }
+      const animations = tokens.map((t) => t.animations.at(-1)!);
+      const before = [...events];
+      const next = structuredClone(map);
+      next.nodes.a.box = [50, 60, 80, 50];
+      next.edges.ab.path = "M90 110 L250 160";
+      animator.retarget(next, 0);
+      expect(events).toEqual(before);
+      for (const [i, token] of tokens.entries()) {
+        expect(token.animations).toHaveLength(phase + 1);
+        expect(token.animations.at(-1)).toBe(animations[i]);
+        expect(animations[i].currentTime).toBe(75);
+        expect(animations[i].cancelled).toBe(false);
+        if (phase < 2) {
+          expect(token.attrs.get("cx")).toBe("90");
+          expect(token.attrs.get("cy")).toBe("85");
+        } else if (phase === 2) {
+          expect(animations[i].frames).toEqual([
+            { transform: "translate(90px, 85px)" },
+            {
+              transform: reverse
+                ? "translate(250px, 160px)"
+                : "translate(90px, 110px)",
+            },
+          ]);
+        } else if (phase === 3) {
+          expect(token.style.offsetPath).toBe('path("M90 110 L250 160")');
+          expect(animations[i].frames).toEqual([
+            { offsetDistance: reverse ? "100%" : "0%" },
+            { offsetDistance: reverse ? "0%" : "100%" },
+          ]);
+        } else {
+          expect(token.attrs.get("cx")).toBe(reverse ? "90" : "250");
+          expect(token.attrs.get("cy")).toBe(reverse ? "110" : "160");
+        }
+      }
+      await drain(tokens, () => done);
+      await playback.finished;
+      expect(events).toEqual([
+        "start:0",
+        "hop:0",
+        "end:0",
+        "start:1",
+        "hop:1",
+        "end:1",
+      ]);
+      expect(tokens[0].attrs.get("cx")).toBe(reverse ? "90" : "250");
+      expect(tokens[0].attrs.get("cy")).toBe(reverse ? "110" : "160");
+      expect(tokens[0].animations.map((a) => a.options.duration)).toEqual(
+        plan.segments.map((s) => s.duration),
+      );
+      const after = tokens.map((t) => ({ ...t.style }));
+      animator.retarget(map, 0);
+      expect(tokens.map((t) => ({ ...t.style }))).toEqual(after);
+    });
+
+test("stopping an older playback cannot remove the current retarget callback", async () => {
+  const { map, tokens, animator } = setup();
+  const plan = planFlow(map, 0, { length: () => 60 });
+  const hooks = { onHop: vi.fn(), onDone: vi.fn() };
+  const first = animator.play(plan, hooks);
+  first.stop();
+  const stopped = tokens.map((token) => ({ ...token.style }));
+  animator.retarget(map, 0);
+  expect(tokens.map((token) => ({ ...token.style }))).toEqual(stopped);
+  const second = animator.play(plan, hooks);
+  first.stop();
+  await first.finished;
+  const next = structuredClone(map);
+  next.nodes.a.box = [50, 60, 80, 50];
+  animator.retarget(next, 0);
+  expect(tokens[0].attrs.get("cx")).toBe("90");
+  expect(tokens[0].attrs.get("cy")).toBe("85");
+  expect(tokens[0].animations.at(-1)!.cancelled).toBe(false);
+  second.stop();
+  await second.finished;
+  expect(hooks.onHop).not.toHaveBeenCalled();
+  expect(hooks.onDone).not.toHaveBeenCalled();
+  expect(
+    tokens
+      .flatMap((token) => token.animations)
+      .every((animation) => animation.cancelled),
+  ).toBe(true);
 });

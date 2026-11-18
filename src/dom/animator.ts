@@ -1,5 +1,7 @@
 import type { FlowPlan, Segment } from "../model/flow.js";
 import type { ResolvedMap } from "../schema.js";
+import { retargetFlow } from "../model/retarget-flow.js";
+import { clearTokenStyles, placeTokens, tokenFrames } from "./token.js";
 export interface Playback {
   stop(): void;
   readonly finished: Promise<void>;
@@ -17,9 +19,14 @@ export interface Animator {
 export class WebAnimator implements Animator {
   private generation = 0;
   private current?: Playback;
+  private retargetCurrent?: (map: ResolvedMap, scenario: number) => void;
+  retarget(map: ResolvedMap, scenario: number) {
+    this.edges = map.edges;
+    this.retargetCurrent?.(map, scenario);
+  }
   constructor(
     readonly tokens: SVGCircleElement[],
-    readonly edges: ResolvedMap["edges"],
+    private edges: ResolvedMap["edges"],
   ) {}
   play(plan: FlowPlan, hooks: FlowHooks): Playback {
     this.current?.stop();
@@ -28,24 +35,39 @@ export class WebAnimator implements Animator {
     const active = new Set<Animation>();
     const clearStyles = () => {
       if (generation !== this.generation) return;
-      this.tokens.forEach((t) => {
-        t.style.offsetPath = "";
-        t.style.offsetDistance = "";
-        t.style.offsetRotate = "";
-        t.style.offsetAnchor = "";
-        t.style.offsetPosition = "";
-        t.style.transform = "";
+      clearTokenStyles(this.tokens);
+    };
+    let index = 0;
+    this.retargetCurrent = (map, scenario) => {
+      plan = retargetFlow(plan, map, scenario);
+      const frames = tokenFrames(this.tokens, plan.segments[index], this.edges);
+      active.forEach((animation) =>
+        (animation.effect as KeyframeEffect).setKeyframes(frames),
+      );
+    };
+    const animate = async (segment: Segment) => {
+      const frames = tokenFrames(this.tokens, segment, this.edges);
+      const animations = this.tokens.map((t) =>
+        t.animate(frames, {
+          duration: segment.duration,
+          fill: "forwards",
+          easing: "linear",
+        }),
+      );
+      animations.forEach((a) => active.add(a));
+      await Promise.all(animations.map((a) => a.finished));
+      if (stopped) return;
+      clearStyles();
+      const end = plan.segments[index];
+      placeTokens(this.tokens, end.type === "pause" ? end.at : end.to);
+      animations.forEach((a) => {
+        a.cancel();
+        active.delete(a);
       });
     };
-    const place = ([x, y]: [number, number]) =>
-      this.tokens.forEach((t) => {
-        t.setAttribute("cx", String(x));
-        t.setAttribute("cy", String(y));
-        t.setAttribute("visibility", "visible");
-      });
     const finished = (async () => {
       try {
-        for (let index = 0; index < plan.segments.length; index++) {
+        for (; index < plan.segments.length; index++) {
           if (stopped) return;
           const segment = plan.segments[index];
           plan.hops.forEach((hop, i) => {
@@ -56,53 +78,8 @@ export class WebAnimator implements Animator {
             if (hop.segment === index) hooks.onHop(i);
           });
           clearStyles();
-          let frames: Keyframe[];
-          if (segment.type === "pause") {
-            place(segment.at);
-            frames = [
-              { transform: "translate(0px, 0px)" },
-              { transform: "translate(0px, 0px)" },
-            ];
-          } else {
-            place([0, 0]);
-            if (segment.type === "jump")
-              frames = [
-                {
-                  transform: `translate(${segment.from[0]}px, ${segment.from[1]}px)`,
-                },
-                {
-                  transform: `translate(${segment.to[0]}px, ${segment.to[1]}px)`,
-                },
-              ];
-            else {
-              for (const t of this.tokens) {
-                t.style.offsetPath = `path("${this.edges[segment.edge].path}")`;
-                t.style.offsetRotate = "0deg";
-                t.style.offsetAnchor = "0px 0px";
-                t.style.offsetPosition = "0px 0px";
-              }
-              frames = [
-                { offsetDistance: segment.reverse ? "100%" : "0%" },
-                { offsetDistance: segment.reverse ? "0%" : "100%" },
-              ];
-            }
-          }
-          const animations = this.tokens.map((t) =>
-            t.animate(frames, {
-              duration: segment.duration,
-              fill: "forwards",
-              easing: "linear",
-            }),
-          );
-          animations.forEach((a) => active.add(a));
-          await Promise.all(animations.map((a) => a.finished));
+          await animate(segment);
           if (stopped) return;
-          clearStyles();
-          place(segment.type === "pause" ? segment.at : segment.to);
-          animations.forEach((a) => {
-            a.cancel();
-            active.delete(a);
-          });
           plan.hops.forEach((hop, i) => {
             if (hop.segment === index) hooks.onHopEnd?.(i);
           });
@@ -114,12 +91,14 @@ export class WebAnimator implements Animator {
         active.forEach((a) => a.cancel());
         active.clear();
         clearStyles();
+        if (generation === this.generation) this.retargetCurrent = undefined;
       }
     })();
     return (this.current = {
       finished,
-      stop() {
+      stop: () => {
         stopped = true;
+        if (generation === this.generation) this.retargetCurrent = undefined;
         active.forEach((a) => a.cancel());
         active.clear();
         clearStyles();

@@ -78,6 +78,8 @@ export class MapPlayer {
       this.switchedAt,
     );
     this.drawnMap = result.map;
+    if (this.animator instanceof WebAnimator)
+      this.animator.retarget(this.map, this.current.scenario);
     this.switchedAt = result.choice.switchedAt;
     const panel = result.choice.presentation === "panel";
     if (this.panelLabels !== panel) {

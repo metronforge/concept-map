@@ -39,14 +39,9 @@ export function planFlow(
   let pos = center(flow[0].node);
   plan.segments.push({ type: "pause", duration: 400, at: pos });
   const jump = (to: Point) => {
-    const distance = Math.hypot(to[0] - pos[0], to[1] - pos[1]);
-    if (distance < 2) return;
-    plan.segments.push({
-      type: "jump",
-      duration: Math.max(120, distance / 0.28),
-      from: pos,
-      to,
-    });
+    const segment = jumpSegment(pos, to);
+    if (!segment) return;
+    plan.segments.push(segment);
     pos = to;
   };
   for (const h of flow) {
@@ -119,4 +114,20 @@ export function reducedFlow(
     log,
     lastStep,
   };
+}
+
+/** The same short-jump rule applies when initially planning and retargeting. */
+export function jumpSegment(
+  from: Point,
+  to: Point,
+): Extract<Segment, { type: "jump" }> | undefined {
+  const distance = Math.hypot(to[0] - from[0], to[1] - from[1]);
+  return distance < 2
+    ? undefined
+    : {
+        type: "jump",
+        duration: Math.max(120, distance / 0.28),
+        from,
+        to,
+      };
 }

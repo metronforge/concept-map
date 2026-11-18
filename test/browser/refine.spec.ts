@@ -25,6 +25,11 @@ for (const width of [1280, 390])
           source,
           engine === "dagre" ? dagreEngine : elkEngine,
         );
+        await page.exposeFunction("layoutNarrow", (widthEm: number) =>
+          layout(source, engine === "dagre" ? dagreEngine : elkEngine, {
+            widthEm,
+          }),
+        );
         await page.goto("/integration/");
         await page.addStyleTag({ path: "css/concept-map.css" });
         const result = await page.evaluate(
@@ -36,20 +41,47 @@ for (const width of [1280, 390])
             host.style.width = "100%";
             host.style.containerType = "inline-size";
             document.body.append(host);
-            const player = mount(host, original, { reducedMotion: true });
-            await document.fonts.ready;
-            await new Promise((resolve) =>
-              requestAnimationFrame(() => requestAnimationFrame(resolve)),
-            );
+            const pending: Promise<typeof original>[] = [];
+            const player = mount(host, original, {
+              reducedMotion: true,
+              narrowLayout: (widthEm: number) => {
+                const result = window.layoutNarrow(widthEm);
+                pending.push(result);
+                return result;
+              },
+            });
+            const settle = async () => {
+              await document.fonts.ready;
+              await new Promise((resolve) =>
+                requestAnimationFrame(() => requestAnimationFrame(resolve)),
+              );
+            };
+            await settle();
+            for (let i = 0; i < pending.length; i++) {
+              await pending[i];
+              await settle();
+            }
             const drawn = player.map;
             const measurer = domMeasurer(player.root);
             const report = check(source, drawn, { measureLabel: measurer });
+            // Refinement clones maps and changes annotations. Layout candidates
+            // have their own fixed geometry, even when annotations also move.
+            const geometry = (map: typeof original) =>
+              JSON.stringify([
+                map.nodes,
+                map.lanes,
+                map.frames,
+                map.viewBox,
+                Object.values(map.edges).map((edge) => edge.path),
+              ]);
             const presentation = () =>
               getComputedStyle(
                 player.root.querySelector("[data-map-edge-labels]")!,
               ).visibility === "hidden"
                 ? "panel"
-                : "wide";
+                : geometry(player.map) === geometry(original)
+                  ? "wide"
+                  : "narrow";
             const selected = presentation();
             // Check every scenario's geometry, excluding only arrow labels
             // hidden by the panel presentation. Keep lines and step numbers.
@@ -128,8 +160,9 @@ for (const width of [1280, 390])
         expect(result.arrowFill).toBe("none");
         expect(result.fits).toBe(true);
         expect(result.presentationReport.hard).toBe(0);
-        for (const field of ["nodes", "lanes", "frames", "viewBox"] as const)
-          expect(result.drawn[field]).toEqual(original[field]);
+        if (width === 1280)
+          for (const field of ["nodes", "lanes", "frames", "viewBox"] as const)
+            expect(result.drawn[field]).toEqual(original[field]);
         const defects = describeDefects(result.report).map((line) =>
           line.replace(/ \([^)]* em\)$/, ""),
         );

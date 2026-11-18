@@ -118,6 +118,14 @@ when a source map needs them. Bundlers must preserve code splitting to retain
 this download behavior. Changing the attribute retries the original source,
 including inline JSON that has already been replaced by rendered markup.
 
+With either engine attribute, the element also supplies the player's lazy
+narrow layout. It retains the source and selected engine, and lays out again
+with the measured container width only when the wide drawing has a hard
+defect. The player checks the candidate with real fonts before choosing it;
+if both drawings have hard defects, arrow labels move to the step panel.
+Resolved maps and host-supplied `element.layout` functions keep their geometry.
+Hosts that need their own narrow layout can use `mount` with `narrowLayout`.
+
 Alternatively, supply a function. `element.layout` takes priority over the
 attribute. Dagre remains the recommended default:
 

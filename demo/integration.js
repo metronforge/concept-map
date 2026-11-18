@@ -11,3 +11,4 @@ export { WebAnimator } from "../dist/dom/animator.js";
 export { planFlow } from "../dist/model/flow.js";
 export { refineDrawing } from "../dist/dom/refine.js";
 export { geometry } from "../dist/dom/geometry.js";
+export { NarrowLayout } from "../dist/dom/narrowLayout.js";

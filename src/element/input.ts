@@ -40,15 +40,23 @@ export async function resolveInput(
   input: unknown,
   layout?: MapLayout,
   engine: string | null = null,
-): Promise<ResolvedMap> {
-  if (layoutLevel(input) === "resolved") return ResolvedMapSchema.parse(input);
+): Promise<{
+  map: ResolvedMap;
+  narrowLayout?: (widthEm: number) => Promise<ResolvedMap>;
+}> {
+  if (layoutLevel(input) === "resolved")
+    return { map: ResolvedMapSchema.parse(input) };
   const source = SourceMapSchema.parse(input);
-  if (!layout && engine !== null) return layoutWithEngine(source, engine);
+  if (!layout && engine !== null)
+    return {
+      map: await layoutWithEngine(source, engine),
+      narrowLayout: (widthEm) => layoutWithEngine(source, engine, widthEm),
+    };
   if (!layout)
     throw new Error(
       "Source map needs layout: assign element.layout or provide a resolved map",
     );
-  return ResolvedMapSchema.parse(await layout(source));
+  return { map: ResolvedMapSchema.parse(await layout(source)) };
 }
 
 function scriptText(

@@ -194,6 +194,7 @@ export interface LayoutOptions {
     // (undocumented)
     measureLabel?: LabelMeasurer | Measurer;
     strict?: boolean;
+    widthEm?: number;
 }
 
 // @public

@@ -59,6 +59,30 @@ The host must be connected and visible, with the intended `--cmap-font-sans`
 and `--cmap-font-mono` values. Measurement removes its temporary elements.
 Different fonts or measurers can produce different geometry.
 
+### Layout for a known width
+
+Pass `widthEm` to reserve space for text that grows relative to a map when
+the drawing shrinks to its container. The value is the available width divided
+by the intended on-page arrow-label font size, in the same units. For example,
+a 360 px container with 16 px arrow text has `widthEm: 22.5`.
+
+```ts
+const narrow = await layout(source, dagreEngine, { widthEm: 22.5 });
+```
+
+The width must be finite and positive. When the natural drawing is wider,
+layout uses its scale to reserve larger text in a second engine pass, then
+refines arrow labels and step numbers at the returned drawing's scale using
+the shared placement stage. Engine calls are bounded at two: some graphs
+cannot fit their text at the requested width. The result remains a proposal;
+check it with the actual drawn font before choosing it over panel labels.
+`strict` checks using the final scale and the supplied measurer.
+
+Omitting the option, or supplying a width at least as large as the natural
+drawing, preserves the default result. Resolved hand drawings retain their
+geometry even when a width is supplied. The player does not yet request or
+switch to a narrow layout automatically.
+
 ### Refinement after fonts load
 
 `Measurer` is an object with a `name` and `measure(text, style)` method.

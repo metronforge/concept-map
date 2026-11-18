@@ -136,5 +136,8 @@ for (const engine of [dagreEngine, elkEngine])
       buildProblem(source(forward), measureLabel),
       asPlacer(engine),
     );
-    expect(outcome).toMatchObject({ kind: "placed", unsupported: expected });
+    expect(outcome).toMatchObject({
+      kind: "placed",
+      unsupported: engine === dagreEngine ? expected.slice(1) : expected,
+    });
   });

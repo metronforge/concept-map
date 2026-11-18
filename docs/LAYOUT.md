@@ -208,6 +208,13 @@ required. Both built-in placers declare these capabilities. The existing
 `LayoutEngine` interface and adapter exports are unchanged; custom engines
 are bridged using the direction and lane obligations of that interface.
 
+The first scenario supplies preferred node order, main-path arrows, and
+return arrows that should not influence ranks. Dagre uses the node order
+when inserting nodes into its graph, guiding where it breaks cycles. This
+is a preference, not a guarantee of ranks. Dagre still reports main-path
+and return-arrow preferences as unsupported; ELK reports all three as
+unsupported until its adapter implements them.
+
 Before placement, unsupported required constraints name the constraint and
 placer in an error. Unsupported preferences are listed in the internal
 placement outcome. An engine exception, an unsupported capability, and a
@@ -215,8 +222,7 @@ rejected result are separate tagged outcomes. After placement, the
 checker verifies lanes from the original source and resolved geometry, even
 without `strict`; `check(source, resolved)` uses the same rule. It uses the
 renderer's viewport defaults for hand-drawn lanes without explicit widths.
-Direction remains descriptive in the existing `reading` report. No new
-constraint hints or placement algorithms are added here.
+Direction remains descriptive in the existing `reading` report.
 
 ### Layout errors and constraint reports
 

@@ -41,8 +41,25 @@ function dagreGraph(graph: LayoutGraph, nodes: LayoutNode[]) {
 }
 const adapter: LayoutEngine & Placer = {
   name: "dagre",
-  capabilities: { direction: "preferred", lanes: "required" },
-  place: (problem) => adapter.layout(problemGraph(problem)),
+  capabilities: {
+    direction: "preferred",
+    lanes: "required",
+    order: "preferred",
+  },
+  place(problem) {
+    const graph = problemGraph(problem);
+    const order = problem.constraints.find((c) => c.kind === "order");
+    if (order) {
+      const rank = new Map(order.nodes.map((id, i) => [id, i]));
+      // Insertion order guides dagre's cycle breaking; unlisted nodes stay last.
+      graph.nodes = [...graph.nodes].sort(
+        (a, b) =>
+          (rank.get(a.id) ?? order.nodes.length) -
+          (rank.get(b.id) ?? order.nodes.length),
+      );
+    }
+    return adapter.layout(graph);
+  },
   async layout(graph) {
     const nodes = engineNodes(graph);
     const g = dagreGraph(graph, nodes);

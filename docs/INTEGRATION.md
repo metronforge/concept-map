@@ -62,8 +62,8 @@ The player keeps the last requested width and candidate, shares pending work at
 that width, and ignores superseded results. A failed callback emits a bubbling
 `maperror` with the error in `detail`; it is retried only at a different width.
 Destroying the player ignores pending results. Hosts own engine imports; the
-player does not load an engine. Custom-element layout does not yet supply this
-callback automatically.
+player does not load an engine. A custom element with a source map and an
+explicit engine attribute supplies this callback automatically.
 
 ## Use the custom element
 

@@ -15,7 +15,10 @@ const cases = [
       "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
-    // Candidate checks: measured 15425 B + 300 B (2%) margin.
+    // Author-approved increase: 14157 B -> 15725 B (+1568 B).
+    // Wide/narrow checks, 1 em hysteresis, in-place geometry updates,
+    // running token animations and a narrow-layout cache are needed together.
+    // Measured 15677 B + 48 B (0.3%) margin.
     limit: "15725 B",
   },
   {

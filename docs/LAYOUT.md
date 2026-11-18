@@ -80,8 +80,10 @@ check it with the actual drawn font before choosing it over panel labels.
 
 Omitting the option, or supplying a width at least as large as the natural
 drawing, preserves the default result. Resolved hand drawings retain their
-geometry even when a width is supplied. The player does not yet request or
-switch to a narrow layout automatically.
+geometry even when a width is supplied. With a `narrowLayout` callback, the
+player requests and checks a narrow candidate when the wide drawing cannot
+be selected. Custom elements with a source map and an explicit engine attribute
+supply that callback automatically. See [integration](INTEGRATION.md).
 
 ### Refinement after fonts load
 

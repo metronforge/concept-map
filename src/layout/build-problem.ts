@@ -2,6 +2,7 @@ import type { SourceMap } from "../schema.js";
 import type { LabelMeasurer, LayoutGraph } from "./types.js";
 import type { LayoutProblem } from "./problem.js";
 import { layoutGraph } from "./graph.js";
+import { deriveIntent } from "./intent.js";
 
 export function buildProblem(
   map: SourceMap,
@@ -25,6 +26,7 @@ export function buildProblem(
             },
           ]
         : []),
+      ...deriveIntent(map),
     ],
   };
 }

@@ -45,9 +45,13 @@ const adapter: LayoutEngine & Placer = {
     direction: "preferred",
     lanes: "required",
     order: "preferred",
+    free: "preferred",
   },
-  place(problem) {
+  async place(problem) {
     const graph = problemGraph(problem);
+    const free = new Set(
+      problem.constraints.filter((c) => c.kind === "free").map((c) => c.edge),
+    );
     const order = problem.constraints.find((c) => c.kind === "order");
     if (order) {
       const rank = new Map(order.nodes.map((id, i) => [id, i]));
@@ -58,7 +62,16 @@ const adapter: LayoutEngine & Placer = {
           (rank.get(b.id) ?? order.nodes.length),
       );
     }
-    return adapter.layout(graph);
+    // Return arrows participate in forward ranking, like dagre's cycle breaker.
+    // Insert them last so parallel routes keep the cycle breaker's ordering.
+    graph.edges = [...graph.edges]
+      .sort((a, b) => Number(free.has(a.id)) - Number(free.has(b.id)))
+      .map((e) => (free.has(e.id) ? { ...e, from: e.to, to: e.from } : e));
+    const result = await adapter.layout(graph);
+    for (const edge of graph.edges)
+      if (free.has(edge.id) && edge.from !== edge.to)
+        result.edges[edge.id].points.reverse();
+    return result;
   },
   async layout(graph) {
     const nodes = engineNodes(graph);

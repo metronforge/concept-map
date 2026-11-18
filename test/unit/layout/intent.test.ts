@@ -138,6 +138,6 @@ for (const engine of [dagreEngine, elkEngine])
     );
     expect(outcome).toMatchObject({
       kind: "placed",
-      unsupported: engine === dagreEngine ? expected.slice(1) : expected,
+      unsupported: engine === dagreEngine ? [expected[1]] : expected,
     });
   });

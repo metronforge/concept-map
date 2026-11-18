@@ -31,7 +31,7 @@ for (const direction of ["down", "right"] as const)
     expect(edges.ca.points[0][axis]).toBeGreaterThan(
       edges.ca.points.at(-1)![axis],
     );
-    expect(outcome.unsupported).toEqual(problem.constraints.slice(2));
+    expect(outcome.unsupported).toEqual([problem.constraints[2]]);
     expect(problem).toEqual(before);
     expect(await place(problem, asPlacer(dagreEngine))).toEqual(outcome);
   });

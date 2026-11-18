@@ -211,9 +211,10 @@ are bridged using the direction and lane obligations of that interface.
 The first scenario supplies preferred node order, main-path arrows, and
 return arrows that should not influence ranks. Dagre uses the node order
 when inserting nodes into its graph, guiding where it breaks cycles. This
-is a preference, not a guarantee of ranks. Dagre still reports main-path
-and return-arrow preferences as unsupported; ELK reports all three as
-unsupported until its adapter implements them.
+is a preference, not a guarantee of ranks. Dagre reverses return arrows for
+ranking, then restores their travel direction; self-loops remain outside rank
+assignment. Dagre still reports main-path preferences as unsupported; ELK
+reports all three as unsupported until its adapter implements them.
 
 Before placement, unsupported required constraints name the constraint and
 placer in an error. Unsupported preferences are listed in the internal

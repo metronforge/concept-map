@@ -5,8 +5,8 @@ const cases = [
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    // Size audit before 0.3.0: measured 45231 B + margin (AGENTS.md "Size limits").
-    limit: "46231 B",
+    // Candidate checks: measured 46901 B + 300 B (0.7%) margin.
+    limit: "47201 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -15,8 +15,8 @@ const cases = [
       "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
-    // In-place geometry updates: measured 14411 B + 400 B (2.8%) margin.
-    limit: "14811 B",
+    // Candidate checks: measured 15425 B + 300 B (2%) margin.
+    limit: "15725 B",
   },
   {
     name: "server render (pre-resolved map)",

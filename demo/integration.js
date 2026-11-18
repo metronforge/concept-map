@@ -9,3 +9,5 @@ export { derive } from "../dist/model/frame.js";
 export { SvgDom } from "../dist/dom/svgDom.js";
 export { WebAnimator } from "../dist/dom/animator.js";
 export { planFlow } from "../dist/model/flow.js";
+export { refineDrawing } from "../dist/dom/refine.js";
+export { geometry } from "../dist/dom/geometry.js";

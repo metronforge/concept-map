@@ -213,8 +213,9 @@ return arrows that should not influence ranks. Dagre uses the node order
 when inserting nodes into its graph, guiding where it breaks cycles. This
 is a preference, not a guarantee of ranks. Dagre reverses return arrows for
 ranking, then restores their travel direction; self-loops remain outside rank
-assignment. Dagre still reports main-path preferences as unsupported; ELK
-reports all three as unsupported until its adapter implements them.
+assignment. Dagre gives every main-path arrow a higher weight, including
+reversed returns, to favour shorter, straighter routes. ELK reports all three
+as unsupported until its adapter implements them.
 
 Before placement, unsupported required constraints name the constraint and
 placer in an error. Unsupported preferences are listed in the internal

@@ -44,12 +44,29 @@ for (const width of [1280, 390])
             const drawn = player.map;
             const measurer = domMeasurer(player.root);
             const report = check(source, drawn, { measureLabel: measurer });
+            const presentation = () =>
+              getComputedStyle(
+                player.root.querySelector("[data-map-edge-labels]")!,
+              ).visibility === "hidden"
+                ? "panel"
+                : "wide";
+            const selected = presentation();
+            // Check every scenario's geometry, excluding only arrow labels
+            // hidden by the panel presentation. Keep lines and step numbers.
+            const presented = structuredClone(drawn);
+            if (selected === "panel")
+              for (const edge of Object.values(presented.edges))
+                delete edge.label;
+            const presentationReport = check(source, presented, {
+              measureLabel: measurer,
+            });
             const mismatches: string[] = [];
             for (
               let scenario = 0;
               scenario < drawn.scenarios.length;
               scenario++
             ) {
+              player.dispatch({ type: "mode", mode: "step" });
               player.dispatch({ type: "scenario", index: scenario });
               for (const step of [
                 ...drawn.scenarios[scenario].steps.keys(),
@@ -86,11 +103,15 @@ for (const width of [1280, 390])
                   ) !== JSON.stringify(report)
                 )
                   mismatches.push(`${scenario}:${step}:report`);
+                if (presentation() !== selected)
+                  mismatches.push(`${scenario}:${step}:presentation`);
               }
             }
             return {
               drawn,
               report,
+              presentation: selected,
+              presentationReport,
               mismatches,
               fits:
                 player.root.querySelector(".map svg")!.getBoundingClientRect()
@@ -106,6 +127,7 @@ for (const width of [1280, 390])
         expect(result.mismatches).toEqual([]);
         expect(result.arrowFill).toBe("none");
         expect(result.fits).toBe(true);
+        expect(result.presentationReport.hard).toBe(0);
         for (const field of ["nodes", "lanes", "frames", "viewBox"] as const)
           expect(result.drawn[field]).toEqual(original[field]);
         const defects = describeDefects(result.report).map((line) =>
@@ -114,6 +136,9 @@ for (const width of [1280, 390])
         const evidence = {
           viewport: width,
           report: result.report,
+          presentation: result.presentation,
+          presentationReport: result.presentationReport,
+          presentationDefects: describeDefects(result.presentationReport),
           measurement: result.drawn.measurement,
           defects,
           serverHard: check(source, original).hard,

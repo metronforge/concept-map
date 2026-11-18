@@ -102,14 +102,14 @@ export class ConceptMapElement extends HTMLElement {
       if (input === undefined || signal.aborted) return;
       if (this.assigned === undefined && !this.hasAttribute("src"))
         this.inline = input;
-      const map = await resolveInput(
+      const resolved = await resolveInput(
         input,
         this.resolver,
         this.getAttribute("layout"),
       );
       if (signal.aborted || !this.isConnected) return;
       this.observer.disconnect();
-      this.active = mount(this, map);
+      this.active = mount(this, resolved.map, resolved);
       this.observe();
       this.dispatchEvent(
         new CustomEvent("mapready", { detail: this.active, bubbles: true }),

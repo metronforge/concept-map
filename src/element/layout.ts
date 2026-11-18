@@ -4,6 +4,7 @@ import type { SourceMap, ResolvedMap } from "../schema.js";
 export async function layoutWithEngine(
   source: SourceMap,
   name: string,
+  widthEm?: number,
 ): Promise<ResolvedMap> {
   if (name !== "dagre" && name !== "elk")
     throw new Error(`Unknown layout "${name}"; expected "dagre" or "elk"`);
@@ -11,8 +12,8 @@ export async function layoutWithEngine(
   // Separate branches also keep bundler-generated preload lists independent.
   if (name === "dagre") {
     const { dagreEngine } = await import("../layout/dagre.js");
-    return layout(source, dagreEngine);
+    return layout(source, dagreEngine, { widthEm });
   }
   const { elkEngine } = await import("../layout/elk.js");
-  return layout(source, elkEngine);
+  return layout(source, elkEngine, { widthEm });
 }

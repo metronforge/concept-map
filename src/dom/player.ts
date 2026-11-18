@@ -14,6 +14,8 @@ import { geometry, sizeLabels, type Geometry } from "./geometry.js";
 import { WebAnimator, type Animator, type Playback } from "./animator.js";
 import { bindings } from "./bindings.js";
 import { refineDrawing } from "./refine.js";
+import { NarrowLayout } from "./narrowLayout.js";
+import { observeDrawing } from "./resize.js";
 export class MapPlayer {
   private current: PlayerState = { ...initialState };
   private readonly abort = new AbortController();
@@ -22,12 +24,12 @@ export class MapPlayer {
   private readonly geo: Geometry;
   private readonly animator: Animator;
   readonly reducedMotion: boolean;
-  private readonly resize: ResizeObserver;
   private playback?: Playback;
   private flowId = 0;
   private log: LogLine[] = [];
   private destroyed = false;
   private panelLabels = false;
+  private narrow?: NarrowLayout;
   constructor(
     readonly root: HTMLElement,
     private drawnMap: ResolvedMap,
@@ -36,6 +38,7 @@ export class MapPlayer {
       geometry?: Geometry;
       reducedMotion?: boolean;
       strings?: Partial<UiStrings>;
+      narrowLayout?: (widthEm: number) => Promise<ResolvedMap>;
     } = {},
   ) {
     const map = drawnMap;
@@ -57,14 +60,17 @@ export class MapPlayer {
     root.addEventListener("keydown", this.key, { signal: this.abort.signal });
     this.listen(view);
     const fit = () => this.fit(map);
-    this.resize = new ResizeObserver(fit);
-    this.resize.observe(this.svg.svg);
+    if (options.narrowLayout)
+      this.narrow = new NarrowLayout(
+        options.narrowLayout,
+        this.abort.signal,
+        fit,
+        root,
+      );
     this.render();
-    void root.ownerDocument.fonts.ready.then(fit);
-    root.ownerDocument.fonts.addEventListener("loadingdone", fit, {
-      signal: this.abort.signal,
-    });
+    observeDrawing(this.svg.svg, this.abort.signal, fit);
   }
+  private switchedAt?: number;
   private fit(map: ResolvedMap) {
     if (this.destroyed) return;
     const result = refineDrawing(
@@ -73,10 +79,16 @@ export class MapPlayer {
       this.geo,
       this.svg,
       this.current,
+      this.switchedAt,
+      this.narrow && ((width) => this.narrow!.get(width)),
     );
     this.drawnMap = result.map;
-    if (this.panelLabels !== result.labelsInPanel) {
-      this.panelLabels = result.labelsInPanel;
+    if (this.animator instanceof WebAnimator)
+      this.animator.retarget(this.map, this.current.scenario);
+    this.switchedAt = result.choice.switchedAt;
+    const panel = result.choice.presentation === "panel";
+    if (this.panelLabels !== panel) {
+      this.panelLabels = panel;
       this.panel.refreshLabels(
         derive(this.map, this.current, {
           labelsInPanel: this.panelLabels,
@@ -141,7 +153,6 @@ export class MapPlayer {
     this.destroyed = true;
     this.stopFlow();
     this.abort.abort();
-    this.resize.disconnect();
     for (const cleanup of bindings.get(this) ?? []) cleanup();
     bindings.delete(this);
   }

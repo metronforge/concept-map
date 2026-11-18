@@ -3,10 +3,27 @@ import type { ResolvedMap } from "../../../src/schema";
 
 /** Read the SVG actually shown, independently of the player's presentation choice. */
 export async function inspectPresentations(page: Page, maps: ResolvedMap[]) {
+  return (await inspectPresentationReports(page, maps)).errors;
+}
+
+/** Retain the full check and selected presentation for each visited state. */
+export async function inspectPresentationReports(
+  page: Page,
+  maps: ResolvedMap[],
+) {
   return page.evaluate(async (maps) => {
-    const { mount, check, domMeasurer } =
+    const { mount, check, domMeasurer, describeDefects } =
       await import("/assets/integration.js");
     const errors: string[] = [];
+    const states: {
+      id: string;
+      scenario: number;
+      step: number | string;
+      presentation: string;
+      hard: number;
+      defects: string[];
+      lineBoxDefects: string[][];
+    }[] = [];
     for (const original of maps) {
       document.body.replaceChildren();
       const host = document.createElement("div");
@@ -62,6 +79,18 @@ export async function inspectPresentations(page: Page, maps: ResolvedMap[]) {
             player.root
               .querySelector("[data-map-edge-labels]")
               .getAttribute("aria-hidden") === "true";
+          states.push({
+            id: original.id,
+            scenario,
+            step,
+            presentation: hidden ? "panel" : "wide",
+            hard: report.hard,
+            defects: describeDefects(report),
+            lineBoxDefects: report.lines.boxes
+              .filter((contact) => contact.band === "defect")
+              .map(({ a, b }) => [a, b].sort())
+              .sort(),
+          });
           const rows = [...player.root.querySelectorAll(".arrow-labels li")];
           if (hidden) {
             const expected = story.steps.flatMap((s, i) =>
@@ -87,6 +116,6 @@ export async function inspectPresentations(page: Page, maps: ResolvedMap[]) {
       }
       player.destroy();
     }
-    return errors;
+    return { errors, states };
   }, maps);
 }

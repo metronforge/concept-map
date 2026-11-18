@@ -2,6 +2,9 @@ import type { ResolvedMap, SourceMap } from "../schema.js";
 import { validateReferences } from "../schema/references.js";
 import { parseMap } from "./check.js";
 import { asMeasurer } from "./measure.js";
+import type { Measurer } from "./ports.js";
+import { atWidth } from "./width.js";
+import { refine } from "./stages/refine.js";
 import { buildProblem, problemGraph } from "./build-problem.js";
 import { asPlacer } from "./legacy.js";
 import { place } from "./place.js";
@@ -41,9 +44,45 @@ export async function layout(
 ): Promise<ResolvedMap> {
   const map = parseMap(input);
   validateReferences(map);
+  if (
+    options.widthEm !== undefined &&
+    (!Number.isFinite(options.widthEm) || options.widthEm <= 0)
+  )
+    throw new Error("widthEm must be a finite positive number");
   const measurer = asMeasurer(options.measureLabel);
+  if ("viewBox" in map)
+    return strict(
+      map,
+      map,
+      atWidth(measurer, map, options.widthEm).measure,
+      options,
+    );
+  let resolved = await resolveSource(map, engine, measurer);
+  if (
+    options.widthEm !== undefined &&
+    resolved.viewBox[0] / options.widthEm > 10.5
+  ) {
+    resolved = await resolveSource(
+      map,
+      engine,
+      atWidth(measurer, resolved, options.widthEm),
+    );
+    resolved = refine(resolved, atWidth(measurer, resolved, options.widthEm));
+  }
+  return strict(
+    map,
+    resolved,
+    atWidth(measurer, resolved, options.widthEm).measure,
+    options,
+  );
+}
+
+async function resolveSource(
+  map: SourceMap,
+  engine: LayoutEngine,
+  measurer: Measurer,
+): Promise<ResolvedMap> {
   const measure = measurer.measure.bind(measurer);
-  if ("viewBox" in map) return strict(map, map, measure, options);
   const problem = buildProblem(map, measure);
   const graph = problemGraph(problem);
   const placer = asPlacer(engine);
@@ -70,7 +109,7 @@ export async function layout(
       message: rejected.message,
     });
   validateReferences(resolved);
-  return strict(map, placeAnnotations(resolved), measure, options);
+  return placeAnnotations(resolved);
 }
 
 /** The check is loaded only for `strict`, so plain layout stays small. */

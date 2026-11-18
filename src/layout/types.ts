@@ -39,6 +39,10 @@ export interface LayoutEngine {
 }
 export interface LayoutOptions {
   measureLabel?: LabelMeasurer | Measurer;
+  /** Available width in em of arrow-label text; finite and positive.
+   * Reserve enlarged text, then refine annotations at the resulting scale.
+   * Omit for the natural layout. Hand geometry is always retained. */
+  widthEm?: number;
   /**
    * Check the result with `check` and throw `LayoutDefectsError` when it has
    * hard defects: covered labels, step numbers over labels or boxes, lines

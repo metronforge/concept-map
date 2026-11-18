@@ -87,19 +87,46 @@ for (const width of [1280, 390])
         expect(await inspectPresentations(page, [map])).toEqual([]);
       });
 
-test("all 23 hand-drawn book maps at 390px have no hard arrow-label contact", async ({
+test("all 23 hand-drawn book maps at 390px have no hard presentation defect", async ({
   page,
-}) => {
+}, info) => {
   await page.setViewportSize({ width: 390, height: 1000 });
   await page.goto("/integration/");
   await page.addStyleTag({ path: "css/concept-map.css" });
   const maps = JSON.parse(readFileSync("test/fixtures/book-maps.json", "utf8"));
   expect(maps).toHaveLength(23);
-  const { inspectPresentations } = await import("./helpers/panel-labels");
+  const { inspectPresentationReports } = await import("./helpers/panel-labels");
+  const result = await inspectPresentationReports(
+    page,
+    maps.map(({ map }) => map),
+  );
+  await info.attach("book-presentation-reports", {
+    body: JSON.stringify(result.states, null, 2),
+    contentType: "application/json",
+  });
+  expect(result.errors).toEqual([]);
+  // Check every step and whole-map mode, not just each map's initial state.
   expect(
-    await inspectPresentations(
-      page,
-      maps.map(({ map }) => map),
+    result.states.map(({ id, scenario, step }) => [id, scenario, step]),
+  ).toEqual(
+    maps.flatMap(({ map }) =>
+      map.scenarios.flatMap((story, scenario) =>
+        [...story.steps.keys(), "all"].map((step) => [map.id, scenario, step]),
+      ),
     ),
-  ).toEqual([]);
+  );
+  for (const state of result.states) {
+    // These two hand-drawn paths cross a box independently of presentation.
+    // The author tracks their repair in #63; no other hard defect is allowed.
+    const known =
+      state.id === "0.1"
+        ? [
+            ["line:mk_page", "node:apiCookies"],
+            ["line:shared", "node:apiCookies"],
+          ]
+        : [];
+    const context = `${state.id}:${state.scenario}:${state.step}: ${state.defects.join("; ")}`;
+    expect(state.lineBoxDefects, context).toEqual(known);
+    expect(state.hard, context).toBe(known.length);
+  }
 });

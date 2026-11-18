@@ -1,14 +1,9 @@
-import { checkConstraints } from "./constraints.js";
 import type { ResolvedMap, SourceMap } from "../../schema.js";
 import { contactInputs } from "./contact-inputs.js";
-import {
-  crossingPairs,
-  labelContacts,
-  lineContacts,
-  stepContacts,
-} from "./contacts.js";
+import { crossingPairs } from "./contacts.js";
+import { hardReport, contactLists } from "./hard-check.js";
 import { reading } from "./reading.js";
-import type { CheckOptions, Contact, LayoutReport } from "./quality.js";
+import type { CheckOptions, LayoutReport } from "./quality.js";
 export type { Band, CheckOptions, Contact, LayoutReport } from "./quality.js";
 
 /**
@@ -27,38 +22,15 @@ export function check(
     resolved,
     options,
   );
-  const report: LayoutReport = {
-    hard: 0,
-    constraints: checkConstraints(source, resolved),
+  return {
+    ...hardReport(source, resolved, { shapes, judge }),
     crossings: crossingPairs(shapes),
-    labels: labelContacts(shapes, judge),
-    steps: stepContacts(shapes, judge),
-    lines: lineContacts(shapes, judge),
     reading: reading(source, resolved, tolerance),
     text: {
       width: Math.round((resolved.viewBox[0] / size) * 100) / 100,
       height: Math.round((resolved.viewBox[1] / size) * 100) / 100,
     },
   };
-  report.hard =
-    contactLists(report)
-      .flatMap(([, list]) => list)
-      .filter((c) => c.band === "defect").length +
-    report.constraints.filter((c) => !c.holds).length;
-  return report;
-}
-
-/** Every contact list of a report, named in words. */
-function contactLists(report: LayoutReport): [string, Contact[]][] {
-  return [
-    ["arrow labels overlap", report.labels.labels],
-    ["a line crosses an arrow label", report.labels.lines],
-    ["an arrow label covers a box", report.labels.boxes],
-    ["a step number covers an arrow label", report.steps.labels],
-    ["a step number covers a box", report.steps.boxes],
-    ["step numbers overlap", report.steps.steps],
-    ["a line passes over a box", report.lines.boxes],
-  ];
 }
 
 /** List the hard defects of a report in words, one per line. */

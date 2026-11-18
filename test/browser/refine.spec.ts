@@ -25,6 +25,11 @@ for (const width of [1280, 390])
           source,
           engine === "dagre" ? dagreEngine : elkEngine,
         );
+        await page.exposeFunction("layoutNarrow", (widthEm: number) =>
+          layout(source, engine === "dagre" ? dagreEngine : elkEngine, {
+            widthEm,
+          }),
+        );
         await page.goto("/integration/");
         await page.addStyleTag({ path: "css/concept-map.css" });
         const result = await page.evaluate(
@@ -36,20 +41,64 @@ for (const width of [1280, 390])
             host.style.width = "100%";
             host.style.containerType = "inline-size";
             document.body.append(host);
-            const player = mount(host, original, { reducedMotion: true });
-            await document.fonts.ready;
-            await new Promise((resolve) =>
-              requestAnimationFrame(() => requestAnimationFrame(resolve)),
-            );
+            const pending: Promise<typeof original>[] = [];
+            const player = mount(host, original, {
+              reducedMotion: true,
+              narrowLayout: (widthEm: number) => {
+                const result = window.layoutNarrow(widthEm);
+                pending.push(result);
+                return result;
+              },
+            });
+            const settle = async () => {
+              await document.fonts.ready;
+              await new Promise((resolve) =>
+                requestAnimationFrame(() => requestAnimationFrame(resolve)),
+              );
+            };
+            await settle();
+            for (let i = 0; i < pending.length; i++) {
+              await pending[i];
+              await settle();
+            }
             const drawn = player.map;
             const measurer = domMeasurer(player.root);
             const report = check(source, drawn, { measureLabel: measurer });
+            // Refinement clones maps and changes annotations. Layout candidates
+            // have their own fixed geometry, even when annotations also move.
+            const geometry = (map: typeof original) =>
+              JSON.stringify([
+                map.nodes,
+                map.lanes,
+                map.frames,
+                map.viewBox,
+                Object.values(map.edges).map((edge) => edge.path),
+              ]);
+            const presentation = () =>
+              getComputedStyle(
+                player.root.querySelector("[data-map-edge-labels]")!,
+              ).visibility === "hidden"
+                ? "panel"
+                : geometry(player.map) === geometry(original)
+                  ? "wide"
+                  : "narrow";
+            const selected = presentation();
+            // Check every scenario's geometry, excluding only arrow labels
+            // hidden by the panel presentation. Keep lines and step numbers.
+            const presented = structuredClone(drawn);
+            if (selected === "panel")
+              for (const edge of Object.values(presented.edges))
+                delete edge.label;
+            const presentationReport = check(source, presented, {
+              measureLabel: measurer,
+            });
             const mismatches: string[] = [];
             for (
               let scenario = 0;
               scenario < drawn.scenarios.length;
               scenario++
             ) {
+              player.dispatch({ type: "mode", mode: "step" });
               player.dispatch({ type: "scenario", index: scenario });
               for (const step of [
                 ...drawn.scenarios[scenario].steps.keys(),
@@ -86,11 +135,15 @@ for (const width of [1280, 390])
                   ) !== JSON.stringify(report)
                 )
                   mismatches.push(`${scenario}:${step}:report`);
+                if (presentation() !== selected)
+                  mismatches.push(`${scenario}:${step}:presentation`);
               }
             }
             return {
               drawn,
               report,
+              presentation: selected,
+              presentationReport,
               mismatches,
               fits:
                 player.root.querySelector(".map svg")!.getBoundingClientRect()
@@ -106,14 +159,19 @@ for (const width of [1280, 390])
         expect(result.mismatches).toEqual([]);
         expect(result.arrowFill).toBe("none");
         expect(result.fits).toBe(true);
-        for (const field of ["nodes", "lanes", "frames", "viewBox"] as const)
-          expect(result.drawn[field]).toEqual(original[field]);
+        expect(result.presentationReport.hard).toBe(0);
+        if (width === 1280)
+          for (const field of ["nodes", "lanes", "frames", "viewBox"] as const)
+            expect(result.drawn[field]).toEqual(original[field]);
         const defects = describeDefects(result.report).map((line) =>
           line.replace(/ \([^)]* em\)$/, ""),
         );
         const evidence = {
           viewport: width,
           report: result.report,
+          presentation: result.presentation,
+          presentationReport: result.presentationReport,
+          presentationDefects: describeDefects(result.presentationReport),
           measurement: result.drawn.measurement,
           defects,
           serverHard: check(source, original).hard,

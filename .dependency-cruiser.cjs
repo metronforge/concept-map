@@ -53,7 +53,7 @@ module.exports = {
       to: {
         path: "^src/layout/",
         pathNot:
-          "^src/layout/stages/(refine|report|label-check|presentation)[.]ts$",
+          "^src/layout/stages/(refine|report|label-check|hard-check|presentation)[.]ts$",
         dependencyTypesNot: ["type-only"],
       },
     },

@@ -39,6 +39,32 @@ The returned `MapPlayer` supports the existing `dispatch`, `replay` and
 `destroy` methods. Options combine `FigureOptions` and the player's options.
 Hydration keeps the existing figure id; panel strings are applied by the player.
 
+For an automatically laid-out map, `mount` and `MapPlayer` accept a
+`narrowLayout` callback. It receives the container width in em of the drawn
+arrow text and returns another layout of the same source map:
+
+```js
+const wide = await layout(source, dagreEngine);
+const player = mount(host, wide, {
+  narrowLayout: (widthEm) => layout(source, dagreEngine, { widthEm }),
+});
+```
+
+The player requests this layout only when the wide drawing cannot be selected.
+It checks both drawings with the real font and shows the first without hard
+defects, falling back to panel labels while waiting or if neither is clean.
+Returning to wide also requires one em of growth from the original switch.
+Switches preserve the scenario, step, URL, focus and active token animation.
+The callback must preserve the map's identifiers and content; only geometry may
+change. Do not supply it for hand-drawn maps, whose geometry must stay fixed.
+
+The player keeps the last requested width and candidate, shares pending work at
+that width, and ignores superseded results. A failed callback emits a bubbling
+`maperror` with the error in `detail`; it is retried only at a different width.
+Destroying the player ignores pending results. Hosts own engine imports; the
+player does not load an engine. A custom element with a source map and an
+explicit engine attribute supplies this callback automatically.
+
 ## Use the custom element
 
 ```js
@@ -91,6 +117,14 @@ engine. The layout entry and selected adapter load through dynamic imports only
 when a source map needs them. Bundlers must preserve code splitting to retain
 this download behavior. Changing the attribute retries the original source,
 including inline JSON that has already been replaced by rendered markup.
+
+With either engine attribute, the element also supplies the player's lazy
+narrow layout. It retains the source and selected engine, and lays out again
+with the measured container width only when the wide drawing has a hard
+defect. The player checks the candidate with real fonts before choosing it;
+if both drawings have hard defects, arrow labels move to the step panel.
+Resolved maps and host-supplied `element.layout` functions keep their geometry.
+Hosts that need their own narrow layout can use `mount` with `narrowLayout`.
 
 Alternatively, supply a function. `element.layout` takes priority over the
 attribute. Dagre remains the recommended default:

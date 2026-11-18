@@ -5,8 +5,8 @@ const cases = [
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    // Size audit before 0.3.0: measured 45231 B + margin (AGENTS.md "Size limits").
-    limit: "46231 B",
+    // Candidate checks: measured 46901 B + 300 B (0.7%) margin.
+    limit: "47201 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -15,8 +15,11 @@ const cases = [
       "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
-    // Size audit before 0.3.0: measured 13745 B + margin (AGENTS.md "Size limits").
-    limit: "14157 B",
+    // Author-approved increase: 14157 B -> 15725 B (+1568 B).
+    // Wide/narrow checks, 1 em hysteresis, in-place geometry updates,
+    // running token animations and a narrow-layout cache are needed together.
+    // Measured 15677 B + 48 B (0.3%) margin.
+    limit: "15725 B",
   },
   {
     name: "server render (pre-resolved map)",
@@ -26,8 +29,8 @@ const cases = [
         "{ renderSvg, renderPanelParts, renderConcepts, derive, initialState }",
     },
     gzip: true,
-    // Size audit before 0.3.0: measured 4229 B + margin (AGENTS.md "Size limits").
-    limit: "4355 B",
+    // Shared SVG positions: measured 4385 B + 100 B (2.3%) margin.
+    limit: "4485 B",
   },
   {
     name: "source and resolved validation (with Zod)",

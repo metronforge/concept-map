@@ -6,6 +6,16 @@ export function labelsInPanel(
   map: ResolvedMap,
   report: Pick<LayoutReport, "labels" | "steps">,
 ): boolean {
+  return chooseLabelPresentation(map, report).presentation === "panel";
+}
+
+/** Apply the shared return-width rule to a fixed drawing's arrow contacts. */
+export function chooseLabelPresentation(
+  map: ResolvedMap,
+  report: Pick<LayoutReport, "labels" | "steps">,
+  width = 0,
+  switchedAt?: number,
+): PresentationChoice {
   const labelled = new Set(
     Object.entries(map.edges)
       .filter(([, edge]) => edge.label?.text)
@@ -21,9 +31,10 @@ export function labelsInPanel(
       contact.band === "defect" &&
       (labelled.has(contact.a) || labelled.has(contact.b)),
   );
-  return (
-    choosePresentation({ wide: { hard: Number(conflict) } }, 0).presentation ===
-    "panel"
+  return choosePresentation(
+    { wide: { hard: Number(conflict) } },
+    width,
+    switchedAt,
   );
 }
 

@@ -132,8 +132,11 @@ one optional resolved field, described in [FORMAT](FORMAT.md#text-measurements).
 After refinement, `labelsInPanel(resolved, report)` returns true for hard
 arrow-label contacts with lines, boxes, other labels or step numbers. Tight
 contacts and unrelated defects do not trigger it. The player checks again on
-resize and font changes; clear drawings regain their labels. Boxes, lanes,
-frames, routes and the view box stay fixed.
+resize and font changes. Labels return to the drawing only when it is clear
+and the container is at least 1 em wider than when they moved to the panel.
+That em uses the drawn arrow text's size, so a small resize near the boundary
+does not repeatedly switch presentations. Boxes, lanes, frames, routes and
+the view box stay fixed.
 
 ```ts
 import { labelsInPanel } from "@metronforge/concept-map/layout";

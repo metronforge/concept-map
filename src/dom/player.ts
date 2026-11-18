@@ -59,12 +59,14 @@ export class MapPlayer {
     const fit = () => this.fit(map);
     this.resize = new ResizeObserver(fit);
     this.resize.observe(this.svg.svg);
+    this.resize.observe(this.svg.svg.parentElement!);
     this.render();
     void root.ownerDocument.fonts.ready.then(fit);
     root.ownerDocument.fonts.addEventListener("loadingdone", fit, {
       signal: this.abort.signal,
     });
   }
+  private switchedAt?: number;
   private fit(map: ResolvedMap) {
     if (this.destroyed) return;
     const result = refineDrawing(
@@ -73,10 +75,13 @@ export class MapPlayer {
       this.geo,
       this.svg,
       this.current,
+      this.switchedAt,
     );
     this.drawnMap = result.map;
-    if (this.panelLabels !== result.labelsInPanel) {
-      this.panelLabels = result.labelsInPanel;
+    this.switchedAt = result.choice.switchedAt;
+    const panel = result.choice.presentation === "panel";
+    if (this.panelLabels !== panel) {
+      this.panelLabels = panel;
       this.panel.refreshLabels(
         derive(this.map, this.current, {
           labelsInPanel: this.panelLabels,

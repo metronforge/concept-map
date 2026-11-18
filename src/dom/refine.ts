@@ -1,6 +1,6 @@
 import type { ResolvedMap } from "../schema.js";
 import { checkLabels } from "../layout/stages/label-check.js";
-import { labelsInPanel } from "../layout/stages/presentation.js";
+import { chooseLabelPresentation } from "../layout/stages/presentation.js";
 import { refine } from "../layout/stages/refine.js";
 import { domMeasurer } from "./measureLabel.js";
 import { sizeLabels, type Geometry } from "./geometry.js";
@@ -15,7 +15,8 @@ export function refineDrawing(
   geo: Geometry,
   svg: SvgDom,
   state: PlayerState,
-): { map: ResolvedMap; labelsInPanel: boolean } {
+  switchedAt?: number,
+) {
   sizeLabels(root, map, geo, true);
   const result = refine(map, domMeasurer(root));
   for (const [id, edge] of Object.entries(result.edges)) {
@@ -24,10 +25,38 @@ export function refineDrawing(
     svg.labels[id].setAttribute("y", String(edge.label.at[1]));
   }
   sizeLabels(root, result, geo);
-  const panel = labelsInPanel(
+  const width = containerWidthEm(root, svg.svg, result);
+  const choice = chooseLabelPresentation(
     result,
     checkLabels(map, result, { measureLabel: domMeasurer(root) }),
+    width ?? 0,
+    switchedAt,
   );
-  svg.applyFrame(derive(result, state, { labelsInPanel: panel }));
-  return { map: result, labelsInPanel: panel };
+  // A hidden container has no useful width and must not start a resize cycle.
+  if (width === undefined) choice.switchedAt = switchedAt;
+  svg.applyFrame(
+    derive(result, state, { labelsInPanel: choice.presentation === "panel" }),
+  );
+  return { map: result, choice };
+}
+
+/** Container content width in em of arrow text at the drawing's actual scale. */
+function containerWidthEm(
+  root: HTMLElement,
+  svg: SVGSVGElement,
+  map: ResolvedMap,
+): number | undefined {
+  const label = svg.querySelector<SVGTextElement>(".etext");
+  if (!label || !svg.clientWidth) return undefined;
+  const view = root.ownerDocument.defaultView!;
+  const container = svg.parentElement!;
+  const css = view.getComputedStyle(container);
+  const width =
+    container.clientWidth -
+    parseFloat(css.paddingLeft) -
+    parseFloat(css.paddingRight);
+  const em =
+    (parseFloat(view.getComputedStyle(label).fontSize) * svg.clientWidth) /
+    map.viewBox[0];
+  return width > 0 && em > 0 ? width / em : undefined;
 }

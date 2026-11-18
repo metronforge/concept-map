@@ -191,6 +191,7 @@ export interface LayoutNode extends LabelSize {
 
 // @public (undocumented)
 export interface LayoutOptions {
+    intent?: boolean;
     // (undocumented)
     measureLabel?: LabelMeasurer | Measurer;
     strict?: boolean;

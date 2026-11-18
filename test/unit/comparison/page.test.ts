@@ -1,5 +1,6 @@
 import { expect, test } from "vitest";
-import { graphSvg } from "../../../scripts/comparison/page.mjs";
+import { graphSvg, page } from "../../../scripts/comparison/page.mjs";
+import { geometryMetrics } from "../../../scripts/comparison/metrics.mjs";
 import { resolvedFixture } from "../arbitraries/map";
 
 test("standalone comparison SVG has one native-size width and height", () => {
@@ -12,3 +13,36 @@ test("standalone comparison SVG has one native-size width and height", () => {
   expect(root).toContain('xmlns="http://www.w3.org/2000/svg"');
   expect(graphSvg(map, "comparison")).toMatch(/^<svg width="480" /);
 });
+
+test.each([true, false])(
+  "comparison renders both intent variants with hand=%s",
+  (hand) => {
+    const map = resolvedFixture();
+    const names = ["dagre", "dagre-plain", "elk", "elk-plain"];
+    if (hand) names.unshift("manual");
+    const variants = Object.fromEntries(names.map((name) => [name, map]));
+    const entry = {
+      id: "example",
+      title: map.title,
+      variants: Object.fromEntries(
+        names.map((name) => [
+          name,
+          {
+            metrics: geometryMetrics(map, map),
+            timing: null,
+          },
+        ]),
+      ),
+    };
+    const html = page.mapSection(entry, variants);
+    for (const name of names) {
+      expect(html).toContain(`data-variant="${name}"`);
+      expect(html).toContain(`data/example-${name}.json`);
+    }
+    expect(html.match(/<article /g)).toHaveLength(names.length);
+    expect(html.match(/Server check\(\) report/g)).toHaveLength(names.length);
+    expect(html).toContain("dagre · without intent");
+    expect(html).toContain("ELK · with intent");
+    if (!hand) expect(html).not.toContain('data-variant="manual"');
+  },
+);

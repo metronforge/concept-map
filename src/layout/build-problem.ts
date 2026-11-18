@@ -7,6 +7,7 @@ import { deriveIntent } from "./intent.js";
 export function buildProblem(
   map: SourceMap,
   measure: LabelMeasurer,
+  intent = true,
 ): LayoutProblem {
   const graph = layoutGraph(map, measure);
   const direction = map.direction ?? "down";
@@ -26,7 +27,7 @@ export function buildProblem(
             },
           ]
         : []),
-      ...deriveIntent(map),
+      ...(intent ? deriveIntent(map) : []),
     ],
   };
 }

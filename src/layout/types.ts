@@ -39,6 +39,10 @@ export interface LayoutEngine {
 }
 export interface LayoutOptions {
   measureLabel?: LabelMeasurer | Measurer;
+  /** Derive preferred order, main path and return edges from the first scenario.
+   * Defaults to true; false allows comparison with graph-only placement.
+   * Hand geometry is retained either way. */
+  intent?: boolean;
   /** Available width in em of arrow-label text; finite and positive.
    * Reserve enlarged text, then refine annotations at the resulting scale.
    * Omit for the natural layout. Hand geometry is always retained. */

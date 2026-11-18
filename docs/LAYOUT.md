@@ -217,6 +217,22 @@ assignment. Dagre gives every main-path arrow a higher weight, including
 reversed returns, to favour shorter, straighter routes. ELK reports all three
 as unsupported until its adapter implements them.
 
+Intent is enabled by default. To compare an engine's graph-only placement
+with these preferences, pass `{ intent: false }` to `layout()`. This omits
+only the derived order, main path and free-edge constraints; direction and
+required lane constraints still apply. The option also applies to the second
+layout pass when `widthEm` is supplied. Hand geometry is retained with either
+setting.
+
+`npm run comparison:build` builds `comparison-dist/index.html` with both
+settings for each engine, a server `check()` report beside every drawing,
+and the unchanged hand references where available. Coffee, door and gcd use
+the exact sources in `examples/`; the original coffee comparison remains
+separately labelled because its source differs from the current example.
+The page's reports judge saved geometry with font tables. Players may refine
+labels or move them to the panel at the displayed width, so these reports
+do not replace the browser acceptance checks.
+
 Before placement, unsupported required constraints name the constraint and
 placer in an error. Unsupported preferences are listed in the internal
 placement outcome. An engine exception, an unsupported capability, and a

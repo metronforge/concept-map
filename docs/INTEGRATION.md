@@ -39,6 +39,32 @@ The returned `MapPlayer` supports the existing `dispatch`, `replay` and
 `destroy` methods. Options combine `FigureOptions` and the player's options.
 Hydration keeps the existing figure id; panel strings are applied by the player.
 
+For an automatically laid-out map, `mount` and `MapPlayer` accept a
+`narrowLayout` callback. It receives the container width in em of the drawn
+arrow text and returns another layout of the same source map:
+
+```js
+const wide = await layout(source, dagreEngine);
+const player = mount(host, wide, {
+  narrowLayout: (widthEm) => layout(source, dagreEngine, { widthEm }),
+});
+```
+
+The player requests this layout only when the wide drawing cannot be selected.
+It checks both drawings with the real font and shows the first without hard
+defects, falling back to panel labels while waiting or if neither is clean.
+Returning to wide also requires one em of growth from the original switch.
+Switches preserve the scenario, step, URL, focus and active token animation.
+The callback must preserve the map's identifiers and content; only geometry may
+change. Do not supply it for hand-drawn maps, whose geometry must stay fixed.
+
+The player keeps the last requested width and candidate, shares pending work at
+that width, and ignores superseded results. A failed callback emits a bubbling
+`maperror` with the error in `detail`; it is retried only at a different width.
+Destroying the player ignores pending results. Hosts own engine imports; the
+player does not load an engine. Custom-element layout does not yet supply this
+callback automatically.
+
 ## Use the custom element
 
 ```js

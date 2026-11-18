@@ -21,7 +21,7 @@ export function refineDrawing(
   svg: SvgDom,
   state: PlayerState,
   switchedAt?: number,
-  narrow?: ResolvedMap,
+  narrow?: ResolvedMap | ((widthEm: number) => ResolvedMap | undefined),
 ) {
   const wide = fitDrawing(root, map, geo, svg);
   const width = containerWidthEm(root, svg.svg, wide);
@@ -63,7 +63,7 @@ function fitDrawing(
 function fitCandidates(
   root: HTMLElement,
   wide: ResolvedMap,
-  narrow: ResolvedMap,
+  narrow: ResolvedMap | ((widthEm: number) => ResolvedMap | undefined),
   geo: Geometry,
   svg: SvgDom,
   width: number,
@@ -74,7 +74,14 @@ function fitCandidates(
   };
   let choice = choosePresentation(reports, width, switchedAt);
   if (choice.presentation === "wide") return { map: wide, choice };
-  const fitted = fitDrawing(root, narrow, geo, svg);
+  const candidate =
+    typeof narrow === "function"
+      ? width > 0
+        ? narrow(width)
+        : undefined
+      : narrow;
+  if (!candidate) return { map: wide, choice };
+  const fitted = fitDrawing(root, candidate, geo, svg);
   choice = choosePresentation(
     {
       ...reports,

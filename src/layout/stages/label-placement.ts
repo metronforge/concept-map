@@ -85,7 +85,9 @@ function position(
 ): LayoutPoint {
   let best: LayoutPoint = [box[0], box[1]];
   let cost = Infinity;
-  for (const [x, y] of labelCandidates(box, own, Math.hypot(...viewBox))) {
+  for (const [cx, cy] of labelCandidates(box, own, Math.hypot(...viewBox))) {
+    const x = Math.max(padding, Math.min(viewBox[0] - box[2] - padding, cx));
+    const y = Math.max(padding, Math.min(viewBox[1] - box[3] - padding, cy));
     if (Math.hypot(x - box[0], y - box[1]) >= cost) continue;
     const candidate: LayoutBox = [x, y, box[2], box[3]];
     if (x < 0 || y < 0 || x + box[2] > viewBox[0] || y + box[3] > viewBox[1])

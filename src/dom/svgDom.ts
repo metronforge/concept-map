@@ -1,3 +1,5 @@
+import type { ResolvedMap } from "../schema.js";
+import { updateDrawing } from "./drawing.js";
 import type { Frame } from "../model/frame.js";
 import type { reducedFlow } from "../model/flow.js";
 import { renderBadges } from "../render/svg.js";
@@ -34,6 +36,9 @@ export class SvgDom {
     this.tokens = [
       ...svg.querySelectorAll<SVGCircleElement>(".token, .token-glow"),
     ];
+  }
+  applyGeometry(map: ResolvedMap) {
+    updateDrawing(this.svg, map);
   }
   applyFrame(frame: Frame) {
     const labels = this.svg.querySelector("[data-map-edge-labels]")!;

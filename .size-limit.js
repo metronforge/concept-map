@@ -15,8 +15,8 @@ const cases = [
       "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
-    // Size audit before 0.3.0: measured 13745 B + margin (AGENTS.md "Size limits").
-    limit: "14157 B",
+    // In-place geometry updates: measured 14411 B + 400 B (2.8%) margin.
+    limit: "14811 B",
   },
   {
     name: "server render (pre-resolved map)",
@@ -26,8 +26,8 @@ const cases = [
         "{ renderSvg, renderPanelParts, renderConcepts, derive, initialState }",
     },
     gzip: true,
-    // Size audit before 0.3.0: measured 4229 B + margin (AGENTS.md "Size limits").
-    limit: "4355 B",
+    // Shared SVG positions: measured 4385 B + 100 B (2.3%) margin.
+    limit: "4485 B",
   },
   {
     name: "source and resolved validation (with Zod)",

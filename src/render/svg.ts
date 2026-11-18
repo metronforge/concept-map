@@ -1,3 +1,9 @@
+import {
+  nodeText,
+  laneGeometry,
+  frameText,
+  calloutPoint,
+} from "./positions.js";
 import { renderArrowLabel } from "./arrow-label.js";
 import { naturalMapWidth } from "../model/labels.js";
 import type { ResolvedMap } from "../schema.js";
@@ -21,23 +27,19 @@ export function renderSvg(
       options.markerId ?? `map-arrow-${map.id.replaceAll(".", "-")}`,
     );
   let html = `<svg width="${naturalMapWidth(map.viewBox[0])}" viewBox="0 0 ${map.viewBox.join(" ")}" role="img" aria-label="${esc(map.title)}"><defs><marker id="${marker}" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="var(--muted-fg)"></path></marker></defs><g data-map-layers>`;
-  for (const [id, l] of Object.entries(map.lanes))
-    html += `<g class="lane${frame.lanes[id].revealed ? "" : " ghost"}" data-lane="${esc(id)}" style="--c:var(--cmap-layer-${esc(l.layer)},var(--cmap-layer))"><rect x="${l.x ?? 6}" y="${l.y}" width="${l.w ?? map.viewBox[0] - 12}" height="${l.h}" rx="6"></rect><text x="${map.direction === "right" ? (l.x ?? 6) + 10 : 16}" y="${l.y + 16}">${esc(l.label)}</text></g>`;
-  for (const [id, f] of Object.entries(map.frames)) {
-    const [x, y, w, h] = f.box;
-    html += `<g class="frame${frame.frames[id].revealed ? "" : " ghost"}" data-frame="${esc(id)}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5"></rect><text x="${x + w - 8}" y="${y + 16}" text-anchor="end">${esc(f.label)}</text></g>`;
-  }
+  html += renderLayers(map, frame);
   html += `</g><g data-map-edges>`;
   for (const [id, e] of Object.entries(map.edges))
     html += `<g class="edge${e.dashed ? " dash" : ""}${frame.edges[id].revealed ? "" : " ghost"}${frame.edges[id].current ? " cur" : ""}" data-edge="${esc(id)}"><path d="${esc(e.path)}" marker-end="url(#${marker})"></path></g>`;
   html += `</g><g data-map-nodes>`;
   for (const [id, n] of Object.entries(map.nodes)) {
     const [x, y, w, h] = n.box,
-      f = frame.nodes[id];
+      f = frame.nodes[id],
+      text = nodeText(n);
     const numbers = Object.entries(map.callouts)
       .filter(([, ids]) => ids.includes(id))
       .map(([number]) => number);
-    html += `<g class="node${n.custom ? " custom" : ""}${n.fail ? " fail" : ""}${f.revealed ? "" : " ghost"}${f.current ? " cur" : ""}" style="--c:var(--cmap-layer-${esc(n.layer)},var(--cmap-layer))" data-node="${esc(id)}"${numbers.length ? ` data-callout="${esc(numbers.join(" "))}"` : ""}><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5"></rect><text x="${x + 10}" y="${y + (n.tag ? 17 : h / 2 + 4.5)}" class="${n.mono ? "mono" : ""}">${esc(f.label)}</text>${n.tag ? `<text x="${x + 10}" y="${y + 32}" class="tag">${esc(n.tag)}</text>` : ""}</g>`;
+    html += `<g class="node${n.custom ? " custom" : ""}${n.fail ? " fail" : ""}${f.revealed ? "" : " ghost"}${f.current ? " cur" : ""}" style="--c:var(--cmap-layer-${esc(n.layer)},var(--cmap-layer))" data-node="${esc(id)}"${numbers.length ? ` data-callout="${esc(numbers.join(" "))}"` : ""}><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5"></rect><text x="${text.main[0]}" y="${text.main[1]}" class="${n.mono ? "mono" : ""}">${esc(f.label)}</text>${n.tag ? `<text x="${text.tag[0]}" y="${text.tag[1]}" class="tag">${esc(n.tag)}</text>` : ""}</g>`;
   }
   html += `</g><g data-map-edge-labels${frame.panel.arrowLabels ? ' visibility="hidden" aria-hidden="true"' : ""}>`;
   for (const [id, e] of Object.entries(map.edges))
@@ -47,8 +49,25 @@ export function renderSvg(
   for (const [number, ids] of Object.entries(map.callouts)) {
     const n = map.nodes[ids[0]];
     if (!n) continue;
-    const [x, y] = n.box;
-    html += `<g class="callout" data-callout="${esc(number)}"><circle cx="${x + 4}" cy="${y + 4}" r="8"></circle><text x="${x + 4}" y="${y + 4.5}">${esc(number)}</text></g>`;
+    const [x, y] = calloutPoint(n.box);
+    html += `<g class="callout" data-callout="${esc(number)}"><circle cx="${x}" cy="${y}" r="8"></circle><text x="${x}" y="${y + 0.5}">${esc(number)}</text></g>`;
   }
   return html + `</g></svg>`;
+}
+
+function renderLayers(map: ResolvedMap, frame: Frame): string {
+  let html = "";
+  for (const [id, l] of Object.entries(map.lanes)) {
+    const {
+      box: [x, y, w, h],
+      text: [tx, ty],
+    } = laneGeometry(l, map);
+    html += `<g class="lane${frame.lanes[id].revealed ? "" : " ghost"}" data-lane="${esc(id)}" style="--c:var(--cmap-layer-${esc(l.layer)},var(--cmap-layer))"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6"></rect><text x="${tx}" y="${ty}">${esc(l.label)}</text></g>`;
+  }
+  for (const [id, f] of Object.entries(map.frames)) {
+    const [x, y, w, h] = f.box,
+      [tx, ty] = frameText(f.box);
+    html += `<g class="frame${frame.frames[id].revealed ? "" : " ghost"}" data-frame="${esc(id)}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5"></rect><text x="${tx}" y="${ty}" text-anchor="end">${esc(f.label)}</text></g>`;
+  }
+  return html;
 }

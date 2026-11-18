@@ -19,11 +19,7 @@ export function refineDrawing(
 ) {
   sizeLabels(root, map, geo, true);
   const result = refine(map, domMeasurer(root));
-  for (const [id, edge] of Object.entries(result.edges)) {
-    if (!edge.label) continue;
-    svg.labels[id].setAttribute("x", String(edge.label.at[0]));
-    svg.labels[id].setAttribute("y", String(edge.label.at[1]));
-  }
+  svg.applyGeometry(result);
   sizeLabels(root, result, geo);
   const width = containerWidthEm(root, svg.svg, result);
   const choice = chooseLabelPresentation(

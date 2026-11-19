@@ -19,17 +19,21 @@ export function lineGaps(lines: Segment[]): Gap[] {
   });
 }
 
-/** A move must remove a contact and never introduce or deepen another. */
+// Count penetration in finite units so gradual repairs cannot oscillate.
+const penetration = (gap: number) =>
+  Math.max(0, Math.ceil((margin - gap) / margin));
+
+/** A move must reduce penetration and never introduce or deepen a contact. */
 export function contactReduction(origin: LayoutBox, gaps: Gap[]) {
   const previous = gaps.map((gap) => Math.min(margin, gap(origin)));
   if (previous.every((gap) => gap >= 0)) return undefined;
-  const initial = previous.filter((gap) => gap < margin).length;
+  const initial = previous.reduce((sum, gap) => sum + penetration(gap), 0);
   return (box: LayoutBox) => {
     let remaining = 0;
     for (let i = 0; i < gaps.length; i++) {
       const gap = gaps[i](box);
       if (gap < previous[i]) return Infinity;
-      if (gap < margin) remaining++;
+      remaining += penetration(gap);
       if (remaining >= initial) return Infinity;
     }
     return remaining;

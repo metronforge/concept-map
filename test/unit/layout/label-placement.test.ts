@@ -160,3 +160,45 @@ test("partial label repairs settle before returning the refined map", async () =
   expect(result.nodes).toEqual(map.nodes);
   expect(result.viewBox).toEqual(map.viewBox);
 });
+
+test("a label reduces a trapped overlap even when no contact can be removed", () => {
+  const map = ResolvedMapSchema.parse(fixture);
+  map.viewBox = [200, 100];
+  map.nodes.a.box = [0, 0, 200, 100];
+  map.nodes.b.box = [220, 20, 40, 40];
+  map.edges.ab.path = "M220 50 H260";
+  map.edges.ab.label = { text: "go", at: [80, 55] };
+  delete map.edges.ab.badge;
+  map.scenarios[0].repeatBadges = [];
+  const size = { width: 40, height: 10, ascent: 8 };
+  map.measurement = { name: "measured", labels: { ab: size } };
+  const measurer = { name: "measured", measure: () => size };
+  const original = JSON.stringify(map);
+  const before = check(map, map, { measureLabel: measurer });
+  const result = refine(map, measurer);
+  const after = check(map, result, { measureLabel: measurer });
+  expect(after.labels.boxes[0].gap).toBeGreaterThan(before.labels.boxes[0].gap);
+  expect(after.hard).toBe(before.hard);
+  expect(result.nodes).toEqual(map.nodes);
+  expect(result.viewBox).toEqual(map.viewBox);
+  expect(result.edges.ab.path).toBe(map.edges.ab.path);
+  expect(JSON.stringify(map)).toBe(original);
+  expect(refine(result, measurer)).toEqual(result);
+});
+
+test("fractional baselines settle when a smaller overlap cannot be stored", () => {
+  const map = ResolvedMapSchema.parse(fixture);
+  map.viewBox = [200, 20];
+  map.nodes.a.box = [0, 0, 200, 10.015625];
+  map.nodes.b.box = [220, 20, 40, 40];
+  map.edges.ab.path = "M220 50 H260";
+  map.edges.ab.label = { text: "go", at: [80, 10 + 8.001] };
+  delete map.edges.ab.badge;
+  map.scenarios[0].repeatBadges = [];
+  const size = { width: 40, height: 10, ascent: 8.001 };
+  map.measurement = { name: "measured", labels: { ab: size } };
+  const measurer = { name: "measured", measure: () => size };
+  const result = refine(map, measurer);
+  expect(result.edges.ab.label).toEqual(map.edges.ab.label);
+  expect(refine(result, measurer)).toEqual(result);
+});

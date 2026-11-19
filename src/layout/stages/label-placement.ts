@@ -1,5 +1,5 @@
 import type { ResolvedMap } from "../../schema.js";
-import type { LayoutPoint, LayoutBox } from "../types.js";
+import type { LayoutPoint, LayoutBox, LabelSize } from "../types.js";
 import { polylines } from "./paths.js";
 import { rectGap } from "./plane.js";
 import { contactReduction, lineGaps } from "./contact-reduction.js";
@@ -11,10 +11,10 @@ import {
 } from "./label-candidates.js";
 import { labelBox } from "./number-placement.js";
 
-/** Keep clear labels; remove contacts without introducing or deepening any. */
+/** Keep clear labels; reduce overlaps without introducing or deepening any. */
 export function placeLabels(map: ResolvedMap): ResolvedMap {
-  // Every move removes at least one contact without creating another, so
-  // the initial finite contact count bounds the number of successful passes.
+  // Every move reduces an integer penetration sum without worsening any gap,
+  // so the initial finite sum bounds the number of successful passes.
   let current = map;
   for (;;) {
     const next = placeLabelPass(current);
@@ -43,25 +43,22 @@ function placeLabelPass(map: ResolvedMap): ResolvedMap {
       ...gaps,
     ]);
     if (!contacts) continue;
+    const edge = map.edges[id];
+    const size = map.measurement!.labels[id];
     const at = position(
-      box,
+      edge.label!.at,
       map.viewBox,
       contacts,
       steps,
-      map.measurement!.labels[id].padding ?? 0,
+      size,
       lines[id],
       Object.entries(lines)
         .filter(([key]) => key !== id)
         .flatMap(([, route]) => route),
     );
-    if (at[0] === box[0] && at[1] === box[1]) continue;
-    const edge = map.edges[id];
-    const baseline: LayoutPoint = [
-      edge.label!.at[0] + at[0] - box[0],
-      edge.label!.at[1] + at[1] - box[1],
-    ];
-    edges[id] = { ...edge, label: { ...edge.label!, at: baseline } };
-    boxes[id] = [at[0], at[1], box[2], box[3]];
+    if (at === edge.label!.at) continue;
+    edges[id] = { ...edge, label: { ...edge.label!, at } };
+    boxes[id] = labelBox(at, size, 0);
   }
   return { ...map, edges };
 }
@@ -92,29 +89,26 @@ function obstacles(map: ResolvedMap) {
 }
 
 function position(
-  box: LayoutBox,
+  at: LayoutPoint,
   viewBox: LayoutPoint,
   contacts: (box: LayoutBox) => number,
   steps: LayoutPoint[],
-  padding: number,
+  size: LabelSize,
   own: Segment[],
   other: Segment[],
 ): LayoutPoint {
-  let best: LayoutPoint = [box[0], box[1]];
+  const box = labelBox(at, size, 0);
+  let best = at;
   let cost = Infinity;
-  for (const [cx, cy] of labelCandidates(box, own, Math.hypot(...viewBox))) {
-    const x = Math.max(padding, Math.min(viewBox[0] - box[2] - padding, cx));
-    const y = Math.max(padding, Math.min(viewBox[1] - box[3] - padding, cy));
+  for (const point of labelCandidates(box, own, Math.hypot(...viewBox))) {
+    const baseline = candidateBaseline(point, box, at, size, viewBox);
+    // Judge the geometry reconstructed from the baseline we will store.
+    const candidate = labelBox(baseline, size, 0);
+    const [x, y] = candidate;
     if (Math.hypot(x - box[0], y - box[1]) >= cost) continue;
-    const candidate: LayoutBox = [x, y, box[2], box[3]];
     if (x < 0 || y < 0 || x + box[2] > viewBox[0] || y + box[3] > viewBox[1])
       continue;
-    const paint: LayoutBox = [
-      x - padding,
-      y - padding,
-      box[2] + 2 * padding,
-      box[3] + 2 * padding,
-    ];
+    const paint = labelBox(baseline, size, size.padding ?? 0);
     const remaining = contacts(candidate);
     if (
       !Number.isFinite(remaining) ||
@@ -126,8 +120,21 @@ function position(
       remaining * 8 * limit + labelCost(candidate, box, own, other, limit);
     if (next < cost) {
       cost = next;
-      best = [x, y];
+      best = baseline;
     }
   }
   return best;
+}
+
+function candidateBaseline(
+  [cx, cy]: LayoutPoint,
+  box: LayoutBox,
+  at: LayoutPoint,
+  size: LabelSize,
+  viewBox: LayoutPoint,
+): LayoutPoint {
+  const padding = size.padding ?? 0;
+  const x = Math.max(padding, Math.min(viewBox[0] - box[2] - padding, cx));
+  const y = Math.max(padding, Math.min(viewBox[1] - box[3] - padding, cy));
+  return [at[0] + x - box[0], at[1] + y - box[1]];
 }

@@ -112,6 +112,19 @@ player, the examples) is accepted on pictures, not only on numbers.
 - Do not relax a visual check or regenerate a snapshot to make a change
   pass; explain the difference in the description instead.
 
+## Evidence files
+
+Recorded evidence (`docs/evidence/`) follows the same rules as code: small
+files with one subject each.
+
+- One file per report, in folders that say what it is (for example
+  `browser/<browser>/<example>-<engine>-<width>.json`), the way the test or
+  script writes it. Do not concatenate reports into one large file.
+- No evidence file over 500 lines. When a run produces many reports, add a
+  short summary file (or a table in the folder's README) beside them.
+- Keep the README of the folder in step: what each file is and how to
+  reproduce it.
+
 ## Size limits
 
 `.size-limit.js` holds one gzip budget per way of using the package.

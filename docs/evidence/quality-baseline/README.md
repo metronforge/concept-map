@@ -73,13 +73,10 @@ These pictures show version 0.2.0, before shared number placement:
 - **gcd, both engines (6).** In Whole map the loop arrow's own number and the
   numbers of its three repeated passes are drawn at one point, so only the
   last one shows ("4" on Repeat).
-  ![gcd in Whole map](gcd-dagre-whole-map.png)
 - **door, dagre (3).** Lines cross "turnKey [key] / unlock", "turnKey [key] /
   lock" and "push [true] / close".
-  ![door in Whole map](door-dagre-whole-map.png)
 - **coffee, dagre (1).** In Out of milk the Offer americano arrow runs through
   its own label.
-  ![coffee, Out of milk](coffee-dagre-out-of-milk.png)
 - **door, ELK (1).** Two step numbers overlap.
 
 The hand drawings are not free of defects either: in 2-3 and 4-5 step numbers
@@ -87,7 +84,7 @@ sit across the edges of neighbouring boxes; in 0-1 a step number and two
 lines pass over a box; in 3-1 two step numbers overlap; in 6-2 a label covers
 a box.
 
-Screenshots: Chromium, the published 0.2.0 package, Whole map mode.
+These were confirmed on screenshots in Chromium (the published 0.2.0 package, Whole map mode); the pictures are not kept in the repository.
 
 ## Shared number placement
 

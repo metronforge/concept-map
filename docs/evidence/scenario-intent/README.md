@@ -92,16 +92,17 @@ is not the standalone 1280 px acceptance view. Server reports beside the preview
 are explicitly labelled; browser evidence separately records the chosen
 presentation and both raw and presented quality reports.
 
-## Engine recommendation for author review
+## Author's engine decision
 
-Retain dagre as the default. Both engines now reach non-return reading share 1.0
+After reviewing the comparison above, the author keeps **dagre as the default**.
+Both engines now reach non-return reading share 1.0
 and draw every non-self return backward on these examples. Dagre has fewer bends
 (5/6/4 versus ELK's 10/14/6) and a much smaller complete layout bundle:
-56,836 bytes gzip versus 487,848 bytes. ELK eliminates coffee's one crossing and
-remains useful when routing quality matters more than download size, especially
-for layout at build time. Intent adds no crossings for either engine.
+56,836 bytes gzip versus 487,848 bytes. ELK eliminates coffee's one crossing,
+but that advantage does not outweigh dagre's fewer bends and smaller download.
+ELK remains available for layout at build time. Intent adds no crossings for
+either engine. The existing default is unchanged.
 
-The author must inspect the page and decide; the default has not changed.
 Local before/after pictures from the adapter change remain in
 `/tmp/loop65-r2-i1-pictures/`. No new pictures were made for the summary change
 because the resolved maps and quality profiles are identical. Pictures are not

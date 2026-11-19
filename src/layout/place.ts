@@ -3,6 +3,7 @@ import type { Placer } from "./ports.js";
 import type { PlacementOutcome } from "./outcomes.js";
 import { checkedResult } from "./check.js";
 import { problemGraph } from "./build-problem.js";
+import { constraintName } from "./hints.js";
 
 /** Negotiate before calling untrusted code; an exception is never a proof. */
 export async function place(
@@ -22,7 +23,7 @@ export async function place(
       kind: "unsupported-constraints",
       placer: placer.name,
       constraints: required,
-      message: `Required constraints ${required.map((c) => c.kind).join(", ")} are unsupported by ${placer.name}`,
+      message: `Required constraints ${required.map(constraintName).join(", ")} are unsupported by ${placer.name}`,
     };
   try {
     const result = await placer.place(

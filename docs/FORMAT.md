@@ -61,6 +61,54 @@ text. Flow and whole-map summaries remain optional. Concept sources are optional
 Root `deeper` entries are `{ title, href, why }`; step links are `{ title, href }`.
 Source links are `{ label, url }`.
 
+### Layout hints
+
+An optional `layout.hints` array states layout intent in source order. Each hint
+defaults to `"strength": "preferred"`; explicit `preferred` is also accepted.
+Use `"strength": "required"` when layout must refuse an engine that cannot honour
+the hint. Diagnostics identify its path, kind and node ids.
+
+`sameRank` names at least two distinct nodes. With direction `down`, their box
+`y` coordinates must agree (a row); with direction `right`, their `x` coordinates
+must agree (a column). Widths and heights may differ.
+
+```json
+{
+  "layout": {
+    "hints": [
+      { "kind": "sameRank", "nodes": ["cashier", "barista"] },
+      {
+        "kind": "sameRank",
+        "nodes": ["guest", "milk"],
+        "strength": "required"
+      }
+    ]
+  }
+}
+```
+
+Both dagre and ELK currently declare `sameRank` unsupported: preferred hints
+remain in the resolved map and the placement outcome lists them as unsupported;
+required hints fail before calling the engine. `check(source, resolved)` returns
+one constraint verdict per hint, independently of engine support. A missed
+preferred hint is reported but is not a hard defect. A missed required hint is
+a hard defect and a source layout rejects it even without `strict` when a custom
+placer claims support. `intent: false` disables derived scenario preferences,
+not stated hints.
+
+To receive unsupported preferred hints through the public API, use
+`layout(source, engine, { onUnsupportedHints: hints => console.warn(hints) })`.
+The callback receives their kind, strength, node ids, `origin: "stated"` and
+source path once per layout call, including when narrow layout is also needed.
+It is not called for hand-drawn maps or maps without unsupported hints.
+An unsupported hint can happen to be honoured by the drawing; this callback
+distinguishes engine support from the checker's geometric verdict.
+
+Resolved and hand-drawn maps retain hints as metadata. Layout and refinement
+keep their supplied boxes; `check` still judges hints against those boxes.
+Maps without `layout` keep their existing output. This is an additive format-3
+field; maps using hints need a package version that includes it.
+
 ## Geometry
 
 | Field                     | Source               | Resolved                                  |

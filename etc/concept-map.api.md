@@ -124,6 +124,16 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
         down: "down";
         right: "right";
     }>>;
+    layout: z.ZodOptional<z.ZodObject<{
+        hints: z.ZodArray<z.ZodObject<{
+            kind: z.ZodLiteral<"sameRank">;
+            nodes: z.ZodArray<z.ZodString>;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>>;
+    }, z.core.$strict>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
     }, z.core.$strip>>;
@@ -330,6 +340,16 @@ export const ResolvedMapSchema: z.ZodObject<{
         down: "down";
         right: "right";
     }>>;
+    layout: z.ZodOptional<z.ZodObject<{
+        hints: z.ZodArray<z.ZodObject<{
+            kind: z.ZodLiteral<"sameRank">;
+            nodes: z.ZodArray<z.ZodString>;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>>;
+    }, z.core.$strict>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
     }, z.core.$strip>>;
@@ -488,6 +508,16 @@ export const SourceMapSchema: z.ZodObject<{
         down: "down";
         right: "right";
     }>>;
+    layout: z.ZodOptional<z.ZodObject<{
+        hints: z.ZodArray<z.ZodObject<{
+            kind: z.ZodLiteral<"sameRank">;
+            nodes: z.ZodArray<z.ZodString>;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>>;
+    }, z.core.$strict>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
     }, z.core.$strip>>;
@@ -614,6 +644,16 @@ export function sourceMapSchema<T extends z.ZodType, S extends z.ZodType, D exte
         down: "down";
         right: "right";
     }>>;
+    layout: z.ZodOptional<z.ZodObject<{
+        hints: z.ZodArray<z.ZodObject<{
+            kind: z.ZodLiteral<"sameRank">;
+            nodes: z.ZodArray<z.ZodString>;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>>;
+    }, z.core.$strict>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
     }, z.core.$strip>>;

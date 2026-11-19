@@ -3,9 +3,12 @@ import type { LayoutNode, LayoutEdge, LayoutLane } from "./types.js";
 export type Strength = "required" | "preferred";
 export type Direction = "down" | "right";
 type Side = "top" | "right" | "bottom" | "left";
-/** Direction, lanes and scenario intent are produced today. The remaining
- * kinds reserve the shared vocabulary for stated hints and fixed positions. */
-export type Constraint = { strength: Strength } & (
+/** Stated constraints carry their source path; derived intent leaves it absent. */
+export type Constraint = {
+  strength: Strength;
+  origin?: "stated";
+  path?: string;
+} & (
   | { kind: "direction"; direction: Direction }
   | { kind: "lanes"; direction: Direction; lanes: readonly string[] }
   | { kind: "order"; nodes: readonly string[] }
@@ -30,10 +33,17 @@ export interface LayoutProblem {
   groups: readonly LayoutLane[];
   constraints: readonly Constraint[];
 }
-/** Independent verdict about a required lane rule on a drawing. */
-export interface ConstraintVerdict {
-  kind: "lanes";
-  strength: "required";
+/** Independent verdict about source intent on a drawing. */
+export type ConstraintVerdict = {
   holds: boolean;
   message: string;
-}
+} & (
+  | { kind: "lanes"; strength: "required" }
+  | {
+      kind: "sameRank";
+      strength: Strength;
+      origin: "stated";
+      path: string;
+      nodes: readonly string[];
+    }
+);

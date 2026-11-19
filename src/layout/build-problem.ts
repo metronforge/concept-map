@@ -3,6 +3,7 @@ import type { LabelMeasurer, LayoutGraph } from "./types.js";
 import type { LayoutProblem } from "./problem.js";
 import { layoutGraph } from "./graph.js";
 import { deriveIntent } from "./intent.js";
+import { statedHints } from "./hints.js";
 
 export function buildProblem(
   map: SourceMap,
@@ -28,6 +29,7 @@ export function buildProblem(
           ]
         : []),
       ...(intent ? deriveIntent(map) : []),
+      ...statedHints(map),
     ],
   };
 }

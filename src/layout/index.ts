@@ -6,6 +6,7 @@ import type { Measurer } from "./ports.js";
 import { atWidth } from "./width.js";
 import { refine } from "./stages/refine.js";
 import { buildProblem, problemGraph } from "./build-problem.js";
+import { reportUnsupportedHints } from "./hints.js";
 import { asPlacer } from "./legacy.js";
 import { place } from "./place.js";
 import { checkConstraints } from "./stages/constraints.js";
@@ -22,7 +23,7 @@ export * from "./errors.js";
 export type { Measurer } from "./ports.js";
 export { labelsInPanel } from "./stages/presentation.js";
 export { refine } from "./stages/refine.js";
-export type { ConstraintVerdict } from "./problem.js";
+export type { ConstraintVerdict, Strength } from "./problem.js";
 export type * from "./types.js";
 export { measureLabel, fontTableMeasurer } from "./measure.js";
 export { validateReferences } from "../schema/references.js";
@@ -57,7 +58,7 @@ export async function layout(
       atWidth(measurer, map, options.widthEm).measure,
       options,
     );
-  let resolved = await resolveSource(map, engine, measurer, options.intent);
+  let resolved = await resolveSource(map, engine, measurer, options);
   if (
     options.widthEm !== undefined &&
     resolved.viewBox[0] / options.widthEm > 10.5
@@ -66,7 +67,7 @@ export async function layout(
       map,
       engine,
       atWidth(measurer, resolved, options.widthEm),
-      options.intent,
+      { ...options, onUnsupportedHints: undefined },
     );
     resolved = refine(resolved, atWidth(measurer, resolved, options.widthEm));
   }
@@ -82,16 +83,17 @@ async function resolveSource(
   map: SourceMap,
   engine: LayoutEngine,
   measurer: Measurer,
-  intent: boolean | undefined,
+  options: LayoutOptions,
 ): Promise<ResolvedMap> {
   const measure = measurer.measure.bind(measurer);
-  const problem = buildProblem(map, measure, intent);
+  const problem = buildProblem(map, measure, options.intent);
   const graph = problemGraph(problem);
   const placer = asPlacer(engine);
   const outcome = await place(problem, placer);
   if (outcome.kind === "engine-failed") throw new EngineFailedError(outcome);
   if (outcome.kind === "unsupported-constraints")
     throw new UnsupportedConstraintsError(outcome);
+  reportUnsupportedHints(outcome.unsupported, options.onUnsupportedHints);
   const resolved = resolveGeometry(map, graph, outcome.result, measure);
   resolved.measurement = {
     name: measurer.name,
@@ -103,7 +105,9 @@ async function resolveSource(
       }),
     ),
   };
-  const rejected = checkConstraints(map, resolved).find((c) => !c.holds);
+  const rejected = checkConstraints(map, resolved).find(
+    (c) => c.strength === "required" && !c.holds,
+  );
   if (rejected)
     throw new ResultRejectedError({
       placer: placer.name,

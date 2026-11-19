@@ -7,11 +7,17 @@ type Check = (
   values: object | readonly string[],
 ) => void;
 
-function unique(ids: string[], path: string, kind: string, errors: string[]) {
+function unique(
+  ids: string[],
+  path: string,
+  kind: string,
+  errors: string[],
+  field = ".id",
+) {
   const seen = new Set<string>();
   ids.forEach((id, i) => {
     if (seen.has(id))
-      errors.push(`${path}[${i}].id: duplicate ${kind} “${id}”`);
+      errors.push(`${path}[${i}]${field}: duplicate ${kind} “${id}”`);
     seen.add(id);
   });
 }
@@ -76,6 +82,15 @@ function concepts(map: MapData, check: Check) {
     }),
   );
 }
+function hints(map: MapData, check: Check, errors: string[]) {
+  map.layout?.hints.forEach((hint, i) => {
+    const path = `layout.hints[${i}].nodes`;
+    unique(hint.nodes, path, "node", errors, "");
+    hint.nodes.forEach((id, j) =>
+      check(`${path}[${j}]`, "node", id, map.nodes),
+    );
+  });
+}
 /** Check every semantic reference before a layout engine sees a map. */
 export function validateReferences(map: MapData): void {
   const errors: string[] = [];
@@ -102,5 +117,6 @@ export function validateReferences(map: MapData): void {
     for (const node of nodes) check(`callouts.${id}`, "node", node, map.nodes);
   scenarios(map, check, errors);
   concepts(map, check);
+  hints(map, check, errors);
   if (errors.length) throw new Error(errors.join("\n"));
 }

@@ -20,6 +20,48 @@
         "right"
       ]
     },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "hints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "const": "sameRank"
+              },
+              "nodes": {
+                "minItems": 2,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                }
+              },
+              "strength": {
+                "default": "preferred",
+                "type": "string",
+                "enum": [
+                  "preferred",
+                  "required"
+                ]
+              }
+            },
+            "required": [
+              "kind",
+              "nodes"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "hints"
+      ],
+      "additionalProperties": false
+    },
     "layers": {
       "type": "object",
       "propertyNames": {

@@ -42,7 +42,9 @@ export interface LayoutReport {
   /**
    * Arrows of the first scenario that go in the reading direction (down or
    * right): its flow, or the arrows of its steps when it has no flow. Loops on
-   * one box are not counted. `share` is null when there is no arrow to judge.
+   * one box are not counted in the existing fields. `nonReturn` excludes
+   * derived free edges; `returns` judges them separately and counts self-loops.
+   * Each share is null when there is no non-self arrow in its denominator.
    */
   reading: Reading;
   /** Size of the drawing in em of arrow-label text, at the text's own size. */

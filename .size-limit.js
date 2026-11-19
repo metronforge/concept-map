@@ -49,8 +49,8 @@ const cases = [
       "dist/layout/index.js": "{ layout, measureLabel }",
     },
     gzip: true,
-    // Size audit before 0.3.0: measured 37803 B + margin (AGENTS.md "Size limits").
-    limit: "38803 B",
+    // Separate forward/return reading facts: measured 38845 B + 100 B margin.
+    limit: "38945 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",
@@ -59,8 +59,8 @@ const cases = [
       "dist/layout/stages/report.js": "{ check }",
     },
     gzip: true,
-    // Size audit before 0.3.0: measured 4747 B + margin (AGENTS.md "Size limits").
-    limit: "4889 B",
+    // Shared scenario intent and reading facts: measured 5126 B + 100 B margin.
+    limit: "5226 B",
   },
   {
     name: "complete root API (with Zod)",

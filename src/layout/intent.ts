@@ -1,8 +1,10 @@
-import type { SourceMap } from "../schema.js";
+import type { SourceMap, ResolvedMap } from "../schema.js";
 import type { Constraint } from "./problem.js";
 
 /** Flow is the travel order; steps supply it when no arrows are travelled. */
-function visits(map: SourceMap): { nodes: string[]; edge?: string }[] {
+function visits(
+  map: SourceMap | ResolvedMap,
+): { nodes: string[]; edge?: string }[] {
   const first = map.scenarios[0];
   if (first.flow?.some((hop) => hop.edge))
     return first.flow.map((hop) => {
@@ -24,7 +26,7 @@ function visits(map: SourceMap): { nodes: string[]; edge?: string }[] {
 }
 
 /** Preferred intent from a validated source, independent of engine geometry. */
-export function deriveIntent(map: SourceMap): Constraint[] {
+export function deriveIntent(map: SourceMap | ResolvedMap): Constraint[] {
   const nodes = new Set<string>();
   const edges = new Set<string>();
   for (const visit of visits(map)) {

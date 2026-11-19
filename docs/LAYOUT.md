@@ -244,7 +244,22 @@ rejected result are separate tagged outcomes. After placement, the
 checker verifies lanes from the original source and resolved geometry, even
 without `strict`; `check(source, resolved)` uses the same rule. It uses the
 renderer's viewport defaults for hand-drawn lanes without explicit widths.
-Direction remains descriptive in the existing `reading` report.
+Direction remains descriptive in the `reading` report. Its existing `edges`,
+`forward` and `share` fields count non-self arrows of the first scenario in
+travel direction, including returns. Each edge/direction pair counts once.
+The flow supplies travel direction; steps supply arrows when the flow has none.
+
+`reading.nonReturn` has the same three fields for arrows not classified as
+`free` by derived intent. Use its `share` to judge forward progress without
+penalizing intentional returns. Classification comes from the source scenario,
+even when the drawing was made with `{ intent: false }` or by hand.
+`reading.returns` reports `edges` (non-self return traversals), `backward`
+(those travelled against the reading direction), and their `share`.
+`selfLoops` separately counts self-loop traversals. Add it to `edges` for the
+total number of returns. A return at the same rank is not backward: node
+centres must differ by more than the existing measurement tolerance.
+All shares are rounded to three decimals and are `null` for an empty denominator.
+These are descriptive facts; they add no hard defects or layout requirements.
 
 ### Layout errors and constraint reports
 

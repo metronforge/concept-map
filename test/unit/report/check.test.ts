@@ -30,7 +30,7 @@ describe("check", () => {
     const r = report(map());
     expect(r.hard).toBe(0);
     expect(r.crossings.count).toBe(0);
-    expect(r.reading).toEqual({ edges: 1, forward: 1, share: 1 });
+    expect(r.reading).toMatchObject({ edges: 1, forward: 1, share: 1 });
     expect(r.text).toEqual({ width: 19.05, height: 19.05 });
   });
 
@@ -111,7 +111,7 @@ describe("check", () => {
         m.edges.ab.path = "M35 100 V40";
       }),
     );
-    expect(up.reading).toEqual({ edges: 1, forward: 0, share: 0 });
+    expect(up.reading).toMatchObject({ edges: 1, forward: 0, share: 0 });
   });
 
   it("refuses a resolved map that does not match the source", () => {
@@ -193,7 +193,15 @@ describe("recorded baseline", () => {
       },
     );
     expect(
-      Object.fromEntries(book.map(({ id, map: m }) => [id, check(m, m)])),
+      Object.fromEntries(
+        book.map(({ id, map: m }) => {
+          const report = check(m, m);
+          // Preserve every recorded field; only the newly added reading facts
+          // have no historical baseline. Their semantics have dedicated tests.
+          const { nonReturn, returns, ...reading } = report.reading;
+          return [id, { ...report, reading }];
+        }),
+      ),
     ).toEqual(expected);
   });
   it("keeps automatic examples clear with and without scenario intent", async () => {
@@ -207,6 +215,11 @@ describe("recorded baseline", () => {
         const withIntent = check(source, await layout(source, engine));
         expect(without.hard).toBe(0);
         expect(withIntent.hard).toBe(0);
+        expect(withIntent.reading.nonReturn.share).toBe(1);
+        expect(withIntent.reading.nonReturn.share).toBeGreaterThanOrEqual(
+          without.reading.nonReturn.share!,
+        );
+        expect(withIntent.reading.returns.share).toBe(1);
         expect(withIntent.crossings.count).toBeLessThanOrEqual(
           without.crossings.count,
         );

@@ -5,8 +5,8 @@ const cases = [
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    // Cached route bounds for label placement: measured 47256 B + 100 B margin.
-    limit: "47356 B",
+    // Partial label repairs with stabilization: measured 47374 B + 100 B margin.
+    limit: "47474 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -18,8 +18,8 @@ const cases = [
     // Author-approved increase: 14157 B -> 15725 B (+1568 B).
     // Wide/narrow checks, 1 em hysteresis, in-place geometry updates,
     // running token animations and a narrow-layout cache are needed together.
-    // Cached route bounds for label placement: measured 15767 B + 100 B margin.
-    limit: "15867 B",
+    // Partial label repairs with stabilization: measured 15904 B + 100 B margin.
+    limit: "16004 B",
   },
   {
     name: "server render (pre-resolved map)",

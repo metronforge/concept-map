@@ -1,7 +1,8 @@
 import type { ResolvedMap } from "../../schema.js";
 import type { LayoutPoint, LayoutBox } from "../types.js";
 import { polylines } from "./paths.js";
-import { rectGap, segmentRectGap } from "./plane.js";
+import { rectGap } from "./plane.js";
+import { contactReduction, lineGaps } from "./contact-reduction.js";
 import { clearOf } from "./badge-placement.js";
 import {
   labelCandidates,
@@ -10,10 +11,26 @@ import {
 } from "./label-candidates.js";
 import { labelBox } from "./number-placement.js";
 
-/** Keep clear labels; move crossed labels to the least-cost clear candidate. */
+/** Keep clear labels; remove contacts without introducing or deepening any. */
 export function placeLabels(map: ResolvedMap): ResolvedMap {
+  // Every move removes at least one contact without creating another, so
+  // the initial finite contact count bounds the number of successful passes.
+  let current = map;
+  for (;;) {
+    const next = placeLabelPass(current);
+    if (
+      Object.keys(next.edges).every(
+        (id) => next.edges[id] === current.edges[id],
+      )
+    )
+      return next;
+    current = next;
+  }
+}
+
+function placeLabelPass(map: ResolvedMap): ResolvedMap {
   const { boxes, nodes, lines, steps } = obstacles(map);
-  const clearLines = lineClearance(Object.values(lines).flat());
+  const gaps = lineGaps(Object.values(lines).flat());
   const edges = { ...map.edges };
   for (const [id, box] of Object.entries(boxes)) {
     const obstacles = nodes.concat(
@@ -21,13 +38,15 @@ export function placeLabels(map: ResolvedMap): ResolvedMap {
         .filter(([key]) => key !== id)
         .map(([, b]) => b),
     );
-    const clear = (b: LayoutBox, gap = 0) =>
-      obstacles.every((o) => rectGap(b, o) >= gap) && clearLines(b, gap);
-    if (clear(box)) continue;
+    const contacts = contactReduction(box, [
+      ...obstacles.map((o) => (b: LayoutBox) => rectGap(b, o)),
+      ...gaps,
+    ]);
+    if (!contacts) continue;
     const at = position(
       box,
       map.viewBox,
-      (candidate) => clear(candidate, 1 / 64),
+      contacts,
       steps,
       map.measurement!.labels[id].padding ?? 0,
       lines[id],
@@ -45,22 +64,6 @@ export function placeLabels(map: ResolvedMap): ResolvedMap {
     boxes[id] = [at[0], at[1], box[2], box[3]];
   }
   return { ...map, edges };
-}
-
-function lineClearance(lines: Segment[]) {
-  const bounds: LayoutBox[] = lines.map(([a, b]) => [
-    Math.min(a[0], b[0]),
-    Math.min(a[1], b[1]),
-    Math.abs(b[0] - a[0]),
-    Math.abs(b[1] - a[1]),
-  ]);
-  // A segment cannot be nearer than its enclosing box. Only nearby segments
-  // need the full distance calculation; routes stay fixed during placement.
-  return (box: LayoutBox, gap: number) =>
-    lines.every(
-      ([a, b], i) =>
-        rectGap(box, bounds[i]) >= gap || segmentRectGap(a, b, box) >= gap,
-    );
 }
 
 function obstacles(map: ResolvedMap) {
@@ -91,7 +94,7 @@ function obstacles(map: ResolvedMap) {
 function position(
   box: LayoutBox,
   viewBox: LayoutPoint,
-  clear: (box: LayoutBox) => boolean,
+  contacts: (box: LayoutBox) => number,
   steps: LayoutPoint[],
   padding: number,
   own: Segment[],
@@ -112,12 +115,15 @@ function position(
       box[2] + 2 * padding,
       box[3] + 2 * padding,
     ];
+    const remaining = contacts(candidate);
     if (
-      !clear(candidate) ||
+      !Number.isFinite(remaining) ||
       !steps.every((p) => clearOf(p, candidate, 4) && clearOf(p, paint, 1 / 64))
     )
       continue;
-    const next = labelCost(candidate, box, own, other, Math.hypot(...viewBox));
+    const limit = Math.hypot(...viewBox);
+    const next =
+      remaining * 8 * limit + labelCost(candidate, box, own, other, limit);
     if (next < cost) {
       cost = next;
       best = [x, y];

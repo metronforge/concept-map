@@ -103,3 +103,60 @@ test("a crossed label uses a clear slot along the drawing boundary", () => {
   expect(JSON.stringify(map)).toBe(before);
   expect(refine(result, measurer)).toEqual(result);
 });
+
+test("a trapped label clears a line without worsening its unavoidable box overlap", () => {
+  const map = ResolvedMapSchema.parse(fixture);
+  map.viewBox = [200, 100];
+  map.nodes.a.box = [0, 0, 200, 100];
+  map.nodes.b.box = [220, 20, 40, 40];
+  map.edges.ab.path = "M0 50 H200";
+  map.edges.ab.label = { text: "go", at: [80, 55] };
+  delete map.edges.ab.badge;
+  map.scenarios[0].repeatBadges = [];
+  const size = { width: 40, height: 10, ascent: 8 };
+  map.measurement = { name: "measured", labels: { ab: size } };
+  const measurer = { name: "measured", measure: () => size };
+  const before = check(map, map, { measureLabel: measurer });
+  const original = JSON.stringify(map);
+  const result = refine(map, measurer);
+  const after = check(map, result, { measureLabel: measurer });
+  expect(before.labels.lines.some((c) => c.band === "defect")).toBe(true);
+  expect(after.labels.lines.filter((c) => c.band === "defect")).toEqual([]);
+  expect(after.hard).toBeLessThan(before.hard);
+  expect(after.labels.boxes[0].gap).toBeGreaterThanOrEqual(
+    before.labels.boxes[0].gap,
+  );
+  expect(result.nodes).toEqual(map.nodes);
+  expect(result.viewBox).toEqual(map.viewBox);
+  expect(result.edges.ab.path).toBe(map.edges.ab.path);
+  expect(JSON.stringify(map)).toBe(original);
+  expect(refine(result, measurer)).toEqual(result);
+});
+
+test("partial label repairs settle before returning the refined map", async () => {
+  const source = JSON.parse(readFileSync("examples/door/map.json", "utf8"));
+  const map = await layout(source, dagreEngine);
+  // Real narrow-screen ink dimensions: several labels share the same slots.
+  const widths: Record<string, number> = {
+    start: 340.5,
+    open: 394.25,
+    close: 340.5,
+    lock: 358.421875,
+    unlock: 394.25,
+    blocked: 161.296875,
+    finish: 358.421875,
+  };
+  const measurer = {
+    name: "wide",
+    measure: (_text: string, style: { edge?: string }) => ({
+      width: widths[style.edge!],
+      height: style.edge === "blocked" ? 125.075575 : 35.734375,
+      ascent: style.edge === "blocked" ? 72.6706 : 28,
+      padding: 2,
+    }),
+  };
+  const result = refine(map, measurer);
+  expect(refine(result, measurer)).toEqual(result);
+  expect(result.nodes).toEqual(map.nodes);
+  expect(result.viewBox).toEqual(map.viewBox);
+});

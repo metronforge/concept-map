@@ -1,0 +1,919 @@
+{
+  "generatedAt": "2026-11-19T16:19:49.533Z",
+  "revision": "e8aba33270bf784f6737a16df07710b146b42045",
+  "dirty": true,
+  "environment": {
+    "node": "v26.13.1",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "Intel(R) Core(TM) Ultra 9 185H"
+  },
+  "versions": {
+    "dagre": "3.1.3",
+    "elk": "0.12.1",
+    "zod": "4.6.7",
+    "rolldown": "1.3.2"
+  },
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "timing": {
+    "warmups": 1,
+    "samples": 5,
+    "statistic": "median",
+    "scope": "complete layout(), excluding module import, rendering and serialization"
+  },
+  "bundles": {
+    "dagre": {
+      "raw": 188433,
+      "gzip": 56836
+    },
+    "elk": {
+      "raw": 1606853,
+      "gzip": 487848
+    }
+  },
+  "maps": [
+    {
+      "id": "coffee",
+      "title": "Coffee shop",
+      "note": "Current standalone example. No hand-drawn reference is available.",
+      "variants": {
+        "dagre": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [
+                  {
+                    "a": "label:offer",
+                    "b": "line:offer",
+                    "band": "tight",
+                    "gap": 0.189
+                  }
+                ],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 1,
+                "pairs": [["ready", "offer"]]
+              },
+              "reading": {
+                "edges": 3,
+                "forward": 2,
+                "share": 0.667,
+                "nonReturn": {
+                  "edges": 2,
+                  "forward": 2,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 1,
+                  "backward": 1,
+                  "share": 1,
+                  "selfLoops": 0
+                }
+              },
+              "text": {
+                "width": 50.4,
+                "height": 18.3
+              }
+            },
+            "crossings": 1,
+            "hard": 0,
+            "reading": 0.667,
+            "bends": 5,
+            "area": 101658.93579999998,
+            "width": 529.198,
+            "height": 192.09999999999997
+          },
+          "timing": {
+            "samples": [
+              6.9115899999997055, 6.146850999999515, 6.70463700000073,
+              6.036960999999792, 6.173827999999048
+            ],
+            "median": 6.173827999999048,
+            "min": 6.036960999999792,
+            "max": 6.9115899999997055
+          }
+        },
+        "dagre-plain": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [
+                  {
+                    "a": "label:offer",
+                    "b": "line:offer",
+                    "band": "tight",
+                    "gap": 0.189
+                  }
+                ],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 1,
+                "pairs": [["ready", "offer"]]
+              },
+              "reading": {
+                "edges": 3,
+                "forward": 2,
+                "share": 0.667,
+                "nonReturn": {
+                  "edges": 2,
+                  "forward": 2,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 1,
+                  "backward": 1,
+                  "share": 1,
+                  "selfLoops": 0
+                }
+              },
+              "text": {
+                "width": 50.4,
+                "height": 18.3
+              }
+            },
+            "crossings": 1,
+            "hard": 0,
+            "reading": 0.667,
+            "bends": 5,
+            "area": 101658.93579999998,
+            "width": 529.198,
+            "height": 192.09999999999997
+          },
+          "timing": {
+            "samples": [
+              6.116541999999754, 6.642209999999977, 5.984591000000364,
+              6.0084160000005795, 6.4795649999996385
+            ],
+            "median": 6.116541999999754,
+            "min": 5.984591000000364,
+            "max": 6.642209999999977
+          }
+        },
+        "elk": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 3,
+                "forward": 2,
+                "share": 0.667,
+                "nonReturn": {
+                  "edges": 2,
+                  "forward": 2,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 1,
+                  "backward": 1,
+                  "share": 1,
+                  "selfLoops": 0
+                }
+              },
+              "text": {
+                "width": 62.59,
+                "height": 11.45
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.667,
+            "bends": 10,
+            "area": 78995.19959999999,
+            "width": 657.198,
+            "height": 120.19999999999999
+          },
+          "timing": {
+            "samples": [
+              8.194774999999936, 7.7899710000001505, 7.558489999999438,
+              7.480137000000468, 7.079815999999482
+            ],
+            "median": 7.558489999999438,
+            "min": 7.079815999999482,
+            "max": 8.194774999999936
+          }
+        },
+        "elk-plain": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 3,
+                "forward": 2,
+                "share": 0.667,
+                "nonReturn": {
+                  "edges": 2,
+                  "forward": 1,
+                  "share": 0.5
+                },
+                "returns": {
+                  "edges": 1,
+                  "backward": 0,
+                  "share": 0,
+                  "selfLoops": 0
+                }
+              },
+              "text": {
+                "width": 63.64,
+                "height": 15.64
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.667,
+            "bends": 10,
+            "area": 109718.11159999999,
+            "width": 668.198,
+            "height": 164.2
+          },
+          "timing": {
+            "samples": [
+              7.626465999999709, 7.524406000000454, 6.3977430000013555,
+              7.59217499999977, 7.500372999998945
+            ],
+            "median": 7.524406000000454,
+            "min": 6.3977430000013555,
+            "max": 7.626465999999709
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "id": "normal",
+          "label": "Normal"
+        },
+        {
+          "id": "out-of-milk",
+          "label": "Out of milk"
+        }
+      ]
+    },
+    {
+      "id": "door",
+      "title": "Door: a finite state machine",
+      "note": "Current standalone example. No hand-drawn reference is available.",
+      "variants": {
+        "elk-plain": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 6,
+                "forward": 4,
+                "share": 0.667,
+                "nonReturn": {
+                  "edges": 4,
+                  "forward": 4,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 2,
+                  "backward": 2,
+                  "share": 1,
+                  "selfLoops": 1
+                }
+              },
+              "text": {
+                "width": 90.69,
+                "height": 22.02
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.667,
+            "bends": 14,
+            "area": 220161.12479999996,
+            "width": 952.2539999999999,
+            "height": 231.2
+          },
+          "timing": {
+            "samples": [
+              13.33076599999913, 11.218338000000585, 10.801873999998861,
+              9.33755900000142, 9.607160999999905
+            ],
+            "median": 10.801873999998861,
+            "min": 9.33755900000142,
+            "max": 13.33076599999913
+          }
+        },
+        "elk": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 6,
+                "forward": 4,
+                "share": 0.667,
+                "nonReturn": {
+                  "edges": 4,
+                  "forward": 4,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 2,
+                  "backward": 2,
+                  "share": 1,
+                  "selfLoops": 1
+                }
+              },
+              "text": {
+                "width": 90.69,
+                "height": 22.02
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.667,
+            "bends": 14,
+            "area": 220161.12479999996,
+            "width": 952.2539999999999,
+            "height": 231.2
+          },
+          "timing": {
+            "samples": [
+              9.639916000000085, 9.236628999999084, 9.035452000000078,
+              8.901615999999194, 9.133278999999675
+            ],
+            "median": 9.133278999999675,
+            "min": 8.901615999999194,
+            "max": 9.639916000000085
+          }
+        },
+        "dagre-plain": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [
+                  {
+                    "a": "label:close",
+                    "b": "label:finish",
+                    "band": "tight",
+                    "gap": 0.174
+                  }
+                ],
+                "lines": [
+                  {
+                    "a": "label:lock",
+                    "b": "line:lock",
+                    "band": "tight",
+                    "gap": 0.042
+                  },
+                  {
+                    "a": "label:unlock",
+                    "b": "line:unlock",
+                    "band": "tight",
+                    "gap": 0.121
+                  }
+                ],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 6,
+                "forward": 4,
+                "share": 0.667,
+                "nonReturn": {
+                  "edges": 4,
+                  "forward": 4,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 2,
+                  "backward": 2,
+                  "share": 1,
+                  "selfLoops": 1
+                }
+              },
+              "text": {
+                "width": 78.5,
+                "height": 26.7
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.667,
+            "bends": 6,
+            "area": 231120.8216,
+            "width": 824.2539999999999,
+            "height": 280.40000000000003
+          },
+          "timing": {
+            "samples": [
+              13.9182550000005, 12.946912999999768, 12.815351000001101,
+              12.731918999999834, 13.409294999999474
+            ],
+            "median": 12.946912999999768,
+            "min": 12.731918999999834,
+            "max": 13.9182550000005
+          }
+        },
+        "dagre": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [
+                  {
+                    "a": "label:close",
+                    "b": "label:finish",
+                    "band": "tight",
+                    "gap": 0.174
+                  }
+                ],
+                "lines": [
+                  {
+                    "a": "label:lock",
+                    "b": "line:lock",
+                    "band": "tight",
+                    "gap": 0.042
+                  },
+                  {
+                    "a": "label:unlock",
+                    "b": "line:unlock",
+                    "band": "tight",
+                    "gap": 0.121
+                  }
+                ],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 6,
+                "forward": 4,
+                "share": 0.667,
+                "nonReturn": {
+                  "edges": 4,
+                  "forward": 4,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 2,
+                  "backward": 2,
+                  "share": 1,
+                  "selfLoops": 1
+                }
+              },
+              "text": {
+                "width": 78.5,
+                "height": 26.7
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.667,
+            "bends": 6,
+            "area": 231120.8216,
+            "width": 824.2539999999999,
+            "height": 280.40000000000003
+          },
+          "timing": {
+            "samples": [
+              15.179682000001776, 14.226829999999609, 12.596856000000116,
+              12.588474000000133, 12.512414999999237
+            ],
+            "median": 12.596856000000116,
+            "min": 12.512414999999237,
+            "max": 15.179682000001776
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "id": "locked-door",
+          "label": "Try to open a locked door"
+        }
+      ]
+    },
+    {
+      "id": "gcd",
+      "title": "Euclid's greatest common divisor",
+      "note": "Current standalone example. No hand-drawn reference is available.",
+      "variants": {
+        "dagre": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 5,
+                "forward": 4,
+                "share": 0.8,
+                "nonReturn": {
+                  "edges": 4,
+                  "forward": 4,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 1,
+                  "backward": 1,
+                  "share": 1,
+                  "selfLoops": 0
+                }
+              },
+              "text": {
+                "width": 30.99,
+                "height": 38.65
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.8,
+            "bends": 4,
+            "area": 132027.8416,
+            "width": 325.35200000000003,
+            "height": 405.8
+          },
+          "timing": {
+            "samples": [
+              3.661462999998548, 3.5080649999999878, 3.44320400000106,
+              4.35437599999932, 3.257351000000199
+            ],
+            "median": 3.5080649999999878,
+            "min": 3.257351000000199,
+            "max": 4.35437599999932
+          }
+        },
+        "dagre-plain": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 5,
+                "forward": 4,
+                "share": 0.8,
+                "nonReturn": {
+                  "edges": 4,
+                  "forward": 4,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 1,
+                  "backward": 1,
+                  "share": 1,
+                  "selfLoops": 0
+                }
+              },
+              "text": {
+                "width": 30.99,
+                "height": 38.65
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.8,
+            "bends": 4,
+            "area": 132027.8416,
+            "width": 325.35200000000003,
+            "height": 405.8
+          },
+          "timing": {
+            "samples": [
+              3.164770999999746, 3.196963999998843, 3.2116400000013527,
+              3.1624719999999797, 3.2088149999999587
+            ],
+            "median": 3.196963999998843,
+            "min": 3.1624719999999797,
+            "max": 3.2116400000013527
+          }
+        },
+        "elk": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [
+                  {
+                    "a": "label:input",
+                    "b": "line:input",
+                    "band": "tight",
+                    "gap": 0.19
+                  },
+                  {
+                    "a": "label:no",
+                    "b": "line:no",
+                    "band": "tight",
+                    "gap": 0.19
+                  },
+                  {
+                    "a": "label:loop",
+                    "b": "line:loop",
+                    "band": "tight",
+                    "gap": 0.19
+                  },
+                  {
+                    "a": "label:yes",
+                    "b": "line:yes",
+                    "band": "tight",
+                    "gap": 0.19
+                  }
+                ],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 5,
+                "forward": 4,
+                "share": 0.8,
+                "nonReturn": {
+                  "edges": 4,
+                  "forward": 4,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 1,
+                  "backward": 1,
+                  "share": 1,
+                  "selfLoops": 0
+                }
+              },
+              "text": {
+                "width": 29.9,
+                "height": 56.93
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.8,
+            "bends": 6,
+            "area": 187664.9628,
+            "width": 313.926,
+            "height": 597.8000000000001
+          },
+          "timing": {
+            "samples": [
+              10.72024699999929, 10.648502000000008, 8.106400000000576,
+              8.076229999998759, 8.068999999999505
+            ],
+            "median": 8.106400000000576,
+            "min": 8.068999999999505,
+            "max": 10.72024699999929
+          }
+        },
+        "elk-plain": {
+          "metrics": {
+            "quality": {
+              "hard": 0,
+              "constraints": [],
+              "labels": {
+                "labels": [],
+                "lines": [
+                  {
+                    "a": "label:input",
+                    "b": "line:input",
+                    "band": "tight",
+                    "gap": 0.19
+                  },
+                  {
+                    "a": "label:no",
+                    "b": "line:no",
+                    "band": "tight",
+                    "gap": 0.19
+                  },
+                  {
+                    "a": "label:loop",
+                    "b": "line:loop",
+                    "band": "tight",
+                    "gap": 0.19
+                  },
+                  {
+                    "a": "label:yes",
+                    "b": "line:yes",
+                    "band": "tight",
+                    "gap": 0.19
+                  }
+                ],
+                "boxes": []
+              },
+              "steps": {
+                "labels": [],
+                "boxes": [],
+                "steps": []
+              },
+              "lines": {
+                "boxes": []
+              },
+              "crossings": {
+                "count": 0,
+                "pairs": []
+              },
+              "reading": {
+                "edges": 5,
+                "forward": 4,
+                "share": 0.8,
+                "nonReturn": {
+                  "edges": 4,
+                  "forward": 4,
+                  "share": 1
+                },
+                "returns": {
+                  "edges": 1,
+                  "backward": 1,
+                  "share": 1,
+                  "selfLoops": 0
+                }
+              },
+              "text": {
+                "width": 29.9,
+                "height": 56.93
+              }
+            },
+            "crossings": 0,
+            "hard": 0,
+            "reading": 0.8,
+            "bends": 6,
+            "area": 187664.9628,
+            "width": 313.926,
+            "height": 597.8000000000001
+          },
+          "timing": {
+            "samples": [
+              7.948255000001154, 7.918327000001227, 7.996243999999933,
+              7.747350000001461, 7.899192000000767
+            ],
+            "median": 7.918327000001227,
+            "min": 7.747350000001461,
+            "max": 7.996243999999933
+          }
+        }
+      },
+      "scenarios": [
+        {
+          "id": "gcd-48-18",
+          "label": "gcd(48, 18)"
+        },
+        {
+          "id": "gcd-5-0",
+          "label": "gcd(5, 0)"
+        }
+      ]
+    }
+  ]
+}

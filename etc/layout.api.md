@@ -36,7 +36,9 @@ export type ConstraintVerdict = {
     origin: "stated";
     path: string;
     nodes: readonly string[];
-});
+} | Extract<StatedHint, {
+    kind: "side";
+}>);
 
 // @public
 export interface Contact {

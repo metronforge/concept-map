@@ -5,8 +5,8 @@ const cases = [
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    // Same-rank hint validation and checking: measured 47827 B + 100 B margin.
-    limit: "47927 B",
+    // Rank and side hint validation and checking: measured 48177 B + 100 B margin.
+    limit: "48277 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -18,8 +18,8 @@ const cases = [
     // Author-approved increase: 14157 B -> 15725 B (+1568 B).
     // Wide/narrow checks, 1 em hysteresis, in-place geometry updates,
     // running token animations and a narrow-layout cache are needed together.
-    // Same-rank hint checking: measured 16176 B + 100 B margin.
-    limit: "16276 B",
+    // Rank and side hint checking: measured 16443 B + 100 B margin.
+    limit: "16543 B",
   },
   {
     name: "server render (pre-resolved map)",
@@ -49,8 +49,8 @@ const cases = [
       "dist/layout/index.js": "{ layout, measureLabel }",
     },
     gzip: true,
-    // Same-rank hints and named refusals: measured 39196 B + 100 B margin.
-    limit: "39296 B",
+    // Rank and side hints with named refusals: measured 39678 B + 100 B margin.
+    limit: "39778 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",
@@ -59,8 +59,8 @@ const cases = [
       "dist/layout/stages/report.js": "{ check }",
     },
     gzip: true,
-    // Independent same-rank verdicts: measured 5320 B + 100 B margin.
-    limit: "5420 B",
+    // Independent rank and side verdicts: measured 5582 B + 100 B margin.
+    limit: "5682 B",
   },
   {
     name: "complete root API (with Zod)",

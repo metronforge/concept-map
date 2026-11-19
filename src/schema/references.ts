@@ -83,12 +83,25 @@ function concepts(map: MapData, check: Check) {
   );
 }
 function hints(map: MapData, check: Check, errors: string[]) {
+  const required = new Map<string, { side: string; path: string }>();
   map.layout?.hints.forEach((hint, i) => {
-    const path = `layout.hints[${i}].nodes`;
-    unique(hint.nodes, path, "node", errors, "");
-    hint.nodes.forEach((id, j) =>
-      check(`${path}[${j}]`, "node", id, map.nodes),
-    );
+    const path = `layout.hints[${i}]`;
+    if (hint.kind === "sameRank") {
+      unique(hint.nodes, `${path}.nodes`, "node", errors, "");
+      hint.nodes.forEach((id, j) =>
+        check(`${path}.nodes[${j}]`, "node", id, map.nodes),
+      );
+    } else {
+      check(`${path}.edge`, "edge", hint.edge, map.edges);
+      if (hint.strength !== "required" || "viewBox" in map) return;
+      const key = `${hint.edge}.${hint.end}`;
+      const previous = required.get(key);
+      if (previous && previous.side !== hint.side)
+        errors.push(
+          `Contradictory required sides: ${previous.path} and ${path} for ${key} (${previous.side}, ${hint.side})`,
+        );
+      else required.set(key, { side: hint.side, path });
+    }
   });
 }
 /** Check every semantic reference before a layout engine sees a map. */

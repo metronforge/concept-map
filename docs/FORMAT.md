@@ -66,7 +66,7 @@ Source links are `{ label, url }`.
 An optional `layout.hints` array states layout intent in source order. Each hint
 defaults to `"strength": "preferred"`; explicit `preferred` is also accepted.
 Use `"strength": "required"` when layout must refuse an engine that cannot honour
-the hint. Diagnostics identify its path, kind and node ids.
+the hint. Diagnostics identify its path, kind and referenced ids.
 
 `sameRank` names at least two distinct nodes. With direction `down`, their box
 `y` coordinates must agree (a row); with direction `right`, their `x` coordinates
@@ -87,7 +87,34 @@ must agree (a column). Widths and heights may differ.
 }
 ```
 
-Both dagre and ELK currently declare `sameRank` unsupported: preferred hints
+`side` names an edge, its `from` or `to` end, and the box side: `top`, `right`,
+`bottom` or `left`. For example:
+
+```json
+{
+  "layout": {
+    "hints": [
+      { "kind": "side", "edge": "order", "end": "from", "side": "right" },
+      {
+        "kind": "side",
+        "edge": "order",
+        "end": "to",
+        "side": "left",
+        "strength": "required"
+      }
+    ]
+  }
+}
+```
+
+The checker reads the edge's first or last path point and the referenced node's
+box. The point must lie on the named boundary segment, including its corners;
+only floating-point roundoff is allowed. Empty or disconnected paths do not
+honour a side hint. Self-loops have two ends, checked independently. Conflicting
+required sides for the same edge end are rejected before source placement,
+with both hint paths in the error.
+
+Both dagre and ELK currently declare `sameRank` and `side` unsupported: preferred hints
 remain in the resolved map and the placement outcome lists them as unsupported;
 required hints fail before calling the engine. `check(source, resolved)` returns
 one constraint verdict per hint, independently of engine support. A missed
@@ -98,14 +125,15 @@ not stated hints.
 
 To receive unsupported preferred hints through the public API, use
 `layout(source, engine, { onUnsupportedHints: hints => console.warn(hints) })`.
-The callback receives their kind, strength, node ids, `origin: "stated"` and
+The callback receives their kind, strength, references, `origin: "stated"` and
 source path once per layout call, including when narrow layout is also needed.
 It is not called for hand-drawn maps or maps without unsupported hints.
 An unsupported hint can happen to be honoured by the drawing; this callback
 distinguishes engine support from the checker's geometric verdict.
 
 Resolved and hand-drawn maps retain hints as metadata. Layout and refinement
-keep their supplied boxes; `check` still judges hints against those boxes.
+keep their supplied boxes and routes, even with conflicting hints; `check` still
+judges each hint against that geometry.
 Maps without `layout` keep their existing output. This is an additive format-3
 field; maps using hints need a package version that includes it.
 

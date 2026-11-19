@@ -121,18 +121,35 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
     id: z.ZodString;
     title: z.ZodString;
     direction: z.ZodOptional<z.ZodEnum<{
-        down: "down";
         right: "right";
+        down: "down";
     }>>;
     layout: z.ZodOptional<z.ZodObject<{
-        hints: z.ZodArray<z.ZodObject<{
+        hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
             kind: z.ZodLiteral<"sameRank">;
             nodes: z.ZodArray<z.ZodString>;
             strength: z.ZodDefault<z.ZodEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>>;
+        }, z.core.$strict>, z.ZodObject<{
+            kind: z.ZodLiteral<"side">;
+            edge: z.ZodString;
+            end: z.ZodEnum<{
+                from: "from";
+                to: "to";
+            }>;
+            side: z.ZodEnum<{
+                left: "left";
+                top: "top";
+                right: "right";
+                bottom: "bottom";
+            }>;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>]>>;
     }, z.core.$strict>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
@@ -337,18 +354,35 @@ export const ResolvedMapSchema: z.ZodObject<{
     id: z.ZodString;
     title: z.ZodString;
     direction: z.ZodOptional<z.ZodEnum<{
-        down: "down";
         right: "right";
+        down: "down";
     }>>;
     layout: z.ZodOptional<z.ZodObject<{
-        hints: z.ZodArray<z.ZodObject<{
+        hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
             kind: z.ZodLiteral<"sameRank">;
             nodes: z.ZodArray<z.ZodString>;
             strength: z.ZodDefault<z.ZodEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>>;
+        }, z.core.$strict>, z.ZodObject<{
+            kind: z.ZodLiteral<"side">;
+            edge: z.ZodString;
+            end: z.ZodEnum<{
+                from: "from";
+                to: "to";
+            }>;
+            side: z.ZodEnum<{
+                left: "left";
+                top: "top";
+                right: "right";
+                bottom: "bottom";
+            }>;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>]>>;
     }, z.core.$strict>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
@@ -505,18 +539,35 @@ export const SourceMapSchema: z.ZodObject<{
     id: z.ZodString;
     title: z.ZodString;
     direction: z.ZodOptional<z.ZodEnum<{
-        down: "down";
         right: "right";
+        down: "down";
     }>>;
     layout: z.ZodOptional<z.ZodObject<{
-        hints: z.ZodArray<z.ZodObject<{
+        hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
             kind: z.ZodLiteral<"sameRank">;
             nodes: z.ZodArray<z.ZodString>;
             strength: z.ZodDefault<z.ZodEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>>;
+        }, z.core.$strict>, z.ZodObject<{
+            kind: z.ZodLiteral<"side">;
+            edge: z.ZodString;
+            end: z.ZodEnum<{
+                from: "from";
+                to: "to";
+            }>;
+            side: z.ZodEnum<{
+                left: "left";
+                top: "top";
+                right: "right";
+                bottom: "bottom";
+            }>;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>]>>;
     }, z.core.$strict>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;
@@ -641,18 +692,35 @@ export function sourceMapSchema<T extends z.ZodType, S extends z.ZodType, D exte
     id: z.ZodString;
     title: z.ZodString;
     direction: z.ZodOptional<z.ZodEnum<{
-        down: "down";
         right: "right";
+        down: "down";
     }>>;
     layout: z.ZodOptional<z.ZodObject<{
-        hints: z.ZodArray<z.ZodObject<{
+        hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
             kind: z.ZodLiteral<"sameRank">;
             nodes: z.ZodArray<z.ZodString>;
             strength: z.ZodDefault<z.ZodEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>>;
+        }, z.core.$strict>, z.ZodObject<{
+            kind: z.ZodLiteral<"side">;
+            edge: z.ZodString;
+            end: z.ZodEnum<{
+                from: "from";
+                to: "to";
+            }>;
+            side: z.ZodEnum<{
+                left: "left";
+                top: "top";
+                right: "right";
+                bottom: "bottom";
+            }>;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>]>>;
     }, z.core.$strict>>;
     layers: z.ZodRecord<z.ZodString, z.ZodObject<{
         label: z.ZodString;

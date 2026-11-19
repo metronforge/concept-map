@@ -1,4 +1,9 @@
-import type { LayoutNode, LayoutEdge, LayoutLane } from "./types.js";
+import type {
+  LayoutNode,
+  LayoutEdge,
+  LayoutLane,
+  StatedHint,
+} from "./types.js";
 
 export type Strength = "required" | "preferred";
 export type Direction = "down" | "right";
@@ -46,4 +51,5 @@ export type ConstraintVerdict = {
       path: string;
       nodes: readonly string[];
     }
+  | Extract<StatedHint, { kind: "side" }>
 );

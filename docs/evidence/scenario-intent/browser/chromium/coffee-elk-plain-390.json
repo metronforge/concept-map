@@ -1,0 +1,245 @@
+{
+  "viewport": 390,
+  "report": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [
+        {
+          "a": "label:empty",
+          "b": "label:offer",
+          "band": "tight",
+          "gap": 0.192,
+          "uncertainty": 0.072
+        }
+      ],
+      "lines": [
+        {
+          "a": "label:order",
+          "b": "line:order",
+          "band": "tight",
+          "gap": 0.045,
+          "uncertainty": 0.036
+        },
+        {
+          "a": "label:ticket",
+          "b": "line:ticket",
+          "band": "tight",
+          "gap": 0.06,
+          "uncertainty": 0.036
+        },
+        {
+          "a": "label:ready",
+          "b": "line:ready",
+          "band": "tight",
+          "gap": 0.045,
+          "uncertainty": 0.036
+        },
+        {
+          "a": "label:empty",
+          "b": "line:empty",
+          "band": "tight",
+          "gap": 0.016,
+          "uncertainty": 0.036
+        },
+        {
+          "a": "label:offer",
+          "b": "line:empty",
+          "band": "tight",
+          "gap": 0.176,
+          "uncertainty": 0.036
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:offer",
+          "b": "node:guest",
+          "band": "tight",
+          "gap": 0.113,
+          "uncertainty": 0.036
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 1,
+        "share": 0.5
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 63.64,
+      "height": 15.64
+    }
+  },
+  "presentation": "wide",
+  "presentationReport": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [
+        {
+          "a": "label:empty",
+          "b": "label:offer",
+          "band": "tight",
+          "gap": 0.192,
+          "uncertainty": 0.072
+        }
+      ],
+      "lines": [
+        {
+          "a": "label:order",
+          "b": "line:order",
+          "band": "tight",
+          "gap": 0.045,
+          "uncertainty": 0.036
+        },
+        {
+          "a": "label:ticket",
+          "b": "line:ticket",
+          "band": "tight",
+          "gap": 0.06,
+          "uncertainty": 0.036
+        },
+        {
+          "a": "label:ready",
+          "b": "line:ready",
+          "band": "tight",
+          "gap": 0.045,
+          "uncertainty": 0.036
+        },
+        {
+          "a": "label:empty",
+          "b": "line:empty",
+          "band": "tight",
+          "gap": 0.016,
+          "uncertainty": 0.036
+        },
+        {
+          "a": "label:offer",
+          "b": "line:empty",
+          "band": "tight",
+          "gap": 0.176,
+          "uncertainty": 0.036
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:offer",
+          "b": "node:guest",
+          "band": "tight",
+          "gap": 0.113,
+          "uncertainty": 0.036
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 1,
+        "share": 0.5
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 63.64,
+      "height": 15.64
+    }
+  },
+  "presentationDefects": [],
+  "measurement": {
+    "name": "dom",
+    "labels": {
+      "order": {
+        "width": 72.625,
+        "height": 28.96875,
+        "ascent": 22,
+        "uncertainty": 0.3772203125,
+        "padding": 2
+      },
+      "ticket": {
+        "width": 159.78125,
+        "height": 28.96875,
+        "ascent": 22,
+        "uncertainty": 0.3772203125,
+        "padding": 2
+      },
+      "ready": {
+        "width": 174.296875,
+        "height": 28.96875,
+        "ascent": 22,
+        "uncertainty": 0.3772203125,
+        "padding": 2
+      },
+      "empty": {
+        "width": 159.78125,
+        "height": 28.96875,
+        "ascent": 22,
+        "uncertainty": 0.3772203125,
+        "padding": 2.4635009765625
+      },
+      "offer": {
+        "width": 217.875,
+        "height": 28.96875,
+        "ascent": 22,
+        "uncertainty": 0.3772203125,
+        "padding": 2
+      }
+    }
+  },
+  "defects": [],
+  "serverHard": 0,
+  "moved": [
+    "label:order",
+    "step:order",
+    "label:ticket",
+    "step:ticket",
+    "label:ready",
+    "step:ready",
+    "label:empty",
+    "step:empty",
+    "label:offer",
+    "step:offer"
+  ]
+}

@@ -13,11 +13,14 @@ change it; the three current examples have no hand reference.
 
 ## Results
 
-`server.json` records the three examples with both intent settings, including
-full quality reports, bends, areas, timings, bundle sizes and build provenance.
-Variants ending in `-plain` are **before intent**; other variants are **with
-intent**. `browser.json` records all 72 real-font reports: three browsers × three
-examples × two engines × two intent settings × two widths.
+`server/<example>.json` records each example with both intent settings, including
+full quality reports, bends and areas; `server/meta.json` holds timings, bundle
+sizes and build provenance. Variants ending in `-plain` are **before intent**;
+other variants are **with intent**. `browser/<browser>/<example>-<engine>[-plain]-<width>.json`
+holds the 72 real-font reports (three browsers × three examples × two engines ×
+two intent settings × two widths), one file per report as the browser test
+writes them; `browser/summary.json` lists the chosen presentation and the hard
+counts of every report.
 
 Reading below is `quality.reading.nonReturn.share`. Returns lists backward
 non-self returns / all non-self returns. The door also has one self-loop;
@@ -79,11 +82,17 @@ To assemble fresh evidence **outside** this recorded directory after those runs:
 ```python
 import json
 from pathlib import Path
+out = Path("/tmp/scenario-intent")
 report = json.loads(Path("comparison-dist/metrics.json").read_text())
-report["maps"] = [m for m in report["maps"] if m["id"] in ("coffee", "door", "gcd")]
-Path("/tmp/scenario-intent-server.json").write_text(json.dumps(report, indent=2) + "\n")
-reports = {p.name: json.loads(p.read_text()) for p in sorted(Path("/tmp/scenario-intent-browser").glob("*.json"))}
-Path("/tmp/scenario-intent-browser.json").write_text(json.dumps(reports, indent=2) + "\n")
+(out / "server").mkdir(parents=True, exist_ok=True)
+for m in report.pop("maps"):
+    if m["id"] in ("coffee", "door", "gcd"):
+        (out / "server" / f"{m['id']}.json").write_text(json.dumps(m, indent=2) + "\n")
+(out / "server" / "meta.json").write_text(json.dumps(report, indent=2) + "\n")
+for p in sorted(Path("/tmp/scenario-intent-browser").glob("*.json")):
+    browser, name = p.name.split("-", 1)
+    (out / "browser" / browser).mkdir(parents=True, exist_ok=True)
+    (out / "browser" / browser / name).write_text(p.read_text())
 ```
 
 Timings and build provenance vary; quality reports are the reproducible evidence.

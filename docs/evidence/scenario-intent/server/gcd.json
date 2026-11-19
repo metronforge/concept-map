@@ -1,0 +1,311 @@
+{
+  "id": "gcd",
+  "title": "Euclid's greatest common divisor",
+  "note": "Current standalone example. No hand-drawn reference is available.",
+  "variants": {
+    "dagre": {
+      "metrics": {
+        "quality": {
+          "hard": 0,
+          "constraints": [],
+          "labels": {
+            "labels": [],
+            "lines": [],
+            "boxes": []
+          },
+          "steps": {
+            "labels": [],
+            "boxes": [],
+            "steps": []
+          },
+          "lines": {
+            "boxes": []
+          },
+          "crossings": {
+            "count": 0,
+            "pairs": []
+          },
+          "reading": {
+            "edges": 5,
+            "forward": 4,
+            "share": 0.8,
+            "nonReturn": {
+              "edges": 4,
+              "forward": 4,
+              "share": 1
+            },
+            "returns": {
+              "edges": 1,
+              "backward": 1,
+              "share": 1,
+              "selfLoops": 0
+            }
+          },
+          "text": {
+            "width": 30.99,
+            "height": 38.65
+          }
+        },
+        "crossings": 0,
+        "hard": 0,
+        "reading": 0.8,
+        "bends": 4,
+        "area": 132027.8416,
+        "width": 325.35200000000003,
+        "height": 405.8
+      },
+      "timing": {
+        "samples": [
+          3.661462999998548, 3.5080649999999878, 3.44320400000106,
+          4.35437599999932, 3.257351000000199
+        ],
+        "median": 3.5080649999999878,
+        "min": 3.257351000000199,
+        "max": 4.35437599999932
+      }
+    },
+    "dagre-plain": {
+      "metrics": {
+        "quality": {
+          "hard": 0,
+          "constraints": [],
+          "labels": {
+            "labels": [],
+            "lines": [],
+            "boxes": []
+          },
+          "steps": {
+            "labels": [],
+            "boxes": [],
+            "steps": []
+          },
+          "lines": {
+            "boxes": []
+          },
+          "crossings": {
+            "count": 0,
+            "pairs": []
+          },
+          "reading": {
+            "edges": 5,
+            "forward": 4,
+            "share": 0.8,
+            "nonReturn": {
+              "edges": 4,
+              "forward": 4,
+              "share": 1
+            },
+            "returns": {
+              "edges": 1,
+              "backward": 1,
+              "share": 1,
+              "selfLoops": 0
+            }
+          },
+          "text": {
+            "width": 30.99,
+            "height": 38.65
+          }
+        },
+        "crossings": 0,
+        "hard": 0,
+        "reading": 0.8,
+        "bends": 4,
+        "area": 132027.8416,
+        "width": 325.35200000000003,
+        "height": 405.8
+      },
+      "timing": {
+        "samples": [
+          3.164770999999746, 3.196963999998843, 3.2116400000013527,
+          3.1624719999999797, 3.2088149999999587
+        ],
+        "median": 3.196963999998843,
+        "min": 3.1624719999999797,
+        "max": 3.2116400000013527
+      }
+    },
+    "elk": {
+      "metrics": {
+        "quality": {
+          "hard": 0,
+          "constraints": [],
+          "labels": {
+            "labels": [],
+            "lines": [
+              {
+                "a": "label:input",
+                "b": "line:input",
+                "band": "tight",
+                "gap": 0.19
+              },
+              {
+                "a": "label:no",
+                "b": "line:no",
+                "band": "tight",
+                "gap": 0.19
+              },
+              {
+                "a": "label:loop",
+                "b": "line:loop",
+                "band": "tight",
+                "gap": 0.19
+              },
+              {
+                "a": "label:yes",
+                "b": "line:yes",
+                "band": "tight",
+                "gap": 0.19
+              }
+            ],
+            "boxes": []
+          },
+          "steps": {
+            "labels": [],
+            "boxes": [],
+            "steps": []
+          },
+          "lines": {
+            "boxes": []
+          },
+          "crossings": {
+            "count": 0,
+            "pairs": []
+          },
+          "reading": {
+            "edges": 5,
+            "forward": 4,
+            "share": 0.8,
+            "nonReturn": {
+              "edges": 4,
+              "forward": 4,
+              "share": 1
+            },
+            "returns": {
+              "edges": 1,
+              "backward": 1,
+              "share": 1,
+              "selfLoops": 0
+            }
+          },
+          "text": {
+            "width": 29.9,
+            "height": 56.93
+          }
+        },
+        "crossings": 0,
+        "hard": 0,
+        "reading": 0.8,
+        "bends": 6,
+        "area": 187664.9628,
+        "width": 313.926,
+        "height": 597.8000000000001
+      },
+      "timing": {
+        "samples": [
+          10.72024699999929, 10.648502000000008, 8.106400000000576,
+          8.076229999998759, 8.068999999999505
+        ],
+        "median": 8.106400000000576,
+        "min": 8.068999999999505,
+        "max": 10.72024699999929
+      }
+    },
+    "elk-plain": {
+      "metrics": {
+        "quality": {
+          "hard": 0,
+          "constraints": [],
+          "labels": {
+            "labels": [],
+            "lines": [
+              {
+                "a": "label:input",
+                "b": "line:input",
+                "band": "tight",
+                "gap": 0.19
+              },
+              {
+                "a": "label:no",
+                "b": "line:no",
+                "band": "tight",
+                "gap": 0.19
+              },
+              {
+                "a": "label:loop",
+                "b": "line:loop",
+                "band": "tight",
+                "gap": 0.19
+              },
+              {
+                "a": "label:yes",
+                "b": "line:yes",
+                "band": "tight",
+                "gap": 0.19
+              }
+            ],
+            "boxes": []
+          },
+          "steps": {
+            "labels": [],
+            "boxes": [],
+            "steps": []
+          },
+          "lines": {
+            "boxes": []
+          },
+          "crossings": {
+            "count": 0,
+            "pairs": []
+          },
+          "reading": {
+            "edges": 5,
+            "forward": 4,
+            "share": 0.8,
+            "nonReturn": {
+              "edges": 4,
+              "forward": 4,
+              "share": 1
+            },
+            "returns": {
+              "edges": 1,
+              "backward": 1,
+              "share": 1,
+              "selfLoops": 0
+            }
+          },
+          "text": {
+            "width": 29.9,
+            "height": 56.93
+          }
+        },
+        "crossings": 0,
+        "hard": 0,
+        "reading": 0.8,
+        "bends": 6,
+        "area": 187664.9628,
+        "width": 313.926,
+        "height": 597.8000000000001
+      },
+      "timing": {
+        "samples": [
+          7.948255000001154, 7.918327000001227, 7.996243999999933,
+          7.747350000001461, 7.899192000000767
+        ],
+        "median": 7.918327000001227,
+        "min": 7.747350000001461,
+        "max": 7.996243999999933
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "gcd-48-18",
+      "label": "gcd(48, 18)"
+    },
+    {
+      "id": "gcd-5-0",
+      "label": "gcd(5, 0)"
+    }
+  ]
+}

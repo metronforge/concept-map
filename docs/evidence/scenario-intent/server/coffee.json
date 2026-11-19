@@ -1,0 +1,275 @@
+{
+  "id": "coffee",
+  "title": "Coffee shop",
+  "note": "Current standalone example. No hand-drawn reference is available.",
+  "variants": {
+    "dagre": {
+      "metrics": {
+        "quality": {
+          "hard": 0,
+          "constraints": [],
+          "labels": {
+            "labels": [],
+            "lines": [
+              {
+                "a": "label:offer",
+                "b": "line:offer",
+                "band": "tight",
+                "gap": 0.189
+              }
+            ],
+            "boxes": []
+          },
+          "steps": {
+            "labels": [],
+            "boxes": [],
+            "steps": []
+          },
+          "lines": {
+            "boxes": []
+          },
+          "crossings": {
+            "count": 1,
+            "pairs": [["ready", "offer"]]
+          },
+          "reading": {
+            "edges": 3,
+            "forward": 2,
+            "share": 0.667,
+            "nonReturn": {
+              "edges": 2,
+              "forward": 2,
+              "share": 1
+            },
+            "returns": {
+              "edges": 1,
+              "backward": 1,
+              "share": 1,
+              "selfLoops": 0
+            }
+          },
+          "text": {
+            "width": 50.4,
+            "height": 18.3
+          }
+        },
+        "crossings": 1,
+        "hard": 0,
+        "reading": 0.667,
+        "bends": 5,
+        "area": 101658.93579999998,
+        "width": 529.198,
+        "height": 192.09999999999997
+      },
+      "timing": {
+        "samples": [
+          6.9115899999997055, 6.146850999999515, 6.70463700000073,
+          6.036960999999792, 6.173827999999048
+        ],
+        "median": 6.173827999999048,
+        "min": 6.036960999999792,
+        "max": 6.9115899999997055
+      }
+    },
+    "dagre-plain": {
+      "metrics": {
+        "quality": {
+          "hard": 0,
+          "constraints": [],
+          "labels": {
+            "labels": [],
+            "lines": [
+              {
+                "a": "label:offer",
+                "b": "line:offer",
+                "band": "tight",
+                "gap": 0.189
+              }
+            ],
+            "boxes": []
+          },
+          "steps": {
+            "labels": [],
+            "boxes": [],
+            "steps": []
+          },
+          "lines": {
+            "boxes": []
+          },
+          "crossings": {
+            "count": 1,
+            "pairs": [["ready", "offer"]]
+          },
+          "reading": {
+            "edges": 3,
+            "forward": 2,
+            "share": 0.667,
+            "nonReturn": {
+              "edges": 2,
+              "forward": 2,
+              "share": 1
+            },
+            "returns": {
+              "edges": 1,
+              "backward": 1,
+              "share": 1,
+              "selfLoops": 0
+            }
+          },
+          "text": {
+            "width": 50.4,
+            "height": 18.3
+          }
+        },
+        "crossings": 1,
+        "hard": 0,
+        "reading": 0.667,
+        "bends": 5,
+        "area": 101658.93579999998,
+        "width": 529.198,
+        "height": 192.09999999999997
+      },
+      "timing": {
+        "samples": [
+          6.116541999999754, 6.642209999999977, 5.984591000000364,
+          6.0084160000005795, 6.4795649999996385
+        ],
+        "median": 6.116541999999754,
+        "min": 5.984591000000364,
+        "max": 6.642209999999977
+      }
+    },
+    "elk": {
+      "metrics": {
+        "quality": {
+          "hard": 0,
+          "constraints": [],
+          "labels": {
+            "labels": [],
+            "lines": [],
+            "boxes": []
+          },
+          "steps": {
+            "labels": [],
+            "boxes": [],
+            "steps": []
+          },
+          "lines": {
+            "boxes": []
+          },
+          "crossings": {
+            "count": 0,
+            "pairs": []
+          },
+          "reading": {
+            "edges": 3,
+            "forward": 2,
+            "share": 0.667,
+            "nonReturn": {
+              "edges": 2,
+              "forward": 2,
+              "share": 1
+            },
+            "returns": {
+              "edges": 1,
+              "backward": 1,
+              "share": 1,
+              "selfLoops": 0
+            }
+          },
+          "text": {
+            "width": 62.59,
+            "height": 11.45
+          }
+        },
+        "crossings": 0,
+        "hard": 0,
+        "reading": 0.667,
+        "bends": 10,
+        "area": 78995.19959999999,
+        "width": 657.198,
+        "height": 120.19999999999999
+      },
+      "timing": {
+        "samples": [
+          8.194774999999936, 7.7899710000001505, 7.558489999999438,
+          7.480137000000468, 7.079815999999482
+        ],
+        "median": 7.558489999999438,
+        "min": 7.079815999999482,
+        "max": 8.194774999999936
+      }
+    },
+    "elk-plain": {
+      "metrics": {
+        "quality": {
+          "hard": 0,
+          "constraints": [],
+          "labels": {
+            "labels": [],
+            "lines": [],
+            "boxes": []
+          },
+          "steps": {
+            "labels": [],
+            "boxes": [],
+            "steps": []
+          },
+          "lines": {
+            "boxes": []
+          },
+          "crossings": {
+            "count": 0,
+            "pairs": []
+          },
+          "reading": {
+            "edges": 3,
+            "forward": 2,
+            "share": 0.667,
+            "nonReturn": {
+              "edges": 2,
+              "forward": 1,
+              "share": 0.5
+            },
+            "returns": {
+              "edges": 1,
+              "backward": 0,
+              "share": 0,
+              "selfLoops": 0
+            }
+          },
+          "text": {
+            "width": 63.64,
+            "height": 15.64
+          }
+        },
+        "crossings": 0,
+        "hard": 0,
+        "reading": 0.667,
+        "bends": 10,
+        "area": 109718.11159999999,
+        "width": 668.198,
+        "height": 164.2
+      },
+      "timing": {
+        "samples": [
+          7.626465999999709, 7.524406000000454, 6.3977430000013555,
+          7.59217499999977, 7.500372999998945
+        ],
+        "median": 7.524406000000454,
+        "min": 6.3977430000013555,
+        "max": 7.626465999999709
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "normal",
+      "label": "Normal"
+    },
+    {
+      "id": "out-of-milk",
+      "label": "Out of milk"
+    }
+  ]
+}

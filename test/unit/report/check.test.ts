@@ -169,40 +169,22 @@ const example = (name: string) =>
 
 describe("recorded baseline", () => {
   it("matches the hand-drawn book maps", () => {
-    const expected = recorded("book.json");
-    // The original baseline omitted node step numbers. These additional tight
-    // contacts are checked explicitly; no original contact or hard count changes.
-    expected["4-1"].steps.labels.push({
-      a: "label:probe_ready",
-      b: "node-step:3:the-default-readiness-deadline-e",
-      band: "tight",
-      gap: 0.11,
-    });
-    expected["5-1"].steps.labels.push(
-      {
-        a: "label:deadline",
-        b: "node-step:0:the-final-wait-repeats",
-        band: "tight",
-        gap: -0.024,
-      },
-      {
-        a: "label:deadline",
-        b: "node-step:3:after-failed-tries-both-wait-100",
-        band: "tight",
-        gap: -0.024,
-      },
-    );
     expect(
-      Object.fromEntries(
-        book.map(({ id, map: m }) => {
-          const report = check(m, m);
-          // Preserve every recorded field; only the newly added reading facts
-          // have no historical baseline. Their semantics have dedicated tests.
-          const { nonReturn, returns, ...reading } = report.reading;
-          return [id, { ...report, reading }];
-        }),
-      ),
-    ).toEqual(expected);
+      Object.fromEntries(book.map(({ id, map: m }) => [id, check(m, m)])),
+    ).toEqual(recorded("book.json"));
+  });
+  it("matches the examples laid out by each engine", async () => {
+    const reports: Record<string, LayoutReport> = {};
+    for (const name of ["coffee", "door", "gcd"])
+      for (const [id, engine] of [
+        ["dagre", dagreEngine],
+        ["elk", elkEngine],
+      ] as const)
+        reports[`${name} ${id}`] = check(
+          example(name),
+          await layout(example(name), engine),
+        );
+    expect(reports).toEqual(recorded("examples.json"));
   });
   it("keeps automatic examples clear with and without scenario intent", async () => {
     for (const name of ["coffee", "door", "gcd"])

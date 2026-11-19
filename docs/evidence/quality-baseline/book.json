@@ -9,15 +9,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 5,
-      "pairs": [
-        ["mk_ctx", "shared"],
-        ["mk_page", "shared"],
-        ["server_page", "shared"],
-        ["server_page", "request_cookies"]
-      ]
-    },
     "labels": {
       "labels": [],
       "lines": [
@@ -96,10 +87,30 @@
         }
       ]
     },
+    "crossings": {
+      "count": 5,
+      "pairs": [
+        ["mk_ctx", "shared"],
+        ["mk_page", "shared"],
+        ["server_page", "shared"],
+        ["server_page", "request_cookies"]
+      ]
+    },
     "reading": {
       "edges": 14,
       "forward": 9,
-      "share": 0.643
+      "share": 0.643,
+      "nonReturn": {
+        "edges": 13,
+        "forward": 8,
+        "share": 0.615
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40.38,
@@ -116,10 +127,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -146,10 +153,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 9,
       "forward": 4,
-      "share": 0.444
+      "share": 0.444,
+      "nonReturn": {
+        "edges": 8,
+        "forward": 4,
+        "share": 0.5
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40.38,
@@ -166,10 +188,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -244,10 +262,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 12,
       "forward": 10,
-      "share": 0.833
+      "share": 0.833,
+      "nonReturn": {
+        "edges": 12,
+        "forward": 10,
+        "share": 0.833
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 34.29,
@@ -264,10 +297,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -307,10 +336,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 5,
       "forward": 3,
-      "share": 0.6
+      "share": 0.6,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 3,
+        "share": 0.75
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 34.29,
@@ -327,10 +371,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -344,10 +384,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 9,
       "forward": 5,
-      "share": 0.556
+      "share": 0.556,
+      "nonReturn": {
+        "edges": 9,
+        "forward": 5,
+        "share": 0.556
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,
@@ -364,10 +419,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -381,10 +432,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 10,
       "forward": 9,
-      "share": 0.9
+      "share": 0.9,
+      "nonReturn": {
+        "edges": 9,
+        "forward": 9,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,
@@ -401,10 +467,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [
@@ -463,10 +525,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 14,
       "forward": 9,
-      "share": 0.643
+      "share": 0.643,
+      "nonReturn": {
+        "edges": 12,
+        "forward": 9,
+        "share": 0.75
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,
@@ -483,13 +560,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 3,
-      "pairs": [
-        ["collect", "blocked"],
-        ["blocked", "retry"]
-      ]
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -529,10 +599,28 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 3,
+      "pairs": [
+        ["collect", "blocked"],
+        ["blocked", "retry"]
+      ]
+    },
     "reading": {
       "edges": 12,
       "forward": 10,
-      "share": 0.833
+      "share": 0.833,
+      "nonReturn": {
+        "edges": 10,
+        "forward": 10,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 1,
+        "share": 0.5,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,
@@ -549,10 +637,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -566,10 +650,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 9,
       "forward": 9,
-      "share": 1
+      "share": 1,
+      "nonReturn": {
+        "edges": 9,
+        "forward": 9,
+        "share": 1
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,
@@ -586,10 +685,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 1,
-      "pairs": [["skip", "url_load"]]
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -610,10 +705,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 1,
+      "pairs": [["skip", "url_load"]]
+    },
     "reading": {
       "edges": 12,
       "forward": 11,
-      "share": 0.917
+      "share": 0.917,
+      "nonReturn": {
+        "edges": 10,
+        "forward": 9,
+        "share": 0.9
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,
@@ -630,10 +740,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 1,
-      "pairs": [["cn", "cr"]]
-    },
     "labels": {
       "labels": [],
       "lines": [
@@ -668,10 +774,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 1,
+      "pairs": [["cn", "cr"]]
+    },
     "reading": {
       "edges": 7,
       "forward": 7,
-      "share": 1
+      "share": 1,
+      "nonReturn": {
+        "edges": 7,
+        "forward": 7,
+        "share": 1
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 35.05,
@@ -688,10 +809,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 1,
-      "pairs": [["hr", "mf"]]
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -712,10 +829,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 1,
+      "pairs": [["hr", "mf"]]
+    },
     "reading": {
       "edges": 5,
       "forward": 4,
-      "share": 0.8
+      "share": 0.8,
+      "nonReturn": {
+        "edges": 5,
+        "forward": 4,
+        "share": 0.8
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 37.71,
@@ -732,10 +864,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -749,10 +877,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 4,
       "forward": 0,
-      "share": 0
+      "share": 0,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 0,
+        "share": 0
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 1,
+        "share": 0.5,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 37.71,
@@ -769,10 +912,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 1,
-      "pairs": [["global_setup", "ready_server"]]
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -786,7 +925,14 @@
       ]
     },
     "steps": {
-      "labels": [],
+      "labels": [
+        {
+          "a": "label:probe_ready",
+          "b": "node-step:3:the-default-readiness-deadline-e",
+          "band": "tight",
+          "gap": 0.11
+        }
+      ],
       "boxes": [
         {
           "a": "node:probe",
@@ -800,10 +946,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 1,
+      "pairs": [["global_setup", "ready_server"]]
+    },
     "reading": {
       "edges": 8,
       "forward": 6,
-      "share": 0.75
+      "share": 0.75,
+      "nonReturn": {
+        "edges": 8,
+        "forward": 6,
+        "share": 0.75
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,
@@ -820,10 +981,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -837,10 +994,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 11,
       "forward": 5,
-      "share": 0.455
+      "share": 0.455,
+      "nonReturn": {
+        "edges": 6,
+        "forward": 3,
+        "share": 0.5
+      },
+      "returns": {
+        "edges": 5,
+        "backward": 3,
+        "share": 0.6,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40.38,
@@ -857,10 +1029,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -899,10 +1067,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 13,
       "forward": 8,
-      "share": 0.615
+      "share": 0.615,
+      "nonReturn": {
+        "edges": 11,
+        "forward": 8,
+        "share": 0.727
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 1,
+        "share": 0.5,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40.38,
@@ -919,15 +1102,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 4,
-      "pairs": [
-        ["failed_later", "later_stop"],
-        ["failed_stop", "dispatch_fresh"],
-        ["stop_budget", "fresh_retry"],
-        ["dispatch_fresh", "later_stop"]
-      ]
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -966,10 +1140,30 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 4,
+      "pairs": [
+        ["failed_later", "later_stop"],
+        ["failed_stop", "dispatch_fresh"],
+        ["stop_budget", "fresh_retry"],
+        ["dispatch_fresh", "later_stop"]
+      ]
+    },
     "reading": {
       "edges": 11,
       "forward": 7,
-      "share": 0.636
+      "share": 0.636,
+      "nonReturn": {
+        "edges": 7,
+        "forward": 5,
+        "share": 0.714
+      },
+      "returns": {
+        "edges": 4,
+        "backward": 1,
+        "share": 0.25,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40.38,
@@ -986,10 +1180,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 1,
-      "pairs": [["default_config", "reset_config"]]
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -1047,10 +1237,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 1,
+      "pairs": [["default_config", "reset_config"]]
+    },
     "reading": {
       "edges": 8,
       "forward": 4,
-      "share": 0.5
+      "share": 0.5,
+      "nonReturn": {
+        "edges": 7,
+        "forward": 4,
+        "share": 0.571
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40.38,
@@ -1067,10 +1272,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -1091,10 +1292,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 10,
       "forward": 5,
-      "share": 0.5
+      "share": 0.5,
+      "nonReturn": {
+        "edges": 9,
+        "forward": 5,
+        "share": 0.556
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40.38,
@@ -1111,27 +1327,51 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
       "boxes": []
     },
     "steps": {
-      "labels": [],
+      "labels": [
+        {
+          "a": "label:deadline",
+          "b": "node-step:0:the-final-wait-repeats",
+          "band": "tight",
+          "gap": -0.024
+        },
+        {
+          "a": "label:deadline",
+          "b": "node-step:3:after-failed-tries-both-wait-100",
+          "band": "tight",
+          "gap": -0.024
+        }
+      ],
       "boxes": [],
       "steps": []
     },
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 9,
       "forward": 1,
-      "share": 0.111
+      "share": 0.111,
+      "nonReturn": {
+        "edges": 6,
+        "forward": 1,
+        "share": 0.167
+      },
+      "returns": {
+        "edges": 3,
+        "backward": 1,
+        "share": 0.333,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 37.71,
@@ -1148,10 +1388,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 1,
-      "pairs": [["toList", "toBlob"]]
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -1221,10 +1457,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 1,
+      "pairs": [["toList", "toBlob"]]
+    },
     "reading": {
       "edges": 10,
       "forward": 9,
-      "share": 0.9
+      "share": 0.9,
+      "nonReturn": {
+        "edges": 10,
+        "forward": 9,
+        "share": 0.9
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,
@@ -1241,10 +1492,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 1,
-      "pairs": [["start", "save"]]
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -1290,10 +1537,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 1,
+      "pairs": [["start", "save"]]
+    },
     "reading": {
       "edges": 7,
       "forward": 5,
-      "share": 0.714
+      "share": 0.714,
+      "nonReturn": {
+        "edges": 7,
+        "forward": 5,
+        "share": 0.714
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,
@@ -1310,10 +1572,6 @@
         "message": "Lanes are ordered, disjoint and contain their nodes"
       }
     ],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [
@@ -1341,10 +1599,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 4,
       "forward": 4,
-      "share": 1
+      "share": 1,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 40,

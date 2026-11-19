@@ -1,0 +1,223 @@
+{
+  "viewport": 390,
+  "report": {
+    "hard": 2,
+    "constraints": [],
+    "labels": {
+      "labels": [
+        {
+          "a": "label:close",
+          "b": "label:lock",
+          "band": "tight",
+          "gap": 0.001,
+          "uncertainty": 0.089
+        },
+        {
+          "a": "label:close",
+          "b": "label:unlock",
+          "band": "tight",
+          "gap": 0.254,
+          "uncertainty": 0.089
+        }
+      ],
+      "lines": [
+        {
+          "a": "label:open",
+          "b": "line:open",
+          "band": "tight",
+          "gap": 0.041,
+          "uncertainty": 0.044
+        },
+        {
+          "a": "label:lock",
+          "b": "line:lock",
+          "band": "defect",
+          "gap": -0.79,
+          "uncertainty": 0.044
+        },
+        {
+          "a": "label:lock",
+          "b": "line:unlock",
+          "band": "defect",
+          "gap": -2.435,
+          "uncertainty": 0.044
+        },
+        {
+          "a": "label:unlock",
+          "b": "line:unlock",
+          "band": "tight",
+          "gap": 0.023,
+          "uncertainty": 0.044
+        },
+        {
+          "a": "label:blocked",
+          "b": "line:blocked",
+          "band": "tight",
+          "gap": 0.084,
+          "uncertainty": 0.044
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:finish",
+          "b": "node:end",
+          "band": "tight",
+          "gap": 0.001,
+          "uncertainty": 0.044
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 6,
+      "forward": 4,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 1
+      }
+    },
+    "text": {
+      "width": 78.5,
+      "height": 26.7
+    }
+  },
+  "presentation": "panel",
+  "presentationReport": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 6,
+      "forward": 4,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 1
+      }
+    },
+    "text": {
+      "width": 78.5,
+      "height": 26.7
+    }
+  },
+  "presentationDefects": [],
+  "measurement": {
+    "name": "dom",
+    "labels": {
+      "start": {
+        "width": 340.5,
+        "height": 35.734375,
+        "ascent": 28,
+        "uncertainty": 0.46531875,
+        "padding": 2
+      },
+      "open": {
+        "width": 394.25,
+        "height": 35.734375,
+        "ascent": 28,
+        "uncertainty": 0.46531875,
+        "padding": 2
+      },
+      "close": {
+        "width": 340.5,
+        "height": 35.734375,
+        "ascent": 28,
+        "uncertainty": 0.46531875,
+        "padding": 2
+      },
+      "lock": {
+        "width": 358.421875,
+        "height": 35.734375,
+        "ascent": 28,
+        "uncertainty": 0.46531875,
+        "padding": 2.06622314453125
+      },
+      "unlock": {
+        "width": 394.25,
+        "height": 35.734375,
+        "ascent": 28,
+        "uncertainty": 0.46531875,
+        "padding": 2.07891845703125
+      },
+      "blocked": {
+        "width": 161.296875,
+        "height": 125.075575,
+        "ascent": 72.67060000000001,
+        "uncertainty": 0.46531875,
+        "wrap": {
+          "lines": ["push ", "[locked] ", "/ ", "rattle"],
+          "lineHeight": 29.7804
+        },
+        "padding": 2
+      },
+      "finish": {
+        "width": 358.421875,
+        "height": 35.734375,
+        "ascent": 28,
+        "uncertainty": 0.46531875,
+        "padding": 2
+      }
+    }
+  },
+  "defects": [
+    "a line crosses an arrow label: label:lock and line:lock",
+    "a line crosses an arrow label: label:lock and line:unlock"
+  ],
+  "serverHard": 0,
+  "moved": [
+    "label:start",
+    "step:start",
+    "label:open",
+    "step:open",
+    "label:close",
+    "step:close",
+    "label:lock",
+    "label:unlock",
+    "label:blocked",
+    "step:blocked",
+    "label:finish",
+    "step:finish"
+  ]
+}

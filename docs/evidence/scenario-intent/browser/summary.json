@@ -1,0 +1,410 @@
+{
+  "coffee-dagre-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "coffee-dagre-390": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "coffee-dagre-plain-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "coffee-dagre-plain-390": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "coffee-elk-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "coffee-elk-390": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "coffee-elk-plain-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "coffee-elk-plain-390": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "door-dagre-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "door-dagre-390": {
+    "chromium": {
+      "presentation": "panel",
+      "hard": 2,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "panel",
+      "hard": 2,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "panel",
+      "hard": 2,
+      "presentedHard": 0
+    }
+  },
+  "door-dagre-plain-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "door-dagre-plain-390": {
+    "chromium": {
+      "presentation": "panel",
+      "hard": 2,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "panel",
+      "hard": 2,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "panel",
+      "hard": 2,
+      "presentedHard": 0
+    }
+  },
+  "door-elk-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "door-elk-390": {
+    "chromium": {
+      "presentation": "panel",
+      "hard": 17,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "panel",
+      "hard": 17,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "panel",
+      "hard": 17,
+      "presentedHard": 0
+    }
+  },
+  "door-elk-plain-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "door-elk-plain-390": {
+    "chromium": {
+      "presentation": "panel",
+      "hard": 28,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "panel",
+      "hard": 28,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "panel",
+      "hard": 28,
+      "presentedHard": 0
+    }
+  },
+  "gcd-dagre-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "gcd-dagre-390": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "gcd-dagre-plain-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "gcd-dagre-plain-390": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "gcd-elk-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "gcd-elk-390": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "gcd-elk-plain-1280": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  },
+  "gcd-elk-plain-390": {
+    "chromium": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "firefox": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    },
+    "webkit": {
+      "presentation": "wide",
+      "hard": 0,
+      "presentedHard": 0
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { test, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import {
   bookMaps,
+  exampleMaps,
   comparisonCopy,
   stripGeometry,
 } from "../../../scripts/comparison/maps.mjs";
@@ -11,6 +12,20 @@ import {
 } from "../../../scripts/comparison/coffee.mjs";
 import { SourceMapSchema } from "../../../src/schema";
 import { validateReferences } from "../../../src/layout/index";
+
+test("standalone comparison sources include defaults before reference validation", () => {
+  const examples = exampleMaps();
+  expect(examples.map(({ id }) => id)).toEqual(["coffee", "door", "gcd"]);
+  for (const { id, source } of examples) {
+    const original = JSON.parse(
+      readFileSync(`examples/${id}/map.json`, "utf8"),
+    );
+    expect(source.edges).toEqual(original.edges);
+    expect(source.title).toBe(original.title);
+    expect(source.frames).toEqual({});
+    expect(() => validateReferences(source)).not.toThrow();
+  }
+});
 
 test("all 23 stripped sources validate, without mutating book fixtures", () => {
   const originals = JSON.parse(

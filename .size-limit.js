@@ -5,8 +5,8 @@ const cases = [
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    // Candidate checks: measured 46901 B + 300 B (0.7%) margin.
-    limit: "47201 B",
+    // Partial label repairs with stabilization: measured 47374 B + 100 B margin.
+    limit: "47474 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -18,8 +18,8 @@ const cases = [
     // Author-approved increase: 14157 B -> 15725 B (+1568 B).
     // Wide/narrow checks, 1 em hysteresis, in-place geometry updates,
     // running token animations and a narrow-layout cache are needed together.
-    // Measured 15677 B + 48 B (0.3%) margin.
-    limit: "15725 B",
+    // Partial label repairs with stabilization: measured 15904 B + 100 B margin.
+    limit: "16004 B",
   },
   {
     name: "server render (pre-resolved map)",
@@ -49,8 +49,8 @@ const cases = [
       "dist/layout/index.js": "{ layout, measureLabel }",
     },
     gzip: true,
-    // Size audit before 0.3.0: measured 37803 B + margin (AGENTS.md "Size limits").
-    limit: "38803 B",
+    // Separate forward/return reading facts: measured 38845 B + 100 B margin.
+    limit: "38945 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",
@@ -59,8 +59,8 @@ const cases = [
       "dist/layout/stages/report.js": "{ check }",
     },
     gzip: true,
-    // Size audit before 0.3.0: measured 4747 B + margin (AGENTS.md "Size limits").
-    limit: "4889 B",
+    // Shared scenario intent and reading facts: measured 5126 B + 100 B margin.
+    limit: "5226 B",
   },
   {
     name: "complete root API (with Zod)",

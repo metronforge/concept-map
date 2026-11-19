@@ -6,7 +6,8 @@ import { dagreEngine } from "../../../src/layout/dagre";
 import { elkEngine } from "../../../src/layout/elk";
 import hashes from "./example-hashes.json";
 
-// Fixed geometry captured before shared number placement.
+// Fixed geometry captured before shared number placement, without scenario
+// preferences. Intent may move automatic layouts; the opt-out keeps this baseline.
 for (const name of ["coffee", "door", "gcd"] as const)
   for (const [id, engine] of [
     ["dagre", dagreEngine],
@@ -19,6 +20,7 @@ for (const name of ["coffee", "door", "gcd"] as const)
       const { measurement, nodes, lanes, frames, viewBox } = await layout(
         source,
         engine,
+        { intent: false },
       );
       expect(measurement?.name).toBe("font-table");
       const json = JSON.stringify({ nodes, lanes, frames, viewBox });

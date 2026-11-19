@@ -3,8 +3,8 @@ import type { LayoutNode, LayoutEdge, LayoutLane } from "./types.js";
 export type Strength = "required" | "preferred";
 export type Direction = "down" | "right";
 type Side = "top" | "right" | "bottom" | "left";
-/** Only direction and lanes are produced today. The remaining kinds reserve
- * the shared vocabulary for later intent, hints, relations and sketches. */
+/** Direction, lanes and scenario intent are produced today. The remaining
+ * kinds reserve the shared vocabulary for stated hints and fixed positions. */
 export type Constraint = { strength: Strength } & (
   | { kind: "direction"; direction: Direction }
   | { kind: "lanes"; direction: Direction; lanes: readonly string[] }

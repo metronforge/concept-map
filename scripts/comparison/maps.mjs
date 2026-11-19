@@ -49,8 +49,18 @@ export function bookMaps() {
       manual: comparisonCopy(map),
       note:
         id === "2-1"
-          ? "All three versions omit only timeout_outer (timeout to the outer frame) and its step reference. Frame endpoints are not implemented yet. The original book fixture is unchanged."
+          ? "Every variant omits only timeout_outer (timeout to the outer frame) and its step reference. Frame endpoints are not implemented yet. The original book fixture is unchanged."
           : "",
     }),
   );
+}
+
+export function exampleMaps() {
+  return ["coffee", "door", "gcd"].map((id) => ({
+    id,
+    source: SourceMapSchema.parse(
+      JSON.parse(readFileSync(`examples/${id}/map.json`, "utf8")),
+    ),
+    note: "Current standalone example. No hand-drawn reference is available.",
+  }));
 }

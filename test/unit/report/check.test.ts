@@ -30,7 +30,7 @@ describe("check", () => {
     const r = report(map());
     expect(r.hard).toBe(0);
     expect(r.crossings.count).toBe(0);
-    expect(r.reading).toEqual({ edges: 1, forward: 1, share: 1 });
+    expect(r.reading).toMatchObject({ edges: 1, forward: 1, share: 1 });
     expect(r.text).toEqual({ width: 19.05, height: 19.05 });
   });
 
@@ -111,7 +111,7 @@ describe("check", () => {
         m.edges.ab.path = "M35 100 V40";
       }),
     );
-    expect(up.reading).toEqual({ edges: 1, forward: 0, share: 0 });
+    expect(up.reading).toMatchObject({ edges: 1, forward: 0, share: 0 });
   });
 
   it("refuses a resolved map that does not match the source", () => {
@@ -169,32 +169,9 @@ const example = (name: string) =>
 
 describe("recorded baseline", () => {
   it("matches the hand-drawn book maps", () => {
-    const expected = recorded("book.json");
-    // The original baseline omitted node step numbers. These additional tight
-    // contacts are checked explicitly; no original contact or hard count changes.
-    expected["4-1"].steps.labels.push({
-      a: "label:probe_ready",
-      b: "node-step:3:the-default-readiness-deadline-e",
-      band: "tight",
-      gap: 0.11,
-    });
-    expected["5-1"].steps.labels.push(
-      {
-        a: "label:deadline",
-        b: "node-step:0:the-final-wait-repeats",
-        band: "tight",
-        gap: -0.024,
-      },
-      {
-        a: "label:deadline",
-        b: "node-step:3:after-failed-tries-both-wait-100",
-        band: "tight",
-        gap: -0.024,
-      },
-    );
     expect(
       Object.fromEntries(book.map(({ id, map: m }) => [id, check(m, m)])),
-    ).toEqual(expected);
+    ).toEqual(recorded("book.json"));
   });
   it("matches the examples laid out by each engine", async () => {
     const reports: Record<string, LayoutReport> = {};
@@ -208,6 +185,27 @@ describe("recorded baseline", () => {
           await layout(example(name), engine),
         );
     expect(reports).toEqual(recorded("examples.json"));
+  });
+  it("keeps automatic examples clear with and without scenario intent", async () => {
+    for (const name of ["coffee", "door", "gcd"])
+      for (const engine of [dagreEngine, elkEngine]) {
+        const source = example(name);
+        const without = check(
+          source,
+          await layout(source, engine, { intent: false }),
+        );
+        const withIntent = check(source, await layout(source, engine));
+        expect(without.hard).toBe(0);
+        expect(withIntent.hard).toBe(0);
+        expect(withIntent.reading.nonReturn.share).toBe(1);
+        expect(withIntent.reading.nonReturn.share).toBeGreaterThanOrEqual(
+          without.reading.nonReturn.share!,
+        );
+        expect(withIntent.reading.returns.share).toBe(1);
+        expect(withIntent.crossings.count).toBeLessThanOrEqual(
+          without.crossings.count,
+        );
+      }
   });
 });
 

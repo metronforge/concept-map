@@ -10,6 +10,7 @@ export function* labelCandidates(
   box: LayoutBox,
   route: Segment[],
   limit: number,
+  obstacles: LayoutBox[],
 ) {
   for (const [a, b] of route)
     for (let part = 0; part <= 16; part++) {
@@ -20,6 +21,21 @@ export function* labelCandidates(
           yield [x + dx, y + dy] as LayoutPoint;
     }
   yield* badgeCandidates([box[0], box[1]], limit);
+  yield* obstacleCandidates(box, obstacles);
+}
+
+/** Sample narrow slots that regular route and radial intervals can miss. */
+function* obstacleCandidates(box: LayoutBox, obstacles: LayoutBox[]) {
+  const boundaries = (axis: 0 | 1) => [
+    box[axis],
+    ...obstacles.flatMap((other) => [
+      other[axis] - box[axis + 2] - 1 / 64,
+      other[axis] + other[axis + 2] + 1 / 64,
+    ]),
+  ];
+  const xs = boundaries(0),
+    ys = boundaries(1);
+  for (const x of xs) for (const y of ys) yield [x, y] as LayoutPoint;
 }
 
 /** Prefer the own route over unrelated arrows, then the smallest move. */

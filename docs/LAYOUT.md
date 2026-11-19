@@ -208,6 +208,35 @@ required. Both built-in placers declare these capabilities. The existing
 `LayoutEngine` interface and adapter exports are unchanged; custom engines
 are bridged using the direction and lane obligations of that interface.
 
+The first scenario supplies preferred node order, main-path arrows, and
+return arrows that should not influence ranks. Dagre uses the node order
+when inserting nodes into its graph, guiding where it breaks cycles. This
+is a preference, not a guarantee of ranks. Dagre reverses return arrows for
+ranking, then restores their travel direction; self-loops remain outside rank
+assignment. Dagre gives every main-path arrow a higher weight, including
+reversed returns, to favour shorter, straighter routes. ELK gives main-path
+arrows higher straightness priority during node placement. ELK uses scenario
+node order to guide cycle breaking and gives forward arrows higher direction
+priority. Required lane order takes precedence. Like dagre, it reverses return
+arrows for ranking and restores their travel direction afterwards. Both adapters
+honour all three derived preferences; they do not guarantee a particular drawing.
+
+Intent is enabled by default. To compare an engine's graph-only placement
+with these preferences, pass `{ intent: false }` to `layout()`. This omits
+only the derived order, main path and free-edge constraints; direction and
+required lane constraints still apply. The option also applies to the second
+layout pass when `widthEm` is supplied. Hand geometry is retained with either
+setting.
+
+`npm run comparison:build` builds `comparison-dist/index.html` with both
+settings for each engine, a server `check()` report beside every drawing,
+and the unchanged hand references where available. Coffee, door and gcd use
+the exact sources in `examples/`; the original coffee comparison remains
+separately labelled because its source differs from the current example.
+The page's reports judge saved geometry with font tables. Players may refine
+labels or move them to the panel at the displayed width, so these reports
+do not replace the browser acceptance checks.
+
 Before placement, unsupported required constraints name the constraint and
 placer in an error. Unsupported preferences are listed in the internal
 placement outcome. An engine exception, an unsupported capability, and a
@@ -215,8 +244,22 @@ rejected result are separate tagged outcomes. After placement, the
 checker verifies lanes from the original source and resolved geometry, even
 without `strict`; `check(source, resolved)` uses the same rule. It uses the
 renderer's viewport defaults for hand-drawn lanes without explicit widths.
-Direction remains descriptive in the existing `reading` report. No new
-constraint hints or placement algorithms are added here.
+Direction remains descriptive in the `reading` report. Its existing `edges`,
+`forward` and `share` fields count non-self arrows of the first scenario in
+travel direction, including returns. Each edge/direction pair counts once.
+The flow supplies travel direction; steps supply arrows when the flow has none.
+
+`reading.nonReturn` has the same three fields for arrows not classified as
+`free` by derived intent. Use its `share` to judge forward progress without
+penalizing intentional returns. Classification comes from the source scenario,
+even when the drawing was made with `{ intent: false }` or by hand.
+`reading.returns` reports `edges` (non-self return traversals), `backward`
+(those travelled against the reading direction), and their `share`.
+`selfLoops` separately counts self-loop traversals. Add it to `edges` for the
+total number of returns. A return at the same rank is not backward: node
+centres must differ by more than the existing measurement tolerance.
+All shares are rounded to three decimals and are `null` for an empty denominator.
+These are descriptive facts; they add no hard defects or layout requirements.
 
 ### Layout errors and constraint reports
 

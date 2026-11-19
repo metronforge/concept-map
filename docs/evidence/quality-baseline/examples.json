@@ -2,10 +2,6 @@
   "coffee dagre": {
     "hard": 0,
     "constraints": [],
-    "crossings": {
-      "count": 1,
-      "pairs": [["ready", "offer"]]
-    },
     "labels": {
       "labels": [],
       "lines": [
@@ -26,10 +22,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 1,
+      "pairs": [["ready", "offer"]]
+    },
     "reading": {
       "edges": 3,
       "forward": 2,
-      "share": 0.667
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 2,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 50.4,
@@ -39,10 +50,6 @@
   "coffee elk": {
     "hard": 0,
     "constraints": [],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -56,23 +63,34 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 3,
       "forward": 2,
-      "share": 0.667
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 2,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
     },
     "text": {
-      "width": 63.64,
-      "height": 15.64
+      "width": 62.59,
+      "height": 11.45
     }
   },
   "door dagre": {
     "hard": 0,
     "constraints": [],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [
         {
@@ -106,10 +124,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 6,
       "forward": 4,
-      "share": 0.667
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 1
+      }
     },
     "text": {
       "width": 78.5,
@@ -119,10 +152,6 @@
   "door elk": {
     "hard": 0,
     "constraints": [],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -136,10 +165,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 6,
       "forward": 4,
-      "share": 0.667
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 1
+      }
     },
     "text": {
       "width": 90.69,
@@ -149,10 +193,6 @@
   "gcd dagre": {
     "hard": 0,
     "constraints": [],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [],
@@ -166,10 +206,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 5,
       "forward": 4,
-      "share": 0.8
+      "share": 0.8,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 30.99,
@@ -179,10 +234,6 @@
   "gcd elk": {
     "hard": 0,
     "constraints": [],
-    "crossings": {
-      "count": 0,
-      "pairs": []
-    },
     "labels": {
       "labels": [],
       "lines": [
@@ -221,10 +272,25 @@
     "lines": {
       "boxes": []
     },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
     "reading": {
       "edges": 5,
       "forward": 4,
-      "share": 0.8
+      "share": 0.8,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
     },
     "text": {
       "width": 29.9,

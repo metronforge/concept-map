@@ -1,0 +1,231 @@
+{
+  "viewport": 390,
+  "report": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [
+        {
+          "a": "label:ready",
+          "b": "label:empty",
+          "band": "tight",
+          "gap": 0.001,
+          "uncertainty": 0.071
+        }
+      ],
+      "lines": [
+        {
+          "a": "label:order",
+          "b": "line:order",
+          "band": "tight",
+          "gap": 0.105,
+          "uncertainty": 0.035
+        },
+        {
+          "a": "label:ticket",
+          "b": "line:ticket",
+          "band": "tight",
+          "gap": 0.105,
+          "uncertainty": 0.035
+        },
+        {
+          "a": "label:ready",
+          "b": "line:ready",
+          "band": "tight",
+          "gap": 0.105,
+          "uncertainty": 0.035
+        },
+        {
+          "a": "label:empty",
+          "b": "line:ready",
+          "band": "tight",
+          "gap": 0.105,
+          "uncertainty": 0.035
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:offer",
+          "b": "node:cashier",
+          "band": "tight",
+          "gap": 0.005,
+          "uncertainty": 0.035
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 2,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 62.59,
+      "height": 11.45
+    }
+  },
+  "presentation": "wide",
+  "presentationReport": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [
+        {
+          "a": "label:ready",
+          "b": "label:empty",
+          "band": "tight",
+          "gap": 0.001,
+          "uncertainty": 0.071
+        }
+      ],
+      "lines": [
+        {
+          "a": "label:order",
+          "b": "line:order",
+          "band": "tight",
+          "gap": 0.105,
+          "uncertainty": 0.035
+        },
+        {
+          "a": "label:ticket",
+          "b": "line:ticket",
+          "band": "tight",
+          "gap": 0.105,
+          "uncertainty": 0.035
+        },
+        {
+          "a": "label:ready",
+          "b": "line:ready",
+          "band": "tight",
+          "gap": 0.105,
+          "uncertainty": 0.035
+        },
+        {
+          "a": "label:empty",
+          "b": "line:ready",
+          "band": "tight",
+          "gap": 0.105,
+          "uncertainty": 0.035
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:offer",
+          "b": "node:cashier",
+          "band": "tight",
+          "gap": 0.005,
+          "uncertainty": 0.035
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 2,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 62.59,
+      "height": 11.45
+    }
+  },
+  "presentationDefects": [],
+  "measurement": {
+    "name": "dom",
+    "labels": {
+      "order": {
+        "width": 71.5,
+        "height": 28.5,
+        "ascent": 22.75,
+        "uncertainty": 0.37109375,
+        "padding": 2
+      },
+      "ticket": {
+        "width": 157.3000030517578,
+        "height": 28.5,
+        "ascent": 22.75,
+        "uncertainty": 0.37109375,
+        "padding": 2
+      },
+      "ready": {
+        "width": 171.60000610351562,
+        "height": 28.5,
+        "ascent": 22.75,
+        "uncertainty": 0.37109375,
+        "padding": 2
+      },
+      "empty": {
+        "width": 157.3000030517578,
+        "height": 28.5,
+        "ascent": 22.75,
+        "uncertainty": 0.37109375,
+        "padding": 2
+      },
+      "offer": {
+        "width": 214.5,
+        "height": 28.5,
+        "ascent": 22.75,
+        "uncertainty": 0.37109375,
+        "padding": 2
+      }
+    }
+  },
+  "defects": [],
+  "serverHard": 0,
+  "moved": [
+    "label:order",
+    "step:order",
+    "label:ticket",
+    "step:ticket",
+    "label:ready",
+    "step:ready",
+    "label:empty",
+    "step:empty",
+    "label:offer",
+    "step:offer"
+  ]
+}

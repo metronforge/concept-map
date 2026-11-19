@@ -55,6 +55,8 @@ test("unsupported preferred constraints are listed while placement continues", a
     result,
     unsupported: [
       { kind: "direction", strength: "preferred", direction: "down" },
+      { kind: "order", strength: "preferred", nodes: ["a", "b"] },
+      { kind: "mainPath", strength: "preferred", edges: ["ab"] },
     ],
   });
 });
@@ -109,6 +111,8 @@ property.prop([fc.string(), fc.constantFrom("down", "right"), fc.boolean()])(
             },
           ]
         : []),
+      { kind: "order", strength: "preferred", nodes: ["a", "b"] },
+      { kind: "mainPath", strength: "preferred", edges: ["ab"] },
     ]);
     expect(a.groups.map((g) => g.id)).toEqual(Object.keys(source.lanes));
     expect(JSON.stringify(a)).not.toMatch(

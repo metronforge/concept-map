@@ -1,0 +1,209 @@
+{
+  "viewport": 1280,
+  "report": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:order",
+          "b": "line:order",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        },
+        {
+          "a": "label:ticket",
+          "b": "line:ticket",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        },
+        {
+          "a": "label:ready",
+          "b": "line:ready",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        },
+        {
+          "a": "label:empty",
+          "b": "line:empty",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        },
+        {
+          "a": "label:offer",
+          "b": "line:offer",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 2,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 62.59,
+      "height": 11.45
+    }
+  },
+  "presentation": "wide",
+  "presentationReport": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:order",
+          "b": "line:order",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        },
+        {
+          "a": "label:ticket",
+          "b": "line:ticket",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        },
+        {
+          "a": "label:ready",
+          "b": "line:ready",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        },
+        {
+          "a": "label:empty",
+          "b": "line:empty",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        },
+        {
+          "a": "label:offer",
+          "b": "line:offer",
+          "band": "tight",
+          "gap": 0.231,
+          "uncertainty": 0.017
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 2,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 62.59,
+      "height": 11.45
+    }
+  },
+  "presentationDefects": [],
+  "measurement": {
+    "name": "dom",
+    "labels": {
+      "order": {
+        "width": 34.53125,
+        "height": 13.75,
+        "ascent": 10,
+        "uncertainty": 0.1792703125,
+        "padding": 2.08782958984375
+      },
+      "ticket": {
+        "width": 75.953125,
+        "height": 13.75,
+        "ascent": 10,
+        "uncertainty": 0.1792703125,
+        "padding": 2.094573974609375
+      },
+      "ready": {
+        "width": 82.859375,
+        "height": 13.75,
+        "ascent": 10,
+        "uncertainty": 0.1792703125,
+        "padding": 2.0930938720703125
+      },
+      "empty": {
+        "width": 75.953125,
+        "height": 13.75,
+        "ascent": 10,
+        "uncertainty": 0.1792703125,
+        "padding": 2.094573974609375
+      },
+      "offer": {
+        "width": 103.578125,
+        "height": 13.75,
+        "ascent": 10,
+        "uncertainty": 0.1792703125,
+        "padding": 2.088653564453125
+      }
+    }
+  },
+  "defects": [],
+  "serverHard": 0,
+  "moved": [
+    "label:order",
+    "label:ticket",
+    "label:ready",
+    "label:empty",
+    "label:offer",
+    "step:offer"
+  ]
+}

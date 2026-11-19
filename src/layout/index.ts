@@ -57,7 +57,7 @@ export async function layout(
       atWidth(measurer, map, options.widthEm).measure,
       options,
     );
-  let resolved = await resolveSource(map, engine, measurer);
+  let resolved = await resolveSource(map, engine, measurer, options.intent);
   if (
     options.widthEm !== undefined &&
     resolved.viewBox[0] / options.widthEm > 10.5
@@ -66,6 +66,7 @@ export async function layout(
       map,
       engine,
       atWidth(measurer, resolved, options.widthEm),
+      options.intent,
     );
     resolved = refine(resolved, atWidth(measurer, resolved, options.widthEm));
   }
@@ -81,9 +82,10 @@ async function resolveSource(
   map: SourceMap,
   engine: LayoutEngine,
   measurer: Measurer,
+  intent: boolean | undefined,
 ): Promise<ResolvedMap> {
   const measure = measurer.measure.bind(measurer);
-  const problem = buildProblem(map, measure);
+  const problem = buildProblem(map, measure, intent);
   const graph = problemGraph(problem);
   const placer = asPlacer(engine);
   const outcome = await place(problem, placer);

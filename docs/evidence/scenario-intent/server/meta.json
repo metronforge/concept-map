@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-11-19T16:19:49.533Z",
+  "revision": "e8aba33270bf784f6737a16df07710b146b42045",
+  "dirty": true,
+  "environment": {
+    "node": "v26.13.1",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "Intel(R) Core(TM) Ultra 9 185H"
+  },
+  "versions": {
+    "dagre": "3.1.3",
+    "elk": "0.12.1",
+    "zod": "4.6.7",
+    "rolldown": "1.3.2"
+  },
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "timing": {
+    "warmups": 1,
+    "samples": 5,
+    "statistic": "median",
+    "scope": "complete layout(), excluding module import, rendering and serialization"
+  },
+  "bundles": {
+    "dagre": {
+      "raw": 188433,
+      "gzip": 56836
+    },
+    "elk": {
+      "raw": 1606853,
+      "gzip": 487848
+    }
+  }
+}

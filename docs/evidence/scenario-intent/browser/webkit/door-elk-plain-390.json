@@ -1,0 +1,440 @@
+{
+  "viewport": 390,
+  "report": {
+    "hard": 28,
+    "constraints": [],
+    "labels": {
+      "labels": [
+        {
+          "a": "label:start",
+          "b": "label:finish",
+          "band": "defect",
+          "gap": -2.59,
+          "uncertainty": 0.102
+        },
+        {
+          "a": "label:open",
+          "b": "label:close",
+          "band": "defect",
+          "gap": -1.111,
+          "uncertainty": 0.102
+        },
+        {
+          "a": "label:lock",
+          "b": "label:unlock",
+          "band": "defect",
+          "gap": -1.111,
+          "uncertainty": 0.102
+        }
+      ],
+      "lines": [
+        {
+          "a": "label:start",
+          "b": "line:start",
+          "band": "defect",
+          "gap": -1.079,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:start",
+          "b": "line:open",
+          "band": "defect",
+          "gap": -0.505,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:start",
+          "b": "line:close",
+          "band": "tight",
+          "gap": 0.064,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:start",
+          "b": "line:lock",
+          "band": "defect",
+          "gap": -0.505,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:start",
+          "b": "line:unlock",
+          "band": "defect",
+          "gap": -0.505,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:start",
+          "b": "line:finish",
+          "band": "defect",
+          "gap": -0.505,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:open",
+          "b": "line:open",
+          "band": "defect",
+          "gap": -2.851,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:open",
+          "b": "line:close",
+          "band": "defect",
+          "gap": -3.898,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:close",
+          "b": "line:open",
+          "band": "tight",
+          "gap": -0.032,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:close",
+          "b": "line:close",
+          "band": "defect",
+          "gap": -1.175,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:lock",
+          "b": "line:open",
+          "band": "defect",
+          "gap": -5.27,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:lock",
+          "b": "line:close",
+          "band": "defect",
+          "gap": -4.698,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:lock",
+          "b": "line:lock",
+          "band": "defect",
+          "gap": -2.851,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:lock",
+          "b": "line:unlock",
+          "band": "defect",
+          "gap": -3.898,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:unlock",
+          "b": "line:open",
+          "band": "defect",
+          "gap": -8.089,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:unlock",
+          "b": "line:close",
+          "band": "defect",
+          "gap": -7.517,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:unlock",
+          "b": "line:lock",
+          "band": "tight",
+          "gap": -0.032,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:unlock",
+          "b": "line:unlock",
+          "band": "defect",
+          "gap": -1.175,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:blocked",
+          "b": "line:blocked",
+          "band": "defect",
+          "gap": -1.109,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:finish",
+          "b": "line:start",
+          "band": "tight",
+          "gap": 0.26,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:finish",
+          "b": "line:lock",
+          "band": "defect",
+          "gap": -0.311,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:finish",
+          "b": "line:unlock",
+          "band": "tight",
+          "gap": 0.26,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:finish",
+          "b": "line:finish",
+          "band": "defect",
+          "gap": -0.882,
+          "uncertainty": 0.051
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:start",
+          "b": "node:start",
+          "band": "defect",
+          "gap": -2.794,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:start",
+          "b": "node:closed",
+          "band": "defect",
+          "gap": -2.794,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:open",
+          "b": "node:open",
+          "band": "defect",
+          "gap": -2.222,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:close",
+          "b": "node:open",
+          "band": "defect",
+          "gap": -2.317,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:lock",
+          "b": "node:closed",
+          "band": "tight",
+          "gap": 0.197,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:lock",
+          "b": "node:locked",
+          "band": "defect",
+          "gap": -1.38,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:unlock",
+          "b": "node:locked",
+          "band": "defect",
+          "gap": -2.317,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:finish",
+          "b": "node:closed",
+          "band": "defect",
+          "gap": -1.454,
+          "uncertainty": 0.051
+        },
+        {
+          "a": "label:finish",
+          "b": "node:end",
+          "band": "tight",
+          "gap": 0.001,
+          "uncertainty": 0.051
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 6,
+      "forward": 4,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 1
+      }
+    },
+    "text": {
+      "width": 90.69,
+      "height": 22.02
+    }
+  },
+  "presentation": "panel",
+  "presentationReport": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 6,
+      "forward": 4,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 1
+      }
+    },
+    "text": {
+      "width": 90.69,
+      "height": 22.02
+    }
+  },
+  "presentationDefects": [],
+  "measurement": {
+    "name": "dom",
+    "labels": {
+      "start": {
+        "width": 393.40625,
+        "height": 41.265625,
+        "ascent": 32.625,
+        "uncertainty": 0.537579171875,
+        "padding": 2
+      },
+      "open": {
+        "width": 455.515625,
+        "height": 41.265625,
+        "ascent": 32.625,
+        "uncertainty": 0.537579171875,
+        "padding": 2
+      },
+      "close": {
+        "width": 393.40625,
+        "height": 41.265625,
+        "ascent": 32.625,
+        "uncertainty": 0.537579171875,
+        "padding": 2
+      },
+      "lock": {
+        "width": 414.109375,
+        "height": 41.265625,
+        "ascent": 32.625,
+        "uncertainty": 0.537579171875,
+        "padding": 2.26995849609375
+      },
+      "unlock": {
+        "width": 455.515625,
+        "height": 41.265625,
+        "ascent": 32.625,
+        "uncertainty": 0.537579171875,
+        "padding": 2.27349853515625
+      },
+      "blocked": {
+        "width": 186.359375,
+        "height": 144.480826,
+        "ascent": 84.2326005,
+        "uncertainty": 0.537579171875,
+        "wrap": {
+          "lines": ["push ", "[locked] ", "/ ", "rattle"],
+          "lineHeight": 34.405067
+        },
+        "padding": 2
+      },
+      "finish": {
+        "width": 414.109375,
+        "height": 41.265625,
+        "ascent": 32.625,
+        "uncertainty": 0.537579171875,
+        "padding": 2
+      }
+    }
+  },
+  "defects": [
+    "arrow labels overlap: label:start and label:finish",
+    "arrow labels overlap: label:open and label:close",
+    "arrow labels overlap: label:lock and label:unlock",
+    "a line crosses an arrow label: label:start and line:start",
+    "a line crosses an arrow label: label:start and line:open",
+    "a line crosses an arrow label: label:start and line:lock",
+    "a line crosses an arrow label: label:start and line:unlock",
+    "a line crosses an arrow label: label:start and line:finish",
+    "a line crosses an arrow label: label:open and line:open",
+    "a line crosses an arrow label: label:open and line:close",
+    "a line crosses an arrow label: label:close and line:close",
+    "a line crosses an arrow label: label:lock and line:open",
+    "a line crosses an arrow label: label:lock and line:close",
+    "a line crosses an arrow label: label:lock and line:lock",
+    "a line crosses an arrow label: label:lock and line:unlock",
+    "a line crosses an arrow label: label:unlock and line:open",
+    "a line crosses an arrow label: label:unlock and line:close",
+    "a line crosses an arrow label: label:unlock and line:unlock",
+    "a line crosses an arrow label: label:blocked and line:blocked",
+    "a line crosses an arrow label: label:finish and line:lock",
+    "a line crosses an arrow label: label:finish and line:finish",
+    "an arrow label covers a box: label:start and node:start",
+    "an arrow label covers a box: label:start and node:closed",
+    "an arrow label covers a box: label:open and node:open",
+    "an arrow label covers a box: label:close and node:open",
+    "an arrow label covers a box: label:lock and node:locked",
+    "an arrow label covers a box: label:unlock and node:locked",
+    "an arrow label covers a box: label:finish and node:closed"
+  ],
+  "serverHard": 0,
+  "moved": [
+    "label:start",
+    "step:start",
+    "label:open",
+    "step:open",
+    "label:close",
+    "step:close",
+    "label:lock",
+    "step:lock",
+    "label:unlock",
+    "step:unlock",
+    "label:blocked",
+    "step:blocked",
+    "label:finish",
+    "step:finish"
+  ]
+}

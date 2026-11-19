@@ -1,0 +1,155 @@
+{
+  "viewport": 390,
+  "report": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:input",
+          "b": "step:input",
+          "band": "tight",
+          "gap": 0.201,
+          "uncertainty": 0.017
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 4,
+      "share": 0.8,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 30.99,
+      "height": 38.65
+    }
+  },
+  "presentation": "wide",
+  "presentationReport": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:input",
+          "b": "step:input",
+          "band": "tight",
+          "gap": 0.201,
+          "uncertainty": 0.017
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 4,
+      "share": 0.8,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 30.99,
+      "height": 38.65
+    }
+  },
+  "presentationDefects": [],
+  "measurement": {
+    "name": "dom",
+    "labels": {
+      "input": {
+        "width": 35.375,
+        "height": 14.09375,
+        "ascent": 11.046875,
+        "uncertainty": 0.183672078125,
+        "padding": 2
+      },
+      "no": {
+        "width": 14.15625,
+        "height": 14.09375,
+        "ascent": 11.046875,
+        "uncertainty": 0.183672078125,
+        "padding": 2
+      },
+      "assign": {
+        "width": 42.453125,
+        "height": 14.09375,
+        "ascent": 11.046875,
+        "uncertainty": 0.183672078125,
+        "padding": 2
+      },
+      "loop": {
+        "width": 42.453125,
+        "height": 14.09375,
+        "ascent": 11.046875,
+        "uncertainty": 0.183672078125,
+        "padding": 2
+      },
+      "yes": {
+        "width": 21.234375,
+        "height": 14.09375,
+        "ascent": 11.046875,
+        "uncertainty": 0.183672078125,
+        "padding": 2
+      }
+    }
+  },
+  "defects": [],
+  "serverHard": 0,
+  "moved": [
+    "label:input",
+    "label:no",
+    "label:assign",
+    "label:loop",
+    "step:loop",
+    "label:yes",
+    "repeat:0:turn-1",
+    "repeat:0:turn-3"
+  ]
+}

@@ -1,5 +1,6 @@
 import type { Placer } from "./ports.js";
-import { problemGraph } from "./build-problem.js";
+import { orderedGraph } from "./build-problem.js";
+import { reverseFreeEdges, restoreFreeEdges } from "./free-edges.js";
 import dagre from "@dagrejs/dagre";
 import type { GraphLabel, NodeLabel, EdgeLabel, Point } from "@dagrejs/dagre";
 import type {
@@ -103,36 +104,18 @@ const adapter: LayoutEngine & Placer = {
     mainPath: "preferred",
   },
   async place(problem) {
-    const graph = problemGraph(problem);
+    const graph = orderedGraph(problem);
     const free = new Set(
       problem.constraints.filter((c) => c.kind === "free").map((c) => c.edge),
     );
-    const order = problem.constraints.find((c) => c.kind === "order");
-    if (order) {
-      const rank = new Map(order.nodes.map((id, i) => [id, i]));
-      // Insertion order guides dagre's cycle breaking; unlisted nodes stay last.
-      graph.nodes = [...graph.nodes].sort(
-        (a, b) =>
-          (rank.get(a.id) ?? order.nodes.length) -
-          (rank.get(b.id) ?? order.nodes.length),
-      );
-    }
-    // Return arrows participate in forward ranking, like dagre's cycle breaker.
-    // Insert them last so parallel routes keep the cycle breaker's ordering.
-    graph.edges = [...graph.edges]
-      .sort((a, b) => Number(free.has(a.id)) - Number(free.has(b.id)))
-      .map((e) => (free.has(e.id) ? { ...e, from: e.to, to: e.from } : e));
     // Include returns: after reversal they pull with the forward path.
     const main = new Set(
       problem.constraints
         .filter((c) => c.kind === "mainPath")
         .flatMap((c) => c.edges),
     );
-    const result = await layoutDagre(graph, main);
-    for (const edge of graph.edges)
-      if (free.has(edge.id) && edge.from !== edge.to)
-        result.edges[edge.id].points.reverse();
-    return result;
+    const result = await layoutDagre(reverseFreeEdges(graph, free), main);
+    return restoreFreeEdges(graph, result, free);
   },
   layout: layoutDagre,
 };

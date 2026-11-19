@@ -41,3 +41,18 @@ export function problemGraph(problem: LayoutProblem): LayoutGraph {
     lanes: problem.groups,
   };
 }
+
+/** Copy nodes into preferred scenario order; unlisted nodes retain their order. */
+export function orderedGraph(problem: LayoutProblem): LayoutGraph {
+  const graph = problemGraph(problem);
+  const order = problem.constraints.find((c) => c.kind === "order");
+  if (order) {
+    const rank = new Map(order.nodes.map((id, i) => [id, i]));
+    graph.nodes = [...graph.nodes].sort(
+      (a, b) =>
+        (rank.get(a.id) ?? order.nodes.length) -
+        (rank.get(b.id) ?? order.nodes.length),
+    );
+  }
+  return graph;
+}

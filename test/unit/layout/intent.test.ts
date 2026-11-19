@@ -131,16 +131,13 @@ test("nodes without visits retain source order and no main path is invented", ()
 });
 
 for (const engine of [dagreEngine, elkEngine])
-  test(`${engine.name}: preferred intent remains visible when the adapter cannot honour it`, async () => {
+  test(`${engine.name}: honours every derived preference`, async () => {
     const outcome = await place(
       buildProblem(source(forward), measureLabel),
       asPlacer(engine),
     );
     expect(outcome).toMatchObject({
       kind: "placed",
-      unsupported:
-        engine === dagreEngine
-          ? []
-          : expected.filter((c) => c.kind !== "mainPath"),
+      unsupported: [],
     });
   });

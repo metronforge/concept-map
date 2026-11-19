@@ -215,8 +215,11 @@ is a preference, not a guarantee of ranks. Dagre reverses return arrows for
 ranking, then restores their travel direction; self-loops remain outside rank
 assignment. Dagre gives every main-path arrow a higher weight, including
 reversed returns, to favour shorter, straighter routes. ELK gives main-path
-arrows higher straightness priority during node placement. ELK still reports
-node order and free edges as unsupported.
+arrows higher straightness priority during node placement. ELK uses scenario
+node order to guide cycle breaking and gives forward arrows higher direction
+priority. Required lane order takes precedence. Like dagre, it reverses return
+arrows for ranking and restores their travel direction afterwards. Both adapters
+honour all three derived preferences; they do not guarantee a particular drawing.
 
 Intent is enabled by default. To compare an engine's graph-only placement
 with these preferences, pass `{ intent: false }` to `layout()`. This omits

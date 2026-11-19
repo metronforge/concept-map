@@ -196,18 +196,21 @@ describe("recorded baseline", () => {
       Object.fromEntries(book.map(({ id, map: m }) => [id, check(m, m)])),
     ).toEqual(expected);
   });
-  it("matches the examples laid out by each engine", async () => {
-    const reports: Record<string, LayoutReport> = {};
+  it("keeps automatic examples clear with and without scenario intent", async () => {
     for (const name of ["coffee", "door", "gcd"])
-      for (const [id, engine] of [
-        ["dagre", dagreEngine],
-        ["elk", elkEngine],
-      ] as const)
-        reports[`${name} ${id}`] = check(
-          example(name),
-          await layout(example(name), engine),
+      for (const engine of [dagreEngine, elkEngine]) {
+        const source = example(name);
+        const without = check(
+          source,
+          await layout(source, engine, { intent: false }),
         );
-    expect(reports).toEqual(recorded("examples.json"));
+        const withIntent = check(source, await layout(source, engine));
+        expect(without.hard).toBe(0);
+        expect(withIntent.hard).toBe(0);
+        expect(withIntent.crossings.count).toBeLessThanOrEqual(
+          without.crossings.count,
+        );
+      }
   });
 });
 

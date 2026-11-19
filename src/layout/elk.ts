@@ -1,5 +1,6 @@
 import type { Placer } from "./ports.js";
-import { problemGraph } from "./build-problem.js";
+import { orderedGraph } from "./build-problem.js";
+import { reverseFreeEdges, restoreFreeEdges } from "./free-edges.js";
 import ELK from "elkjs/lib/elk.bundled.js";
 import type {
   ElkNode,
@@ -99,15 +100,37 @@ function route(edge: ElkExtendedEdge): LayoutRoute {
       : {}),
   };
 }
+function preferModelOrder(input: ElkNode): void {
+  const rank = new Map(input.children!.map((node, i) => [node.id, i]));
+  // Required partitions take precedence over preferred scenario order.
+  input.children!.sort(
+    (a, b) =>
+      Number(a.layoutOptions!["elk.partitioning.partition"]) -
+      Number(b.layoutOptions!["elk.partitioning.partition"]),
+  );
+  input.layoutOptions!["elk.layered.cycleBreaking.strategy"] =
+    "GREEDY_MODEL_ORDER";
+  for (const edge of input.edges! as ElkExtendedEdge[]) {
+    // Prefer cycle breaks that preserve arrows advancing through the scenario.
+    if (rank.get(edge.sources[0])! < rank.get(edge.targets[0])!)
+      edge.layoutOptions = {
+        ...edge.layoutOptions,
+        "elk.layered.priority.direction": "5",
+      };
+  }
+}
 async function layoutElk(
   graph: LayoutGraph,
   main: ReadonlySet<string> = new Set(),
+  modelOrder = false,
 ): Promise<LayoutResult> {
   const nodes = engineNodes(graph),
     elk = new (ELK as unknown as { new (): ElkApi })();
   // Bundled ELK uses an in-process worker; there is no worker to terminate.
   {
-    const output = await elk.layout(elkGraph(graph, nodes, main));
+    const input = elkGraph(graph, nodes, main);
+    if (modelOrder) preferModelOrder(input);
+    const output = await elk.layout(input);
     const result: LayoutResult = { nodes: {}, edges: {}, lanes: {} };
     for (const n of output.children ?? [])
       result.nodes[n.id.slice(2)] = [
@@ -128,14 +151,25 @@ const adapter: LayoutEngine & Placer = {
     direction: "preferred",
     lanes: "required",
     mainPath: "preferred",
+    order: "preferred",
+    free: "preferred",
   },
-  place(problem) {
+  async place(problem) {
+    const graph = orderedGraph(problem);
+    const free = new Set(
+      problem.constraints.filter((c) => c.kind === "free").map((c) => c.edge),
+    );
     const main = new Set(
       problem.constraints
         .filter((c) => c.kind === "mainPath")
         .flatMap((c) => c.edges),
     );
-    return layoutElk(problemGraph(problem), main);
+    const result = await layoutElk(
+      reverseFreeEdges(graph, free),
+      main,
+      problem.constraints.some((c) => c.kind === "order"),
+    );
+    return restoreFreeEdges(graph, result, free);
   },
   layout: layoutElk,
 };

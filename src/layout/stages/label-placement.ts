@@ -13,6 +13,7 @@ import { labelBox } from "./number-placement.js";
 /** Keep clear labels; move crossed labels to the least-cost clear candidate. */
 export function placeLabels(map: ResolvedMap): ResolvedMap {
   const { boxes, nodes, lines, steps } = obstacles(map);
+  const clearLines = lineClearance(Object.values(lines).flat());
   const edges = { ...map.edges };
   for (const [id, box] of Object.entries(boxes)) {
     const obstacles = nodes.concat(
@@ -21,10 +22,7 @@ export function placeLabels(map: ResolvedMap): ResolvedMap {
         .map(([, b]) => b),
     );
     const clear = (b: LayoutBox, gap = 0) =>
-      obstacles.every((o) => rectGap(b, o) >= gap) &&
-      Object.values(lines)
-        .flat()
-        .every(([a, c]) => segmentRectGap(a, c, b) >= gap);
+      obstacles.every((o) => rectGap(b, o) >= gap) && clearLines(b, gap);
     if (clear(box)) continue;
     const at = position(
       box,
@@ -47,6 +45,22 @@ export function placeLabels(map: ResolvedMap): ResolvedMap {
     boxes[id] = [at[0], at[1], box[2], box[3]];
   }
   return { ...map, edges };
+}
+
+function lineClearance(lines: Segment[]) {
+  const bounds: LayoutBox[] = lines.map(([a, b]) => [
+    Math.min(a[0], b[0]),
+    Math.min(a[1], b[1]),
+    Math.abs(b[0] - a[0]),
+    Math.abs(b[1] - a[1]),
+  ]);
+  // A segment cannot be nearer than its enclosing box. Only nearby segments
+  // need the full distance calculation; routes stay fixed during placement.
+  return (box: LayoutBox, gap: number) =>
+    lines.every(
+      ([a, b], i) =>
+        rectGap(box, bounds[i]) >= gap || segmentRectGap(a, b, box) >= gap,
+    );
 }
 
 function obstacles(map: ResolvedMap) {

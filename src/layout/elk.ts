@@ -10,6 +10,7 @@ import type {
   LayoutEngine,
   LayoutGraph,
   LayoutNode,
+  LayoutEdge,
   LayoutResult,
   LayoutRoute,
   LayoutPoint,
@@ -26,7 +27,34 @@ const elkOptions = {
   "elk.spacing.nodeNode": "32",
 };
 // ELK skips empty label text; a placeholder retains geometry for size-only labels.
-function elkGraph(graph: LayoutGraph, nodes: LayoutNode[]): ElkNode {
+function elkEdge(e: LayoutEdge, main: ReadonlySet<string>): ElkExtendedEdge {
+  return {
+    id: `e:${e.id}`,
+    sources: [`n:${e.from}`],
+    targets: [`n:${e.to}`],
+    ...(main.has(e.id)
+      ? { layoutOptions: { "elk.layered.priority.straightness": "5" } }
+      : {}),
+    ...(e.label
+      ? {
+          labels: [
+            {
+              id: `$label:${e.id}`,
+              text: e.label.text || "label",
+              layoutOptions: { "elk.edgeLabels.placement": "CENTER" },
+              width: e.label.width,
+              height: e.label.height,
+            },
+          ],
+        }
+      : {}),
+  };
+}
+function elkGraph(
+  graph: LayoutGraph,
+  nodes: LayoutNode[],
+  main: ReadonlySet<string>,
+): ElkNode {
   return {
     id: "$root",
     layoutOptions: {
@@ -46,24 +74,7 @@ function elkGraph(graph: LayoutGraph, nodes: LayoutNode[]): ElkNode {
         ),
       },
     })),
-    edges: graph.edges.map((e) => ({
-      id: `e:${e.id}`,
-      sources: [`n:${e.from}`],
-      targets: [`n:${e.to}`],
-      ...(e.label
-        ? {
-            labels: [
-              {
-                id: `$label:${e.id}`,
-                text: e.label.text || "label",
-                layoutOptions: { "elk.edgeLabels.placement": "CENTER" },
-                width: e.label.width,
-                height: e.label.height,
-              },
-            ],
-          }
-        : {}),
-    })),
+    edges: graph.edges.map((e) => elkEdge(e, main)),
   };
 }
 function route(edge: ElkExtendedEdge): LayoutRoute {
@@ -88,32 +99,45 @@ function route(edge: ElkExtendedEdge): LayoutRoute {
       : {}),
   };
 }
+async function layoutElk(
+  graph: LayoutGraph,
+  main: ReadonlySet<string> = new Set(),
+): Promise<LayoutResult> {
+  const nodes = engineNodes(graph),
+    elk = new (ELK as unknown as { new (): ElkApi })();
+  // Bundled ELK uses an in-process worker; there is no worker to terminate.
+  {
+    const output = await elk.layout(elkGraph(graph, nodes, main));
+    const result: LayoutResult = { nodes: {}, edges: {}, lanes: {} };
+    for (const n of output.children ?? [])
+      result.nodes[n.id.slice(2)] = [
+        n.x ?? NaN,
+        n.y ?? NaN,
+        n.width ?? NaN,
+        n.height ?? NaN,
+      ];
+    for (const e of output.edges ?? []) result.edges[e.id.slice(2)] = route(e);
+    result.lanes = laneBoxes(graph, nodes, result.nodes);
+    for (const n of nodes) if (n.id.startsWith("$")) delete result.nodes[n.id];
+    return routeSelfEdges(graph, result);
+  }
+}
 const adapter: LayoutEngine & Placer = {
   name: "elk",
-  capabilities: { direction: "preferred", lanes: "required" },
-  place: (problem) => adapter.layout(problemGraph(problem)),
-  async layout(graph) {
-    const nodes = engineNodes(graph),
-      elk = new (ELK as unknown as { new (): ElkApi })();
-    // Bundled ELK uses an in-process worker; there is no worker to terminate.
-    {
-      const output = await elk.layout(elkGraph(graph, nodes));
-      const result: LayoutResult = { nodes: {}, edges: {}, lanes: {} };
-      for (const n of output.children ?? [])
-        result.nodes[n.id.slice(2)] = [
-          n.x ?? NaN,
-          n.y ?? NaN,
-          n.width ?? NaN,
-          n.height ?? NaN,
-        ];
-      for (const e of output.edges ?? [])
-        result.edges[e.id.slice(2)] = route(e);
-      result.lanes = laneBoxes(graph, nodes, result.nodes);
-      for (const n of nodes)
-        if (n.id.startsWith("$")) delete result.nodes[n.id];
-      return routeSelfEdges(graph, result);
-    }
+  capabilities: {
+    direction: "preferred",
+    lanes: "required",
+    mainPath: "preferred",
   },
+  place(problem) {
+    const main = new Set(
+      problem.constraints
+        .filter((c) => c.kind === "mainPath")
+        .flatMap((c) => c.edges),
+    );
+    return layoutElk(problemGraph(problem), main);
+  },
+  layout: layoutElk,
 };
 
 /** Native ELK layered partitions and orthogonal routing; no default engine chosen. */

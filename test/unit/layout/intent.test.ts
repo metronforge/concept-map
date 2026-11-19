@@ -138,6 +138,9 @@ for (const engine of [dagreEngine, elkEngine])
     );
     expect(outcome).toMatchObject({
       kind: "placed",
-      unsupported: engine === dagreEngine ? [] : expected,
+      unsupported:
+        engine === dagreEngine
+          ? []
+          : expected.filter((c) => c.kind !== "mainPath"),
     });
   });

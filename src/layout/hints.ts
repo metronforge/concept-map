@@ -16,9 +16,11 @@ export function constraintName(constraint: Constraint): string {
   const ids =
     constraint.kind === "side"
       ? `${constraint.edge}, ${constraint.end}, ${constraint.side}`
-      : "nodes" in constraint
-        ? constraint.nodes.join(", ")
-        : "";
+      : "edge" in constraint
+        ? constraint.edge
+        : "nodes" in constraint
+          ? constraint.nodes.join(", ")
+          : "";
   return `${constraint.path}: ${constraint.kind} (${ids})`;
 }
 
@@ -31,7 +33,7 @@ export function reportUnsupportedHints(
     const origin = { origin: "stated" as const, path: c.path };
     if (c.kind === "sameRank")
       return [{ ...c, ...origin, nodes: [...c.nodes] }];
-    return c.kind === "side" ? [{ ...c, ...origin }] : [];
+    return c.kind === "side" || c.kind === "free" ? [{ ...c, ...origin }] : [];
   });
   if (hints.length) notify?.(hints);
 }

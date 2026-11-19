@@ -7,6 +7,7 @@ export const LayoutHints = z
   .strictObject({
     hints: z.array(
       z.union([
+        z.strictObject({ kind: z.literal("free"), edge: Id, strength }),
         z.strictObject({
           kind: z.literal("sameRank"),
           nodes: z.array(Id).min(2),

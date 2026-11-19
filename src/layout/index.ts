@@ -106,7 +106,7 @@ async function resolveSource(
     ),
   };
   const rejected = checkConstraints(map, resolved).find(
-    (c) => c.strength === "required" && !c.holds,
+    (c) => c.strength === "required" && c.holds === false,
   );
   if (rejected)
     throw new ResultRejectedError({

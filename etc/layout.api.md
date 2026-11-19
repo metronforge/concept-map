@@ -25,8 +25,13 @@ export interface CheckOptions {
 
 // @public
 export type ConstraintVerdict = {
-    holds: boolean;
     message: string;
+} & (({
+    holds: null;
+} & Extract<StatedHint, {
+    kind: "free";
+}>) | ({
+    holds: boolean;
 } & ({
     kind: "lanes";
     strength: "required";
@@ -38,7 +43,7 @@ export type ConstraintVerdict = {
     nodes: readonly string[];
 } | Extract<StatedHint, {
     kind: "side";
-}>);
+}>)));
 
 // @public
 export interface Contact {

@@ -93,7 +93,12 @@ function hints(map: MapData, check: Check, errors: string[]) {
       );
     } else {
       check(`${path}.edge`, "edge", hint.edge, map.edges);
-      if (hint.strength !== "required" || "viewBox" in map) return;
+      if (
+        hint.kind !== "side" ||
+        hint.strength !== "required" ||
+        "viewBox" in map
+      )
+        return;
       const key = `${hint.edge}.${hint.end}`;
       const previous = required.get(key);
       if (previous && previous.side !== hint.side)

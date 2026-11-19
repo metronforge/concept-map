@@ -46,7 +46,11 @@ for (const engine of [dagreEngine, elkEngine])
       }
       expect(edges.ca.label?.every(Number.isFinite)).toBe(true);
       expect(edges.cc.points.length).toBeGreaterThan(2);
-      expect(outcome.unsupported).toEqual([]);
+      // Reversal is retained, but does not prove literal rank exclusion.
+      expect(outcome.unsupported).toEqual([
+        { kind: "free", strength: "preferred", edge: "ca" },
+        { kind: "free", strength: "preferred", edge: "cc" },
+      ]);
       expect(problem).toEqual(before);
       expect(await place(problem, asPlacer(engine))).toEqual(outcome);
     });

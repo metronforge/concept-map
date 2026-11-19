@@ -126,6 +126,13 @@ export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.
     }>>;
     layout: z.ZodOptional<z.ZodObject<{
         hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
+            kind: z.ZodLiteral<"free">;
+            edge: z.ZodString;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>, z.ZodObject<{
             kind: z.ZodLiteral<"sameRank">;
             nodes: z.ZodArray<z.ZodString>;
             strength: z.ZodDefault<z.ZodEnum<{
@@ -359,6 +366,13 @@ export const ResolvedMapSchema: z.ZodObject<{
     }>>;
     layout: z.ZodOptional<z.ZodObject<{
         hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
+            kind: z.ZodLiteral<"free">;
+            edge: z.ZodString;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>, z.ZodObject<{
             kind: z.ZodLiteral<"sameRank">;
             nodes: z.ZodArray<z.ZodString>;
             strength: z.ZodDefault<z.ZodEnum<{
@@ -544,6 +558,13 @@ export const SourceMapSchema: z.ZodObject<{
     }>>;
     layout: z.ZodOptional<z.ZodObject<{
         hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
+            kind: z.ZodLiteral<"free">;
+            edge: z.ZodString;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>, z.ZodObject<{
             kind: z.ZodLiteral<"sameRank">;
             nodes: z.ZodArray<z.ZodString>;
             strength: z.ZodDefault<z.ZodEnum<{
@@ -697,6 +718,13 @@ export function sourceMapSchema<T extends z.ZodType, S extends z.ZodType, D exte
     }>>;
     layout: z.ZodOptional<z.ZodObject<{
         hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
+            kind: z.ZodLiteral<"free">;
+            edge: z.ZodString;
+            strength: z.ZodDefault<z.ZodEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>, z.ZodObject<{
             kind: z.ZodLiteral<"sameRank">;
             nodes: z.ZodArray<z.ZodString>;
             strength: z.ZodDefault<z.ZodEnum<{

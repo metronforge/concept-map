@@ -33,13 +33,19 @@ function sideHolds(
   );
 }
 
-/** Box coordinates are authoritative; supplied hint metadata is not evidence. */
+/** Geometry is authoritative; rank exclusion cannot be inferred from it. */
 export function checkHints(
   source: SourceMap | ResolvedMap,
   resolved: ResolvedMap,
 ): ConstraintVerdict[] {
   const axis = source.direction === "right" ? 0 : 1;
-  return statedHints(source).map((hint) => {
+  return statedHints(source).map((hint): ConstraintVerdict => {
+    if (hint.kind === "free")
+      return {
+        ...hint,
+        holds: null,
+        message: `${constraintName(hint)}: not verifiable from the drawing`,
+      };
     const positions =
       hint.kind === "sameRank"
         ? hint.nodes.map((id) => resolved.nodes[id]?.box[axis])

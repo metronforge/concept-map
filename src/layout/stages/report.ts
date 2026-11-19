@@ -36,7 +36,7 @@ export function check(
 /** List the hard defects of a report in words, one per line. */
 export function describeDefects(report: LayoutReport): string[] {
   return report.constraints
-    .filter((c) => c.strength === "required" && !c.holds)
+    .filter((c) => c.strength === "required" && c.holds === false)
     .map((c) => c.message)
     .concat(
       contactLists(report).flatMap(([what, list]) =>

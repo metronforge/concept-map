@@ -39,17 +39,17 @@ export interface LayoutProblem {
   constraints: readonly Constraint[];
 }
 /** Independent verdict about source intent on a drawing. */
-export type ConstraintVerdict = {
-  holds: boolean;
-  message: string;
-} & (
-  | { kind: "lanes"; strength: "required" }
-  | {
-      kind: "sameRank";
-      strength: Strength;
-      origin: "stated";
-      path: string;
-      nodes: readonly string[];
-    }
-  | Extract<StatedHint, { kind: "side" }>
+export type ConstraintVerdict = { message: string } & (
+  | ({ holds: null } & Extract<StatedHint, { kind: "free" }>)
+  | ({ holds: boolean } & (
+      | { kind: "lanes"; strength: "required" }
+      | {
+          kind: "sameRank";
+          strength: Strength;
+          origin: "stated";
+          path: string;
+          nodes: readonly string[];
+        }
+      | Extract<StatedHint, { kind: "side" }>
+    ))
 );

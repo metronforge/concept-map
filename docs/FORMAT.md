@@ -87,6 +87,30 @@ must agree (a column). Widths and heights may differ.
 }
 ```
 
+`free` names an edge that must not participate in rank assignment:
+
+```json
+{
+  "layout": {
+    "hints": [
+      { "kind": "free", "edge": "reply" },
+      { "kind": "free", "edge": "retry", "strength": "required" }
+    ]
+  }
+}
+```
+
+Rank exclusion cannot be inferred from a drawing. The checker always reports
+`free` with `holds: null` and the message "not verifiable from the drawing",
+including for required hints and hand drawings. It never claims the hint is
+honoured, and the unknown verdict adds no hard defect. The reading report counts
+stated free arrows as returns, even if scenario intent classified them as forward.
+
+Both built-in engines currently declare literal `free` unsupported: preferred
+hints are listed and required hints fail. Their derived return-arrow reversal
+still applies, but it does not exclude arrows from ranking. Stated free hints
+are not treated as instructions to reverse an arrow.
+
 `side` names an edge, its `from` or `to` end, and the box side: `top`, `right`,
 `bottom` or `left`. For example:
 
@@ -124,7 +148,8 @@ shows a loop attached to the top of a box.
 Dagre declares `side` unsupported. Both engines declare `sameRank` unsupported.
 Unsupported preferred hints remain in the resolved map and the placement
 outcome lists them; unsupported required hints fail before calling the engine. `check(source, resolved)` returns
-one constraint verdict per hint, independently of engine support. A missed
+one constraint verdict per hint, independently of engine support. For geometric
+hints, `holds` is a boolean. A missed
 preferred hint is reported but is not a hard defect. A missed required hint is
 a hard defect and a source layout rejects it even without `strict` when a custom
 placer claims support. `intent: false` disables derived scenario preferences,
@@ -140,7 +165,7 @@ distinguishes engine support from the checker's geometric verdict.
 
 Resolved and hand-drawn maps retain hints as metadata. Layout and refinement
 keep their supplied boxes and routes, even with conflicting hints; `check` still
-judges each hint against that geometry.
+judges each geometric hint against that geometry; free hints remain unverifiable.
 Maps without `layout` keep their existing output. This is an additive format-3
 field; maps using hints need a package version that includes it.
 

@@ -51,6 +51,7 @@ function placeLabelPass(map: ResolvedMap): ResolvedMap {
       contacts,
       steps,
       size,
+      obstacles,
       lines[id],
       Object.entries(lines)
         .filter(([key]) => key !== id)
@@ -94,13 +95,15 @@ function position(
   contacts: (box: LayoutBox) => number,
   steps: LayoutPoint[],
   size: LabelSize,
+  obstacles: LayoutBox[],
   own: Segment[],
   other: Segment[],
 ): LayoutPoint {
   const box = labelBox(at, size, 0);
   let best = at;
   let cost = Infinity;
-  for (const point of labelCandidates(box, own, Math.hypot(...viewBox))) {
+  const limit = Math.hypot(...viewBox);
+  for (const point of labelCandidates(box, own, limit, obstacles)) {
     const baseline = candidateBaseline(point, box, at, size, viewBox);
     // Judge the geometry reconstructed from the baseline we will store.
     const candidate = labelBox(baseline, size, 0);
@@ -115,7 +118,6 @@ function position(
       !steps.every((p) => clearOf(p, candidate, 4) && clearOf(p, paint, 1 / 64))
     )
       continue;
-    const limit = Math.hypot(...viewBox);
     const next =
       remaining * 8 * limit + labelCost(candidate, box, own, other, limit);
     if (next < cost) {

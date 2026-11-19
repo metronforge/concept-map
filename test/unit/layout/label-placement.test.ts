@@ -202,3 +202,33 @@ test("fractional baselines settle when a smaller overlap cannot be stored", () =
   expect(result.edges.ab.label).toEqual(map.edges.ab.label);
   expect(refine(result, measurer)).toEqual(result);
 });
+
+test("a trapped label finds a narrow slot between obstacle boundaries", () => {
+  const map = ResolvedMapSchema.parse(fixture);
+  map.viewBox = [500, 200];
+  map.nodes.a.box = [0, 0, 201, 200];
+  map.nodes.b.box = [241.1, 0, 258.9, 200];
+  map.nodes.c = { ...map.nodes.b, box: [201, 0, 40.1, 75] };
+  map.nodes.d = { ...map.nodes.b, box: [201, 85.1, 40.1, 114.9] };
+  map.edges.ab.path = "M0 150 H500";
+  map.edges.ab.label = { text: "go", at: [100, 55] };
+  delete map.edges.ab.badge;
+  map.scenarios[0].repeatBadges = [];
+  const size = { width: 40, height: 10, ascent: 8 };
+  map.measurement = { name: "measured", labels: { ab: size } };
+  const measurer = { name: "measured", measure: () => size };
+  const original = JSON.stringify(map);
+  const result = refine(map, measurer);
+  const [x, y] = result.edges.ab.label!.at;
+  expect(x).toBeGreaterThan(201);
+  expect(x + size.width).toBeLessThan(241.1);
+  expect(y - size.ascent).toBeGreaterThan(75);
+  expect(y - size.ascent + size.height).toBeLessThan(85.1);
+  const report = check(map, result, { measureLabel: measurer });
+  expect(report.labels.boxes.filter((c) => c.band === "defect")).toEqual([]);
+  expect(result.nodes).toEqual(map.nodes);
+  expect(result.viewBox).toEqual(map.viewBox);
+  expect(result.edges.ab.path).toBe(map.edges.ab.path);
+  expect(JSON.stringify(map)).toBe(original);
+  expect(refine(result, measurer)).toEqual(result);
+});

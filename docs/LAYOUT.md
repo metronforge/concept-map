@@ -208,6 +208,15 @@ required. Both built-in placers declare these capabilities. The existing
 `LayoutEngine` interface and adapter exports are unchanged; custom engines
 are bridged using the direction and lane obligations of that interface.
 
+An internal capability declared as a strength applies to both derived and
+stated constraints. An adapter can instead declare the strengths separately,
+for example `free: { stated: "required" }`: that promises rank exclusion only
+for stated free hints, while derived free constraints remain unsupported.
+An omitted origin has no support; it never inherits the other origin's strength.
+This lets an adapter add literal rank exclusion without claiming that its
+existing derived reversal excludes edges from ranks. Both built-in adapters
+currently declare `free: {}`, supporting neither origin.
+
 The first scenario supplies preferred node order, main-path arrows, and
 return arrows that should not influence ranks. Dagre uses the node order
 when inserting nodes into its graph, guiding where it breaks cycles. This

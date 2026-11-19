@@ -11,11 +11,12 @@ export async function place(
   placer: Placer,
 ): Promise<PlacementOutcome> {
   const unsupported = problem.constraints.filter((c) => {
-    const support = placer.capabilities[c.kind];
-    return (
-      support === undefined ||
-      (c.strength === "required" && support !== "required")
-    );
+    const capability = placer.capabilities[c.kind];
+    const strength =
+      typeof capability === "object"
+        ? capability[c.origin ?? "derived"]
+        : capability;
+    return !(strength === "required" || strength === c.strength);
   });
   const required = unsupported.filter((c) => c.strength === "required");
   if (required.length)

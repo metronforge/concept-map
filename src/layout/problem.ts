@@ -30,7 +30,13 @@ export type Constraint = {
   | { kind: "pin"; node: string; position: readonly [number, number] }
   | { kind: "side"; edge: string; end: "from" | "to"; side: Side }
 );
-export type Capabilities = Partial<Record<Constraint["kind"], Strength>>;
+/** A strength covers both origins; an object declares each origin separately. */
+export type Capabilities = Partial<
+  Record<
+    Constraint["kind"],
+    Strength | { derived?: Strength; stated?: Strength }
+  >
+>;
 /** Measured input only: no proposed node positions, routes or view box. */
 export interface LayoutProblem {
   nodes: readonly LayoutNode[];

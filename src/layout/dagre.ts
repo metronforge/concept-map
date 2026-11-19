@@ -101,6 +101,7 @@ const adapter: LayoutEngine & Placer = {
     lanes: "required",
     order: "preferred",
     mainPath: "preferred",
+    free: {}, // Neither derived reversal nor stated hints exclude edges from ranks.
   },
   async place(problem) {
     const graph = orderedGraph(problem);

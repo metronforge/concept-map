@@ -114,9 +114,16 @@ honour a side hint. Self-loops have two ends, checked independently. Conflicting
 required sides for the same edge end are rejected before source placement,
 with both hint paths in the error.
 
-Both dagre and ELK currently declare `sameRank` and `side` unsupported: preferred hints
-remain in the resolved map and the placement outcome lists them as unsupported;
-required hints fail before calling the engine. `check(source, resolved)` returns
+ELK supports preferred and required `side` hints through fixed-side ports,
+including either end of a self-loop. Required sides take precedence over
+conflicting preferred sides; among conflicting preferences, the first wins.
+Hinted loops retain the engine route so compact loop routing cannot change
+their endpoints. The [side-hints example](../examples/side-hints/README.md)
+shows a loop attached to the top of a box.
+
+Dagre declares `side` unsupported. Both engines declare `sameRank` unsupported.
+Unsupported preferred hints remain in the resolved map and the placement
+outcome lists them; unsupported required hints fail before calling the engine. `check(source, resolved)` returns
 one constraint verdict per hint, independently of engine support. A missed
 preferred hint is reported but is not a hard defect. A missed required hint is
 a hard defect and a source layout rejects it even without `strict` when a custom

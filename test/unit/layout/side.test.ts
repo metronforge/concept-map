@@ -9,7 +9,6 @@ import {
 import { buildProblem } from "../../../src/layout/build-problem";
 import { measureLabel } from "../../../src/layout/measure";
 import { dagreEngine } from "../../../src/layout/dagre";
-import { elkEngine } from "../../../src/layout/elk";
 
 const hint = { kind: "side", edge: "ab", end: "from", side: "right" };
 function source(hints: unknown[] = [hint]) {
@@ -91,7 +90,7 @@ test.each([
   expect(() => source([invalid])).toThrow();
 });
 
-for (const engine of [dagreEngine, elkEngine]) {
+for (const engine of [dagreEngine]) {
   test(`${engine.name}: list unsupported preferred sides without changing geometry`, async () => {
     const map = source(),
       unsupported: unknown[] = [];

@@ -15,7 +15,12 @@ import { validateReferences } from "../../../src/layout/index";
 
 test("standalone comparison sources include defaults before reference validation", () => {
   const examples = exampleMaps();
-  expect(examples.map(({ id }) => id)).toEqual(["coffee", "door", "gcd"]);
+  expect(examples.map(({ id }) => id)).toEqual([
+    "coffee",
+    "door",
+    "gcd",
+    "side-hints",
+  ]);
   for (const { id, source } of examples) {
     const original = JSON.parse(
       readFileSync(`examples/${id}/map.json`, "utf8"),

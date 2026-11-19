@@ -1,4 +1,5 @@
 import type { Measurer, LabelMeasurer, LabelSize } from "./measurement.js";
+import type { SourceMap } from "../schema.js";
 export type { LabelMeasurer, LabelSize, LabelStyle } from "./measurement.js";
 /** Coordinates in SVG user units, relative to the graph origin. */
 export type LayoutPoint = [number, number];
@@ -37,8 +38,16 @@ export interface LayoutResult {
 export interface LayoutEngine {
   layout(graph: LayoutGraph): Promise<LayoutResult>;
 }
+/** An author hint identified by its position in the source map. */
+export type StatedHint = NonNullable<SourceMap["layout"]>["hints"][number] & {
+  origin: "stated";
+  path: string;
+};
 export interface LayoutOptions {
   measureLabel?: LabelMeasurer | Measurer;
+  /** Receive unsupported preferred hints once per source layout, before
+   * geometry is resolved. Required hints throw instead; hand maps do not call it. */
+  onUnsupportedHints?: (hints: readonly StatedHint[]) => void;
   /** Derive preferred order, main path and return edges from the first scenario.
    * Defaults to true; false allows comparison with graph-only placement.
    * Hand geometry is retained either way. */

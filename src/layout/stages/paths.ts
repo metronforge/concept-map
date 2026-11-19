@@ -20,6 +20,7 @@ const mirror = (control: Vec, about: Vec): Vec => [
 ];
 
 interface Pen {
+  exact: boolean;
   lines: Vec[][];
   line: Vec[];
   point: Vec;
@@ -30,7 +31,11 @@ interface Pen {
 }
 
 function push(pen: Pen, p: Vec) {
-  if (!pen.line.length || !same(pen.line[pen.line.length - 1], p))
+  const last = pen.line.at(-1);
+  if (
+    !last ||
+    (pen.exact ? last[0] !== p[0] || last[1] !== p[1] : !same(last, p))
+  )
     pen.line.push(p);
 }
 
@@ -109,7 +114,8 @@ function close(pen: Pen) {
   pen.previous = "z";
 }
 
-const newPen = (): Pen => ({
+const newPen = (exact: boolean): Pen => ({
+  exact,
   lines: [],
   line: [],
   point: [0, 0],
@@ -122,11 +128,12 @@ const tokenize = (path: string) =>
 
 /**
  * An SVG path as polylines, one per subpath. Curves and arcs use 16 chords each.
+ * Exact vertices retain tiny segments when judging attachment to a box.
  */
-export function polylines(path: string): Vec[][] {
+export function polylines(path: string, exact = false): Vec[][] {
   const tokens = tokenize(path);
   const fail = (why: string) => new Error(`${why}: ${path}`);
-  const pen = newPen();
+  const pen = newPen(exact);
   let i = 0,
     command = "";
   while (i < tokens.length) {

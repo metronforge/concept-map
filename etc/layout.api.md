@@ -24,16 +24,26 @@ export interface CheckOptions {
 }
 
 // @public
-export interface ConstraintVerdict {
-    // (undocumented)
-    holds: boolean;
-    // (undocumented)
-    kind: "lanes";
-    // (undocumented)
+export type ConstraintVerdict = {
     message: string;
-    // (undocumented)
+} & (({
+    holds: null;
+} & Extract<StatedHint, {
+    kind: "free";
+}>) | ({
+    holds: boolean;
+} & ({
+    kind: "lanes";
     strength: "required";
-}
+} | {
+    kind: "sameRank";
+    strength: Strength;
+    origin: "stated";
+    path: string;
+    nodes: readonly string[];
+} | Extract<StatedHint, {
+    kind: "side";
+}>)));
 
 // @public
 export interface Contact {
@@ -194,6 +204,7 @@ export interface LayoutOptions {
     intent?: boolean;
     // (undocumented)
     measureLabel?: LabelMeasurer | Measurer;
+    onUnsupportedHints?: (hints: readonly StatedHint[]) => void;
     strict?: boolean;
     widthEm?: number;
 }
@@ -278,6 +289,15 @@ export class ResultRejectedError extends LayoutError<"result-rejected", {
     // (undocumented)
     readonly placer: string;
 }
+
+// @public
+export type StatedHint = NonNullable<SourceMap["layout"]>["hints"][number] & {
+    origin: "stated";
+    path: string;
+};
+
+// @public (undocumented)
+export type Strength = "required" | "preferred";
 
 // @public
 export class UnsupportedConstraintsError extends LayoutError<"unsupported-constraints", {

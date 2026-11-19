@@ -7,11 +7,17 @@ type Check = (
   values: object | readonly string[],
 ) => void;
 
-function unique(ids: string[], path: string, kind: string, errors: string[]) {
+function unique(
+  ids: string[],
+  path: string,
+  kind: string,
+  errors: string[],
+  field = ".id",
+) {
   const seen = new Set<string>();
   ids.forEach((id, i) => {
     if (seen.has(id))
-      errors.push(`${path}[${i}].id: duplicate ${kind} “${id}”`);
+      errors.push(`${path}[${i}]${field}: duplicate ${kind} “${id}”`);
     seen.add(id);
   });
 }
@@ -76,6 +82,33 @@ function concepts(map: MapData, check: Check) {
     }),
   );
 }
+function hints(map: MapData, check: Check, errors: string[]) {
+  const required = new Map<string, { side: string; path: string }>();
+  map.layout?.hints.forEach((hint, i) => {
+    const path = `layout.hints[${i}]`;
+    if (hint.kind === "sameRank") {
+      unique(hint.nodes, `${path}.nodes`, "node", errors, "");
+      hint.nodes.forEach((id, j) =>
+        check(`${path}.nodes[${j}]`, "node", id, map.nodes),
+      );
+    } else {
+      check(`${path}.edge`, "edge", hint.edge, map.edges);
+      if (
+        hint.kind !== "side" ||
+        hint.strength !== "required" ||
+        "viewBox" in map
+      )
+        return;
+      const key = `${hint.edge}.${hint.end}`;
+      const previous = required.get(key);
+      if (previous && previous.side !== hint.side)
+        errors.push(
+          `Contradictory required sides: ${previous.path} and ${path} for ${key} (${previous.side}, ${hint.side})`,
+        );
+      else required.set(key, { side: hint.side, path });
+    }
+  });
+}
 /** Check every semantic reference before a layout engine sees a map. */
 export function validateReferences(map: MapData): void {
   const errors: string[] = [];
@@ -102,5 +135,6 @@ export function validateReferences(map: MapData): void {
     for (const node of nodes) check(`callouts.${id}`, "node", node, map.nodes);
   scenarios(map, check, errors);
   concepts(map, check);
+  hints(map, check, errors);
   if (errors.length) throw new Error(errors.join("\n"));
 }

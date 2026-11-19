@@ -6,7 +6,7 @@ import { dagreEngine } from "../../src/layout/dagre";
 import { elkEngine } from "../../src/layout/elk";
 
 for (const width of [1280, 390])
-  for (const name of ["coffee", "door", "gcd"])
+  for (const name of ["coffee", "door", "gcd", "side-hints"])
     for (const variant of ["dagre", "dagre-plain", "elk", "elk-plain"])
       test(`${name} ${variant} ${width}px: the checker judges the map drawn after fonts load`, async ({
         page,
@@ -140,6 +140,14 @@ for (const width of [1280, 390])
             return {
               drawn,
               report,
+              pageFont: parseFloat(getComputedStyle(host).fontSize),
+              textSizes: [
+                ...player.root.querySelectorAll(".node text:not(.tag), .etext"),
+              ].map(
+                (label) =>
+                  parseFloat(getComputedStyle(label).fontSize) *
+                  player.root.querySelector("svg")!.getScreenCTM()!.a,
+              ),
               presentation: selected,
               presentationReport,
               mismatches,
@@ -158,6 +166,18 @@ for (const width of [1280, 390])
         expect(result.arrowFill).toBe("none");
         expect(result.fits).toBe(true);
         expect(result.presentationReport.hard).toBe(0);
+        if (name === "side-hints")
+          for (const size of result.textSizes) {
+            expect(size).toBeGreaterThanOrEqual(result.pageFont - 0.1);
+            expect(size).toBeLessThanOrEqual(result.pageFont * 1.25);
+          }
+        if (name === "side-hints" && variant.startsWith("elk"))
+          expect(result.report.constraints.map((hint) => hint.holds)).toEqual([
+            true,
+            true,
+            true,
+            true,
+          ]);
         if (width === 1280)
           for (const field of ["nodes", "lanes", "frames", "viewBox"] as const)
             expect(result.drawn[field]).toEqual(original[field]);

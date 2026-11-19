@@ -61,6 +61,114 @@ text. Flow and whole-map summaries remain optional. Concept sources are optional
 Root `deeper` entries are `{ title, href, why }`; step links are `{ title, href }`.
 Source links are `{ label, url }`.
 
+### Layout hints
+
+An optional `layout.hints` array states layout intent in source order. Each hint
+defaults to `"strength": "preferred"`; explicit `preferred` is also accepted.
+Use `"strength": "required"` when layout must refuse an engine that cannot honour
+the hint. Diagnostics identify its path, kind and referenced ids.
+
+`sameRank` names at least two distinct nodes. With direction `down`, their box
+`y` coordinates must agree (a row); with direction `right`, their `x` coordinates
+must agree (a column). Widths and heights may differ.
+
+```json
+{
+  "layout": {
+    "hints": [
+      { "kind": "sameRank", "nodes": ["cashier", "barista"] },
+      {
+        "kind": "sameRank",
+        "nodes": ["guest", "milk"],
+        "strength": "required"
+      }
+    ]
+  }
+}
+```
+
+`free` names an edge that must not participate in rank assignment:
+
+```json
+{
+  "layout": {
+    "hints": [
+      { "kind": "free", "edge": "reply" },
+      { "kind": "free", "edge": "retry", "strength": "required" }
+    ]
+  }
+}
+```
+
+Rank exclusion cannot be inferred from a drawing. The checker always reports
+`free` with `holds: null` and the message "not verifiable from the drawing",
+including for required hints and hand drawings. It never claims the hint is
+honoured, and the unknown verdict adds no hard defect. The reading report counts
+stated free arrows as returns, even if scenario intent classified them as forward.
+
+Both built-in engines currently declare literal `free` unsupported: preferred
+hints are listed and required hints fail. Their derived return-arrow reversal
+still applies, but it does not exclude arrows from ranking. Stated free hints
+are not treated as instructions to reverse an arrow.
+
+`side` names an edge, its `from` or `to` end, and the box side: `top`, `right`,
+`bottom` or `left`. For example:
+
+```json
+{
+  "layout": {
+    "hints": [
+      { "kind": "side", "edge": "order", "end": "from", "side": "right" },
+      {
+        "kind": "side",
+        "edge": "order",
+        "end": "to",
+        "side": "left",
+        "strength": "required"
+      }
+    ]
+  }
+}
+```
+
+The checker reads the edge's first or last path point and the referenced node's
+box. The point must lie on the named boundary segment, including its corners;
+only floating-point roundoff is allowed. Empty or disconnected paths do not
+honour a side hint. Self-loops have two ends, checked independently. Conflicting
+required sides for the same edge end are rejected before source placement,
+with both hint paths in the error.
+
+ELK supports preferred and required `side` hints through fixed-side ports,
+including either end of a self-loop. Required sides take precedence over
+conflicting preferred sides; among conflicting preferences, the first wins.
+Hinted loops retain the engine route so compact loop routing cannot change
+their endpoints. The [side-hints example](../examples/side-hints/README.md)
+shows a loop attached to the top of a box.
+
+Dagre declares `side` unsupported. Both engines declare `sameRank` unsupported.
+Unsupported preferred hints remain in the resolved map and the placement
+outcome lists them; unsupported required hints fail before calling the engine. `check(source, resolved)` returns
+one constraint verdict per hint, independently of engine support. For geometric
+hints, `holds` is a boolean. A missed
+preferred hint is reported but is not a hard defect. A missed required hint is
+a hard defect and a source layout rejects it even without `strict` when a custom
+placer claims support. `intent: false` disables derived scenario preferences,
+not stated hints.
+
+To receive unsupported preferred hints through the public API, use
+`layout(source, engine, { onUnsupportedHints: hints => console.warn(hints) })`.
+The callback receives their kind, strength, references, `origin: "stated"` and
+source path once per layout call, including when narrow layout is also needed.
+It is not called for hand-drawn maps or maps without unsupported hints.
+An unsupported hint can happen to be honoured by the drawing; this callback
+distinguishes engine support from the checker's geometric verdict.
+
+Resolved and hand-drawn maps retain hints as metadata. Layout and refinement
+keep their supplied boxes and routes, even with conflicting hints; `check` still
+judges each geometric hint against that geometry; free hints remain unverifiable.
+Maps without `layout` keep their existing output. This is an additive format-3
+field; maps using hints need a package version that includes it.
+
 ## Geometry
 
 | Field                     | Source               | Resolved                                  |

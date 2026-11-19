@@ -34,7 +34,9 @@ export function hardReport(
     contactLists(report)
       .flatMap(([, list]) => list)
       .filter((c) => c.band === "defect").length +
-    report.constraints.filter((c) => !c.holds).length;
+    report.constraints.filter(
+      (c) => c.strength === "required" && c.holds === false,
+    ).length;
   return report;
 }
 

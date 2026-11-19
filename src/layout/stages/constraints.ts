@@ -1,5 +1,6 @@
 import type { SourceMap, ResolvedMap } from "../../schema.js";
 import type { ConstraintVerdict } from "../problem.js";
+import { checkHints } from "./hints.js";
 
 type Box = readonly [number, number, number, number];
 function laneBox(resolved: ResolvedMap, id: string): Box | undefined {
@@ -18,7 +19,7 @@ function inside(box: Box, lane: Box): boolean {
 }
 /** Recompute every required rule from source intent and resolved geometry.
  * Direction is preferred: its existing reading report remains descriptive. */
-export function checkConstraints(
+function checkLanes(
   source: SourceMap | ResolvedMap,
   resolved: ResolvedMap,
 ): ConstraintVerdict[] {
@@ -52,4 +53,11 @@ export function checkConstraints(
         },
       ]
     : [];
+}
+
+export function checkConstraints(
+  source: SourceMap | ResolvedMap,
+  resolved: ResolvedMap,
+): ConstraintVerdict[] {
+  return [...checkLanes(source, resolved), ...checkHints(source, resolved)];
 }

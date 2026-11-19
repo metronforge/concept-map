@@ -1,11 +1,12 @@
 import type { ResolvedMap, SourceMap } from "../../schema.js";
 import { deriveIntent } from "../intent.js";
+import { statedHints } from "../hints.js";
 
 export interface Reading {
   edges: number;
   forward: number;
   share: number | null;
-  /** First-scenario traversals excluding derived free (return) edges. */
+  /** First-scenario traversals excluding stated or derived free (return) edges. */
   nonReturn: { edges: number; forward: number; share: number | null };
   /** Non-self returns travelled against the reading direction; loops separate. */
   returns: {
@@ -55,7 +56,9 @@ function directions(
     return b[axis] + b[axis + 2] / 2;
   };
   const free = new Set(
-    deriveIntent(source).flatMap((c) => (c.kind === "free" ? [c.edge] : [])),
+    [...deriveIntent(source), ...statedHints(source)].flatMap((c) =>
+      c.kind === "free" ? [c.edge] : [],
+    ),
   );
   const seen = new Set<string>();
   return mainPath(source).flatMap(({ edge, reverse }) => {

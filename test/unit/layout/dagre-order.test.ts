@@ -31,7 +31,10 @@ for (const direction of ["down", "right"] as const)
     expect(edges.ca.points[0][axis]).toBeGreaterThan(
       edges.ca.points.at(-1)![axis],
     );
-    expect(outcome.unsupported).toEqual([]);
+    // Reversal is retained, but does not prove literal rank exclusion.
+    expect(outcome.unsupported).toEqual([
+      { kind: "free", strength: "preferred", edge: "ca" },
+    ]);
     expect(problem).toEqual(before);
     expect(await place(problem, asPlacer(dagreEngine))).toEqual(outcome);
   });

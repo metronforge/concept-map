@@ -198,3 +198,33 @@ for (const name of ["dagre", "elk"] as const)
       new Set(routes.map((route) => JSON.stringify(route.label))).size,
     ).toBe(5);
   });
+
+for (const fixedFirst of [false, true])
+  test(`compact loops avoid a fixed loop listed ${fixedFirst ? "first" : "last"}`, () => {
+    const graph: LayoutGraph = {
+      nodes: [{ id: "a", width: 80, height: 40 }],
+      edges: (fixedFirst ? ["fixed", "compact"] : ["compact", "fixed"]).map(
+        (id) => ({ id, from: "a", to: "a" }),
+      ),
+      lanes: [],
+    };
+    const fixed: LayoutResult["edges"][string] = {
+      points: [
+        [80, 10],
+        [140, 10],
+        [140, 30],
+        [80, 30],
+      ],
+    };
+    const result = routeSelfEdges(
+      graph,
+      {
+        nodes: { a: [0, 0, 80, 40] },
+        edges: { fixed },
+        lanes: {},
+      },
+      new Set(["fixed"]),
+    );
+    expect(result.edges.fixed).toEqual(fixed);
+    expect(result.edges.compact.points.every(([x]) => x <= 0)).toBe(true);
+  });

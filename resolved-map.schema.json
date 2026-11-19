@@ -20,6 +20,122 @@
         "right"
       ]
     },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "hints": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "const": "free"
+                  },
+                  "edge": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                  },
+                  "strength": {
+                    "default": "preferred",
+                    "type": "string",
+                    "enum": [
+                      "preferred",
+                      "required"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "edge"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "const": "sameRank"
+                  },
+                  "nodes": {
+                    "minItems": 2,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                    }
+                  },
+                  "strength": {
+                    "default": "preferred",
+                    "type": "string",
+                    "enum": [
+                      "preferred",
+                      "required"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "nodes"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "const": "side"
+                  },
+                  "edge": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                  },
+                  "end": {
+                    "type": "string",
+                    "enum": [
+                      "from",
+                      "to"
+                    ]
+                  },
+                  "side": {
+                    "type": "string",
+                    "enum": [
+                      "top",
+                      "right",
+                      "bottom",
+                      "left"
+                    ]
+                  },
+                  "strength": {
+                    "default": "preferred",
+                    "type": "string",
+                    "enum": [
+                      "preferred",
+                      "required"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "edge",
+                  "end",
+                  "side"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "hints"
+      ],
+      "additionalProperties": false
+    },
     "layers": {
       "type": "object",
       "propertyNames": {

@@ -56,11 +56,14 @@ export function bookMaps() {
 }
 
 export function exampleMaps() {
-  return ["coffee", "door", "gcd"].map((id) => ({
+  return ["coffee", "door", "gcd", "side-hints"].map((id) => ({
     id,
     source: SourceMapSchema.parse(
       JSON.parse(readFileSync(`examples/${id}/map.json`, "utf8")),
     ),
-    note: "Current standalone example. No hand-drawn reference is available.",
+    note:
+      id === "side-hints"
+        ? "ELK honours the stated box sides, including the Retry loop above Waiting. Dagre lists side hints as unsupported. Both ELK columns keep stated hints; plain disables only derived scenario intent."
+        : "Current standalone example. No hand-drawn reference is available.",
   }));
 }

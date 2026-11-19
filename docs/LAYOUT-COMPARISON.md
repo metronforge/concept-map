@@ -5,7 +5,7 @@ The page is rebuilt and published from `main` after every merge. Its commit and
 build date are shown on the page. Dagre remains the default engine; the author
 will reconsider it after reviewing scenario intent.
 
-The page shows the coffee, door and gcd examples, all 23 book maps and the original
+The page shows the coffee, door, gcd and side-hints examples, all 23 book maps and the original
 coffee reference. Each engine has two drawings: with the default scenario intent
 and without it (`layout(source, engine, { intent: false })`). Hand references
 appear once, unchanged, where available; intent cannot alter hand geometry.

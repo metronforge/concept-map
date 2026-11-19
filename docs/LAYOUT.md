@@ -208,6 +208,15 @@ required. Both built-in placers declare these capabilities. The existing
 `LayoutEngine` interface and adapter exports are unchanged; custom engines
 are bridged using the direction and lane obligations of that interface.
 
+An internal capability declared as a strength applies to both derived and
+stated constraints. An adapter can instead declare the strengths separately,
+for example `free: { stated: "required" }`: that promises rank exclusion only
+for stated free hints, while derived free constraints remain unsupported.
+An omitted origin has no support; it never inherits the other origin's strength.
+This lets an adapter add literal rank exclusion without claiming that its
+existing derived reversal excludes edges from ranks. Both built-in adapters
+currently declare `free: {}`, supporting neither origin.
+
 The first scenario supplies preferred node order, main-path arrows, and
 return arrows that should not influence ranks. Dagre uses the node order
 when inserting nodes into its graph, guiding where it breaks cycles. This
@@ -219,7 +228,9 @@ arrows higher straightness priority during node placement. ELK uses scenario
 node order to guide cycle breaking and gives forward arrows higher direction
 priority. Required lane order takes precedence. Like dagre, it reverses return
 arrows for ranking and restores their travel direction afterwards. Both adapters
-honour all three derived preferences; they do not guarantee a particular drawing.
+keep this derived reversal preference but declare literal rank exclusion (`free`)
+unsupported: reversing an arrow still lets it influence ranks. Unsupported
+stated free preferences are listed and do not reverse arrows; required ones fail.
 
 Intent is enabled by default. To compare an engine's graph-only placement
 with these preferences, pass `{ intent: false }` to `layout()`. This omits
@@ -250,8 +261,8 @@ travel direction, including returns. Each edge/direction pair counts once.
 The flow supplies travel direction; steps supply arrows when the flow has none.
 
 `reading.nonReturn` has the same three fields for arrows not classified as
-`free` by derived intent. Use its `share` to judge forward progress without
-penalizing intentional returns. Classification comes from the source scenario,
+`free` by derived intent or a stated hint. Use its `share` to judge forward progress without
+penalizing intentional returns. Classification comes from the source scenario and hints,
 even when the drawing was made with `{ intent: false }` or by hand.
 `reading.returns` reports `edges` (non-self return traversals), `backward`
 (those travelled against the reading direction), and their `share`.
@@ -264,7 +275,10 @@ These are descriptive facts; they add no hard defects or layout requirements.
 ### Layout errors and constraint reports
 
 `check(source, resolved)` returns `constraints` verdicts with `kind`,
-`strength`, `holds` and `message`. A broken required lane rule adds one to
+`strength`, `holds` and `message`. Geometric verdicts use boolean `holds`;
+stated `free` hints use `holds: null` because rank exclusion is not verifiable
+from the drawing. Such a verdict adds no hard defect, even when required.
+A broken required lane rule adds one to
 `hard`; it does not throw. This applies to hand drawings too. Direction still
 uses the existing `reading` facts, not a forward-edge requirement.
 

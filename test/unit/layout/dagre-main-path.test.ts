@@ -46,7 +46,12 @@ for (const direction of ["down", "right"] as const)
         const last = nodes.e[axis] - nodes.d[axis];
         if (edge !== "de") expect(first).toBeLessThan(last);
         else expect(last).toBeLessThan(first);
-        expect(outcome.unsupported).toEqual([]);
+        // Reversal is retained, but does not prove literal rank exclusion.
+        expect(outcome.unsupported).toEqual(
+          returning
+            ? [{ kind: "free", strength: "preferred", edge: "da" }]
+            : [],
+        );
         expect(input).toEqual(before);
         expect(await place(input, placer)).toEqual(outcome);
       }

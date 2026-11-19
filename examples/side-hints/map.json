@@ -1,0 +1,52 @@
+{
+  "format": 3,
+  "id": "side-hints",
+  "title": "Choose where an arrow meets a box",
+  "direction": "down",
+  "layers": { "service": { "label": "Service" } },
+  "nodes": {
+    "waiting": { "label": "Waiting", "layer": "service" },
+    "ready": { "label": "Ready", "layer": "service" }
+  },
+  "edges": {
+    "retry": { "from": "waiting", "to": "waiting", "label": "Retry" },
+    "send": { "from": "waiting", "to": "ready", "label": "Send" }
+  },
+  "layout": {
+    "hints": [
+      { "kind": "side", "edge": "retry", "end": "from", "side": "top" },
+      { "kind": "side", "edge": "retry", "end": "to", "side": "top" },
+      { "kind": "side", "edge": "send", "end": "from", "side": "right" },
+      { "kind": "side", "edge": "send", "end": "to", "side": "left" }
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "retry-send",
+      "label": "Retry and send",
+      "steps": [
+        {
+          "id": "wait",
+          "title": "Wait",
+          "text": "The service waits for a request.",
+          "show": ["waiting"],
+          "edges": []
+        },
+        {
+          "id": "retry",
+          "title": "Retry",
+          "text": "A retry returns to Waiting. The side hints ask for a loop above the box.",
+          "show": ["waiting"],
+          "edges": ["retry"]
+        },
+        {
+          "id": "send",
+          "title": "Send",
+          "text": "Send leaves the right side of Waiting and enters the left side of Ready.",
+          "show": ["waiting", "ready"],
+          "edges": ["retry", "send"]
+        }
+      ]
+    }
+  ]
+}

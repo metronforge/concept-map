@@ -1,4 +1,5 @@
 import { Measurement } from "./schema/measurement.js";
+import { LayoutHints } from "./schema/hints.js";
 import * as z from "zod";
 import {
   Id,
@@ -25,6 +26,7 @@ export function sourceMapSchema<
     id: z.string().min(1),
     title: z.string(),
     direction: z.enum(["down", "right"]).optional(),
+    layout: LayoutHints,
     layers: record(z.object({ label: z.string() })),
     lanes: record(Lane).default({}),
     frames: record(Frame).default({}),

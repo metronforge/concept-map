@@ -35,6 +35,9 @@ test.each([true, false])(
       ),
     };
     const html = page.mapSection(entry, variants);
+    expect(html).toContain(
+      `<span class="eyebrow">${hand ? "REFERENCE · example" : "EXAMPLE"}</span>`,
+    );
     for (const name of names) {
       expect(html).toContain(`data-variant="${name}"`);
       expect(html).toContain(`data/example-${name}.json`);

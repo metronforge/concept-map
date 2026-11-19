@@ -12,11 +12,14 @@ import { bounds } from "./geometry.js";
 export function routeSelfEdges(
   graph: LayoutGraph,
   result: LayoutResult,
+  fixed: ReadonlySet<string> = new Set(),
 ): LayoutResult {
-  const reserved: LayoutBox[] = [];
+  const reserved = graph.edges
+    .filter((edge) => fixed.has(edge.id))
+    .map((edge) => routeBounds(result.edges[edge.id], edge.label));
   const edges = { ...result.edges };
   for (const edge of graph.edges) {
-    if (edge.from !== edge.to) continue;
+    if (edge.from !== edge.to || fixed.has(edge.id)) continue;
     const box = result.nodes[edge.from];
     const neighbors = Object.entries(result.nodes)
       .filter(([id]) => id !== edge.from)

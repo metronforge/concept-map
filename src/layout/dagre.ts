@@ -100,13 +100,16 @@ const adapter: LayoutEngine & Placer = {
     direction: "preferred",
     lanes: "required",
     order: "preferred",
-    free: "preferred",
     mainPath: "preferred",
+    free: {}, // Neither derived reversal nor stated hints exclude edges from ranks.
   },
   async place(problem) {
     const graph = orderedGraph(problem);
+    // Reversal remains a derived preference, not literal rank exclusion.
     const free = new Set(
-      problem.constraints.filter((c) => c.kind === "free").map((c) => c.edge),
+      problem.constraints.flatMap((c) =>
+        c.kind === "free" && c.origin !== "stated" ? [c.edge] : [],
+      ),
     );
     // Include returns: after reversal they pull with the forward path.
     const main = new Set(

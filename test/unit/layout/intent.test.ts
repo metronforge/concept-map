@@ -131,13 +131,13 @@ test("nodes without visits retain source order and no main path is invented", ()
 });
 
 for (const engine of [dagreEngine, elkEngine])
-  test(`${engine.name}: honours every derived preference`, async () => {
+  test(`${engine.name}: lists rank exclusion as unsupported while keeping derived preferences`, async () => {
     const outcome = await place(
       buildProblem(source(forward), measureLabel),
       asPlacer(engine),
     );
     expect(outcome).toMatchObject({
       kind: "placed",
-      unsupported: [],
+      unsupported: expected.filter((c) => c.kind === "free"),
     });
   });

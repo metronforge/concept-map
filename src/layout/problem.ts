@@ -1,11 +1,19 @@
-import type { LayoutNode, LayoutEdge, LayoutLane } from "./types.js";
+import type {
+  LayoutNode,
+  LayoutEdge,
+  LayoutLane,
+  StatedHint,
+} from "./types.js";
 
 export type Strength = "required" | "preferred";
 export type Direction = "down" | "right";
 type Side = "top" | "right" | "bottom" | "left";
-/** Direction, lanes and scenario intent are produced today. The remaining
- * kinds reserve the shared vocabulary for stated hints and fixed positions. */
-export type Constraint = { strength: Strength } & (
+/** Stated constraints carry their source path; derived intent leaves it absent. */
+export type Constraint = {
+  strength: Strength;
+  origin?: "stated";
+  path?: string;
+} & (
   | { kind: "direction"; direction: Direction }
   | { kind: "lanes"; direction: Direction; lanes: readonly string[] }
   | { kind: "order"; nodes: readonly string[] }
@@ -22,7 +30,13 @@ export type Constraint = { strength: Strength } & (
   | { kind: "pin"; node: string; position: readonly [number, number] }
   | { kind: "side"; edge: string; end: "from" | "to"; side: Side }
 );
-export type Capabilities = Partial<Record<Constraint["kind"], Strength>>;
+/** A strength covers both origins; an object declares each origin separately. */
+export type Capabilities = Partial<
+  Record<
+    Constraint["kind"],
+    Strength | { derived?: Strength; stated?: Strength }
+  >
+>;
 /** Measured input only: no proposed node positions, routes or view box. */
 export interface LayoutProblem {
   nodes: readonly LayoutNode[];
@@ -30,10 +44,18 @@ export interface LayoutProblem {
   groups: readonly LayoutLane[];
   constraints: readonly Constraint[];
 }
-/** Independent verdict about a required lane rule on a drawing. */
-export interface ConstraintVerdict {
-  kind: "lanes";
-  strength: "required";
-  holds: boolean;
-  message: string;
-}
+/** Independent verdict about source intent on a drawing. */
+export type ConstraintVerdict = { message: string } & (
+  | ({ holds: null } & Extract<StatedHint, { kind: "free" }>)
+  | ({ holds: boolean } & (
+      | { kind: "lanes"; strength: "required" }
+      | {
+          kind: "sameRank";
+          strength: Strength;
+          origin: "stated";
+          path: string;
+          nodes: readonly string[];
+        }
+      | Extract<StatedHint, { kind: "side" }>
+    ))
+);

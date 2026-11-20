@@ -150,6 +150,7 @@ for (const engine of [dagreEngine, elkEngine]) {
           strength: "preferred",
           origin: "stated",
           path: "layout.hints[0]",
+          reason: "unsupported",
         },
       ]);
     });

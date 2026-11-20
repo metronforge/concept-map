@@ -204,7 +204,7 @@ export interface LayoutOptions {
     intent?: boolean;
     // (undocumented)
     measureLabel?: LabelMeasurer | Measurer;
-    onUnsupportedHints?: (hints: readonly StatedHint[]) => void;
+    onUnsupportedHints?: (hints: readonly UnsupportedHint[]) => void;
     strict?: boolean;
     widthEm?: number;
 }
@@ -324,6 +324,12 @@ export class UnsupportedConstraintsError extends LayoutError<"unsupported-constr
     // (undocumented)
     readonly placer: string;
 }
+
+// @public
+export type UnsupportedHint = StatedHint & {
+    reason?: "unsupported" | "contradiction";
+    conflicts?: readonly string[];
+};
 
 // Warning: (ae-forgotten-export) The symbol "MapData" needs to be exported by the entry point index.d.ts
 //

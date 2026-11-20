@@ -70,8 +70,17 @@ test("dropping a conflicting preferred hint retains the exact engine result and 
   expect(outcome.result).toBe(placed);
   expect(outcome.dropped).toHaveLength(1);
   expect(outcome.dropped[0].hint).toEqual(preferred);
-  expect(outcome.dropped[0].reason).toContain("layout.hints[2]");
-  expect(outcome.dropped[0].reason).toContain("edges.ab");
+  expect(outcome.dropped[0].reason).toBe("contradiction");
+  expect(outcome.dropped[0].conflicts).toEqual([
+    "layout.hints[2].nodes[1]",
+    "edges.ab",
+  ]);
+  expect(
+    checkRelations(
+      rankRelations(problem, placed.nodes, 64),
+      outcome.dropped[0].witness,
+    ),
+  ).toBe(true);
 });
 
 test("a later required hint wins over an incompatible earlier preference", () => {
@@ -83,7 +92,7 @@ test("a later required hint wins over an incompatible earlier preference", () =>
   expect(outcome.result.nodes.a).toEqual([0, 0, 40, 20]);
   expect(outcome.result.nodes.b).toEqual([0, 168, 40, 20]);
   expect(outcome.dropped.map((d) => d.hint.path)).toEqual(["layout.hints[0]"]);
-  expect(outcome.dropped[0].reason).toContain("layout.hints[1]");
+  expect(outcome.dropped[0].conflicts).toContain("layout.hints[1].nodes[1]");
 });
 
 test("incompatible preferred hints keep the first and discard only the later one", () => {
@@ -142,7 +151,7 @@ test("unpathed internal hints keep original constraint indices after priority se
   const outcome = run([preferred, required]);
   if (outcome.status !== "determined") throw new Error(outcome.status);
   expect(outcome.dropped[0].hint.path).toBe("constraints[1]");
-  expect(outcome.dropped[0].reason).toContain("constraints[2].nodes[1]");
+  expect(outcome.dropped[0].conflicts).toContain("constraints[2].nodes[1]");
 });
 
 test("a free arrow does not turn an otherwise compatible group into a conflict", () => {

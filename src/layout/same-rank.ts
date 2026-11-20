@@ -9,7 +9,8 @@ type Contradiction = Extract<RelationSolution, { status: "contradictory" }>;
 type SameRankHint = Extract<Constraint, { kind: "sameRank" }>;
 interface DroppedHint {
   hint: SameRankHint;
-  reason: string;
+  reason: "contradiction";
+  conflicts: readonly string[];
   witness: Contradiction;
 }
 type AlignmentOutcome =
@@ -54,7 +55,8 @@ function selectHints(
       accepted.pop();
       dropped.push({
         hint,
-        reason: conflictReason(candidate),
+        reason: "contradiction",
+        conflicts: candidate.cycle.map((source) => source.id),
         witness: candidate,
       });
     } else aligned = candidate;

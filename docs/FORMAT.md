@@ -157,8 +157,14 @@ not stated hints.
 
 To receive unsupported preferred hints through the public API, use
 `layout(source, engine, { onUnsupportedHints: hints => console.warn(hints) })`.
-The callback receives their kind, strength, references, `origin: "stated"` and
-source path once per layout call, including when narrow layout is also needed.
+The callback receives their kind, strength, references, `origin: "stated"`,
+source path and `reason: "unsupported"` for engine capability refusals, once per
+layout call, including when narrow layout is also needed. The exported
+`UnsupportedHint` type also allows `reason: "contradiction"` with `conflicts`:
+source paths or arrow ids in checked cycle order. These diagnostic fields are
+optional in the type for compatibility; producers always fill `reason`. They
+are not source-map fields. Contradiction reporting is reserved for same-rank
+alignment; both engines currently refuse same-rank hints as unsupported.
 It is not called for hand-drawn maps or maps without unsupported hints.
 An unsupported hint can happen to be honoured by the drawing; this callback
 distinguishes engine support from the checker's geometric verdict.

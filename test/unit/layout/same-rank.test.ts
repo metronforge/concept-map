@@ -228,6 +228,7 @@ test("layout publicly reports unsupported hints even when the drawing happens to
       strength: "preferred",
       origin: "stated",
       path: "layout.hints[0]",
+      reason: "unsupported",
     },
   ]);
 });

@@ -43,11 +43,17 @@ export type StatedHint = NonNullable<SourceMap["layout"]>["hints"][number] & {
   origin: "stated";
   path: string;
 };
+/** A preferred hint that was not applied, with its diagnostic reason. */
+export type UnsupportedHint = StatedHint & {
+  reason?: "unsupported" | "contradiction";
+  /** For a contradiction: source paths or arrow ids in checked cycle order. */
+  conflicts?: readonly string[];
+};
 export interface LayoutOptions {
   measureLabel?: LabelMeasurer | Measurer;
   /** Receive unsupported preferred hints once per source layout, before
    * geometry is resolved. Required hints throw instead; hand maps do not call it. */
-  onUnsupportedHints?: (hints: readonly StatedHint[]) => void;
+  onUnsupportedHints?: (hints: readonly UnsupportedHint[]) => void;
   /** Derive preferred order, main path and return edges from the first scenario.
    * Defaults to true; false allows comparison with graph-only placement.
    * Hand geometry is retained either way. */

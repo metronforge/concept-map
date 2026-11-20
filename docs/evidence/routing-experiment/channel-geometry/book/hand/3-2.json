@@ -1,0 +1,11 @@
+{
+  "id": "book/hand/3-2",
+  "stage": "channel geometry only",
+  "inputSha256": "616cec9fd2067300bf6b644f4f82212f5f6f5bd79de6a3d1966c5b6bd3519082",
+  "routesSha256": "abc6e7e4d4eb442c5c8565b60a7a06fe930b17988eb279c584ddcc021c00f7ea",
+  "edges": 5,
+  "routed": 5,
+  "failures": [],
+  "bends": 5,
+  "routeLength": 702
+}

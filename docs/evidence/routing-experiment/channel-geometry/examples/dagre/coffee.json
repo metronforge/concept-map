@@ -1,0 +1,11 @@
+{
+  "id": "examples/dagre/coffee",
+  "stage": "channel geometry only",
+  "inputSha256": "111c2fd536c49a745419c827816a26524ef7ad3ac2de3dd7c85fd3cadf8fd805",
+  "routesSha256": "af354e479d29bb3240872879522c80a7e6bbae0be0d40326b1f7c00507439001",
+  "edges": 5,
+  "routed": 5,
+  "failures": [],
+  "bends": 8,
+  "routeLength": 1154.7158516444931
+}

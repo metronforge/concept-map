@@ -1,8 +1,8 @@
 # Routing around placed boxes
 
-This folder records the reference drawings and shared fixed-port inputs for the
-routing experiment. Neither candidate has been measured yet; these numbers do
-not select a router.
+This folder records the reference drawings, shared fixed-port inputs and an
+initial channel path search. Neither candidate has a complete quality report
+yet; these numbers do not select a router.
 The package, its drawings and its existing quality baseline are unchanged.
 
 | Routes                                 |    Maps | Edges | Hard defects | Crossings | Bends | Route length |
@@ -23,6 +23,8 @@ node experiments/routing/baseline.mjs /tmp/routing-reference
 node experiments/routing/baseline.mjs docs/evidence/routing-experiment --check
 node experiments/routing/ports.mjs /tmp/routing-reference
 node experiments/routing/ports.mjs docs/evidence/routing-experiment --check
+node experiments/routing/channels.mjs /tmp/routing-reference
+node experiments/routing/channels.mjs docs/evidence/routing-experiment --check
 node --test experiments/routing/*.test.mjs
 ```
 
@@ -46,8 +48,13 @@ update the existing quality baseline to make this experiment pass.
 - `ports/summary.json`: totals for those 29 input audits.
 - `experiments/routing/prepare.mjs`: prepares the same boxes and terminals for
   both candidates; it does not produce a new drawing.
+- `channel-geometry/examples/<engine>/<example>.json` and
+  `channel-geometry/book/hand/<map>.json`: route coverage, failures, bends,
+  length and input/output hashes from the initial channel path search.
+- `channel-geometry/summary.json`: totals for those geometry audits. These are
+  not resolved maps and do not include labels or a `check()` quality report.
 
-Each map report contains the complete unmodified `check(source, resolved)`
+Each `current/` map report contains the complete unmodified `check(source, resolved)`
 result, including contact bands and involved IDs, required constraint verdicts,
 crossings and reading shares. A SHA-256 of the parsed resolved map identifies
 the exact geometry. The test compares every quality report with the existing
@@ -80,7 +87,46 @@ Frames remain separate from node obstacles. They are annotation boundaries,
 not filled rectangles or inferred groups: `showWith` does not mean containment.
 The target frame's box and terminal are retained for routing `timeout_outer`.
 Both candidate adapters must use this distinction and these same permitted
-sides, including the two corner choices. No adapter has been tested yet.
+sides, including the two corner choices. Channel geometry tests exercise all
+260 connections; libavoid has not been implemented yet.
+
+## Initial channel geometry
+
+| Geometry measure |    Result |
+| ---------------- | --------: |
+| Maps             |        29 |
+| Routed edges     | 260 / 260 |
+| Failed edges     |         0 |
+| Bends            |       302 |
+| Route length     |  41234.99 |
+
+`routeChannel(prepare(item))` returns an ordered list of `{ id, points }` or
+`{ id, failure }`. It never changes an input. For each edge, a rectangular grid
+uses midpoints between consecutive distinct box boundaries and terminal
+coordinates, the terminal coordinates themselves, and exterior tracks 16 units
+beyond the extremes. Adjacent intersections connect only if the segment misses
+every closed node rectangle. Contact is allowed only at that edge's own node
+terminal; frame interiors remain passable. Terminal sides constrain departure
+and arrival, including corners and gaps.
+
+Dijkstra search retains incoming direction at each intersection and minimises
+bends first, then length. This is the shortest route on the constructed graph,
+not a claim of optimal routing over the entire plane. Immediate reversals are
+forbidden so a self-loop cannot collapse into an out-and-back line. A missing
+path is reported as a search failure, not proof that no geometric route exists.
+
+Tests independently intersect every output segment with every node rectangle,
+check exact ports and outward sides, and repeat all 29 maps to check determinism.
+Small fixtures check a blocking box, an obstructed port, a same-port self-loop
+and bend/length priority. The corpus includes both real self-loops and the frame
+endpoint. All 260 edges route without unwanted node contact.
+
+This is one part of the channel candidate. Edges are currently routed
+independently: parallel segments can coincide, and the fixed exterior offset
+does not reserve room for labels. Spreading parallel routes, shared label and
+number placement, and resolved-map assembly are still needed before comparison
+with `check()`. The shorter total length alone is not a quality improvement.
+No candidate drawing has been rendered; all reference maps remain identical.
 
 ## Measurement boundaries
 
@@ -107,8 +153,9 @@ for that frame endpoint and its geometry rather than silently omit the edge.
 
 ## Remaining comparison
 
-Both candidates still need to route all 260 edges on these fixed boxes with
-the same ports. Their reports must include routing-only timings, download
+The channel candidate needs parallel spacing and resolved drawings; libavoid
+still needs to route all 260 edges on these fixed boxes with the same ports.
+Their reports must include routing-only timings, download
 sizes, licence requirements and limitations. Parallel-edge spacing, self-loops,
 frame endpoints and label/number placement need explicit treatment. Browser
 checks and local pictures are required when candidate drawings are produced.

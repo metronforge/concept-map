@@ -1,0 +1,16 @@
+{
+  "candidate": "channel",
+  "node": "v26.13.1",
+  "rolldown": "1.3.2",
+  "gzipLevel": 9,
+  "assets": [
+    {
+      "name": "channel.js",
+      "bytes": 2329,
+      "gzipBytes": 1144,
+      "sha256": "be2b7334acf3465d5710e8c21f9d5da14d60ace99568fc42956c44cc94b45aed"
+    }
+  ],
+  "totalBytes": 2329,
+  "totalGzipBytes": 1144
+}

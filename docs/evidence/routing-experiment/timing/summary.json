@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-11-20T18:39:27.492Z",
+  "environment": {
+    "node": "v26.13.1",
+    "v8": "14.6.202.34-node.40",
+    "platform": "linux",
+    "release": "7.0.0-43-generic",
+    "arch": "x64",
+    "cpu": "Intel(R) Core(TM) Ultra 9 185H",
+    "logicalCpus": 22
+  },
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "experimentLockSha256": "065d24be0efc3817d83752cf7e7edf571f34190fedbc0fcdc3b37c112cb67100",
+  "method": "one warm-up per map/candidate, then five sequential routing calls; alternate candidate order by map",
+  "channel": {
+    "maps": 29,
+    "edges": 260,
+    "sumOfMapMediansMs": 28.2273689999995,
+    "medianMapMs": 0.5647510000000011,
+    "minMapMedianMs": 0.09821499999998196,
+    "maxMapMedianMs": 4.542095999999901
+  },
+  "libavoid": {
+    "maps": 29,
+    "edges": 260,
+    "sumOfMapMediansMs": 20.63101399999971,
+    "medianMapMs": 0.6184339999999793,
+    "minMapMedianMs": 0.3423779999999397,
+    "maxMapMedianMs": 1.9120130000000017
+  }
+}

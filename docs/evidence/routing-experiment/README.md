@@ -4,6 +4,8 @@ This folder records the reference drawings, shared fixed-port inputs and
 initial geometry from both routers. Neither candidate has a complete quality
 report yet; these numbers do not select a router.
 The package, its drawings and its existing quality baseline are unchanged.
+[Performance measurements](performance.md) now record five-run routing times
+and browser downloads for these geometry prototypes.
 
 | Routes                                 |    Maps | Edges | Hard defects | Crossings | Bends | Route length |
 | -------------------------------------- | ------: | ----: | -----------: | --------: | ----: | -----------: |
@@ -60,6 +62,11 @@ update the existing quality baseline to make this experiment pass.
 - `libavoid-geometry/`: equivalent geometry audits for libavoid, with its
   experiment lock hash in the summary. See the [notes](libavoid-geometry-notes.md)
   for configuration, results and browser checks.
+- `timing/<candidate>/`: five samples and their median/range per map; the
+  summary records environment, method and totals. See [performance](performance.md)
+  for the measurement boundaries and reproduction commands.
+- `download/<candidate>.json`: minified browser JS and separate WASM sizes,
+  gzip sizes and hashes, verified against the actual files in all three browsers.
 
 Each `current/` map report contains the complete unmodified `check(source, resolved)`
 result, including contact bands and involved IDs, required constraint verdicts,
@@ -151,7 +158,7 @@ The full precision numbers are in JSON; the table rounds only for display.
 
 Routing time is `null` for current routes: hand-authoring time is unknown and
 the existing layout call combines placement, routing and other stages. It is
-not a routing-only timing. Candidate timings must later use five measured
+not a routing-only timing. [Candidate timings](performance.md) use five measured
 routing runs after warm-up, excluding placement and report generation.
 
 Unlike the earlier engine comparison, this input set retains `timeout_outer`
@@ -164,8 +171,8 @@ Both candidates now route all 260 edges on the same fixed boxes and ports.
 [Libavoid geometry notes](libavoid-geometry-notes.md) record its configuration,
 29 per-map reports, browser parity and attachment limitations. The channel
 candidate still needs parallel spacing; both need resolved drawings.
-Their reports must include routing-only timings, download
-sizes, licence requirements and limitations. Parallel-edge spacing, self-loops,
+Their [initial timings and download sizes](performance.md) are recorded;
+licence requirements remain pending. Parallel-edge spacing, self-loops,
 frame endpoints and label/number placement need explicit treatment. Browser
 checks and local pictures are required when candidate drawings are produced.
 The author chooses the router after that comparison; this baseline makes no

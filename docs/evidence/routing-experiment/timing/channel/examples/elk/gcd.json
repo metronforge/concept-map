@@ -1,0 +1,16 @@
+{
+  "id": "examples/elk/gcd",
+  "candidate": "channel",
+  "inputSha256": "5aa4c6fa1d4014bfbb6450f6cc176fea46ba6245ea7e9ed6c583ab538c4480bc",
+  "routesSha256": "dcb943b2226472439cc0b3189fb8a595a5f3a90033e42f9f8ec2363062b9f5ff",
+  "edges": 5,
+  "routing": {
+    "samplesMs": [
+      0.49040899999999965, 0.572257000000036, 0.45911900000010064,
+      0.9008259999999382, 0.45984899999996287
+    ],
+    "medianMs": 0.49040899999999965,
+    "minMs": 0.45911900000010064,
+    "maxMs": 0.9008259999999382
+  }
+}

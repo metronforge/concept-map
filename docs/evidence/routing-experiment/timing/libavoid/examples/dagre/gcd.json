@@ -1,0 +1,16 @@
+{
+  "id": "examples/dagre/gcd",
+  "candidate": "libavoid",
+  "inputSha256": "2abce6fbf22bd996c8fbd7d5c26ddad7c2020adf3965ec62090caf863b5e9ea4",
+  "routesSha256": "f3da911a1717ac444c834dd997635164fa2a8723a26745b126238e999af487d6",
+  "edges": 5,
+  "routing": {
+    "samplesMs": [
+      0.5934660000000349, 0.5249529999999822, 0.5296769999999924,
+      0.5010100000000648, 0.4925879999999552
+    ],
+    "medianMs": 0.5249529999999822,
+    "minMs": 0.4925879999999552,
+    "maxMs": 0.5934660000000349
+  }
+}

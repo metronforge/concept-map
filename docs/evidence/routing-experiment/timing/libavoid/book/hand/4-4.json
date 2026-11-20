@@ -1,0 +1,16 @@
+{
+  "id": "book/hand/4-4",
+  "candidate": "libavoid",
+  "inputSha256": "f510d02bb325bb150a8adc4241b2286d7f7d7f64a3f543109814ff7646bd2e37",
+  "routesSha256": "bd71fcd7c83e71c8260eabcde1e52211b44f7dbb519ebdfecdbeec140316d146",
+  "edges": 12,
+  "routing": {
+    "samplesMs": [
+      1.0264159999999265, 1.0295939999999746, 0.9850440000000162,
+      0.9212409999998954, 0.9547680000000582
+    ],
+    "medianMs": 0.9850440000000162,
+    "minMs": 0.9212409999998954,
+    "maxMs": 1.0295939999999746
+  }
+}

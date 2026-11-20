@@ -1,0 +1,16 @@
+{
+  "id": "examples/elk/door",
+  "candidate": "libavoid",
+  "inputSha256": "c008efdeb25e50b6b2051820285f8e4e319491caf4fe750562e0a1f2c23d47ba",
+  "routesSha256": "e515048fe2748895eefa9107bfa5f6658e6dfc11af7644d3be6aa1c1864b2869",
+  "edges": 7,
+  "routing": {
+    "samplesMs": [
+      1.2751469999999472, 1.1467440000000124, 1.1661910000000262,
+      1.1771760000000313, 1.136617000000001
+    ],
+    "medianMs": 1.1661910000000262,
+    "minMs": 1.136617000000001,
+    "maxMs": 1.2751469999999472
+  }
+}

@@ -176,7 +176,12 @@ sizes are measured before solving, so they are constants.
   path in the constraint graph. A box right of two boxes of different widths
   lands behind the wider one, with no extra rule.
 - **Derived positions** are computed afterwards from boxes already placed:
-  midway between two boxes, equal spacing in a row.
+  midway between two boxes, equal spacing in a row. They stay on the 1/64
+  grid: in ticks, position `k` of `n` parts between `a` and `b` is
+  `a + round(k * (b - a) / n)`, using integer division and rounding ties
+  down (toward minus infinity). The midpoint uses `k = 1, n = 2`. The error
+  from the true position is at most half a tick (1/128 unit). The checker
+  recomputes the rounded value and compares exactly.
 - **Diagnostics**: a cycle of positive length means the relations contradict
   each other, and the error names them; a box no relation reaches is
   "not determined" unless an engine places the rest; two boxes that still

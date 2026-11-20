@@ -35,14 +35,23 @@ export function check(
 
 /** List the hard defects of a report in words, one per line. */
 export function describeDefects(report: LayoutReport): string[] {
+  const names = [
+    "arrow labels overlap",
+    "a line crosses an arrow label",
+    "an arrow label covers a box",
+    "a step number covers an arrow label",
+    "a step number covers a box",
+    "step numbers overlap",
+    "a line passes over a box",
+  ];
   return report.constraints
     .filter((c) => c.strength === "required" && c.holds === false)
     .map((c) => c.message)
     .concat(
-      contactLists(report).flatMap(([what, list]) =>
+      contactLists(report).flatMap((list, i) =>
         list
           .filter((c) => c.band === "defect")
-          .map((c) => `${what}: ${c.a} and ${c.b} (${-c.gap} em)`),
+          .map((c) => `${names[i]}: ${c.a} and ${c.b} (${-c.gap} em)`),
       ),
     );
 }

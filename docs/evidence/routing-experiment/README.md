@@ -6,6 +6,8 @@ report yet; these numbers do not select a router.
 The package, its drawings and its existing quality baseline are unchanged.
 [Performance measurements](performance.md) now record five-run routing times
 and browser downloads for these geometry prototypes.
+[Licence assessment](licences.md) compares MIT with LGPL-2.1-or-later and
+describes the source and replacement materials a browser distributor needs.
 
 | Routes                                 |    Maps | Edges | Hard defects | Crossings | Bends | Route length |
 | -------------------------------------- | ------: | ----: | -----------: | --------: | ----: | -----------: |
@@ -67,6 +69,8 @@ update the existing quality baseline to make this experiment pass.
   for the measurement boundaries and reproduction commands.
 - `download/<candidate>.json`: minified browser JS and separate WASM sizes,
   gzip sizes and hashes, verified against the actual files in all three browsers.
+- `licences.md`: pinned licence/source inspection, distribution obligations,
+  proposed separate-loading arrangement and remaining release checks.
 
 Each `current/` map report contains the complete unmodified `check(source, resolved)`
 result, including contact bands and involved IDs, required constraint verdicts,
@@ -172,7 +176,8 @@ Both candidates now route all 260 edges on the same fixed boxes and ports.
 29 per-map reports, browser parity and attachment limitations. The channel
 candidate still needs parallel spacing; both need resolved drawings.
 Their [initial timings and download sizes](performance.md) are recorded;
-licence requirements remain pending. Parallel-edge spacing, self-loops,
+licence requirements are [documented](licences.md), with release preparation
+still unverified. Parallel-edge spacing, self-loops,
 frame endpoints and label/number placement need explicit treatment. Browser
 checks and local pictures are required when candidate drawings are produced.
 The author chooses the router after that comparison; this baseline makes no

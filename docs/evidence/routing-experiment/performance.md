@@ -60,7 +60,8 @@ These numbers exclude the host page/import map, HTTP headers, fonts, CSS, map
 data, placement, shared input preparation, labelling, reporting and the player.
 No licence files or source distribution are counted: this is runtime payload,
 not a complete distribution or a conclusion about licence compliance. That
-analysis remains pending. The package and its size budgets are unchanged.
+analysis is [recorded separately](licences.md), including the missing release
+materials. The package and its size budgets are unchanged.
 
 The browser check serves the exact hashed, minified files, checks the requests
 for both library JS and WASM, and compares all 260 output routes per candidate
@@ -92,6 +93,6 @@ hashes without writing. Without `--check` it also writes browser assets under
 - `timing/summary.json`: method, environment and separate candidate totals.
 - `download/<candidate>.json`: two reports with browser asset counts and hashes.
 
-The author still needs quality reports, parallel spacing, licence obligations
-and local pictures before choosing a router. These figures will need another
+The author still needs quality reports, parallel spacing and local pictures
+before choosing a router. These figures will need another
 measurement if the candidate implementations change.

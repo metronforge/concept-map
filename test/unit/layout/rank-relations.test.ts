@@ -8,7 +8,7 @@ import { dagreEngine } from "../../../src/layout/dagre.js";
 import { elkEngine } from "../../../src/layout/elk.js";
 import { measureLabel } from "../../../src/layout/measure.js";
 import { rankRelations } from "../../../src/layout/relations/rank.js";
-import { crossRelations } from "../../../src/layout/relations/cross.js";
+import { alignBoxes } from "../../../src/layout/relations/align.js";
 import { solveRelations } from "../../../src/layout/relations/solve.js";
 import { checkRelations } from "../../../src/layout/relations/check.js";
 
@@ -64,15 +64,13 @@ function checkCrossPlacement(
   positions: Record<string, number>,
   axis: number,
 ) {
-  const aligned = structuredClone(boxes);
-  for (const id of Object.keys(aligned)) aligned[id][axis] = positions[id];
-  const system = crossRelations(input, aligned, 32);
-  const result = solveRelations(system);
-  expect(checkRelations(system, result)).toBe(true);
+  const result = alignBoxes(input, boxes, 64, 32);
   expect(result.status).toBe("determined");
   if (result.status !== "determined") throw new Error(result.status);
-  for (const p of result.placements)
-    if (p.variable in aligned) aligned[p.variable][1 - axis] = p.position;
+  const aligned = result.nodes;
+  for (const id of Object.keys(aligned))
+    expect(aligned[id][axis]).toBe(positions[id]);
+  for (const id of ["start", "prepare"]) expect(aligned[id]).toEqual(boxes[id]);
   const entries = Object.values(aligned);
   for (const [i, a] of entries.entries())
     for (const b of entries.slice(i + 1))

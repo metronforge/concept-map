@@ -1,12 +1,13 @@
 // Size Limit externalizes peer dependencies by default. Measure actual consumer bytes.
+// Second audit: margin = min(1000 B, 3% of measured gzip), rounded down.
 const cases = [
   {
     name: "web component (pre-resolved map; with Zod)",
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    // Rank and side hint validation and checking: measured 48177 B + 100 B margin.
-    limit: "48277 B",
+    // Measured 48157 B + 1000 B margin.
+    limit: "49157 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -15,11 +16,8 @@ const cases = [
       "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
-    // Author-approved increase: 14157 B -> 15725 B (+1568 B).
-    // Wide/narrow checks, 1 em hysteresis, in-place geometry updates,
-    // running token animations and a narrow-layout cache are needed together.
-    // Rank and side hint checking: measured 16443 B + 100 B margin.
-    limit: "16543 B",
+    // Measured 16417 B + 492 B margin.
+    limit: "16909 B",
   },
   {
     name: "server render (pre-resolved map)",
@@ -29,8 +27,8 @@ const cases = [
         "{ renderSvg, renderPanelParts, renderConcepts, derive, initialState }",
     },
     gzip: true,
-    // Shared SVG positions: measured 4385 B + 100 B (2.3%) margin.
-    limit: "4485 B",
+    // Measured 4385 B + 131 B margin.
+    limit: "4516 B",
   },
   {
     name: "source and resolved validation (with Zod)",
@@ -39,8 +37,8 @@ const cases = [
       "dist/index.js": "{ SourceMapSchema, ResolvedMapSchema }",
     },
     gzip: true,
-    // Size audit before 0.3.0: measured 27049 B + margin (AGENTS.md "Size limits").
-    limit: "27860 B",
+    // Measured 27165 B + 814 B margin.
+    limit: "27979 B",
   },
   {
     name: "layout port (with Zod; engine supplied by host)",
@@ -49,8 +47,8 @@ const cases = [
       "dist/layout/index.js": "{ layout, measureLabel }",
     },
     gzip: true,
-    // Rank and side hints with named refusals: measured 39678 B + 100 B margin.
-    limit: "39778 B",
+    // Measured 39762 B + 1000 B margin.
+    limit: "40762 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",
@@ -59,15 +57,15 @@ const cases = [
       "dist/layout/stages/report.js": "{ check }",
     },
     gzip: true,
-    // Independent rank and side verdicts: measured 5582 B + 100 B margin.
-    limit: "5682 B",
+    // Measured 5554 B + 166 B margin.
+    limit: "5720 B",
   },
   {
     name: "complete root API (with Zod)",
     path: "dist/index.js",
     gzip: true,
-    // Size audit before 0.3.0: measured 32743 B + margin (AGENTS.md "Size limits").
-    limit: "33725 B",
+    // Measured 33032 B + 990 B margin.
+    limit: "34022 B",
   },
 ];
 export default cases.map((check) => ({

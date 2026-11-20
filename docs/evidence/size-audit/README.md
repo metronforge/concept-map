@@ -22,7 +22,7 @@ The [second audit](second/README.md) records all seven first downloads after
 narrow-screen layouts, scenario intent and stated hints. It includes a
 reproducible module breakdown, explains which features need the added code,
 and separates retained savings from rejected experiments. The figures below
-remain the historical first audit; the second audit has not reset the limits.
+remain the historical first audit; the second audit records the current limits.
 
 ## What the growth since 0.2.1 is
 

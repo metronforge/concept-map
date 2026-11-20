@@ -4,8 +4,9 @@ Measurements use Node 26.13.1, the locked dependencies, and esbuild 0.28.0.
 The first-audit source is `d14f7e0`; before this audit is `c8f6d6f`;
 the current implementation is `bc587e8`. The before revision also includes
 the internal relation solver, but none of these consumers imports it.
-This records the audit so far. Further savings and resetting the size limits
-remain open; these measurements do not claim the solver now has enough room.
+This records the audit so far. The size limits now use the full allowed margin.
+Further savings remain open; these measurements do not claim the solver now
+has enough room.
 
 ## Consumer sizes
 
@@ -26,6 +27,23 @@ The retained change moves diagnostic sentences out of hard-defect counting
 into the existing full-report module. Counting and descriptions share the
 same ordered contact lists. Public reports, diagnostic text and ordering stay
 unchanged. This saves less than 0.1 KB in any consumer and adds no module.
+
+## Reset limits
+
+Each limit is the measured gzip size plus `floor(min(1000, size * 0.03))`
+bytes. This uses the full margin allowed by AGENTS.md, rounded down to whole
+bytes. The largest increase from an existing limit is 984 B for layout;
+none exceeds 1 KB. Resetting the limits does not reduce any download.
+
+| Consumer          | Measured | Margin | Previous limit | New limit | Increase |
+| ----------------- | -------: | -----: | -------------: | --------: | -------: |
+| Component         |   48,157 |  1,000 |         48,277 |    49,157 |      880 |
+| Player            |   16,417 |    492 |         16,543 |    16,909 |      366 |
+| Server rendering  |    4,385 |    131 |          4,485 |     4,516 |       31 |
+| Validation        |   27,165 |    814 |         27,860 |    27,979 |      119 |
+| Layout            |   39,762 |  1,000 |         39,778 |    40,762 |      984 |
+| Quality check     |    5,554 |    166 |          5,682 |     5,720 |       38 |
+| Complete root API |   33,032 |    990 |         33,725 |    34,022 |      297 |
 
 ## Reports and measurement method
 

@@ -51,6 +51,13 @@ const cases = [
     limit: "40762 B",
   },
   {
+    name: "same-rank alignment (on-demand entry)",
+    path: "dist/layout/same-rank.js",
+    gzip: true,
+    // Measured 4990 B + 149 B margin; shared routing helpers are imported.
+    limit: "5139 B",
+  },
+  {
     name: "layout check (quality report with font tables, without Zod)",
     path: "dist/layout/stages/report.js",
     import: {

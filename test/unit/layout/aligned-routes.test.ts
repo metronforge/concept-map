@@ -7,8 +7,7 @@ import {
 import { dagreEngine } from "../../../src/layout/dagre.js";
 import { elkEngine } from "../../../src/layout/elk.js";
 import { measureLabel } from "../../../src/layout/measure.js";
-import { alignBoxes } from "../../../src/layout/relations/align.js";
-import { rerouteMovedEdges } from "../../../src/layout/moved-routes.js";
+import { alignSameRank } from "../../../src/layout/same-rank.js";
 import { resolveGeometry } from "../../../src/layout/resolve.js";
 import { placeAnnotations } from "../../../src/layout/stages/placement.js";
 import { check } from "../../../src/layout/stages/report.js";
@@ -65,14 +64,10 @@ for (const [name, engine] of [
       const graph = problemGraph(problem);
       const placed = await engine.layout(graph);
       const before = structuredClone(placed);
-      const aligned = alignBoxes(problem, placed.nodes, 64, 32);
+      const aligned = alignSameRank(problem, graph, placed, 64, 32);
       if (aligned.status !== "determined") throw new Error(aligned.status);
-      const routed = rerouteMovedEdges(
-        graph,
-        placed,
-        aligned.nodes,
-        problem.constraints,
-      );
+      expect(aligned.dropped).toEqual([]);
+      const routed = aligned.result;
       const geometry = resolveGeometry(map, graph, routed, measureLabel);
       geometry.measurement = {
         name: "font-table",

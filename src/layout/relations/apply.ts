@@ -33,7 +33,10 @@ function enginePositionHolds(
     if (r.kind === "equal" || !ids.includes(r.to)) return true;
     if (!Object.hasOwn(nodes, r.from)) return true;
     const size = system.variables.find((v) => v.id === r.size)?.size ?? 0;
-    return position >= nodes[r.from][axis] + size + r.gap;
+    // Engine arrows measure forward; lane padding is measured by subtraction.
+    // Accept either exact reconstruction, without adding a tolerance band.
+    const from = nodes[r.from][axis];
+    return position >= from + size + r.gap || position - from - size >= r.gap;
   });
 }
 
@@ -46,11 +49,19 @@ function restoreEnginePositions(
   const groups = equalGroups(system)
     .filter(([id]) => Object.hasOwn(boxes, id))
     .sort(([a], [b]) => nodes[a][axis] - nodes[b][axis]);
-  for (const ids of groups) {
-    const original = boxes[ids[0]][axis];
-    if (!ids.every((id) => boxes[id][axis] === original)) continue;
-    if (enginePositionHolds(system, nodes, ids, original, axis))
+  // Zero-gap bounds can tie in position order (a node at a lane start).
+  // Each group restores at most once; repeat until no predecessor changes.
+  for (let pass = 0; pass < groups.length; pass++) {
+    let changed = false;
+    for (const ids of groups) {
+      const original = boxes[ids[0]][axis];
+      if (!ids.every((id) => boxes[id][axis] === original)) continue;
+      if (ids.every((id) => nodes[id][axis] === original)) continue;
+      if (!enginePositionHolds(system, nodes, ids, original, axis)) continue;
       for (const id of ids) nodes[id][axis] = original;
+      changed = true;
+    }
+    if (!changed) break;
   }
 }
 

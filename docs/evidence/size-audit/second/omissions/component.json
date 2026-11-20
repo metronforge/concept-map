@@ -1,0 +1,52 @@
+{
+  "name": "component",
+  "esbuild": "0.28.0",
+  "baseline": 51676,
+  "omissions": {
+    "narrow fitting and cache": {
+      "modules": ["dom/refine#fitCandidates", "dom/narrowLayout"],
+      "gzip": 51401,
+      "difference": 275
+    },
+    "dom/refine": {
+      "modules": ["dom/refine"],
+      "gzip": 43048,
+      "difference": 8628
+    },
+    "dom/narrowLayout": {
+      "modules": ["dom/narrowLayout"],
+      "gzip": 51545,
+      "difference": 131
+    },
+    "dom/resize": {
+      "modules": ["dom/resize"],
+      "gzip": 51627,
+      "difference": 49
+    },
+    "layout/stages/presentation": {
+      "modules": ["layout/stages/presentation"],
+      "gzip": 51499,
+      "difference": 177
+    },
+    "layout/stages/hard-check": {
+      "modules": ["layout/stages/hard-check"],
+      "gzip": 50518,
+      "difference": 1158
+    },
+    "layout/stages/hints": {
+      "modules": ["layout/stages/hints"],
+      "gzip": 51112,
+      "difference": 564
+    },
+    "layout/hints": {
+      "modules": ["layout/hints"],
+      "gzip": 51456,
+      "difference": 220
+    },
+    "hint modules together": {
+      "modules": ["layout/stages/hints", "layout/hints"],
+      "gzip": 51113,
+      "difference": 563
+    }
+  }
+}

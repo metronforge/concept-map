@@ -2,7 +2,7 @@ import type { ResolvedMap, SourceMap } from "../../schema.js";
 import { checkConstraints } from "./constraints.js";
 import { contactInputs } from "./contact-inputs.js";
 import { labelContacts, lineContacts, stepContacts } from "./contacts.js";
-import type { CheckOptions, Contact, LayoutReport } from "./quality.js";
+import type { CheckOptions, LayoutReport } from "./quality.js";
 
 type HardReport = Pick<
   LayoutReport,
@@ -32,7 +32,7 @@ export function hardReport(
   };
   report.hard =
     contactLists(report)
-      .flatMap(([, list]) => list)
+      .flat()
       .filter((c) => c.band === "defect").length +
     report.constraints.filter(
       (c) => c.strength === "required" && c.holds === false,
@@ -40,15 +40,15 @@ export function hardReport(
   return report;
 }
 
-/** Every contact list of a report, named in words. */
-export function contactLists(report: HardReport): [string, Contact[]][] {
+/** Contact groups in the order used by full-report diagnostics. */
+export function contactLists(report: HardReport) {
   return [
-    ["arrow labels overlap", report.labels.labels],
-    ["a line crosses an arrow label", report.labels.lines],
-    ["an arrow label covers a box", report.labels.boxes],
-    ["a step number covers an arrow label", report.steps.labels],
-    ["a step number covers a box", report.steps.boxes],
-    ["step numbers overlap", report.steps.steps],
-    ["a line passes over a box", report.lines.boxes],
+    report.labels.labels,
+    report.labels.lines,
+    report.labels.boxes,
+    report.steps.labels,
+    report.steps.boxes,
+    report.steps.steps,
+    report.lines.boxes,
   ];
 }

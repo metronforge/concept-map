@@ -1,0 +1,52 @@
+{
+  "name": "player",
+  "esbuild": "0.28.0",
+  "baseline": 16795,
+  "omissions": {
+    "narrow fitting and cache": {
+      "modules": ["dom/refine#fitCandidates", "dom/narrowLayout"],
+      "gzip": 15527,
+      "difference": 1268
+    },
+    "dom/refine": {
+      "modules": ["dom/refine"],
+      "gzip": 9645,
+      "difference": 7150
+    },
+    "dom/narrowLayout": {
+      "modules": ["dom/narrowLayout"],
+      "gzip": 16667,
+      "difference": 128
+    },
+    "dom/resize": {
+      "modules": ["dom/resize"],
+      "gzip": 16752,
+      "difference": 43
+    },
+    "layout/stages/presentation": {
+      "modules": ["layout/stages/presentation"],
+      "gzip": 16698,
+      "difference": 97
+    },
+    "layout/stages/hard-check": {
+      "modules": ["layout/stages/hard-check"],
+      "gzip": 15819,
+      "difference": 976
+    },
+    "layout/stages/hints": {
+      "modules": ["layout/stages/hints"],
+      "gzip": 16371,
+      "difference": 424
+    },
+    "layout/hints": {
+      "modules": ["layout/hints"],
+      "gzip": 16715,
+      "difference": 80
+    },
+    "hint modules together": {
+      "modules": ["layout/stages/hints", "layout/hints"],
+      "gzip": 16371,
+      "difference": 424
+    }
+  }
+}

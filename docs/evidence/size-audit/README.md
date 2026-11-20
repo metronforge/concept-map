@@ -16,6 +16,14 @@ What each way of using the package downloads at first, in the published 0.2.1, o
 
 New limits follow AGENTS.md "Size limits": measured size plus at most 1 KB and at most 3%.
 
+## Second audit (after hints)
+
+The [second audit](second/README.md) records all seven first downloads after
+narrow-screen layouts, scenario intent and stated hints. It includes a
+reproducible module breakdown, explains which features need the added code,
+and separates retained savings from rejected experiments. The figures below
+remain the historical first audit; the second audit records the current limits.
+
 ## What the growth since 0.2.1 is
 
 Mostly features that every page with a map needs: SVG path parsing and segment geometry (one copy, shared by placement and the check), placement of labels and step numbers, measurement with the page's font, and the step panel model.

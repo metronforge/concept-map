@@ -1,0 +1,25 @@
+{
+  "name": "layout check (quality report with font tables, without Zod)",
+  "esbuild": "0.28.0",
+  "minified": 13739,
+  "gzip": 5682,
+  "modules": {
+    "dist/layout/stages/plane.js": 2572,
+    "dist/layout/stages/paths.js": 2245,
+    "dist/layout/stages/drawn.js": 1400,
+    "dist/layout/stages/contacts.js": 1160,
+    "dist/layout/stages/reading.js": 1034,
+    "dist/layout/stages/constraints.js": 842,
+    "dist/layout/intent.js": 798,
+    "dist/layout/stages/hints.js": 793,
+    "dist/layout/stages/arcs.js": 745,
+    "dist/layout/measured.js": 528,
+    "dist/layout/stages/hard-check.js": 372,
+    "dist/layout/hints.js": 287,
+    "dist/layout/stages/uncertainty.js": 263,
+    "dist/layout/text-size.js": 236,
+    "dist/layout/stages/report.js": 233,
+    "dist/layout/stages/contact-inputs.js": 210,
+    "consumer.js": 0
+  }
+}

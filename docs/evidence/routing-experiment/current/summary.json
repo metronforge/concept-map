@@ -1,0 +1,28 @@
+{
+  "node": "v26.13.1",
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "all": {
+    "maps": 29,
+    "edges": 260,
+    "hard": 14,
+    "crossings": 20,
+    "bends": 307,
+    "routeLength": 43783.74975527652
+  },
+  "examples": {
+    "maps": 6,
+    "edges": 34,
+    "hard": 0,
+    "crossings": 1,
+    "bends": 45,
+    "routeLength": 8236.485732804616
+  },
+  "book": {
+    "maps": 23,
+    "edges": 226,
+    "hard": 14,
+    "crossings": 19,
+    "bends": 262,
+    "routeLength": 35547.26402247191
+  }
+}

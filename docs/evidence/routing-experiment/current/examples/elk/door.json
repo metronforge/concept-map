@@ -1,0 +1,51 @@
+{
+  "id": "examples/elk/door",
+  "candidate": "current",
+  "resolvedSha256": "e2c951a45d67402b967e9cc1e3f518d8ecbf5fedf1d95a9e1eaaf850c31e0362",
+  "nodes": 5,
+  "edges": 7,
+  "quality": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 6,
+      "forward": 4,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 1
+      }
+    },
+    "text": {
+      "width": 90.69,
+      "height": 22.02
+    }
+  },
+  "bends": 14,
+  "routeLength": 2221.763999999999,
+  "routingTimeMs": null
+}

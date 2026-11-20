@@ -1,0 +1,65 @@
+{
+  "id": "book/hand/4-6",
+  "candidate": "current",
+  "resolvedSha256": "d390fd4af669dba960047ea00c2c3664ec54781a2d93c988e64714f50ad21e99",
+  "nodes": 10,
+  "edges": 11,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:setup_body",
+          "b": "step:setup_body",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 10,
+      "forward": 5,
+      "share": 0.5,
+      "nonReturn": {
+        "edges": 9,
+        "forward": 5,
+        "share": 0.556
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40.38,
+      "height": 52.95
+    }
+  },
+  "bends": 27,
+  "routeLength": 2273,
+  "routingTimeMs": null
+}

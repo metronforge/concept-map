@@ -1,0 +1,102 @@
+{
+  "id": "book/hand/4-5",
+  "candidate": "current",
+  "resolvedSha256": "e5c93bac04abee102ac3a289d7fe04700a06b7be70e34fe5360d274c07aa8da1",
+  "nodes": 16,
+  "edges": 8,
+  "quality": {
+    "hard": 2,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:config_describe",
+          "b": "step:config_describe",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "label:worker_test",
+          "b": "step:worker_test",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:test_requested",
+          "b": "step:test_requested",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:hooks_teardown",
+          "b": "step:hooks_teardown",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "boxes": [
+        {
+          "a": "node:describe",
+          "b": "step:describe_reset",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:reset",
+          "b": "step:reset_config",
+          "band": "defect",
+          "gap": -0.381
+        },
+        {
+          "a": "node:value",
+          "b": "step:function_value",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 1,
+      "pairs": [["default_config", "reset_config"]]
+    },
+    "reading": {
+      "edges": 8,
+      "forward": 4,
+      "share": 0.5,
+      "nonReturn": {
+        "edges": 7,
+        "forward": 4,
+        "share": 0.571
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40.38,
+      "height": 71.43
+    }
+  },
+  "bends": 9,
+  "routeLength": 575,
+  "routingTimeMs": null
+}

@@ -1,0 +1,71 @@
+{
+  "id": "examples/dagre/door",
+  "candidate": "current",
+  "resolvedSha256": "9377f1ff5fc990479f6815b267fc644b6c6ed75c70e7a20826c5693edc66256c",
+  "nodes": 5,
+  "edges": 7,
+  "quality": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [
+        {
+          "a": "label:close",
+          "b": "label:finish",
+          "band": "tight",
+          "gap": 0.174
+        }
+      ],
+      "lines": [
+        {
+          "a": "label:lock",
+          "b": "line:lock",
+          "band": "tight",
+          "gap": 0.042
+        },
+        {
+          "a": "label:unlock",
+          "b": "line:unlock",
+          "band": "tight",
+          "gap": 0.121
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 6,
+      "forward": 4,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 1
+      }
+    },
+    "text": {
+      "width": 78.5,
+      "height": 26.7
+    }
+  },
+  "bends": 6,
+  "routeLength": 1572.429475487707,
+  "routingTimeMs": null
+}

@@ -1,0 +1,128 @@
+{
+  "id": "book/hand/0-1",
+  "candidate": "current",
+  "resolvedSha256": "2eea77607e8e54db75d05065204cf613715c1a1ee0a6531241249e93bfcc2375",
+  "nodes": 20,
+  "edges": 19,
+  "quality": {
+    "hard": 4,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:shared",
+          "b": "line:mk_page",
+          "band": "defect",
+          "gap": -1.815
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:shared",
+          "b": "node:apiCookies",
+          "band": "tight",
+          "gap": 0.143
+        }
+      ]
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:shared",
+          "b": "step:mk_page",
+          "band": "tight",
+          "gap": 0.143
+        }
+      ],
+      "boxes": [
+        {
+          "a": "node:cli",
+          "b": "step:cli_config",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:files",
+          "b": "step:files_dispatch",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:apiCookies",
+          "b": "step:mk_ctx",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:apiCookies",
+          "b": "step:mk_page",
+          "band": "defect",
+          "gap": -1.524
+        },
+        {
+          "a": "node:client",
+          "b": "step:client_server",
+          "band": "tight",
+          "gap": 0.095
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": [
+        {
+          "a": "node:apiCookies",
+          "b": "line:mk_page",
+          "band": "defect",
+          "gap": -5.524
+        },
+        {
+          "a": "node:apiCookies",
+          "b": "line:shared",
+          "band": "defect",
+          "gap": -1.619
+        }
+      ]
+    },
+    "crossings": {
+      "count": 5,
+      "pairs": [
+        ["mk_ctx", "shared"],
+        ["mk_page", "shared"],
+        ["server_page", "shared"],
+        ["server_page", "request_cookies"]
+      ]
+    },
+    "reading": {
+      "edges": 14,
+      "forward": 9,
+      "share": 0.643,
+      "nonReturn": {
+        "edges": 13,
+        "forward": 8,
+        "share": 0.615
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40.38,
+      "height": 70.1
+    }
+  },
+  "bends": 17,
+  "routeLength": 2644,
+  "routingTimeMs": null
+}

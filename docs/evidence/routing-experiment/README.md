@@ -1,7 +1,8 @@
 # Routing around placed boxes
 
-This folder currently records the reference drawings for the routing experiment.
-Neither candidate has been measured yet; these numbers do not select a router.
+This folder records the reference drawings and shared fixed-port inputs for the
+routing experiment. Neither candidate has been measured yet; these numbers do
+not select a router.
 The package, its drawings and its existing quality baseline are unchanged.
 
 | Routes                                 |    Maps | Edges | Hard defects | Crossings | Bends | Route length |
@@ -20,13 +21,15 @@ Run from the repository root with Node 26 and the locked dependencies:
 npm run build
 node experiments/routing/baseline.mjs /tmp/routing-reference
 node experiments/routing/baseline.mjs docs/evidence/routing-experiment --check
-node --test experiments/routing/baseline.test.mjs
+node experiments/routing/ports.mjs /tmp/routing-reference
+node experiments/routing/ports.mjs docs/evidence/routing-experiment --check
+node --test experiments/routing/*.test.mjs
 ```
 
-The first command for the experiment writes new reports outside the repository.
-The second compares the checked-in reports without writing anything. It also
-checks the Node version and lockfile hash recorded in the summary. Do not update
-the existing quality baseline to make this experiment pass.
+The commands without `--check` write new reports outside the repository.
+The commands with `--check` compare the checked-in reports without writing
+anything, including the Node version and lockfile hash in each summary. Do not
+update the existing quality baseline to make this experiment pass.
 
 - `current/examples/<engine>/<example>.json`: one report for each of coffee,
   door and gcd, using the current default layout options for dagre and ELK.
@@ -37,12 +40,47 @@ the existing quality baseline to make this experiment pass.
 - `experiments/routing/inputs.mjs`: shared input loader for subsequent router
   measurements. The `source` of a book case is the resolved map, which `check`
   accepts directly; it is not passed through a layout engine.
+- `ports/examples/<engine>/<example>.json` and `ports/book/hand/<map>.json`:
+  counts and a SHA-256 of each prepared candidate input, reproduced by
+  `experiments/routing/ports.mjs`.
+- `ports/summary.json`: totals for those 29 input audits.
+- `experiments/routing/prepare.mjs`: prepares the same boxes and terminals for
+  both candidates; it does not produce a new drawing.
 
 Each map report contains the complete unmodified `check(source, resolved)`
 result, including contact bands and involved IDs, required constraint verdicts,
 crossings and reading shares. A SHA-256 of the parsed resolved map identifies
 the exact geometry. The test compares every quality report with the existing
 recorded baseline and verifies that measurement does not mutate its input.
+
+## Shared ports
+
+The 29 inputs contain 309 node boxes, 8 frame boxes, 260 connections and 520
+terminals. There are 2 self-loops and 1 terminal on a frame. Of the terminals,
+133 deliberately stop two units short of a box; the others touch the boundary.
+Two terminals sit at corners. These facts are recorded per map, not inferred
+from successful routing.
+
+`prepare(item)` returns `{ id, nodes, frames, edges }`. Boxes keep their exact
+coordinates. Each edge has only its ID and two terminals: the endpoint ID and
+kind, exact point, permitted outward sides and gap to the boundary. A terminal
+at a corner permits both adjacent sides. The destination's sides describe the
+direction away from its box, so the arriving segment travels in reverse.
+Ports are not snapped to the boundary: that would remove the book's arrow gaps.
+
+The old paths supply only their first and last points. Interior vertices,
+labels, step numbers, view boxes and measurement metadata are absent from the
+router input. Tests replace every route interior and annotation position and
+verify that the prepared input stays identical. Arrays are copied so candidate
+code cannot change the reference drawings. Disconnected paths, unknown or
+ambiguous endpoints, and terminals inside or not aligned with their boxes are
+explicit errors; none occur in these 29 inputs.
+
+Frames remain separate from node obstacles. They are annotation boundaries,
+not filled rectangles or inferred groups: `showWith` does not mean containment.
+The target frame's box and terminal are retained for routing `timeout_outer`.
+Both candidate adapters must use this distinction and these same permitted
+sides, including the two corner choices. No adapter has been tested yet.
 
 ## Measurement boundaries
 

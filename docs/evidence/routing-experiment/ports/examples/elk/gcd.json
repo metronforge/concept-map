@@ -1,0 +1,13 @@
+{
+  "id": "examples/elk/gcd",
+  "inputSha256": "5aa4c6fa1d4014bfbb6450f6cc176fea46ba6245ea7e9ed6c583ab538c4480bc",
+  "nodes": 5,
+  "frames": 0,
+  "edges": 5,
+  "terminals": 10,
+  "frameTerminals": 0,
+  "gappedTerminals": 0,
+  "maximumGap": 0,
+  "cornerTerminals": 0,
+  "selfLoops": 0
+}

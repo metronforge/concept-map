@@ -1,0 +1,13 @@
+{
+  "id": "book/hand/4-5",
+  "inputSha256": "8dcfbbd489bb87224f06cd0d7e0b3f7b1402a842219cf93390a0256a5c6e2d54",
+  "nodes": 16,
+  "frames": 0,
+  "edges": 8,
+  "terminals": 16,
+  "frameTerminals": 0,
+  "gappedTerminals": 3,
+  "maximumGap": 2,
+  "cornerTerminals": 0,
+  "selfLoops": 0
+}

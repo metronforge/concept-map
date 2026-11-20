@@ -1,0 +1,13 @@
+{
+  "id": "examples/dagre/door",
+  "inputSha256": "c5f93e2f3bcf86175562ad3d99db7b8c7f52cde5b79464872373f2ec8d86f693",
+  "nodes": 5,
+  "frames": 0,
+  "edges": 7,
+  "terminals": 14,
+  "frameTerminals": 0,
+  "gappedTerminals": 0,
+  "maximumGap": 0,
+  "cornerTerminals": 0,
+  "selfLoops": 1
+}

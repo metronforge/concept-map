@@ -1,0 +1,13 @@
+{
+  "id": "examples/elk/coffee",
+  "inputSha256": "3d087caca435d82a4eef66c8554c890829eccf1c857d0f77a882dd360a3e94a6",
+  "nodes": 3,
+  "frames": 0,
+  "edges": 5,
+  "terminals": 10,
+  "frameTerminals": 0,
+  "gappedTerminals": 0,
+  "maximumGap": 0,
+  "cornerTerminals": 0,
+  "selfLoops": 0
+}

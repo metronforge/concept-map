@@ -1,0 +1,13 @@
+{
+  "id": "examples/elk/door",
+  "inputSha256": "c008efdeb25e50b6b2051820285f8e4e319491caf4fe750562e0a1f2c23d47ba",
+  "nodes": 5,
+  "frames": 0,
+  "edges": 7,
+  "terminals": 14,
+  "frameTerminals": 0,
+  "gappedTerminals": 0,
+  "maximumGap": 0,
+  "cornerTerminals": 0,
+  "selfLoops": 1
+}

@@ -1,0 +1,21 @@
+{
+  "name": "server render (pre-resolved map)",
+  "esbuild": "0.28.0",
+  "minified": 11292,
+  "gzip": 4309,
+  "modules": {
+    "dist/render/panel.js": 3270,
+    "dist/render/svg.js": 2935,
+    "dist/model/frame.js": 1470,
+    "dist/model/panel.js": 1117,
+    "dist/render/inline.js": 841,
+    "dist/render/concepts.js": 817,
+    "dist/render/panel-labels.js": 217,
+    "dist/model/panel-labels.js": 182,
+    "dist/render/arrow-label.js": 170,
+    "dist/model/labels.js": 139,
+    "dist/model/state.js": 38,
+    "dist/index.js": 0,
+    "consumer.js": 0
+  }
+}

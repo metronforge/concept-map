@@ -4,9 +4,9 @@ Measurements use Node 26.13.1, the locked dependencies, and esbuild 0.28.0.
 The first-audit source is `d14f7e0`; before this audit is `c8f6d6f`;
 the current implementation is `bc587e8`. The before revision also includes
 the internal relation solver, but none of these consumers imports it.
-This records the audit so far. The size limits now use the full allowed margin.
-Further savings remain open; these measurements do not claim the solver now
-has enough room.
+The author accepted the retained saving and the limit reset as the completed
+audit. Narrow fitting stays eager; further work is a candidate for 0.4.0.
+These measurements do not claim the solver now has enough room.
 
 ## Consumer sizes
 
@@ -117,8 +117,15 @@ The sans-serif font table is still absent from both browser first downloads.
 
 None is retained. A bundler's shared chunk boundaries and compression can
 make a smaller input module grow a consumer bundle, so all seven cases must
-be measured together. Narrow fitting remains a candidate for further work,
-with synchronous presentation, lifecycle and dependency constraints intact.
+be measured together. Further small helper extractions were also rejected
+when gzip grew; no additional runtime changes are retained.
+
+## Narrow fitting and hint verdict costs
+
+The [module omission measurements](narrow-fitting.md) give gzip estimates for
+both browser entries and explain the timing, stale-request and playback
+constraints on loading narrow fitting on demand in 0.4.0. Hint verdicts remain
+necessary for narrow-candidate rejection. This audit keeps that path eager.
 
 ## Reproduce
 
@@ -147,8 +154,18 @@ ESBUILD_PATH=/tmp/concept-map-audit-tools/node_modules/esbuild/lib/main.js \
 ```
 
 Use `c8f6d6f` instead for the before reports, with separate temporary paths.
-Only the seven consumer JSON reports belong in the evidence directories;
-keep the `*-metafile.json` files and bundles outside the repository.
+To reproduce the separate module-omission estimates on the current build:
+
+```sh
+ESBUILD_PATH=/tmp/concept-map-audit-tools/node_modules/esbuild/lib/main.js \
+  node scripts/size-audit-omissions.mjs /tmp/concept-map-audit-omissions
+```
+
+[omissions/component.json](omissions/component.json) and
+[omissions/player.json](omissions/player.json) contain each experiment's
+baseline, omitted code, remaining gzip size and difference. Only the consumer
+JSON summaries belong in evidence; keep metafiles and bundles outside the
+repository. Never use omission bundles as runtime artifacts.
 
 Verification commands are `npm run verify` and `npm run test:browser`.
 The retained implementation passed 842 unit tests and 450 browser tests in

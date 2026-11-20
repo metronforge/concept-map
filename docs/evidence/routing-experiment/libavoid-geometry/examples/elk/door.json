@@ -1,0 +1,11 @@
+{
+  "id": "examples/elk/door",
+  "stage": "libavoid geometry only",
+  "inputSha256": "c008efdeb25e50b6b2051820285f8e4e319491caf4fe750562e0a1f2c23d47ba",
+  "routesSha256": "e515048fe2748895eefa9107bfa5f6658e6dfc11af7644d3be6aa1c1864b2869",
+  "edges": 7,
+  "routed": 7,
+  "failures": [],
+  "bends": 10,
+  "routeLength": 2178.763999999999
+}

@@ -1,0 +1,11 @@
+{
+  "id": "examples/dagre/gcd",
+  "stage": "libavoid geometry only",
+  "inputSha256": "2abce6fbf22bd996c8fbd7d5c26ddad7c2020adf3965ec62090caf863b5e9ea4",
+  "routesSha256": "f3da911a1717ac444c834dd997635164fa2a8723a26745b126238e999af487d6",
+  "edges": 5,
+  "routed": 5,
+  "failures": [],
+  "bends": 6,
+  "routeLength": 684.2248243864849
+}

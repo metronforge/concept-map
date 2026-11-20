@@ -1,8 +1,8 @@
 # Routing around placed boxes
 
-This folder records the reference drawings, shared fixed-port inputs and an
-initial channel path search. Neither candidate has a complete quality report
-yet; these numbers do not select a router.
+This folder records the reference drawings, shared fixed-port inputs and
+initial geometry from both routers. Neither candidate has a complete quality
+report yet; these numbers do not select a router.
 The package, its drawings and its existing quality baseline are unchanged.
 
 | Routes                                 |    Maps | Edges | Hard defects | Crossings | Bends | Route length |
@@ -18,6 +18,7 @@ The package, its drawings and its existing quality baseline are unchanged.
 Run from the repository root with Node 26 and the locked dependencies:
 
 ```sh
+npm ci --prefix experiments/routing --ignore-scripts
 npm run build
 node experiments/routing/baseline.mjs /tmp/routing-reference
 node experiments/routing/baseline.mjs docs/evidence/routing-experiment --check
@@ -25,7 +26,10 @@ node experiments/routing/ports.mjs /tmp/routing-reference
 node experiments/routing/ports.mjs docs/evidence/routing-experiment --check
 node experiments/routing/channels.mjs /tmp/routing-reference
 node experiments/routing/channels.mjs docs/evidence/routing-experiment --check
+node experiments/routing/avoids.mjs /tmp/routing-reference
+node experiments/routing/avoids.mjs docs/evidence/routing-experiment --check
 node --test experiments/routing/*.test.mjs
+node experiments/routing/avoid-browser.mjs
 ```
 
 The commands without `--check` write new reports outside the repository.
@@ -53,6 +57,9 @@ update the existing quality baseline to make this experiment pass.
   length and input/output hashes from the initial channel path search.
 - `channel-geometry/summary.json`: totals for those geometry audits. These are
   not resolved maps and do not include labels or a `check()` quality report.
+- `libavoid-geometry/`: equivalent geometry audits for libavoid, with its
+  experiment lock hash in the summary. See the [notes](libavoid-geometry-notes.md)
+  for configuration, results and browser checks.
 
 Each `current/` map report contains the complete unmodified `check(source, resolved)`
 result, including contact bands and involved IDs, required constraint verdicts,
@@ -88,7 +95,7 @@ not filled rectangles or inferred groups: `showWith` does not mean containment.
 The target frame's box and terminal are retained for routing `timeout_outer`.
 Both candidate adapters must use this distinction and these same permitted
 sides, including the two corner choices. Channel geometry tests exercise all
-260 connections; libavoid has not been implemented yet.
+260 connections; libavoid geometry checks now exercise the same set.
 
 ## Initial channel geometry
 
@@ -153,8 +160,10 @@ for that frame endpoint and its geometry rather than silently omit the edge.
 
 ## Remaining comparison
 
-The channel candidate needs parallel spacing and resolved drawings; libavoid
-still needs to route all 260 edges on these fixed boxes with the same ports.
+Both candidates now route all 260 edges on the same fixed boxes and ports.
+[Libavoid geometry notes](libavoid-geometry-notes.md) record its configuration,
+29 per-map reports, browser parity and attachment limitations. The channel
+candidate still needs parallel spacing; both need resolved drawings.
 Their reports must include routing-only timings, download
 sizes, licence requirements and limitations. Parallel-edge spacing, self-loops,
 frame endpoints and label/number placement need explicit treatment. Browser

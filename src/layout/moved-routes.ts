@@ -7,7 +7,6 @@ import type {
 } from "./types.js";
 import { besideRoute } from "./geometry.js";
 import { routeSelfEdges } from "./self-route.js";
-import { movedPortRoute } from "./moved-ports.js";
 import { stretchRoute } from "./stretch-route.js";
 
 /** Reattach arrows after alignment. Untouched endpoints keep their exact route.
@@ -34,14 +33,7 @@ export function rerouteMovedEdges(
       fixed.add(edge.id);
       continue;
     }
-    edges[edge.id] = movedRoute(
-      edge,
-      original.edges[edge.id],
-      nodes,
-      from,
-      to,
-      sides.has(edge.id),
-    );
+    edges[edge.id] = movedRoute(edge, original.edges[edge.id], from, to);
     if (sides.has(edge.id)) fixed.add(edge.id);
   }
   return routeSelfEdges(graph, { ...original, nodes, edges }, fixed);
@@ -62,19 +54,15 @@ function boxShifts(
 function movedRoute(
   edge: LayoutGraph["edges"][number],
   route: LayoutRoute,
-  nodes: LayoutResult["nodes"],
   from: LayoutPoint,
   to: LayoutPoint,
-  ports: boolean,
 ): LayoutRoute {
   if (from[0] === to[0] && from[1] === to[1])
     return {
       points: route.points.map((p) => translate(p, from)),
       ...(route.label ? { label: translate(route.label, from) } : {}),
     };
-  const points = ports
-    ? movedPortRoute(route.points, from, to, [nodes[edge.from], nodes[edge.to]])
-    : stretchRoute(route.points, from, to);
+  const points = stretchRoute(route.points, from, to);
   return {
     points,
     ...(edge.label

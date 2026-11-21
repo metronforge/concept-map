@@ -11,6 +11,7 @@ import { alignLaneRanks } from "../../../src/layout/relations/align-lanes.js";
 import { resolveGeometry } from "../../../src/layout/resolve.js";
 import { placeAnnotations } from "../../../src/layout/stages/placement.js";
 import { check } from "../../../src/layout/stages/report.js";
+import { newRoutingDefects } from "../../../src/layout/routing-defects.js";
 import { laneSource } from "./lane-rank-fixture.js";
 
 for (const [name, engine] of [
@@ -36,6 +37,15 @@ for (const [name, engine] of [
       const report = check(source, resolved);
       expect(report.hard, JSON.stringify(report)).toBe(0);
       expect(report.constraints.every((c) => c.holds)).toBe(true);
+      expect(
+        newRoutingDefects(
+          source,
+          placeAnnotations(
+            resolveGeometry(source, graph, original, measureLabel),
+          ),
+          resolved,
+        ),
+      ).toEqual([]);
       expect(result.edges.prepare).toBe(original.edges.prepare);
       expect(result.edges.quick.points.slice(0, -1)).toEqual(
         original.edges.quick.points.slice(0, -1),

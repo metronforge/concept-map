@@ -56,14 +56,29 @@ export function bookMaps() {
 }
 
 export function exampleMaps() {
-  return ["coffee", "door", "gcd", "side-hints"].map((id) => ({
+  return [
+    "coffee",
+    "door",
+    "gcd",
+    "side-hints",
+    "same-rank",
+    "same-rank-plain",
+  ].map((id) => ({
     id,
-    source: SourceMapSchema.parse(
-      JSON.parse(readFileSync(`examples/${id}/map.json`, "utf8")),
-    ),
-    note:
-      id === "side-hints"
+    source: SourceMapSchema.parse(exampleSource(id)),
+    note: id.startsWith("same-rank")
+      ? id === "same-rank"
+        ? "Quick and Finish are parallel outcomes. A required sameRank hint aligns them in both engines. Compare the next section, which removes only that hint. Plain columns disable scenario intent, not stated hints."
+        : "The same source with only the sameRank hint removed. Both engines place Quick before Finish because its path is shorter. Compare the aligned outcomes in the preceding section."
+      : id === "side-hints"
         ? "ELK honours the stated box sides, including the Retry loop above Waiting. Dagre lists side hints as unsupported. Both ELK columns keep stated hints; plain disables only derived scenario intent."
         : "Current standalone example. No hand-drawn reference is available.",
   }));
+}
+
+function exampleSource(id) {
+  const name = id === "same-rank-plain" ? "same-rank" : id;
+  const source = JSON.parse(readFileSync(`examples/${name}/map.json`, "utf8"));
+  if (id === "same-rank-plain") delete source.layout;
+  return source;
 }

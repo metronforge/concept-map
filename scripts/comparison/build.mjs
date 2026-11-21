@@ -148,6 +148,10 @@ writeFileSync(
 writeFileSync(`${destination}/.nojekyll`, "");
 copyFileSync("css/concept-map.css", `${destination}/concept-map.css`);
 copyFileSync("scripts/comparison/page.css", `${destination}/page.css`);
+copyFileSync(
+  "scripts/comparison/same-rank.css",
+  `${destination}/same-rank.css`,
+);
 for (const file of ["DejaVuSans.ttf", "DejaVuSansMono.ttf", "LICENSE.txt"])
   copyFileSync(`test/fixtures/fonts/${file}`, `${destination}/fonts/${file}`);
 await build({

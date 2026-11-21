@@ -1,0 +1,62 @@
+{
+  "engine": "dagre",
+  "hinted": true,
+  "report": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "sameRank",
+        "nodes": ["quick", "finish"],
+        "strength": "required",
+        "origin": "stated",
+        "path": "layout.hints[0]",
+        "holds": true,
+        "message": "layout.hints[0]: sameRank (quick, finish): honoured"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 3,
+      "share": 1,
+      "nonReturn": {
+        "edges": 3,
+        "forward": 3,
+        "share": 1
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 18.76,
+      "height": 25.52
+    }
+  },
+  "boxes": {
+    "start": [71.75, 16, 60, 36],
+    "quick": [121, 216, 60, 36],
+    "prepare": [16, 116, 73, 36],
+    "finish": [22, 216, 61, 36]
+  },
+  "viewBox": [197, 268]
+}

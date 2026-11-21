@@ -20,16 +20,30 @@ test("standalone comparison sources include defaults before reference validation
     "door",
     "gcd",
     "side-hints",
+    "same-rank",
+    "same-rank-plain",
   ]);
   for (const { id, source } of examples) {
+    const name = id === "same-rank-plain" ? "same-rank" : id;
     const original = JSON.parse(
-      readFileSync(`examples/${id}/map.json`, "utf8"),
+      readFileSync(`examples/${name}/map.json`, "utf8"),
     );
     expect(source.edges).toEqual(original.edges);
     expect(source.title).toBe(original.title);
     expect(source.frames).toEqual({});
     expect(() => validateReferences(source)).not.toThrow();
   }
+});
+
+test("the plain same-rank comparison removes only the stated hint", () => {
+  const examples = exampleMaps();
+  const hinted = examples.find(({ id }) => id === "same-rank")!.source;
+  const plain = examples.find(({ id }) => id === "same-rank-plain")!.source;
+  const { layout, ...withoutHint } = hinted;
+  expect(layout.hints).toEqual([
+    { kind: "sameRank", nodes: ["quick", "finish"], strength: "required" },
+  ]);
+  expect(plain).toEqual(withoutHint);
 });
 
 test("all 23 stripped sources validate, without mutating book fixtures", () => {

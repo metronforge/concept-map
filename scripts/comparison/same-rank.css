@@ -1,0 +1,5 @@
+/* Keep this small alignment example at the player's page-relative text size. */
+[data-map^="same-rank"] .canvas svg {
+  width: auto;
+  height: auto;
+}

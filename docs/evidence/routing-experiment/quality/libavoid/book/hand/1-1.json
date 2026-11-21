@@ -1,0 +1,81 @@
+{
+  "id": "book/hand/1-1",
+  "candidate": "libavoid",
+  "resolvedSha256": "ebeff3f8840874819ea8eed1765f422c35c9a40015ffebc1ba41667d2b3c4926",
+  "nodes": 9,
+  "edges": 9,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:input",
+          "b": "line:input",
+          "band": "tight",
+          "gap": 0.05
+        },
+        {
+          "a": "label:return",
+          "b": "line:return",
+          "band": "tight",
+          "gap": 0.107
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": [
+        {
+          "a": "node:prefix",
+          "b": "line:return",
+          "band": "tight",
+          "gap": 0.238
+        }
+      ]
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 9,
+      "forward": 4,
+      "share": 0.444,
+      "nonReturn": {
+        "edges": 8,
+        "forward": 4,
+        "share": 0.5
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40.38,
+      "height": 46.67
+    }
+  },
+  "bends": 9,
+  "routeLength": 884,
+  "routingTimeMs": null,
+  "inputSha256": "3c918267d92a430f7ebb0045c0fdf1bc731aeb7a217575fe13327af45ca0b32e",
+  "routesSha256": "8e0f99056964854c173e71c281168024dd8a9c5f52aca15d0b6408e33b8748ff",
+  "outsideViewport": []
+}

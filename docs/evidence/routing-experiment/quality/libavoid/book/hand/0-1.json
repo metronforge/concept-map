@@ -1,0 +1,112 @@
+{
+  "id": "book/hand/0-1",
+  "candidate": "libavoid",
+  "resolvedSha256": "787f123f3c7a65cdca963c04cb878bd9e5415b5deefe088ce71e7f34d52e4e76",
+  "nodes": 20,
+  "edges": 19,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:cli",
+          "b": "step:cli_config",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:files",
+          "b": "step:files_dispatch",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:apiCookies",
+          "b": "step:mk_ctx",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:client",
+          "b": "step:client_server",
+          "band": "tight",
+          "gap": 0.095
+        }
+      ],
+      "steps": [
+        {
+          "a": "step:mk_page",
+          "b": "step:server_app",
+          "band": "tight",
+          "gap": 0.136
+        }
+      ]
+    },
+    "lines": {
+      "boxes": [
+        {
+          "a": "node:pageRequest",
+          "b": "line:mk_browser",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:Page",
+          "b": "line:shared",
+          "band": "tight",
+          "gap": 0.238
+        }
+      ]
+    },
+    "crossings": {
+      "count": 5,
+      "pairs": [
+        ["mk_ctx", "shared"],
+        ["mk_page", "shared"],
+        ["mk_page", "request_cookies"],
+        ["server_page", "shared"],
+        ["page_app", "shared"]
+      ]
+    },
+    "reading": {
+      "edges": 14,
+      "forward": 9,
+      "share": 0.643,
+      "nonReturn": {
+        "edges": 13,
+        "forward": 8,
+        "share": 0.615
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40.38,
+      "height": 70.1
+    }
+  },
+  "bends": 25,
+  "routeLength": 2750.99999856,
+  "routingTimeMs": null,
+  "inputSha256": "5c492deafe49164719cb227e3f53ea2eed966bbeacb0da53c562b7a81400ef68",
+  "routesSha256": "45d481675fc3a28f49ccd087c87d25f4c881887f414555701bc6b1a0019604c2",
+  "outsideViewport": []
+}

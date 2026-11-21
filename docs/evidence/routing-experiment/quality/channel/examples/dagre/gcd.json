@@ -1,0 +1,81 @@
+{
+  "id": "examples/dagre/gcd",
+  "candidate": "channel",
+  "resolvedSha256": "629e810d1fa4a7b825f492bcb2ad4f6af8217e0390115abab59d8b9ceb2b5dd5",
+  "nodes": 5,
+  "edges": 5,
+  "quality": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:loop",
+          "b": "line:loop",
+          "band": "tight",
+          "gap": 0.087
+        },
+        {
+          "a": "label:loop",
+          "b": "line:yes",
+          "band": "tight",
+          "gap": 0.158
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:loop",
+          "b": "node:result",
+          "band": "tight",
+          "gap": 0.046
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": [
+        {
+          "a": "node:result",
+          "b": "line:loop",
+          "band": "tight",
+          "gap": 0.143
+        }
+      ]
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 4,
+      "share": 0.8,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 30.99,
+      "height": 38.65
+    }
+  },
+  "bends": 6,
+  "routeLength": 682.2248243864849,
+  "routingTimeMs": null,
+  "inputSha256": "2abce6fbf22bd996c8fbd7d5c26ddad7c2020adf3965ec62090caf863b5e9ea4",
+  "routesSha256": "1946948801cc76a617ab8a2f2a3c0fe30402ed60743b1b33081af0215d6f1ad5",
+  "outsideViewport": []
+}

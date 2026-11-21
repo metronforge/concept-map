@@ -1,0 +1,111 @@
+{
+  "id": "book/hand/2-3",
+  "candidate": "libavoid",
+  "resolvedSha256": "aa78a8517dfd6007b2dc9214746cc3c446f05028c5faf8dec88ef2bcc5d014e2",
+  "nodes": 13,
+  "edges": 14,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:first",
+          "b": "line:first",
+          "band": "tight",
+          "gap": 0.184
+        },
+        {
+          "a": "label:reached",
+          "b": "line:reached",
+          "band": "tight",
+          "gap": 0.192
+        },
+        {
+          "a": "label:retry",
+          "b": "line:retry",
+          "band": "tight",
+          "gap": 0.122
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:next",
+          "b": "node:box",
+          "band": "tight",
+          "gap": 0.133
+        },
+        {
+          "a": "label:next",
+          "b": "node:stored",
+          "band": "tight",
+          "gap": 0.133
+        },
+        {
+          "a": "label:changed",
+          "b": "node:changed",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:reached",
+          "b": "node:count",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:then",
+          "b": "node:inert",
+          "band": "tight",
+          "gap": 0.082
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 14,
+      "forward": 9,
+      "share": 0.643,
+      "nonReturn": {
+        "edges": 12,
+        "forward": 9,
+        "share": 0.75
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40,
+      "height": 83.43
+    }
+  },
+  "bends": 16,
+  "routeLength": 1821,
+  "routingTimeMs": null,
+  "inputSha256": "9c6e41a40de5ee40e3445c90ed55e852c649be12886c48c9d8d75cd8209717a7",
+  "routesSha256": "fd5962420369816486e9948853669e3ea6a2f36d495d8e3cda513e55ffc62b30",
+  "outsideViewport": []
+}

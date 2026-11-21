@@ -1,0 +1,124 @@
+{
+  "id": "book/hand/5-1",
+  "candidate": "channel",
+  "resolvedSha256": "f95417ff2c820325bbf3d5a2052ca8b93911aefdb8dbd840814553dc0885e625",
+  "nodes": 15,
+  "edges": 9,
+  "quality": {
+    "hard": 1,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:injected",
+          "b": "line:injected",
+          "band": "tight",
+          "gap": 0.024
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:value",
+          "b": "node:producer",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:value",
+          "b": "node:matcher",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:throws",
+          "b": "node:block",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:throws",
+          "b": "node:thrown",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:deadline",
+          "b": "node:intervals",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:deadline",
+          "b": "node:stop",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:record",
+          "b": "node:soft",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:record",
+          "b": "node:failed",
+          "band": "tight",
+          "gap": 0.001
+        }
+      ]
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:throws",
+          "b": "node-step:2:after-the-wait-topass-runs-write",
+          "band": "defect",
+          "gap": -0.57
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 9,
+      "forward": 1,
+      "share": 0.111,
+      "nonReturn": {
+        "edges": 6,
+        "forward": 1,
+        "share": 0.167
+      },
+      "returns": {
+        "edges": 3,
+        "backward": 1,
+        "share": 0.333,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 37.71,
+      "height": 64.76
+    }
+  },
+  "bends": 10,
+  "routeLength": 1187,
+  "routingTimeMs": null,
+  "inputSha256": "9fe570f551241ed3965c9b202add8e25a2d3d2d7a30f9217c7b78b3377e0686e",
+  "routesSha256": "187732f316101a3eae1212fe6cf21c212baea3ee5eca2785a757e8470c5ba003",
+  "outsideViewport": []
+}

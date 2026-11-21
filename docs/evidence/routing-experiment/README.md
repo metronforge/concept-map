@@ -1,21 +1,21 @@
 # Routing around placed boxes
 
 This folder records the reference drawings, shared fixed-port inputs and
-initial geometry from both routers. Neither candidate has a complete quality
-report yet; these numbers do not select a router.
+initial geometry from both routers. [Shared annotation quality](quality.md)
+now scores both candidates; these provisional numbers do not select a router.
 The package, its drawings and its existing quality baseline are unchanged.
 [Performance measurements](performance.md) now record five-run routing times
 and browser downloads for these geometry prototypes.
 [Licence assessment](licences.md) compares MIT with LGPL-2.1-or-later and
 describes the source and replacement materials a browser distributor needs.
 
-| Routes                                 |    Maps | Edges | Hard defects | Crossings | Bends | Route length |
-| -------------------------------------- | ------: | ----: | -----------: | --------: | ----: | -----------: |
-| Current example routes (dagre and ELK) |       6 |    34 |            0 |         1 |    45 |      8236.49 |
-| Current book routes (hand)             |      23 |   226 |           14 |        19 |   262 |     35547.26 |
-| Current routes, all inputs             |      29 |   260 |           14 |        20 |   307 |     43783.75 |
-| Channel router                         | pending |       |              |           |       |              |
-| libavoid                               | pending |       |              |           |       |              |
+| Routes                                 | Maps | Edges | Hard defects | Crossings | Bends | Route length |
+| -------------------------------------- | ---: | ----: | -----------: | --------: | ----: | -----------: |
+| Current example routes (dagre and ELK) |    6 |    34 |            0 |         1 |    45 |      8236.49 |
+| Current book routes (hand)             |   23 |   226 |           14 |        19 |   262 |     35547.26 |
+| Current routes, all inputs             |   29 |   260 |           14 |        20 |   307 |     43783.75 |
+| Channel router                         |   29 |   260 |            3 |        19 |   302 |     41234.99 |
+| libavoid                               |   29 |   260 |            3 |        23 |   304 |     38762.99 |
 
 ## Files and reproduction
 
@@ -32,6 +32,8 @@ node experiments/routing/channels.mjs /tmp/routing-reference
 node experiments/routing/channels.mjs docs/evidence/routing-experiment --check
 node experiments/routing/avoids.mjs /tmp/routing-reference
 node experiments/routing/avoids.mjs docs/evidence/routing-experiment --check
+node experiments/routing/quality.mjs /tmp/routing-reference
+node experiments/routing/quality.mjs docs/evidence/routing-experiment --check
 node --test experiments/routing/*.test.mjs
 node experiments/routing/avoid-browser.mjs
 ```
@@ -69,6 +71,8 @@ update the existing quality baseline to make this experiment pass.
   for the measurement boundaries and reproduction commands.
 - `download/<candidate>.json`: minified browser JS and separate WASM sizes,
   gzip sizes and hashes, verified against the actual files in all three browsers.
+- `quality/<candidate>/`: per-map results and summary using the unchanged
+  checker after shared annotation placement; see [quality](quality.md).
 - `licences.md`: pinned licence/source inspection, distribution obligations,
   proposed separate-loading arrangement and remaining release checks.
 
@@ -141,10 +145,10 @@ endpoint. All 260 edges route without unwanted node contact.
 
 This is one part of the channel candidate. Edges are currently routed
 independently: parallel segments can coincide, and the fixed exterior offset
-does not reserve room for labels. Spreading parallel routes, shared label and
-number placement, and resolved-map assembly are still needed before comparison
-with `check()`. The shorter total length alone is not a quality improvement.
-No candidate drawing has been rendered; all reference maps remain identical.
+does not reserve room for labels. Spreading parallel routes is still needed. Shared label and number placement
+now assembles resolved maps and runs `check()`; see [quality](quality.md).
+The shorter total length alone is not a quality improvement.
+All reference maps remain identical.
 
 ## Measurement boundaries
 
@@ -174,11 +178,12 @@ for that frame endpoint and its geometry rather than silently omit the edge.
 Both candidates now route all 260 edges on the same fixed boxes and ports.
 [Libavoid geometry notes](libavoid-geometry-notes.md) record its configuration,
 29 per-map reports, browser parity and attachment limitations. The channel
-candidate still needs parallel spacing; both need resolved drawings.
+candidate still needs parallel spacing; both now have resolved drawings and
+[server quality reports](quality.md) from shared annotation placement.
 Their [initial timings and download sizes](performance.md) are recorded;
 licence requirements are [documented](licences.md), with release preparation
 still unverified. Parallel-edge spacing, self-loops,
-frame endpoints and label/number placement need explicit treatment. Browser
-checks and local pictures are required when candidate drawings are produced.
+frame endpoints and label/number placement need final review. Candidate-specific
+browser checks remain; local example pictures accompany this quality pass.
 The author chooses the router after that comparison; this baseline makes no
 production recommendation.

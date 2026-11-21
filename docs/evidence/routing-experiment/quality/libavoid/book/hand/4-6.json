@@ -1,0 +1,90 @@
+{
+  "id": "book/hand/4-6",
+  "candidate": "libavoid",
+  "resolvedSha256": "ca08be9eafe8521c28f9810b78d4863bf8a88eb13e10accfd50e5f6377ca8bba",
+  "nodes": 10,
+  "edges": 11,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [
+        {
+          "a": "label:test_setup",
+          "b": "label:elapsed_body",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:setup_body",
+          "b": "label:elapsed_body",
+          "band": "tight",
+          "gap": 0.001
+        }
+      ],
+      "lines": [],
+      "boxes": [
+        {
+          "a": "label:fixture_setup",
+          "b": "node:ownSetup",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:action_expired",
+          "b": "node:expired",
+          "band": "tight",
+          "gap": 0.001
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 2,
+      "pairs": [
+        ["fixture_setup", "body_after"],
+        ["body_after", "fixture_teardown"]
+      ]
+    },
+    "reading": {
+      "edges": 10,
+      "forward": 5,
+      "share": 0.5,
+      "nonReturn": {
+        "edges": 9,
+        "forward": 5,
+        "share": 0.556
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40.38,
+      "height": 52.95
+    }
+  },
+  "bends": 27,
+  "routeLength": 2057.99999992,
+  "routingTimeMs": null,
+  "inputSha256": "a2459a2deda96c33c037c361dc0410e3e970f931abb2a3db4995f7c6448c28eb",
+  "routesSha256": "f6f689d356e3f8c7f73a362aa8449510979d5e4236003a5e77ae40f1c6e96e5a",
+  "outsideViewport": []
+}

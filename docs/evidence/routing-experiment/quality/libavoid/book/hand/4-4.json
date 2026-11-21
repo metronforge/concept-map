@@ -1,0 +1,155 @@
+{
+  "id": "book/hand/4-4",
+  "candidate": "libavoid",
+  "resolvedSha256": "9e650c40684f1656aa53da78e0d1b46d7171f76290bf1f3ea92a6136aeb511af",
+  "nodes": 11,
+  "edges": 12,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:first_failed",
+          "b": "line:dispatch_fresh",
+          "band": "tight",
+          "gap": 0.181
+        },
+        {
+          "a": "label:copies_dispatch",
+          "b": "line:copies_dispatch",
+          "band": "tight",
+          "gap": 0.122
+        },
+        {
+          "a": "label:later_stop",
+          "b": "line:later_stop",
+          "band": "tight",
+          "gap": 0.065
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:failed_later",
+          "b": "node:later",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:budget_dispatch",
+          "b": "node:collect",
+          "band": "tight",
+          "gap": 0.006
+        },
+        {
+          "a": "label:copies_dispatch",
+          "b": "node:outcome",
+          "band": "tight",
+          "gap": 0.245
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:first",
+          "b": "step:first_failed",
+          "band": "tight",
+          "gap": 0.128
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": [
+        {
+          "a": "node:collect",
+          "b": "line:stop_budget",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:dispatch",
+          "b": "line:stop_budget",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:first",
+          "b": "line:stop_budget",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:fresh",
+          "b": "line:stop_budget",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:collect",
+          "b": "line:budget_dispatch",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:later",
+          "b": "line:dispatch_fresh",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:outcome",
+          "b": "line:copies_dispatch",
+          "band": "tight",
+          "gap": 0.238
+        }
+      ]
+    },
+    "crossings": {
+      "count": 5,
+      "pairs": [
+        ["failed_later", "later_stop"],
+        ["failed_stop", "dispatch_fresh"],
+        ["stop_budget", "fresh_retry"],
+        ["dispatch_fresh", "later_stop"],
+        ["retry_outcome", "copies_dispatch"]
+      ]
+    },
+    "reading": {
+      "edges": 11,
+      "forward": 7,
+      "share": 0.636,
+      "nonReturn": {
+        "edges": 7,
+        "forward": 5,
+        "share": 0.714
+      },
+      "returns": {
+        "edges": 4,
+        "backward": 1,
+        "share": 0.25,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40.38,
+      "height": 60.95
+    }
+  },
+  "bends": 24,
+  "routeLength": 2828.99999992,
+  "routingTimeMs": null,
+  "inputSha256": "f510d02bb325bb150a8adc4241b2286d7f7d7f64a3f543109814ff7646bd2e37",
+  "routesSha256": "bd71fcd7c83e71c8260eabcde1e52211b44f7dbb519ebdfecdbeec140316d146",
+  "outsideViewport": []
+}

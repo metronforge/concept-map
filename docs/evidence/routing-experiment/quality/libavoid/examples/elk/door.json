@@ -1,0 +1,67 @@
+{
+  "id": "examples/elk/door",
+  "candidate": "libavoid",
+  "resolvedSha256": "7353c6764507513b1022d748d93e58375c17b5e4d524b15cc38f7f9d55030085",
+  "nodes": 5,
+  "edges": 7,
+  "quality": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [
+        {
+          "a": "label:close",
+          "b": "label:finish",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:unlock",
+          "b": "label:blocked",
+          "band": "tight",
+          "gap": 0.001
+        }
+      ],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 6,
+      "forward": 4,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 1
+      }
+    },
+    "text": {
+      "width": 90.69,
+      "height": 22.02
+    }
+  },
+  "bends": 10,
+  "routeLength": 2178.763999999999,
+  "routingTimeMs": null,
+  "inputSha256": "c008efdeb25e50b6b2051820285f8e4e319491caf4fe750562e0a1f2c23d47ba",
+  "routesSha256": "e515048fe2748895eefa9107bfa5f6658e6dfc11af7644d3be6aa1c1864b2869",
+  "outsideViewport": []
+}

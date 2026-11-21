@@ -1,0 +1,85 @@
+{
+  "id": "book/hand/2-6",
+  "candidate": "channel",
+  "resolvedSha256": "9779064353202c0423fae4fda894b995fd0f620f026c390e481fd6df31306bf3",
+  "nodes": 14,
+  "edges": 12,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:enable",
+          "b": "line:enable",
+          "band": "tight",
+          "gap": 0.132
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:release",
+          "b": "node:iframe",
+          "band": "tight",
+          "gap": 0.001
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:input",
+          "b": "step:release",
+          "band": "tight",
+          "gap": 0.095
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 2,
+      "pairs": [
+        ["skip", "url_load"],
+        ["release", "ignores"]
+      ]
+    },
+    "reading": {
+      "edges": 12,
+      "forward": 11,
+      "share": 0.917,
+      "nonReturn": {
+        "edges": 10,
+        "forward": 9,
+        "share": 0.9
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40,
+      "height": 85.71
+    }
+  },
+  "bends": 16,
+  "routeLength": 2862,
+  "routingTimeMs": null,
+  "inputSha256": "01b4b57af16bbd5339cad443e5f3408985a1f90a885a6521fad8d41b9854d83e",
+  "routesSha256": "5ed438c9a13e1b8ad54ac09fbf6b8f2770e9a854a40c2b050d80e6781f697873",
+  "outsideViewport": []
+}

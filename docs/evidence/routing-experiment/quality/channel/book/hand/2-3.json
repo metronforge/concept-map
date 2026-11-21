@@ -1,0 +1,105 @@
+{
+  "id": "book/hand/2-3",
+  "candidate": "channel",
+  "resolvedSha256": "74410e8602ee0d60f46efb70f5f2b96ba1010a61b35fea6583e5d6a64bc650a9",
+  "nodes": 13,
+  "edges": 14,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:first",
+          "b": "line:first",
+          "band": "tight",
+          "gap": 0.037
+        },
+        {
+          "a": "label:retry",
+          "b": "line:retry",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:first",
+          "b": "node:box",
+          "band": "tight",
+          "gap": 0.073
+        },
+        {
+          "a": "label:next",
+          "b": "node:box",
+          "band": "tight",
+          "gap": 0.038
+        },
+        {
+          "a": "label:next",
+          "b": "node:stored",
+          "band": "tight",
+          "gap": 0.038
+        },
+        {
+          "a": "label:changed",
+          "b": "node:changed",
+          "band": "tight",
+          "gap": 0.05
+        },
+        {
+          "a": "label:then",
+          "b": "node:inert",
+          "band": "tight",
+          "gap": 0.028
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 14,
+      "forward": 9,
+      "share": 0.643,
+      "nonReturn": {
+        "edges": 12,
+        "forward": 9,
+        "share": 0.75
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40,
+      "height": 83.43
+    }
+  },
+  "bends": 16,
+  "routeLength": 1974,
+  "routingTimeMs": null,
+  "inputSha256": "9c6e41a40de5ee40e3445c90ed55e852c649be12886c48c9d8d75cd8209717a7",
+  "routesSha256": "ca195fc979070ac527dcb921987687e30c0f084de1d505646f4846062485e028",
+  "outsideViewport": ["retry"]
+}

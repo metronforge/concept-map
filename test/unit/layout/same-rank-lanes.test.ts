@@ -10,6 +10,7 @@ import {
   fontTableMeasurer,
 } from "../../../src/layout/measure.js";
 import { alignSameRank } from "../../../src/layout/same-rank.js";
+import { acceptSameRank } from "../../../src/layout/same-rank-boundary.js";
 import { checkRelations } from "../../../src/layout/relations/check.js";
 import { laneRankRelations } from "../../../src/layout/relations/lane-rank.js";
 import { createRouteInspector } from "../../../src/layout/inspect-routes.js";
@@ -92,6 +93,13 @@ for (const [name, engine] of [
       const ids = outcome.cycle.map((c) => c.id);
       for (const path of ["lanes.first", "lanes.second", "layout.hints[0]"])
         expect(ids.some((id) => id.startsWith(path))).toBe(true);
+      expect(() => acceptSameRank(outcome)).toThrowError(
+        expect.objectContaining({
+          kind: "same-rank-contradiction",
+          data: outcome,
+          message: expect.stringMatching(/lanes\.first.*lanes\.second/s),
+        }),
+      );
     });
 
     test(`${name}, ${direction}: preferred cross-lane hints drop without moving anything`, async () => {
@@ -111,6 +119,13 @@ for (const [name, engine] of [
       expect(outcome.result).toBe(f.original);
       expect(outcome.dropped).toHaveLength(1);
       expect(outcome.dropped[0].reason).toBe("contradiction");
+      expect(acceptSameRank(outcome).unsupported).toEqual([
+        {
+          ...outcome.dropped[0].hint,
+          reason: "contradiction",
+          conflicts: outcome.dropped[0].conflicts,
+        },
+      ]);
       for (const path of ["lanes.first", "lanes.second", "layout.hints[0]"])
         expect(
           outcome.dropped[0].conflicts.some((id) => id.startsWith(path)),

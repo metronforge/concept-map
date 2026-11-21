@@ -19,7 +19,18 @@ import {
   LayoutDefectsError,
 } from "./errors.js";
 import { placeAnnotations } from "./stages/placement.js";
-export * from "./errors.js";
+export {
+  LayoutError,
+  EngineFailedError,
+  ResultRejectedError,
+  UnsupportedConstraintsError,
+  LayoutDefectsError,
+  isLayoutError,
+  isEngineFailedError,
+  isResultRejectedError,
+  isUnsupportedConstraintsError,
+  isLayoutDefectsError,
+} from "./errors.js";
 export type { Measurer } from "./ports.js";
 export { labelsInPanel } from "./stages/presentation.js";
 export { refine } from "./stages/refine.js";

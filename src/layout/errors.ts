@@ -1,4 +1,5 @@
 import type { LayoutReport } from "./stages/report.js";
+import type { AlignmentOutcome } from "./same-rank-outcome.js";
 
 /** Base for layout boundary exceptions; pipeline outcomes remain plain data. */
 export class LayoutError<K extends string = string, D = unknown> extends Error {
@@ -83,6 +84,26 @@ export class LayoutDefectsError extends LayoutError<
     super("layout-defects", report, message);
   }
 }
+/** A checked cycle proves that required same-rank relations conflict. */
+export class SameRankContradictionError extends LayoutError<
+  "same-rank-contradiction",
+  Extract<AlignmentOutcome, { status: "contradictory" }>
+> {
+  constructor(data: Extract<AlignmentOutcome, { status: "contradictory" }>) {
+    super("same-rank-contradiction", data, data.message);
+    this.name = "SameRankContradictionError";
+  }
+}
+/** Placement succeeded, but stretching introduced hard arrow contacts. */
+export class SameRankRoutingError extends LayoutError<
+  "same-rank-routing",
+  Extract<AlignmentOutcome, { status: "routing-failed" }>
+> {
+  constructor(data: Extract<AlignmentOutcome, { status: "routing-failed" }>) {
+    super("same-rank-routing", data, data.message);
+    this.name = "SameRankRoutingError";
+  }
+}
 const matches = (value: unknown, name: string, kind: string): boolean =>
   typeof value === "object" &&
   value !== null &&
@@ -116,6 +137,8 @@ export const isLayoutError = (value: unknown): value is LayoutError =>
   isResultRejectedError(value) ||
   isUnsupportedConstraintsError(value) ||
   isLayoutDefectsError(value) ||
+  matches(value, "SameRankContradictionError", "same-rank-contradiction") ||
+  matches(value, "SameRankRoutingError", "same-rank-routing") ||
   (typeof value === "object" &&
     value !== null &&
     "kind" in value &&

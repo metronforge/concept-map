@@ -12,6 +12,7 @@ describes the source and replacement materials a browser distributor needs.
 they find no displayed hard contacts but retain text-size failures.
 [Shared-line measurements](overlap.md) quantify coincident orthogonal routes
 that crossing counts omit; channel parallel spacing remains unfinished.
+[Production effort](production-readiness.md) assesses the missing capabilities.
 
 | Routes                                 | Maps | Edges | Hard defects | Crossings | Bends | Route length |
 | -------------------------------------- | ---: | ----: | -----------: | --------: | ----: | -----------: |
@@ -83,6 +84,8 @@ update the existing quality baseline to make this experiment pass.
   proposed separate-loading arrangement and remaining release checks.
 - `overlap/`: shared spans and retracing audits for all three route sets;
   see [method, limits and reproduction](overlap.md).
+- `production-readiness.md`: evidence-based assessment of missing capabilities,
+  engineering uncertainty and the limits of the current size and timing figures.
 
 Each `current/` map report contains the complete unmodified `check(source, resolved)`
 result, including contact bands and involved IDs, required constraint verdicts,

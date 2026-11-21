@@ -64,9 +64,9 @@ while x = 190 requires the reverse. Giving each of these straight runs a
 different constant height cannot satisfy both. This identifies a concrete
 problem for the next routing change instead of silently choosing an offset.
 
-The next spacing work must connect track orders across bends, preserve exact
-ports, fit tracks between obstacles and viewport boundaries, and handle these
-four conflicts. It must then pass the unchanged geometry and quality checks.
+The [next step now couples track orders across shared bends](track-coupling.md).
+Spacing still must preserve exact ports, fit tracks between obstacles and
+viewport boundaries, and handle these four conflicts. It must then pass the unchanged geometry and quality checks.
 No local segment-shifting heuristic or checker threshold has been introduced.
 
 ## Files and reproduction

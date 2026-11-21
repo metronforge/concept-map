@@ -1,0 +1,13 @@
+{
+  "id": "book/hand/0-1",
+  "inputSha256": "b4c797ac9e7bc7acfd68680c421e2d027811f38c05fee3099ea4791a69a9bbdf",
+  "routesSha256": "fe70f8408b5ecc666e2b16ece7b7e438a285b41b5a1ff361bc46fc3a80e7cbb2",
+  "edges": 19,
+  "groups": 5,
+  "bends": 1,
+  "components": 4,
+  "orderedComponents": 4,
+  "blockedComponents": 0,
+  "orderedGroups": 5,
+  "blockedGroups": 0
+}

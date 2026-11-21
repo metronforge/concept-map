@@ -1,0 +1,13 @@
+{
+  "id": "examples/dagre/gcd",
+  "inputSha256": "b2ffa96fbad604ca160d19b84aec320f83667f4bf4707783300ae18f113c636a",
+  "routesSha256": "1946948801cc76a617ab8a2f2a3c0fe30402ed60743b1b33081af0215d6f1ad5",
+  "edges": 5,
+  "groups": 0,
+  "bends": 0,
+  "components": 0,
+  "orderedComponents": 0,
+  "blockedComponents": 0,
+  "orderedGroups": 0,
+  "blockedGroups": 0
+}

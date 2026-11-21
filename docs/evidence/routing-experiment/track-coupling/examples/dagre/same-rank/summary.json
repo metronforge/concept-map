@@ -1,0 +1,13 @@
+{
+  "id": "examples/dagre/same-rank",
+  "inputSha256": "03caf11477a597ddfa398fadd7709c565b170d0ca7eb1658fbb432764a614dcb",
+  "routesSha256": "69eb7c1e782cd5591d589072077d57925f91dc12a3546ec2c6727f8fef432dc8",
+  "edges": 3,
+  "groups": 0,
+  "bends": 0,
+  "components": 0,
+  "orderedComponents": 0,
+  "blockedComponents": 0,
+  "orderedGroups": 0,
+  "blockedGroups": 0
+}

@@ -1,0 +1,16 @@
+{
+  "id": "examples/dagre/same-rank",
+  "candidate": "channel",
+  "inputSha256": "7cc33f4b4fdcf67a1dd7861857ff793b7e8fb4133602a5a7e8843e09dafefbbe",
+  "routesSha256": "69eb7c1e782cd5591d589072077d57925f91dc12a3546ec2c6727f8fef432dc8",
+  "edges": 3,
+  "routing": {
+    "samplesMs": [
+      1.8512850000000185, 0.7400569999999789, 0.621690000000001,
+      0.3548279999999977, 0.6318170000000123
+    ],
+    "medianMs": 0.6318170000000123,
+    "minMs": 0.3548279999999977,
+    "maxMs": 1.8512850000000185
+  }
+}

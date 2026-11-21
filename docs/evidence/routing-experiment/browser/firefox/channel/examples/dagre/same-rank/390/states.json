@@ -1,0 +1,58 @@
+{
+  "id": "examples/dagre/same-rank",
+  "candidate": "channel",
+  "browser": "firefox",
+  "browserVersion": "157.0",
+  "width": 390,
+  "inputSha256": "4e286ef632c5e06e376f602d1ac7ca964b2d3849305521b8d7636059cde2263b",
+  "drawnSha256": "e90cc57c76fd4dc65f94bfaf4c602f8e9c5c7a14c35faf3735de77a17a73f48f",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "states": [
+    {
+      "scenario": "outcomes",
+      "step": "start",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "quick",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "prepare",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "finish",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "all",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    }
+  ],
+  "defects": [],
+  "text": {
+    "pageFont": 16,
+    "minimum": 17.51243770122528,
+    "maximum": 17.51243770122528,
+    "statesBelowPage": 0,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0
+}

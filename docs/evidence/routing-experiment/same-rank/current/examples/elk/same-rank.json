@@ -1,0 +1,36 @@
+{
+  "id": "examples/elk/same-rank",
+  "candidate": "current",
+  "resolvedSha256": "57defd1eec9a3f5977d26bca0c262ac78a2d3352258b59f9e5b38b2d5ab4f4e3",
+  "nodes": 4,
+  "edges": 3,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "sameRank",
+        "nodes": ["quick", "finish"],
+        "strength": "required",
+        "origin": "stated",
+        "path": "layout.hints[0]",
+        "holds": true,
+        "message": "layout.hints[0]: sameRank (quick, finish): honoured"
+      }
+    ],
+    "labels": { "labels": [], "lines": [], "boxes": [] },
+    "steps": { "labels": [], "boxes": [], "steps": [] },
+    "lines": { "boxes": [] },
+    "crossings": { "count": 0, "pairs": [] },
+    "reading": {
+      "edges": 3,
+      "forward": 3,
+      "share": 1,
+      "nonReturn": { "edges": 3, "forward": 3, "share": 1 },
+      "returns": { "edges": 0, "backward": 0, "share": null, "selfLoops": 0 }
+    },
+    "text": { "width": 18.76, "height": 25.52 }
+  },
+  "bends": 2,
+  "routeLength": 370.5,
+  "routingTimeMs": null
+}

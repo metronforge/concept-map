@@ -1,8 +1,8 @@
 # Routing around placed boxes
 
 This folder records the reference drawings, shared fixed-port inputs and
-geometry from both routers. The [decision report](decision.md) recommends
-optional libavoid conditionally; the author has not selected a router.
+geometry from both routers. The [decision report](decision.md) records the
+author's choice to finish channel spacing; libavoid is deferred.
 The package, its drawings and its existing quality baseline are unchanged.
 [Performance measurements](performance.md) now record five-run routing times
 and browser downloads for these geometry prototypes.
@@ -13,7 +13,7 @@ cover every scenario state in three browsers; text-size failures remain.
 [Shared-line measurements](overlap.md) quantify coincident orthogonal routes
 that crossing counts omit; channel parallel spacing remains unfinished.
 [Production effort](production-readiness.md) assesses the missing capabilities.
-The channel candidate is incomplete; the decision report makes that gap explicit.
+[Aligned-box measurements](same-rank.md) compare stretched and channel routes.
 
 | Routes                                 | Maps | Edges | Hard defects | Crossings | Bends | Route length |
 | -------------------------------------- | ---: | ----: | -----------: | --------: | ----: | -----------: |

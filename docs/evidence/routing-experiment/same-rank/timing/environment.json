@@ -1,0 +1,9 @@
+{
+  "recordedAt": "2026-11-21T10:52:43.702Z",
+  "node": "v26.13.1",
+  "v8": "14.6.202.34-node.40",
+  "platform": "linux",
+  "arch": "x64",
+  "cpu": "Intel(R) Core(TM) Ultra 9 185H",
+  "method": "one warm-up, five sequential channel routing calls per aligned map; preparation, annotations and audits excluded"
+}

@@ -1,18 +1,19 @@
 # Routing comparison for the author's decision
 
-Recommend libavoid as the candidate for a separately loaded, optional routing
-adapter **if the author accepts its download and distribution work**. It keeps
-far less route length on shared lines than the current channel prototype and
-keeps every route inside the fixed viewports. It does not win every measure:
-it has four more crossings, the same three server hard defects, and the same
-browser text-size failures as channel. Neither candidate is ready to ship.
+The author has deferred libavoid: its download and distribution work are too
+large for this package now. Continue the channel experiment with ordered
+parallel spacing and routes contained in the fixed viewports. Neither
+candidate is ready to ship; no production integration is authorised here.
 
-This is a recommendation about the next development direction, not a selected
-router, a default change or permission to start feature work. The channel
-candidate is incomplete: the requested spreading of parallel arrows has not
-been implemented successfully. These results do not compare libavoid against
-a finished channel router. The author must decide whether that missing work
-is worth pursuing before choosing a router.
+The channel candidate is incomplete and does not meet the author's target.
+On the original 29 maps, shared line must fall from 2654.25 to at most 291.00
+units (twice libavoid's 145.50), and out-of-viewport routes from two to zero.
+Hard defects already equal libavoid's three; crossings are 19 against its 23.
+These are separate conditions, not a combined score.
+
+The branch includes the aligned-box feature from current main. The additional
+[same-rank comparison](same-rank.md) covers both engines' aligned boxes and
+stretched routes separately, keeping the original 29-map totals comparable.
 
 ## What the measurements establish
 
@@ -123,24 +124,25 @@ general attachment handling beyond the corpus's two-unit gaps and narrow
 corridor. Both choices need annotation, clipping and text-size work, explicit
 failure handling and verification beyond these small fixed inputs.
 
-The proposed next direction is therefore conditional:
+The next step is ordered channel spacing with endpoint connections, followed
+by the full comparison, updated downloads and an explicit report of whether
+all four target conditions hold. The earlier independent segment-offset trial
+reduced shared lines but added crossings; it was rejected and is not the
+chosen approach. Do not treat the current 1144-byte prototype as a completed
+spacing implementation.
 
-- If an optional 200989-byte gzip runtime and the documented distribution
-  work are acceptable, choose libavoid for further adapter development. Keep
-  loading separate and first verify rebuild/replacement and startup behavior.
-- If a small MIT-only routing runtime is a requirement, continue the channel
-  experiment with consistent track ordering and endpoint connections before
-  selecting it. Do not treat the current 1144-byte prototype as that solution.
-
-The author's decision is needed now: pursue optional libavoid on these terms,
-or require a completed parallel-spacing comparison before choosing? No
-production integration, default change or visual-acceptance claim follows
-automatically from this report. The incomplete channel candidate and paint
-review remain explicit gaps, not waived requirements.
+The two additional aligned layouts have no shared runs to separate. Channel
+adds two bends and 37.21 units of route length on dagre's placement. ELK's
+counts and length match stretching, though one horizontal segment moves.
+Both satisfy the same-rank constraint.
+This extends the inputs but does not improve the original corpus or finish
+the spacing work. Report back for the author's decision when that comparison
+is complete; the existing paint and text-size gaps remain explicit.
 
 ## Evidence integrity and reproduction
 
-This synthesis changes no router, drawing, numeric evidence or package file.
+The original router implementations and all earlier numeric evidence remain
+unchanged; the aligned-box comparison adds supplemental reports.
 The [README](README.md#files-and-reproduction) and linked measurement reports
 give the commands and their scope. Use Node 26, locked dependencies and the
 `--check` commands for geometry, quality, overlap, downloads and both browser
@@ -149,6 +151,6 @@ also verify the stored five-sample timing arithmetic and route/input hashes.
 
 Earlier local example pictures are at `/tmp/loop79-run1-pictures/` in the
 author's workspace, outside the repository. They show server annotations at
-1280 px in Chromium/light, not browser acceptance. This documentation change
-creates no new drawings or pictures. A changed implementation needs fresh
+1280 px in Chromium/light, not browser acceptance. The aligned comparison's
+local pictures are documented in its report. A changed implementation needs fresh
 quality, timing, download and browser measurements and the required pictures.

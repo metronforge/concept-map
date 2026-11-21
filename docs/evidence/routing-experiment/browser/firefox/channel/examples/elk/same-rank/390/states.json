@@ -1,0 +1,58 @@
+{
+  "id": "examples/elk/same-rank",
+  "candidate": "channel",
+  "browser": "firefox",
+  "browserVersion": "157.0",
+  "width": 390,
+  "inputSha256": "bc5fa1335be8125c0f1fffdceaee759a590574f008a2827d5f52037d38a6b457",
+  "drawnSha256": "7491a6bd72e38eb66220290928940b575684d65ce8115c40dbcdfe2ee5781d70",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "states": [
+    {
+      "scenario": "outcomes",
+      "step": "start",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "quick",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "prepare",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "finish",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "all",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    }
+  ],
+  "defects": [],
+  "text": {
+    "pageFont": 16,
+    "minimum": 17.51243770122528,
+    "maximum": 17.51243770122528,
+    "statesBelowPage": 0,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0
+}

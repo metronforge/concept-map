@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { build } from "rolldown";
 import { chromium, firefox, webkit } from "playwright";
-import { inputs } from "./inputs.mjs";
+import { inputs, sameRankInputs } from "./inputs.mjs";
 import { prepare } from "./prepare.mjs";
 import { assemble } from "./assemble.mjs";
 import { routeChannel } from "./channel.mjs";
@@ -13,16 +13,19 @@ import { report, evidence, bookReports } from "./browser-reports.mjs";
 const [directory, ...flags] = process.argv.slice(2);
 const mode = flags.includes("--check") ? "--check" : undefined;
 const book = flags.includes("--book");
+const aligned = flags.includes("--same-rank");
 assert.ok(
-  directory && flags.every((flag) => ["--check", "--book"].includes(flag)),
-  "Usage: node experiments/routing/browser.mjs <output-directory> [--check] [--book]",
+  directory &&
+    !(book && aligned) &&
+    flags.every((flag) => ["--check", "--book", "--same-rank"].includes(flag)),
+  "Usage: node experiments/routing/browser.mjs <output-directory> [--check] [--book | --same-rank]",
 );
 assert.equal(process.versions.node.split(".")[0], "26", "Use Node 26");
 const allCases = await inputs();
-const cases = allCases.filter((item) =>
-  item.id.startsWith(book ? "book/" : "examples/"),
-);
-const avoid = await loadAvoid();
+const cases = aligned
+  ? await sameRankInputs()
+  : allCases.filter((item) => item.id.startsWith(book ? "book/" : "examples/"));
+const avoid = aligned ? null : await loadAvoid();
 const candidates = cases.flatMap((item) => [
   { ...item, candidate: "current" },
   {
@@ -30,11 +33,15 @@ const candidates = cases.flatMap((item) => [
     candidate: "channel",
     resolved: assemble(item, routeChannel(prepare(item))),
   },
-  {
-    ...item,
-    candidate: "libavoid",
-    resolved: assemble(item, routeAvoid(avoid, prepare(item))),
-  },
+  ...(aligned
+    ? []
+    : [
+        {
+          ...item,
+          candidate: "libavoid",
+          resolved: assemble(item, routeAvoid(avoid, prepare(item))),
+        },
+      ]),
 ]);
 
 async function assets() {
@@ -149,7 +156,7 @@ const summary = {
   drawings: reports.length,
   states: reports.reduce((n, r) => n + r.states.length, 0),
   candidates: Object.fromEntries(
-    ["current", "channel", "libavoid"].map((candidate) => {
+    [...new Set(candidates.map((item) => item.candidate))].map((candidate) => {
       const rows = reports.filter((r) => r.candidate === candidate);
       return [
         candidate,
@@ -177,7 +184,11 @@ const summary = {
 await report(
   directory,
   mode,
-  book ? "book-summary.json" : "summary.json",
+  aligned
+    ? "same-rank-summary.json"
+    : book
+      ? "book-summary.json"
+      : "summary.json",
   summary,
 );
 console.log(JSON.stringify(summary, null, 2));

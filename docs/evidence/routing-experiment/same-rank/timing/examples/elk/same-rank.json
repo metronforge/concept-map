@@ -1,0 +1,16 @@
+{
+  "id": "examples/elk/same-rank",
+  "candidate": "channel",
+  "inputSha256": "dd9fefe4678e1389152793782bb2a1fbfb20f3ceb697db927bd546fb42435a75",
+  "routesSha256": "aeefbfe76b1d1d45105534f5480563f1aed370a8c0009f3da8561645dfd7306d",
+  "edges": 3,
+  "routing": {
+    "samplesMs": [
+      0.7044840000000931, 0.4015630000000101, 0.4157549999999901,
+      0.5144790000000512, 0.4248219999999492
+    ],
+    "medianMs": 0.4248219999999492,
+    "minMs": 0.4015630000000101,
+    "maxMs": 0.7044840000000931
+  }
+}

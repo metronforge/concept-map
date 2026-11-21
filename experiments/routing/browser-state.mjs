@@ -6,7 +6,6 @@ import {
   lineContacts,
   stepContacts,
 } from "../../dist/layout/stages/contacts.js";
-import { contactLists } from "../../dist/layout/stages/hard-check.js";
 
 const point = (circle) => [
   Number(circle.getAttribute("cx")),
@@ -57,7 +56,15 @@ export function stateContacts(player) {
     steps: stepContacts(shapes, judge),
     lines: lineContacts(shapes, judge),
   };
-  return Object.fromEntries(contactLists(report));
+  return {
+    "arrow labels overlap": report.labels.labels,
+    "a line crosses an arrow label": report.labels.lines,
+    "an arrow label covers a box": report.labels.boxes,
+    "a step number covers an arrow label": report.steps.labels,
+    "a step number covers a box": report.steps.boxes,
+    "step numbers overlap": report.steps.steps,
+    "a line passes over a box": report.lines.boxes,
+  };
 }
 
 export function mismatches(player) {

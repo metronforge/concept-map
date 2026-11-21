@@ -1,0 +1,6 @@
+[
+  { "a": "node:tests", "b": "step:next", "band": "tight", "gap": 0.19 },
+  { "a": "node:next", "b": "step:next", "band": "tight", "gap": 0.19 },
+  { "a": "node:next", "b": "step:last", "band": "tight", "gap": 0.19 },
+  { "a": "node:last", "b": "step:last", "band": "tight", "gap": 0.19 }
+]

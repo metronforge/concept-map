@@ -1,0 +1,34 @@
+[
+  {
+    "a": "node:collect",
+    "b": "line:stop_budget",
+    "band": "tight",
+    "gap": 0.238
+  },
+  {
+    "a": "node:dispatch",
+    "b": "line:stop_budget",
+    "band": "tight",
+    "gap": 0.238
+  },
+  { "a": "node:first", "b": "line:stop_budget", "band": "tight", "gap": 0.238 },
+  { "a": "node:fresh", "b": "line:stop_budget", "band": "tight", "gap": 0.238 },
+  {
+    "a": "node:collect",
+    "b": "line:budget_dispatch",
+    "band": "tight",
+    "gap": 0.238
+  },
+  {
+    "a": "node:later",
+    "b": "line:dispatch_fresh",
+    "band": "tight",
+    "gap": 0.238
+  },
+  {
+    "a": "node:outcome",
+    "b": "line:copies_dispatch",
+    "band": "tight",
+    "gap": 0.238
+  }
+]

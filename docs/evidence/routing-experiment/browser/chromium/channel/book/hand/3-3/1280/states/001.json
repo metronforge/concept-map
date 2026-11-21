@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "release-one",
+    "step": "release-body1",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "release-one",
+    "step": "read-the-released-body",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "release-one",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "release-context",
+    "step": "fixture-and-manual-ownership",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "release-context",
+    "step": "release-both-bodies",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "release-context",
+    "step": "read-after-context-disposal",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "release-context",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "before-all",
+    "step": "context-available-in-the-hook",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "before-all",
+    "step": "hook-teardown-disposes-it",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "before-all",
+    "step": "later-request-fails",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  }
+]

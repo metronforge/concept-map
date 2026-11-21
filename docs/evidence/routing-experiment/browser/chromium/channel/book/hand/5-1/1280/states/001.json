@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "locator",
+    "step": "the-next-try-finds-the-element-a",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "locator",
+    "step": "the-page-now-says-ready",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "locator",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "read-block",
+    "step": "expect-poll-reads-1",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "read-block",
+    "step": "expect-poll-calls-readcount-agai",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "read-block",
+    "step": "topass-runs-write-then-reads-1",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "read-block",
+    "step": "after-the-wait-topass-runs-write",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "read-block",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "deadlines",
+    "step": "expect-poll-uses-expect-s-timeou",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "deadlines",
+    "step": "after-failed-tries-both-wait-100",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  }
+]

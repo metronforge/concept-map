@@ -1,0 +1,16 @@
+[
+  {
+    "scenario": "review",
+    "step": "review-file-path",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "review",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  }
+]

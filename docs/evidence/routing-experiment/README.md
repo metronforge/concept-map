@@ -8,8 +8,8 @@ The package, its drawings and its existing quality baseline are unchanged.
 and browser downloads for these geometry prototypes.
 [Licence assessment](licences.md) compares MIT with LGPL-2.1-or-later and
 describes the source and replacement materials a browser distributor needs.
-[Browser measurements](browser.md) cover all example states in three browsers;
-they find no displayed hard contacts but retain text-size failures.
+[Browser measurements](browser.md) and [book measurements](book-browser.md)
+cover every scenario state in three browsers; text-size failures remain.
 [Shared-line measurements](overlap.md) quantify coincident orthogonal routes
 that crossing counts omit; channel parallel spacing remains unfinished.
 [Production effort](production-readiness.md) assesses the missing capabilities.
@@ -78,8 +78,8 @@ update the existing quality baseline to make this experiment pass.
   gzip sizes and hashes, verified against the actual files in all three browsers.
 - `quality/<candidate>/`: per-map results and summary using the unchanged
   checker after shared annotation placement; see [quality](quality.md).
-- `browser/`: real-font example reports for both widths and every state;
-  see [browser measurements](browser.md) for files, limits and reproduction.
+- `browser/`: real-font reports for both widths and every state; methods and
+  reproduction: [examples](browser.md), [hand-placed book maps](book-browser.md).
 - `licences.md`: pinned licence/source inspection, distribution obligations,
   proposed separate-loading arrangement and remaining release checks.
 - `overlap/`: shared spans and retracing audits for all three route sets;
@@ -195,6 +195,6 @@ Their [initial timings and download sizes](performance.md) are recorded;
 licence requirements are [documented](licences.md), with release preparation
 still unverified. Parallel-edge spacing, self-loops,
 frame endpoints and label/number placement need final review. Example browser
-measurements now cover both candidates; book-map browser review remains.
+measurements and [book results](book-browser.md) now cover both candidates.
 The author chooses the router after that comparison; this baseline makes no
 production recommendation.

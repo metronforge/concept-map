@@ -1,0 +1,28 @@
+{
+  "hard": 2,
+  "constraints": [
+    {
+      "kind": "lanes",
+      "strength": "required",
+      "holds": true,
+      "message": "Lanes are ordered, disjoint and contain their nodes"
+    }
+  ],
+  "crossings": {
+    "count": 5,
+    "pairs": [
+      ["mk_ctx", "shared"],
+      ["mk_page", "shared"],
+      ["server_page", "shared"],
+      ["server_page", "request_cookies"]
+    ]
+  },
+  "reading": {
+    "edges": 14,
+    "forward": 9,
+    "share": 0.643,
+    "nonReturn": { "edges": 13, "forward": 8, "share": 0.615 },
+    "returns": { "edges": 1, "backward": 0, "share": 0, "selfLoops": 0 }
+  },
+  "text": { "width": 40.38, "height": 70.1 }
+}

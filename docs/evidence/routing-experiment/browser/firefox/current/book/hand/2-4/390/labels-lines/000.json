@@ -1,0 +1,72 @@
+[
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.244,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:frames",
+    "b": "line:frames",
+    "band": "tight",
+    "gap": 0.244,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:pre",
+    "b": "line:pre",
+    "band": "tight",
+    "gap": 0.244,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:install",
+    "b": "line:install",
+    "band": "tight",
+    "gap": 0.114,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:input",
+    "b": "line:input",
+    "band": "tight",
+    "gap": 0.098,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:event",
+    "b": "line:event",
+    "band": "tight",
+    "gap": 0.082,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:miss",
+    "b": "line:miss",
+    "band": "tight",
+    "gap": 0.02,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:collect",
+    "b": "line:collect",
+    "band": "tight",
+    "gap": 0.244,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:retry",
+    "b": "line:blocked",
+    "band": "tight",
+    "gap": 0.183,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:retry",
+    "b": "line:retry",
+    "band": "tight",
+    "gap": 0.053,
+    "uncertainty": 0.024
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "you-call-click",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "retries-change-the-scroll-alignm",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "the-point-is-calculated-after-sc",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "containing-iframes-are-checked",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "the-point-must-hit-the-target-or",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "a-listener-is-installed-before-i",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "how",
+    "step": "the-first-relevant-event-checks",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "how",
+    "step": "playwright-reads-the-result-afte",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "inner",
+    "step": "the-first-attempt-scrolls-with-t",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

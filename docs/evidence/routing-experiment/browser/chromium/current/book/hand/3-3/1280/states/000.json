@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "intro",
+    "step": "the-browser-context-owns-page-re",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "a-standalone-context-has-its-own",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "bodies-stay-on-the-server",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "release-one-response",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "release-the-owner-context",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "a-released-body-cannot-be-read",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "the-hook-fixture-ends-with-the-h",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "own-the-context-across-tests",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "release-one",
+    "step": "two-responses-share-a-context",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

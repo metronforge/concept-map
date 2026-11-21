@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:ready_server",
+    "b": "label:probe_ready",
+    "band": "tight",
+    "gap": 0.186,
+    "uncertainty": 0.048
+  }
+]

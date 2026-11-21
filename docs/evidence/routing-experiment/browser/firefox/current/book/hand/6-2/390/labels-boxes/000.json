@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:check",
+    "b": "node:mode",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:check",
+    "b": "node:events",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:calls",
+    "b": "node:generate",
+    "band": "tight",
+    "gap": 0.061,
+    "uncertainty": 0.024
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "inner",
+    "step": "inside-each-item-it-looks-for-an",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "inner",
+    "step": "start-the-inner-recipe-at-its-te",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "inner",
+    "step": "three-list-items-again",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "inner",
+    "step": "only-one-item-has-product-2-insi",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "inner",
+    "step": "the-last-part-searches-inside-th",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "inner",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "iframe",
+    "step": "framelocator-checkout-adds-an-en",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "iframe",
+    "step": "the-part-before-enter-frame-runs",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "iframe",
+    "step": "the-server-takes-the-iframe-s-co",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "iframe",
+    "step": "the-rest-of-the-recipe-runs-in-t",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  }
+]

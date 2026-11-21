@@ -1,0 +1,9 @@
+[
+  {
+    "scenario": "iframe",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  }
+]

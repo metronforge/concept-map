@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "default-files",
+    "step": "shard-1-takes-the-whole-group-a",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "default-files",
+    "step": "the-same-worker-runs-b-in-file-o",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "default-files",
+    "step": "worker-1-runs-c-one-group-needs",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "default-files",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "parallel-exceptions",
+    "step": "with-fullyparallel-each-test-can",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "parallel-exceptions",
+    "step": "two-shards-share-the-groups-a-an",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "parallel-exceptions",
+    "step": "a-serial-describe-with-a-and-b-s",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "parallel-exceptions",
+    "step": "four-tests-with-a-shared-beforea",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "parallel-exceptions",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "reuse-limits",
+    "step": "p-allows-one-worker-so-its-secon",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  }
+]

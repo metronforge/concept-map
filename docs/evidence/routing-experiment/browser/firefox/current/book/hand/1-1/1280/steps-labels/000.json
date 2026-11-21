@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:request",
+    "b": "step:request",
+    "band": "tight",
+    "gap": 0.192,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:prefix",
+    "b": "step:prefix",
+    "band": "tight",
+    "gap": 0.192,
+    "uncertainty": 0.016
+  }
+]

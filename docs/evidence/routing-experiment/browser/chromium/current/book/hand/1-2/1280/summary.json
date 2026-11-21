@@ -1,0 +1,38 @@
+{
+  "id": "book/hand/1-2",
+  "candidate": "current",
+  "browser": "chromium",
+  "browserVersion": "156.0.8078.4",
+  "width": 1280,
+  "inputSha256": "6d7d783d351d8770c9eb1294e33671a427d245e635b987430213958cd36fae4c",
+  "drawnSha256": "5e7d7ca7d0aeeb689815693776278c0d979e207be4fa65b9ac251bfb8e789c81",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "text": {
+    "pageFont": 16,
+    "minimum": 15.999636627906977,
+    "maximum": 19.04718646179402,
+    "statesBelowPage": 26,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0,
+  "stateCount": 26,
+  "parts": {
+    "states": [
+      "chromium/current/book/hand/1-2/1280/states/000.json",
+      "chromium/current/book/hand/1-2/1280/states/001.json",
+      "chromium/current/book/hand/1-2/1280/states/002.json"
+    ],
+    "defects": [],
+    "labels-labels": [],
+    "labels-lines": [],
+    "labels-boxes": [],
+    "steps-labels": [
+      "chromium/current/book/hand/1-2/1280/steps-labels/000.json"
+    ],
+    "steps-boxes": [],
+    "steps-steps": [],
+    "lines-boxes": []
+  }
+}

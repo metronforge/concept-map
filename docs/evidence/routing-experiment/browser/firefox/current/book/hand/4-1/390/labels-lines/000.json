@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:config_ready",
+    "b": "line:config_ready",
+    "band": "tight",
+    "gap": 0.061,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:setup_web",
+    "b": "line:setup_web",
+    "band": "tight",
+    "gap": 0.039,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:web_clean",
+    "b": "line:web_clean",
+    "band": "tight",
+    "gap": 0.161,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:clean_returned",
+    "b": "line:clean_returned",
+    "band": "tight",
+    "gap": 0.163,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:ready_server",
+    "b": "line:ready_server",
+    "band": "tight",
+    "gap": 0.034,
+    "uncertainty": 0.024
+  }
+]

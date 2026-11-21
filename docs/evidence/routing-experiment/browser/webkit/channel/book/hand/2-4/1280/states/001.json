@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "inner",
+    "step": "the-point-is-the-middle-of-the-b",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "inner",
+    "step": "it-hits-a-span-inside-the-button",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "inner",
+    "step": "the-first-mouse-event-checks-the",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "inner",
+    "step": "the-click-is-done",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "inner",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "sticky",
+    "step": "browser-scrolling-leaves-the-but",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "sticky",
+    "step": "the-point-hits-the-header-not-th",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "sticky",
+    "step": "the-next-attempt-aligns-the-butt",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "sticky",
+    "step": "now-the-point-hits-the-button",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "sticky",
+    "step": "the-first-event-hits-the-button",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  }
+]

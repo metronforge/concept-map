@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "intro",
+    "step": "the-assertion-delegates-its-sele",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "the-server-repeats-a-fresh-check",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "poll-repeats-a-producer-and-its",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "positive-topass-repeats-the-whol",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "the-timeout-defaults-differ",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "the-final-wait-repeats",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "the-deadline-can-prevent-another",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "a-soft-failure-can-finish-the-bl",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "locator",
+    "step": "expect-locator-tohavetext-ready",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  }
+]

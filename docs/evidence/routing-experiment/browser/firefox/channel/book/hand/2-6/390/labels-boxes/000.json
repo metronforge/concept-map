@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:load",
+    "b": "node:commit",
+    "band": "tight",
+    "gap": 0.151,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:release",
+    "b": "node:iframe",
+    "band": "tight",
+    "gap": 0.121,
+    "uncertainty": 0.024
+  }
+]

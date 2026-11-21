@@ -1,0 +1,44 @@
+[
+  {
+    "a": "label:start",
+    "b": "line:start",
+    "band": "tight",
+    "gap": 0.067,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:calls",
+    "b": "line:calls",
+    "band": "tight",
+    "gap": 0.064,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:dom",
+    "b": "line:dom",
+    "band": "tight",
+    "gap": 0.125,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:screen",
+    "b": "line:screen",
+    "band": "tight",
+    "gap": 0.064,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:resources",
+    "b": "line:resources",
+    "band": "tight",
+    "gap": 0.092,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:result",
+    "b": "line:result",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.024
+  }
+]

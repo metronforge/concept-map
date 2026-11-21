@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:replace",
+    "b": "node:navigation",
+    "band": "tight",
+    "gap": 0.085,
+    "uncertainty": 0.02
+  },
+  {
+    "a": "label:replace",
+    "b": "node:worlds",
+    "band": "tight",
+    "gap": 0.085,
+    "uncertainty": 0.02
+  }
+]

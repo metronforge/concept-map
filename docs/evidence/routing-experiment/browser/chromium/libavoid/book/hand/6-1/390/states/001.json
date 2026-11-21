@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "browser",
+    "step": "calls-start-and-finish",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "browser",
+    "step": "login-zip-saved",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "browser",
+    "step": "network-recording",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "browser",
+    "step": "login-zip-checkout-zip",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "browser",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "api-context",
+    "step": "runner-tracing-enabled",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "api-context",
+    "step": "api-request-request-finished",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "api-context",
+    "step": "api-context",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "api-context",
+    "step": "network-resources-reset",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "api-context",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  }
+]

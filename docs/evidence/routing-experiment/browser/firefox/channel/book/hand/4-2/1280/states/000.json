@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "intro",
+    "step": "a-test-asks-for-fixtures-by-name",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "worker-fixtures-are-shared",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "dependencies-are-set-up-first",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "a-fixture-calls-use-exactly-once",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "the-test-receives-its-fixture-va",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "teardown-runs-in-reverse",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "invalid-scope-stops-before-the-t",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "two-tests",
+    "step": "account-the-code-before-use-runs",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "two-tests",
+    "step": "browser-starts-built-in-worker-f",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  }
+]

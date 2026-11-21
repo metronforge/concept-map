@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:stores",
+    "b": "line:stores",
+    "band": "tight",
+    "gap": 0.188,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:filter",
+    "b": "line:filter",
+    "band": "tight",
+    "gap": 0.029,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:first",
+    "b": "line:first",
+    "band": "tight",
+    "gap": 0.029,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:inside",
+    "b": "line:inside",
+    "band": "tight",
+    "gap": 0.131,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:enter",
+    "b": "line:enter",
+    "band": "tight",
+    "gap": 0.131,
+    "uncertainty": 0.024
+  }
+]

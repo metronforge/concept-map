@@ -48,6 +48,39 @@ export async function report(directory, mode, path, data) {
   writeFileSync(file, json);
 }
 
+/** Indexed parts preserve order without producing oversized book reports. */
+export async function reportParts(directory, mode, path, values) {
+  const files = [];
+  for (let start = 0; start < values.length; start += 10) {
+    const file = `${path}/${String(start / 10).padStart(3, "0")}.json`;
+    await report(directory, mode, file, values.slice(start, start + 10));
+    files.push(file);
+  }
+  return files;
+}
+
+export async function bookReports(directory, mode, path, data, quality) {
+  const { states, defects, ...summary } = data;
+  const parts = {};
+  for (const [name, values] of Object.entries({ states, defects }))
+    parts[name] = await reportParts(directory, mode, `${path}/${name}`, values);
+  const { labels, steps, lines, ...rest } = quality;
+  for (const [group, lists] of Object.entries({ labels, steps, lines }))
+    for (const [kind, values] of Object.entries(lists))
+      parts[`${group}-${kind}`] = await reportParts(
+        directory,
+        mode,
+        `${path}/${group}-${kind}`,
+        values,
+      );
+  await report(directory, mode, `${path}/quality.json`, rest);
+  await report(directory, mode, `${path}/summary.json`, {
+    ...summary,
+    stateCount: states.length,
+    parts,
+  });
+}
+
 export function evidence(item, result, browser, version, width, candidate) {
   assert.equal(result.fontsLoaded, true, `${item.id}: pinned fonts loaded`);
   assert.equal(result.geometryPreserved, true, `${item.id}: fixed geometry`);

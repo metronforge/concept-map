@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:resolve_inner",
+    "b": "line:resolve_inner",
+    "band": "tight",
+    "gap": 0.062,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:detached",
+    "b": "line:detached",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:hit_retry",
+    "b": "line:hit_retry",
+    "band": "tight",
+    "gap": 0.015,
+    "uncertainty": 0.024
+  }
+]

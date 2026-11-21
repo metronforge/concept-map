@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:hr",
+    "b": "node:response",
+    "band": "tight",
+    "gap": 0.012,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:ma",
+    "b": "node:response",
+    "band": "tight",
+    "gap": 0.165,
+    "uncertainty": 0.023
+  }
+]

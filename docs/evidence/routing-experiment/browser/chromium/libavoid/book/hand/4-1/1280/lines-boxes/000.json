@@ -1,0 +1,10 @@
+[
+  {
+    "a": "node:setup",
+    "b": "line:ready_server",
+    "band": "tight",
+    "gap": 0.238
+  },
+  { "a": "node:web", "b": "line:ready_server", "band": "tight", "gap": 0.238 },
+  { "a": "node:clean", "b": "line:ready_server", "band": "tight", "gap": 0.238 }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:timeout_outer",
+    "b": "line:timeout_outer",
+    "band": "tight",
+    "gap": 0.113,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:resolve_inner",
+    "b": "line:resolve_inner",
+    "band": "tight",
+    "gap": 0.029,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:detached",
+    "b": "line:detached",
+    "band": "tight",
+    "gap": 0.016,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:hit_retry",
+    "b": "line:hit_retry",
+    "band": "tight",
+    "gap": 0.005,
+    "uncertainty": 0.024
+  }
+]

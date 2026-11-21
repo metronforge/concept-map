@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "retry",
+    "step": "the-retry-runs-in-a-fresh-worker",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "retry",
+    "step": "failed-then-passed-a-is-flaky-it",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "retry",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "serial",
+    "step": "b-fails-c-is-skipped-in-this-att",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "serial",
+    "step": "the-retry-takes-the-whole-group",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "serial",
+    "step": "all-three-pass-only-b-failed-bef",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "serial",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "repeat",
+    "step": "the-copies-exist-before-any-test",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "repeat",
+    "step": "each-copy-has-its-own-result-a-f",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "repeat",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 7
+  }
+]

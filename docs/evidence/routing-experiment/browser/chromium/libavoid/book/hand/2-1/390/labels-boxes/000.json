@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:timeout_outer",
+    "b": "node:call",
+    "band": "tight",
+    "gap": 0.064,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:timeout_outer",
+    "b": "node:timeout",
+    "band": "tight",
+    "gap": 0.064,
+    "uncertainty": 0.024
+  }
+]

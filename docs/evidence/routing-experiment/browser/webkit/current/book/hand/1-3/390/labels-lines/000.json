@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:mainDOM",
+    "b": "line:mainDOM",
+    "band": "tight",
+    "gap": 0.016,
+    "uncertainty": 0.02
+  },
+  {
+    "a": "label:belongs",
+    "b": "line:belongs",
+    "band": "tight",
+    "gap": 0.028,
+    "uncertainty": 0.02
+  }
+]

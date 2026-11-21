@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "roles",
+    "step": "a-browser-holds-two-contexts",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "roles",
+    "step": "each-page-contains-a-main-frame",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "roles",
+    "step": "the-contexts-have-separate-cooki",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "roles",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "context",
+    "step": "close-context-a",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "context",
+    "step": "its-page-and-frame-tree-close-wi",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "context",
+    "step": "context-b-stays-available",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "context",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "boundaries",
+    "step": "closing-the-browser-closes-every",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "boundaries",
+    "step": "browser-newpage-creates-a-page-a",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  }
+]

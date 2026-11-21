@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "the-config-can-set-option-fixtur",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "how",
+    "step": "undefined-resets-the-option-ance",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "how",
+    "step": "a-fixture-function-supplies-real",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "automatic-roots-start-before-req",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "dependencies-still-come-first",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "all-hooks-use-a-narrower-automat",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "boxing-changes-report-visibility",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "a-plain-override-keeps-title-and",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "restore",
+    "step": "the-config-value-sits-right-belo",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  }
+]

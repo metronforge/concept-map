@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:pollRetry",
+    "b": "line:pollRetry",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:blockRetry",
+    "b": "line:blockRetry",
+    "band": "tight",
+    "gap": 0.111,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:deadline",
+    "b": "line:blockRetry",
+    "band": "tight",
+    "gap": 0.165,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:injected",
+    "b": "line:injected",
+    "band": "tight",
+    "gap": 0.111,
+    "uncertainty": 0.023
+  }
+]

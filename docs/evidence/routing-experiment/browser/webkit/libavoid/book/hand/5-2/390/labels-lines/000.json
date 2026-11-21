@@ -1,0 +1,44 @@
+[
+  {
+    "a": "label:caught",
+    "b": "line:caught",
+    "band": "tight",
+    "gap": 0.188,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:include",
+    "b": "line:include",
+    "band": "tight",
+    "gap": 0.029,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:patchIds",
+    "b": "line:patchIds",
+    "band": "tight",
+    "gap": 0.063,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:dispatch",
+    "b": "line:dispatch",
+    "band": "tight",
+    "gap": 0.016,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:pass",
+    "b": "line:pass",
+    "band": "tight",
+    "gap": 0.016,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fail",
+    "b": "line:fail",
+    "band": "tight",
+    "gap": 0.058,
+    "uncertainty": 0.024
+  }
+]

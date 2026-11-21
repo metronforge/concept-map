@@ -1,0 +1,44 @@
+[
+  {
+    "a": "label:skips",
+    "b": "line:skips",
+    "band": "tight",
+    "gap": 0.152,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:scroll",
+    "b": "line:scroll",
+    "band": "tight",
+    "gap": 0.089,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:point",
+    "b": "line:point",
+    "band": "tight",
+    "gap": 0.026,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:force",
+    "b": "line:force",
+    "band": "tight",
+    "gap": 0.139,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:input",
+    "b": "line:input",
+    "band": "tight",
+    "gap": 0.152,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:receives",
+    "b": "line:receives",
+    "band": "tight",
+    "gap": 0.026,
+    "uncertainty": 0.024
+  }
+]

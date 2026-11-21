@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "intro",
+    "step": "the-assertion-delegates-its-sele",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "the-server-repeats-a-fresh-check",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "poll-repeats-a-producer-and-its",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "positive-topass-repeats-the-whol",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "the-timeout-defaults-differ",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "the-final-wait-repeats",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "the-deadline-can-prevent-another",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "a-soft-failure-can-finish-the-bl",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "intro",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "locator",
+    "step": "expect-locator-tohavetext-ready",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

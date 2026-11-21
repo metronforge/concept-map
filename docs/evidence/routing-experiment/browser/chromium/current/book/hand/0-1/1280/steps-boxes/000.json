@@ -1,0 +1,15 @@
+[
+  { "a": "node:cli", "b": "step:cli_config", "band": "tight", "gap": 0.095 },
+  {
+    "a": "node:files",
+    "b": "step:files_dispatch",
+    "band": "tight",
+    "gap": 0.095
+  },
+  {
+    "a": "node:client",
+    "b": "step:client_server",
+    "band": "tight",
+    "gap": 0.095
+  }
+]

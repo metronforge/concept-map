@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:next",
+    "b": "node:box",
+    "band": "tight",
+    "gap": 0.134,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:next",
+    "b": "node:stored",
+    "band": "tight",
+    "gap": 0.134,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:changed",
+    "b": "node:changed",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:reached",
+    "b": "node:count",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:then",
+    "b": "node:inert",
+    "band": "tight",
+    "gap": 0.098,
+    "uncertainty": 0.016
+  }
+]

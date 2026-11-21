@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:globals",
+    "b": "step:globals",
+    "band": "tight",
+    "gap": 0.252,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:dom",
+    "b": "step:dom",
+    "band": "tight",
+    "gap": 0.252,
+    "uncertainty": 0.016
+  }
+]

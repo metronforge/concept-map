@@ -1,0 +1,30 @@
+[
+  {
+    "scenario": "reuse-limits",
+    "step": "project-q-needs-its-own-worker-i",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "reuse-limits",
+    "step": "after-a-spec-ts-the-same-p-worke",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "reuse-limits",
+    "step": "if-a-group-needs-other-worker-fi",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "reuse-limits",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  }
+]

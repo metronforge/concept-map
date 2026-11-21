@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:default_config",
+    "b": "node:default",
+    "band": "tight",
+    "gap": 0.024,
+    "uncertainty": 0.016
+  }
+]

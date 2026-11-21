@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:budget_dispatch",
+    "b": "line:budget_dispatch",
+    "band": "tight",
+    "gap": 0.041,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:budget_dispatch",
+    "b": "line:copies_dispatch",
+    "band": "tight",
+    "gap": 0.041,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:budget_collect",
+    "b": "line:budget_collect",
+    "band": "tight",
+    "gap": 0.158,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:collect_dispatch",
+    "b": "line:budget_dispatch",
+    "band": "tight",
+    "gap": 0.018,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:collect_dispatch",
+    "b": "line:collect_dispatch",
+    "band": "tight",
+    "gap": 0.018,
+    "uncertainty": 0.024
+  }
+]

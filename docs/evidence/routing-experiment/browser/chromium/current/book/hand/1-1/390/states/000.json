@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "a-click-sends-a-numbered-request",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "how",
+    "step": "the-await-waits-for-the-same-num",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "how",
+    "step": "local-client-and-server-share-no",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "how",
+    "step": "browser-input-has-independent-id",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "how",
+    "step": "the-server-returns-result-or-err",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "how",
+    "step": "the-client-matches-the-reply",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "how",
+    "step": "the-client-adds-the-api-name",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "how",
+    "step": "remote-messages-cross-a-websocke",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "local",
+    "step": "the-client-sends-object-method-a",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:ready_server",
+    "b": "node:web",
+    "band": "tight",
+    "gap": 0.031,
+    "uncertainty": 0.016
+  }
+]

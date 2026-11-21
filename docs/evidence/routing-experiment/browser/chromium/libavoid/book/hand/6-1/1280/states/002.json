@@ -1,0 +1,37 @@
+[
+  {
+    "scenario": "retention",
+    "step": "trace-retain-on-failure",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "retention",
+    "step": "runner-test-steps",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "retention",
+    "step": "actual-status-expected-status",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "retention",
+    "step": "later-retries-no-recording",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "retention",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  }
+]

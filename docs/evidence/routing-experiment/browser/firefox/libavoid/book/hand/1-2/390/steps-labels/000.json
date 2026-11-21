@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:owns",
+    "b": "step:owns",
+    "band": "tight",
+    "gap": 0.194,
+    "uncertainty": 0.02
+  },
+  {
+    "a": "label:owns",
+    "b": "node-step:3:closing-that-page-also-closes-it",
+    "band": "defect",
+    "gap": -0.149,
+    "uncertainty": 0.02
+  },
+  {
+    "a": "label:closed",
+    "b": "node-step:4:the-test-calls-page-a-after-clos",
+    "band": "defect",
+    "gap": -0.568,
+    "uncertainty": 0.02
+  }
+]

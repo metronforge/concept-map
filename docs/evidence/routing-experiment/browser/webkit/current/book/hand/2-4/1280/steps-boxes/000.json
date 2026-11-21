@@ -1,0 +1,4 @@
+[
+  { "a": "node:pre", "b": "step:install", "band": "tight", "gap": 0 },
+  { "a": "node:event", "b": "step:collect", "band": "tight", "gap": 0.19 }
+]

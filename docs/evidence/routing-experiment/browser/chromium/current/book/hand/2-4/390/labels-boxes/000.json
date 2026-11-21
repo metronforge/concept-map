@@ -1,0 +1,58 @@
+[
+  {
+    "a": "label:request",
+    "b": "node:call",
+    "band": "tight",
+    "gap": 0.214,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:point",
+    "b": "node:point",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:frames",
+    "b": "node:point",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:pre",
+    "b": "node:frames",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:collect",
+    "b": "node:event",
+    "band": "tight",
+    "gap": 0.245,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:retry",
+    "b": "node:result",
+    "band": "tight",
+    "gap": 0.207,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:retry",
+    "b": "node:retry",
+    "band": "tight",
+    "gap": 0.207,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:again",
+    "b": "node:scroll",
+    "band": "tight",
+    "gap": 0.207,
+    "uncertainty": 0.024
+  }
+]

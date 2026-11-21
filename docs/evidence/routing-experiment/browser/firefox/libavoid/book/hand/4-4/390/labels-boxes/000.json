@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:failed_later",
+    "b": "node:failed",
+    "band": "tight",
+    "gap": 0.026,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:failed_later",
+    "b": "node:later",
+    "band": "tight",
+    "gap": 0.026,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:failed_stop",
+    "b": "node:stop",
+    "band": "tight",
+    "gap": 0.092,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:copies_dispatch",
+    "b": "node:dispatch",
+    "band": "tight",
+    "gap": 0.204,
+    "uncertainty": 0.024
+  }
+]

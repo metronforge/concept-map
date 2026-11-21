@@ -1,0 +1,44 @@
+[
+  {
+    "a": "label:missing",
+    "b": "node:read",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:missing",
+    "b": "node:error",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:hook",
+    "b": "node:fixture",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:hook",
+    "b": "node:hookEnd",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:releaseOne",
+    "b": "node:bodies",
+    "band": "tight",
+    "gap": 0.24,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:releaseOne",
+    "b": "node:one",
+    "band": "tight",
+    "gap": 0.24,
+    "uncertainty": 0.016
+  }
+]

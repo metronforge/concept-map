@@ -1,0 +1,51 @@
+[
+  {
+    "a": "label:include",
+    "b": "node:resources",
+    "band": "tight",
+    "gap": 0.255,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:patchIds",
+    "b": "node:ids",
+    "band": "tight",
+    "gap": 0.068,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:offset",
+    "b": "node:ids",
+    "band": "tight",
+    "gap": 0.122,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:offset",
+    "b": "node:workers",
+    "band": "tight",
+    "gap": 0.122,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:dispatch",
+    "b": "node:workers",
+    "band": "tight",
+    "gap": 0.143,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fail",
+    "b": "node:passed",
+    "band": "tight",
+    "gap": 0.024,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fail",
+    "b": "node:error",
+    "band": "tight",
+    "gap": 0.024,
+    "uncertainty": 0.024
+  }
+]

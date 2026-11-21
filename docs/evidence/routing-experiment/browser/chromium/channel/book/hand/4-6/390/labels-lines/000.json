@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:fixture_setup",
+    "b": "line:fixture_setup",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fixture_setup",
+    "b": "line:body_after",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:after_teardown",
+    "b": "line:after_teardown",
+    "band": "tight",
+    "gap": 0.19,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:action_expired",
+    "b": "line:body_action",
+    "band": "tight",
+    "gap": 0.054,
+    "uncertainty": 0.024
+  }
+]

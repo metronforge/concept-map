@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:shard",
+    "b": "node:shards",
+    "band": "tight",
+    "gap": 0.14,
+    "uncertainty": 0.024
+  }
+]

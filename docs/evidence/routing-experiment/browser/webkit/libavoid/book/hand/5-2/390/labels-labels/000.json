@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:offset",
+    "b": "label:dispatch",
+    "band": "tight",
+    "gap": 0.156,
+    "uncertainty": 0.048
+  }
+]

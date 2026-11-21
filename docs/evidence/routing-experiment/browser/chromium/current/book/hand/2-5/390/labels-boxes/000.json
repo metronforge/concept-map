@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:hidden",
+    "b": "node:scroll",
+    "band": "tight",
+    "gap": 0.212,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:outside",
+    "b": "node:point",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  }
+]

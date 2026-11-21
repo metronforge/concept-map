@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:shard",
+    "b": "node:serial",
+    "band": "tight",
+    "gap": 0.149,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:replace",
+    "b": "node:last",
+    "band": "tight",
+    "gap": 0.031,
+    "uncertainty": 0.016
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:install",
+    "b": "node:mouse",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:blocked",
+    "b": "node:block",
+    "band": "tight",
+    "gap": 0.006,
+    "uncertainty": 0.024
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "scenario": "remote",
+    "step": "call-id-7-crosses-the-playwright",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "remote",
+    "step": "at-the-endpoint-the-server-runs",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "remote",
+    "step": "server-to-browser-traffic-uses-a",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "remote",
+    "step": "browser-replies-reach-the-server",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "remote",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  }
+]

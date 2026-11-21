@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:check",
+    "b": "node:mode",
+    "band": "tight",
+    "gap": 0.036,
+    "uncertainty": 0.024
+  }
+]

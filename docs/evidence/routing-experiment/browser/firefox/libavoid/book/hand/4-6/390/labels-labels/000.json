@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:test_setup",
+    "b": "label:elapsed_body",
+    "band": "tight",
+    "gap": 0.021,
+    "uncertainty": 0.048
+  },
+  {
+    "a": "label:setup_body",
+    "b": "label:elapsed_body",
+    "band": "tight",
+    "gap": 0.07,
+    "uncertainty": 0.048
+  },
+  {
+    "a": "label:body_after",
+    "b": "label:after_teardown",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.048
+  }
+]

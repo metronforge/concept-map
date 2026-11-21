@@ -1,0 +1,44 @@
+[
+  {
+    "scenario": "boundaries",
+    "step": "closing-that-page-also-closes-it",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "boundaries",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "closed",
+    "step": "context-a-has-already-closed-its",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "closed",
+    "step": "the-test-calls-page-a-after-clos",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "closed",
+    "step": "no-server-object-answers-the-cal",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "closed",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

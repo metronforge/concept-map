@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:releaseOne",
+    "b": "node-step:0:bodies-stay-on-the-server",
+    "band": "defect",
+    "gap": -0.332,
+    "uncertainty": 0.016
+  }
+]

@@ -8,16 +8,19 @@ import { assemble } from "./assemble.mjs";
 import { routeChannel } from "./channel.mjs";
 import { loadAvoid, routeAvoid } from "./avoid.mjs";
 import { hash } from "./metrics.mjs";
-import { report, evidence } from "./browser-reports.mjs";
+import { report, evidence, bookReports } from "./browser-reports.mjs";
 
-const [directory, mode] = process.argv.slice(2);
+const [directory, ...flags] = process.argv.slice(2);
+const mode = flags.includes("--check") ? "--check" : undefined;
+const book = flags.includes("--book");
 assert.ok(
-  directory && (!mode || mode === "--check"),
-  "Usage: node experiments/routing/browser.mjs <output-directory> [--check]",
+  directory && flags.every((flag) => ["--check", "--book"].includes(flag)),
+  "Usage: node experiments/routing/browser.mjs <output-directory> [--check] [--book]",
 );
 assert.equal(process.versions.node.split(".")[0], "26", "Use Node 26");
-const cases = (await inputs()).filter((item) =>
-  item.id.startsWith("examples/"),
+const allCases = await inputs();
+const cases = allCases.filter((item) =>
+  item.id.startsWith(book ? "book/" : "examples/"),
 );
 const avoid = await loadAvoid();
 const candidates = cases.flatMap((item) => [
@@ -74,6 +77,10 @@ async function measure(page, item, name, version, width) {
   );
   const data = evidence(item, result, name, version, width, item.candidate);
   const path = `${name}/${item.candidate}/${item.id}/${width}`;
+  if (book) {
+    await bookReports(directory, mode, path, data, result.quality);
+    return data;
+  }
   const { labels, steps, ...quality } = result.quality;
   await report(directory, mode, `${path}/quality.json`, quality);
   for (const [group, lists] of Object.entries({ labels, steps }))
@@ -88,7 +95,7 @@ async function probe(page, name) {
   await page.goto("http://routing.test/");
   const result = await page.evaluate(
     async (map) => (await import("/client.js")).probe(map),
-    candidates[1].resolved,
+    assemble(allCases[0], routeChannel(prepare(allCases[0]))),
   );
   assert.deepEqual(
     result,
@@ -167,5 +174,10 @@ const summary = {
     }),
   ),
 };
-await report(directory, mode, "summary.json", summary);
+await report(
+  directory,
+  mode,
+  book ? "book-summary.json" : "summary.json",
+  summary,
+);
 console.log(JSON.stringify(summary, null, 2));

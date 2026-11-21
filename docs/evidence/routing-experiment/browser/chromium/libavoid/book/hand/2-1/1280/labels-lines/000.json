@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:timeout_outer",
+    "b": "line:timeout_outer",
+    "band": "tight",
+    "gap": 0.003,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:hit_retry",
+    "b": "line:hit_click",
+    "band": "tight",
+    "gap": 0.038,
+    "uncertainty": 0.016
+  }
+]

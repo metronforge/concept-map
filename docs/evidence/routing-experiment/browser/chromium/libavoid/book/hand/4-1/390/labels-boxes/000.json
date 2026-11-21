@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:ready_global",
+    "b": "node:global",
+    "band": "tight",
+    "gap": 0.26,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:setup_web",
+    "b": "node:setup",
+    "band": "tight",
+    "gap": 0.101,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:returned_server",
+    "b": "node:server",
+    "band": "tight",
+    "gap": 0.242,
+    "uncertainty": 0.024
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "id": "book/hand/5-1",
+  "candidate": "channel",
+  "browser": "webkit",
+  "browserVersion": "27.2",
+  "width": 1280,
+  "inputSha256": "f95417ff2c820325bbf3d5a2052ca8b93911aefdb8dbd840814553dc0885e625",
+  "drawnSha256": "5c33e396de7d17d2ad8edbfc1b3d722994cba8a15a225dd1eff0520c4526f790",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "text": {
+    "pageFont": 16,
+    "minimum": 18.805721507352942,
+    "maximum": 18.805721507352942,
+    "statesBelowPage": 0,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0,
+  "stateCount": 26,
+  "parts": {
+    "states": [
+      "webkit/channel/book/hand/5-1/1280/states/000.json",
+      "webkit/channel/book/hand/5-1/1280/states/001.json",
+      "webkit/channel/book/hand/5-1/1280/states/002.json"
+    ],
+    "defects": [],
+    "labels-labels": [],
+    "labels-lines": ["webkit/channel/book/hand/5-1/1280/labels-lines/000.json"],
+    "labels-boxes": ["webkit/channel/book/hand/5-1/1280/labels-boxes/000.json"],
+    "steps-labels": ["webkit/channel/book/hand/5-1/1280/steps-labels/000.json"],
+    "steps-boxes": [],
+    "steps-steps": [],
+    "lines-boxes": []
+  }
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:blockRetry",
+    "b": "node-step:0:the-final-wait-repeats",
+    "band": "defect",
+    "gap": -0.57,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:throws",
+    "b": "node-step:2:after-the-wait-topass-runs-write",
+    "band": "defect",
+    "gap": -0.487,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:blockRetry",
+    "b": "node-step:3:after-failed-tries-both-wait-100",
+    "band": "defect",
+    "gap": -0.57,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:record",
+    "b": "node-step:4:expect-soft-count-tobe-2-fails",
+    "band": "defect",
+    "gap": -0.56,
+    "uncertainty": 0.023
+  }
+]

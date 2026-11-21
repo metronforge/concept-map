@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:failed_later",
+    "b": "node-step:1:a-fails-in-worker-1",
+    "band": "defect",
+    "gap": -0.545,
+    "uncertainty": 0.024
+  }
+]

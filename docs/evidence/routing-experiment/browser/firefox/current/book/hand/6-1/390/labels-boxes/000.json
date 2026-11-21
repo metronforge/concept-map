@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:start",
+    "b": "node:start",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:calls",
+    "b": "node:api",
+    "band": "tight",
+    "gap": 0.148,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:save",
+    "b": "node:save",
+    "band": "tight",
+    "gap": 0.256,
+    "uncertainty": 0.024
+  }
+]

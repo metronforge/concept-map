@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:pageA",
+    "b": "line:pageA",
+    "band": "tight",
+    "gap": 0.014,
+    "uncertainty": 0.02
+  },
+  {
+    "a": "label:pageB",
+    "b": "line:pageB",
+    "band": "tight",
+    "gap": 0.014,
+    "uncertainty": 0.02
+  }
+]

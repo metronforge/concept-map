@@ -1,0 +1,30 @@
+[
+  {
+    "scenario": "server-timeout",
+    "step": "start-the-unavailable-server-and",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "server-timeout",
+    "step": "the-default-readiness-deadline-e",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "server-timeout",
+    "step": "globalsetup-and-projects-never-s",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "server-timeout",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  }
+]

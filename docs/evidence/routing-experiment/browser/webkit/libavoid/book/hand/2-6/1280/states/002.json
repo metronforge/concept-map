@@ -1,0 +1,51 @@
+[
+  {
+    "scenario": "nowaitafter",
+    "step": "the-click-returns-at-once-the-lo",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "nowaitafter",
+    "step": "the-navigation-commits-and-loads",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "nowaitafter",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "download",
+    "step": "the-test-starts-to-wait-for-the",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "download",
+    "step": "the-click-runs-and-returns",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "download",
+    "step": "the-download-event-passes-the-fi",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "download",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  }
+]

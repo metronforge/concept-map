@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:setup_body",
+    "b": "line:setup_body",
+    "band": "tight",
+    "gap": 0.254,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:action_expired",
+    "b": "line:action_expired",
+    "band": "tight",
+    "gap": 0.015,
+    "uncertainty": 0.024
+  }
+]

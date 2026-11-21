@@ -1,0 +1,72 @@
+[
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.259,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:measure",
+    "b": "line:measure",
+    "band": "tight",
+    "gap": 0.074,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:first",
+    "b": "line:first",
+    "band": "tight",
+    "gap": 0.024,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:next",
+    "b": "line:next",
+    "band": "tight",
+    "gap": 0.01,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:equal",
+    "b": "line:equal",
+    "band": "tight",
+    "gap": 0.267,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:changed",
+    "b": "line:changed",
+    "band": "tight",
+    "gap": 0.062,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:reached",
+    "b": "line:reached",
+    "band": "tight",
+    "gap": 0.008,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:then",
+    "b": "line:then",
+    "band": "tight",
+    "gap": 0.024,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fresh",
+    "b": "line:fresh",
+    "band": "tight",
+    "gap": 0.15,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:nextframe",
+    "b": "line:nextframe",
+    "band": "tight",
+    "gap": 0.075,
+    "uncertainty": 0.024
+  }
+]

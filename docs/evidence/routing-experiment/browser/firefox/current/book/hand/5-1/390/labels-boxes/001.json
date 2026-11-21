@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:record",
+    "b": "node:soft",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:record",
+    "b": "node:failed",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.023
+  }
+]

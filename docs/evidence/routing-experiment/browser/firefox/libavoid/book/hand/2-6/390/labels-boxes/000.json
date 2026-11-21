@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:load",
+    "b": "node:commit",
+    "band": "tight",
+    "gap": 0.151,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:ignores",
+    "b": "node:iframe",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:listens",
+    "b": "node:url",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  }
+]

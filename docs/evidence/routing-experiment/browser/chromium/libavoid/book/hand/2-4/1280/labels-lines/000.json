@@ -1,0 +1,44 @@
+[
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.1,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:point",
+    "b": "line:point",
+    "band": "tight",
+    "gap": 0.118,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:event",
+    "b": "line:event",
+    "band": "tight",
+    "gap": 0.037,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:miss",
+    "b": "line:miss",
+    "band": "tight",
+    "gap": 0.082,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:blocked",
+    "b": "line:blocked",
+    "band": "tight",
+    "gap": 0.051,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:again",
+    "b": "line:again",
+    "band": "tight",
+    "gap": 0.073,
+    "uncertainty": 0.016
+  }
+]

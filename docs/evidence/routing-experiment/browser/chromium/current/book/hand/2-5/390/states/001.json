@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "covered",
+    "step": "scrolling-still-runs",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "covered",
+    "step": "the-click-point-is-the-middle-of",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "covered",
+    "step": "no-hit-target-checks-the-overlay",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "covered",
+    "step": "the-mouse-clicks-at-the-point-th",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "covered",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "hidden",
+    "step": "the-element-exists-so-the-search",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "hidden",
+    "step": "the-visible-check-is-skipped-too",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "hidden",
+    "step": "there-is-no-layout-box-to-scroll",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "hidden",
+    "step": "force-throws-at-once-a-normal-cl",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "hidden",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  }
+]

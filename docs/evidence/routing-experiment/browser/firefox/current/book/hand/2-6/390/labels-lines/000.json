@@ -1,0 +1,72 @@
+[
+  {
+    "a": "label:enable",
+    "b": "line:enable",
+    "band": "tight",
+    "gap": 0.023,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:skip",
+    "b": "line:skip",
+    "band": "tight",
+    "gap": 0.198,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:input",
+    "b": "line:input",
+    "band": "tight",
+    "gap": 0.006,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.187,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:commit",
+    "b": "line:commit",
+    "band": "tight",
+    "gap": 0.028,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:load",
+    "b": "line:load",
+    "band": "tight",
+    "gap": 0.132,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:content",
+    "b": "line:content",
+    "band": "tight",
+    "gap": 0.225,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:release",
+    "b": "line:release",
+    "band": "tight",
+    "gap": 0.128,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:accept",
+    "b": "line:accept",
+    "band": "tight",
+    "gap": 0.06,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:ignores",
+    "b": "line:ignores",
+    "band": "tight",
+    "gap": 0.004,
+    "uncertainty": 0.024
+  }
+]

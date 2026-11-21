@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:setup_body",
+    "b": "line:setup_body",
+    "band": "tight",
+    "gap": 0.018,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fixture_setup",
+    "b": "line:fixture_setup",
+    "band": "tight",
+    "gap": 0.1,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fixture_setup",
+    "b": "line:body_after",
+    "band": "tight",
+    "gap": 0.1,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:after_teardown",
+    "b": "line:after_teardown",
+    "band": "tight",
+    "gap": 0.19,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:action_expired",
+    "b": "line:action_expired",
+    "band": "tight",
+    "gap": 0.08,
+    "uncertainty": 0.024
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:test_setup",
+    "b": "label:setup_body",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.048
+  }
+]

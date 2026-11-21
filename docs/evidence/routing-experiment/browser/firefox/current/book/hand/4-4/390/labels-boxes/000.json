@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:failed_stop",
+    "b": "node:stop",
+    "band": "tight",
+    "gap": 0.044,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:collect_dispatch",
+    "b": "node:dispatch",
+    "band": "tight",
+    "gap": 0.14,
+    "uncertainty": 0.024
+  }
+]

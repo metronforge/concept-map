@@ -73,7 +73,8 @@ The per-state contact count does not include constraint verdicts; the complete
 raw report retains those verdicts. The examples have no broken required
 constraints in these results.
 
-This pass measures the examples, not the book maps. It does not inspect glyph
+This pass measures the examples; [book results](book-browser.md) are recorded
+separately with the same method. Neither pass inspects glyph
 outlines pixel by pixel, clipping by the SVG viewport, marker paint, or every
 piece of panel text. The checker uses its existing real-font rectangles and
 uncertainty allowance. A zero displayed contact count is not proof of all
@@ -111,5 +112,6 @@ defects are data, not suppressed assertions or claims of acceptance.
 
 All 865 reports are at most 170 lines. No timing or router download changed;
 the measurement harness is not part of a router's runtime download.
-Parallel channel spacing, book-map browser review and the final production
-effort comparison and recommendation remain unfinished.
+Parallel channel spacing, paint-bound review and the final comparison and
+recommendation remain unfinished; [production effort](production-readiness.md)
+is assessed separately.

@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:resolve_inner",
+    "b": "node:resolve",
+    "band": "tight",
+    "gap": 0.11,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:detached",
+    "b": "node:resolve",
+    "band": "tight",
+    "gap": 0.11,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:detached",
+    "b": "node:strict",
+    "band": "tight",
+    "gap": 0.11,
+    "uncertainty": 0.024
+  }
+]

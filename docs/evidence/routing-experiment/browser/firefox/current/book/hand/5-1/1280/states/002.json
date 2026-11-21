@@ -1,0 +1,44 @@
+[
+  {
+    "scenario": "deadlines",
+    "step": "if-the-next-wait-would-reach-the",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "deadlines",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "soft-error",
+    "step": "expect-count-tobe-2-fails-and-th",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "soft-error",
+    "step": "expect-soft-count-tobe-2-fails",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "soft-error",
+    "step": "the-block-finishes-without-throw",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "soft-error",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

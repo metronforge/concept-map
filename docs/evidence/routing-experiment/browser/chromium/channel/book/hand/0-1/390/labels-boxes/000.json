@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:shared",
+    "b": "node:app",
+    "band": "tight",
+    "gap": 0.108,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:request_cookies",
+    "b": "node:pageRequest",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  }
+]

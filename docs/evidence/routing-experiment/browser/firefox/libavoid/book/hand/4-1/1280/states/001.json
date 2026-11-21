@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "success",
+    "step": "setup-succeeds-in-phase-1-web-s",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "success",
+    "step": "web-succeeds-in-phase-2-after-it",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "success",
+    "step": "clean-succeeds-in-phase-3-after",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "success",
+    "step": "returned-globalsetup-cleanup-run",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "success",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "setup-fails",
+    "step": "setup-failed-processed-does-not",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "setup-fails",
+    "step": "web-s-success-gate-blocks-its-te",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "setup-fails",
+    "step": "clean-completes-after-setup-and",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "setup-fails",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "server-timeout",
+    "step": "probe-availability-reuse-require",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  }
+]

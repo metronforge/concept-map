@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:patchIds",
+    "b": "node-step:0:valid-blobs-have-a-deterministic",
+    "band": "tight",
+    "gap": 0.031,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fail",
+    "b": "node-step:2:matching-attachment-paths-stay-s",
+    "band": "defect",
+    "gap": -0.556,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:patchIds",
+    "b": "node-step:3:read-two-valid-blobs-in-shard-or",
+    "band": "tight",
+    "gap": 0.031,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:patchIds",
+    "b": "node-step:4:read-two-valid-blobs-in-shard-or",
+    "band": "tight",
+    "gap": 0.031,
+    "uncertainty": 0.024
+  }
+]

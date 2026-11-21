@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:check",
+    "b": "node:fill",
+    "band": "tight",
+    "gap": 0.043,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:calls",
+    "b": "node:generate",
+    "band": "tight",
+    "gap": 0.071,
+    "uncertainty": 0.024
+  }
+]

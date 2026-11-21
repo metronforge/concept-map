@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:url_load",
+    "b": "node:load",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  }
+]

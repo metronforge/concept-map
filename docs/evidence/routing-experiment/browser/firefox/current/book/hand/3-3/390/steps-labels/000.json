@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:releaseOne",
+    "b": "node-step:0:bodies-stay-on-the-server",
+    "band": "tight",
+    "gap": 0.194,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:hook",
+    "b": "node-step:3:context-available-in-the-hook",
+    "band": "defect",
+    "gap": -0.519,
+    "uncertainty": 0.023
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "a": "label:stores",
+    "b": "line:stores",
+    "band": "tight",
+    "gap": 0.188,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:filter",
+    "b": "line:filter",
+    "band": "tight",
+    "gap": 0.029,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:first",
+    "b": "line:first",
+    "band": "tight",
+    "gap": 0.029,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:inner",
+    "b": "line:first",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:inner",
+    "b": "line:inner",
+    "band": "tight",
+    "gap": 0.042,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:inside",
+    "b": "line:inside",
+    "band": "tight",
+    "gap": 0.131,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:find",
+    "b": "line:find",
+    "band": "tight",
+    "gap": 0.076,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:enter",
+    "b": "line:enter",
+    "band": "tight",
+    "gap": 0.131,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:rest",
+    "b": "line:rest",
+    "band": "tight",
+    "gap": 0.165,
+    "uncertainty": 0.024
+  }
+]

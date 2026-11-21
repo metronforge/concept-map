@@ -1,0 +1,4 @@
+[
+  { "a": "node:ids", "b": "step:offset", "band": "tight", "gap": 0 },
+  { "a": "node:workers", "b": "step:offset", "band": "tight", "gap": 0 }
+]

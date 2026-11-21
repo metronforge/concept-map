@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "force-still-finds-exactly-one-el",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "force-skips-the-safeguards-aroun",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "scrolling-still-runs",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "point-calculation-still-needs-ge",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "geometry-errors-stop-a-forced-cl",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "a-valid-point-reaches-the-force",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "the-browser-still-sends-mouse-in",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "covered",
+    "step": "force-still-finds-the-element-an",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "covered",
+    "step": "no-navigation-check-no-locator-h",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  }
+]

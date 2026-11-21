@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "unexpected-differs-from-expected",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "retries-belong-to-one-testcase",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "a-failed-job-stops-its-worker",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "serial-retry-collects-the-entire",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "classification-uses-expected-and",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "two-retry-labels-have-different",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "repeateach-creates-separate-test",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "retry",
+    "step": "a-fails-in-worker-1",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "retry",
+    "step": "the-failure-stops-worker-1-the-b",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:global_setup",
+    "b": "node-step:2:setup-failed-processed-does-not",
+    "band": "tight",
+    "gap": 0.193,
+    "uncertainty": 0.024
+  }
+]

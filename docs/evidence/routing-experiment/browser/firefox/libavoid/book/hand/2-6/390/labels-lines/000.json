@@ -1,0 +1,51 @@
+[
+  {
+    "a": "label:input",
+    "b": "line:input",
+    "band": "tight",
+    "gap": 0.094,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.187,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:commit",
+    "b": "line:commit",
+    "band": "tight",
+    "gap": 0.028,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:load",
+    "b": "line:load",
+    "band": "tight",
+    "gap": 0.047,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:content",
+    "b": "line:content",
+    "band": "tight",
+    "gap": 0.088,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:accept",
+    "b": "line:accept",
+    "band": "tight",
+    "gap": 0.009,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:url_load",
+    "b": "line:url_load",
+    "band": "tight",
+    "gap": 0.078,
+    "uncertainty": 0.024
+  }
+]

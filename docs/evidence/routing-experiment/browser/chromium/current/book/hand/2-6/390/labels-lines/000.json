@@ -1,0 +1,58 @@
+[
+  {
+    "a": "label:enable",
+    "b": "line:enable",
+    "band": "tight",
+    "gap": 0.024,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:skip",
+    "b": "line:skip",
+    "band": "tight",
+    "gap": 0.024,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:input",
+    "b": "line:input",
+    "band": "tight",
+    "gap": 0.085,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.092,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:commit",
+    "b": "line:commit",
+    "band": "tight",
+    "gap": 0.062,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:load",
+    "b": "line:load",
+    "band": "tight",
+    "gap": 0.035,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:release",
+    "b": "line:release",
+    "band": "tight",
+    "gap": 0.008,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:ignores",
+    "b": "line:ignores",
+    "band": "tight",
+    "gap": 0.1,
+    "uncertainty": 0.024
+  }
+]

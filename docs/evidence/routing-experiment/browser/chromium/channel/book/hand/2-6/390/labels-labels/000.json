@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:release",
+    "b": "label:ignores",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.048
+  },
+  {
+    "a": "label:ignores",
+    "b": "label:url_load",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.048
+  }
+]

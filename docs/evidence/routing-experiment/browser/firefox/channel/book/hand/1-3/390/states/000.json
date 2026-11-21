@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "one-frame-has-two-worlds",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "checks-use-the-utility-world",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "the-worlds-keep-separate-globals",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "both-worlds-see-the-same-dom",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "a-new-document-replaces-worlds",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "element-steps-can-retry",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "get-a-fresh-ordinary-object-hand",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "shared",
+    "step": "your-page-evaluate-enters-the-ma",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "shared",
+    "step": "the-utility-world-does-not-see-t",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  }
+]

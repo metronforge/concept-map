@@ -1,0 +1,5 @@
+[
+  { "a": "node:accepted", "b": "step:skip", "band": "tight", "gap": 0.19 },
+  { "a": "node:input", "b": "step:release", "band": "tight", "gap": 0.19 },
+  { "a": "node:iframe", "b": "step:release", "band": "tight", "gap": 0.19 }
+]

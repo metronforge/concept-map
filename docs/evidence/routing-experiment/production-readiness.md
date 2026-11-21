@@ -71,7 +71,8 @@ zero displayed hard contacts, but 291 of 300 states contain text below the
 16 px page size. Of those, 246 have substantial shortfalls and 45 are less
 than 0.001 px below. The unchanged reference has the same result. Fixed-box
 routing and moving arrow labels to the panel cannot enlarge node titles.
-Book-map browser measurements and paint-bound review remain incomplete.
+[Book-map browser measurements](book-browser.md) now extend that coverage;
+paint-bound review remains incomplete.
 
 Production integration must preserve the division between placement, routing,
 annotation and reporting. It must also retain scenario meaning, use the
@@ -104,9 +105,8 @@ Size and timing must be measured again after implementation changes.
 The channel option trades a small dependency-free starting point for unresolved
 joint routing work. Libavoid supplies more of that machinery, with a larger
 download and separate attachment and distribution work. Neither is ready to
-ship from these measurements. Parallel channel spacing and book-map browser
-review still stand between this assessment and the final comparison for the
-author.
+ship from these measurements. Parallel channel spacing and paint-bound
+review remain before the final comparison for the author.
 
 ## Reproducing the assessment
 

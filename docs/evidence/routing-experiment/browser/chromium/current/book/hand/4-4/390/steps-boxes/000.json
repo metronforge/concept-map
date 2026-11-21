@@ -1,0 +1,16 @@
+[
+  { "a": "node:first", "b": "step:first_failed", "band": "tight", "gap": 0.19 },
+  {
+    "a": "node:failed",
+    "b": "step:first_failed",
+    "band": "tight",
+    "gap": 0.19
+  },
+  {
+    "a": "node:failed",
+    "b": "step:failed_later",
+    "band": "tight",
+    "gap": 0.19
+  },
+  { "a": "node:later", "b": "step:failed_later", "band": "tight", "gap": 0.19 }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "shared",
+    "step": "both-worlds-see-the-same-dom-som",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "shared",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "navigation",
+    "step": "both-kinds-of-work-begin-in-the",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "navigation",
+    "step": "the-old-evaluation-fails-playwri",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "navigation",
+    "step": "playwright-retries-its-element-s",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "navigation",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "handles",
+    "step": "make-an-ordinary-object-handle-i",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "handles",
+    "step": "the-new-document-replaces-the-wo",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "handles",
+    "step": "the-old-handle-fails-a-new-handl",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "handles",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  }
+]

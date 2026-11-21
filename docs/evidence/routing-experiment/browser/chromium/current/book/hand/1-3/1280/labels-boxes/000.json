@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:globals",
+    "b": "node:main",
+    "band": "tight",
+    "gap": 0.238,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:dom",
+    "b": "node:utility",
+    "band": "tight",
+    "gap": 0.238,
+    "uncertainty": 0.016
+  }
+]

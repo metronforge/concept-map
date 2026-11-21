@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:config_describe",
+    "b": "node:config",
+    "band": "tight",
+    "gap": 0.142,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:describe_reset",
+    "b": "node:reject",
+    "band": "tight",
+    "gap": 0.165,
+    "uncertainty": 0.024
+  }
+]

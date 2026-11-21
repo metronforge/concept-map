@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:fill",
+    "b": "line:fill",
+    "band": "tight",
+    "gap": 0.267,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:merge",
+    "b": "line:merge",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:calls",
+    "b": "line:calls",
+    "band": "tight",
+    "gap": 0.267,
+    "uncertainty": 0.024
+  }
+]

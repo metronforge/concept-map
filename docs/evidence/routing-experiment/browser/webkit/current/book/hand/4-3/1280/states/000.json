@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "intro",
+    "step": "selection-happens-in-the-runner",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "compatible-tests-form-file-group",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "parallel-mode-has-exceptions",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "all-hooks-share-batches",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "shards-keep-groups-whole",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "slots-bound-dispatch-and-reuse",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "intro",
+    "step": "workers-run-assigned-tests-in-or",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "intro",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "default-files",
+    "step": "testmatch-and-grep-select-the-fi",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "default-files",
+    "step": "by-default-the-tests-of-one-file",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

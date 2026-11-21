@@ -1,0 +1,37 @@
+[
+  {
+    "scenario": "outside",
+    "step": "the-search-finds-the-element",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "outside",
+    "step": "checks-and-waits-are-skipped",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "outside",
+    "step": "scrolling-runs-but-cannot-bring",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "outside",
+    "step": "no-part-of-the-box-is-in-the-vie",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "outside",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  }
+]

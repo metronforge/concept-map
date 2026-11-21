@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "shared",
+    "step": "account-setup-spends-20000ms-of",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "shared",
+    "step": "the-body-has-10000ms-left-even-w",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "shared",
+    "step": "the-test-budget-expires-before-t",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "shared",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "fixture",
+    "step": "setup-spends-40000ms-on-its-own",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "fixture",
+    "step": "the-body-runs-fixture-elapsed-ti",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "fixture",
+    "step": "after-hooks-get-a-fresh-slot-thi",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "fixture",
+    "step": "teardown-spends-the-fixture-s-re",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "fixture",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "action",
+    "step": "with-timeout-0-the-click-has-no",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  }
+]

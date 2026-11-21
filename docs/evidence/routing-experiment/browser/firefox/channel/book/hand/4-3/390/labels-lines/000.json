@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:serial",
+    "b": "line:serial",
+    "band": "tight",
+    "gap": 0.158,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:hooks",
+    "b": "line:hooks",
+    "band": "tight",
+    "gap": 0.018,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:dispatch",
+    "b": "line:dispatch",
+    "band": "tight",
+    "gap": 0.1,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:reuse",
+    "b": "line:reuse",
+    "band": "tight",
+    "gap": 0.041,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:replace",
+    "b": "line:replace",
+    "band": "tight",
+    "gap": 0.041,
+    "uncertainty": 0.024
+  }
+]

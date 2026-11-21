@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "still",
+    "step": "first-box-is-stored",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "still",
+    "step": "count-1-of-1",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "still",
+    "step": "all-four-states-pass",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "still",
+    "step": "then-click",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "still",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 11
+  },
+  {
+    "scenario": "moving",
+    "step": "moving-button",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "moving",
+    "step": "first-box-is-stored",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "moving",
+    "step": "the-box-moved",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "moving",
+    "step": "new-attempt-new-check",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "moving",
+    "step": "store-a-fresh-first-box",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  }
+]

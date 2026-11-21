@@ -10,7 +10,7 @@ import { reportUnsupportedHints } from "./hints.js";
 import { asPlacer } from "./legacy.js";
 import { place } from "./place.js";
 import { checkConstraints } from "./stages/constraints.js";
-import { resolveGeometry } from "./resolve.js";
+import { resolveMeasured } from "./resolve-measured.js";
 import type { LayoutEngine, LayoutOptions } from "./types.js";
 import {
   EngineFailedError,
@@ -94,17 +94,7 @@ async function resolveSource(
   if (outcome.kind === "unsupported-constraints")
     throw new UnsupportedConstraintsError(outcome);
   reportUnsupportedHints(outcome.unsupported, options.onUnsupportedHints);
-  const resolved = resolveGeometry(map, graph, outcome.result, measure);
-  resolved.measurement = {
-    name: measurer.name,
-    labels: Object.fromEntries(
-      graph.edges.flatMap((e) => {
-        if (!e.label) return [];
-        const { text, ...size } = e.label;
-        return [[e.id, size]];
-      }),
-    ),
-  };
+  const resolved = resolveMeasured(map, graph, outcome.result, measurer);
   const rejected = checkConstraints(map, resolved).find(
     (c) => c.strength === "required" && c.holds === false,
   );

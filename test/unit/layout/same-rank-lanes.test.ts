@@ -5,12 +5,15 @@ import {
 } from "../../../src/layout/build-problem.js";
 import { dagreEngine } from "../../../src/layout/dagre.js";
 import { elkEngine } from "../../../src/layout/elk.js";
-import { measureLabel } from "../../../src/layout/measure.js";
+import {
+  measureLabel,
+  fontTableMeasurer,
+} from "../../../src/layout/measure.js";
 import { alignSameRank } from "../../../src/layout/same-rank.js";
 import { checkRelations } from "../../../src/layout/relations/check.js";
 import { laneRankRelations } from "../../../src/layout/relations/lane-rank.js";
-import { newRoutingDefects } from "../../../src/layout/routing-defects.js";
-import { resolveGeometry } from "../../../src/layout/resolve.js";
+import { createRouteInspector } from "../../../src/layout/inspect-routes.js";
+import { resolveMeasured } from "../../../src/layout/resolve-measured.js";
 import { placeAnnotations } from "../../../src/layout/stages/placement.js";
 import { check } from "../../../src/layout/stages/report.js";
 import type { LayoutEngine, LayoutResult } from "../../../src/layout/types.js";
@@ -26,13 +29,13 @@ async function fixture(
   const graph = problemGraph(problem);
   const original = await engine.layout(graph);
   const resolve = (result: LayoutResult) =>
-    placeAnnotations(resolveGeometry(source, graph, result, measureLabel));
-  const before = resolve(original);
-  const inspect = (result: LayoutResult) => {
-    const defects = newRoutingDefects(source, before, resolve(result));
-    expect(defects).toEqual([]);
-    return [];
-  };
+    placeAnnotations(resolveMeasured(source, graph, result, fontTableMeasurer));
+  const inspect = createRouteInspector(
+    source,
+    graph,
+    original,
+    fontTableMeasurer,
+  );
   return { source, problem, graph, original, resolve, inspect };
 }
 

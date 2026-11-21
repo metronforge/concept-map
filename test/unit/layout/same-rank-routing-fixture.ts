@@ -2,10 +2,10 @@ import { SourceMapSchema } from "../../../src/schema.js";
 import type { Constraint, LayoutProblem } from "../../../src/layout/problem.js";
 import type { LayoutResult } from "../../../src/layout/types.js";
 import { problemGraph } from "../../../src/layout/build-problem.js";
-import { measureLabel } from "../../../src/layout/measure.js";
-import { resolveGeometry } from "../../../src/layout/resolve.js";
+import { fontTableMeasurer } from "../../../src/layout/measure.js";
+import { resolveMeasured } from "../../../src/layout/resolve-measured.js";
 import { placeAnnotations } from "../../../src/layout/stages/placement.js";
-import { newRoutingDefects } from "../../../src/layout/routing-defects.js";
+import { createRouteInspector } from "../../../src/layout/inspect-routes.js";
 
 export function hint(
   nodes: string[],
@@ -72,10 +72,14 @@ export function routingFixture(hints: Constraint[], down = false, shift = 40) {
   const graph = problemGraph(problem);
   const source = sourceFor(problem);
   const resolve = (result: LayoutResult) =>
-    placeAnnotations(resolveGeometry(source, graph, result, measureLabel));
+    placeAnnotations(resolveMeasured(source, graph, result, fontTableMeasurer));
   const before = resolve(original);
-  const inspect = (result: LayoutResult) =>
-    conflictEdges(newRoutingDefects(source, before, resolve(result)));
+  const inspect = createRouteInspector(
+    source,
+    graph,
+    original,
+    fontTableMeasurer,
+  );
   return { problem, graph, original, source, resolve, before, inspect };
 }
 
@@ -109,15 +113,4 @@ function sourceFor(problem: LayoutProblem) {
       },
     ],
   });
-}
-
-function conflictEdges(contacts: ReturnType<typeof newRoutingDefects>) {
-  return [
-    ...new Set(
-      contacts
-        .flatMap(({ a, b }) => [a, b])
-        .filter((id) => /^(line|label|step):/.test(id))
-        .map((id) => id.slice(id.indexOf(":") + 1)),
-    ),
-  ];
 }

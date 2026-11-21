@@ -1,4 +1,5 @@
 import { expect, test } from "vitest";
+import type { LayoutGraph, LayoutResult } from "../../../src/layout/types.js";
 import { SourceMapSchema } from "../../../src/schema.js";
 import {
   buildProblem,
@@ -10,6 +11,7 @@ import { measureLabel } from "../../../src/layout/measure.js";
 import { alignSameRank } from "../../../src/layout/same-rank.js";
 import { resolveGeometry } from "../../../src/layout/resolve.js";
 import { placeAnnotations } from "../../../src/layout/stages/placement.js";
+import { newRoutingDefects } from "../../../src/layout/routing-defects.js";
 import { check } from "../../../src/layout/stages/report.js";
 
 function source(direction: "down" | "right") {
@@ -64,18 +66,18 @@ for (const [name, engine] of [
       const graph = problemGraph(problem);
       const placed = await engine.layout(graph);
       const before = structuredClone(placed);
-      const aligned = alignSameRank(problem, graph, placed, 64, 32);
+      const resolve = (result: LayoutResult) =>
+        resolveDrawing(map, graph, result);
+      const baseline = resolve(placed);
+      const inspect = (result: typeof placed) =>
+        newRoutingDefects(map, baseline, resolve(result)).flatMap(
+          ({ a, b }) => [a, b],
+        );
+      const aligned = alignSameRank(problem, graph, placed, 64, 32, inspect);
       if (aligned.status !== "determined") throw new Error(aligned.status);
       expect(aligned.dropped).toEqual([]);
       const routed = aligned.result;
-      const geometry = resolveGeometry(map, graph, routed, measureLabel);
-      geometry.measurement = {
-        name: "font-table",
-        labels: Object.fromEntries(
-          graph.edges.filter((e) => e.label).map((e) => [e.id, e.label!]),
-        ),
-      };
-      const resolved = placeAnnotations(geometry);
+      const resolved = resolve(routed);
       const report = check(map, resolved);
       expect(report.hard).toBe(0);
       expect(report.constraints).toEqual([
@@ -88,3 +90,18 @@ for (const [name, engine] of [
       ).toBeGreaterThanOrEqual(plain.viewBox[direction === "right" ? 0 : 1]);
       expect(placed).toEqual(before);
     });
+
+function resolveDrawing(
+  map: ReturnType<typeof source>,
+  graph: LayoutGraph,
+  result: LayoutResult,
+) {
+  const geometry = resolveGeometry(map, graph, result, measureLabel);
+  geometry.measurement = {
+    name: "font-table",
+    labels: Object.fromEntries(
+      graph.edges.filter((e) => e.label).map((e) => [e.id, e.label!]),
+    ),
+  };
+  return placeAnnotations(geometry);
+}

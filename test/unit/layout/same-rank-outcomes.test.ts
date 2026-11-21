@@ -43,14 +43,24 @@ function fixture(hints: Constraint[]) {
   };
   return { problem, placed, graph: problemGraph(problem) };
 }
+// These cases isolate relation selection; route safety has separate real-check tests.
+const inspectRelationsOnly = () => [];
+
 function run(hints: Constraint[]) {
   const { problem, placed, graph } = fixture(hints);
-  return alignSameRank(problem, graph, placed, 64, 32);
+  return alignSameRank(problem, graph, placed, 64, 32, inspectRelationsOnly);
 }
 
 test("required conflicts retain the checked cycle and name the hint and arrow", () => {
   const { problem, graph, placed } = fixture([hint(["a", "b"], "required", 4)]);
-  const outcome = alignSameRank(problem, graph, placed, 64, 32);
+  const outcome = alignSameRank(
+    problem,
+    graph,
+    placed,
+    64,
+    32,
+    inspectRelationsOnly,
+  );
   expect(outcome.status).toBe("contradictory");
   if (outcome.status !== "contradictory") throw new Error(outcome.status);
   expect(
@@ -64,7 +74,14 @@ test("required conflicts retain the checked cycle and name the hint and arrow", 
 test("dropping a conflicting preferred hint retains the exact engine result and reason", () => {
   const preferred = hint(["a", "b"], "preferred", 2);
   const { problem, graph, placed } = fixture([preferred]);
-  const outcome = alignSameRank(problem, graph, placed, 64, 32);
+  const outcome = alignSameRank(
+    problem,
+    graph,
+    placed,
+    64,
+    32,
+    inspectRelationsOnly,
+  );
   expect(outcome.status).toBe("determined");
   if (outcome.status !== "determined") throw new Error(outcome.status);
   expect(outcome.result).toBe(placed);
@@ -75,6 +92,8 @@ test("dropping a conflicting preferred hint retains the exact engine result and 
     "layout.hints[2].nodes[1]",
     "edges.ab",
   ]);
+  if (outcome.dropped[0].reason !== "contradiction")
+    throw new Error("Expected a cycle");
   expect(
     checkRelations(
       rankRelations(problem, placed.nodes, 64),
@@ -125,7 +144,14 @@ test("compatible overlapping groups are accepted without mutating inputs", () =>
     hint(["c", "b"], "preferred", 1),
   ]);
   const before = structuredClone({ problem, graph, placed });
-  const outcome = alignSameRank(problem, graph, placed, 64, 32);
+  const outcome = alignSameRank(
+    problem,
+    graph,
+    placed,
+    64,
+    32,
+    inspectRelationsOnly,
+  );
   if (outcome.status !== "determined") throw new Error(outcome.status);
   expect(outcome.dropped).toEqual([]);
   expect(outcome.result.nodes.b[1]).toBe(168);
@@ -135,12 +161,19 @@ test("compatible overlapping groups are accepted without mutating inputs", () =>
 
 test("no same-rank hints preserve the exact placement and routes", () => {
   const { problem, graph, placed } = fixture([]);
-  expect(alignSameRank(problem, graph, placed, 64, 32)).toEqual({
+  expect(alignSameRank(problem, graph, placed, 64, 32, () => [])).toEqual({
     status: "determined",
     result: placed,
     dropped: [],
   });
-  const outcome = alignSameRank(problem, graph, placed, 64, 32);
+  const outcome = alignSameRank(
+    problem,
+    graph,
+    placed,
+    64,
+    32,
+    inspectRelationsOnly,
+  );
   if (outcome.status !== "determined") throw new Error(outcome.status);
   expect(outcome.result).toBe(placed);
 });

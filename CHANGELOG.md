@@ -1,5 +1,42 @@
 # Changelog
 
+## [0.3.0](https://github.com/metronforge/concept-map/compare/v0.2.1...v0.3.0) (2026-11-21)
+
+
+### Features
+
+* add a strict layout option that rejects drawings with hard defects ([31828b5](https://github.com/metronforge/concept-map/commit/31828b5810cee70833dbb423ceb9a6fe9ef493fa))
+* add layout hints with checked arrow attachment sides ([cfff722](https://github.com/metronforge/concept-map/commit/cfff722d07ec985f8588452dcc780ac9082495fa))
+* add typed layout errors and constraint verdicts ([b291370](https://github.com/metronforge/concept-map/commit/b291370de5d3aaeae28a79480af3c169a922039b))
+* align boxes named by same-rank hints ([5df866e](https://github.com/metronforge/concept-map/commit/5df866ef975aea76f49ae6121e10aacc89167357))
+* check SVG arcs and labels covered by node step numbers ([aef2827](https://github.com/metronforge/concept-map/commit/aef2827ad97d804d68c212fe8ee7636bfcc08abf))
+* choose readable layouts for narrow screens ([acce6af](https://github.com/metronforge/concept-map/commit/acce6af04849d220df2de26f0c77781578f72321))
+* explain why preferred layout hints cannot be applied ([5df866e](https://github.com/metronforge/concept-map/commit/5df866ef975aea76f49ae6121e10aacc89167357))
+* export browser text measurement types ([82103cf](https://github.com/metronforge/concept-map/commit/82103cf29d10971b47550de8f250642cd0cb87c6))
+* judge a laid-out map with a quality report ([31828b5](https://github.com/metronforge/concept-map/commit/31828b5810cee70833dbb423ceb9a6fe9ef493fa))
+* lay out maps for a target text width ([acce6af](https://github.com/metronforge/concept-map/commit/acce6af04849d220df2de26f0c77781578f72321))
+* lay out maps in the order their first scenario reads them ([e80d0d5](https://github.com/metronforge/concept-map/commit/e80d0d57374b53a3d3daf2da61e43cec6409fd44))
+* measure labels with the page's real font ([82103cf](https://github.com/metronforge/concept-map/commit/82103cf29d10971b47550de8f250642cd0cb87c6))
+* move crowded arrow labels into the step panel ([aef2827](https://github.com/metronforge/concept-map/commit/aef2827ad97d804d68c212fe8ee7636bfcc08abf))
+* record text measurements in resolved maps ([82103cf](https://github.com/metronforge/concept-map/commit/82103cf29d10971b47550de8f250642cd0cb87c6))
+* refine resolved labels and step numbers after fonts load ([82103cf](https://github.com/metronforge/concept-map/commit/82103cf29d10971b47550de8f250642cd0cb87c6))
+* report forward progress separately from return arrows ([e80d0d5](https://github.com/metronforge/concept-map/commit/e80d0d57374b53a3d3daf2da61e43cec6409fd44))
+* report required lane violations without throwing from check ([b291370](https://github.com/metronforge/concept-map/commit/b291370de5d3aaeae28a79480af3c169a922039b))
+* report uncertain text contacts as tight ([82103cf](https://github.com/metronforge/concept-map/commit/82103cf29d10971b47550de8f250642cd0cb87c6))
+
+
+### Bug Fixes
+
+* keep step numbers from covering each other ([a6e9e74](https://github.com/metronforge/concept-map/commit/a6e9e74fa884eda6a8c637eddcbe854dcdaa2eaf))
+* place arrow labels beside their own lines ([a6e9e74](https://github.com/metronforge/concept-map/commit/a6e9e74fa884eda6a8c637eddcbe854dcdaa2eaf))
+* reduce collisions between crowded arrow labels ([e80d0d5](https://github.com/metronforge/concept-map/commit/e80d0d57374b53a3d3daf2da61e43cec6409fd44))
+
+
+### Performance Improvements
+
+* keep diagnostic text out of playback downloads ([9e3a9de](https://github.com/metronforge/concept-map/commit/9e3a9de94a1642fd3756f21c086d04dbaca0c624))
+* keep the font table and full check out of the first download ([d14f7e0](https://github.com/metronforge/concept-map/commit/d14f7e0d7ba5751cc58f2ee78b6142719a4d510b))
+
 ## [0.2.1](https://github.com/metronforge/concept-map/compare/v0.2.0...v0.2.1) (2026-11-16)
 
 

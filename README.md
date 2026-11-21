@@ -107,6 +107,15 @@ const html = renderFigure(resolvedMap);
 calling it. Include `html` in the server response and load the package stylesheet.
 Use `mount` in the browser to add interaction.
 
+Pass `onUnsupportedHints` to `layout` to receive preferred hints the engine
+cannot apply: `layout(map, dagreEngine, { onUnsupportedHints: console.warn })`.
+Each item retains the hint and its source path, with `reason: "unsupported"`
+for an engine capability refusal. The exported `UnsupportedHint` type also
+reports `reason: "contradiction"` and ordered `conflicts` paths for dropped
+same-rank groups. Both engines support same-rank alignment through an on-demand
+solver. Unsafe stretched routes report `reason: "unsupported"` with arrow ids.
+Required unsupported, contradictory or unroutable hints throw. See [hint diagnostics](docs/FORMAT.md#layout-hints).
+
 ### Check a drawing
 
 `check(source, resolved)` judges any laid-out map, whether an engine, a hand

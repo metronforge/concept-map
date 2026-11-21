@@ -131,6 +131,8 @@ property.prop([
     expect(JSON.stringify(map)).toBe(before);
     expect(refine(map, measurer)).toEqual(result);
   },
+  // About 2 s alone; parallel agent loops on one laptop pushed it past 5 s.
+  20_000,
 );
 
 test("layout keeps custom ink offsets so the same measurement does not move a label", async () => {

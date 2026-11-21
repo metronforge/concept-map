@@ -1,0 +1,88 @@
+{
+  "format": 3,
+  "id": "same-rank",
+  "title": "Put parallel outcomes on the same row",
+  "direction": "down",
+  "layers": {
+    "service": {
+      "label": "Service"
+    }
+  },
+  "nodes": {
+    "start": {
+      "label": "Start",
+      "layer": "service"
+    },
+    "quick": {
+      "label": "Quick",
+      "layer": "service"
+    },
+    "prepare": {
+      "label": "Prepare",
+      "layer": "service"
+    },
+    "finish": {
+      "label": "Finish",
+      "layer": "service"
+    }
+  },
+  "edges": {
+    "quick": {
+      "from": "start",
+      "to": "quick"
+    },
+    "prepare": {
+      "from": "start",
+      "to": "prepare"
+    },
+    "finish": {
+      "from": "prepare",
+      "to": "finish"
+    }
+  },
+  "layout": {
+    "hints": [
+      {
+        "kind": "sameRank",
+        "nodes": ["quick", "finish"],
+        "strength": "required"
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "outcomes",
+      "label": "Parallel outcomes",
+      "steps": [
+        {
+          "id": "start",
+          "title": "Start together",
+          "text": "A request can take a direct path or a path with preparation.",
+          "show": ["start"],
+          "edges": []
+        },
+        {
+          "id": "quick",
+          "title": "Take the direct path",
+          "text": "Quick is an outcome, even though it needs only one arrow.",
+          "show": ["start", "quick"],
+          "edges": ["quick"]
+        },
+        {
+          "id": "prepare",
+          "title": "Prepare the other path",
+          "text": "The second path needs a preparation step before it can finish.",
+          "show": ["start", "quick", "prepare"],
+          "edges": ["quick", "prepare"]
+        },
+        {
+          "id": "finish",
+          "title": "Compare the outcomes",
+          "text": "Quick and Finish belong on one row because they are parallel outcomes. The sameRank hint expresses this without coordinates.",
+          "show": ["start", "quick", "prepare", "finish"],
+          "edges": ["quick", "prepare", "finish"]
+        }
+      ]
+    }
+  ]
+}

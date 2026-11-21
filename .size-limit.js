@@ -42,13 +42,22 @@ const cases = [
   },
   {
     name: "layout port (with Zod; engine supplied by host)",
+    entry: ["index"],
     path: "dist/layout/index.js",
     import: {
       "dist/layout/index.js": "{ layout, measureLabel }",
     },
     gzip: true,
-    // Measured 39762 B + 1000 B margin.
-    limit: "40762 B",
+    // Static entry: measured 40134 B + 1000 B; deferred alignment is below.
+    limit: "41134 B",
+  },
+  {
+    name: "same-rank alignment (standalone on-demand entry; includes shared Zod)",
+    path: "dist/layout/place-same-rank.js",
+    gzip: true,
+    // Complete lazy stage: 39497 B + 1000 B, replacing the solver-only budget.
+    // Author approved a separate budget; shared geometry and Zod are imported.
+    limit: "40497 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",

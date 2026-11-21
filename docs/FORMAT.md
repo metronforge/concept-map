@@ -145,20 +145,43 @@ Hinted loops retain the engine route so compact loop routing cannot change
 their endpoints. The [side-hints example](../examples/side-hints/README.md)
 shows a loop attached to the top of a box.
 
-Dagre declares `side` unsupported. Both engines declare `sameRank` unsupported.
-Unsupported preferred hints remain in the resolved map and the placement
-outcome lists them; unsupported required hints fail before calling the engine. `check(source, resolved)` returns
-one constraint verdict per hint, independently of engine support. For geometric
-hints, `holds` is a boolean. A missed
-preferred hint is reported but is not a hard defect. A missed required hint is
-a hard defect and a source layout rejects it even without `strict` when a custom
-placer claims support. `intent: false` disables derived scenario preferences,
-not stated hints.
+Support through `layout()`:
+
+| Hint       | Dagre                                             | ELK                                               |
+| ---------- | ------------------------------------------------- | ------------------------------------------------- |
+| `sameRank` | preferred and required, through the shared solver | preferred and required, through the shared solver |
+| `side`     | unsupported                                       | preferred and required                            |
+| `free`     | unsupported                                       | unsupported                                       |
+
+Same-rank alignment loads only when a source map states a `sameRank` hint.
+It follows engine placement, including for custom engines. Boxes move only
+forward along the rank axis, preserving forward-arrow gaps and lane order and
+containment. Overlapping rank intervals separate across the other axis. A group
+spanning different lanes, or members joined by a forward path, contradicts those
+constraints. Required groups fail with the hint path and checked conflict paths;
+preferred groups are dropped with `reason: "contradiction"`.
+
+Moved arrows provisionally stretch their engine routes. If that introduces a
+hard contact, a required group throws a routing error naming the hint and arrow;
+a preferred group is dropped with `reason: "unsupported"` and arrow ids in
+`conflicts`. Dropped groups leave no movement behind. Unsupported required
+`side` or `free` hints fail before engine placement.
+
+`check(source, resolved)` independently judges every hint. Geometric hints have
+boolean `holds` values. A missed preferred hint is not a hard defect; a missed
+required hint is. `intent: false` disables derived scenario preferences, not
+stated hints. Raw placer capabilities describe engine placement alone; the
+shared solver provides same-rank support afterwards.
 
 To receive unsupported preferred hints through the public API, use
 `layout(source, engine, { onUnsupportedHints: hints => console.warn(hints) })`.
-The callback receives their kind, strength, references, `origin: "stated"` and
-source path once per layout call, including when narrow layout is also needed.
+The callback receives their kind, strength, references, `origin: "stated"`,
+source path and `reason: "unsupported"` for engine capability refusals, once per
+layout call, describing the final pass when narrow layout is also needed. The exported
+`UnsupportedHint` type also allows `reason: "contradiction"` with `conflicts`:
+source paths or arrow ids in checked cycle order. These diagnostic fields are
+optional in the type for compatibility; producers always fill `reason`. They
+are not source-map fields.
 It is not called for hand-drawn maps or maps without unsupported hints.
 An unsupported hint can happen to be honoured by the drawing; this callback
 distinguishes engine support from the checker's geometric verdict.

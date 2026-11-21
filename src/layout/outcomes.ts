@@ -1,5 +1,5 @@
 import type { Constraint } from "./problem.js";
-import type { LayoutResult } from "./types.js";
+import type { LayoutResult, UnsupportedHint } from "./types.js";
 
 export interface EngineFailure {
   kind: "engine-failed";
@@ -21,6 +21,7 @@ export type PlacementOutcome =
       kind: "placed";
       result: LayoutResult;
       unsupported: readonly Constraint[];
+      dropped?: readonly UnsupportedHint[];
     };
 const hasKind = (value: unknown, kind: string): boolean =>
   typeof value === "object" &&

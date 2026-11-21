@@ -1,0 +1,126 @@
+{
+  "viewport": 390,
+  "engine": "elk",
+  "hinted": false,
+  "report": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 3,
+      "share": 1,
+      "nonReturn": {
+        "edges": 3,
+        "forward": 3,
+        "share": 1
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 18.76,
+      "height": 25.52
+    }
+  },
+  "measurement": {
+    "name": "dom",
+    "labels": {}
+  },
+  "outcomes": [116, 216],
+  "badges": [
+    [46, 84],
+    [127.25, 62],
+    [144.5, 184]
+  ],
+  "labelsVisible": true,
+  "geometryMatches": true,
+  "states": [
+    {
+      "scenario": 0,
+      "step": 0,
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046953320503235, 19.046953320503235, 19.046953320503235,
+        19.046953320503235
+      ],
+      "badges": []
+    },
+    {
+      "scenario": 0,
+      "step": 1,
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046953320503235, 19.046953320503235, 19.046953320503235,
+        19.046953320503235
+      ],
+      "badges": [[46, 84]]
+    },
+    {
+      "scenario": 0,
+      "step": 2,
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046953320503235, 19.046953320503235, 19.046953320503235,
+        19.046953320503235
+      ],
+      "badges": [
+        [46, 84],
+        [127.25, 62]
+      ]
+    },
+    {
+      "scenario": 0,
+      "step": 3,
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046953320503235, 19.046953320503235, 19.046953320503235,
+        19.046953320503235
+      ],
+      "badges": [
+        [46, 84],
+        [127.25, 62],
+        [144.5, 184]
+      ]
+    },
+    {
+      "scenario": 0,
+      "step": "all",
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046953320503235, 19.046953320503235, 19.046953320503235,
+        19.046953320503235
+      ],
+      "badges": [
+        [46, 84],
+        [127.25, 62],
+        [144.5, 184]
+      ]
+    }
+  ]
+}

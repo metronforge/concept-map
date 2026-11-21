@@ -1,6 +1,6 @@
 import type { SourceMap, ResolvedMap } from "../schema.js";
 import type { Constraint } from "./problem.js";
-import type { LayoutOptions, StatedHint } from "./types.js";
+import type { LayoutOptions, UnsupportedHint } from "./types.js";
 
 export function statedHints(map: SourceMap | ResolvedMap) {
   return (map.layout?.hints ?? []).map((hint, i) => ({
@@ -27,13 +27,18 @@ export function constraintName(constraint: Constraint): string {
 export function reportUnsupportedHints(
   constraints: readonly Constraint[],
   notify: LayoutOptions["onUnsupportedHints"],
+  dropped: readonly UnsupportedHint[] = [],
 ): void {
-  const hints = constraints.flatMap((c): StatedHint[] => {
+  const hints = constraints.flatMap((c): UnsupportedHint[] => {
     if (c.origin !== "stated" || c.path === undefined) return [];
-    const origin = { origin: "stated" as const, path: c.path };
+    const origin = {
+      origin: "stated" as const,
+      path: c.path,
+      reason: "unsupported" as const,
+    };
     if (c.kind === "sameRank")
       return [{ ...c, ...origin, nodes: [...c.nodes] }];
     return c.kind === "side" || c.kind === "free" ? [{ ...c, ...origin }] : [];
   });
-  if (hints.length) notify?.(hints);
+  if (hints.length || dropped.length) notify?.([...hints, ...dropped]);
 }

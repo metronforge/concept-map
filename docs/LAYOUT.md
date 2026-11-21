@@ -217,6 +217,14 @@ This lets an adapter add literal rank exclusion without claiming that its
 existing derived reversal excludes edges from ranks. Both built-in adapters
 currently declare `free: {}`, supporting neither origin.
 
+`layout()` handles stated `sameRank` hints after placement through a shared,
+on-demand solver. This supports preferred and required groups with either engine
+without adding engine rank options. Rank and cross-axis minimum gaps use the
+built-in engines' 64 and 32 units. Required lane order and containment take
+precedence; stretched routes are checked before accepting movement. Custom
+engines use the same shared gap policy. See [hint support and refusals](FORMAT.md#layout-hints).
+Maps without same-rank hints do not load this stage.
+
 The first scenario supplies preferred node order, main-path arrows, and
 return arrows that should not influence ranks. Dagre uses the node order
 when inserting nodes into its graph, guiding where it breaks cycles. This

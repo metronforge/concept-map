@@ -2,8 +2,8 @@ import { expect, test } from "vitest";
 import type { LayoutGraph, LayoutResult } from "../../../src/layout/types.js";
 import { rerouteMovedEdges } from "../../../src/layout/moved-routes.js";
 
-function fixture() {
-  const graph: LayoutGraph = {
+function graphFixture(): LayoutGraph {
+  return {
     nodes: ["a", "b", "c"].map((id) => ({ id, width: 60, height: 36 })),
     edges: [
       { id: "ab", from: "a", to: "b", label: { width: 20, height: 12 } },
@@ -12,6 +12,10 @@ function fixture() {
     ],
     lanes: [],
   };
+}
+
+function fixture() {
+  const graph = graphFixture();
   const result: LayoutResult = {
     nodes: { a: [0, 0, 60, 36], b: [120, 100, 60, 36], c: [120, 200, 60, 36] },
     edges: {
@@ -62,8 +66,13 @@ test("only arrows incident to a moved box are rerouted without mutating inputs",
   const routed = rerouteMovedEdges(graph, result, nodes);
   expect(routed.nodes).toEqual(nodes);
   expect(routed.edges.bc).toBe(result.edges.bc);
-  expect(routed.edges.ab.points[0]).toEqual([60, 118]);
-  expect(routed.edges.ab.points.at(-1)).toEqual([120, 118]);
+  // Stretching retains the engine's bottom/top attachments and earlier bends.
+  expect(routed.edges.ab.points).toEqual([
+    [30, 136],
+    [30, 68],
+    [150, 68],
+    [150, 100],
+  ]);
   expect(routed.edges.ab.label).not.toEqual(result.edges.ab.label);
   // The right loop would touch b after moving; the existing chooser uses the left.
   expect(routed.edges.loop.points[0]).toEqual([0, 109]);

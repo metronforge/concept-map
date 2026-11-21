@@ -5,9 +5,10 @@ import type {
   LayoutRoute,
   LayoutPoint,
 } from "./types.js";
-import { crossLaneRoute, besideRoute } from "./geometry.js";
+import { besideRoute } from "./geometry.js";
 import { routeSelfEdges } from "./self-route.js";
 import { movedPortRoute } from "./moved-ports.js";
+import { stretchRoute } from "./stretch-route.js";
 
 /** Reattach arrows after alignment. Untouched endpoints keep their exact route.
  * This proposes routes; the caller still checks the resolved drawing for defects.
@@ -34,7 +35,6 @@ export function rerouteMovedEdges(
       continue;
     }
     edges[edge.id] = movedRoute(
-      graph,
       edge,
       original.edges[edge.id],
       nodes,
@@ -60,7 +60,6 @@ function boxShifts(
 }
 
 function movedRoute(
-  graph: LayoutGraph,
   edge: LayoutGraph["edges"][number],
   route: LayoutRoute,
   nodes: LayoutResult["nodes"],
@@ -75,11 +74,7 @@ function movedRoute(
     };
   const points = ports
     ? movedPortRoute(route.points, from, to, [nodes[edge.from], nodes[edge.to]])
-    : crossLaneRoute(
-        nodes[edge.from],
-        nodes[edge.to],
-        routeRight(graph, nodes, edge),
-      );
+    : stretchRoute(route.points, from, to);
   return {
     points,
     ...(edge.label
@@ -90,19 +85,4 @@ function movedRoute(
 
 function translate([x, y]: LayoutPoint, [dx, dy]: LayoutPoint): LayoutPoint {
   return [x + dx, y + dy];
-}
-
-/** Aligned boxes connect across the rank, rather than through their interiors. */
-function routeRight(
-  graph: LayoutGraph,
-  nodes: LayoutResult["nodes"],
-  edge: LayoutGraph["edges"][number],
-): boolean {
-  const right = graph.direction === "right",
-    axis = right ? 0 : 1;
-  const a = nodes[edge.from],
-    b = nodes[edge.to];
-  const overlap =
-    a[axis] < b[axis] + b[axis + 2] && b[axis] < a[axis] + a[axis + 2];
-  return overlap ? !right : right;
 }

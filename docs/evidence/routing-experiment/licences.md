@@ -98,5 +98,6 @@ curl -fsSL https://registry.npmjs.org/libavoid-js/0.5.0-beta.6
 Check the pinned links above, not the upstream default branch. The experiment
 lock pins npm archive integrity; `download/libavoid.json` pins the measured
 browser bytes. A later dependency version needs a new inspection. The channel
-candidate has the simpler distribution requirements; choosing a router still
-requires quality reports, parallel spacing and local pictures.
+candidate has the simpler distribution requirements. The
+[decision report](decision.md) weighs that difference alongside quality and
+the unfinished channel implementation; no release arrangement is approved.

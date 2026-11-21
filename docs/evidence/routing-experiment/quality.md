@@ -84,9 +84,10 @@ Zero route overflows therefore does not mean an unclipped drawing.
 
 These are server font-table reports, not proof of browser visual acceptance.
 The [browser comparison](browser.md) now covers real-font refinement, every
-example scenario step, whole-map mode and narrow presentation. Book-map browser
-review remains. Local pictures illustrate the example routes at 1280 px in
-Chromium, light theme. They are not committed or uploaded.
+example scenario step, whole-map mode and narrow presentation.
+[Book-map browser results](book-browser.md) now extend that coverage. Local
+pictures illustrate the example routes at 1280 px in Chromium, light theme.
+They are not committed or uploaded.
 
 ## Files and reproduction
 

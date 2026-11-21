@@ -105,8 +105,9 @@ Size and timing must be measured again after implementation changes.
 The channel option trades a small dependency-free starting point for unresolved
 joint routing work. Libavoid supplies more of that machinery, with a larger
 download and separate attachment and distribution work. Neither is ready to
-ship from these measurements. Parallel channel spacing and paint-bound
-review remain before the final comparison for the author.
+ship from these measurements. The [decision report](decision.md) asks the
+author to choose the next direction with parallel channel spacing and
+paint-bound review explicitly unfinished.
 
 ## Reproducing the assessment
 

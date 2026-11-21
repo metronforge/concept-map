@@ -108,6 +108,6 @@ long scenarios and contact lists within the experiment's 200-line file limit;
 they do not truncate them. Tests reconstruct the full state and quality data
 and verify that altered evidence is rejected without rewriting it.
 
-Parallel channel spacing and the final comparison and recommendation for the
-author remain unfinished. These results change neither router size nor timing;
-the harness is excluded from the router download.
+The [decision report](decision.md) includes these results and records unfinished
+parallel channel spacing and paint-bound review. These measurements change
+neither router size nor timing; the harness is excluded from the download.

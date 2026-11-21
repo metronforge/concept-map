@@ -112,6 +112,6 @@ defects are data, not suppressed assertions or claims of acceptance.
 
 All 865 reports are at most 170 lines. No timing or router download changed;
 the measurement harness is not part of a router's runtime download.
-Parallel channel spacing, paint-bound review and the final comparison and
-recommendation remain unfinished; [production effort](production-readiness.md)
-is assessed separately.
+The [decision report](decision.md) includes the comparison and recommendation
+with parallel channel spacing and paint-bound review explicitly unfinished.
+[Production effort](production-readiness.md) is assessed separately.

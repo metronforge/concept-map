@@ -1,8 +1,8 @@
 # Routing around placed boxes
 
 This folder records the reference drawings, shared fixed-port inputs and
-initial geometry from both routers. [Shared annotation quality](quality.md)
-now scores both candidates; these provisional numbers do not select a router.
+geometry from both routers. The [decision report](decision.md) recommends
+optional libavoid conditionally; the author has not selected a router.
 The package, its drawings and its existing quality baseline are unchanged.
 [Performance measurements](performance.md) now record five-run routing times
 and browser downloads for these geometry prototypes.
@@ -13,6 +13,7 @@ cover every scenario state in three browsers; text-size failures remain.
 [Shared-line measurements](overlap.md) quantify coincident orthogonal routes
 that crossing counts omit; channel parallel spacing remains unfinished.
 [Production effort](production-readiness.md) assesses the missing capabilities.
+The channel candidate is incomplete; the decision report makes that gap explicit.
 
 | Routes                                 | Maps | Edges | Hard defects | Crossings | Bends | Route length |
 | -------------------------------------- | ---: | ----: | -----------: | --------: | ----: | -----------: |
@@ -184,17 +185,14 @@ Unlike the earlier engine comparison, this input set retains `timeout_outer`
 in book map 2-1. It ends at frame `outer`. Future router adapters must account
 for that frame endpoint and its geometry rather than silently omit the edge.
 
-## Remaining comparison
+## Author decision
 
-Both candidates now route all 260 edges on the same fixed boxes and ports.
-[Libavoid geometry notes](libavoid-geometry-notes.md) record its configuration,
-29 per-map reports, browser parity and attachment limitations. The channel
-candidate still needs parallel spacing; both now have resolved drawings and
-[server quality reports](quality.md) from shared annotation placement.
-Their [initial timings and download sizes](performance.md) are recorded;
-licence requirements are [documented](licences.md), with release preparation
-still unverified. Parallel-edge spacing, self-loops,
-frame endpoints and label/number placement need final review. Example browser
-measurements and [book results](book-browser.md) now cover both candidates.
-The author chooses the router after that comparison; this baseline makes no
-production recommendation.
+The [decision report](decision.md) brings together quality, shared routes,
+browser measurements, downloads, licences and production effort. It recommends
+optional libavoid if its download and distribution work are acceptable;
+otherwise the channel candidate needs a completed spacing comparison.
+The author chooses the next direction. Neither candidate is ready to ship.
+
+Parallel channel spacing and complete paint-bound review remain unfinished.
+These gaps are recorded, not waived by the recommendation or by green package
+tests. No feature work or change to the default router is authorised here.

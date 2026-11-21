@@ -93,6 +93,6 @@ hashes without writing. Without `--check` it also writes browser assets under
 - `timing/summary.json`: method, environment and separate candidate totals.
 - `download/<candidate>.json`: two reports with browser asset counts and hashes.
 
-The author still needs quality reports, parallel spacing and local pictures
-before choosing a router. These figures will need another
-measurement if the candidate implementations change.
+The [decision report](decision.md) combines these figures with the quality
+and browser results, including unfinished channel spacing and paint review.
+Changed candidate implementations need new size and timing measurements.

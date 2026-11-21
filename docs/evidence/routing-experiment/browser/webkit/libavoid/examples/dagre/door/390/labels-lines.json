@@ -1,0 +1,93 @@
+[
+  {
+    "a": "label:start",
+    "b": "line:start",
+    "band": "tight",
+    "gap": -0.057,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:start",
+    "b": "line:open",
+    "band": "defect",
+    "gap": -1.828,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:start",
+    "b": "line:close",
+    "band": "defect",
+    "gap": -1.372,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:start",
+    "b": "line:finish",
+    "band": "tight",
+    "gap": -0.057,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:close",
+    "b": "line:open",
+    "band": "defect",
+    "gap": -3.609,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:close",
+    "b": "line:close",
+    "band": "tight",
+    "gap": 0.046,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:lock",
+    "b": "line:start",
+    "band": "defect",
+    "gap": -0.791,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:lock",
+    "b": "line:lock",
+    "band": "defect",
+    "gap": -1.113,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:lock",
+    "b": "line:unlock",
+    "band": "defect",
+    "gap": -1.095,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:lock",
+    "b": "line:finish",
+    "band": "defect",
+    "gap": -0.791,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:unlock",
+    "b": "line:unlock",
+    "band": "tight",
+    "gap": -0.057,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:unlock",
+    "b": "line:blocked",
+    "band": "defect",
+    "gap": -0.486,
+    "uncertainty": 0.047
+  },
+  {
+    "a": "label:finish",
+    "b": "line:finish",
+    "band": "defect",
+    "gap": -3.962,
+    "uncertainty": 0.047
+  }
+]

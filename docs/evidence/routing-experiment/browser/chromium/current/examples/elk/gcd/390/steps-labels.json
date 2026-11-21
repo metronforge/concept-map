@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:input",
+    "b": "step:input",
+    "band": "tight",
+    "gap": 0.227,
+    "uncertainty": 0.018
+  },
+  {
+    "a": "label:yes",
+    "b": "step:yes",
+    "band": "tight",
+    "gap": 0.231,
+    "uncertainty": 0.018
+  }
+]

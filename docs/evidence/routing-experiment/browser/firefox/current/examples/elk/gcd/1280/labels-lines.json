@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:input",
+    "b": "line:input",
+    "band": "tight",
+    "gap": 0.192,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:no",
+    "b": "line:no",
+    "band": "tight",
+    "gap": 0.191,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:loop",
+    "b": "line:loop",
+    "band": "tight",
+    "gap": 0.192,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:yes",
+    "b": "line:yes",
+    "band": "tight",
+    "gap": 0.191,
+    "uncertainty": 0.016
+  }
+]

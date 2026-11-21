@@ -1,0 +1,51 @@
+[
+  {
+    "a": "label:open",
+    "b": "node:start",
+    "band": "tight",
+    "gap": 0.293,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:open",
+    "b": "node:closed",
+    "band": "tight",
+    "gap": 0.293,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:lock",
+    "b": "node:start",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:lock",
+    "b": "node:closed",
+    "band": "defect",
+    "gap": -0.909,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:blocked",
+    "b": "node:open",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:blocked",
+    "b": "node:locked",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:blocked",
+    "b": "node:end",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.054
+  }
+]

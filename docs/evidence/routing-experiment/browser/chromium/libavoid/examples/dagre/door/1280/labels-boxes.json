@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:close",
+    "b": "node:open",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.022
+  },
+  {
+    "a": "label:blocked",
+    "b": "node:locked",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.022
+  },
+  {
+    "a": "label:finish",
+    "b": "node:end",
+    "band": "tight",
+    "gap": 0.083,
+    "uncertainty": 0.022
+  }
+]

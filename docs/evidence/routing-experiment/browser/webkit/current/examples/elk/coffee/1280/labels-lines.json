@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:order",
+    "b": "line:order",
+    "band": "tight",
+    "gap": 0.222,
+    "uncertainty": 0.017
+  },
+  {
+    "a": "label:ticket",
+    "b": "line:ticket",
+    "band": "tight",
+    "gap": 0.222,
+    "uncertainty": 0.017
+  },
+  {
+    "a": "label:ready",
+    "b": "line:ready",
+    "band": "tight",
+    "gap": 0.222,
+    "uncertainty": 0.017
+  },
+  {
+    "a": "label:empty",
+    "b": "line:empty",
+    "band": "tight",
+    "gap": 0.222,
+    "uncertainty": 0.017
+  },
+  {
+    "a": "label:offer",
+    "b": "line:offer",
+    "band": "tight",
+    "gap": 0.222,
+    "uncertainty": 0.017
+  }
+]

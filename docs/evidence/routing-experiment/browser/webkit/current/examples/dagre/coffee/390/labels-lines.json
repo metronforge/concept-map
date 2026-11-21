@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:ready",
+    "b": "line:ready",
+    "band": "tight",
+    "gap": 0.032,
+    "uncertainty": 0.03
+  },
+  {
+    "a": "label:empty",
+    "b": "line:ready",
+    "band": "tight",
+    "gap": 0.06,
+    "uncertainty": 0.03
+  },
+  {
+    "a": "label:offer",
+    "b": "line:offer",
+    "band": "tight",
+    "gap": 0.018,
+    "uncertainty": 0.03
+  }
+]

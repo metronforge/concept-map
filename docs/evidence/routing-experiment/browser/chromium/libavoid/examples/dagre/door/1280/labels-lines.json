@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:lock",
+    "b": "line:unlock",
+    "band": "tight",
+    "gap": 0.246,
+    "uncertainty": 0.022
+  }
+]

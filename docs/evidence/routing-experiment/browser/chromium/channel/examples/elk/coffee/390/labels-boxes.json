@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:offer",
+    "b": "node:guest",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.037
+  },
+  {
+    "a": "label:offer",
+    "b": "node:cashier",
+    "band": "tight",
+    "gap": -0.026,
+    "uncertainty": 0.037
+  }
+]

@@ -81,9 +81,9 @@ unobstructed midpoint without checking the circle against viewport bounds.
 Zero route overflows therefore does not mean an unclipped drawing.
 
 These are server font-table reports, not proof of browser visual acceptance.
-Real-font refinement, every scenario step, whole-map mode and narrow-screen
-presentation still need candidate-specific comparison before the final
-recommendation. Local pictures illustrate the example routes at 1280 px in
+The [browser comparison](browser.md) now covers real-font refinement, every
+example scenario step, whole-map mode and narrow presentation. Book-map browser
+review remains. Local pictures illustrate the example routes at 1280 px in
 Chromium, light theme. They are not committed or uploaded.
 
 ## Files and reproduction

@@ -1,0 +1,65 @@
+[
+  {
+    "a": "label:start",
+    "b": "node:start",
+    "band": "defect",
+    "gap": -2.907,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:start",
+    "b": "node:closed",
+    "band": "defect",
+    "gap": -2.907,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:open",
+    "b": "node:open",
+    "band": "defect",
+    "gap": -2.431,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:close",
+    "b": "node:closed",
+    "band": "tight",
+    "gap": 0.083,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:close",
+    "b": "node:open",
+    "band": "defect",
+    "gap": -0.347,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:lock",
+    "b": "node:locked",
+    "band": "defect",
+    "gap": -2.431,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:unlock",
+    "b": "node:locked",
+    "band": "defect",
+    "gap": -2.336,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:finish",
+    "b": "node:closed",
+    "band": "defect",
+    "gap": -1.681,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:finish",
+    "b": "node:end",
+    "band": "defect",
+    "gap": -2.824,
+    "uncertainty": 0.054
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "a": "label:start",
+    "b": "line:start",
+    "band": "defect",
+    "gap": -1.193,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:start",
+    "b": "line:open",
+    "band": "defect",
+    "gap": -1.193,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:start",
+    "b": "line:close",
+    "band": "defect",
+    "gap": -0.622,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:start",
+    "b": "line:lock",
+    "band": "defect",
+    "gap": -1.723,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:start",
+    "b": "line:unlock",
+    "band": "defect",
+    "gap": -1.723,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:start",
+    "b": "line:finish",
+    "band": "tight",
+    "gap": -0.05,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:open",
+    "b": "line:open",
+    "band": "defect",
+    "gap": -1.288,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:open",
+    "b": "line:close",
+    "band": "tight",
+    "gap": -0.146,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:open",
+    "b": "line:lock",
+    "band": "defect",
+    "gap": -7.631,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:open",
+    "b": "line:unlock",
+    "band": "defect",
+    "gap": -8.203,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:close",
+    "b": "line:open",
+    "band": "defect",
+    "gap": -4.012,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:close",
+    "b": "line:close",
+    "band": "defect",
+    "gap": -2.965,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:close",
+    "b": "line:lock",
+    "band": "defect",
+    "gap": -4.812,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:close",
+    "b": "line:unlock",
+    "band": "defect",
+    "gap": -5.384,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:lock",
+    "b": "line:lock",
+    "band": "defect",
+    "gap": -1.288,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:lock",
+    "b": "line:unlock",
+    "band": "tight",
+    "gap": -0.146,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:unlock",
+    "b": "line:lock",
+    "band": "defect",
+    "gap": -4.012,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:unlock",
+    "b": "line:unlock",
+    "band": "defect",
+    "gap": -2.965,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:unlock",
+    "b": "line:blocked",
+    "band": "tight",
+    "gap": 0.054,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:blocked",
+    "b": "line:blocked",
+    "band": "defect",
+    "gap": -1.625,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:finish",
+    "b": "line:start",
+    "band": "tight",
+    "gap": 0.033,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:finish",
+    "b": "line:open",
+    "band": "tight",
+    "gap": 0.033,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:finish",
+    "b": "line:close",
+    "band": "defect",
+    "gap": -0.539,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:finish",
+    "b": "line:finish",
+    "band": "defect",
+    "gap": -1.11,
+    "uncertainty": 0.054
+  }
+]

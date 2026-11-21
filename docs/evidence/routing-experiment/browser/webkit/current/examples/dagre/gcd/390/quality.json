@@ -1,0 +1,14 @@
+{
+  "hard": 0,
+  "constraints": [],
+  "lines": { "boxes": [] },
+  "crossings": { "count": 0, "pairs": [] },
+  "reading": {
+    "edges": 5,
+    "forward": 4,
+    "share": 0.8,
+    "nonReturn": { "edges": 4, "forward": 4, "share": 1 },
+    "returns": { "edges": 1, "backward": 1, "share": 1, "selfLoops": 0 }
+  },
+  "text": { "width": 30.99, "height": 38.65 }
+}

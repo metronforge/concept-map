@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:start",
+    "b": "label:open",
+    "band": "tight",
+    "gap": -0.079,
+    "uncertainty": 0.108
+  },
+  {
+    "a": "label:open",
+    "b": "label:lock",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.108
+  },
+  {
+    "a": "label:lock",
+    "b": "label:unlock",
+    "band": "defect",
+    "gap": -6.542,
+    "uncertainty": 0.108
+  }
+]

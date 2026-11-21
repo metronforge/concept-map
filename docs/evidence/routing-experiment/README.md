@@ -8,6 +8,8 @@ The package, its drawings and its existing quality baseline are unchanged.
 and browser downloads for these geometry prototypes.
 [Licence assessment](licences.md) compares MIT with LGPL-2.1-or-later and
 describes the source and replacement materials a browser distributor needs.
+[Browser measurements](browser.md) cover all example states in three browsers;
+they find no displayed hard contacts but retain text-size failures.
 
 | Routes                                 | Maps | Edges | Hard defects | Crossings | Bends | Route length |
 | -------------------------------------- | ---: | ----: | -----------: | --------: | ----: | -----------: |
@@ -73,6 +75,8 @@ update the existing quality baseline to make this experiment pass.
   gzip sizes and hashes, verified against the actual files in all three browsers.
 - `quality/<candidate>/`: per-map results and summary using the unchanged
   checker after shared annotation placement; see [quality](quality.md).
+- `browser/`: real-font example reports for both widths and every state;
+  see [browser measurements](browser.md) for files, limits and reproduction.
 - `licences.md`: pinned licence/source inspection, distribution obligations,
   proposed separate-loading arrangement and remaining release checks.
 
@@ -183,7 +187,7 @@ candidate still needs parallel spacing; both now have resolved drawings and
 Their [initial timings and download sizes](performance.md) are recorded;
 licence requirements are [documented](licences.md), with release preparation
 still unverified. Parallel-edge spacing, self-loops,
-frame endpoints and label/number placement need final review. Candidate-specific
-browser checks remain; local example pictures accompany this quality pass.
+frame endpoints and label/number placement need final review. Example browser
+measurements now cover both candidates; book-map browser review remains.
 The author chooses the router after that comparison; this baseline makes no
 production recommendation.

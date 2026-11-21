@@ -1,0 +1,51 @@
+[
+  {
+    "a": "label:order",
+    "b": "line:order",
+    "band": "tight",
+    "gap": 0.009,
+    "uncertainty": 0.037
+  },
+  {
+    "a": "label:ticket",
+    "b": "line:ticket",
+    "band": "tight",
+    "gap": -0.05,
+    "uncertainty": 0.037
+  },
+  {
+    "a": "label:ready",
+    "b": "line:ready",
+    "band": "tight",
+    "gap": -0.05,
+    "uncertainty": 0.037
+  },
+  {
+    "a": "label:empty",
+    "b": "line:ticket",
+    "band": "defect",
+    "gap": -1.179,
+    "uncertainty": 0.037
+  },
+  {
+    "a": "label:empty",
+    "b": "line:empty",
+    "band": "defect",
+    "gap": -2.132,
+    "uncertainty": 0.037
+  },
+  {
+    "a": "label:offer",
+    "b": "line:ready",
+    "band": "tight",
+    "gap": 0.051,
+    "uncertainty": 0.037
+  },
+  {
+    "a": "label:offer",
+    "b": "line:offer",
+    "band": "defect",
+    "gap": -0.387,
+    "uncertainty": 0.037
+  }
+]

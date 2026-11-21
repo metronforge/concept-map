@@ -1,0 +1,18 @@
+{
+  "edges": ["fixture_setup", "body_after"],
+  "length": 88,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 306,
+      "start": 180,
+      "end": 212
+    },
+    {
+      "axis": "y",
+      "coordinate": 212,
+      "start": 250,
+      "end": 306
+    }
+  ]
+}

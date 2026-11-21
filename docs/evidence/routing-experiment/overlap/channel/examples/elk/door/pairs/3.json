@@ -1,0 +1,12 @@
+{
+  "edges": ["close", "lock"],
+  "length": 38,
+  "spans": [
+    {
+      "axis": "y",
+      "coordinate": 541.1455,
+      "start": 58,
+      "end": 96
+    }
+  ]
+}

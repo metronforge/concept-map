@@ -1,0 +1,12 @@
+{
+  "edges": ["dispatch_fresh", "retry_outcome"],
+  "length": 171,
+  "spans": [
+    {
+      "axis": "y",
+      "coordinate": 416,
+      "start": 246,
+      "end": 417
+    }
+  ]
+}

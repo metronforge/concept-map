@@ -1,0 +1,13 @@
+{
+  "id": "book/hand/3-1",
+  "candidate": "libavoid",
+  "edges": 7,
+  "referenceSha256": "14398fcaf34f7bcb16937b08dfb079122874947ad7a6a0c770b564bc5b06248b",
+  "pathsSha256": "c2dc27867c87bff73579e8ec552a2cf05a31aedf2c22ae853917a8717467504f",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

@@ -1,0 +1,12 @@
+{
+  "edges": ["toList", "toBlob"],
+  "length": 20,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 97,
+      "start": 170,
+      "end": 190
+    }
+  ]
+}

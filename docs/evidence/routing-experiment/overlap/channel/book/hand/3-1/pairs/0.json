@@ -1,0 +1,12 @@
+{
+  "edges": ["cn", "cr"],
+  "length": 70,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 347,
+      "start": 110,
+      "end": 180
+    }
+  ]
+}

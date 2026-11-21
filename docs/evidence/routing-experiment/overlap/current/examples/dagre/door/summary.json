@@ -1,0 +1,13 @@
+{
+  "id": "examples/dagre/door",
+  "candidate": "current",
+  "edges": 7,
+  "referenceSha256": "9377f1ff5fc990479f6815b267fc644b6c6ed75c70e7a20826c5693edc66256c",
+  "pathsSha256": "816e4fe43ae9b960d8b9cb2e4e548a5e158e55369aa707e6095a6024ca6a983d",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 8,
+  "ignoredDiagonalLength": 1079.7374754877071
+}

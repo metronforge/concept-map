@@ -1,0 +1,13 @@
+{
+  "id": "book/hand/3-1",
+  "candidate": "current",
+  "edges": 7,
+  "referenceSha256": "14398fcaf34f7bcb16937b08dfb079122874947ad7a6a0c770b564bc5b06248b",
+  "pathsSha256": "f8e290242ba0dd892f61c36bb1dcda41bf106f2fd57c1c7638c1220da71108b7",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

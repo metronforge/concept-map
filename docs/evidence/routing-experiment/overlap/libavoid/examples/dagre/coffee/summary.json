@@ -1,0 +1,13 @@
+{
+  "id": "examples/dagre/coffee",
+  "candidate": "libavoid",
+  "edges": 5,
+  "referenceSha256": "dfc3188b83184b3ac999d653f714f48ffbddaacb70becdb7d67619d88b1bd945",
+  "pathsSha256": "6dacf1e48efa3cc77dadb4f6f38e1f9b684edcc94238bac8f7476090b2b8cf0f",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

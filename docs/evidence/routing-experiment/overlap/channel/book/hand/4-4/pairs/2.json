@@ -1,0 +1,12 @@
+{
+  "edges": ["failed_later", "dispatch_fresh"],
+  "length": 102,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 417,
+      "start": 278,
+      "end": 380
+    }
+  ]
+}

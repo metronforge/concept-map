@@ -1,0 +1,12 @@
+{
+  "edges": ["order", "offer"],
+  "length": 26.999999999999993,
+  "spans": [
+    {
+      "axis": "y",
+      "coordinate": 189.3705,
+      "start": 49.6,
+      "end": 76.6
+    }
+  ]
+}

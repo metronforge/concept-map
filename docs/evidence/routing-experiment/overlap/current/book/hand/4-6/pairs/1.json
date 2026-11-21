@@ -1,0 +1,12 @@
+{
+  "edges": ["own_body", "body_action"],
+  "length": 12,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 158,
+      "start": 400,
+      "end": 412
+    }
+  ]
+}

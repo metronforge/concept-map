@@ -1,0 +1,12 @@
+{
+  "edges": ["after_teardown", "body_action"],
+  "length": 32,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 437,
+      "start": 180,
+      "end": 212
+    }
+  ]
+}

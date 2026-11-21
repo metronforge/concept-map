@@ -1,0 +1,12 @@
+{
+  "edges": ["failed_later", "failed_stop"],
+  "length": 35,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 417,
+      "start": 278,
+      "end": 313
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "edges": ["ticket", "empty"],
+  "length": 26.999999999999993,
+  "spans": [
+    {
+      "axis": "y",
+      "coordinate": 473.4695,
+      "start": 49.6,
+      "end": 76.6
+    }
+  ]
+}

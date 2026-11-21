@@ -65,7 +65,9 @@ Reading reports are identical to the reference for all 29 maps and both
 candidates: this checker measures progress between node centres, which do not
 move. Reading share cannot distinguish paths around those fixed boxes.
 Crossings exclude collinear overlaps, so the channel router's coincident
-parallel segments are not penalised by that number.
+parallel segments are not penalised by that number. The separate
+[shared-line audit](overlap.md) records 42 channel edge pairs sharing 2654.25
+units, compared with 12 pairs and 145.50 units for libavoid.
 
 ## Viewport and browser limits
 

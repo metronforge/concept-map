@@ -1,0 +1,12 @@
+{
+  "edges": ["budget_dispatch", "copies_dispatch"],
+  "length": 90,
+  "spans": [
+    {
+      "axis": "y",
+      "coordinate": 212,
+      "start": 111,
+      "end": 201
+    }
+  ]
+}

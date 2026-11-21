@@ -1,0 +1,39 @@
+{
+  "candidate": "channel",
+  "node": "v26.13.1",
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "experimentLockSha256": "065d24be0efc3817d83752cf7e7edf571f34190fedbc0fcdc3b37c112cb67100",
+  "all": {
+    "maps": 29,
+    "mapsWithSharedRuns": 15,
+    "edges": 260,
+    "edgePairs": 42,
+    "sharedLength": 2654.24638519606,
+    "retracedEdges": 0,
+    "retracedLength": 0,
+    "ignoredDiagonalSegments": 0,
+    "ignoredDiagonalLength": 0
+  },
+  "examples": {
+    "maps": 6,
+    "mapsWithSharedRuns": 4,
+    "edges": 34,
+    "edgePairs": 10,
+    "sharedLength": 501.24638519605986,
+    "retracedEdges": 0,
+    "retracedLength": 0,
+    "ignoredDiagonalSegments": 0,
+    "ignoredDiagonalLength": 0
+  },
+  "book": {
+    "maps": 23,
+    "mapsWithSharedRuns": 11,
+    "edges": 226,
+    "edgePairs": 32,
+    "sharedLength": 2153,
+    "retracedEdges": 0,
+    "retracedLength": 0,
+    "ignoredDiagonalSegments": 0,
+    "ignoredDiagonalLength": 0
+  }
+}

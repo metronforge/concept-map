@@ -1,0 +1,12 @@
+{
+  "edges": ["test_setup", "elapsed_body"],
+  "length": 32,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 112,
+      "start": 180,
+      "end": 212
+    }
+  ]
+}

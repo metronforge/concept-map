@@ -1,0 +1,12 @@
+{
+  "edges": ["blocked", "retry"],
+  "length": 30,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 882,
+      "start": 180,
+      "end": 210
+    }
+  ]
+}

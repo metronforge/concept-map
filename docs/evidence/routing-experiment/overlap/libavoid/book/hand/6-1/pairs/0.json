@@ -1,0 +1,12 @@
+{
+  "edges": ["calls", "screen"],
+  "length": 6,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 158,
+      "start": 202,
+      "end": 208
+    }
+  ]
+}

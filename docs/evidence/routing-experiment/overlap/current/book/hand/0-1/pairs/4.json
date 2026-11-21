@@ -1,0 +1,12 @@
+{
+  "edges": ["shared", "request_cookies"],
+  "length": 2,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 461,
+      "start": 406,
+      "end": 408
+    }
+  ]
+}

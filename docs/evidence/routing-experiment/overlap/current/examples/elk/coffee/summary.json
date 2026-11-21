@@ -1,0 +1,13 @@
+{
+  "id": "examples/elk/coffee",
+  "candidate": "current",
+  "edges": 5,
+  "referenceSha256": "94649bdea410574ec18e8ee198abd96fed20bc51656887d76e354e9b52ec0a58",
+  "pathsSha256": "e6b8dd5c481d88dd828b0b0ee1901c4c4455e03fb3da7891ceb3f8e0929df4b6",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

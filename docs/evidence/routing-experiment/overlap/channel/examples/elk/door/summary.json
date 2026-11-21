@@ -1,0 +1,13 @@
+{
+  "id": "examples/elk/door",
+  "candidate": "channel",
+  "edges": 7,
+  "referenceSha256": "e2c951a45d67402b967e9cc1e3f518d8ecbf5fedf1d95a9e1eaaf850c31e0362",
+  "pathsSha256": "ee5105f4644920118d4a84e690e9520d1db469ca47bedbbc573b8f8f396af7f8",
+  "edgePairs": 6,
+  "retracedEdges": 0,
+  "sharedLength": 368.6,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

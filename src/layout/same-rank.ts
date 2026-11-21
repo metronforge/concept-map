@@ -1,6 +1,6 @@
 import type { Constraint, LayoutProblem } from "./problem.js";
 import type { LayoutGraph, LayoutResult } from "./types.js";
-import { alignBoxes } from "./relations/align.js";
+import { alignLayout } from "./relations/align-layout.js";
 import { rerouteMovedEdges } from "./moved-routes.js";
 import type {
   AlignmentCandidate,
@@ -60,9 +60,9 @@ export function alignSameRank(
     c.kind === "sameRank" ? { ...c, path: c.path ?? `constraints[${i}]` } : c,
   );
   return selectHints(constraints, (accepted) => {
-    const aligned = alignBoxes(
+    const aligned = alignLayout(
       { ...problem, constraints: accepted },
-      original.nodes,
+      original,
       rankGap,
       nodeGap,
     );
@@ -74,8 +74,20 @@ export function alignSameRank(
       };
     }
     const result = rerouteMovedEdges(graph, original, aligned.nodes, accepted);
-    return inspectCandidate(result, original, accepted, inspectRoutes);
+    return inspectCandidate(
+      withLanes(result, aligned.lanes),
+      original,
+      accepted,
+      inspectRoutes,
+    );
   });
+}
+
+function withLanes(result: LayoutResult, lanes: LayoutResult["lanes"]) {
+  const changed = Object.entries(lanes).some(([id, box]) =>
+    box.some((coordinate, axis) => coordinate !== result.lanes[id][axis]),
+  );
+  return changed ? { ...result, lanes } : result;
 }
 
 function inspectCandidate(

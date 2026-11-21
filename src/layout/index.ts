@@ -11,7 +11,8 @@ import { asPlacer } from "./legacy.js";
 import { place } from "./place.js";
 import { checkConstraints } from "./stages/constraints.js";
 import { resolveMeasured } from "./resolve-measured.js";
-import type { LayoutEngine, LayoutOptions } from "./types.js";
+import type { RouteRefinement } from "./inspect-routes.js";
+import type { LayoutEngine, LayoutOptions, UnsupportedHint } from "./types.js";
 import {
   EngineFailedError,
   ResultRejectedError,
@@ -69,19 +70,7 @@ export async function layout(
       atWidth(measurer, map, options.widthEm).measure,
       options,
     );
-  let resolved = await resolveSource(map, engine, measurer, options);
-  if (
-    options.widthEm !== undefined &&
-    resolved.viewBox[0] / options.widthEm > 10.5
-  ) {
-    resolved = await resolveSource(
-      map,
-      engine,
-      atWidth(measurer, resolved, options.widthEm),
-      { ...options, onUnsupportedHints: undefined },
-    );
-    resolved = refine(resolved, atWidth(measurer, resolved, options.widthEm));
-  }
+  const resolved = await resolveAtWidth(map, engine, measurer, options);
   return strict(
     map,
     resolved,
@@ -90,33 +79,78 @@ export async function layout(
   );
 }
 
-async function resolveSource(
+async function resolveAtWidth(
   map: SourceMap,
   engine: LayoutEngine,
   measurer: Measurer,
   options: LayoutOptions,
 ): Promise<ResolvedMap> {
+  let hints: readonly UnsupportedHint[] = [];
+  const collect = {
+    ...options,
+    onUnsupportedHints: (items: readonly UnsupportedHint[]) => {
+      hints = items;
+    },
+  };
+  let resolved = await resolveSource(map, engine, measurer, collect);
+  if (
+    options.widthEm !== undefined &&
+    resolved.viewBox[0] / options.widthEm > 10.5
+  ) {
+    hints = [];
+    resolved = await resolveSource(
+      map,
+      engine,
+      atWidth(measurer, resolved, options.widthEm),
+      collect,
+      { measurer, widthEm: options.widthEm },
+    );
+    resolved = refine(resolved, atWidth(measurer, resolved, options.widthEm));
+  }
+  if (hints.length) options.onUnsupportedHints?.(hints);
+  return resolved;
+}
+
+async function resolveSource(
+  map: SourceMap,
+  engine: LayoutEngine,
+  measurer: Measurer,
+  options: LayoutOptions,
+  refinement?: RouteRefinement,
+): Promise<ResolvedMap> {
   const measure = measurer.measure.bind(measurer);
   const problem = buildProblem(map, measure, options.intent);
   const graph = problemGraph(problem);
   const placer = asPlacer(engine);
-  const outcome = await place(problem, placer);
+  const outcome = map.layout?.hints.some((h) => h.kind === "sameRank")
+    ? await (
+        await import("./place-same-rank.js")
+      ).placeSameRank(map, problem, placer, measurer, refinement)
+    : await place(problem, placer);
   if (outcome.kind === "engine-failed") throw new EngineFailedError(outcome);
   if (outcome.kind === "unsupported-constraints")
     throw new UnsupportedConstraintsError(outcome);
-  reportUnsupportedHints(outcome.unsupported, options.onUnsupportedHints);
+  reportUnsupportedHints(
+    outcome.unsupported,
+    options.onUnsupportedHints,
+    outcome.dropped,
+  );
   const resolved = resolveMeasured(map, graph, outcome.result, measurer);
+  checkRequired(map, resolved, placer.name);
+  validateReferences(resolved);
+  return placeAnnotations(resolved);
+}
+
+function checkRequired(map: SourceMap, resolved: ResolvedMap, placer: string) {
   const rejected = checkConstraints(map, resolved).find(
     (c) => c.strength === "required" && c.holds === false,
   );
   if (rejected)
     throw new ResultRejectedError({
-      placer: placer.name,
+      placer,
       constraint: rejected.kind,
       message: rejected.message,
     });
-  validateReferences(resolved);
-  return placeAnnotations(resolved);
 }
 
 /** The check is loaded only for `strict`, so plain layout stays small. */

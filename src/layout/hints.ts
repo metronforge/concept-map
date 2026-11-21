@@ -27,6 +27,7 @@ export function constraintName(constraint: Constraint): string {
 export function reportUnsupportedHints(
   constraints: readonly Constraint[],
   notify: LayoutOptions["onUnsupportedHints"],
+  dropped: readonly UnsupportedHint[] = [],
 ): void {
   const hints = constraints.flatMap((c): UnsupportedHint[] => {
     if (c.origin !== "stated" || c.path === undefined) return [];
@@ -39,5 +40,5 @@ export function reportUnsupportedHints(
       return [{ ...c, ...origin, nodes: [...c.nodes] }];
     return c.kind === "side" || c.kind === "free" ? [{ ...c, ...origin }] : [];
   });
-  if (hints.length) notify?.(hints);
+  if (hints.length || dropped.length) notify?.([...hints, ...dropped]);
 }

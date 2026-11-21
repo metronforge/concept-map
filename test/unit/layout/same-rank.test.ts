@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { SourceMapSchema, ResolvedMapSchema } from "../../../src/schema";
+import { SourceMapSchema } from "../../../src/schema";
 import {
   layout,
   check,
@@ -13,42 +13,7 @@ import { measureLabel } from "../../../src/layout/measure";
 import { dagreEngine } from "../../../src/layout/dagre";
 import { elkEngine } from "../../../src/layout/elk";
 
-const hint = { kind: "sameRank", nodes: ["a", "b"] };
-function source(strength?: string, direction = "down") {
-  return SourceMapSchema.parse({
-    format: 3,
-    id: "ranks",
-    title: "Ranks",
-    direction,
-    layers: { service: { label: "Service" } },
-    nodes: {
-      a: { label: "A", layer: "service" },
-      b: { label: "B", layer: "service" },
-    },
-    scenarios: [
-      {
-        id: "all",
-        label: "All",
-        steps: [{ id: "show", title: "Show", text: "", show: ["a", "b"] }],
-      },
-    ],
-    layout: { hints: [{ ...hint, ...(strength ? { strength } : {}) }] },
-  });
-}
-function drawing(direction = "down", strength?: string) {
-  const map = source(strength, direction);
-  return ResolvedMapSchema.parse({
-    ...map,
-    viewBox: [300, 300],
-    nodes: {
-      a: { ...map.nodes.a, box: [10, 10, 50, 30] },
-      b: {
-        ...map.nodes.b,
-        box: direction === "down" ? [100, 10, 70, 50] : [10, 100, 70, 50],
-      },
-    },
-  });
-}
+import { hint, source, drawing } from "./same-rank-fixture.js";
 
 test("same-rank hints retain their order and default to preferred", () => {
   const map = source();
@@ -98,7 +63,7 @@ test.each([
 });
 
 for (const engine of [dagreEngine, elkEngine]) {
-  test(`${engine.name}: unsupported preferred hints are listed and retain geometry`, async () => {
+  test(`${engine.name}: raw placement lists hints; layout honours already aligned groups`, async () => {
     const map = source();
     const plain = { ...map };
     delete plain.layout;
@@ -120,13 +85,10 @@ for (const engine of [dagreEngine, elkEngine]) {
     });
     expect(check(map, resolved).constraints).toHaveLength(1);
   });
-  test(`${engine.name}: required unsupported hints fail naming the path and nodes`, async () => {
-    await expect(
-      layout(source("required"), engine, { intent: false }),
-    ).rejects.toMatchObject({
-      kind: "unsupported-constraints",
-      message: expect.stringMatching(/layout\.hints\[0\].*sameRank.*a.*b/s),
-    });
+  test(`${engine.name}: layout honours required same-rank hints`, async () => {
+    const map = source("required");
+    const resolved = await layout(map, engine, { intent: false });
+    expect(check(map, resolved).constraints[0].holds).toBe(true);
   });
 }
 
@@ -195,7 +157,7 @@ test("hand geometry and refinement retain hints without enforcing placement", as
   expect(check(map, refined).constraints[0]).toMatchObject({ holds: false });
 });
 
-test("required hints are checked even when a custom placer claims support", async () => {
+test("the pipeline aligns a custom placer's result without trusting its support claim", async () => {
   const engine = {
     name: "misaligned",
     capabilities: { sameRank: "required" as const },
@@ -206,31 +168,10 @@ test("required hints are checked even when a custom placer claims support", asyn
       edges: {},
     }),
   };
-  await expect(layout(source("required"), engine)).rejects.toMatchObject({
-    kind: "result-rejected",
-    constraint: "sameRank",
-    message: expect.stringMatching(/layout\.hints\[0\]/),
-  });
-  expect(await layout(source(), engine)).toBeDefined();
-});
-
-test("layout publicly reports unsupported hints even when the drawing happens to honour them", async () => {
-  const hints: unknown[] = [];
-  const map = source();
-  const resolved = await layout(map, dagreEngine, {
-    widthEm: 1,
-    onUnsupportedHints: (unsupported) => hints.push(...unsupported),
-  });
+  const map = source("required");
+  const resolved = await layout(map, engine);
+  expect(resolved.nodes.a.box[1]).toBe(resolved.nodes.b.box[1]);
   expect(check(map, resolved).constraints[0].holds).toBe(true);
-  expect(hints).toEqual([
-    {
-      ...hint,
-      strength: "preferred",
-      origin: "stated",
-      path: "layout.hints[0]",
-      reason: "unsupported",
-    },
-  ]);
 });
 
 test("duplicate hint nodes name the string-array entry", async () => {

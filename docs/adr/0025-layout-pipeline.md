@@ -82,6 +82,14 @@ Each adapter declares which constraints it supports. A `required` constraint
 an adapter cannot honour is an error that names it; a `preferred` one is
 listed in the report. Nothing is dropped silently.
 
+Same-rank support is supplied after engine placement by the shared relation
+solver, loaded only for source maps that state it. Engine capabilities continue
+to describe raw placement. The shared pass preserves forward-arrow gaps, lane
+order and containment; required groups precede preferences. It stretches affected
+routes and refuses groups that add hard contacts until the separate routing
+experiment chooses a replacement. Required contradictions retain checked cycle
+witnesses; routing failures remain distinct from contradictions.
+
 ### 2. Stages
 
 ```text

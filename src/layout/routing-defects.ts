@@ -14,9 +14,10 @@ export function newRoutingDefects(
   before: ResolvedMap,
   after: ResolvedMap,
   options: CheckOptions = {},
+  afterOptions: CheckOptions = options,
 ): Contact[] {
   const existing = new Set(routingContacts(source, before, options).map(key));
-  return routingContacts(source, after, options).filter(
+  return routingContacts(source, after, afterOptions).filter(
     (contact) => !existing.has(key(contact)),
   );
 }

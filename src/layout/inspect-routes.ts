@@ -6,6 +6,13 @@ import type { InspectRoutes } from "./same-rank-outcome.js";
 import { resolveMeasured } from "./resolve-measured.js";
 import { placeAnnotations } from "./stages/placement.js";
 import { newRoutingDefects } from "./routing-defects.js";
+import { atWidth } from "./width.js";
+import { refine } from "./stages/refine.js";
+
+export interface RouteRefinement {
+  measurer: Measurer;
+  widthEm: number;
+}
 
 /** Resolve every attempt like layout, comparing it to the engine drawing,
  * never to a previous retry. The checker remeasures labels independently.
@@ -15,14 +22,29 @@ export function createRouteInspector(
   graph: LayoutGraph,
   original: LayoutResult,
   measurer: Measurer,
+  refinement?: RouteRefinement,
 ): InspectRoutes {
-  const resolve = (result: LayoutResult) =>
-    placeAnnotations(resolveMeasured(source, graph, result, measurer));
+  const measuredAt = (map: ResolvedMap) =>
+    refinement
+      ? atWidth(refinement.measurer, map, refinement.widthEm)
+      : measurer;
+  const resolve = (result: LayoutResult) => {
+    const map = placeAnnotations(
+      resolveMeasured(source, graph, result, measurer),
+    );
+    return refinement ? refine(map, measuredAt(map)) : map;
+  };
   const before = resolve(original);
   return (candidate) => {
     const after = resolve(candidate);
     return routingConflictEdges(
-      newRoutingDefects(source, before, after, { measureLabel: measurer }),
+      newRoutingDefects(
+        source,
+        before,
+        after,
+        { measureLabel: measuredAt(before) },
+        { measureLabel: measuredAt(after) },
+      ),
       after,
     );
   };

@@ -1,0 +1,28 @@
+{
+  "axis": 0,
+  "coordinate": 241,
+  "start": 404,
+  "end": 422,
+  "segments": [
+    {
+      "edge": "server_page",
+      "segment": 0,
+      "start": 404,
+      "end": 420,
+      "low": null,
+      "high": 1
+    },
+    {
+      "edge": "server_app",
+      "segment": 0,
+      "start": 404,
+      "end": 422,
+      "low": null,
+      "high": 1
+    }
+  ],
+  "constraints": [{ "before": 1, "after": 0, "at": 420, "end": "high" }],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

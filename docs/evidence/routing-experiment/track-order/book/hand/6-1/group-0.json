@@ -1,0 +1,28 @@
+{
+  "axis": 0,
+  "coordinate": 158,
+  "start": 202,
+  "end": 210,
+  "segments": [
+    {
+      "edge": "calls",
+      "segment": 0,
+      "start": 202,
+      "end": 210,
+      "low": null,
+      "high": 1
+    },
+    {
+      "edge": "screen",
+      "segment": 0,
+      "start": 202,
+      "end": 210,
+      "low": null,
+      "high": 1
+    }
+  ],
+  "constraints": [],
+  "order": [0, 1],
+  "unique": false,
+  "cycle": []
+}

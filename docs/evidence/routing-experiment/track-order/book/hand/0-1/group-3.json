@@ -1,0 +1,31 @@
+{
+  "axis": 1,
+  "coordinate": 420,
+  "start": 241,
+  "end": 551,
+  "segments": [
+    {
+      "edge": "server_page",
+      "segment": 1,
+      "start": 241,
+      "end": 551,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "mk_page",
+      "segment": 2,
+      "start": 432,
+      "end": 505,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 432, "end": "low" },
+    { "before": 1, "after": 0, "at": 505, "end": "high" }
+  ],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

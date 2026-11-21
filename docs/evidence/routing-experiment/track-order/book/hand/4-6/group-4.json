@@ -1,0 +1,31 @@
+{
+  "axis": 0,
+  "coordinate": 437,
+  "start": 111,
+  "end": 416,
+  "segments": [
+    {
+      "edge": "body_action",
+      "segment": 2,
+      "start": 111,
+      "end": 416,
+      "low": 1,
+      "high": -1
+    },
+    {
+      "edge": "after_teardown",
+      "segment": 1,
+      "start": 180,
+      "end": 212,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 180, "end": "low" },
+    { "before": 1, "after": 0, "at": 212, "end": "high" }
+  ],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

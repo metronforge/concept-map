@@ -1,0 +1,31 @@
+{
+  "axis": 1,
+  "coordinate": 210,
+  "start": 476,
+  "end": 569,
+  "segments": [
+    {
+      "edge": "clean_returned",
+      "segment": 0,
+      "start": 476,
+      "end": 514,
+      "low": null,
+      "high": -1
+    },
+    {
+      "edge": "returned_server",
+      "segment": 1,
+      "start": 513,
+      "end": 569,
+      "low": 1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 0, "after": 1, "at": 513, "end": "low" },
+    { "before": 0, "after": 1, "at": 514, "end": "high" }
+  ],
+  "order": [0, 1],
+  "unique": true,
+  "cycle": []
+}

@@ -1,0 +1,28 @@
+{
+  "axis": 1,
+  "coordinate": 340,
+  "start": 568,
+  "end": 582,
+  "segments": [
+    {
+      "edge": "page_app",
+      "segment": 0,
+      "start": 568,
+      "end": 581,
+      "low": null,
+      "high": 1
+    },
+    {
+      "edge": "cookie_page",
+      "segment": 2,
+      "start": 570,
+      "end": 582,
+      "low": null,
+      "high": -1
+    }
+  ],
+  "constraints": [{ "before": 1, "after": 0, "at": 581, "end": "high" }],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

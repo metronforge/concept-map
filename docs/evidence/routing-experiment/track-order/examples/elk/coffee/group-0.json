@@ -1,0 +1,31 @@
+{
+  "axis": 1,
+  "coordinate": 189.3705,
+  "start": 40.6,
+  "end": 88.6,
+  "segments": [
+    {
+      "edge": "offer",
+      "segment": 1,
+      "start": 40.6,
+      "end": 76.6,
+      "low": -1,
+      "high": 1
+    },
+    {
+      "edge": "order",
+      "segment": 1,
+      "start": 49.6,
+      "end": 88.6,
+      "low": -1,
+      "high": 1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 49.6, "end": "low" },
+    { "before": 1, "after": 0, "at": 76.6, "end": "high" }
+  ],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

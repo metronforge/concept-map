@@ -1,0 +1,14 @@
+{
+  "node": "v26.13.1",
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "stage": "branch constraints only; no route movement or cross-channel bend ordering",
+  "maps": 2,
+  "affectedMaps": 0,
+  "edges": 6,
+  "groups": 0,
+  "ordered": 0,
+  "unique": 0,
+  "conflicting": 0,
+  "segments": 0,
+  "constraints": 0
+}

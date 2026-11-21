@@ -1,0 +1,31 @@
+{
+  "axis": 1,
+  "coordinate": 406,
+  "start": 273,
+  "end": 742,
+  "segments": [
+    {
+      "edge": "url_load",
+      "segment": 2,
+      "start": 273,
+      "end": 742,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "ignores",
+      "segment": 2,
+      "start": 481,
+      "end": 542,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 481, "end": "low" },
+    { "before": 1, "after": 0, "at": 542, "end": "high" }
+  ],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

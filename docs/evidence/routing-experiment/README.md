@@ -10,8 +10,8 @@ and browser downloads for these geometry prototypes.
 describes the source and replacement materials a browser distributor needs.
 [Browser measurements](browser.md) and [book measurements](book-browser.md)
 cover every scenario state in three browsers; text-size failures remain.
-[Shared-line measurements](overlap.md) quantify coincident orthogonal routes
-that crossing counts omit; channel parallel spacing remains unfinished.
+[Shared-line measurements](overlap.md) quantify coincident routes; the new
+[track-order step](track-order.md) derives branch constraints before spacing.
 [Production effort](production-readiness.md) assesses the missing capabilities.
 [Aligned-box measurements](same-rank.md) compare stretched and channel routes.
 [Viewport containment](viewport.md) records the bounded channel search.

@@ -1,0 +1,28 @@
+{
+  "axis": 1,
+  "coordinate": 111,
+  "start": 174,
+  "end": 228,
+  "segments": [
+    {
+      "edge": "collect_dispatch",
+      "segment": 0,
+      "start": 174,
+      "end": 228,
+      "low": null,
+      "high": null
+    },
+    {
+      "edge": "budget_dispatch",
+      "segment": 3,
+      "start": 201,
+      "end": 228,
+      "low": 1,
+      "high": null
+    }
+  ],
+  "constraints": [{ "before": 0, "after": 1, "at": 201, "end": "low" }],
+  "order": [0, 1],
+  "unique": true,
+  "cycle": []
+}

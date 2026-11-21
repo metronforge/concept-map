@@ -1,0 +1,57 @@
+{
+  "axis": 1,
+  "coordinate": 541.1455,
+  "start": 40,
+  "end": 200.6,
+  "segments": [
+    {
+      "edge": "close",
+      "segment": 1,
+      "start": 40,
+      "end": 96,
+      "low": -1,
+      "high": 1
+    },
+    {
+      "edge": "open",
+      "segment": 1,
+      "start": 46,
+      "end": 108,
+      "low": -1,
+      "high": 1
+    },
+    {
+      "edge": "unlock",
+      "segment": 1,
+      "start": 52,
+      "end": 188.6,
+      "low": -1,
+      "high": 1
+    },
+    {
+      "edge": "lock",
+      "segment": 1,
+      "start": 58,
+      "end": 200.6,
+      "low": -1,
+      "high": 1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 46, "end": "low" },
+    { "before": 1, "after": 0, "at": 96, "end": "high" },
+    { "before": 2, "after": 0, "at": 52, "end": "low" },
+    { "before": 2, "after": 0, "at": 96, "end": "high" },
+    { "before": 3, "after": 0, "at": 58, "end": "low" },
+    { "before": 3, "after": 0, "at": 96, "end": "high" },
+    { "before": 2, "after": 1, "at": 52, "end": "low" },
+    { "before": 2, "after": 1, "at": 108, "end": "high" },
+    { "before": 3, "after": 1, "at": 58, "end": "low" },
+    { "before": 3, "after": 1, "at": 108, "end": "high" },
+    { "before": 3, "after": 2, "at": 58, "end": "low" },
+    { "before": 3, "after": 2, "at": 188.6, "end": "high" }
+  ],
+  "order": [3, 2, 1, 0],
+  "unique": true,
+  "cycle": []
+}

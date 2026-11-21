@@ -12,6 +12,12 @@ all routes inside the viewport and reduces crossings from 19 to 17.
 Hard defects equal libavoid's three; crossings are below its 23.
 These are separate conditions, not a combined score.
 
+The [track-order step](track-order.md) now derives branch constraints for all
+35 shared-run groups. It finds compatible orders for 31 and conflicting
+requirements in four. It does not move routes: orders still need to be connected
+across bends, fitted into the available space and attached to fixed ports.
+The comparison numbers and the unmet shared-line target below are unchanged.
+
 The branch includes the aligned-box feature from current main. The additional
 [same-rank comparison](same-rank.md) covers both engines' aligned boxes and
 stretched routes separately, keeping the original 29-map totals comparable.

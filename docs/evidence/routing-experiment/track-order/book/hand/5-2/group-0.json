@@ -1,0 +1,30 @@
+{
+  "axis": 0,
+  "coordinate": 97,
+  "start": 113,
+  "end": 306,
+  "segments": [
+    {
+      "edge": "toList",
+      "segment": 1,
+      "start": 113,
+      "end": 190,
+      "low": 1,
+      "high": -1
+    },
+    {
+      "edge": "toBlob",
+      "segment": 1,
+      "start": 170,
+      "end": 306,
+      "low": -1,
+      "high": 1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 170, "end": "low" },
+    { "before": 0, "after": 1, "at": 190, "end": "high" }
+  ],
+  "order": null,
+  "cycle": [0, 1, 0]
+}

@@ -1,0 +1,31 @@
+{
+  "axis": 1,
+  "coordinate": 416,
+  "start": 201,
+  "end": 552,
+  "segments": [
+    {
+      "edge": "retry_outcome",
+      "segment": 1,
+      "start": 201,
+      "end": 552,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "dispatch_fresh",
+      "segment": 1,
+      "start": 246,
+      "end": 417,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 246, "end": "low" },
+    { "before": 1, "after": 0, "at": 417, "end": "high" }
+  ],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

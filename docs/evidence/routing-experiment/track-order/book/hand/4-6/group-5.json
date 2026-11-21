@@ -1,0 +1,28 @@
+{
+  "axis": 1,
+  "coordinate": 212,
+  "start": 158,
+  "end": 306,
+  "segments": [
+    {
+      "edge": "body_after",
+      "segment": 1,
+      "start": 158,
+      "end": 306,
+      "low": 1,
+      "high": -1
+    },
+    {
+      "edge": "fixture_setup",
+      "segment": 2,
+      "start": 250,
+      "end": 306,
+      "low": 1,
+      "high": -1
+    }
+  ],
+  "constraints": [{ "before": 0, "after": 1, "at": 250, "end": "low" }],
+  "order": [0, 1],
+  "unique": true,
+  "cycle": []
+}

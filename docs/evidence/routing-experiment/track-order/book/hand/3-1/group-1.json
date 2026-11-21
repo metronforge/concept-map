@@ -1,0 +1,28 @@
+{
+  "axis": 1,
+  "coordinate": 360,
+  "start": 176,
+  "end": 347,
+  "segments": [
+    {
+      "edge": "df",
+      "segment": 1,
+      "start": 176,
+      "end": 347,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "cn",
+      "segment": 1,
+      "start": 236,
+      "end": 347,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [{ "before": 1, "after": 0, "at": 236, "end": "low" }],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

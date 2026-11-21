@@ -13,8 +13,8 @@ load; there is no timing threshold or claim of statistical significance.
 
 | Candidate | Maps / edges | Sum of map medians, ms | Median map, ms | Smallest map median, ms | Largest map median, ms |
 | --------- | -----------: | ---------------------: | -------------: | ----------------------: | ---------------------: |
-| Channel   |     29 / 260 |                  28.23 |          0.565 |                   0.098 |                  4.542 |
-| libavoid  |     29 / 260 |                  20.63 |          0.618 |                   0.342 |                  1.912 |
+| Channel   |     29 / 260 |                  28.95 |          0.573 |                   0.103 |                  4.601 |
+| libavoid  |     29 / 260 |                  20.82 |          0.615 |                   0.350 |                  1.958 |
 
 Each map/candidate has one warm-up followed by five sequential calls. Candidate
 order alternates across maps. Reports retain all five samples, their median,
@@ -44,7 +44,7 @@ compressing each file separately. WASM is the package's unmodified binary;
 
 | Candidate / asset                                  |   Bytes | Gzip bytes |
 | -------------------------------------------------- | ------: | ---------: |
-| Channel: implementation and adapter (`channel.js`) |   2,329 |      1,144 |
+| Channel: implementation and adapter (`channel.js`) |   2,526 |      1,237 |
 | libavoid: adapter (`avoid.js`)                     |     799 |        493 |
 | libavoid: separately loaded JS (`libavoid.js`)     |  59,889 |     21,846 |
 | libavoid: separately loaded WASM (`libavoid.wasm`) | 476,036 |    178,650 |

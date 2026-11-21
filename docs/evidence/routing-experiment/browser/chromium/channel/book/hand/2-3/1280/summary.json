@@ -4,8 +4,8 @@
   "browser": "chromium",
   "browserVersion": "156.0.8078.4",
   "width": 1280,
-  "inputSha256": "74410e8602ee0d60f46efb70f5f2b96ba1010a61b35fea6583e5d6a64bc650a9",
-  "drawnSha256": "85bcd193264f38abda7424d8b6712e5e62cf816b1ef61900184a2384fe51618d",
+  "inputSha256": "3082fdef9da0e7a2490b5dd449b83088d0213966cdb91a43102558b11db4aa98",
+  "drawnSha256": "d08149bfbc1704bb45adde356e51d21a16fc65d39267d446def5d75b297e815e",
   "fixedGeometryPreserved": true,
   "measurement": "dom",
   "text": {

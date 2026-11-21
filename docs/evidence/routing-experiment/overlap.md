@@ -58,7 +58,8 @@ Simply shifting whole paths would violate those fixed attachments.
 The result supports prioritising channel spacing before a production
 recommendation. It does not select libavoid: geometry, annotation defects,
 browser text size, runtime download and licence obligations remain separate
-parts of the comparison. No drawing changed, so no new pictures were made.
+parts of the comparison. The later [viewport change](viewport.md) moves two
+routes without changing any shared spans; its local pictures are linked there.
 
 ## Files and reproduction
 
@@ -84,5 +85,6 @@ one subject each and are at most 40 lines.
 
 The runner checks every candidate's geometry independently before auditing
 it. Its `--check` mode compares every expected report without writing files;
-an altered span is an error. Router implementations, their timing and download
-hashes, and all previous quality and browser evidence stay unchanged.
+an altered span is an error. The later viewport change updates two path hashes
+without changing shared-span measures. Quality, timing, download and browser
+reports record that implementation separately.

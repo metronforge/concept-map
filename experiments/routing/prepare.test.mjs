@@ -15,6 +15,7 @@ test("all 260 connections keep exact ports, boxes and frame identity", async () 
   for (const item of await cases) {
     const before = JSON.stringify(item);
     const problem = prepare(item);
+    assert.deepEqual(problem.viewBox, item.resolved.viewBox);
     assert.equal(problem.edges.length, Object.keys(item.resolved.edges).length);
     for (const kind of ["nodes", "frames"])
       for (const shape of problem[kind])
@@ -54,7 +55,13 @@ test("old route interiors and annotation positions do not reach either router", 
     }
     assert.deepEqual(prepare(changed), prepare(item));
     const problem = prepare(item);
-    assert.deepEqual(Object.keys(problem), ["id", "nodes", "frames", "edges"]);
+    assert.deepEqual(Object.keys(problem), [
+      "id",
+      "viewBox",
+      "nodes",
+      "frames",
+      "edges",
+    ]);
     for (const edge of problem.edges)
       assert.deepEqual(Object.keys(edge), ["id", "from", "to"]);
   }
@@ -116,6 +123,7 @@ test("prepared boxes and ports share no mutable arrays with the reference map", 
     "frame",
   );
   problem.nodes[0].box[0] = -999;
+  problem.viewBox[0] = -999;
   problem.frames[0].box[0] = -999;
   problem.edges[0].from.point[0] = -999;
   assert.deepEqual(item, before);

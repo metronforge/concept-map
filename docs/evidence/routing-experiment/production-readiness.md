@@ -14,10 +14,10 @@ changed port, wrong attachment side or unwanted node contact. Repeated runs
 are deterministic on this corpus. Each edge uses its own channel graph and
 minimises bends, then length; other edges do not influence that search.
 
-The [quality reports](quality.md) retain 3 hard defects, 19 crossings and 302
+The [quality reports](quality.md) retain 3 hard defects, 17 crossings and 302
 bends. The [shared-line audit](overlap.md) adds a separate limitation: 42 edge
-pairs share 2654.25 units across 15 maps. Two routes leave their fixed
-viewports. Neither the crossing count nor successful path finding establishes
+pairs share 2654.25 units across 15 maps. All route centre lines now stay
+inside their fixed viewports. Neither the crossing count nor successful path finding establishes
 that arrows remain distinct or fully visible.
 
 ## Effort by missing capability
@@ -28,14 +28,14 @@ unproven; **bounded** means adapting an existing mechanism and verifying its
 contract. A delivery date would be speculative before the high-effort parts
 work on the difficult inputs.
 
-| Capability                      | Evidence and missing work                                                                                                                                                                                                                                                         | Effort                                                                        |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| Separate parallel arrows        | Independent shortest paths share long runs. Routes need a consistent order across adjoining channels, space for each track, and connections back to fixed ports. Shared stems at an identical port may remain unavoidable.                                                        | High; the prototype has no joint routing stage.                               |
-| Fit routes in available space   | The graph adds exterior tracks 16 units beyond coordinate extremes but receives no viewport or stroke clearance. Channel edges `retry` in book 2-3 and `clean_returned` in 4-1 leave the viewport. Track capacity and paint bounds must be considered without moving fixed boxes. | High; finding a path does not establish enough room for its drawing.          |
-| Use source-defined attachments  | Both adapters currently recover exact terminals from reference paths. A production call without old routes needs to supply or choose ports from boxes and side constraints, including gaps, corners, loops and frame endpoints.                                                   | Bounded adapter work for supplied ports; automatic port choice is unmeasured. |
-| Report failure precisely        | `no channel path` means the constructed graph found none. It does not prove the geometry impossible. Failure, unsupported inputs and a checked result must remain distinct at the routing boundary.                                                                               | Bounded contract work; geometric completeness is not established.             |
-| Handle inputs beyond the corpus | Current tests cover fixed fixtures and a few small cases. Tight corridors, many arrows sharing a port, several adjacent loops, scaled coordinates and dense graphs need broader checks.                                                                                           | Unmeasured; those inputs may expose changes to the graph or spacing design.   |
-| Control runtime growth          | Each edge rebuilds a grid from the boxes; neighbour queries scan the nodes and the priority queue inserts into an array. The recorded warm timings cover only these small maps.                                                                                                   | Profile after spacing; a shared graph or faster search may be needed.         |
+| Capability                      | Evidence and missing work                                                                                                                                                                                                                              | Effort                                                                        |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| Separate parallel arrows        | Independent shortest paths share long runs. Routes need a consistent order across adjoining channels, space for each track, and connections back to fixed ports. Shared stems at an identical port may remain unavoidable.                             | High; the prototype has no joint routing stage.                               |
+| Fit routes in available space   | The graph now restricts coordinates to the viewport and moves exterior tracks into the available margin. No route centre line leaves the viewport. Track capacity, stroke clearance and other paint bounds still need work without moving fixed boxes. | High; finding a path does not establish enough room for its drawing.          |
+| Use source-defined attachments  | Both adapters currently recover exact terminals from reference paths. A production call without old routes needs to supply or choose ports from boxes and side constraints, including gaps, corners, loops and frame endpoints.                        | Bounded adapter work for supplied ports; automatic port choice is unmeasured. |
+| Report failure precisely        | `no channel path` means the constructed graph found none. It does not prove the geometry impossible. Failure, unsupported inputs and a checked result must remain distinct at the routing boundary.                                                    | Bounded contract work; geometric completeness is not established.             |
+| Handle inputs beyond the corpus | Current tests cover fixed fixtures and a few small cases. Tight corridors, many arrows sharing a port, several adjacent loops, scaled coordinates and dense graphs need broader checks.                                                                | Unmeasured; those inputs may expose changes to the graph or spacing design.   |
+| Control runtime growth          | Each edge rebuilds a grid from the boxes; neighbour queries scan the nodes and the priority queue inserts into an array. The recorded warm timings cover only these small maps.                                                                        | Profile after spacing; a shared graph or faster search may be needed.         |
 
 These are connected costs. Separating a run can require extra bends near its
 ports, consume space used by a neighbouring route, or change where annotations
@@ -84,7 +84,7 @@ support; those changes follow the author's routing decision.
 
 Libavoid already routes the whole map in one transaction. It has much less
 exact shared line on this corpus: 12 pairs and 145.50 units, with no shared
-runs in the examples. It has 23 crossings against the channel prototype's 19,
+runs in the examples. It has 23 crossings against the channel prototype's 17,
 the same 3 hard defects, and the same example text-size failures. It does not
 remove the shared annotation and presentation work above.
 
@@ -95,19 +95,19 @@ corpus does not establish one. Optional loading, load failures and browser
 startup cost also need production treatment. Distribution preparation remains
 separately assessed in the [licence report](licences.md).
 
-The [runtime measurements](performance.md) are 1144 gzip bytes for channel
+The [runtime measurements](performance.md) are 1237 gzip bytes for channel
 and 200989 for libavoid with its adapter, JS and WASM. These exclude shared
 annotations and reporting. The channel number also excludes the missing
-spacing implementation. Recorded sums of warm map medians are 28.23 ms and
-20.63 ms respectively; they exclude loading and are not browser latency.
+spacing implementation. Recorded sums of warm map medians are 28.95 ms and
+20.82 ms respectively; they exclude loading and are not browser latency.
 Size and timing must be measured again after implementation changes.
 
 The channel option trades a small dependency-free starting point for unresolved
 joint routing work. Libavoid supplies more of that machinery, with a larger
 download and separate attachment and distribution work. Neither is ready to
-ship from these measurements. The [decision report](decision.md) asks the
-author to choose the next direction with parallel channel spacing and
-paint-bound review explicitly unfinished.
+ship from these measurements. The [decision report](decision.md) records the
+author's channel-first choice; parallel spacing and paint-bound review remain
+explicitly unfinished.
 
 ## Reproducing the assessment
 

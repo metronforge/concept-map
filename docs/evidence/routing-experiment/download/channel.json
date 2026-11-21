@@ -6,11 +6,11 @@
   "assets": [
     {
       "name": "channel.js",
-      "bytes": 2329,
-      "gzipBytes": 1144,
-      "sha256": "be2b7334acf3465d5710e8c21f9d5da14d60ace99568fc42956c44cc94b45aed"
+      "bytes": 2526,
+      "gzipBytes": 1237,
+      "sha256": "bde0b99c81aa82108bcf92ef063d3d7403e4c8bf48b7f84341d70fd24f532e1f"
     }
   ],
-  "totalBytes": 2329,
-  "totalGzipBytes": 1144
+  "totalBytes": 2526,
+  "totalGzipBytes": 1237
 }

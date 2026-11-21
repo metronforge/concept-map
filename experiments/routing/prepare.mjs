@@ -60,6 +60,7 @@ export function prepare({ id, resolved }) {
   ];
   return {
     id,
+    ...(resolved.viewBox ? { viewBox: [...resolved.viewBox] } : {}),
     nodes,
     frames,
     edges: Object.entries(resolved.edges).map(([key, edge]) =>

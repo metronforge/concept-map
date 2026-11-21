@@ -10,7 +10,7 @@
     "a": "label:retry",
     "b": "line:retry",
     "band": "tight",
-    "gap": 0.19,
+    "gap": 0.037,
     "uncertainty": 0.016
   }
 ]

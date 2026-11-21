@@ -3,12 +3,12 @@
 The additional same-rank input compares stretched routes with channel routes
 on the same aligned boxes. It does not replace or enlarge the original
 29-map totals. The branch already contains main's alignment implementation
-(`5df866e`); no solver, router or public package code changes in this increment.
+(`5df866e`); this comparison changes no solver or public package code.
 
 Both dagre and ELK lay out `examples/same-rank/map.json` with default derived
 intent and its required same-rank hint. The shared alignment pass produces
 the reference boxes and stretched arrows. `prepare` discards route interiors;
-channel receives only those boxes and fixed terminals. Both outputs preserve
+channel receives those boxes, fixed terminals and the viewport bounds. Both outputs preserve
 the viewport, nodes, lanes, frames and scenarios. Independent port/node audits
 check every replacement route. The same fresh annotation pass used for the
 original channel comparison runs after routing.
@@ -34,12 +34,12 @@ from y=62 to y=84. These inputs show no quality gain
 from replacing stretching and contain no shared runs to exercise spacing.
 They remain useful regression inputs for the future routing pass.
 
-One warm-up followed by five calls gives channel medians of 0.632 ms (dagre
-placement) and 0.425 ms (ELK placement). Input preparation, annotation, audits
+One warm-up followed by five calls gives channel medians of 0.697 ms (dagre
+placement) and 0.429 ms (ELK placement). Input preparation, annotation, audits
 and rendering are excluded. Raw samples, hashes and environment are retained.
 No timing for stretching is claimed: it occurs inside the alignment pipeline,
 so timing a complete layout would not be a comparable routing-only measure.
-The unchanged channel download is 2329 minified bytes / 1144 gzip bytes;
+After adding viewport bounds, channel is 2526 minified bytes / 1237 gzip bytes;
 the original libavoid comparison remains 536724 / 200989 bytes.
 
 ## Browser results
@@ -91,5 +91,5 @@ it checks stored sample arithmetic and current input/route hashes, rather
 than comparing variable elapsed times. The original commands and reports
 remain separate; see the [main README](README.md#files-and-reproduction).
 
-Ordered parallel spacing and viewport containment on the original corpus are
-still unfinished. The author's target is not met; see [the decision](decision.md).
+Viewport containment now passes on the original corpus; ordered parallel
+spacing remains unfinished. The author's target is not met; see [the decision](decision.md).

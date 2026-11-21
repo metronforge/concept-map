@@ -1,7 +1,7 @@
 {
   "id": "examples/dagre/door",
   "stage": "channel geometry only",
-  "inputSha256": "c5f93e2f3bcf86175562ad3d99db7b8c7f52cde5b79464872373f2ec8d86f693",
+  "inputSha256": "04447ca50fdba03cf33ae5f4fa4ab2f1a41e7a3b782b7d3f484bc4be02c55978",
   "routesSha256": "6d0206554c721fad1a831425ac8427451d0338397644a85ac7c1b9ade1feb9dc",
   "edges": 7,
   "routed": 7,

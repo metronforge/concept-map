@@ -1,7 +1,7 @@
 {
   "id": "examples/elk/door",
   "stage": "libavoid geometry only",
-  "inputSha256": "c008efdeb25e50b6b2051820285f8e4e319491caf4fe750562e0a1f2c23d47ba",
+  "inputSha256": "b2ee3749fd033bd7eb725f46ec93901f26799f0a91c60d22d883496473143b30",
   "routesSha256": "e515048fe2748895eefa9107bfa5f6658e6dfc11af7644d3be6aa1c1864b2869",
   "edges": 7,
   "routed": 7,

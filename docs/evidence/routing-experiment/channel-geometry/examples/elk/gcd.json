@@ -1,7 +1,7 @@
 {
   "id": "examples/elk/gcd",
   "stage": "channel geometry only",
-  "inputSha256": "5aa4c6fa1d4014bfbb6450f6cc176fea46ba6245ea7e9ed6c583ab538c4480bc",
+  "inputSha256": "39e6b022d4b88d6bf955ea6fd0eafb649ed3397bc60199decd0b45652faa927d",
   "routesSha256": "dcb943b2226472439cc0b3189fb8a595a5f3a90033e42f9f8ec2363062b9f5ff",
   "edges": 5,
   "routed": 5,

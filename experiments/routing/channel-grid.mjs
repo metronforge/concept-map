@@ -1,7 +1,7 @@
 const directions = ["right", "bottom", "left", "top"];
 const same = (a, b) => a.every((v, i) => v === b[i]);
 
-function axis(nodes, ends, dimension) {
+function axis(nodes, ends, dimension, limit) {
   const bounds = nodes.flatMap(({ box }) => [
     box[dimension],
     box[dimension] + box[dimension + 2],
@@ -9,14 +9,18 @@ function axis(nodes, ends, dimension) {
   bounds.push(...ends.map((t) => t.point[dimension]));
   const sorted = [...new Set(bounds)].sort((a, b) => a - b);
   const channels = sorted.slice(1).map((n, i) => (n + sorted[i]) / 2);
+  const low = sorted[0] - 16,
+    high = sorted.at(-1) + 16;
   return [
     ...new Set([
-      sorted[0] - 16,
-      sorted.at(-1) + 16,
+      limit !== undefined && low < 0 ? sorted[0] / 2 : low,
+      limit !== undefined && high > limit ? (sorted.at(-1) + limit) / 2 : high,
       ...channels,
       ...ends.map((t) => t.point[dimension]),
     ]),
-  ].sort((a, b) => a - b);
+  ]
+    .filter((n) => limit === undefined || (n >= 0 && n <= limit))
+    .sort((a, b) => a - b);
 }
 
 function blocked(a, b, { id, box }, ends) {
@@ -43,13 +47,15 @@ function blocked(a, b, { id, box }, ends) {
 }
 
 /** Channel midlines plus terminal projections; frame interiors are not obstacles. */
-export function channelGrid(nodes, connection) {
+export function channelGrid(nodes, connection, viewBox) {
   const ends = [connection.from, connection.to];
-  const xs = axis(nodes, ends, 0),
-    ys = axis(nodes, ends, 1);
+  const xs = axis(nodes, ends, 0, viewBox?.[0]),
+    ys = axis(nodes, ends, 1, viewBox?.[1]);
   const points = ys.flatMap((y) => xs.map((x) => [x, y]));
   const index = (point) =>
-    ys.indexOf(point[1]) * xs.length + xs.indexOf(point[0]);
+    xs.includes(point[0]) && ys.includes(point[1])
+      ? ys.indexOf(point[1]) * xs.length + xs.indexOf(point[0])
+      : -1;
   return {
     points,
     start: index(ends[0].point),

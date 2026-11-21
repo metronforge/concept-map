@@ -36,6 +36,7 @@ function permitted(grid, edge, state, link) {
 
 /** Dijkstra over (intersection, incoming direction), minimising bends then length. */
 export function shortestChannel(grid, edge) {
+  if (grid.start < 0 || grid.goal < 0) return null;
   const queue = [
     { at: grid.start, direction: -1, bends: 0, length: 0, previous: null },
   ];

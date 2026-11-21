@@ -47,8 +47,11 @@ route set.
 The reference starts with its hand annotations; both candidates start with
 fresh shared annotation placement. The real player then performs normal DOM
 measurement, wrapping, refinement and selection between drawing and panel
-labels. Differences cannot be attributed to routing alone. The book fixture,
-router implementations and existing recorded evidence are unchanged.
+labels. Differences cannot be attributed to routing alone. The book fixture
+and libavoid routes are unchanged. The [viewport update](viewport.md) moves
+two channel routes and refreshes their browser measurements.
+At 390 px, book 2-3 gains one tight `retry` label/line contact per state in
+each browser. Hard contacts are unchanged; the tighter clearance is retained.
 
 The [example method](browser.md#method-and-limits) also applies here: pinned
 DejaVu Sans and Mono, a 16 px page font, `document.fonts.ready`, light theme,
@@ -66,10 +69,11 @@ size below page text counts as a failure, without rounding or a relaxed band.
 A zero displayed contact count does not establish complete visual acceptance.
 
 The harness does not inspect painted glyphs, marker tips, stroke bounds or
-SVG viewport clipping. Known route and badge clipping remains documented in
+SVG viewport clipping. Route centre lines now stay in bounds; badge clipping
+and incomplete paint review remain documented in
 [production readiness](production-readiness.md). Fixed-box routing also does
-not resolve undersized node titles. Drawing inputs and refinement code are unchanged, so no new pictures were
-created. These measurements exercise the existing candidates in the browser.
+not resolve undersized node titles. Local before/after pictures for the two
+changed channel drawings are listed in the [viewport report](viewport.md).
 
 ## Files and reproduction
 
@@ -101,7 +105,7 @@ geometry, missing state coverage or browser errors fail the command.
 - `quality.json`: remaining raw `check()` fields. Recombine each group's lists
   in manifest order to reconstruct the complete report.
 
-All 3085 new JSON files are at most 72 lines. Manifest paths are relative to
+The book JSON reports are at most 72 lines. Manifest paths are relative to
 `browser/`. `browser/book-summary.json` holds
 coverage and outcome totals plus lockfile and font hashes. Indexed parts keep
 long scenarios and contact lists within the experiment's 200-line file limit;
@@ -109,5 +113,6 @@ they do not truncate them. Tests reconstruct the full state and quality data
 and verify that altered evidence is rejected without rewriting it.
 
 The [decision report](decision.md) includes these results and records unfinished
-parallel channel spacing and paint-bound review. These measurements change
-neither router size nor timing; the harness is excluded from the download.
+parallel channel spacing and paint-bound review. Updated routing sizes and
+timings are in [performance](performance.md); this browser harness is excluded
+from the download.

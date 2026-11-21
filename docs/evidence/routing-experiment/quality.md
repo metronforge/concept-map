@@ -10,10 +10,10 @@ candidate is ready for production and these measurements do not select one.
 | Channel examples   |    6 |    34 |            0 |         1 |    46 |      8470.99 |
 | libavoid examples  |    6 |    34 |            0 |         1 |    46 |      8418.99 |
 | Current book maps  |   23 |   226 |           14 |        19 |   262 |     35547.26 |
-| Channel book maps  |   23 |   226 |            3 |        18 |   256 |     32764.00 |
+| Channel book maps  |   23 |   226 |            3 |        16 |   256 |     32728.00 |
 | libavoid book maps |   23 |   226 |            3 |        22 |   258 |     30344.00 |
 | Current total      |   29 |   260 |           14 |        20 |   307 |     43783.75 |
-| Channel total      |   29 |   260 |            3 |        19 |   302 |     41234.99 |
+| Channel total      |   29 |   260 |            3 |        17 |   302 |     41198.99 |
 | libavoid total     |   29 |   260 |            3 |        23 |   304 |     38762.99 |
 
 ## Method
@@ -72,9 +72,9 @@ units, compared with 12 pairs and 145.50 units for libavoid.
 ## Viewport and browser limits
 
 The checker does not report viewport clipping. The separate `outsideViewport`
-field preserves it: channel edge `retry` in book 2-3 reaches x=422 in a
-420-unit viewport; `clean_returned` in 4-1 reaches x=-2. Libavoid has no route
-outside a reference viewport. These are geometry bounds, not paint bounds:
+field preserves it. The [bounded channel search](viewport.md) moves `retry`
+in book 2-3 from x=422 to x=413 in a 420-unit viewport, and `clean_returned`
+in 4-1 from x=-2 to x=7. Neither candidate now has a route outside its viewport. These are geometry bounds, not paint bounds:
 marker tips, stroke width and text overflow are not included in this audit.
 Step circles can also clip: in book 0-1, channel badge `mk_browser` is centred
 at x=0 and libavoid badge `server_app` at x≈418.5 in a 424-unit viewport.
@@ -106,4 +106,5 @@ Each candidate's `summary.json` contains separate totals for examples and book
 maps, hashes of both lockfiles, the Node version and all overflowing routes.
 No timing is implied by `routingTimeMs: null`: routing-only five-run samples
 remain in `timing/`. Assembly and reporting are excluded from those samples
-and from the router-only download sizes. Neither router changed in this pass.
+and from the router-only download sizes. Channel geometry, timings and size
+were remeasured after adding viewport bounds; libavoid geometry is unchanged.

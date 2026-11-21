@@ -8,7 +8,7 @@
       "message": "Lanes are ordered, disjoint and contain their nodes"
     }
   ],
-  "crossings": { "count": 2, "pairs": [["clean_returned", "ready_server"]] },
+  "crossings": { "count": 0, "pairs": [] },
   "reading": {
     "edges": 8,
     "forward": 6,

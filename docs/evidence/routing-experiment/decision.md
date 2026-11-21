@@ -7,8 +7,9 @@ candidate is ready to ship; no production integration is authorised here.
 
 The channel candidate is incomplete and does not meet the author's target.
 On the original 29 maps, shared line must fall from 2654.25 to at most 291.00
-units (twice libavoid's 145.50), and out-of-viewport routes from two to zero.
-Hard defects already equal libavoid's three; crossings are 19 against its 23.
+units (twice libavoid's 145.50). The [bounded search](viewport.md) now keeps
+all routes inside the viewport and reduces crossings from 19 to 17.
+Hard defects equal libavoid's three; crossings are below its 23.
 These are separate conditions, not a combined score.
 
 The branch includes the aligned-box feature from current main. The additional
@@ -26,13 +27,13 @@ changed terminal, wrong attachment side or unwanted node contact.
 | Measure, all 29 maps                        | Current routes | Channel prototype | libavoid |
 | ------------------------------------------- | -------------: | ----------------: | -------: |
 | Hard defects                                |             14 |                 3 |        3 |
-| Crossings                                   |             20 |                19 |       23 |
+| Crossings                                   |             20 |                17 |       23 |
 | Bends                                       |            307 |               302 |      304 |
-| Route length, SVG units                     |       43783.75 |          41234.99 | 38762.99 |
+| Route length, SVG units                     |       43783.75 |          41198.99 | 38762.99 |
 | Edge pairs sharing orthogonal runs          |             14 |                42 |       12 |
 | Pair-weighted shared length, SVG units      |         486.00 |           2654.25 |   145.50 |
-| Candidate routes outside the fixed viewport |    Not audited |                 2 |        0 |
-| Sum of 29 warm routing medians, ms          |   Not measured |             28.23 |    20.63 |
+| Candidate routes outside the fixed viewport |    Not audited |                 0 |        0 |
+| Sum of 29 warm routing medians, ms          |   Not measured |             28.95 |    20.82 |
 
 The [quality report](quality.md) retains label, step and line contacts by band
 and per-map reading shares. Both candidates' reading reports equal the
@@ -73,8 +74,8 @@ visible node titles and arrow labels, not every category of text. Exact
 subpixel shortfalls are retained alongside substantial failures; results are
 not rounded into a pass across browsers.
 
-Paint-bound review is incomplete. Channel routes leave the viewport in book
-2-3 and 4-1. Both candidates can place badge circles beyond it in book 0-1.
+Paint-bound review is incomplete. Neither candidate's route centre lines now
+leave the viewport. Both can place badge circles beyond it in book 0-1.
 Marker tips, strokes and glyph bounds have not been audited across the corpus.
 The viewport and text-size problems require shared presentation work and are
 not solved by choosing libavoid. Standard browser tests passing establishes
@@ -89,7 +90,7 @@ individually with gzip level 9. The adapter is included.
 
 | Browser asset                      |  Bytes | Gzip bytes |
 | ---------------------------------- | -----: | ---------: |
-| Channel implementation and adapter |   2329 |       1144 |
+| Channel implementation and adapter |   2526 |       1237 |
 | libavoid adapter                   |    799 |        493 |
 | libavoid library JavaScript        |  59889 |      21846 |
 | libavoid WASM                      | 476036 |     178650 |
@@ -97,7 +98,7 @@ individually with gzip level 9. The adapter is included.
 
 Channel is repository MIT code with no third-party runtime. Its small payload
 does not include the missing spacing algorithm. The measured libavoid runtime
-adds 199845 gzip bytes over that unfinished prototype. Both totals exclude
+adds 199752 gzip bytes over that unfinished prototype. Both totals exclude
 shared preparation, annotations, reporting, player, fonts and CSS.
 
 The [pinned licence assessment](licences.md) identifies libavoid-js
@@ -128,7 +129,7 @@ The next step is ordered channel spacing with endpoint connections, followed
 by the full comparison, updated downloads and an explicit report of whether
 all four target conditions hold. The earlier independent segment-offset trial
 reduced shared lines but added crossings; it was rejected and is not the
-chosen approach. Do not treat the current 1144-byte prototype as a completed
+chosen approach. Do not treat the current 1237-byte prototype as a completed
 spacing implementation.
 
 The two additional aligned layouts have no shared runs to separate. Channel
@@ -141,8 +142,10 @@ is complete; the existing paint and text-size gaps remain explicit.
 
 ## Evidence integrity and reproduction
 
-The original router implementations and all earlier numeric evidence remain
-unchanged; the aligned-box comparison adds supplemental reports.
+Viewport containment changes only two channel routes. Reference and libavoid
+geometry remain unchanged; shared inputs now include copied viewport bounds.
+The comparison records fresh geometry, quality, timing, download and browser
+measurements, with the aligned-box inputs kept separate.
 The [README](README.md#files-and-reproduction) and linked measurement reports
 give the commands and their scope. Use Node 26, locked dependencies and the
 `--check` commands for geometry, quality, overlap, downloads and both browser

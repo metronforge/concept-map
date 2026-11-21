@@ -4,62 +4,62 @@
     "step": "count-1-of-1",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 14
+    "tight": 15
   },
   {
     "scenario": "moving",
     "step": "all-four-states-pass",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 14
+    "tight": 15
   },
   {
     "scenario": "moving",
     "step": "all",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 14
+    "tight": 15
   },
   {
     "scenario": "webkit",
     "step": "webkit-uses-the-default-count-of",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 14
+    "tight": 15
   },
   {
     "scenario": "webkit",
     "step": "first-box-is-stored",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 14
+    "tight": 15
   },
   {
     "scenario": "webkit",
     "step": "count-1-of-1",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 14
+    "tight": 15
   },
   {
     "scenario": "webkit",
     "step": "all-four-states-pass",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 14
+    "tight": 15
   },
   {
     "scenario": "webkit",
     "step": "then-click",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 14
+    "tight": 15
   },
   {
     "scenario": "webkit",
     "step": "all",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 14
+    "tight": 15
   }
 ]

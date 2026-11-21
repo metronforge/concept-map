@@ -14,13 +14,14 @@ cover every scenario state in three browsers; text-size failures remain.
 that crossing counts omit; channel parallel spacing remains unfinished.
 [Production effort](production-readiness.md) assesses the missing capabilities.
 [Aligned-box measurements](same-rank.md) compare stretched and channel routes.
+[Viewport containment](viewport.md) records the bounded channel search.
 
 | Routes                                 | Maps | Edges | Hard defects | Crossings | Bends | Route length |
 | -------------------------------------- | ---: | ----: | -----------: | --------: | ----: | -----------: |
 | Current example routes (dagre and ELK) |    6 |    34 |            0 |         1 |    45 |      8236.49 |
 | Current book routes (hand)             |   23 |   226 |           14 |        19 |   262 |     35547.26 |
 | Current routes, all inputs             |   29 |   260 |           14 |        20 |   307 |     43783.75 |
-| Channel router                         |   29 |   260 |            3 |        19 |   302 |     41234.99 |
+| Channel router                         |   29 |   260 |            3 |        17 |   302 |     41198.99 |
 | libavoid                               |   29 |   260 |            3 |        23 |   304 |     38762.99 |
 
 ## Files and reproduction
@@ -102,7 +103,7 @@ terminals. There are 2 self-loops and 1 terminal on a frame. Of the terminals,
 Two terminals sit at corners. These facts are recorded per map, not inferred
 from successful routing.
 
-`prepare(item)` returns `{ id, nodes, frames, edges }`. Boxes keep their exact
+`prepare(item)` returns `{ id, viewBox, nodes, frames, edges }`. Boxes keep their exact
 coordinates. Each edge has only its ID and two terminals: the endpoint ID and
 kind, exact point, permitted outward sides and gap to the boundary. A terminal
 at a corner permits both adjacent sides. The destination's sides describe the
@@ -110,8 +111,8 @@ direction away from its box, so the arriving segment travels in reverse.
 Ports are not snapped to the boundary: that would remove the book's arrow gaps.
 
 The old paths supply only their first and last points. Interior vertices,
-labels, step numbers, view boxes and measurement metadata are absent from the
-router input. Tests replace every route interior and annotation position and
+labels, step numbers and measurement metadata are absent from the router input.
+The copied viewport bounds the channel search; libavoid ignores that field. Tests replace every route interior and annotation position and
 verify that the prepared input stays identical. Arrays are copied so candidate
 code cannot change the reference drawings. Disconnected paths, unknown or
 ambiguous endpoints, and terminals inside or not aligned with their boxes are
@@ -132,13 +133,15 @@ sides, including the two corner choices. Channel geometry tests exercise all
 | Routed edges     | 260 / 260 |
 | Failed edges     |         0 |
 | Bends            |       302 |
-| Route length     |  41234.99 |
+| Route length     |  41198.99 |
 
 `routeChannel(prepare(item))` returns an ordered list of `{ id, points }` or
 `{ id, failure }`. It never changes an input. For each edge, a rectangular grid
 uses midpoints between consecutive distinct box boundaries and terminal
 coordinates, the terminal coordinates themselves, and exterior tracks 16 units
-beyond the extremes. Adjacent intersections connect only if the segment misses
+beyond the extremes, or midway to the viewport boundary when that track would
+leave it. Grid coordinates outside the viewport are excluded.
+Adjacent intersections connect only if the segment misses
 every closed node rectangle. Contact is allowed only at that edge's own node
 terminal; frame interiors remain passable. Terminal sides constrain departure
 and arrival, including corners and gaps.
@@ -188,10 +191,9 @@ for that frame endpoint and its geometry rather than silently omit the edge.
 ## Author decision
 
 The [decision report](decision.md) brings together quality, shared routes,
-browser measurements, downloads, licences and production effort. It recommends
-optional libavoid if its download and distribution work are acceptable;
-otherwise the channel candidate needs a completed spacing comparison.
-The author chooses the next direction. Neither candidate is ready to ship.
+browser measurements, downloads, licences and production effort. The author
+has deferred libavoid and requested completed channel spacing. Route containment
+now meets the target, but shared line still exceeds it. Neither candidate is ready to ship.
 
 Parallel channel spacing and complete paint-bound review remain unfinished.
 These gaps are recorded, not waived by the recommendation or by green package

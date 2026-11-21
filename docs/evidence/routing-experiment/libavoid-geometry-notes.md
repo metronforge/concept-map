@@ -15,7 +15,7 @@ published or exported by the package.
 
 These are geometry measurements, not a `check()` quality result. Labels,
 numbers, crossings and reading share still need resolved drawings. Channel
-geometry has 302 bends and length 41234.99, but neither length nor bend count
+geometry has 302 bends and length 41198.99, but neither length nor bend count
 alone selects a router.
 
 ## Configuration and limits

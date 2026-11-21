@@ -1,7 +1,7 @@
 {
   "id": "examples/elk/gcd",
   "stage": "libavoid geometry only",
-  "inputSha256": "5aa4c6fa1d4014bfbb6450f6cc176fea46ba6245ea7e9ed6c583ab538c4480bc",
+  "inputSha256": "39e6b022d4b88d6bf955ea6fd0eafb649ed3397bc60199decd0b45652faa927d",
   "routesSha256": "9ce72052cb618b7eb9dce9cbbb8f1a045b88f66b9e399530d0b97969d142731a",
   "edges": 5,
   "routed": 5,

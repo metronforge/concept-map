@@ -1,0 +1,54 @@
+{
+  "variant": "classic",
+  "schemas": {
+    "source": {
+      "classicObject": true,
+      "methods": {
+        "parse": "function",
+        "safeParse": "function",
+        "extend": "function",
+        "safeExtend": "function",
+        "optional": "function",
+        "default": "function",
+        "superRefine": "function",
+        "transform": "function"
+      },
+      "error": {
+        "classicZodError": true,
+        "coreZodError": true,
+        "nativeError": true,
+        "flatten": "function",
+        "format": "function"
+      }
+    },
+    "resolved": {
+      "classicObject": true,
+      "methods": {
+        "parse": "function",
+        "safeParse": "function",
+        "extend": "function",
+        "safeExtend": "function",
+        "optional": "function",
+        "default": "function",
+        "superRefine": "function",
+        "transform": "function"
+      },
+      "error": {
+        "classicZodError": true,
+        "coreZodError": true,
+        "nativeError": true,
+        "flatten": "function",
+        "format": "function"
+      }
+    }
+  },
+  "operations": {
+    "classicLeavesInBothFactories": true,
+    "refinementAndTransform": true,
+    "classicOuterPipe": true,
+    "unrefinedKernelExtension": true,
+    "concreteAdditionAllowed": true,
+    "concretePlainReplacementRejected": true,
+    "safeExtensionPreservesLayerChecks": true
+  }
+}

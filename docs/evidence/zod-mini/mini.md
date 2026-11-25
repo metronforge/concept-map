@@ -119,8 +119,8 @@ changes. The temporary directory contains no `.git`; package checks there need
 ## Remaining decision evidence
 
 The savings justify finishing the investigation, but do not yet justify adoption.
-The book's actual schema-extension usage still needs a count and before/after
-migration examples, including error-class checks. The alternative that keeps
+The [public migration audit](migration.md) now supplies the book's actual
+call-site count, before/after examples and error-class checks. The alternative that keeps
 classic public schemas and uses private Mini validation still needs a measured
 bundle and an assessment of duplicate-validator drift. Neither is estimated by
 this experiment. Keep classic public schemas until that comparison is complete

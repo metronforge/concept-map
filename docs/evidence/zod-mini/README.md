@@ -3,6 +3,8 @@
 The package still uses classic Zod. The immutable `classic/` reports preserve
 the baseline; [the isolated Mini rewrite](mini.md) records measured savings,
 locale behavior and compatibility without switching the public API.
+The [public migration audit](migration.md) counts the book's affected calls
+and checks extension, composition and error identity against both builds.
 
 Measured from `5df866ef975aea76f49ae6121e10aacc89167357`, with Node
 24.12.0, locked Zod 4.6.7 and the repository's Size Limit configuration.
@@ -78,8 +80,11 @@ checked-in JSON Schemas unchanged so `schema:check` proves byte parity.
 
 ## Still to measure
 
-The final report still needs the public extension migration, especially the
-book's actual generic-leaf usage, before/after snippets, and the private-validator
-alternative's size and drift risk. The Mini rewrite now supplies measured sizes,
-JSON Schema parity, parsed defaults and error comparisons. Adoption remains the
+`migration/classic.json` and `migration/mini.json` record public methods, error
+identity and composition probes. Run `scripts/zod-migration.mjs` as described
+in [the audit](migration.md#reproduce) to reproduce them. The book has two
+affected consumer method calls; it still needs its separate format-3 migration.
+
+The final report still needs the private-validator alternative's size and drift
+risk, then a recommendation across all three options. Adoption remains the
 author's decision; no public schema switch is made in this experiment.

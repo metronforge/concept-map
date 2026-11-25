@@ -4,6 +4,7 @@ import type {
   LayoutPoint,
   LayoutResult,
 } from "../types.js";
+import { channelPort } from "./channel-port.js";
 
 type Side = "top" | "right" | "bottom" | "left";
 
@@ -12,11 +13,21 @@ export function channelInput(
   graph: LayoutGraph,
   original: LayoutResult,
   nodes: LayoutResult["nodes"],
+  sides: Record<string, { from: Side; to: Side }> = {},
 ) {
   const edges = [];
   for (const { id, from, to } of graph.edges) {
     const points = original.edges[id]?.points;
-    if (!points || points.length < 2) return null;
+    if (!points || points.length < 2) {
+      const selected = sides[id];
+      if (!selected || !nodes[from] || !nodes[to]) return null;
+      edges.push({
+        id,
+        from: channelPort(from, nodes[from], selected.from),
+        to: channelPort(to, nodes[to], selected.to),
+      });
+      continue;
+    }
     const start = terminal(from, points[0], original.nodes[from], nodes[from]);
     const end = terminal(to, points.at(-1)!, original.nodes[to], nodes[to]);
     if (!start || !end) return null;

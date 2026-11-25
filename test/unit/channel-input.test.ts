@@ -63,3 +63,23 @@ it("rejects an arrow without engine ports so the caller can fall back", () => {
     ),
   ).toBeNull();
 });
+
+it("uses requested sides for arrows omitted from engine placement", () => {
+  const graph = {
+    nodes: [],
+    lanes: [],
+    edges: [{ id: "ab", from: "a", to: "b" }],
+  };
+  const nodes: import("../../src/layout/types.js").LayoutResult["nodes"] = {
+    a: [0, 0, 10, 10],
+    b: [30, 0, 10, 10],
+  };
+  const input = channelInput(graph, { nodes, edges: {}, lanes: {} }, nodes, {
+    ab: { from: "top", to: "bottom" },
+  });
+  expect(input?.edges[0]).toEqual({
+    id: "ab",
+    from: { id: "a", kind: "node", point: [5, 0], sides: ["top"] },
+    to: { id: "b", kind: "node", point: [35, 10], sides: ["bottom"] },
+  });
+});

@@ -1,0 +1,54 @@
+{
+  "variant": "mini",
+  "schemas": {
+    "source": {
+      "classicObject": false,
+      "methods": {
+        "parse": "function",
+        "safeParse": "function",
+        "extend": "undefined",
+        "safeExtend": "undefined",
+        "optional": "undefined",
+        "default": "undefined",
+        "superRefine": "undefined",
+        "transform": "undefined"
+      },
+      "error": {
+        "classicZodError": false,
+        "coreZodError": true,
+        "nativeError": true,
+        "flatten": "undefined",
+        "format": "undefined"
+      }
+    },
+    "resolved": {
+      "classicObject": false,
+      "methods": {
+        "parse": "function",
+        "safeParse": "function",
+        "extend": "undefined",
+        "safeExtend": "undefined",
+        "optional": "undefined",
+        "default": "undefined",
+        "superRefine": "undefined",
+        "transform": "undefined"
+      },
+      "error": {
+        "classicZodError": false,
+        "coreZodError": true,
+        "nativeError": true,
+        "flatten": "undefined",
+        "format": "undefined"
+      }
+    }
+  },
+  "operations": {
+    "classicLeavesInBothFactories": true,
+    "refinementAndTransform": true,
+    "classicOuterPipe": true,
+    "unrefinedKernelExtension": true,
+    "concreteAdditionAllowed": true,
+    "concretePlainReplacementRejected": true,
+    "safeExtensionPreservesLayerChecks": true
+  }
+}

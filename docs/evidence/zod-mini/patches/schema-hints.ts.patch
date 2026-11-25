@@ -1,0 +1,32 @@
+--- a/src/schema/hints.ts
++++ b/src/schema/hints.ts
+@@ -1,16 +1,15 @@
+-import * as z from "zod";
++import * as z from "zod/mini";
+ import { Id } from "./primitives.js";
+-
+-const strength = z.enum(["preferred", "required"]).default("preferred");
++const strength = z._default(z.enum(["preferred", "required"]), "preferred");
+ /** Optional author intent, retained as metadata when geometry is supplied. */
+-export const LayoutHints = z
+-  .strictObject({
++export const LayoutHints = z.optional(
++  z.strictObject({
+     hints: z.array(
+       z.union([
+         z.strictObject({ kind: z.literal("free"), edge: Id, strength }),
+         z.strictObject({
+           kind: z.literal("sameRank"),
+-          nodes: z.array(Id).min(2),
++          nodes: z.array(Id).check(z.minLength(2)),
+           strength,
+         }),
+         z.strictObject({
+@@ -22,5 +21,5 @@
+         }),
+       ]),
+     ),
+-  })
+-  .optional();
++  }),
++);

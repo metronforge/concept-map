@@ -1,0 +1,124 @@
+[
+  {
+    "schema": "source",
+    "mistake": "missingField",
+    "boundary": "schema",
+    "issues": [
+      {
+        "expected": "string",
+        "code": "invalid_type",
+        "path": ["title"],
+        "message": "Invalid input"
+      }
+    ],
+    "message": "[\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"title\"\n    ],\n    \"message\": \"Invalid input\"\n  }\n]"
+  },
+  {
+    "schema": "source",
+    "mistake": "wrongType",
+    "boundary": "schema",
+    "issues": [
+      {
+        "expected": "string",
+        "code": "invalid_type",
+        "path": ["title"],
+        "message": "Invalid input"
+      }
+    ],
+    "message": "[\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"title\"\n    ],\n    \"message\": \"Invalid input\"\n  }\n]"
+  },
+  {
+    "schema": "source",
+    "mistake": "unknownKey",
+    "boundary": "schema",
+    "issues": [
+      {
+        "code": "unrecognized_keys",
+        "keys": ["surprise"],
+        "path": [],
+        "message": "Invalid input"
+      }
+    ],
+    "message": "[\n  {\n    \"code\": \"unrecognized_keys\",\n    \"keys\": [\n      \"surprise\"\n    ],\n    \"path\": [],\n    \"message\": \"Invalid input\"\n  }\n]"
+  },
+  {
+    "schema": "source",
+    "mistake": "unknownLayer",
+    "boundary": "schema",
+    "issues": [
+      {
+        "code": "custom",
+        "path": ["nodes", "first", "layer"],
+        "message": "Unknown layer: missing"
+      }
+    ],
+    "message": "[\n  {\n    \"code\": \"custom\",\n    \"path\": [\n      \"nodes\",\n      \"first\",\n      \"layer\"\n    ],\n    \"message\": \"Unknown layer: missing\"\n  }\n]"
+  },
+  {
+    "schema": "source",
+    "mistake": "badReference",
+    "boundary": "validateReferences",
+    "message": "scenarios[0].steps[0].show: unknown node “missing”"
+  },
+  {
+    "schema": "resolved",
+    "mistake": "missingField",
+    "boundary": "schema",
+    "issues": [
+      {
+        "expected": "string",
+        "code": "invalid_type",
+        "path": ["title"],
+        "message": "Invalid input"
+      }
+    ],
+    "message": "[\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"title\"\n    ],\n    \"message\": \"Invalid input\"\n  }\n]"
+  },
+  {
+    "schema": "resolved",
+    "mistake": "wrongType",
+    "boundary": "schema",
+    "issues": [
+      {
+        "expected": "string",
+        "code": "invalid_type",
+        "path": ["title"],
+        "message": "Invalid input"
+      }
+    ],
+    "message": "[\n  {\n    \"expected\": \"string\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"title\"\n    ],\n    \"message\": \"Invalid input\"\n  }\n]"
+  },
+  {
+    "schema": "resolved",
+    "mistake": "unknownKey",
+    "boundary": "schema",
+    "issues": [
+      {
+        "code": "unrecognized_keys",
+        "keys": ["surprise"],
+        "path": [],
+        "message": "Invalid input"
+      }
+    ],
+    "message": "[\n  {\n    \"code\": \"unrecognized_keys\",\n    \"keys\": [\n      \"surprise\"\n    ],\n    \"path\": [],\n    \"message\": \"Invalid input\"\n  }\n]"
+  },
+  {
+    "schema": "resolved",
+    "mistake": "unknownLayer",
+    "boundary": "schema",
+    "issues": [
+      {
+        "code": "custom",
+        "path": ["nodes", "first", "layer"],
+        "message": "Unknown layer: missing"
+      }
+    ],
+    "message": "[\n  {\n    \"code\": \"custom\",\n    \"path\": [\n      \"nodes\",\n      \"first\",\n      \"layer\"\n    ],\n    \"message\": \"Unknown layer: missing\"\n  }\n]"
+  },
+  {
+    "schema": "resolved",
+    "mistake": "badReference",
+    "boundary": "validateReferences",
+    "message": "scenarios[0].steps[0].show: unknown node “missing”"
+  }
+]

@@ -1,0 +1,146 @@
+--- a/src/schema.ts
++++ b/src/schema.ts
+@@ -1,6 +1,6 @@
+ import { Measurement } from "./schema/measurement.js";
+ import { LayoutHints } from "./schema/hints.js";
+-import * as z from "zod";
++import * as z from "zod/mini";
+ import {
+   Id,
+   Point,
+@@ -14,57 +14,62 @@
+ } from "./schema/primitives.js";
+ import { contentSchema, scenarioSchema } from "./schema/content.js";
+ export { Id, Point, Box, Layer, Display } from "./schema/primitives.js";
+-
+ /** Shared semantic structure; source maps deliberately reject geometry. */
+ export function sourceMapSchema<
+-  T extends z.ZodType,
+-  S extends z.ZodType,
+-  D extends z.ZodType,
++  T extends z.core.$ZodType,
++  S extends z.core.$ZodType,
++  D extends z.core.$ZodType,
+ >(leaf: { text: T; source: S; deeper: D }) {
+   return z.strictObject({
+     format: z.literal(3),
+-    id: z.string().min(1),
++    id: z.string().check(z.minLength(1)),
+     title: z.string(),
+-    direction: z.enum(["down", "right"]).optional(),
++    direction: z.optional(z.enum(["down", "right"])),
+     layout: LayoutHints,
+     layers: record(z.object({ label: z.string() })),
+-    lanes: record(Lane).default({}),
+-    frames: record(Frame).default({}),
++    lanes: z._default(record(Lane), {}),
++    frames: z._default(record(Frame), {}),
+     nodes: record(Node),
+-    edges: record(Edge).default({}),
+-    scenarios: z.array(scenarioSchema(leaf, RepeatBadge)).min(1),
++    edges: z._default(record(Edge), {}),
++    scenarios: z.array(scenarioSchema(leaf, RepeatBadge)).check(z.minLength(1)),
+     ...contentSchema(leaf),
+   });
+ }
+ /** The adapter specializes leaves; resolved maps additionally require geometry. */
+ export function mapSchema<
+-  T extends z.ZodType,
+-  S extends z.ZodType,
+-  D extends z.ZodType,
++  T extends z.core.$ZodType,
++  S extends z.core.$ZodType,
++  D extends z.core.$ZodType,
+ >(leaf: { text: T; source: S; deeper: D }) {
+-  return sourceMapSchema(leaf).extend({
+-    viewBox: z.tuple([z.number().positive(), z.number().positive()]),
++  return z.extend(sourceMapSchema(leaf), {
++    viewBox: z.tuple([z.number().check(z.gt(0)), z.number().check(z.gt(0))]),
+     measurement: Measurement,
+-    lanes: record(
+-      Lane.extend({
+-        y: z.number(),
+-        h: z.number().positive(),
+-        x: z.number().optional(),
+-        w: z.number().positive().optional(),
+-      }),
+-    ).default({}),
+-    frames: record(Frame.extend({ box: Box })).default({}),
+-    nodes: record(Node.extend({ box: Box })),
+-    edges: record(
+-      Edge.extend({
+-        path: z.string(),
+-        badge: Point.optional(),
+-        label: z.object({ at: Point, text: z.string() }).optional(),
+-      }),
+-    ).default({}),
++    lanes: z._default(
++      record(
++        z.extend(Lane, {
++          y: z.number(),
++          h: z.number().check(z.gt(0)),
++          x: z.optional(z.number()),
++          w: z.optional(z.number().check(z.gt(0))),
++        }),
++      ),
++      {},
++    ),
++    frames: z._default(record(z.extend(Frame, { box: Box })), {}),
++    nodes: record(z.extend(Node, { box: Box })),
++    edges: z._default(
++      record(
++        z.extend(Edge, {
++          path: z.string(),
++          badge: z.optional(Point),
++          label: z.optional(z.object({ at: Point, text: z.string() })),
++        }),
++      ),
++      {},
++    ),
+     scenarios: z
+-      .array(scenarioSchema(leaf, RepeatBadge.extend({ at: Point })))
+-      .min(1),
++      .array(scenarioSchema(leaf, z.extend(RepeatBadge, { at: Point })))
++      .check(z.minLength(1)),
+   });
+ }
+ export const ResolvedSource = z.object({ label: z.string(), url: z.url() });
+@@ -74,15 +79,17 @@
+   source: ResolvedSource,
+   deeper: ResolvedDeeper,
+ };
+-const deeper = z.array(ResolvedDeeper.extend({ why: z.string() })).default([]);
+-
++const deeper = z._default(
++  z.array(z.extend(ResolvedDeeper, { why: z.string() })),
++  [],
++);
+ /** Layer identifiers are CSS-safe keys declared by this map, never a fixed enum. */
+ function checkLayers(
+   map: Pick<
+     z.infer<ReturnType<typeof sourceMapSchema>>,
+     "layers" | "nodes" | "lanes" | "concepts"
+   >,
+-  ctx: z.RefinementCtx,
++  ctx: z.core.$RefinementCtx,
+ ) {
+   for (const field of ["nodes", "lanes", "concepts"] as const) {
+     for (const [key, item] of Object.entries(map[field])) {
+@@ -95,11 +102,11 @@
+     }
+   }
+ }
+-export const SourceMapSchema = sourceMapSchema(leaves)
+-  .extend({ deeper })
+-  .superRefine(checkLayers);
+-export const ResolvedMapSchema = mapSchema(leaves)
+-  .extend({ deeper })
+-  .superRefine(checkLayers);
++export const SourceMapSchema = z
++  .extend(sourceMapSchema(leaves), { deeper })
++  .check(z.superRefine(checkLayers));
++export const ResolvedMapSchema = z
++  .extend(mapSchema(leaves), { deeper })
++  .check(z.superRefine(checkLayers));
+ export type SourceMap = z.infer<typeof SourceMapSchema>;
+ export type ResolvedMap = z.infer<typeof ResolvedMapSchema>;

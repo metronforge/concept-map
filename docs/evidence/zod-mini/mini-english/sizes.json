@@ -1,0 +1,50 @@
+[
+  {
+    "name": "web component (pre-resolved map; with Zod)",
+    "passed": true,
+    "size": 32108,
+    "sizeLimit": 49157
+  },
+  {
+    "name": "browser player (pre-resolved map)",
+    "passed": true,
+    "size": 16417,
+    "sizeLimit": 16909
+  },
+  {
+    "name": "server render (pre-resolved map)",
+    "passed": true,
+    "size": 4385,
+    "sizeLimit": 4516
+  },
+  {
+    "name": "source and resolved validation (with Zod)",
+    "passed": true,
+    "size": 11053,
+    "sizeLimit": 27979
+  },
+  {
+    "name": "layout port (with Zod; engine supplied by host)",
+    "passed": true,
+    "size": 24088,
+    "sizeLimit": 41134
+  },
+  {
+    "name": "same-rank alignment (standalone on-demand entry; includes shared Zod)",
+    "passed": true,
+    "size": 23328,
+    "sizeLimit": 40497
+  },
+  {
+    "name": "layout check (quality report with font tables, without Zod)",
+    "passed": true,
+    "size": 5554,
+    "sizeLimit": 5720
+  },
+  {
+    "name": "complete root API (with Zod)",
+    "passed": true,
+    "size": 16908,
+    "sizeLimit": 34022
+  }
+]

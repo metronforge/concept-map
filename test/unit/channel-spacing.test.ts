@@ -63,3 +63,21 @@ describe("channel spacing", () => {
     expect(spaceChannels(problem(routes), routes)).toEqual(routes);
   });
 });
+
+it("keeps routed arrows apart along their shared channel", () => {
+  const routes = paths();
+  const spaced = spaceChannels(problem(routes), routes);
+  const segments = (points: number[][]) =>
+    points.slice(1).map((end, i) => [points[i], end]);
+  for (const [a, b] of segments(spaced[0].points)) {
+    for (const [c, d] of segments(spaced[1].points)) {
+      const axis = a[0] === b[0] ? 1 : 0;
+      const across = 1 - axis;
+      if (c[across] !== d[across] || a[across] !== c[across]) continue;
+      const overlap =
+        Math.min(Math.max(a[axis], b[axis]), Math.max(c[axis], d[axis])) -
+        Math.max(Math.min(a[axis], b[axis]), Math.min(c[axis], d[axis]));
+      expect(overlap).toBeLessThanOrEqual(1);
+    }
+  }
+});

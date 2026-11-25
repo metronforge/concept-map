@@ -80,3 +80,40 @@ it("routes an omitted self-transition outside its box", () => {
   };
   expect(routeIssues({ nodes }, edge, { points: points! })).toEqual([]);
 });
+
+it("keeps omitted arrows apart when routing around the same obstacle", () => {
+  const graph: LayoutGraph = {
+    nodes: [],
+    lanes: [],
+    edges: [
+      { id: "ab", from: "a", to: "b" },
+      { id: "cd", from: "c", to: "d" },
+    ],
+  };
+  const original: LayoutResult = {
+    nodes: {
+      a: [0, 30, 10, 10],
+      b: [90, 30, 10, 10],
+      c: [0, 50, 10, 10],
+      d: [90, 50, 10, 10],
+      wall: [40, 20, 20, 50],
+    },
+    lanes: {},
+    edges: {},
+  };
+  const result = routeFree(graph, original, [100, 100], []);
+  expect(result).not.toBeNull();
+  const segments = (points: number[][]) =>
+    points.slice(1).map((end, i) => [points[i], end]);
+  for (const [a, b] of segments(result!.edges.ab.points)) {
+    for (const [c, d] of segments(result!.edges.cd.points)) {
+      const axis = a[0] === b[0] ? 1 : 0;
+      const across = 1 - axis;
+      if (c[across] !== d[across] || a[across] !== c[across]) continue;
+      const overlap =
+        Math.min(Math.max(a[axis], b[axis]), Math.max(c[axis], d[axis])) -
+        Math.max(Math.min(a[axis], b[axis]), Math.min(c[axis], d[axis]));
+      expect(overlap).toBeLessThanOrEqual(1 / 64);
+    }
+  }
+});

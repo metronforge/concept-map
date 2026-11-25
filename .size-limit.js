@@ -60,6 +60,13 @@ const cases = [
     limit: "24027 B",
   },
   {
+    name: "channel routing (standalone on-demand entry)",
+    path: "dist/layout/route/channel-layout.js",
+    gzip: true,
+    // Measured 4394 B + 131 B margin.
+    limit: "4525 B",
+  },
+  {
     name: "layout check (quality report with font tables, without Zod)",
     path: "dist/layout/stages/report.js",
     import: {

@@ -13,16 +13,17 @@ export function channelInput(
   original: LayoutResult,
   nodes: LayoutResult["nodes"],
 ) {
+  const edges = [];
+  for (const { id, from, to } of graph.edges) {
+    const points = original.edges[id].points;
+    const start = terminal(from, points[0], original.nodes[from], nodes[from]);
+    const end = terminal(to, points.at(-1)!, original.nodes[to], nodes[to]);
+    if (!start || !end) return null;
+    edges.push({ id, from: start, to: end });
+  }
   return {
     nodes: Object.entries(nodes).map(([id, box]) => ({ id, box })),
-    edges: graph.edges.map(({ id, from, to }) => {
-      const points = original.edges[id].points;
-      return {
-        id,
-        from: terminal(from, points[0], original.nodes[from], nodes[from]),
-        to: terminal(to, points.at(-1)!, original.nodes[to], nodes[to]),
-      };
-    }),
+    edges,
   };
 }
 
@@ -39,7 +40,7 @@ function terminal(
   if (y <= py && py <= y + height && px >= x + width) sides.push("right");
   if (x <= px && px <= x + width && py >= y + height) sides.push("bottom");
   if (y <= py && py <= y + height && px <= x) sides.push("left");
-  if (!sides.length) throw new Error(`Invalid terminal for node: ${id}`);
+  if (!sides.length) return null;
   return {
     id,
     kind: "node" as const,

@@ -49,3 +49,24 @@ it("rejects the candidate when a terminal is blocked", () => {
   };
   expect(routeLayout(graph, original, original.nodes, [60, 40])).toBeNull();
 });
+
+it("rejects a terminal that does not face a box side", () => {
+  const graph: LayoutGraph = {
+    nodes: [],
+    lanes: [],
+    edges: [{ id: "ab", from: "a", to: "b" }],
+  };
+  const original: LayoutResult = {
+    nodes: { a: [0, 0, 10, 10], b: [30, 0, 10, 10] },
+    lanes: {},
+    edges: {
+      ab: {
+        points: [
+          [5, 5],
+          [30, 5],
+        ],
+      },
+    },
+  };
+  expect(routeLayout(graph, original, original.nodes, [50, 20])).toBeNull();
+});

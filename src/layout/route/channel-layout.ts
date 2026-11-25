@@ -10,10 +10,9 @@ export function routeLayout(
   nodes: LayoutResult["nodes"],
   viewBox: LayoutPoint,
 ): LayoutResult | null {
-  const routes = routeChannel({
-    ...channelInput(graph, original, nodes),
-    viewBox,
-  });
+  const input = channelInput(graph, original, nodes);
+  if (!input) return null;
+  const routes = routeChannel({ ...input, viewBox });
   if (routes.some((route) => !route.points)) return null;
   const edges = { ...original.edges };
   for (const edge of graph.edges) {

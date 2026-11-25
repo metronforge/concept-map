@@ -70,3 +70,23 @@ it("rejects a terminal that does not face a box side", () => {
   };
   expect(routeLayout(graph, original, original.nodes, [50, 20])).toBeNull();
 });
+
+it("routes an arrow omitted from placement using selected attachment sides", () => {
+  const graph: LayoutGraph = {
+    nodes: [],
+    lanes: [],
+    edges: [{ id: "ab", from: "a", to: "b" }],
+  };
+  const original: LayoutResult = {
+    nodes: { a: [0, 10, 10, 10], b: [40, 10, 10, 10], wall: [20, 5, 10, 20] },
+    lanes: {},
+    edges: {},
+  };
+  const routed = routeLayout(graph, original, original.nodes, [60, 40], {
+    ab: { from: "right", to: "left" },
+  });
+  expect(routed?.edges.ab.points[0]).toEqual([10, 15]);
+  expect(routed?.edges.ab.points.at(-1)).toEqual([40, 15]);
+  expect(routed?.edges.ab.points.some(([, y]) => y < 5 || y > 25)).toBe(true);
+  expect(original.edges).toEqual({});
+});

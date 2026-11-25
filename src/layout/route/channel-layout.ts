@@ -9,8 +9,9 @@ export function routeLayout(
   original: LayoutResult,
   nodes: LayoutResult["nodes"],
   viewBox: LayoutPoint,
+  sides?: Parameters<typeof channelInput>[3],
 ): LayoutResult | null {
-  const input = channelInput(graph, original, nodes);
+  const input = channelInput(graph, original, nodes, sides);
   if (!input) return null;
   const routes = routeChannel({ ...input, viewBox });
   if (routes.some((route) => !route.points)) return null;

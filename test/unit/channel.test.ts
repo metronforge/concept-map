@@ -140,3 +140,30 @@ it("keeps independently routed arrows apart outside their ports", () => {
     }
   }
 });
+
+it("honors outward sides when they require a detour", () => {
+  const nodes = [
+    { id: "a", box: [0, 0, 10, 10] as [number, number, number, number] },
+    { id: "b", box: [40, 0, 10, 10] as [number, number, number, number] },
+  ];
+  const edge = {
+    id: "ab",
+    from: {
+      id: "a",
+      kind: "node" as const,
+      point: [5, 0] as [number, number],
+      sides: ["top" as const],
+    },
+    to: {
+      id: "b",
+      kind: "node" as const,
+      point: [45, 10] as [number, number],
+      sides: ["bottom" as const],
+    },
+  };
+  const route = routeChannel({ nodes, edges: [edge] })[0];
+  expect(route.points).toBeDefined();
+  expect(route.points![1][1]).toBeLessThan(0);
+  expect(route.points!.at(-2)![1]).toBeGreaterThan(10);
+  expect(routeIssues({ nodes }, edge, { points: route.points! })).toEqual([]);
+});

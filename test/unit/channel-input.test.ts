@@ -83,3 +83,29 @@ it("uses requested sides for arrows omitted from engine placement", () => {
     to: { id: "b", kind: "node", point: [35, 10], sides: ["bottom"] },
   });
 });
+
+it("rejects existing routes when either endpoint box is missing", () => {
+  const graph = {
+    nodes: [],
+    lanes: [],
+    edges: [{ id: "ab", from: "a", to: "b" }],
+  };
+  const nodes: import("../../src/layout/types.js").LayoutResult["nodes"] = {
+    a: [0, 0, 10, 10],
+    b: [30, 0, 10, 10],
+  };
+  const edges: import("../../src/layout/types.js").LayoutResult["edges"] = {
+    ab: {
+      points: [
+        [10, 5],
+        [30, 5],
+      ],
+    },
+  };
+  expect(
+    channelInput(graph, { nodes: { a: nodes.a }, edges, lanes: {} }, nodes),
+  ).toBeNull();
+  expect(
+    channelInput(graph, { nodes, edges, lanes: {} }, { a: nodes.a }),
+  ).toBeNull();
+});

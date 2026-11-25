@@ -17,10 +17,11 @@ export function channelInput(
 ) {
   const edges = [];
   for (const { id, from, to } of graph.edges) {
+    if (!nodes[from] || !nodes[to]) return null;
     const points = original.edges[id]?.points;
     if (!points || points.length < 2) {
       const selected = sides[id];
-      if (!selected || !nodes[from] || !nodes[to]) return null;
+      if (!selected) return null;
       edges.push({
         id,
         from: channelPort(from, nodes[from], selected.from),
@@ -28,6 +29,7 @@ export function channelInput(
       });
       continue;
     }
+    if (!original.nodes[from] || !original.nodes[to]) return null;
     const start = terminal(from, points[0], original.nodes[from], nodes[from]);
     const end = terminal(to, points.at(-1)!, original.nodes[to], nodes[to]);
     if (!start || !end) return null;

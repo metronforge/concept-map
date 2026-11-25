@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { crossings } from "../../src/layout/stages/plane.js";
+import { routeIssues } from "../../src/layout/route/route-audit.js";
 import { spaceChannels } from "../../src/layout/route/channel-spacing.js";
 
 const paths = () => [
@@ -80,4 +82,15 @@ it("keeps routed arrows apart along their shared channel", () => {
       expect(overlap).toBeLessThanOrEqual(1);
     }
   }
+});
+
+it("uses one crossing when opposite joins demand opposite track orders", () => {
+  const routes = paths();
+  routes[0].points[4][1] = routes[0].points[5][1] = 90;
+  routes[1].points[4][1] = routes[1].points[5][1] = 10;
+  const input = problem(routes);
+  const result = spaceChannels(input, routes);
+  expect(crossings(result[0].points, result[1].points)).toHaveLength(1);
+  for (const [i, route] of result.entries())
+    expect(routeIssues(input, input.edges[i], route)).toEqual([]);
 });

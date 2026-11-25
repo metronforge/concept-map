@@ -10,7 +10,7 @@ it("routes omitted arrows using box positions and side hints", () => {
     edges: [{ id: "ab", from: "a", to: "b" }],
   };
   const original: LayoutResult = {
-    nodes: { a: [0, 10, 10, 10], b: [40, 10, 10, 10] },
+    nodes: { a: [0, 10, 10, 10], b: [40, 10, 10, 10], wall: [20, 5, 10, 20] },
     lanes: {},
     edges: {},
   };
@@ -30,6 +30,19 @@ it("routes omitted arrows using box positions and side hints", () => {
   );
   expect(result?.edges.ab.points[0]).toEqual([5, 10]);
   expect(result?.edges.ab.points.at(-1)).toEqual([40, 15]);
+  expect(
+    routeIssues(
+      {
+        nodes: Object.entries(original.nodes).map(([id, box]) => ({ id, box })),
+      },
+      {
+        id: "ab",
+        from: { id: "a", kind: "node", point: [5, 10], sides: ["top"] },
+        to: { id: "b", kind: "node", point: [40, 15], sides: ["left"] },
+      },
+      { points: result!.edges.ab.points },
+    ),
+  ).toEqual([]);
 });
 
 it("routes an omitted self-transition outside its box", () => {

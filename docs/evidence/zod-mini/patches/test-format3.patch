@@ -1,0 +1,18 @@
+--- a/test/unit/format3.test.ts
++++ b/test/unit/format3.test.ts
+@@ -138,10 +138,11 @@
+     source: z.string(),
+     deeper: z.string(),
+   });
+-  expect(kernel.shape.format.value).toBe(3);
+-  expect(
+-    kernel.shape.scenarios.element.shape.steps.element.shape.text.safeParse(1)
+-      .success,
++  expect(kernel.shape.format._zod.def.values[0]).toBe(3);
++  expect(
++    kernel.shape.scenarios._zod.def.element.shape.steps._zod.def.element.shape.text.safeParse(
++      1,
++    ).success,
+   ).toBe(true);
+ });
+ 

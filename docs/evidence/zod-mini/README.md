@@ -1,29 +1,35 @@
-# Zod Mini experiment: classic baseline
+# Zod Mini experiment
 
-This is the comparison baseline, before rewriting any schema. It does not
-measure Mini or recommend adopting it. The public schemas still use classic
-Zod. A later experiment must compare against these files without replacing them.
+The package still uses classic Zod. The immutable `classic/` reports preserve
+the baseline; [the isolated Mini rewrite](mini.md) records measured savings,
+locale behavior and compatibility without switching the public API.
 
 Measured from `5df866ef975aea76f49ae6121e10aacc89167357`, with Node
 24.12.0, locked Zod 4.6.7 and the repository's Size Limit configuration.
 JavaScript sizes are minified gzip bytes; peers are bundled, and the component
 entry excludes deferred downloads. CSS is separate.
 
-| Consumer            | Classic gzip bytes | Mini gzip bytes |
-| ------------------- | -----------------: | --------------: |
-| Component           |             48,182 |    Not measured |
-| Browser player      |             16,417 |    Not measured |
-| Server rendering    |              4,385 |    Not measured |
-| Schema validation   |             27,165 |    Not measured |
-| Layout port         |             40,134 |    Not measured |
-| Same-rank alignment |             39,497 |    Not measured |
-| Quality check       |              5,554 |    Not measured |
-| Complete root API   |             33,032 |    Not measured |
+| Consumer            | Classic gzip bytes | Mini with English gzip bytes |
+| ------------------- | -----------------: | ---------------------------: |
+| Component           |             48,182 |                       32,108 |
+| Browser player      |             16,417 |                       16,417 |
+| Server rendering    |              4,385 |                        4,385 |
+| Schema validation   |             27,165 |                       11,053 |
+| Layout port         |             40,134 |                       24,088 |
+| Same-rank alignment |             39,497 |                       23,328 |
+| Quality check       |              5,554 |                        5,554 |
+| Complete root API   |             33,032 |                       16,908 |
 
 All eight existing budgets pass. These numbers describe complete consumer
 bundles; subtracting the player from the component would not isolate Zod's cost.
 
 ## Compatibility reports
+
+`mini-bare/` and `mini-english/` contain the same four reports as `classic/`,
+for the prototype without and with English errors. `patches/` holds one patch
+per rewritten schema file, the English initialization, and the equivalent Mini
+introspection used by one compatibility test. [Reproduction instructions](mini.md#reproduce)
+apply these only in a temporary copy. No original baseline is replaced.
 
 - `classic/sizes.json`: all eight Size Limit results, including unchanged limits.
 - `classic/schemas.json`: byte lengths and SHA-256 hashes of generated source
@@ -72,9 +78,8 @@ checked-in JSON Schemas unchanged so `schema:check` proves byte parity.
 
 ## Still to measure
 
-The next iteration can rewrite the schema implementation on the experiment
-branch, then compare sizes, schemas, parsed defaults and errors. The final
-report also needs the public extension migration (especially the book's generic
-leaves), before/after snippets, and the private-validator alternative's size
-and drift risk. Adoption remains the author's decision; this baseline alone
-does not establish savings or justify a breaking release.
+The final report still needs the public extension migration, especially the
+book's actual generic-leaf usage, before/after snippets, and the private-validator
+alternative's size and drift risk. The Mini rewrite now supplies measured sizes,
+JSON Schema parity, parsed defaults and error comparisons. Adoption remains the
+author's decision; no public schema switch is made in this experiment.

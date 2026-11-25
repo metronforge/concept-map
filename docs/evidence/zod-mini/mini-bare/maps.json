@@ -1,0 +1,245 @@
+{
+  "book": [
+    {
+      "id": "0-1",
+      "resolved": "2eea77607e8e54db75d05065204cf613715c1a1ee0a6531241249e93bfcc2375",
+      "source": "4b9062a2495802bcc70c6c6f56a05cf02102bb9977327647790139c2f05a7bab"
+    },
+    {
+      "id": "1-1",
+      "resolved": "c31a8cd223ffc7287b3118d0eaba465a84ebedf360229ea2cd15d6d14ffefcac",
+      "source": "f4baabae369096ca9d415635d6b4e4381ff8cbb610a916408e2281a6733255aa"
+    },
+    {
+      "id": "1-2",
+      "resolved": "6d7d783d351d8770c9eb1294e33671a427d245e635b987430213958cd36fae4c",
+      "source": "261da3338e5e98e83b12a7565db4a9ae0156b6882ef462b73b9883b7e96aa3b4"
+    },
+    {
+      "id": "1-3",
+      "resolved": "0f8259e4b90df32d14f041c476885f36c9b0435ce508dceb5a7b238ff01b80d3",
+      "source": "dfa41996b28caaaf1d74a5b4e86b0907d5152700fb2d2cfb059197d770441773"
+    },
+    {
+      "id": "2-1",
+      "resolved": "ccfefc487738e6746076de64a8830c9119ec8f675ee4b7a3b21e79044f6b5191",
+      "source": "95b986950e38d305b9d28b40ef2f0cdf19f71b6e7b69e06443fa762a5bdb3a2f"
+    },
+    {
+      "id": "2-2",
+      "resolved": "fdd2d65b6929708bfb3426459b3c8312b103f6b8ab95f19e925bd89a6ed9628e",
+      "source": "ad72111f54819e50d91c8fa9996d0e903bdf9e76105bcf56729ac18397ddd779"
+    },
+    {
+      "id": "2-3",
+      "resolved": "ad2a175a58322a72f84543e1004a7ca9171c8b8a31a3d95e875a548f5d56a1fd",
+      "source": "8efba2d36334172e6b54017add1dc28998aa4c522353cbbbcbc4f305167cdcb9"
+    },
+    {
+      "id": "2-4",
+      "resolved": "28313dce000797702a51db09ab86fbf4e17b1c6c72bc55a1f02c2f24ad476648",
+      "source": "4873f55283ff6e02fa1970e6457ff61eaf6e8ca28b8ec06acccd5c9353a20ffa"
+    },
+    {
+      "id": "2-5",
+      "resolved": "193dc18a6c10cdf3664abc121a3eb299227496245cfbd700c992d6ddba9dc79c",
+      "source": "7c05d6c084a888032b9d292a2ac71f6970020c954de773bf8cbf67db38552519"
+    },
+    {
+      "id": "2-6",
+      "resolved": "22325a7c683052947e03c7e0b5dfbc0b32de0bcbb78910ed455f6302881cad8a",
+      "source": "3d42e0a0de2006d3ff434a67343ea04afb5fb405ebeef3ad51988c765c68d82f"
+    },
+    {
+      "id": "3-1",
+      "resolved": "14398fcaf34f7bcb16937b08dfb079122874947ad7a6a0c770b564bc5b06248b",
+      "source": "60c1cf856279381762b606391596adb40a67045602473aeea6513cecc087e16a"
+    },
+    {
+      "id": "3-2",
+      "resolved": "95ec12fabc47ffd25e315f42c7afb73dfb660b4d17b24f6cdbad2a791ee38a92",
+      "source": "e34e547b9f83f27502029f3a010c08e9fdfabc7a36f0c5ca683673e618034ea4"
+    },
+    {
+      "id": "3-3",
+      "resolved": "bc8fd0478c04c1f44c91d6d28d548e9805ff202d451e832ac5c95852c6b3bbb7",
+      "source": "26513825e0b1c90c3e4f92d1573ed38628c1753892897baa2b3a3c1554befe1c"
+    },
+    {
+      "id": "4-1",
+      "resolved": "4f42464feb2431bba618ba228c00c5ac130c2c8d6927461f7dcd46d4c132802e",
+      "source": "16462620e59868dd54e664db1ea41336d81048c6efada05e78188ac90bc44fb1"
+    },
+    {
+      "id": "4-2",
+      "resolved": "3b93bb11240221e2141f872eda75e244dc0f3999342d202588e50bea226cdde9",
+      "source": "b5dacbdd76dfcae4faa6b4fb9a2bdf889c2aac30055ad142782ab311b116f064"
+    },
+    {
+      "id": "4-3",
+      "resolved": "83a50a3e397e9bcd57fb212dce03a1ab5bafc8272c5d9519c4bb9dcc17d2aa68",
+      "source": "c9a6871a7a7b7efcb9306d53c578d49e778999aafcd2a51bffa6e8e3a600cd38"
+    },
+    {
+      "id": "4-4",
+      "resolved": "9ef86a288ecbb3030f63e90bf7a12aafc17215264c4eb214cb2644355bb8c2ef",
+      "source": "1cf94331b907efd8c904e846d92087fbcb895278f8b64d7e4c9a80eba1094005"
+    },
+    {
+      "id": "4-5",
+      "resolved": "e5c93bac04abee102ac3a289d7fe04700a06b7be70e34fe5360d274c07aa8da1",
+      "source": "d18baf2915b16b5d36b2cc4915c11c0e81374d489c6bc6d49afccd46deb2680e"
+    },
+    {
+      "id": "4-6",
+      "resolved": "d390fd4af669dba960047ea00c2c3664ec54781a2d93c988e64714f50ad21e99",
+      "source": "7ff43bc68440624ec999860a12cca26d522960a864f138c1eb35710ae665b680"
+    },
+    {
+      "id": "5-1",
+      "resolved": "b2d9813288b9c59a0c8e54805d37101b478636a01f43eacfbedc473ffc188b8c",
+      "source": "72a94c194b6953c60b223252b89a4c68ac805a15e812e5659e63a15bd797adcb"
+    },
+    {
+      "id": "5-2",
+      "resolved": "880741b264a99c355160a24dab351dbbb1684a58463c0b9f6d2474f37c98f657",
+      "source": "230679e99b186b09ffff800bf9855d739ee85e1c11488af1fbc2b382146e9fb7"
+    },
+    {
+      "id": "6-1",
+      "resolved": "4993e16080c0fbfee45e67cad6d3a08b68be293b8cb66f91dbda6b4814be3b72",
+      "source": "d7a690d3ab1f8542a9a64ab459de22a50a7d5e8fbd016c334b2f1800ac2e543f"
+    },
+    {
+      "id": "6-2",
+      "resolved": "77a1ea02d0f2485d3c52574684e81a592d3b7c30cfdd6dc6c0a432959d06a1a6",
+      "source": "5b18e3e8b73ee17b7cccbe7775b7c79ae4ce42db8635f545025060dade360a0a"
+    }
+  ],
+  "examples": [
+    {
+      "id": "coffee",
+      "source": "d4b78bd3dce9e8ed04f149fdf2e163b7116554666848288dce1c90a4b1705848"
+    },
+    {
+      "id": "door",
+      "source": "bcfab04dc26aec70d2a9393a7040d8b00cfd74508e6f158a119c4e559ee88c3c"
+    },
+    {
+      "id": "gcd",
+      "source": "11ddf2199e0ab34e3e7db14c56d1aaa62d6eb6b8afcf2bff75b295d75366eff3"
+    },
+    {
+      "id": "side-hints",
+      "source": "4cf4c01e7a14c090ce72be2844ed16234aaae4f6928af402ab1b047a33ba826c"
+    },
+    {
+      "id": "same-rank",
+      "source": "3619b9991c0625134996b085da519b4c123e8e5f0581f93cc53dd4a7e8818cbe"
+    }
+  ],
+  "defaults": {
+    "source": {
+      "format": 3,
+      "id": "baseline",
+      "title": "Baseline",
+      "layers": {
+        "process": {
+          "label": "Process"
+        }
+      },
+      "lanes": {},
+      "frames": {},
+      "nodes": {
+        "first": {
+          "label": "First",
+          "layer": "process"
+        }
+      },
+      "edges": {},
+      "scenarios": [
+        {
+          "id": "normal",
+          "label": "Normal",
+          "display": {
+            "counterLabel": true,
+            "edges": "progressive",
+            "edgeBadges": true,
+            "nodeBadges": false,
+            "log": "incremental"
+          },
+          "steps": [
+            {
+              "id": "start",
+              "title": "Start",
+              "text": "Start here",
+              "show": [],
+              "current": [],
+              "edges": [],
+              "defs": [],
+              "sources": [],
+              "deeper": []
+            }
+          ]
+        }
+      ],
+      "definitions": {},
+      "code": {},
+      "concepts": [],
+      "callouts": {},
+      "deeper": []
+    },
+    "resolved": {
+      "format": 3,
+      "id": "baseline",
+      "title": "Baseline",
+      "layers": {
+        "process": {
+          "label": "Process"
+        }
+      },
+      "lanes": {},
+      "frames": {},
+      "nodes": {
+        "first": {
+          "label": "First",
+          "layer": "process",
+          "box": [0, 0, 100, 50]
+        }
+      },
+      "edges": {},
+      "scenarios": [
+        {
+          "id": "normal",
+          "label": "Normal",
+          "display": {
+            "counterLabel": true,
+            "edges": "progressive",
+            "edgeBadges": true,
+            "nodeBadges": false,
+            "log": "incremental"
+          },
+          "steps": [
+            {
+              "id": "start",
+              "title": "Start",
+              "text": "Start here",
+              "show": [],
+              "current": [],
+              "edges": [],
+              "defs": [],
+              "sources": [],
+              "deeper": []
+            }
+          ]
+        }
+      ],
+      "definitions": {},
+      "code": {},
+      "concepts": [],
+      "callouts": {},
+      "deeper": [],
+      "viewBox": [200, 100]
+    }
+  }
+}

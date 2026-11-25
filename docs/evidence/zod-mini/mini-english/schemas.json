@@ -1,0 +1,14 @@
+[
+  {
+    "name": "source",
+    "bytes": 18138,
+    "sha256": "1128f9afb3410c6d7e4cec5ecbe9f9fdc1309d4d3bd2997a6859287f1d990216",
+    "equalsCommitted": true
+  },
+  {
+    "name": "resolved",
+    "bytes": 23051,
+    "sha256": "bde5b42e47a70fbd1184261a7a5db67c4afdc23fc6fcee98985a1502ddabb10c",
+    "equalsCommitted": true
+  }
+]

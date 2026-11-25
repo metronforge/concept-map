@@ -74,3 +74,50 @@ it("preserves ports and avoids generated obstacles", () => {
     ),
   );
 });
+
+it("keeps independently routed arrows apart outside their ports", () => {
+  const terminal = (
+    id: string,
+    x: number,
+    y: number,
+    side: "right" | "left",
+  ) => ({
+    id,
+    kind: "frame" as const,
+    point: [x, y] as [number, number],
+    sides: [side],
+  });
+  const edges = [
+    {
+      id: "a",
+      from: terminal("a-from", 10, 40, "right"),
+      to: terminal("a-to", 90, 40, "left"),
+    },
+    {
+      id: "b",
+      from: terminal("b-from", 10, 45, "right"),
+      to: terminal("b-to", 90, 45, "left"),
+    },
+  ];
+  const nodes = [
+    { id: "wall", box: [40, 20, 20, 60] as [number, number, number, number] },
+  ];
+  const routes = routeChannel({ nodes, edges, viewBox: [100, 100] });
+  expect(routes.every((route) => route.points)).toBe(true);
+  expect(routes.every((route) => route.points!.some(([, y]) => y < 20))).toBe(
+    true,
+  );
+  const segments = (points: number[][]) =>
+    points.slice(1).map((end, i) => [points[i], end]);
+  for (const [a, b] of segments(routes[0].points!)) {
+    for (const [c, d] of segments(routes[1].points!)) {
+      const axis = a[0] === b[0] ? 1 : 0;
+      const across = 1 - axis;
+      if (c[across] !== d[across] || a[across] !== c[across]) continue;
+      const overlap =
+        Math.min(Math.max(a[axis], b[axis]), Math.max(c[axis], d[axis])) -
+        Math.max(Math.min(a[axis], b[axis]), Math.min(c[axis], d[axis]));
+      expect(overlap).toBeLessThanOrEqual(1);
+    }
+  }
+});

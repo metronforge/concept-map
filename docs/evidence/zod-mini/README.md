@@ -85,6 +85,6 @@ identity and composition probes. Run `scripts/zod-migration.mjs` as described
 in [the audit](migration.md#reproduce) to reproduce them. The book has two
 affected consumer method calls; it still needs its separate format-3 migration.
 
-The final report still needs the private-validator alternative's size and drift
-risk, then a recommendation across all three options. Adoption remains the
+The [decision report](decision.md) estimates the private-validator alternative,
+explains its drift risk and compares all three options. Adoption remains the
 author's decision; no public schema switch is made in this experiment.

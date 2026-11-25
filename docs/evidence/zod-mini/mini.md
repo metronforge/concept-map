@@ -120,11 +120,10 @@ changes. The temporary directory contains no `.git`; package checks there need
 
 The savings justify finishing the investigation, but do not yet justify adoption.
 The [public migration audit](migration.md) now supplies the book's actual
-call-site count, before/after examples and error-class checks. The alternative that keeps
-classic public schemas and uses private Mini validation still needs a measured
-bundle and an assessment of duplicate-validator drift. Neither is estimated by
-this experiment. Keep classic public schemas until that comparison is complete
-and the author selects an option.
+call-site count, before/after examples and error-class checks. The [decision report](decision.md) estimates the private Mini alternative and
+assesses duplicate-validator drift. It distinguishes that estimate from a
+measured hybrid bundle. Keep classic public schemas until the author selects an
+option.
 
 The API spellings and locale behavior were checked against the installed
 4.6.7 code and the official [Mini documentation](https://zod.dev/packages/mini)

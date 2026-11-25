@@ -117,3 +117,36 @@ it("keeps omitted arrows apart when routing around the same obstacle", () => {
     }
   }
 });
+
+it("adds an omitted labeled arrow without changing engine geometry", () => {
+  const graph: LayoutGraph = {
+    nodes: [],
+    lanes: [],
+    edges: [
+      { id: "return", from: "b", to: "a", label: { width: 8, height: 4 } },
+    ],
+  };
+  const original: LayoutResult = {
+    nodes: { a: [0, 10, 10, 10], b: [40, 10, 10, 10] },
+    lanes: { lane: [0, 0, 50, 30] },
+    edges: {
+      forward: {
+        points: [
+          [10, 15],
+          [40, 15],
+        ],
+        label: [25, 12],
+      },
+    },
+  };
+  const before = structuredClone(original);
+  const result = routeFree(graph, original, [60, 40], []);
+
+  expect(result).not.toBeNull();
+  expect(result!.edges.return.points.length).toBeGreaterThanOrEqual(2);
+  expect(result!.edges.return.label).toHaveLength(2);
+  expect(result!.edges.forward).toEqual(before.edges.forward);
+  expect(result!.nodes).toEqual(before.nodes);
+  expect(result!.lanes).toEqual(before.lanes);
+  expect(original).toEqual(before);
+});

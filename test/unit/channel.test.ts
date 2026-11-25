@@ -75,6 +75,25 @@ it("preserves ports and avoids generated obstacles", () => {
   );
 });
 
+it("routes a same-port self-loop with area and clear boxes", () => {
+  const terminal = {
+    id: "a",
+    kind: "node" as const,
+    point: [10, 5] as [number, number],
+    sides: ["right" as const],
+  };
+  const nodes = [
+    { id: "a", box: [0, 0, 10, 10] as [number, number, number, number] },
+    { id: "b", box: [40, 0, 10, 10] as [number, number, number, number] },
+  ];
+  const edge = { id: "loop", from: terminal, to: terminal };
+  const route = routeChannel({ nodes, edges: [edge] })[0];
+  expect(route.points!.length).toBeGreaterThanOrEqual(5);
+  expect(new Set(route.points!.map(([x]) => x)).size).toBeGreaterThan(1);
+  expect(new Set(route.points!.map(([, y]) => y)).size).toBeGreaterThan(1);
+  expect(routeIssues({ nodes }, edge, { points: route.points! })).toEqual([]);
+});
+
 it("keeps independently routed arrows apart outside their ports", () => {
   const terminal = (
     id: string,

@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "link",
+    "step": "the-link-starts-a-navigation-the",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "link",
+    "step": "the-navigation-commits-the-click",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "link",
+    "step": "waitforurl-sees-the-url-then-wai",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "link",
+    "step": "after-load-the-app-can-still-fet",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "link",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "iframe",
+    "step": "the-click-sends-the-mouse-input",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "iframe",
+    "step": "the-iframe-navigation-is-not-cou",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "iframe",
+    "step": "the-iframe-commits-and-loads-lat",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "iframe",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "nowaitafter",
+    "step": "the-checks-still-run-the-click-w",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "scenario": "url",
+    "step": "context-d-matches-other-and-call",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "url",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "worker",
+    "step": "this-request-belongs-to-a-servic",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "worker",
+    "step": "an-intercepted-worker-owned-requ",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "worker",
+    "step": "context-d-falls-back-context-c-s",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "worker",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  }
+]

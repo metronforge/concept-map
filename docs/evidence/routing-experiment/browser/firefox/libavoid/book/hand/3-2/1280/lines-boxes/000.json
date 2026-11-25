@@ -1,0 +1,5 @@
+[
+  { "a": "node:response", "b": "line:ma", "band": "tight", "gap": 0.238 },
+  { "a": "node:response", "b": "line:mf", "band": "tight", "gap": 0.238 },
+  { "a": "node:abort", "b": "line:mf", "band": "tight", "gap": 0.238 }
+]

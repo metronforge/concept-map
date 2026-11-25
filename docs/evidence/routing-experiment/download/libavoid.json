@@ -1,0 +1,28 @@
+{
+  "candidate": "libavoid",
+  "node": "v26.13.1",
+  "rolldown": "1.3.2",
+  "gzipLevel": 9,
+  "assets": [
+    {
+      "name": "avoid.js",
+      "bytes": 799,
+      "gzipBytes": 493,
+      "sha256": "78893be20d31827a8c3b9dac91b88b2531401b77787de72c3c67c69e93f78a4f"
+    },
+    {
+      "name": "libavoid.js",
+      "bytes": 59889,
+      "gzipBytes": 21846,
+      "sha256": "c115569fdf7e529a3e6827855a70f74f6b043bd379fe36682b1cd6e175cf4137"
+    },
+    {
+      "name": "libavoid.wasm",
+      "bytes": 476036,
+      "gzipBytes": 178650,
+      "sha256": "d4ec423db7a38fa75ec4f415aa22d9f5db161a254cfa576077b75551da75ea38"
+    }
+  ],
+  "totalBytes": 536724,
+  "totalGzipBytes": 200989
+}

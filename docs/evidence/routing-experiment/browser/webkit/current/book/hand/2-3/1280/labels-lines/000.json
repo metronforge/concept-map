@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:next",
+    "b": "line:next",
+    "band": "tight",
+    "gap": 0.181,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:then",
+    "b": "line:then",
+    "band": "tight",
+    "gap": 0.024,
+    "uncertainty": 0.016
+  }
+]

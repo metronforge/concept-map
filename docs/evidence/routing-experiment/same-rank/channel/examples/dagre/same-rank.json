@@ -1,0 +1,36 @@
+{
+  "id": "examples/dagre/same-rank",
+  "candidate": "channel",
+  "resolvedSha256": "4e286ef632c5e06e376f602d1ac7ca964b2d3849305521b8d7636059cde2263b",
+  "nodes": 4,
+  "edges": 3,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "sameRank",
+        "nodes": ["quick", "finish"],
+        "strength": "required",
+        "origin": "stated",
+        "path": "layout.hints[0]",
+        "holds": true,
+        "message": "layout.hints[0]: sameRank (quick, finish): honoured"
+      }
+    ],
+    "labels": { "labels": [], "lines": [], "boxes": [] },
+    "steps": { "labels": [], "boxes": [], "steps": [] },
+    "lines": { "boxes": [] },
+    "crossings": { "count": 0, "pairs": [] },
+    "reading": {
+      "edges": 3,
+      "forward": 3,
+      "share": 1,
+      "nonReturn": { "edges": 3, "forward": 3, "share": 1 },
+      "returns": { "edges": 0, "backward": 0, "share": null, "selfLoops": 0 }
+    },
+    "text": { "width": 18.76, "height": 25.52 }
+  },
+  "bends": 4,
+  "routeLength": 355.03999999999996,
+  "routingTimeMs": null
+}

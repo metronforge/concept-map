@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "a-locator-stores-a-frame-and-a-s",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "chaining-adds-parts-to-the-strin",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "click-sends-the-stored-recipe",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 4
+  },
+  {
+    "scenario": "how",
+    "step": "each-part-uses-a-selector-engine",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "filters-and-indexes-narrow-the-m",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "has-runs-its-inner-search-inside",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "the-next-part-searches-inside-th",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "enter-frame-splits-the-recipe",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "chain",
+    "step": "a-locator-starts-with-a-frame-th",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  }
+]

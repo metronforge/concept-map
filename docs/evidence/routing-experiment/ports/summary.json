@@ -1,0 +1,14 @@
+{
+  "node": "v26.13.1",
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "maps": 29,
+  "nodes": 309,
+  "frames": 8,
+  "edges": 260,
+  "terminals": 520,
+  "frameTerminals": 1,
+  "gappedTerminals": 133,
+  "cornerTerminals": 2,
+  "selfLoops": 2,
+  "maximumGap": 2
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "fallback",
+    "step": "page-a-calls-fallback-the-contex",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "fallback",
+    "step": "context-d-calls-fallback-context",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "fallback",
+    "step": "context-c-supplies-the-response",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "fallback",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "continue",
+    "step": "page-b-gets-the-first-turn",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "continue",
+    "step": "page-b-calls-continue-the-reques",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "continue",
+    "step": "page-a-and-the-context-mock-are",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "continue",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "url",
+    "step": "page-b-matches-api-and-calls-fal",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "url",
+    "step": "page-a-matches-other-it-calls-fa",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  }
+]

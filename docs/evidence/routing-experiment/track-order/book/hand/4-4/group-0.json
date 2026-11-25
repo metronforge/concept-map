@@ -1,0 +1,52 @@
+{
+  "axis": 0,
+  "coordinate": 417,
+  "start": 111,
+  "end": 416,
+  "segments": [
+    {
+      "edge": "dispatch_fresh",
+      "segment": 2,
+      "start": 111,
+      "end": 416,
+      "low": 1,
+      "high": -1
+    },
+    {
+      "edge": "first_failed",
+      "segment": 1,
+      "start": 116,
+      "end": 146,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "failed_stop",
+      "segment": 1,
+      "start": 212,
+      "end": 313,
+      "low": -1,
+      "high": 1
+    },
+    {
+      "edge": "failed_later",
+      "segment": 2,
+      "start": 278,
+      "end": 380,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 116, "end": "low" },
+    { "before": 1, "after": 0, "at": 146, "end": "high" },
+    { "before": 2, "after": 0, "at": 212, "end": "low" },
+    { "before": 0, "after": 2, "at": 313, "end": "high" },
+    { "before": 3, "after": 0, "at": 278, "end": "low" },
+    { "before": 3, "after": 0, "at": 380, "end": "high" },
+    { "before": 3, "after": 2, "at": 278, "end": "low" },
+    { "before": 3, "after": 2, "at": 313, "end": "high" }
+  ],
+  "order": null,
+  "cycle": [0, 2, 0]
+}

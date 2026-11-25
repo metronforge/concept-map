@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "inspect",
+    "step": "check-uncheck",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "inspect",
+    "step": "rank-verify-locator",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "inspect",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "type",
+    "step": "fill-current-value",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "type",
+    "step": "adjacent-fills",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "type",
+    "step": "s-500-ms-click-buffer",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "type",
+    "step": "keep-the-generated-calls",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "type",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "review",
+    "step": "generate-source",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "review",
+    "step": "strict-frame-click",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  }
+]

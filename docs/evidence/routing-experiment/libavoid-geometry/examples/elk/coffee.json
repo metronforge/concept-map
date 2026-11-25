@@ -1,0 +1,11 @@
+{
+  "id": "examples/elk/coffee",
+  "stage": "libavoid geometry only",
+  "inputSha256": "66c45bb7417949e1fdc491b0e96ac74e97065aa4a33c68450422f16adab13cde",
+  "routesSha256": "deb3f237ee7e8eac2c0d457908b0b378fe37ca639dafcd2709f3b367f89eba66",
+  "edges": 5,
+  "routed": 5,
+  "failures": [],
+  "bends": 8,
+  "routeLength": 1494.594
+}

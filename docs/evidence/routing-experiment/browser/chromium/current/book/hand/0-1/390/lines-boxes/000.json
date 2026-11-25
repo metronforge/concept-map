@@ -1,0 +1,14 @@
+[
+  {
+    "a": "node:apiCookies",
+    "b": "line:mk_page",
+    "band": "defect",
+    "gap": -5.524
+  },
+  {
+    "a": "node:apiCookies",
+    "b": "line:shared",
+    "band": "defect",
+    "gap": -1.619
+  }
+]

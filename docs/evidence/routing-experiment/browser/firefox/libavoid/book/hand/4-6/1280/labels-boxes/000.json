@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:fixture_setup",
+    "b": "node:ownSetup",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:body_after",
+    "b": "node:fixture",
+    "band": "tight",
+    "gap": 0.252,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:action_expired",
+    "b": "node:expired",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.016
+  }
+]

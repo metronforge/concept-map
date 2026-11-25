@@ -1,0 +1,79 @@
+{
+  "id": "examples/elk/door",
+  "candidate": "libavoid",
+  "browser": "webkit",
+  "browserVersion": "27.2",
+  "width": 390,
+  "inputSha256": "7353c6764507513b1022d748d93e58375c17b5e4d524b15cc38f7f9d55030085",
+  "drawnSha256": "0a2fe3ecbbc032a9c92a450514c53ae3265296dc8b6942019113121d6a4ecd77",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "states": [
+    {
+      "scenario": "locked-door",
+      "step": "start",
+      "presentation": "panel",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "locked-door",
+      "step": "lock",
+      "presentation": "panel",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "locked-door",
+      "step": "try",
+      "presentation": "panel",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "locked-door",
+      "step": "unlock",
+      "presentation": "panel",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "locked-door",
+      "step": "open",
+      "presentation": "panel",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "locked-door",
+      "step": "close",
+      "presentation": "panel",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "locked-door",
+      "step": "end",
+      "presentation": "panel",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "locked-door",
+      "step": "all",
+      "presentation": "panel",
+      "hard": 0,
+      "tight": 0
+    }
+  ],
+  "defects": [],
+  "text": {
+    "pageFont": 16,
+    "minimum": 10.548316406535065,
+    "maximum": 10.548316406535065,
+    "statesBelowPage": 8,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0
+}

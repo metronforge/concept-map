@@ -1,0 +1,28 @@
+{
+  "axis": 1,
+  "coordinate": 114,
+  "start": 694,
+  "end": 796,
+  "segments": [
+    {
+      "edge": "miss",
+      "segment": 0,
+      "start": 694,
+      "end": 748,
+      "low": null,
+      "high": 1
+    },
+    {
+      "edge": "collect",
+      "segment": 0,
+      "start": 694,
+      "end": 796,
+      "low": null,
+      "high": 1
+    }
+  ],
+  "constraints": [{ "before": 1, "after": 0, "at": 748, "end": "high" }],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

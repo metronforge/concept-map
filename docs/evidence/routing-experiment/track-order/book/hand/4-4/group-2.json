@@ -1,0 +1,31 @@
+{
+  "axis": 1,
+  "coordinate": 212,
+  "start": 66,
+  "end": 201,
+  "segments": [
+    {
+      "edge": "budget_dispatch",
+      "segment": 1,
+      "start": 66,
+      "end": 201,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "copies_dispatch",
+      "segment": 2,
+      "start": 111,
+      "end": 201,
+      "low": 1,
+      "high": 1
+    }
+  ],
+  "constraints": [
+    { "before": 0, "after": 1, "at": 111, "end": "low" },
+    { "before": 0, "after": 1, "at": 201, "end": "high" }
+  ],
+  "order": [0, 1],
+  "unique": true,
+  "cycle": []
+}

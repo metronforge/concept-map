@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:ticket",
+    "b": "node:cashier",
+    "band": "tight",
+    "gap": 0.159,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:empty",
+    "b": "node:barista",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.016
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "id": "examples/elk/coffee",
+  "candidate": "current",
+  "resolvedSha256": "94649bdea410574ec18e8ee198abd96fed20bc51656887d76e354e9b52ec0a58",
+  "nodes": 3,
+  "edges": 5,
+  "quality": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 2,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 62.59,
+      "height": 11.45
+    }
+  },
+  "bends": 10,
+  "routeLength": 1494.594,
+  "routingTimeMs": null
+}

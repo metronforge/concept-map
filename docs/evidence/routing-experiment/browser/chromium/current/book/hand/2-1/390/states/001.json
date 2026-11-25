@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "overlay",
+    "step": "the-locator-finds-one-button",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "overlay",
+    "step": "all-four-checks-pass",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "overlay",
+    "step": "a-spinner-covers-the-click-point",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "overlay",
+    "step": "try-again-at-once",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "overlay",
+    "step": "wait-20-ms-and-try-again",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "overlay",
+    "step": "the-click-lands",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "overlay",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "moving",
+    "step": "the-locator-finds-one-button",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "moving",
+    "step": "the-button-still-moves",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  }
+]

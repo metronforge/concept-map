@@ -1,0 +1,12 @@
+{
+  "edges": ["server_page", "server_app"],
+  "length": 10.499999760000037,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 241,
+      "start": 404,
+      "end": 414.49999976000004
+    }
+  ]
+}

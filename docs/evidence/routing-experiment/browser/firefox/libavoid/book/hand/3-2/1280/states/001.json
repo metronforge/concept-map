@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "match",
+    "step": "for-post-playwright-compares-bod",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "match",
+    "step": "b-has-two-matching-headers-a-has",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "match",
+    "step": "the-response-uses-b-s-recorded-s",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "match",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "redirect",
+    "step": "this-recorded-302-changes-post-t",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "redirect",
+    "step": "a-navigation-to-another-recorded",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "redirect",
+    "step": "the-matching-destination-supplie",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "redirect",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "missing",
+    "step": "there-is-no-matching-recorded-re",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "missing",
+    "step": "without-notfound-the-missing-req",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  }
+]

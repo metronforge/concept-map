@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:web_clean",
+    "b": "label:ready_server",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.031
+  }
+]

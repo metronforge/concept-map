@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:timeout_outer",
+    "b": "line:timeout_outer",
+    "band": "tight",
+    "gap": 0.183,
+    "uncertainty": 0.016
+  }
+]

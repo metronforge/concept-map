@@ -1,0 +1,6 @@
+{
+  "corner": [422, 701],
+  "horizontal": { "group": 1, "segments": [0, 1] },
+  "vertical": { "group": 4, "segments": [2, 0] },
+  "sameOrder": true
+}

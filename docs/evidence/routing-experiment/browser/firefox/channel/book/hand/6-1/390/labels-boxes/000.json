@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:calls",
+    "b": "node:api",
+    "band": "tight",
+    "gap": 0.101,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:result",
+    "b": "node:status",
+    "band": "tight",
+    "gap": 0.254,
+    "uncertainty": 0.024
+  }
+]

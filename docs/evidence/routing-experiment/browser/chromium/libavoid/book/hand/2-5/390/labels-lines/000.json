@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:outside",
+    "b": "line:outside",
+    "band": "tight",
+    "gap": 0.059,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:force",
+    "b": "line:force",
+    "band": "tight",
+    "gap": 0.089,
+    "uncertainty": 0.024
+  }
+]

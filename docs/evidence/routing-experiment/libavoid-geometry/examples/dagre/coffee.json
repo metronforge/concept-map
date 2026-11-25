@@ -1,0 +1,11 @@
+{
+  "id": "examples/dagre/coffee",
+  "stage": "libavoid geometry only",
+  "inputSha256": "215af6f4b5761d00cdd7bb7f0ff60dac4269465f0659e7fe2e1c03de3f112509",
+  "routesSha256": "8d0cc213231d36c009a9fc8b5008f5b36422cc93cedee6643ff49c233b7b5477",
+  "edges": 5,
+  "routed": 5,
+  "failures": [],
+  "bends": 8,
+  "routeLength": 1154.7158516444931
+}

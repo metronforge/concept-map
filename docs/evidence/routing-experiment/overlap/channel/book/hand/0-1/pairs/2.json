@@ -1,0 +1,12 @@
+{
+  "edges": ["page_app", "cookie_page"],
+  "length": 11,
+  "spans": [
+    {
+      "axis": "y",
+      "coordinate": 340,
+      "start": 570,
+      "end": 581
+    }
+  ]
+}

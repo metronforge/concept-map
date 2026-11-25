@@ -1,0 +1,31 @@
+{
+  "axis": 0,
+  "coordinate": 112,
+  "start": 180,
+  "end": 212,
+  "segments": [
+    {
+      "edge": "elapsed_body",
+      "segment": 1,
+      "start": 180,
+      "end": 212,
+      "low": 1,
+      "high": 1
+    },
+    {
+      "edge": "test_setup",
+      "segment": 1,
+      "start": 180,
+      "end": 212,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 180, "end": "low" },
+    { "before": 1, "after": 0, "at": 212, "end": "high" }
+  ],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

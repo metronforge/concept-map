@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.076,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:dispatch",
+    "b": "line:dispatch",
+    "band": "tight",
+    "gap": 0.105,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:return",
+    "b": "line:return",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:prefix",
+    "b": "line:prefix",
+    "band": "tight",
+    "gap": 0.08,
+    "uncertainty": 0.024
+  }
+]

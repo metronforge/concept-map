@@ -1,0 +1,74 @@
+{
+  "id": "examples/dagre/coffee",
+  "candidate": "channel",
+  "resolvedSha256": "a8a94a3a6c9470c42ec8756bb10305c8abb721030bef01d1e859af622efb9a3e",
+  "nodes": 3,
+  "edges": 5,
+  "quality": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:empty",
+          "b": "line:ready",
+          "band": "tight",
+          "gap": 0.071
+        }
+      ],
+      "boxes": [
+        {
+          "a": "label:ticket",
+          "b": "node:cashier",
+          "band": "tight",
+          "gap": 0.159
+        },
+        {
+          "a": "label:empty",
+          "b": "node:barista",
+          "band": "tight",
+          "gap": 0.155
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 1,
+      "pairs": [["ready", "offer"]]
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 2,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 50.4,
+      "height": 18.3
+    }
+  },
+  "bends": 8,
+  "routeLength": 1154.7158516444931,
+  "routingTimeMs": null,
+  "inputSha256": "215af6f4b5761d00cdd7bb7f0ff60dac4269465f0659e7fe2e1c03de3f112509",
+  "routesSha256": "69b0edfefd61de55034fe559bcdc75520375c273c071dd3b3a6443fa1b6ae7f2",
+  "outsideViewport": []
+}

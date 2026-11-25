@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:test_setup",
+    "b": "label:elapsed_body",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.031
+  },
+  {
+    "a": "label:setup_body",
+    "b": "label:elapsed_body",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.031
+  }
+]

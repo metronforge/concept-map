@@ -1,0 +1,86 @@
+{
+  "id": "examples/dagre/gcd",
+  "candidate": "current",
+  "browser": "firefox",
+  "browserVersion": "157.0",
+  "width": 390,
+  "inputSha256": "603f3ab4c72b7f086a5b9b3aabca35a513904c4dc36c9a3102d774c8080852df",
+  "drawnSha256": "12cd5ee55fac9c143543d7d1f1038ba85e75898e291d4be8e8ba052dc205fa67",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "states": [
+    {
+      "scenario": "gcd-48-18",
+      "step": "input",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "gcd-48-18",
+      "step": "turn-1",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "gcd-48-18",
+      "step": "turn-2",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "gcd-48-18",
+      "step": "turn-3",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "gcd-48-18",
+      "step": "result",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 1
+    },
+    {
+      "scenario": "gcd-48-18",
+      "step": "all",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 2
+    },
+    {
+      "scenario": "gcd-5-0",
+      "step": "input",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "gcd-5-0",
+      "step": "result",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 1
+    },
+    {
+      "scenario": "gcd-5-0",
+      "step": "all",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 1
+    }
+  ],
+  "defects": [],
+  "text": {
+    "pageFont": 16,
+    "minimum": 10.550880752503872,
+    "maximum": 10.603900253772736,
+    "statesBelowPage": 9,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0
+}

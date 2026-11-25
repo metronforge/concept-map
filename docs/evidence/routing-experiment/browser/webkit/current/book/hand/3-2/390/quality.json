@@ -1,0 +1,20 @@
+{
+  "hard": 0,
+  "constraints": [
+    {
+      "kind": "lanes",
+      "strength": "required",
+      "holds": true,
+      "message": "Lanes are ordered, disjoint and contain their nodes"
+    }
+  ],
+  "crossings": { "count": 1, "pairs": [["hr", "mf"]] },
+  "reading": {
+    "edges": 5,
+    "forward": 4,
+    "share": 0.8,
+    "nonReturn": { "edges": 5, "forward": 4, "share": 0.8 },
+    "returns": { "edges": 0, "backward": 0, "share": null, "selfLoops": 0 }
+  },
+  "text": { "width": 37.71, "height": 46.67 }
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:skips",
+    "b": "node:resolve",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:scroll",
+    "b": "node:scroll",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:point",
+    "b": "node:hidden",
+    "band": "tight",
+    "gap": 0.274,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:receives",
+    "b": "node:overlay",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  }
+]

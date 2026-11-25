@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:test_setup",
+    "b": "node:setup",
+    "band": "tight",
+    "gap": 0.043,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:elapsed_body",
+    "b": "node:body",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:fixture_setup",
+    "b": "node:ownSetup",
+    "band": "tight",
+    "gap": 0.162,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:body_after",
+    "b": "node:after",
+    "band": "tight",
+    "gap": 0.026,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:action_expired",
+    "b": "node:expired",
+    "band": "tight",
+    "gap": 0.221,
+    "uncertainty": 0.016
+  }
+]

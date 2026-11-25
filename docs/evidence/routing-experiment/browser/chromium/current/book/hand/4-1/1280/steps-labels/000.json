@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:probe_ready",
+    "b": "node-step:3:the-default-readiness-deadline-e",
+    "band": "tight",
+    "gap": 0.086,
+    "uncertainty": 0.016
+  }
+]

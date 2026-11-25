@@ -1,0 +1,58 @@
+[
+  {
+    "scenario": "action",
+    "step": "instead-save-click-timeout-5000",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "action",
+    "step": "both-active-clocks-advance-while",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "action",
+    "step": "the-click-expires-the-test-still",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "action",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 8
+  },
+  {
+    "scenario": "teardown",
+    "step": "the-test-body-ends-with-time-to",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "teardown",
+    "step": "after-hooks-and-teardown-start-w",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "teardown",
+    "step": "account-teardown-spends-all-of-i",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "teardown",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  }
+]

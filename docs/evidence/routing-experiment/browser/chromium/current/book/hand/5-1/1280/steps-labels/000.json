@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:deadline",
+    "b": "node-step:0:the-final-wait-repeats",
+    "band": "defect",
+    "gap": -0.295,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:throws",
+    "b": "node-step:2:after-the-wait-topass-runs-write",
+    "band": "tight",
+    "gap": 0.129,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:deadline",
+    "b": "node-step:3:after-failed-tries-both-wait-100",
+    "band": "defect",
+    "gap": -0.295,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:record",
+    "b": "node-step:4:expect-soft-count-tobe-2-fails",
+    "band": "tight",
+    "gap": -0.101,
+    "uncertainty": 0.016
+  }
+]

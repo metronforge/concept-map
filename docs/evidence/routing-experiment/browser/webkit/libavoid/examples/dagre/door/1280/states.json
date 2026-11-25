@@ -1,0 +1,79 @@
+{
+  "id": "examples/dagre/door",
+  "candidate": "libavoid",
+  "browser": "webkit",
+  "browserVersion": "27.2",
+  "width": 1280,
+  "inputSha256": "1a86806096c8ad72a0f215fb2cbd8cafb692cac2a1440d28a0b5bca184321b92",
+  "drawnSha256": "7b9f3e60afe5aa840729b6d6bea0acbf011fef1b17face82f6a9a89279e70035",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "states": [
+    {
+      "scenario": "locked-door",
+      "step": "start",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 4
+    },
+    {
+      "scenario": "locked-door",
+      "step": "lock",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 4
+    },
+    {
+      "scenario": "locked-door",
+      "step": "try",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 4
+    },
+    {
+      "scenario": "locked-door",
+      "step": "unlock",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 4
+    },
+    {
+      "scenario": "locked-door",
+      "step": "open",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 4
+    },
+    {
+      "scenario": "locked-door",
+      "step": "close",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 4
+    },
+    {
+      "scenario": "locked-door",
+      "step": "end",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 4
+    },
+    {
+      "scenario": "locked-door",
+      "step": "all",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 4
+    }
+  ],
+  "defects": [],
+  "text": {
+    "pageFont": 16,
+    "minimum": 10.549213504189693,
+    "maximum": 10.549213504189693,
+    "statesBelowPage": 8,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0
+}

@@ -1,0 +1,79 @@
+{
+  "id": "examples/elk/coffee",
+  "candidate": "channel",
+  "browser": "chromium",
+  "browserVersion": "156.0.8078.4",
+  "width": 1280,
+  "inputSha256": "6a05aa58d88f8ba8d3f8304c61e5c7654792a474535d1762360e56e1ff41ebca",
+  "drawnSha256": "49040692020779e2515d9c364d802bc5b4ca88dca887391548b8e19bbe076fef",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "states": [
+    {
+      "scenario": "normal",
+      "step": "order",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 2
+    },
+    {
+      "scenario": "normal",
+      "step": "brew",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 2
+    },
+    {
+      "scenario": "normal",
+      "step": "serve",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 2
+    },
+    {
+      "scenario": "normal",
+      "step": "all",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 2
+    },
+    {
+      "scenario": "out-of-milk",
+      "step": "order",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 2
+    },
+    {
+      "scenario": "out-of-milk",
+      "step": "empty",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 2
+    },
+    {
+      "scenario": "out-of-milk",
+      "step": "offer",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 2
+    },
+    {
+      "scenario": "out-of-milk",
+      "step": "all",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 2
+    }
+  ],
+  "defects": [],
+  "text": {
+    "pageFont": 16,
+    "minimum": 10.548965105078091,
+    "maximum": 11.330400142076847,
+    "statesBelowPage": 8,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0
+}

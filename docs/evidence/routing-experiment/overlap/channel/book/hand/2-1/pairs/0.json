@@ -1,0 +1,12 @@
+{
+  "edges": ["hit_click", "hit_retry"],
+  "length": 8,
+  "spans": [
+    {
+      "axis": "y",
+      "coordinate": 329,
+      "start": 352,
+      "end": 360
+    }
+  ]
+}

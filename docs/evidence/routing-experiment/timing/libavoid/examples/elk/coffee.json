@@ -1,0 +1,16 @@
+{
+  "id": "examples/elk/coffee",
+  "candidate": "libavoid",
+  "inputSha256": "66c45bb7417949e1fdc491b0e96ac74e97065aa4a33c68450422f16adab13cde",
+  "routesSha256": "deb3f237ee7e8eac2c0d457908b0b378fe37ca639dafcd2709f3b367f89eba66",
+  "edges": 5,
+  "routing": {
+    "samplesMs": [
+      0.7947929999999701, 0.9231739999999604, 0.8270660000000021,
+      0.7507130000000188, 0.6883159999999862
+    ],
+    "medianMs": 0.7947929999999701,
+    "minMs": 0.6883159999999862,
+    "maxMs": 0.9231739999999604
+  }
+}

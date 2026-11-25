@@ -1,0 +1,16 @@
+{
+  "id": "examples/dagre/coffee",
+  "candidate": "channel",
+  "inputSha256": "215af6f4b5761d00cdd7bb7f0ff60dac4269465f0659e7fe2e1c03de3f112509",
+  "routesSha256": "69b0edfefd61de55034fe559bcdc75520375c273c071dd3b3a6443fa1b6ae7f2",
+  "edges": 5,
+  "routing": {
+    "samplesMs": [
+      1.0520819999999844, 0.5041500000000383, 0.4290269999999623,
+      0.38254100000000335, 1.7785939999999982
+    ],
+    "medianMs": 0.5041500000000383,
+    "minMs": 0.38254100000000335,
+    "maxMs": 1.7785939999999982
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:describe_reset",
+    "b": "line:describe_reset",
+    "band": "tight",
+    "gap": 0.079,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:function_value",
+    "b": "line:function_value",
+    "band": "tight",
+    "gap": 0.055,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:hooks_teardown",
+    "b": "line:hooks_teardown",
+    "band": "tight",
+    "gap": 0.105,
+    "uncertainty": 0.024
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "a": "label:toList",
+    "b": "line:toList",
+    "band": "tight",
+    "gap": 0.016,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:toBlob",
+    "b": "line:toBlob",
+    "band": "tight",
+    "gap": 0.055,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:caught",
+    "b": "line:caught",
+    "band": "tight",
+    "gap": 0.064,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:save",
+    "b": "line:save",
+    "band": "tight",
+    "gap": 0.03,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:include",
+    "b": "line:include",
+    "band": "tight",
+    "gap": 0.091,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:dispatch",
+    "b": "line:dispatch",
+    "band": "tight",
+    "gap": 0.098,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:pass",
+    "b": "line:pass",
+    "band": "tight",
+    "gap": 0.098,
+    "uncertainty": 0.024
+  }
+]

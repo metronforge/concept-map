@@ -1,0 +1,13 @@
+{
+  "id": "examples/elk/gcd",
+  "candidate": "libavoid",
+  "edges": 5,
+  "referenceSha256": "3c92ee2a68857dee664820f3232ea0703b8dbb31a53c169749bb73b9b13cd77d",
+  "pathsSha256": "78181a3a7e88b1837f222ca78dfa903cef3264eb1de87fec229d211bc8d4b1a3",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

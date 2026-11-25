@@ -1,0 +1,13 @@
+{
+  "id": "book/hand/4-6",
+  "candidate": "channel",
+  "edges": 11,
+  "referenceSha256": "d390fd4af669dba960047ea00c2c3664ec54781a2d93c988e64714f50ad21e99",
+  "pathsSha256": "5e1d53159976e6d6d588dfdd0375c1c07affa15d548a312c6595bd61d32c4436",
+  "edgePairs": 2,
+  "retracedEdges": 0,
+  "sharedLength": 26,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

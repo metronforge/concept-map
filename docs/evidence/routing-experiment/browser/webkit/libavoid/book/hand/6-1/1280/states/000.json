@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "start-a-session-and-chunk",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "calls-add-trace-events",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "select-browser-capture",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "save-each-chunk",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "network-resources-differ",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "api-requests-write-records",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "runner-tracing-includes-assertio",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "record-first-retain-later",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "browser",
+    "step": "tracing-start",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  }
+]

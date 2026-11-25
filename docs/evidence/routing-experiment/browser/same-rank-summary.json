@@ -1,0 +1,27 @@
+{
+  "node": "v26.13.1",
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "experimentLockSha256": "065d24be0efc3817d83752cf7e7edf571f34190fedbc0fcdc3b37c112cb67100",
+  "sansSha256": "b4c632e3cdf9acc7f28758fb5a323c8524d7fc6660d46904d9b6cbe2809c419c",
+  "monoSha256": "a54dca07c76d6289e717e75e0a58c0128f6d7269ef3faf76417c9d7d3bba37ab",
+  "drawings": 24,
+  "states": 120,
+  "candidates": {
+    "current": {
+      "drawings": 12,
+      "statesWithHardContacts": 0,
+      "statesBelowPageText": 0,
+      "statesAboveTextLimit": 0,
+      "drawingsWithOverflow": 0,
+      "drawingsNotFitting": 0
+    },
+    "channel": {
+      "drawings": 12,
+      "statesWithHardContacts": 0,
+      "statesBelowPageText": 0,
+      "statesAboveTextLimit": 0,
+      "drawingsWithOverflow": 0,
+      "drawingsNotFitting": 0
+    }
+  }
+}

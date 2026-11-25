@@ -1,0 +1,51 @@
+[
+  {
+    "a": "label:toList",
+    "b": "node:event",
+    "band": "tight",
+    "gap": 0.102,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:toBlob",
+    "b": "node:list",
+    "band": "tight",
+    "gap": 0.102,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:toBlob",
+    "b": "node:blob",
+    "band": "tight",
+    "gap": 0.102,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:offset",
+    "b": "node:ids",
+    "band": "tight",
+    "gap": 0.122,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:offset",
+    "b": "node:workers",
+    "band": "tight",
+    "gap": 0.122,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:dispatch",
+    "b": "node:replay",
+    "band": "tight",
+    "gap": 0.255,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:pass",
+    "b": "node:passed",
+    "band": "tight",
+    "gap": 0.255,
+    "uncertainty": 0.024
+  }
+]

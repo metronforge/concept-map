@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:start",
+    "b": "line:start",
+    "band": "tight",
+    "gap": 0.069,
+    "uncertainty": 0.025
+  },
+  {
+    "a": "label:open",
+    "b": "line:open",
+    "band": "tight",
+    "gap": 0.097,
+    "uncertainty": 0.025
+  },
+  {
+    "a": "label:close",
+    "b": "line:close",
+    "band": "tight",
+    "gap": 0.006,
+    "uncertainty": 0.025
+  },
+  {
+    "a": "label:lock",
+    "b": "line:lock",
+    "band": "tight",
+    "gap": 0.097,
+    "uncertainty": 0.025
+  },
+  {
+    "a": "label:unlock",
+    "b": "line:unlock",
+    "band": "tight",
+    "gap": 0.133,
+    "uncertainty": 0.025
+  }
+]

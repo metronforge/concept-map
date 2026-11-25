@@ -1,0 +1,10 @@
+[
+  { "a": "node:retry", "b": "line:click_mouse", "band": "tight", "gap": 0.238 },
+  {
+    "a": "node:click",
+    "b": "line:retry_stable",
+    "band": "tight",
+    "gap": 0.238
+  },
+  { "a": "node:inert", "b": "line:retry_stable", "band": "tight", "gap": 0.238 }
+]

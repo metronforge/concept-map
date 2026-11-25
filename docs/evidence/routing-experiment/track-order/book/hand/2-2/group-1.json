@@ -1,0 +1,28 @@
+{
+  "axis": 0,
+  "coordinate": 311,
+  "start": 252,
+  "end": 270,
+  "segments": [
+    {
+      "edge": "inner",
+      "segment": 0,
+      "start": 252,
+      "end": 270,
+      "low": null,
+      "high": 1
+    },
+    {
+      "edge": "runs",
+      "segment": 2,
+      "start": 254,
+      "end": 270,
+      "low": null,
+      "high": -1
+    }
+  ],
+  "constraints": [{ "before": 1, "after": 0, "at": 270, "end": "high" }],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

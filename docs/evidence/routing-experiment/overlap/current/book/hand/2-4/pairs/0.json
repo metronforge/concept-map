@@ -1,0 +1,12 @@
+{
+  "edges": ["miss", "collect"],
+  "length": 22,
+  "spans": [
+    {
+      "axis": "y",
+      "coordinate": 114,
+      "start": 694,
+      "end": 716
+    }
+  ]
+}

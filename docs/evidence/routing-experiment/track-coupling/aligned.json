@@ -1,0 +1,15 @@
+{
+  "node": "v26.13.1",
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "stage": "joint branch and shared-bend orders; no track coordinates or route movement",
+  "maps": 2,
+  "mapsWithBends": 0,
+  "edges": 6,
+  "groups": 0,
+  "bends": 0,
+  "components": 0,
+  "orderedComponents": 0,
+  "blockedComponents": 0,
+  "orderedGroups": 0,
+  "blockedGroups": 0
+}

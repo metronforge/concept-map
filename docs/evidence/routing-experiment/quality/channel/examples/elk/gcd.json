@@ -1,0 +1,54 @@
+{
+  "id": "examples/elk/gcd",
+  "candidate": "channel",
+  "resolvedSha256": "95eb362ead24dcc36b51dc5bb6797e37e6755c0506ee97f333a96f77db759456",
+  "nodes": 5,
+  "edges": 5,
+  "quality": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 4,
+      "share": 0.8,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 29.9,
+      "height": 56.93
+    }
+  },
+  "bends": 6,
+  "routeLength": 1183.7020000000002,
+  "routingTimeMs": null,
+  "inputSha256": "39e6b022d4b88d6bf955ea6fd0eafb649ed3397bc60199decd0b45652faa927d",
+  "routesSha256": "77cf3dc386df83b3c8fb7c586bff474732c6358deea8fbce7082a8ddcdb65975",
+  "outsideViewport": []
+}

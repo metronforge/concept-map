@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:offset",
+    "b": "node:ids",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:offset",
+    "b": "node:workers",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "a": "label:value",
+    "b": "node:producer",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:value",
+    "b": "node:matcher",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:throws",
+    "b": "node:block",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:throws",
+    "b": "node:thrown",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:deadline",
+    "b": "node:intervals",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:deadline",
+    "b": "node:stop",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:record",
+    "b": "node:soft",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:record",
+    "b": "node:failed",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  }
+]

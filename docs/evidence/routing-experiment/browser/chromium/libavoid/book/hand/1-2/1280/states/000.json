@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "a-browser-holds-contexts",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "a-context-holds-pages",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "each-page-has-a-main-frame",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "iframes-add-child-frames",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "contexts-keep-state-apart",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "chromium-assigns-a-context-id",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "closing-has-boundaries",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "the-shortcut-owns-a-context",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "a-call-after-closing-fails",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 9
+  }
+]

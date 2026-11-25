@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:calls",
+    "b": "node:api",
+    "band": "tight",
+    "gap": 0.102,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:dom",
+    "b": "node:network",
+    "band": "tight",
+    "gap": 0.033,
+    "uncertainty": 0.024
+  }
+]

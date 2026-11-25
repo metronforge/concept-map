@@ -1,0 +1,94 @@
+{
+  "id": "book/hand/3-2",
+  "candidate": "libavoid",
+  "resolvedSha256": "9d747ee975abe54d2be24315195e01b7d3acfda8cb2f1482439be7188c53ca12",
+  "nodes": 11,
+  "edges": 5,
+  "quality": {
+    "hard": 1,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": [
+        {
+          "a": "label:ma",
+          "b": "node:response",
+          "band": "tight",
+          "gap": 0.065
+        }
+      ]
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:ma",
+          "b": "node-step:2:the-matching-destination-supplie",
+          "band": "defect",
+          "gap": -0.506
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": [
+        {
+          "a": "node:response",
+          "b": "line:ma",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:response",
+          "b": "line:mf",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:abort",
+          "b": "line:mf",
+          "band": "tight",
+          "gap": 0.238
+        }
+      ]
+    },
+    "crossings": {
+      "count": 1,
+      "pairs": [["hr", "mf"]]
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 4,
+      "share": 0.8,
+      "nonReturn": {
+        "edges": 5,
+        "forward": 4,
+        "share": 0.8
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 37.71,
+      "height": 46.67
+    }
+  },
+  "bends": 5,
+  "routeLength": 640,
+  "routingTimeMs": null,
+  "inputSha256": "8fcd826c7b993da216e5b7a941e83bcbfb627367a3056021ac071b9a4423ad39",
+  "routesSha256": "5c00c15291b109bf5af71850b4f6cdbd6bb9afdf9e336494de7079396ad4d268",
+  "outsideViewport": []
+}

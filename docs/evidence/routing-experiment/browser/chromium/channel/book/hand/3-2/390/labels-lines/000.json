@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:bh",
+    "b": "line:bh",
+    "band": "tight",
+    "gap": 0.013,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:mf",
+    "b": "line:mf",
+    "band": "tight",
+    "gap": 0.122,
+    "uncertainty": 0.023
+  }
+]

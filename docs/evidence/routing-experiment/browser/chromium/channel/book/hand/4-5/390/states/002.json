@@ -1,0 +1,30 @@
+[
+  {
+    "scenario": "report",
+    "step": "box-true-hides-the-fixture-step",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "report",
+    "step": "box-self-hides-only-the-fixture",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "report",
+    "step": "an-override-without-options-keep",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  },
+  {
+    "scenario": "report",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 6
+  }
+]

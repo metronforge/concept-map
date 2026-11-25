@@ -1,0 +1,40 @@
+{
+  "axis": 1,
+  "coordinate": 270,
+  "start": 199,
+  "end": 727,
+  "segments": [
+    {
+      "edge": "runs",
+      "segment": 1,
+      "start": 199,
+      "end": 311,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "find",
+      "segment": 1,
+      "start": 199,
+      "end": 727,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "inner",
+      "segment": 1,
+      "start": 311,
+      "end": 539,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 0, "after": 1, "at": 311, "end": "high" },
+    { "before": 2, "after": 1, "at": 311, "end": "low" },
+    { "before": 2, "after": 1, "at": 539, "end": "high" }
+  ],
+  "order": [0, 2, 1],
+  "unique": false,
+  "cycle": []
+}

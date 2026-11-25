@@ -1,0 +1,28 @@
+{
+  "axis": 0,
+  "coordinate": 694,
+  "start": 196,
+  "end": 205,
+  "segments": [
+    {
+      "edge": "load",
+      "segment": 0,
+      "start": 196,
+      "end": 205,
+      "low": null,
+      "high": 1
+    },
+    {
+      "edge": "release",
+      "segment": 0,
+      "start": 196,
+      "end": 205,
+      "low": null,
+      "high": -1
+    }
+  ],
+  "constraints": [{ "before": 1, "after": 0, "at": 205, "end": "high" }],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:clean_returned",
+    "b": "node:clean",
+    "band": "tight",
+    "gap": 0.239,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:ready_server",
+    "b": "node:ready",
+    "band": "tight",
+    "gap": 0.034,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:ready_server",
+    "b": "node:global",
+    "band": "tight",
+    "gap": 0.034,
+    "uncertainty": 0.024
+  }
+]

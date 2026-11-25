@@ -1,0 +1,65 @@
+[
+  {
+    "scenario": "merge-replay",
+    "step": "replay-saved-events-tests-do-not",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 17
+  },
+  {
+    "scenario": "merge-replay",
+    "step": "saved-test-failures-do-not-fail",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 17
+  },
+  {
+    "scenario": "merge-replay",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 17
+  },
+  {
+    "scenario": "reporter-error",
+    "step": "read-two-valid-blobs-in-shard-or",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "reporter-error",
+    "step": "keep-the-first-t-change-the-seco",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "reporter-error",
+    "step": "the-second-worker-gains-an-offse",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 17
+  },
+  {
+    "scenario": "reporter-error",
+    "step": "replay-saved-events-tests-do-not",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 17
+  },
+  {
+    "scenario": "reporter-error",
+    "step": "a-reporter-error-fails-this-comp",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 17
+  },
+  {
+    "scenario": "reporter-error",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 17
+  }
+]

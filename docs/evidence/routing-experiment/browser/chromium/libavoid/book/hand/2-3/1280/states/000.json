@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "you-call-click",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "the-code-checks-stable-first",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "animation-frames-drive-the-check",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "the-first-box-is-only-stored",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "compare-the-next-box",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "equal-boxes-add-to-the-count",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 11
+  },
+  {
+    "scenario": "how",
+    "step": "a-retry-starts-a-new-check",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 11
+  },
+  {
+    "scenario": "how",
+    "step": "one-comparison-is-the-default",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 11
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 11
+  },
+  {
+    "scenario": "still",
+    "step": "still-button",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  }
+]

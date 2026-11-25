@@ -1,0 +1,4 @@
+[
+  { "a": "node:serial", "b": "line:shard", "band": "tight", "gap": 0.238 },
+  { "a": "node:last", "b": "line:replace", "band": "tight", "gap": 0.238 }
+]

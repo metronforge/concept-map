@@ -1,0 +1,28 @@
+{
+  "axis": 0,
+  "coordinate": 158,
+  "start": 400,
+  "end": 416,
+  "segments": [
+    {
+      "edge": "body_action",
+      "segment": 0,
+      "start": 400,
+      "end": 416,
+      "low": null,
+      "high": 1
+    },
+    {
+      "edge": "own_body",
+      "segment": 2,
+      "start": 400,
+      "end": 416,
+      "low": null,
+      "high": 1
+    }
+  ],
+  "constraints": [],
+  "order": [0, 1],
+  "unique": false,
+  "cycle": []
+}

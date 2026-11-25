@@ -1,0 +1,16 @@
+{
+  "id": "examples/dagre/door",
+  "candidate": "libavoid",
+  "inputSha256": "04447ca50fdba03cf33ae5f4fa4ab2f1a41e7a3b782b7d3f484bc4be02c55978",
+  "routesSha256": "74d4aa1a0129f56acd021b016c351b6d96aa0512ba452fc9e6411ed037589b05",
+  "edges": 7,
+  "routing": {
+    "samplesMs": [
+      0.5031089999999949, 0.6318140000000199, 0.349741999999992,
+      0.3727559999999812, 0.3727180000000203
+    ],
+    "medianMs": 0.3727559999999812,
+    "minMs": 0.349741999999992,
+    "maxMs": 0.6318140000000199
+  }
+}

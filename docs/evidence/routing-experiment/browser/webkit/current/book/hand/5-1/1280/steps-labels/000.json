@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:deadline",
+    "b": "node-step:0:the-final-wait-repeats",
+    "band": "tight",
+    "gap": -0.025,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:deadline",
+    "b": "node-step:3:after-failed-tries-both-wait-100",
+    "band": "tight",
+    "gap": -0.025,
+    "uncertainty": 0.016
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "id": "examples/elk/gcd",
+  "candidate": "current",
+  "edges": 5,
+  "referenceSha256": "3c92ee2a68857dee664820f3232ea0703b8dbb31a53c169749bb73b9b13cd77d",
+  "pathsSha256": "605882ca7c4422e12583aea2d60cde45c097e0664b707aa0c99e012cdbcf7a1d",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

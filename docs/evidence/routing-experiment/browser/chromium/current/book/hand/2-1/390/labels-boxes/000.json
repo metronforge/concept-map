@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:resolve_inner",
+    "b": "node:resolve",
+    "band": "tight",
+    "gap": 0.112,
+    "uncertainty": 0.024
+  }
+]

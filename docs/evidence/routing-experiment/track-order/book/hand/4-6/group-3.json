@@ -1,0 +1,41 @@
+{
+  "axis": 0,
+  "coordinate": 306,
+  "start": 8,
+  "end": 313,
+  "segments": [
+    {
+      "edge": "body_after",
+      "segment": 2,
+      "start": 8,
+      "end": 212,
+      "low": 1,
+      "high": -1
+    },
+    {
+      "edge": "fixture_teardown",
+      "segment": 1,
+      "start": 111,
+      "end": 313,
+      "low": -1,
+      "high": 1
+    },
+    {
+      "edge": "fixture_setup",
+      "segment": 1,
+      "start": 180,
+      "end": 212,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 111, "end": "low" },
+    { "before": 0, "after": 1, "at": 212, "end": "high" },
+    { "before": 2, "after": 0, "at": 180, "end": "low" },
+    { "before": 2, "after": 1, "at": 180, "end": "low" },
+    { "before": 2, "after": 1, "at": 212, "end": "high" }
+  ],
+  "order": null,
+  "cycle": [0, 1, 0]
+}

@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:check",
+    "b": "node-step:1:inspect-record",
+    "band": "defect",
+    "gap": -0.57,
+    "uncertainty": 0.024
+  }
+]

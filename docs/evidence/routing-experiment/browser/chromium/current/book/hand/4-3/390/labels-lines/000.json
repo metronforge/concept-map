@@ -1,0 +1,44 @@
+[
+  {
+    "a": "label:select",
+    "b": "line:select",
+    "band": "tight",
+    "gap": 0.008,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:serial",
+    "b": "line:serial",
+    "band": "tight",
+    "gap": 0.092,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:hooks",
+    "b": "line:hooks",
+    "band": "tight",
+    "gap": 0.105,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:shard",
+    "b": "line:shard",
+    "band": "tight",
+    "gap": 0.108,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:dispatch",
+    "b": "line:dispatch",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:reuse",
+    "b": "line:reuse",
+    "band": "tight",
+    "gap": 0.095,
+    "uncertainty": 0.024
+  }
+]

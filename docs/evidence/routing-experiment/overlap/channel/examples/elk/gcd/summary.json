@@ -1,0 +1,13 @@
+{
+  "id": "examples/elk/gcd",
+  "candidate": "channel",
+  "edges": 5,
+  "referenceSha256": "3c92ee2a68857dee664820f3232ea0703b8dbb31a53c169749bb73b9b13cd77d",
+  "pathsSha256": "5167a504e61c9c1ac1c30abf42f565db8e64f0b09dfcfb957a9507f4e93aaeae",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

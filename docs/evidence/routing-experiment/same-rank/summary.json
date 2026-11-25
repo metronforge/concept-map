@@ -1,0 +1,34 @@
+{
+  "node": "v26.13.1",
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "sourceSha256": "72a6f47cb04ad4f8b1d50ebdab13639d389262052ef60080a2d7b5c4eb20b54f",
+  "reference": "shared same-rank alignment with stretched routes; default derived intent",
+  "candidates": {
+    "current": {
+      "maps": 2,
+      "edges": 6,
+      "hard": 0,
+      "crossings": 0,
+      "bends": 4,
+      "routeLength": 688.3334102658916,
+      "sharedLength": 0,
+      "outsideViewport": [
+        { "id": "examples/dagre/same-rank", "edges": [] },
+        { "id": "examples/elk/same-rank", "edges": [] }
+      ]
+    },
+    "channel": {
+      "maps": 2,
+      "edges": 6,
+      "hard": 0,
+      "crossings": 0,
+      "bends": 6,
+      "routeLength": 725.54,
+      "sharedLength": 0,
+      "outsideViewport": [
+        { "id": "examples/dagre/same-rank", "edges": [] },
+        { "id": "examples/elk/same-rank", "edges": [] }
+      ]
+    }
+  }
+}

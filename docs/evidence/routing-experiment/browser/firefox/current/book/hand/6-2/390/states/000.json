@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "select-inspection-or-recording",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "capture-actions-not-every-event",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "rank-and-verify-on-the-current-p",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "merge-adjacent-fills",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "replace-the-preceding-click",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "generate-language-source",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "execution-is-a-separate-path",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "review-the-browser-file-name",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "inspect",
+    "step": "inspect-record",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  }
+]

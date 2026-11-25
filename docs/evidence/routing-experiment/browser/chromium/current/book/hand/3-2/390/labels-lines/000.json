@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:bh",
+    "b": "line:bh",
+    "band": "tight",
+    "gap": 0.013,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:ma",
+    "b": "line:ma",
+    "band": "tight",
+    "gap": 0.025,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:mf",
+    "b": "line:mf",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.023
+  }
+]

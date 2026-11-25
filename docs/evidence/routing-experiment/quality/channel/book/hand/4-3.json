@@ -1,0 +1,99 @@
+{
+  "id": "book/hand/4-3",
+  "candidate": "channel",
+  "resolvedSha256": "79a4ad0882d16cb1bad51d2972caa8262d8ad393fcda7c86e13e37f5c3d23920",
+  "nodes": 13,
+  "edges": 13,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": [
+        {
+          "a": "label:shard",
+          "b": "node:serial",
+          "band": "tight",
+          "gap": 0.149
+        },
+        {
+          "a": "label:replace",
+          "b": "node:last",
+          "band": "tight",
+          "gap": 0.031
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:tests",
+          "b": "step:next",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "node:next",
+          "b": "step:next",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "node:next",
+          "b": "step:last",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "node:last",
+          "b": "step:last",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 13,
+      "forward": 8,
+      "share": 0.615,
+      "nonReturn": {
+        "edges": 11,
+        "forward": 8,
+        "share": 0.727
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 1,
+        "share": 0.5,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40.38,
+      "height": 70.86
+    }
+  },
+  "bends": 7,
+  "routeLength": 1054,
+  "routingTimeMs": null,
+  "inputSha256": "a942dfdf7dfe613c0312444bed2e14b2c178fc16874faaf1f4c22163d1fc9375",
+  "routesSha256": "69e659106aa07117996c20c6159d4c865c857858b201e87b7c70bd019e3a6eb1",
+  "outsideViewport": []
+}

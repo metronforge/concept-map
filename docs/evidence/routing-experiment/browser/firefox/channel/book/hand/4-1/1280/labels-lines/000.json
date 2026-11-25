@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:ready_global",
+    "b": "line:ready_global",
+    "band": "tight",
+    "gap": 0.121,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:global_setup",
+    "b": "line:global_setup",
+    "band": "tight",
+    "gap": 0.248,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:returned_server",
+    "b": "line:returned_server",
+    "band": "tight",
+    "gap": 0.155,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:ready_server",
+    "b": "line:ready_server",
+    "band": "tight",
+    "gap": 0.003,
+    "uncertainty": 0.016
+  }
+]

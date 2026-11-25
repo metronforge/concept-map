@@ -1,0 +1,12 @@
+{
+  "id": "examples/dagre/door",
+  "inputSha256": "04447ca50fdba03cf33ae5f4fa4ab2f1a41e7a3b782b7d3f484bc4be02c55978",
+  "routesSha256": "6d0206554c721fad1a831425ac8427451d0338397644a85ac7c1b9ade1feb9dc",
+  "edges": 7,
+  "groups": 0,
+  "ordered": 0,
+  "unique": 0,
+  "conflicting": 0,
+  "segments": 0,
+  "constraints": 0
+}

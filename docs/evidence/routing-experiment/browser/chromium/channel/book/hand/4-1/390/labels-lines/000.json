@@ -1,0 +1,51 @@
+[
+  {
+    "a": "label:config_ready",
+    "b": "line:config_ready",
+    "band": "tight",
+    "gap": 0.105,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:ready_global",
+    "b": "line:ready_global",
+    "band": "tight",
+    "gap": 0.074,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:global_setup",
+    "b": "line:global_setup",
+    "band": "tight",
+    "gap": 0.062,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:setup_web",
+    "b": "line:setup_web",
+    "band": "tight",
+    "gap": 0.096,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:returned_server",
+    "b": "line:returned_server",
+    "band": "tight",
+    "gap": 0.11,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:ready_server",
+    "b": "line:ready_server",
+    "band": "tight",
+    "gap": 0.19,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:probe_ready",
+    "b": "line:ready_server",
+    "band": "tight",
+    "gap": 0.015,
+    "uncertainty": 0.024
+  }
+]

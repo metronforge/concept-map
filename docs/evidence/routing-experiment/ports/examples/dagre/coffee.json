@@ -1,0 +1,13 @@
+{
+  "id": "examples/dagre/coffee",
+  "inputSha256": "215af6f4b5761d00cdd7bb7f0ff60dac4269465f0659e7fe2e1c03de3f112509",
+  "nodes": 3,
+  "frames": 0,
+  "edges": 5,
+  "terminals": 10,
+  "frameTerminals": 0,
+  "gappedTerminals": 0,
+  "maximumGap": 0,
+  "cornerTerminals": 0,
+  "selfLoops": 0
+}

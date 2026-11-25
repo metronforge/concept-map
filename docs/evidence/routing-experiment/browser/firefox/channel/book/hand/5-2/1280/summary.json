@@ -1,0 +1,38 @@
+{
+  "id": "book/hand/5-2",
+  "candidate": "channel",
+  "browser": "firefox",
+  "browserVersion": "157.0",
+  "width": 1280,
+  "inputSha256": "f2aa4e29bf7f8d26364f160703d7945c68f16d37c3bd28233a0cc4d9dfafd9ac",
+  "drawnSha256": "4c0285ac601f5669fb61c9a28f875f03e8ebbe13a63a35f254ec0f5c2acde215",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "text": {
+    "pageFont": 16,
+    "minimum": 14.894129276275635,
+    "maximum": 17.731106281280518,
+    "statesBelowPage": 29,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0,
+  "stateCount": 29,
+  "parts": {
+    "states": [
+      "firefox/channel/book/hand/5-2/1280/states/000.json",
+      "firefox/channel/book/hand/5-2/1280/states/001.json",
+      "firefox/channel/book/hand/5-2/1280/states/002.json"
+    ],
+    "defects": [],
+    "labels-labels": [],
+    "labels-lines": [],
+    "labels-boxes": [
+      "firefox/channel/book/hand/5-2/1280/labels-boxes/000.json"
+    ],
+    "steps-labels": [],
+    "steps-boxes": ["firefox/channel/book/hand/5-2/1280/steps-boxes/000.json"],
+    "steps-steps": [],
+    "lines-boxes": []
+  }
+}

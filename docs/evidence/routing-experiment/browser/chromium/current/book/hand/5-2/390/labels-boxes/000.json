@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:patchIds",
+    "b": "node:sorted",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:offset",
+    "b": "node:ids",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:offset",
+    "b": "node:workers",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fail",
+    "b": "node:blob",
+    "band": "tight",
+    "gap": 0.015,
+    "uncertainty": 0.024
+  }
+]

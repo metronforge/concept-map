@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:test_setup",
+    "b": "node-step:1:the-test-starts-with-its-full-bu",
+    "band": "tight",
+    "gap": 0.178,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:test_setup",
+    "b": "node-step:3:both-active-clocks-advance-while",
+    "band": "tight",
+    "gap": 0.178,
+    "uncertainty": 0.024
+  }
+]

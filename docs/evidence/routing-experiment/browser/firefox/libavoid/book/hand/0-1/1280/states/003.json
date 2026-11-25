@@ -1,0 +1,37 @@
+[
+  {
+    "scenario": "combined",
+    "step": "node-sends-the-request-not-the-p",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "combined",
+    "step": "the-response-cookie-goes-into-th",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "combined",
+    "step": "a-cookie-login-carries-over-to-t",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "combined",
+    "step": "after-the-test-teardown-runs-in",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "combined",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  }
+]

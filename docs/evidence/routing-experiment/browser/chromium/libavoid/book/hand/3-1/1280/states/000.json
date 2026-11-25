@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "page-handlers-get-the-first-turn",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "unhandled-page-requests-enter-th",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "fallback-keeps-the-mock-reachabl",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "overrides-stay-on-this-request",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "continue-ends-the-chain",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "fulfill-supplies-a-response-abor",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "worker-ownership-is-a-separate-c",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "a-second-decision-throws",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "fallback",
+    "step": "page-b-calls-fallback-page-a-get",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  }
+]

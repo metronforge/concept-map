@@ -1,0 +1,40 @@
+{
+  "axis": 1,
+  "coordinate": 422,
+  "start": 241,
+  "end": 701,
+  "segments": [
+    {
+      "edge": "server_app",
+      "segment": 1,
+      "start": 241,
+      "end": 701,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "request_cookies",
+      "segment": 2,
+      "start": 360,
+      "end": 461,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "page_app",
+      "segment": 2,
+      "start": 581,
+      "end": 701,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 360, "end": "low" },
+    { "before": 1, "after": 0, "at": 461, "end": "high" },
+    { "before": 2, "after": 0, "at": 581, "end": "low" }
+  ],
+  "order": [1, 2, 0],
+  "unique": false,
+  "cycle": []
+}

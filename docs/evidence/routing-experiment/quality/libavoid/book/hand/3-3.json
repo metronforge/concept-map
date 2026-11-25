@@ -1,0 +1,105 @@
+{
+  "id": "book/hand/3-3",
+  "candidate": "libavoid",
+  "resolvedSha256": "ebb0ef78624f7dfc187d9d5fb0ddb8b1fdab141fe6149ba4316099181cf0bc1a",
+  "nodes": 13,
+  "edges": 4,
+  "quality": {
+    "hard": 1,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": [
+        {
+          "a": "label:missing",
+          "b": "node:read",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:missing",
+          "b": "node:error",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:hook",
+          "b": "node:fixture",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:hook",
+          "b": "node:hookEnd",
+          "band": "tight",
+          "gap": 0.001
+        },
+        {
+          "a": "label:releaseOne",
+          "b": "node:bodies",
+          "band": "tight",
+          "gap": 0.24
+        },
+        {
+          "a": "label:releaseOne",
+          "b": "node:one",
+          "band": "tight",
+          "gap": 0.24
+        }
+      ]
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:releaseOne",
+          "b": "node-step:0:bodies-stay-on-the-server",
+          "band": "defect",
+          "gap": -0.332
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 4,
+      "forward": 0,
+      "share": 0,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 0,
+        "share": 0
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 1,
+        "share": 0.5,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 37.71,
+      "height": 58.57
+    }
+  },
+  "bends": 1,
+  "routeLength": 238,
+  "routingTimeMs": null,
+  "inputSha256": "0bb88df0114e19104384a40ddc8cba4914883017202c7fdec71e56902b375b0e",
+  "routesSha256": "6723ed8d52f74eacc1aa3982ed082a3d65c01bf09627dd0619646fe4ff3d10f0",
+  "outsideViewport": []
+}

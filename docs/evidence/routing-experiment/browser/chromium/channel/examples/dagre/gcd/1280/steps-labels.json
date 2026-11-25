@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:input",
+    "b": "step:input",
+    "band": "tight",
+    "gap": 0.219,
+    "uncertainty": 0.016
+  }
+]

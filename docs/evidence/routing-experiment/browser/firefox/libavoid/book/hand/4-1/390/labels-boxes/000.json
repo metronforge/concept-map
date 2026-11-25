@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:ready_global",
+    "b": "node:global",
+    "band": "tight",
+    "gap": 0.257,
+    "uncertainty": 0.024
+  }
+]

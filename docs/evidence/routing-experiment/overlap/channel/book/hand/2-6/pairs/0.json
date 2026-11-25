@@ -1,0 +1,12 @@
+{
+  "edges": ["load", "release"],
+  "length": 9,
+  "spans": [
+    {
+      "axis": "x",
+      "coordinate": 694,
+      "start": 196,
+      "end": 205
+    }
+  ]
+}

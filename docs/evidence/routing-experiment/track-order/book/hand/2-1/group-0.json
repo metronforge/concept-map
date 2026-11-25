@@ -1,0 +1,28 @@
+{
+  "axis": 1,
+  "coordinate": 329,
+  "start": 352,
+  "end": 421,
+  "segments": [
+    {
+      "edge": "hit_click",
+      "segment": 0,
+      "start": 352,
+      "end": 360,
+      "low": null,
+      "high": -1
+    },
+    {
+      "edge": "hit_retry",
+      "segment": 0,
+      "start": 352,
+      "end": 421,
+      "low": null,
+      "high": -1
+    }
+  ],
+  "constraints": [{ "before": 0, "after": 1, "at": 360, "end": "high" }],
+  "order": [0, 1],
+  "unique": true,
+  "cycle": []
+}

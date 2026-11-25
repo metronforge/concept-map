@@ -1,0 +1,12 @@
+{
+  "id": "examples/elk/same-rank",
+  "inputSha256": "a00e2a41791fdf35eeee9c8e5ae04d76462d5ce50421236de4418ff01d664a25",
+  "routesSha256": "aeefbfe76b1d1d45105534f5480563f1aed370a8c0009f3da8561645dfd7306d",
+  "edges": 3,
+  "groups": 0,
+  "ordered": 0,
+  "unique": 0,
+  "conflicting": 0,
+  "segments": 0,
+  "constraints": 0
+}

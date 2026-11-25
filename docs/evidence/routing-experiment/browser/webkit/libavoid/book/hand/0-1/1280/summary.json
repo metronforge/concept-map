@@ -1,0 +1,37 @@
+{
+  "id": "book/hand/0-1",
+  "candidate": "libavoid",
+  "browser": "webkit",
+  "browserVersion": "27.2",
+  "width": 1280,
+  "inputSha256": "787f123f3c7a65cdca963c04cb878bd9e5415b5deefe088ce71e7f34d52e4e76",
+  "drawnSha256": "ac849ec71a0fcd4c87c02bd2f89497f12338d9206e21344b826e64248b758a5b",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "text": {
+    "pageFont": 16,
+    "minimum": 14.753587805706522,
+    "maximum": 17.563795006793477,
+    "statesBelowPage": 35,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0,
+  "stateCount": 35,
+  "parts": {
+    "states": [
+      "webkit/libavoid/book/hand/0-1/1280/states/000.json",
+      "webkit/libavoid/book/hand/0-1/1280/states/001.json",
+      "webkit/libavoid/book/hand/0-1/1280/states/002.json",
+      "webkit/libavoid/book/hand/0-1/1280/states/003.json"
+    ],
+    "defects": [],
+    "labels-labels": [],
+    "labels-lines": [],
+    "labels-boxes": [],
+    "steps-labels": [],
+    "steps-boxes": ["webkit/libavoid/book/hand/0-1/1280/steps-boxes/000.json"],
+    "steps-steps": ["webkit/libavoid/book/hand/0-1/1280/steps-steps/000.json"],
+    "lines-boxes": ["webkit/libavoid/book/hand/0-1/1280/lines-boxes/000.json"]
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "id": "book/hand/1-2",
+  "candidate": "current",
+  "resolvedSha256": "6d7d783d351d8770c9eb1294e33671a427d245e635b987430213958cd36fae4c",
+  "nodes": 15,
+  "edges": 12,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:browserA",
+          "b": "step:browserA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:contextA",
+          "b": "step:contextA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:pageA",
+          "b": "step:pageA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:mainA",
+          "b": "step:mainA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:childA",
+          "b": "step:childA",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:browserB",
+          "b": "step:browserB",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:contextB",
+          "b": "step:contextB",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:pageB",
+          "b": "step:pageB",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:mainB",
+          "b": "step:mainB",
+          "band": "tight",
+          "gap": 0
+        },
+        {
+          "a": "label:childB",
+          "b": "step:childB",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 12,
+      "forward": 10,
+      "share": 0.833,
+      "nonReturn": {
+        "edges": 12,
+        "forward": 10,
+        "share": 0.833
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 34.29,
+      "height": 57.33
+    }
+  },
+  "bends": 0,
+  "routeLength": 456,
+  "routingTimeMs": null
+}

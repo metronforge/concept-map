@@ -1,0 +1,58 @@
+{
+  "id": "examples/elk/same-rank",
+  "candidate": "current",
+  "browser": "firefox",
+  "browserVersion": "157.0",
+  "width": 1280,
+  "inputSha256": "57defd1eec9a3f5977d26bca0c262ac78a2d3352258b59f9e5b38b2d5ab4f4e3",
+  "drawnSha256": "77f6c7e16a63a5cb6b14b635d02a1ce3337f0b299ec483341968d35b8a675766",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "states": [
+    {
+      "scenario": "outcomes",
+      "step": "start",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "quick",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "prepare",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "finish",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    },
+    {
+      "scenario": "outcomes",
+      "step": "all",
+      "presentation": "drawing",
+      "hard": 0,
+      "tight": 0
+    }
+  ],
+  "defects": [],
+  "text": {
+    "pageFont": 16,
+    "minimum": 19.046953320503235,
+    "maximum": 19.046953320503235,
+    "statesBelowPage": 0,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0
+}

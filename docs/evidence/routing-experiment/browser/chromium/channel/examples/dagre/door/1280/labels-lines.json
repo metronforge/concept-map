@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:close",
+    "b": "line:close",
+    "band": "tight",
+    "gap": 0.204,
+    "uncertainty": 0.022
+  },
+  {
+    "a": "label:lock",
+    "b": "line:unlock",
+    "band": "tight",
+    "gap": 0.246,
+    "uncertainty": 0.022
+  }
+]

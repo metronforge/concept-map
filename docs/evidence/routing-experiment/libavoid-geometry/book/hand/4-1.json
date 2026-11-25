@@ -1,0 +1,11 @@
+{
+  "id": "book/hand/4-1",
+  "stage": "libavoid geometry only",
+  "inputSha256": "da73433de9fc15ccd6adc90eb1dc2ff2d5d4d0e1d715be7d4063ea55df59d952",
+  "routesSha256": "e7107c739832cf10e470776c578c0bc841eb487c240f8121454335f8d6dd3749",
+  "edges": 9,
+  "routed": 9,
+  "failures": [],
+  "bends": 17,
+  "routeLength": 1619
+}

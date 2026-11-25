@@ -1,0 +1,103 @@
+{
+  "id": "book/hand/2-3",
+  "candidate": "current",
+  "resolvedSha256": "ad2a175a58322a72f84543e1004a7ca9171c8b8a31a3d95e875a548f5d56a1fd",
+  "nodes": 13,
+  "edges": 14,
+  "quality": {
+    "hard": 5,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:next",
+          "b": "line:next",
+          "band": "tight",
+          "gap": 0.181
+        },
+        {
+          "a": "label:then",
+          "b": "line:then",
+          "band": "defect",
+          "gap": -0.122
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [
+        {
+          "a": "label:measure",
+          "b": "step:measure",
+          "band": "tight",
+          "gap": 0.036
+        }
+      ],
+      "boxes": [
+        {
+          "a": "node:box",
+          "b": "step:first",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:stored",
+          "b": "step:first",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:compare",
+          "b": "step:changed",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:changed",
+          "b": "step:changed",
+          "band": "defect",
+          "gap": -0.19
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 14,
+      "forward": 9,
+      "share": 0.643,
+      "nonReturn": {
+        "edges": 12,
+        "forward": 9,
+        "share": 0.75
+      },
+      "returns": {
+        "edges": 2,
+        "backward": 2,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40,
+      "height": 83.43
+    }
+  },
+  "bends": 20,
+  "routeLength": 2336,
+  "routingTimeMs": null
+}

@@ -1,0 +1,39 @@
+{
+  "id": "book/hand/5-1",
+  "candidate": "current",
+  "browser": "firefox",
+  "browserVersion": "157.0",
+  "width": 390,
+  "inputSha256": "b2d9813288b9c59a0c8e54805d37101b478636a01f43eacfbedc473ffc188b8c",
+  "drawnSha256": "1ead0e726cf5825b8f61cc941a184c4d34d56453e9510291d826e1d7bf4ab33c",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "text": {
+    "pageFont": 16,
+    "minimum": 10.55240388969183,
+    "maximum": 10.55240388969183,
+    "statesBelowPage": 26,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0,
+  "stateCount": 26,
+  "parts": {
+    "states": [
+      "firefox/current/book/hand/5-1/390/states/000.json",
+      "firefox/current/book/hand/5-1/390/states/001.json",
+      "firefox/current/book/hand/5-1/390/states/002.json"
+    ],
+    "defects": [],
+    "labels-labels": [],
+    "labels-lines": ["firefox/current/book/hand/5-1/390/labels-lines/000.json"],
+    "labels-boxes": [
+      "firefox/current/book/hand/5-1/390/labels-boxes/000.json",
+      "firefox/current/book/hand/5-1/390/labels-boxes/001.json"
+    ],
+    "steps-labels": ["firefox/current/book/hand/5-1/390/steps-labels/000.json"],
+    "steps-boxes": [],
+    "steps-steps": [],
+    "lines-boxes": []
+  }
+}

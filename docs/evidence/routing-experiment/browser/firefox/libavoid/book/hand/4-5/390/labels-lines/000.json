@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:config_describe",
+    "b": "line:config_describe",
+    "band": "tight",
+    "gap": 0.1,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:hooks_teardown",
+    "b": "line:hooks_teardown",
+    "band": "tight",
+    "gap": 0.018,
+    "uncertainty": 0.024
+  }
+]

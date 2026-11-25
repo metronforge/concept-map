@@ -1,0 +1,44 @@
+[
+  {
+    "a": "label:first_failed",
+    "b": "node:failed",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:failed_later",
+    "b": "node:later",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:failed_stop",
+    "b": "node:stop",
+    "band": "tight",
+    "gap": 0.038,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:budget_dispatch",
+    "b": "node:collect",
+    "band": "tight",
+    "gap": 0.006,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:copies_dispatch",
+    "b": "node:copies",
+    "band": "tight",
+    "gap": 0.229,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:later_stop",
+    "b": "node:later",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  }
+]

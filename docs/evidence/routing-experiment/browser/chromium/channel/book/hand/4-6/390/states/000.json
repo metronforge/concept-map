@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "test-scoped-setup-can-share-the",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "elapsed-time-stays-spent",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "the-body-uses-what-remains",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "an-explicit-fixture-timeout-sele",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "setup-and-teardown-keep-the-same",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "after-hooks-and-default-teardown",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "the-action-has-an-independent-de",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "an-empty-fixture-clock-skips-tea",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "shared",
+    "step": "the-test-starts-with-its-full-bu",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  }
+]

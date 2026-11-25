@@ -1,0 +1,39 @@
+{
+  "axis": 0,
+  "coordinate": 347,
+  "start": 100,
+  "end": 360,
+  "segments": [
+    {
+      "edge": "cr",
+      "segment": 1,
+      "start": 100,
+      "end": 180,
+      "low": -1,
+      "high": 1
+    },
+    {
+      "edge": "cn",
+      "segment": 2,
+      "start": 110,
+      "end": 360,
+      "low": 1,
+      "high": -1
+    },
+    {
+      "edge": "df",
+      "segment": 2,
+      "start": 292,
+      "end": 360,
+      "low": 1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 0, "after": 1, "at": 110, "end": "low" },
+    { "before": 1, "after": 0, "at": 180, "end": "high" },
+    { "before": 1, "after": 2, "at": 292, "end": "low" }
+  ],
+  "order": null,
+  "cycle": [0, 1, 0]
+}

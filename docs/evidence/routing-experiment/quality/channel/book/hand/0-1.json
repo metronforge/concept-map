@@ -1,0 +1,99 @@
+{
+  "id": "book/hand/0-1",
+  "candidate": "channel",
+  "resolvedSha256": "d441d0973d230ec33f3f1a13a6c57071809c5d5398f6035ce99355334b1252e3",
+  "nodes": 20,
+  "edges": 19,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": [
+        {
+          "a": "label:shared",
+          "b": "node:cookies",
+          "band": "tight",
+          "gap": 0.001
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [
+        {
+          "a": "node:cli",
+          "b": "step:cli_config",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:files",
+          "b": "step:files_dispatch",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:apiCookies",
+          "b": "step:mk_ctx",
+          "band": "tight",
+          "gap": 0.095
+        },
+        {
+          "a": "node:client",
+          "b": "step:client_server",
+          "band": "tight",
+          "gap": 0.095
+        }
+      ],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 5,
+      "pairs": [
+        ["mk_ctx", "shared"],
+        ["mk_page", "shared"],
+        ["mk_page", "request_cookies"],
+        ["server_page", "shared"],
+        ["page_app", "shared"]
+      ]
+    },
+    "reading": {
+      "edges": 14,
+      "forward": 9,
+      "share": 0.643,
+      "nonReturn": {
+        "edges": 13,
+        "forward": 8,
+        "share": 0.615
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 0,
+        "share": 0,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40.38,
+      "height": 70.1
+    }
+  },
+  "bends": 25,
+  "routeLength": 2878,
+  "routingTimeMs": null,
+  "inputSha256": "b4c797ac9e7bc7acfd68680c421e2d027811f38c05fee3099ea4791a69a9bbdf",
+  "routesSha256": "2c2371df471b9ba35d8fa765e82a4399bf72f959e8d509166658e6a6561da7ca",
+  "outsideViewport": []
+}

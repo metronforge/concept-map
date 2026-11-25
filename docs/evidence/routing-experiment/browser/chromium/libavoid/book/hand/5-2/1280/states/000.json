@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "one-event-reaches-every-reporter",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "a-thrown-callback-is-recorded",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "how",
+    "step": "each-shard-saves-its-own-zip",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "attachment-paths-stay-separate",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "valid-blobs-have-a-deterministic",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "colliding-test-ids-are-renamed",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "worker-numbers-are-saved-metadat",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "the-merge-result-is-separate",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "fan-out",
+    "step": "a-test-end-event-reaches-the-rep",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  }
+]

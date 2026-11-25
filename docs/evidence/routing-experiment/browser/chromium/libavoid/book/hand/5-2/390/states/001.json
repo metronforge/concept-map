@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "fan-out",
+    "step": "list-receives-the-event-before-b",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "fan-out",
+    "step": "a-thrown-callback-is-recorded-de",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "fan-out",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "save-shards",
+    "step": "each-shard-writes-its-own-blob",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "save-shards",
+    "step": "each-zip-holds-saved-events-and",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "save-shards",
+    "step": "matching-attachment-paths-stay-s",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "save-shards",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "merge-replay",
+    "step": "read-two-valid-blobs-in-shard-or",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "merge-replay",
+    "step": "keep-the-first-t-change-the-seco",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 15
+  },
+  {
+    "scenario": "merge-replay",
+    "step": "the-second-worker-gains-an-offse",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 17
+  }
+]

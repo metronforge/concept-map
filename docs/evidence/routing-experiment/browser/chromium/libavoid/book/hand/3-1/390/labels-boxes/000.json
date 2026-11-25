@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:bo",
+    "b": "node:B",
+    "band": "tight",
+    "gap": 0.224,
+    "uncertainty": 0.021
+  },
+  {
+    "a": "label:df",
+    "b": "node:continue",
+    "band": "tight",
+    "gap": 0.165,
+    "uncertainty": 0.021
+  }
+]

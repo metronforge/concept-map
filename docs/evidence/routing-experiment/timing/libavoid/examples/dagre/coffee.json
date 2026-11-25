@@ -1,0 +1,16 @@
+{
+  "id": "examples/dagre/coffee",
+  "candidate": "libavoid",
+  "inputSha256": "215af6f4b5761d00cdd7bb7f0ff60dac4269465f0659e7fe2e1c03de3f112509",
+  "routesSha256": "8d0cc213231d36c009a9fc8b5008f5b36422cc93cedee6643ff49c233b7b5477",
+  "edges": 5,
+  "routing": {
+    "samplesMs": [
+      1.2467759999999544, 0.959920000000011, 1.0300560000000019,
+      0.9430900000000406, 0.7339049999999929
+    ],
+    "medianMs": 0.959920000000011,
+    "minMs": 0.7339049999999929,
+    "maxMs": 1.2467759999999544
+  }
+}

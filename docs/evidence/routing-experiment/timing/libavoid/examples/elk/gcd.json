@@ -1,0 +1,16 @@
+{
+  "id": "examples/elk/gcd",
+  "candidate": "libavoid",
+  "inputSha256": "39e6b022d4b88d6bf955ea6fd0eafb649ed3397bc60199decd0b45652faa927d",
+  "routesSha256": "9ce72052cb618b7eb9dce9cbbb8f1a045b88f66b9e399530d0b97969d142731a",
+  "edges": 5,
+  "routing": {
+    "samplesMs": [
+      0.2975799999999822, 0.2818189999999845, 0.29792699999995875,
+      0.29405300000001944, 0.2820029999999747
+    ],
+    "medianMs": 0.29405300000001944,
+    "minMs": 0.2818189999999845,
+    "maxMs": 0.29792699999995875
+  }
+}

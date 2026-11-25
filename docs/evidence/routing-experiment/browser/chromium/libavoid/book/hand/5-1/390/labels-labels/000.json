@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:injected",
+    "b": "label:locatorRetry",
+    "band": "tight",
+    "gap": 0.014,
+    "uncertainty": 0.045
+  }
+]

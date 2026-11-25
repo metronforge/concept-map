@@ -1,0 +1,31 @@
+{
+  "axis": 0,
+  "coordinate": 882,
+  "start": 114,
+  "end": 320,
+  "segments": [
+    {
+      "edge": "retry",
+      "segment": 1,
+      "start": 114,
+      "end": 320,
+      "low": -1,
+      "high": -1
+    },
+    {
+      "edge": "blocked",
+      "segment": 3,
+      "start": 180,
+      "end": 210,
+      "low": -1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 1, "after": 0, "at": 180, "end": "low" },
+    { "before": 1, "after": 0, "at": 210, "end": "high" }
+  ],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

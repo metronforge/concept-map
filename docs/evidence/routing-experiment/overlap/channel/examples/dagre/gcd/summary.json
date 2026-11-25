@@ -1,0 +1,13 @@
+{
+  "id": "examples/dagre/gcd",
+  "candidate": "channel",
+  "edges": 5,
+  "referenceSha256": "603f3ab4c72b7f086a5b9b3aabca35a513904c4dc36c9a3102d774c8080852df",
+  "pathsSha256": "fc9ccd263fe6d8996324e7dc8f9cfca8f021e8d396f8ce4cd907b5e294309459",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

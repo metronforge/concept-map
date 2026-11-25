@@ -1,0 +1,44 @@
+[
+  {
+    "scenario": "missing",
+    "step": "set-notfound-to-fallback-to-pass",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "missing",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "update",
+    "step": "update-true-starts-recording-ins",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "update",
+    "step": "the-defaults-are-minimal-mode-an",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "update",
+    "step": "close-the-context-to-export-keep",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "update",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

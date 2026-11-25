@@ -1,0 +1,13 @@
+{
+  "id": "examples/dagre/coffee",
+  "candidate": "current",
+  "edges": 5,
+  "referenceSha256": "dfc3188b83184b3ac999d653f714f48ffbddaacb70becdb7d67619d88b1bd945",
+  "pathsSha256": "7654691b15809106e61ed3183aa26dad76a43168f696469e730518f3048e1e42",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 7,
+  "ignoredDiagonalLength": 605.6162432665128
+}

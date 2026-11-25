@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "moving",
+    "step": "try-again-at-once",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "moving",
+    "step": "wait-20-ms-the-button-stops",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "moving",
+    "step": "scroll-hit-target-click",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "moving",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "replaced",
+    "step": "the-locator-finds-button-1",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "replaced",
+    "step": "the-app-replaces-the-button",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "replaced",
+    "step": "the-outer-loop-finds-button-2",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "replaced",
+    "step": "checks-pass-the-click-lands",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "replaced",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  },
+  {
+    "scenario": "strict",
+    "step": "two-buttons-match",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 5
+  }
+]

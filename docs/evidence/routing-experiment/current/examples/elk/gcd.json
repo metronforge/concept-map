@@ -1,0 +1,76 @@
+{
+  "id": "examples/elk/gcd",
+  "candidate": "current",
+  "resolvedSha256": "3c92ee2a68857dee664820f3232ea0703b8dbb31a53c169749bb73b9b13cd77d",
+  "nodes": 5,
+  "edges": 5,
+  "quality": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:input",
+          "b": "line:input",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:no",
+          "b": "line:no",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:loop",
+          "b": "line:loop",
+          "band": "tight",
+          "gap": 0.19
+        },
+        {
+          "a": "label:yes",
+          "b": "line:yes",
+          "band": "tight",
+          "gap": 0.19
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 0,
+      "pairs": []
+    },
+    "reading": {
+      "edges": 5,
+      "forward": 4,
+      "share": 0.8,
+      "nonReturn": {
+        "edges": 4,
+        "forward": 4,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 29.9,
+      "height": 56.93
+    }
+  },
+  "bends": 6,
+  "routeLength": 1183.7020000000002,
+  "routingTimeMs": null
+}

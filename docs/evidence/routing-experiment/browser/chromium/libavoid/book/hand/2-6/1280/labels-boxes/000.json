@@ -1,0 +1,23 @@
+[
+  {
+    "a": "label:enable",
+    "b": "node:url",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:release",
+    "b": "node:iframe",
+    "band": "tight",
+    "gap": 0.002,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:listens",
+    "b": "node:predicate",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.016
+  }
+]

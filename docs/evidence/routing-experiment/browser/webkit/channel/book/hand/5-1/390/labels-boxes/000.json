@@ -1,0 +1,72 @@
+[
+  {
+    "a": "label:value",
+    "b": "node:producer",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:value",
+    "b": "node:matcher",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:pollRetry",
+    "b": "node:producer",
+    "band": "tight",
+    "gap": 0.203,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:pollRetry",
+    "b": "node:matcher",
+    "band": "tight",
+    "gap": 0.203,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:throws",
+    "b": "node:block",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:throws",
+    "b": "node:thrown",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:blockRetry",
+    "b": "node:block",
+    "band": "tight",
+    "gap": 0.203,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:blockRetry",
+    "b": "node:thrown",
+    "band": "tight",
+    "gap": 0.203,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:deadline",
+    "b": "node:intervals",
+    "band": "tight",
+    "gap": 0.007,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:deadline",
+    "b": "node:stop",
+    "band": "tight",
+    "gap": 0.007,
+    "uncertainty": 0.023
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "id": "examples/dagre/coffee",
+  "candidate": "libavoid",
+  "resolvedSha256": "fa34ffa99716df574dfff48afc1453270f0e1b9320d7568565d612104e43f44f",
+  "nodes": 3,
+  "edges": 5,
+  "quality": {
+    "hard": 0,
+    "constraints": [],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": [
+        {
+          "a": "label:ticket",
+          "b": "node:cashier",
+          "band": "tight",
+          "gap": 0.159
+        },
+        {
+          "a": "label:empty",
+          "b": "node:barista",
+          "band": "tight",
+          "gap": 0.157
+        }
+      ]
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 1,
+      "pairs": [["ready", "offer"]]
+    },
+    "reading": {
+      "edges": 3,
+      "forward": 2,
+      "share": 0.667,
+      "nonReturn": {
+        "edges": 2,
+        "forward": 2,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 50.4,
+      "height": 18.3
+    }
+  },
+  "bends": 8,
+  "routeLength": 1154.7158516444931,
+  "routingTimeMs": null,
+  "inputSha256": "215af6f4b5761d00cdd7bb7f0ff60dac4269465f0659e7fe2e1c03de3f112509",
+  "routesSha256": "8d0cc213231d36c009a9fc8b5008f5b36422cc93cedee6643ff49c233b7b5477",
+  "outsideViewport": []
+}

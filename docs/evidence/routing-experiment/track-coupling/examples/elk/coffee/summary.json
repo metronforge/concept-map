@@ -1,0 +1,13 @@
+{
+  "id": "examples/elk/coffee",
+  "inputSha256": "66c45bb7417949e1fdc491b0e96ac74e97065aa4a33c68450422f16adab13cde",
+  "routesSha256": "f5270a5bdd7d8060efcecb200095e96e511cd67590dc6934a7077d5d15f88e66",
+  "edges": 5,
+  "groups": 2,
+  "bends": 0,
+  "components": 2,
+  "orderedComponents": 2,
+  "blockedComponents": 0,
+  "orderedGroups": 2,
+  "blockedGroups": 0
+}

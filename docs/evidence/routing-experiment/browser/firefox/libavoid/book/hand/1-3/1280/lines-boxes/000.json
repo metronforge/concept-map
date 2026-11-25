@@ -1,0 +1,15 @@
+[
+  { "a": "node:globals", "b": "line:belongs", "band": "tight", "gap": 0.238 },
+  {
+    "a": "node:navigation",
+    "b": "line:belongs",
+    "band": "tight",
+    "gap": 0.238
+  },
+  {
+    "a": "node:interrupted",
+    "b": "line:belongs",
+    "band": "tight",
+    "gap": 0.238
+  }
+]

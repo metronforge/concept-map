@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.016,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:force",
+    "b": "line:force",
+    "band": "tight",
+    "gap": 0.004,
+    "uncertainty": 0.024
+  }
+]

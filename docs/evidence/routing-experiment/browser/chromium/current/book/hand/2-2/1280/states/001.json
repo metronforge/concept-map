@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "chain",
+    "step": "getbyrole-listitem-adds-a-part-n",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "chain",
+    "step": "filter-hastext-product-adds-a-fi",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "chain",
+    "step": "first-adds-nth-0-still-no-search",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "chain",
+    "step": "click-sends-the-recipe-the-call",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "chain",
+    "step": "the-role-engine-finds-three-list",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "chain",
+    "step": "the-text-filter-keeps-the-two-it",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "chain",
+    "step": "nth-0-takes-the-first-of-them",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "chain",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "inner",
+    "step": "the-inner-recipe-was-built-from",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "inner",
+    "step": "three-list-items-are-the-candida",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  }
+]

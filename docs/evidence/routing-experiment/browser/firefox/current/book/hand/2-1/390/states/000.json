@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "you-call-click-on-a-locator",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "how",
+    "step": "the-outer-loop-resolves-the-loca",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "how",
+    "step": "two-matches-fail-at-once",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "how",
+    "step": "the-inner-loop-checks-this-eleme",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "how",
+    "step": "stable-means-the-box-stopped-mov",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "how",
+    "step": "scroll-then-check-the-click-poin",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "how",
+    "step": "the-click-goes-to-the-browser",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "how",
+    "step": "a-failed-check-means-try-again",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "how",
+    "step": "only-a-removed-element-sends-it",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  },
+  {
+    "scenario": "how",
+    "step": "one-timeout-for-both-loops",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 7
+  }
+]

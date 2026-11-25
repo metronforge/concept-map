@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:shared",
+    "b": "line:mk_ctx",
+    "band": "tight",
+    "gap": 0.051,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:shared",
+    "b": "line:shared",
+    "band": "tight",
+    "gap": 0.101,
+    "uncertainty": 0.016
+  }
+]

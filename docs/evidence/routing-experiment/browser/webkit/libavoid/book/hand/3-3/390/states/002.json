@@ -1,0 +1,37 @@
+[
+  {
+    "scenario": "before-all",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "own-context",
+    "step": "create-your-own-context",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "own-context",
+    "step": "read-the-needed-bodies",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "own-context",
+    "step": "dispose-after-reading",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "own-context",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  }
+]

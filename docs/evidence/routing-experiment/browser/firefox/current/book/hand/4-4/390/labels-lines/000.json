@@ -1,0 +1,58 @@
+[
+  {
+    "a": "label:failed_later",
+    "b": "line:failed_stop",
+    "band": "tight",
+    "gap": 0.044,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:budget_collect",
+    "b": "line:budget_collect",
+    "band": "tight",
+    "gap": 0.018,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:collect_dispatch",
+    "b": "line:budget_dispatch",
+    "band": "tight",
+    "gap": 0.047,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:collect_dispatch",
+    "b": "line:collect_dispatch",
+    "band": "tight",
+    "gap": 0.047,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fresh_retry",
+    "b": "line:fresh_retry",
+    "band": "tight",
+    "gap": 0.272,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:copies_dispatch",
+    "b": "line:copies_dispatch",
+    "band": "tight",
+    "gap": 0.063,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:later_stop",
+    "b": "line:dispatch_fresh",
+    "band": "tight",
+    "gap": 0.131,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:later_stop",
+    "b": "line:later_stop",
+    "band": "tight",
+    "gap": 0.087,
+    "uncertainty": 0.024
+  }
+]

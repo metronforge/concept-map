@@ -1,0 +1,20 @@
+{
+  "hard": 1,
+  "constraints": [
+    {
+      "kind": "lanes",
+      "strength": "required",
+      "holds": true,
+      "message": "Lanes are ordered, disjoint and contain their nodes"
+    }
+  ],
+  "crossings": { "count": 1, "pairs": [["toList", "toBlob"]] },
+  "reading": {
+    "edges": 10,
+    "forward": 9,
+    "share": 0.9,
+    "nonReturn": { "edges": 10, "forward": 9, "share": 0.9 },
+    "returns": { "edges": 0, "backward": 0, "share": null, "selfLoops": 0 }
+  },
+  "text": { "width": 40, "height": 47.05 }
+}

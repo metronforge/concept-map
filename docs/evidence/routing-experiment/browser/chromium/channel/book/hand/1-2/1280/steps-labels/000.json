@@ -1,0 +1,65 @@
+[
+  {
+    "a": "label:browserA",
+    "b": "step:browserA",
+    "band": "tight",
+    "gap": 0.219,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:contextA",
+    "b": "step:contextA",
+    "band": "tight",
+    "gap": 0.219,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:mainA",
+    "b": "step:mainA",
+    "band": "tight",
+    "gap": 0.219,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:childA",
+    "b": "step:childA",
+    "band": "tight",
+    "gap": 0.219,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:browserB",
+    "b": "step:browserB",
+    "band": "tight",
+    "gap": 0.219,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:contextB",
+    "b": "step:contextB",
+    "band": "tight",
+    "gap": 0.219,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:mainB",
+    "b": "step:mainB",
+    "band": "tight",
+    "gap": 0.219,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:childB",
+    "b": "step:childB",
+    "band": "tight",
+    "gap": 0.219,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:owns",
+    "b": "node-step:3:closing-that-page-also-closes-it",
+    "band": "tight",
+    "gap": 0.095,
+    "uncertainty": 0.016
+  }
+]

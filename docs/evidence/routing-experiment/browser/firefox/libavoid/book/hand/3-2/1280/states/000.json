@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "match-the-full-request",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "compare-post-bodies-conditionall",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "matching-headers-choose-among-ca",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "use-the-recorded-response",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "follow-recorded-redirects",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "choose-the-missing-policy",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "record-instead-of-replay",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "close-to-export",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  },
+  {
+    "scenario": "match",
+    "step": "the-url-string-and-method-must-m",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 3
+  }
+]

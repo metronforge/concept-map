@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "match-the-full-request",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "compare-post-bodies-conditionall",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "matching-headers-choose-among-ca",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "use-the-recorded-response",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "follow-recorded-redirects",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "choose-the-missing-policy",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "record-instead-of-replay",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "close-to-export",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "match",
+    "step": "the-url-string-and-method-must-m",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

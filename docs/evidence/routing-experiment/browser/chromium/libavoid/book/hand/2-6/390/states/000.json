@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "checks-precede-the-mouse-input",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "an-enabled-waitafter-creates-a-b",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "commit-releases-the-navigation-h",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "an-iframe-does-not-hold-the-clic",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "nowaitafter-skips-the-barrier",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "wait-for-the-url-then-assert-con",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "subscribe-before-the-trigger",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "the-predicate-accepts-an-event",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  },
+  {
+    "scenario": "link",
+    "step": "the-click-checks-the-element-and",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 10
+  }
+]

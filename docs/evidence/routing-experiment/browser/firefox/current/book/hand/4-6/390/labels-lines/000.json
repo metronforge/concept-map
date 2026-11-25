@@ -1,0 +1,44 @@
+[
+  {
+    "a": "label:test_setup",
+    "b": "line:test_setup",
+    "band": "tight",
+    "gap": 0.129,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:setup_body",
+    "b": "line:setup_body",
+    "band": "tight",
+    "gap": 0.047,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fixture_setup",
+    "b": "line:fixture_setup",
+    "band": "tight",
+    "gap": 0.006,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fixture_setup",
+    "b": "line:fixture_teardown",
+    "band": "tight",
+    "gap": 0.044,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:body_after",
+    "b": "line:body_after",
+    "band": "tight",
+    "gap": 0.235,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:action_expired",
+    "b": "line:action_expired",
+    "band": "tight",
+    "gap": 0.041,
+    "uncertainty": 0.024
+  }
+]

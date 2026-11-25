@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:closed",
+    "b": "node:error",
+    "band": "tight",
+    "gap": 0.09,
+    "uncertainty": 0.02
+  }
+]

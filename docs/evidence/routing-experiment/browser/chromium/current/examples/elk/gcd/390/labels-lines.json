@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:input",
+    "b": "line:input",
+    "band": "tight",
+    "gap": 0.029,
+    "uncertainty": 0.018
+  },
+  {
+    "a": "label:no",
+    "b": "line:no",
+    "band": "tight",
+    "gap": 0.126,
+    "uncertainty": 0.018
+  },
+  {
+    "a": "label:assign",
+    "b": "line:assign",
+    "band": "tight",
+    "gap": 0.092,
+    "uncertainty": 0.018
+  },
+  {
+    "a": "label:loop",
+    "b": "line:loop",
+    "band": "tight",
+    "gap": 0.142,
+    "uncertainty": 0.018
+  },
+  {
+    "a": "label:yes",
+    "b": "line:yes",
+    "band": "tight",
+    "gap": 0.093,
+    "uncertainty": 0.018
+  }
+]

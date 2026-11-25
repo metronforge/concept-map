@@ -1,0 +1,16 @@
+[
+  {
+    "a": "label:ready_server",
+    "b": "node:ready",
+    "band": "tight",
+    "gap": 0.036,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:ready_server",
+    "b": "node:global",
+    "band": "tight",
+    "gap": 0.036,
+    "uncertainty": 0.024
+  }
+]

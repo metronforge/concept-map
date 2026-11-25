@@ -1,0 +1,65 @@
+[
+  {
+    "a": "label:request",
+    "b": "line:request",
+    "band": "tight",
+    "gap": 0.011,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:check",
+    "b": "line:check",
+    "band": "tight",
+    "gap": 0.059,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:measure",
+    "b": "line:measure",
+    "band": "tight",
+    "gap": 0.062,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:equal",
+    "b": "line:equal",
+    "band": "tight",
+    "gap": 0.267,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:reached",
+    "b": "line:nextframe",
+    "band": "tight",
+    "gap": 0.19,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:then",
+    "b": "line:then",
+    "band": "tight",
+    "gap": 0.064,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:retry",
+    "b": "line:retry",
+    "band": "tight",
+    "gap": 0.217,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:fresh",
+    "b": "line:fresh",
+    "band": "tight",
+    "gap": 0.105,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:nextframe",
+    "b": "line:nextframe",
+    "band": "tight",
+    "gap": 0.19,
+    "uncertainty": 0.024
+  }
+]

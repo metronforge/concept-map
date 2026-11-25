@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "restore",
+    "step": "outer-then-inner-test-use-overri",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "restore",
+    "step": "to-get-a-real-undefined-supply-i",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "restore",
+    "step": "undefined-goes-back-to-the-confi",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "restore",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "automatic",
+    "step": "worker-auto-fixtures-start-first",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "automatic",
+    "step": "beforeall-and-afterall-start-wor",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "automatic",
+    "step": "test-fixtures-of-a-beforeall-end",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "automatic",
+    "step": "tests-and-beforeeach-start-test",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "automatic",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  },
+  {
+    "scenario": "report",
+    "step": "title-renames-the-report-step-an",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

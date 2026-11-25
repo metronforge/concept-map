@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "local",
+    "step": "the-server-side-finds-the-object",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "local",
+    "step": "chromium-input-has-its-own-ids-b",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "local",
+    "step": "after-browser-input-and-server-w",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "local",
+    "step": "the-matching-await-returns-succe",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "local",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 1
+  },
+  {
+    "scenario": "failure",
+    "step": "the-client-sends-the-click-reque",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "failure",
+    "step": "the-server-waits-for-save-no-bro",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "failure",
+    "step": "call-id-7-returns-with-an-error",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "failure",
+    "step": "the-client-adds-locator-click-be",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "failure",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 2
+  }
+]

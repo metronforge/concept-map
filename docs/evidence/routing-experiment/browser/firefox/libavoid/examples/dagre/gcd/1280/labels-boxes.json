@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:loop",
+    "b": "node:result",
+    "band": "tight",
+    "gap": 0.046,
+    "uncertainty": 0.016
+  }
+]

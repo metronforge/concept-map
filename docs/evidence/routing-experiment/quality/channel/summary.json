@@ -1,0 +1,32 @@
+{
+  "candidate": "channel",
+  "stage": "fixed viewport and shared font-table annotation placement",
+  "node": "v26.13.1",
+  "lockSha256": "ffe09a705d81ac410d9462e8d9e0b6f77ed71f6cd392ad37cfeb881282309f2c",
+  "experimentLockSha256": "065d24be0efc3817d83752cf7e7edf571f34190fedbc0fcdc3b37c112cb67100",
+  "all": {
+    "maps": 29,
+    "edges": 260,
+    "hard": 3,
+    "crossings": 20,
+    "bends": 302,
+    "routeLength": 41154.99329187111
+  },
+  "examples": {
+    "maps": 6,
+    "edges": 34,
+    "hard": 0,
+    "crossings": 1,
+    "bends": 46,
+    "routeLength": 8470.993291871113
+  },
+  "book": {
+    "maps": 23,
+    "edges": 226,
+    "hard": 3,
+    "crossings": 19,
+    "bends": 256,
+    "routeLength": 32684
+  },
+  "outsideViewport": []
+}

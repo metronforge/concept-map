@@ -1,0 +1,12 @@
+{
+  "edges": ["budget_dispatch", "collect_dispatch"],
+  "length": 24,
+  "spans": [
+    {
+      "axis": "y",
+      "coordinate": 111,
+      "start": 204,
+      "end": 228
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "how",
+    "step": "one-event-reaches-every-reporter",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "a-thrown-callback-is-recorded",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "each-shard-saves-its-own-zip",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "attachment-paths-stay-separate",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "valid-blobs-have-a-deterministic",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "colliding-test-ids-are-renamed",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "worker-numbers-are-saved-metadat",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "the-merge-result-is-separate",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "how",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "fan-out",
+    "step": "a-test-end-event-reaches-the-rep",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "fan-out",
+    "step": "list-receives-the-event-before-b",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "fan-out",
+    "step": "a-thrown-callback-is-recorded-de",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "fan-out",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "save-shards",
+    "step": "each-shard-writes-its-own-blob",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "save-shards",
+    "step": "each-zip-holds-saved-events-and",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "save-shards",
+    "step": "matching-attachment-paths-stay-s",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "save-shards",
+    "step": "all",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "merge-replay",
+    "step": "read-two-valid-blobs-in-shard-or",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "merge-replay",
+    "step": "keep-the-first-t-change-the-seco",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "merge-replay",
+    "step": "the-second-worker-gains-an-offse",
+    "presentation": "panel",
+    "hard": 0,
+    "tight": 0
+  }
+]

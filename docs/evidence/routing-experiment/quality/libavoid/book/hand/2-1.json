@@ -1,0 +1,93 @@
+{
+  "id": "book/hand/2-1",
+  "candidate": "libavoid",
+  "resolvedSha256": "9084c5cdcc0200fe956593f6577c462836a85942b4136cdbd5c3bfc871b0fc0f",
+  "nodes": 13,
+  "edges": 14,
+  "quality": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "lanes",
+        "strength": "required",
+        "holds": true,
+        "message": "Lanes are ordered, disjoint and contain their nodes"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [
+        {
+          "a": "label:timeout_outer",
+          "b": "line:timeout_outer",
+          "band": "tight",
+          "gap": 0.18
+        },
+        {
+          "a": "label:hit_retry",
+          "b": "line:hit_click",
+          "band": "tight",
+          "gap": 0.038
+        }
+      ],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": [
+        {
+          "a": "node:retry",
+          "b": "line:click_mouse",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:click",
+          "b": "line:retry_stable",
+          "band": "tight",
+          "gap": 0.238
+        },
+        {
+          "a": "node:inert",
+          "b": "line:retry_stable",
+          "band": "tight",
+          "gap": 0.238
+        }
+      ]
+    },
+    "crossings": {
+      "count": 1,
+      "pairs": [["click_mouse", "hit_retry"]]
+    },
+    "reading": {
+      "edges": 9,
+      "forward": 5,
+      "share": 0.556,
+      "nonReturn": {
+        "edges": 9,
+        "forward": 5,
+        "share": 0.556
+      },
+      "returns": {
+        "edges": 0,
+        "backward": 0,
+        "share": null,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 40,
+      "height": 56.38
+    }
+  },
+  "bends": 13,
+  "routeLength": 1644,
+  "routingTimeMs": null,
+  "inputSha256": "4788ef7a3ecc17ffe87034bbfdadf4fdeb1ca191ea5f76868d1841b4babda8be",
+  "routesSha256": "4e0b7c7336ff2f8f8248402383938f71b3c6b8e8e0b258a6236c7af66bb978dd",
+  "outsideViewport": []
+}

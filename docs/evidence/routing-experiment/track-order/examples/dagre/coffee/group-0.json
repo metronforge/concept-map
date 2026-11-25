@@ -1,0 +1,31 @@
+{
+  "axis": 1,
+  "coordinate": 377.4695,
+  "start": 104.89999999999999,
+  "end": 136.86824431782904,
+  "segments": [
+    {
+      "edge": "empty",
+      "segment": 1,
+      "start": 104.89999999999999,
+      "end": 120.8440207657737,
+      "low": 1,
+      "high": -1
+    },
+    {
+      "edge": "ticket",
+      "segment": 1,
+      "start": 120.62363556971383,
+      "end": 136.86824431782904,
+      "low": 1,
+      "high": -1
+    }
+  ],
+  "constraints": [
+    { "before": 0, "after": 1, "at": 120.62363556971383, "end": "low" },
+    { "before": 0, "after": 1, "at": 120.8440207657737, "end": "high" }
+  ],
+  "order": [0, 1],
+  "unique": true,
+  "cycle": []
+}

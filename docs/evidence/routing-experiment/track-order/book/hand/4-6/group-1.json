@@ -1,0 +1,28 @@
+{
+  "axis": 0,
+  "coordinate": 158,
+  "start": 212,
+  "end": 226,
+  "segments": [
+    {
+      "edge": "body_after",
+      "segment": 0,
+      "start": 212,
+      "end": 226,
+      "low": 1,
+      "high": null
+    },
+    {
+      "edge": "elapsed_body",
+      "segment": 3,
+      "start": 212,
+      "end": 226,
+      "low": -1,
+      "high": null
+    }
+  ],
+  "constraints": [{ "before": 1, "after": 0, "at": 212, "end": "low" }],
+  "order": [1, 0],
+  "unique": true,
+  "cycle": []
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "a": "label:check",
+    "b": "node:stable",
+    "band": "tight",
+    "gap": 0.037,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:changed",
+    "b": "node:changed",
+    "band": "tight",
+    "gap": 0.11,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:reached",
+    "b": "node:visible",
+    "band": "tight",
+    "gap": 0.041,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:reached",
+    "b": "node:enabled",
+    "band": "tight",
+    "gap": 0.041,
+    "uncertainty": 0.024
+  }
+]

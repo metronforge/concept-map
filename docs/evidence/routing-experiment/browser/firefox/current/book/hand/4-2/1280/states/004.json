@@ -1,0 +1,72 @@
+[
+  {
+    "scenario": "test-fails",
+    "step": "browser-starts-again",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "test-fails",
+    "step": "context-a-new-browser-context-fo-2",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "test-fails",
+    "step": "page-a-new-page-in-that-context-2",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "test-fails",
+    "step": "todopage-the-code-before-use-run-2",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "test-fails",
+    "step": "test-2-passes",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "test-fails",
+    "step": "todopage-the-code-after-use-runs-2",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "test-fails",
+    "step": "page-torn-down-2",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "test-fails",
+    "step": "context-the-browser-context-clos-2",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "test-fails",
+    "step": "all",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  },
+  {
+    "scenario": "bad-dependency",
+    "step": "worker-fixture-account-cannot-de",
+    "presentation": "drawing",
+    "hard": 0,
+    "tight": 0
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "a": "label:inner",
+    "b": "node:nth",
+    "band": "tight",
+    "gap": 0.085,
+    "uncertainty": 0.024
+  }
+]

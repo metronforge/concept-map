@@ -1,0 +1,41 @@
+{
+  "id": "book/hand/4-2",
+  "candidate": "libavoid",
+  "browser": "firefox",
+  "browserVersion": "157.0",
+  "width": 1280,
+  "inputSha256": "33c24a9b2ac6c7d1e7a9d7de6f13a8650ee5bd47bc3b240cf4acc016b0389fe7",
+  "drawnSha256": "57bf21c05e51aeaaaae30aacff2e0acb9aea9bf59a842b144584973435c161e2",
+  "fixedGeometryPreserved": true,
+  "measurement": "dom",
+  "text": {
+    "pageFont": 16,
+    "minimum": 14.753655016422272,
+    "maximum": 17.563875019550323,
+    "statesBelowPage": 51,
+    "statesAboveLimit": 0
+  },
+  "maximumOverflow": 0,
+  "statesNotFitting": 0,
+  "stateCount": 51,
+  "parts": {
+    "states": [
+      "firefox/libavoid/book/hand/4-2/1280/states/000.json",
+      "firefox/libavoid/book/hand/4-2/1280/states/001.json",
+      "firefox/libavoid/book/hand/4-2/1280/states/002.json",
+      "firefox/libavoid/book/hand/4-2/1280/states/003.json",
+      "firefox/libavoid/book/hand/4-2/1280/states/004.json",
+      "firefox/libavoid/book/hand/4-2/1280/states/005.json"
+    ],
+    "defects": [],
+    "labels-labels": [],
+    "labels-lines": [
+      "firefox/libavoid/book/hand/4-2/1280/labels-lines/000.json"
+    ],
+    "labels-boxes": [],
+    "steps-labels": [],
+    "steps-boxes": [],
+    "steps-steps": [],
+    "lines-boxes": ["firefox/libavoid/book/hand/4-2/1280/lines-boxes/000.json"]
+  }
+}

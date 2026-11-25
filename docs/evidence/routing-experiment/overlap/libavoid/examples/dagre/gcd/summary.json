@@ -1,0 +1,13 @@
+{
+  "id": "examples/dagre/gcd",
+  "candidate": "libavoid",
+  "edges": 5,
+  "referenceSha256": "603f3ab4c72b7f086a5b9b3aabca35a513904c4dc36c9a3102d774c8080852df",
+  "pathsSha256": "97978fa3480dfd12cd47cf0060004318f236bef917a47cd5294ca8896644e728",
+  "edgePairs": 0,
+  "retracedEdges": 0,
+  "sharedLength": 0,
+  "retracedLength": 0,
+  "ignoredDiagonalSegments": 0,
+  "ignoredDiagonalLength": 0
+}

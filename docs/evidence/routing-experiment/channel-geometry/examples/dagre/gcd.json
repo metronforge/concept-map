@@ -1,0 +1,11 @@
+{
+  "id": "examples/dagre/gcd",
+  "stage": "channel geometry only",
+  "inputSha256": "b2ffa96fbad604ca160d19b84aec320f83667f4bf4707783300ae18f113c636a",
+  "routesSha256": "1946948801cc76a617ab8a2f2a3c0fe30402ed60743b1b33081af0215d6f1ad5",
+  "edges": 5,
+  "routed": 5,
+  "failures": [],
+  "bends": 6,
+  "routeLength": 682.2248243864849
+}

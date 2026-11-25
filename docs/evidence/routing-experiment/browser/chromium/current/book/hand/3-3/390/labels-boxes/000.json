@@ -1,0 +1,37 @@
+[
+  {
+    "a": "label:missing",
+    "b": "node:read",
+    "band": "tight",
+    "gap": 0.25,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:missing",
+    "b": "node:error",
+    "band": "tight",
+    "gap": 0.012,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:hook",
+    "b": "node:fixture",
+    "band": "tight",
+    "gap": 0.012,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:hook",
+    "b": "node:hookEnd",
+    "band": "tight",
+    "gap": 0.012,
+    "uncertainty": 0.023
+  },
+  {
+    "a": "label:releaseOne",
+    "b": "node:one",
+    "band": "tight",
+    "gap": 0.012,
+    "uncertainty": 0.023
+  }
+]

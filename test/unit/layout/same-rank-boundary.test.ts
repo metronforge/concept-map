@@ -153,3 +153,20 @@ test.each([
     expect(isLayoutError({ name: "wrong", kind })).toBe(false);
   },
 );
+
+test("same-rank errors and guards are available from the layout entry point", async () => {
+  const api = await import("../../../src/layout/index.js");
+  for (const [name, kind, guard] of [
+    [
+      "SameRankContradictionError",
+      "same-rank-contradiction",
+      "isSameRankContradictionError",
+    ],
+    ["SameRankRoutingError", "same-rank-routing", "isSameRankRoutingError"],
+  ] as const) {
+    expect(api[name]).toBeTypeOf("function");
+    expect(api[guard]({ name, kind })).toBe(true);
+    expect(api[guard]({ name, kind: "wrong" })).toBe(false);
+    expect(api[guard]({ name: "wrong", kind })).toBe(false);
+  }
+});

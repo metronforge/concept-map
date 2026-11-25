@@ -295,7 +295,11 @@ uses the existing `reading` facts, not a forward-edge requirement.
 carries `placer` and `constraint` for a rejected proposed drawing, and
 `UnsupportedConstraintsError` carries `placer` and `constraints`.
 `LayoutDefectsError` retains its name and full `report` for strict quality
-failures. They extend `LayoutError`, which carries `kind` and `data`.
+failures. `SameRankContradictionError` carries the cycle proving conflicting
+required alignments; `SameRankRoutingError` identifies the hints and arrows
+whose alignment would introduce hard contacts. Their `data` properties have
+the public types `SameRankContradictionData` and `SameRankRoutingData`.
+They extend `LayoutError`, which carries `kind` and `data`.
 All classes and their `is…` guards are exported by the layout entry point.
 Guards check names and kinds rather than prototypes, so duplicate bundles
 work. Rejection of a drawing is not proof that the map is contradictory.

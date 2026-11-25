@@ -26,11 +26,19 @@ export {
   ResultRejectedError,
   UnsupportedConstraintsError,
   LayoutDefectsError,
+  SameRankContradictionError,
+  SameRankRoutingError,
+  isSameRankContradictionError,
+  isSameRankRoutingError,
   isLayoutError,
   isEngineFailedError,
   isResultRejectedError,
   isUnsupportedConstraintsError,
   isLayoutDefectsError,
+} from "./errors.js";
+export type {
+  SameRankContradictionData,
+  SameRankRoutingData,
 } from "./errors.js";
 export type { Measurer } from "./ports.js";
 export { labelsInPanel } from "./stages/presentation.js";

@@ -15,7 +15,8 @@ export function channelInput(
 ) {
   const edges = [];
   for (const { id, from, to } of graph.edges) {
-    const points = original.edges[id].points;
+    const points = original.edges[id]?.points;
+    if (!points || points.length < 2) return null;
     const start = terminal(from, points[0], original.nodes[from], nodes[from]);
     const end = terminal(to, points.at(-1)!, original.nodes[to], nodes[to]);
     if (!start || !end) return null;

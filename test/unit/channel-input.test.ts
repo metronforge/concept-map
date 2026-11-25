@@ -41,3 +41,25 @@ it("keeps translated ports and their outward sides after boxes move", () => {
     ],
   });
 });
+
+it("rejects an arrow without engine ports so the caller can fall back", () => {
+  const graph = {
+    nodes: [],
+    lanes: [],
+    edges: [{ id: "ab", from: "a", to: "b" }],
+  };
+  const nodes: import("../../src/layout/types.js").LayoutResult["nodes"] = {
+    a: [0, 0, 10, 10],
+    b: [30, 0, 10, 10],
+  };
+  expect(
+    channelInput(graph, { nodes, edges: {}, lanes: {} }, nodes),
+  ).toBeNull();
+  expect(
+    channelInput(
+      graph,
+      { nodes, edges: { ab: { points: [] } }, lanes: {} },
+      nodes,
+    ),
+  ).toBeNull();
+});

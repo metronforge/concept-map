@@ -28,17 +28,17 @@
     "uncertainty": 0.024
   },
   {
-    "a": "label:inner",
-    "b": "line:find",
-    "band": "tight",
-    "gap": 0.042,
-    "uncertainty": 0.024
-  },
-  {
     "a": "label:inside",
     "b": "line:inside",
     "band": "tight",
     "gap": 0.131,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:find",
+    "b": "line:find",
+    "band": "tight",
+    "gap": 0.076,
     "uncertainty": 0.024
   },
   {

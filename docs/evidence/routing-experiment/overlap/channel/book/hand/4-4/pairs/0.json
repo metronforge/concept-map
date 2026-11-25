@@ -1,12 +1,12 @@
 {
-  "edges": ["first_failed", "dispatch_fresh"],
-  "length": 30,
+  "edges": ["budget_dispatch", "collect_dispatch"],
+  "length": 27,
   "spans": [
     {
-      "axis": "x",
-      "coordinate": 417,
-      "start": 116,
-      "end": 146
+      "axis": "y",
+      "coordinate": 111,
+      "start": 201,
+      "end": 228
     }
   ]
 }

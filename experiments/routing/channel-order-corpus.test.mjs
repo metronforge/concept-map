@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { inputs, sameRankInputs } from "./inputs.mjs";
 import { prepare } from "./prepare.mjs";
-import { routeChannel } from "./channel.mjs";
+import { routeIndependent as routeChannel } from "./channel-independent.mjs";
 import { orderChannels } from "./channel-order.mjs";
 import { overlapAudit } from "./overlap.mjs";
 import { hash } from "./metrics.mjs";
@@ -95,11 +95,10 @@ test("every corpus overlap receives an order or a checked conflict without chang
     }));
     assert.deepEqual(orderChannels(reversed).map(named), groups.map(named));
     assert.deepEqual(routes, before);
-    const base = item.id.endsWith("same-rank")
-      ? "same-rank/timing"
-      : "channel-geometry";
     const stored = JSON.parse(
-      readFileSync(`docs/evidence/routing-experiment/${base}/${item.id}.json`),
+      readFileSync(
+        `docs/evidence/routing-experiment/track-order/${item.id}/summary.json`,
+      ),
     );
     assert.equal(hash(JSON.stringify(routes)), stored.routesSha256);
   }

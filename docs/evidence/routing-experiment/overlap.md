@@ -1,27 +1,26 @@
 # Arrows sharing the same line
 
-The channel prototype has more coincident orthogonal routes than either
-libavoid or the reference drawings. This audit measures the shared runs that
+After [ordered spacing](spacing.md), channel has 201 units of coincident
+orthogonal routes, between libavoid’s 145.50 and the reference’s 486.00. This audit measures the shared runs that
 the crossing count in `check()` excludes. It does not change that checker,
 its thresholds, any route, or any earlier report.
 
 | Routes             | Maps with shared runs | Edge pairs | Shared length | Retraced edges |
 | ------------------ | --------------------: | ---------: | ------------: | -------------: |
 | Current examples   |                 0 / 6 |          0 |          0.00 |              0 |
-| Channel examples   |                 4 / 6 |         10 |        501.25 |              0 |
+| Channel examples   |                 0 / 6 |          0 |          0.00 |              0 |
 | libavoid examples  |                 0 / 6 |          0 |          0.00 |              0 |
 | Current book maps  |                7 / 23 |         14 |        486.00 |              0 |
-| Channel book maps  |               11 / 23 |         32 |       2153.00 |              0 |
+| Channel book maps  |                8 / 23 |         12 |        201.00 |              0 |
 | libavoid book maps |                8 / 23 |         12 |        145.50 |              0 |
 | Current total      |                7 / 29 |         14 |        486.00 |              0 |
-| Channel total      |               15 / 29 |         42 |       2654.25 |              0 |
+| Channel total      |                8 / 29 |         12 |        201.00 |              0 |
 | libavoid total     |                8 / 29 |         12 |        145.50 |              0 |
 
-For example, channel edges `open` and `close` on the ELK-placed door share
-the vertical line at x=541.1455 from y=46 to y=96, a length of 50 units.
-The candidate's one example crossing therefore does not imply that its
-arrows remain separately visible. Libavoid has no exact orthogonal shared
-runs in the six examples, but it still has them in eight book maps.
+Neither candidate now shares exact orthogonal runs in the six examples.
+Both retain shared runs in eight book maps. Channel keeps complete terminal
+runs fixed; the [spacing report](spacing.md) lists their lengths and explains
+why separating those stems requires extra bends near fixed ports.
 
 ## Method and limits
 
@@ -55,8 +54,8 @@ routes must preserve the exact ports and sides, avoid boxes, fit the available
 channel width, and be checked again for crossings and annotation contacts.
 Simply shifting whole paths would violate those fixed attachments.
 
-The result supports prioritising channel spacing before a production
-recommendation. It does not select libavoid: geometry, annotation defects,
+The result meets the author’s shared-line target of at most twice libavoid.
+It does not establish minimum visible clearance between strokes. It does not select libavoid: geometry, annotation defects,
 browser text size, runtime download and licence obligations remain separate
 parts of the comparison. The later [viewport change](viewport.md) moves two
 routes without changing any shared spans; its local pictures are linked there.
@@ -80,7 +79,7 @@ Each `pairs/<index>.json` records the two edge IDs and their shared spans;
 this corpus has none. An x-axis span runs horizontally at y=`coordinate`;
 a y-axis span runs vertically at x=`coordinate`.
 Each candidate's top-level `summary.json` separates example and book totals
-and records Node and both dependency lock hashes. The 158 reports contain
+and records Node and both dependency lock hashes. The reports contain
 one subject each and are at most 40 lines.
 
 The runner checks every candidate's geometry independently before auditing

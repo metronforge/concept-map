@@ -9,13 +9,12 @@
     }
   ],
   "crossings": {
-    "count": 7,
+    "count": 5,
     "pairs": [
       ["mk_ctx", "shared"],
       ["mk_page", "shared"],
       ["mk_page", "request_cookies"],
       ["server_page", "shared"],
-      ["server_page", "request_cookies"],
       ["page_app", "shared"]
     ]
   },

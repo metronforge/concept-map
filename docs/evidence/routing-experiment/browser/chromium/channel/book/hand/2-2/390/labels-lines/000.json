@@ -35,13 +35,6 @@
     "uncertainty": 0.024
   },
   {
-    "a": "label:inner",
-    "b": "line:find",
-    "band": "tight",
-    "gap": 0.007,
-    "uncertainty": 0.024
-  },
-  {
     "a": "label:inside",
     "b": "line:inside",
     "band": "tight",
@@ -50,16 +43,9 @@
   },
   {
     "a": "label:find",
-    "b": "line:inner",
-    "band": "tight",
-    "gap": 0.007,
-    "uncertainty": 0.024
-  },
-  {
-    "a": "label:find",
     "b": "line:find",
     "band": "tight",
-    "gap": 0.007,
+    "gap": 0.089,
     "uncertainty": 0.024
   },
   {
@@ -67,6 +53,13 @@
     "b": "line:enter",
     "band": "tight",
     "gap": 0.008,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:rest",
+    "b": "line:rest",
+    "band": "tight",
+    "gap": 0.039,
     "uncertainty": 0.024
   }
 ]

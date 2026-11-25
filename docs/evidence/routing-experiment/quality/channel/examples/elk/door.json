@@ -1,7 +1,7 @@
 {
   "id": "examples/elk/door",
   "candidate": "channel",
-  "resolvedSha256": "79f46c954af803b6549ad01b1fae0b7933ede9185d6d64d0327b3ded2be85598",
+  "resolvedSha256": "1bccbb108a140dc72dea28611d20fea0d2647f86b5796db7046ff71d46810bed",
   "nodes": 5,
   "edges": 7,
   "quality": {
@@ -10,27 +10,20 @@
     "labels": {
       "labels": [
         {
-          "a": "label:open",
-          "b": "label:close",
+          "a": "label:close",
+          "b": "label:finish",
           "band": "tight",
           "gap": 0.001
         },
         {
-          "a": "label:open",
-          "b": "label:lock",
+          "a": "label:unlock",
+          "b": "label:blocked",
           "band": "tight",
           "gap": 0.001
         }
       ],
       "lines": [],
-      "boxes": [
-        {
-          "a": "label:blocked",
-          "b": "node:locked",
-          "band": "tight",
-          "gap": 0.001
-        }
-      ]
+      "boxes": []
     },
     "steps": {
       "labels": [],
@@ -69,6 +62,6 @@
   "routeLength": 2205.763999999999,
   "routingTimeMs": null,
   "inputSha256": "b2ee3749fd033bd7eb725f46ec93901f26799f0a91c60d22d883496473143b30",
-  "routesSha256": "e965969b369a2019919e129853096ae4acc09167b5b5f0f333db0059683a2f9a",
+  "routesSha256": "ddf777f645688f451b53b0b4a966167f078ca786fcafeacebb63a441337f4ced",
   "outsideViewport": []
 }

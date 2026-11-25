@@ -14,10 +14,17 @@
     "uncertainty": 0.024
   },
   {
+    "a": "label:fixture_setup",
+    "b": "node:ownSetup",
+    "band": "tight",
+    "gap": 0.001,
+    "uncertainty": 0.024
+  },
+  {
     "a": "label:after_teardown",
     "b": "node:after",
     "band": "tight",
-    "gap": 0.104,
+    "gap": 0.147,
     "uncertainty": 0.024
   }
 ]

@@ -1,18 +1,12 @@
 {
   "edges": ["runs", "find"],
-  "length": 130,
+  "length": 14,
   "spans": [
     {
       "axis": "x",
       "coordinate": 199,
       "start": 252,
-      "end": 270
-    },
-    {
-      "axis": "y",
-      "coordinate": 270,
-      "start": 199,
-      "end": 311
+      "end": 266
     }
   ]
 }

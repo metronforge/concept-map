@@ -1,120 +1,84 @@
-# Work needed for a production channel router
+# Work needed before a channel router can ship
 
-The channel prototype demonstrates fixed-port path finding on all 29 inputs,
-not a finished routing stage. Its small download excludes several substantial
-pieces of work, especially keeping neighbouring arrows separate. This report
-assesses those missing pieces from the current code and recorded measurements;
-it does not select a router or authorise production integration.
+The experiment now demonstrates bounded path finding and ordered parallel
+spacing on 29 placed maps. It meets the author's numeric routing targets;
+[the spacing report](spacing.md) records the changes and remaining shared
+terminal runs. This is evidence for selecting a router, not permission to
+integrate it into the package.
 
 ## What the prototype establishes
 
-The [geometry reports](channel-geometry/summary.json) cover all 260 edges,
-including two self-loops and the frame endpoint. Independent audits find no
-changed port, wrong attachment side or unwanted node contact. Repeated runs
-are deterministic on this corpus. Each edge uses its own channel graph and
-minimises bends, then length; other edges do not influence that search.
+All 260 edges retain exact ports and sides, avoid closed node boxes and stay
+inside their fixed viewports. The result is deterministic on this corpus.
+There are 3 hard annotation defects, 20 crossings, 302 bends and 201 units of
+pair-weighted shared line across 12 edge pairs in eight maps. The two extra
+aligned-box inputs retain their earlier drawings and satisfy alignment.
 
-The [quality reports](quality.md) retain 3 hard defects, 17 crossings and 302
-bends. The [shared-line audit](overlap.md) adds a separate limitation: 42 edge
-pairs share 2654.25 units across 15 maps. All route centre lines now stay
-inside their fixed viewports. Neither the crossing count nor successful path finding establishes
-that arrows remain distinct or fully visible.
+Shared runs receive coupled orders and coordinates together. Conflicting
+joins allow counted crossings. A conservative geometry guard keeps the
+independent routes if the assignment fails. All 14 changed corpus maps use
+the new spacing. No claim of completeness or optimal coordinates follows.
 
 ## Effort by missing capability
 
-The effort classes below describe the kind of engineering still needed, not
-elapsed-time estimates. **High** means a routing or presentation design remains
-unproven; **bounded** means adapting an existing mechanism and verifying its
-contract. A delivery date would be speculative before the high-effort parts
-work on the difficult inputs.
+These classes describe engineering uncertainty, not delivery dates.
 
-| Capability                      | Evidence and missing work                                                                                                                                                                                                                              | Effort                                                                        |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
-| Separate parallel arrows        | Independent shortest paths share long runs. Routes need a consistent order across adjoining channels, space for each track, and connections back to fixed ports. Shared stems at an identical port may remain unavoidable.                             | High; the prototype has no joint routing stage.                               |
-| Fit routes in available space   | The graph now restricts coordinates to the viewport and moves exterior tracks into the available margin. No route centre line leaves the viewport. Track capacity, stroke clearance and other paint bounds still need work without moving fixed boxes. | High; finding a path does not establish enough room for its drawing.          |
-| Use source-defined attachments  | Both adapters currently recover exact terminals from reference paths. A production call without old routes needs to supply or choose ports from boxes and side constraints, including gaps, corners, loops and frame endpoints.                        | Bounded adapter work for supplied ports; automatic port choice is unmeasured. |
-| Report failure precisely        | `no channel path` means the constructed graph found none. It does not prove the geometry impossible. Failure, unsupported inputs and a checked result must remain distinct at the routing boundary.                                                    | Bounded contract work; geometric completeness is not established.             |
-| Handle inputs beyond the corpus | Current tests cover fixed fixtures and a few small cases. Tight corridors, many arrows sharing a port, several adjacent loops, scaled coordinates and dense graphs need broader checks.                                                                | Unmeasured; those inputs may expose changes to the graph or spacing design.   |
-| Control runtime growth          | Each edge rebuilds a grid from the boxes; neighbour queries scan the nodes and the priority queue inserts into an array. The recorded warm timings cover only these small maps.                                                                        | Profile after spacing; a shared graph or faster search may be needed.         |
+| Capability                     | Evidence and missing work                                                                                                                                                                                                                                                       | Effort                                                                  |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Separate shared terminal stems | Terminal supporting lines remain pinned; adjoining bends can change lengths; eight maps retain 201 units of overlap. Fan-out bends must preserve exact ports and sides without adding contacts.                                                                                 | Bounded prototype extension, then corpus and broader geometry checks.   |
+| Guarantee visible clearance    | Four-unit spacing shrinks in narrow channels. Exact noncoincidence does not guarantee separation of strokes, markers or text at display scale.                                                                                                                                  | High; needs paint-aware constraints and presentation work.              |
+| Handle general inputs          | Short legs and moved corners can invalidate an assignment; the whole map then keeps independent routes. Nearby routes can become coincident after spacing; the guard does not check inter-route contacts. Dense maps, shared ports, loops and scaled coordinates need coverage. | Unmeasured beyond these small inputs.                                   |
+| Choose ports from source maps  | Current inputs recover fixed terminals from old routes. Source maps need supplied or chosen ports, including gaps, corners, loops and frames.                                                                                                                                   | Bounded for supplied ports; automatic port choice remains unmeasured.   |
+| Control runtime growth         | Every edge builds a grid; searches scan boxes. Compatible ordering may enumerate permutations. Cyclic joins use a single greedy fallback.                                                                                                                                       | Profile larger inputs before choosing data structures or search limits. |
+| Report failures precisely      | A failed graph search or rejected spacing assignment does not prove the map impossible.                                                                                                                                                                                         | Bounded contract work at the future routing port.                       |
 
-These are connected costs. Separating a run can require extra bends near its
-ports, consume space used by a neighbouring route, or change where annotations
-fit. A smaller shared-length total is therefore insufficient: exact ports,
-node avoidance, crossings, hard contacts and viewport bounds must be measured
-again together. The current checker and its bands remain the acceptance basis;
-the independent overlap and clipping facts supplement it.
+Spacing, annotation and presentation interact. Lower overlap alone would not
+justify the change: the report also measures crossings, contacts, bounds and
+browser states. The checker's thresholds and bands remain unchanged.
 
-Consistent track ordering and endpoint connections are the next unresolved
-algorithmic question. A useful experiment must demonstrate separation through
-turns and shared junctions, rather than only translate isolated segments.
-The corpus provides concrete stress cases: channel shared length is 556 units
-in book 4-4, 407 in 4-6 and 374 in 2-2. The ELK door example also has shared
-runs despite having zero reported crossings. These cases are evidence for
-the scope of the problem, not proof that one ordering strategy will solve it.
+## Shared annotation and presentation work
 
-## Work shared by either router
+Both candidates still put labels over node step numbers for `ma` in book
+3-2, `releaseOne` in 3-3 and `throws` in 5-1. Shared annotation placement needs
+further work. Reference maps retain their authored annotations, so their
+14 defects versus the candidates' 3 are not a routing-only improvement.
 
-Routing alone does not remove the three remaining hard defects. Both
-candidates place arrow labels over node step numbers for `ma` in book 3-2,
-`releaseOne` in 3-3 and `throws` in 5-1. Shared annotation placement needs
-further work. The reference keeps its original annotations, so its 14 defects
-versus the candidates' 3 cannot be credited to routing alone.
+Route centre lines fit the viewport, but complete paint bounds remain
+unverified. Book 0-1 can clip badge circles at the boundary. Marker tips,
+stroke widths and glyph bounds also require a separate audit.
 
-Paint bounds need separate attention too. In book 0-1, a channel badge is
-centred at x=0; a libavoid badge is centred near x=418.5 in a 424-unit viewport.
-Both have radius 8. Zero route overflow is not proof that the complete drawing
-fits. Marker tips, strokes and text are outside the current route-bound audit.
+All three browsers cover every step and whole-map state at both widths.
+Both candidates have zero states with displayed hard contacts, but each has
+3784 states with text below page text across the original 29 maps. The channel
+raw narrow example hard total increases to 152; panel presentation hides those
+labels. These retained failures prevent a claim of visual acceptance.
 
-The [example browser reports](browser.md) measure every scenario step and
-whole-map state at 1280 and 390 px in all three browsers. Each route set has
-zero displayed hard contacts, but 291 of 300 states contain text below the
-16 px page size. Of those, 246 have substantial shortfalls and 45 are less
-than 0.001 px below. The unchanged reference has the same result. Fixed-box
-routing and moving arrow labels to the panel cannot enlarge node titles.
-[Book-map browser measurements](book-browser.md) now extend that coverage;
-paint-bound review remains incomplete.
+Production work must preserve the placement/routing/annotation/reporting
+boundaries, unchanged scenario meaning and the independent checker. No public
+routing API, literal `free` support or sketch feature is added here.
 
-Production integration must preserve the division between placement, routing,
-annotation and reporting. It must also retain scenario meaning, use the
-independent checker, and distinguish a routing refusal from a claim about the
-map. Nothing in this experiment adds a public routing API or literal `free`
-support; those changes follow the author's routing decision.
+## Download and libavoid tradeoff
 
-## What choosing libavoid would and would not avoid
+The measured channel runtime now includes ordering, spacing and the geometry
+guard: 3855 gzip bytes, against libavoid's 200989 bytes for adapter, JS and WASM.
+Shared annotations, reporting, player, fonts and CSS are excluded from both.
+The sums of 29 warm map medians are 19.73 ms and 13.40 ms. These measurements
+exclude loading and do not establish a statistically significant advantage.
 
-Libavoid already routes the whole map in one transaction. It has much less
-exact shared line on this corpus: 12 pairs and 145.50 units, with no shared
-runs in the examples. It has 23 crossings against the channel prototype's 17,
-the same 3 hard defects, and the same example text-size failures. It does not
-remove the shared annotation and presentation work above.
+Libavoid has 145.50 units of shared line, 23 crossings and the same three hard
+defects. Its adapter still depends on a corpus-tested buffer for two-unit
+port gaps and narrow corridors. General attachments, optional loading and
+load failures need work. Its distribution obligations and missing rebuild
+and replacement evidence are recorded in the [licence assessment](licences.md).
 
-Its [attachment notes](libavoid-geometry-notes.md) record a 2.5-unit obstacle
-buffer chosen for the corpus's two-unit port gaps and six-unit corridor.
-General gaps and corridors still need an attachment strategy; passing this
-corpus does not establish one. Optional loading, load failures and browser
-startup cost also need production treatment. Distribution preparation remains
-separately assessed in the [licence report](licences.md).
+The author has deferred libavoid. The channel result supports continuing with
+a separate production proposal, subject to the limitations above and the
+author's review of the [decision report](decision.md).
 
-The [runtime measurements](performance.md) are 1237 gzip bytes for channel
-and 200989 for libavoid with its adapter, JS and WASM. These exclude shared
-annotations and reporting. The channel number also excludes the missing
-spacing implementation. Recorded sums of warm map medians are 28.95 ms and
-20.82 ms respectively; they exclude loading and are not browser latency.
-Size and timing must be measured again after implementation changes.
+## Reproduction
 
-The channel option trades a small dependency-free starting point for unresolved
-joint routing work. Libavoid supplies more of that machinery, with a larger
-download and separate attachment and distribution work. Neither is ready to
-ship from these measurements. The [decision report](decision.md) records the
-author's channel-first choice; parallel spacing and paint-bound review remain
-explicitly unfinished.
-
-## Reproducing the assessment
-
-No new numeric evidence is generated here. The [README](README.md) lists the
-geometry and quality checks; [overlap](overlap.md), [browser](browser.md) and
-[performance](performance.md) give their additional commands. Run their
-`--check` forms to compare the recorded evidence without overwriting it.
-The implementation inspected is `channel.mjs`, `channel-grid.mjs`,
-`channel-search.mjs`, `prepare.mjs`, `assemble.mjs`, `route-audit.mjs` and
-`avoid.mjs` under `experiments/routing/`. This assessment changes no drawing.
+The [README](README.md), [spacing](spacing.md), [quality](quality.md),
+[browser](browser.md), [book-browser](book-browser.md) and
+[performance](performance.md) pages give the checks and their scope.
+Use `--check` to reproduce stored facts without overwriting them. This
+assessment changes no drawing or production implementation.

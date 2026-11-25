@@ -3,7 +3,14 @@
     "a": "label:ticket",
     "b": "line:ticket",
     "band": "tight",
-    "gap": 0.054,
+    "gap": 0.128,
+    "uncertainty": 0.037
+  },
+  {
+    "a": "label:ready",
+    "b": "line:order",
+    "band": "tight",
+    "gap": 0.033,
     "uncertainty": 0.037
   },
   {
@@ -29,16 +36,9 @@
   },
   {
     "a": "label:offer",
-    "b": "line:order",
-    "band": "defect",
-    "gap": -2.264,
-    "uncertainty": 0.037
-  },
-  {
-    "a": "label:offer",
-    "b": "line:offer",
-    "band": "defect",
-    "gap": -3.121,
+    "b": "line:ready",
+    "band": "tight",
+    "gap": -0.051,
     "uncertainty": 0.037
   }
 ]

@@ -1,14 +1,14 @@
 [
   {
-    "a": "label:budget_dispatch",
-    "b": "line:budget_dispatch",
+    "a": "label:failed_stop",
+    "b": "line:dispatch_fresh",
     "band": "tight",
-    "gap": 0.041,
+    "gap": 0.054,
     "uncertainty": 0.024
   },
   {
     "a": "label:budget_dispatch",
-    "b": "line:copies_dispatch",
+    "b": "line:budget_dispatch",
     "band": "tight",
     "gap": 0.041,
     "uncertainty": 0.024
@@ -32,6 +32,13 @@
     "b": "line:collect_dispatch",
     "band": "tight",
     "gap": 0.018,
+    "uncertainty": 0.024
+  },
+  {
+    "a": "label:later_stop",
+    "b": "line:later_stop",
+    "band": "tight",
+    "gap": 0.177,
     "uncertainty": 0.024
   }
 ]

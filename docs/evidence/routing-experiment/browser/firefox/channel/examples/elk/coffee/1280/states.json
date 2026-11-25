@@ -4,8 +4,8 @@
   "browser": "firefox",
   "browserVersion": "157.0",
   "width": 1280,
-  "inputSha256": "ad34e9ccf6a74e8d1e8caecaf83931569e9d117ba16f5ea50f7ae5065cf299d3",
-  "drawnSha256": "c46e7ca2a482ed02ead0fc149289b5e50b746538bdfe2e32506ae456869ae969",
+  "inputSha256": "6a05aa58d88f8ba8d3f8304c61e5c7654792a474535d1762360e56e1ff41ebca",
+  "drawnSha256": "5a12d94b72d1fb3ca8724cb65117bbe2056f226b3d00abd75b7a448eb102566e",
   "fixedGeometryPreserved": true,
   "measurement": "dom",
   "states": [
@@ -14,56 +14,56 @@
       "step": "order",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 1
+      "tight": 2
     },
     {
       "scenario": "normal",
       "step": "brew",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 1
+      "tight": 2
     },
     {
       "scenario": "normal",
       "step": "serve",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 1
+      "tight": 2
     },
     {
       "scenario": "normal",
       "step": "all",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 1
+      "tight": 2
     },
     {
       "scenario": "out-of-milk",
       "step": "order",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 1
+      "tight": 2
     },
     {
       "scenario": "out-of-milk",
       "step": "empty",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 1
+      "tight": 2
     },
     {
       "scenario": "out-of-milk",
       "step": "offer",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 1
+      "tight": 2
     },
     {
       "scenario": "out-of-milk",
       "step": "all",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 1
+      "tight": 2
     }
   ],
   "defects": [],

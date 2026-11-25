@@ -2,7 +2,7 @@
 
 This folder records the reference drawings, shared fixed-port inputs and
 geometry from both routers. The [decision report](decision.md) records the
-author's choice to finish channel spacing; libavoid is deferred.
+the completed spacing comparison; libavoid remains deferred.
 The package, its drawings and its existing quality baseline are unchanged.
 [Performance measurements](performance.md) now record five-run routing times
 and browser downloads for these geometry prototypes.
@@ -11,7 +11,7 @@ describes the source and replacement materials a browser distributor needs.
 [Browser measurements](browser.md) and [book measurements](book-browser.md)
 cover every scenario state in three browsers; text-size failures remain.
 [Shared-line measurements](overlap.md) quantify coincident routes; the new
-[track-order](track-order.md) and [bend-coupling](track-coupling.md) steps prepare spacing.
+[ordered spacing](spacing.md) pass reduces shared line to 201 units.
 [Production effort](production-readiness.md) assesses the missing capabilities.
 [Aligned-box measurements](same-rank.md) compare stretched and channel routes.
 [Viewport containment](viewport.md) records the bounded channel search.
@@ -21,7 +21,7 @@ cover every scenario state in three browsers; text-size failures remain.
 | Current example routes (dagre and ELK) |    6 |    34 |            0 |         1 |    45 |      8236.49 |
 | Current book routes (hand)             |   23 |   226 |           14 |        19 |   262 |     35547.26 |
 | Current routes, all inputs             |   29 |   260 |           14 |        20 |   307 |     43783.75 |
-| Channel router                         |   29 |   260 |            3 |        17 |   302 |     41198.99 |
+| Channel router                         |   29 |   260 |            3 |        20 |   302 |     41154.99 |
 | libavoid                               |   29 |   260 |            3 |        23 |   304 |     38762.99 |
 
 ## Files and reproduction
@@ -125,7 +125,7 @@ Both candidate adapters must use this distinction and these same permitted
 sides, including the two corner choices. Channel geometry tests exercise all
 260 connections; libavoid geometry checks now exercise the same set.
 
-## Initial channel geometry
+## Channel geometry
 
 | Geometry measure |    Result |
 | ---------------- | --------: |
@@ -133,7 +133,7 @@ sides, including the two corner choices. Channel geometry tests exercise all
 | Routed edges     | 260 / 260 |
 | Failed edges     |         0 |
 | Bends            |       302 |
-| Route length     |  41198.99 |
+| Route length     |  41154.99 |
 
 `routeChannel(prepare(item))` returns an ordered list of `{ id, points }` or
 `{ id, failure }`. It never changes an input. For each edge, a rectangular grid
@@ -146,7 +146,7 @@ every closed node rectangle. Contact is allowed only at that edge's own node
 terminal; frame interiors remain passable. Terminal sides constrain departure
 and arrival, including corners and gaps.
 
-Dijkstra search retains incoming direction at each intersection and minimises
+The independent search retains incoming direction at each intersection and minimises
 bends first, then length. This is the shortest route on the constructed graph,
 not a claim of optimal routing over the entire plane. Immediate reversals are
 forbidden so a self-loop cannot collapse into an out-and-back line. A missing
@@ -158,10 +158,10 @@ Small fixtures check a blocking box, an obstructed port, a same-port self-loop
 and bend/length priority. The corpus includes both real self-loops and the frame
 endpoint. All 260 edges route without unwanted node contact.
 
-This is one part of the channel candidate. Edges are currently routed
-independently: parallel segments can coincide, and the fixed exterior offset
-does not reserve room for labels. Spreading parallel routes is still needed. Shared label and number placement
-now assembles resolved maps and runs `check()`; see [quality](quality.md).
+The independent paths feed [ordered track spacing](spacing.md): joint orders
+carry through bends, conflicting joins allow counted crossings, and fixed
+terminal runs remain pinned. Shared label and number placement then assembles
+resolved maps and runs `check()`; see [quality](quality.md).
 The shorter total length alone is not a quality improvement.
 All reference maps remain identical.
 
@@ -192,9 +192,9 @@ for that frame endpoint and its geometry rather than silently omit the edge.
 
 The [decision report](decision.md) brings together quality, shared routes,
 browser measurements, downloads, licences and production effort. The author
-has deferred libavoid and requested completed channel spacing. Route containment
-now meets the target, but shared line still exceeds it. Neither candidate is ready to ship.
+has deferred libavoid. Ordered spacing now meets all four numeric routing
+targets; shared line is 201 against a 291-unit limit. Neither candidate is ready to ship.
 
-Parallel channel spacing and complete paint-bound review remain unfinished.
+General terminal fan-outs and complete paint-bound review remain unfinished.
 These gaps are recorded, not waived by the recommendation or by green package
 tests. No feature work or change to the default router is authorised here.

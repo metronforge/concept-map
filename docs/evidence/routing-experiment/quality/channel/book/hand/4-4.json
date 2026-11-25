@@ -1,7 +1,7 @@
 {
   "id": "book/hand/4-4",
   "candidate": "channel",
-  "resolvedSha256": "f041e5fc746395e0546834969c34286afc97e81855255246c40597520b19bcb3",
+  "resolvedSha256": "fbd2803cf48aff4516d401f97cc053b5fd1c47d3cb9e44d2ec3fe4f59920a83c",
   "nodes": 11,
   "edges": 12,
   "quality": {
@@ -27,7 +27,7 @@
       "boxes": [
         {
           "a": "label:first_failed",
-          "b": "node:fresh",
+          "b": "node:failed",
           "band": "tight",
           "gap": 0.001
         },
@@ -41,7 +41,7 @@
           "a": "label:failed_stop",
           "b": "node:stop",
           "band": "tight",
-          "gap": 0.229
+          "gap": 0.038
         },
         {
           "a": "label:budget_dispatch",
@@ -59,7 +59,7 @@
           "a": "label:later_stop",
           "b": "node:later",
           "band": "tight",
-          "gap": 0.212
+          "gap": 0.001
         }
       ]
     },
@@ -72,9 +72,10 @@
       "boxes": []
     },
     "crossings": {
-      "count": 3,
+      "count": 4,
       "pairs": [
         ["failed_later", "later_stop"],
+        ["failed_stop", "dispatch_fresh"],
         ["stop_budget", "fresh_retry"],
         ["dispatch_fresh", "later_stop"]
       ]
@@ -101,9 +102,9 @@
     }
   },
   "bends": 24,
-  "routeLength": 3095,
+  "routeLength": 3071,
   "routingTimeMs": null,
   "inputSha256": "27b75919cc6245a3fab57ea8e9245a73543b91ff8ca536716fae1c855c817ad2",
-  "routesSha256": "7762e1f8c9ebc6d15c154c11df6ed99aca2a3e2bbb089fbe8bb2b90967e49e50",
+  "routesSha256": "c7d900dc7bf2e08cc2969acd7fb3ddf0b50ada90b2ecf6c4b24edb918eaf8722",
   "outsideViewport": []
 }

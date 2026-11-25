@@ -1,7 +1,7 @@
 # Quality with shared annotation placement
 
 These provisional results use the existing routes from both prototypes, with
-one shared annotation pass. Channel routes still need parallel spacing. No
+one shared annotation pass after [ordered spacing](spacing.md). No
 candidate is ready for production and these measurements do not select one.
 
 | Drawing            | Maps | Edges | Hard defects | Crossings | Bends | Route length |
@@ -10,10 +10,10 @@ candidate is ready for production and these measurements do not select one.
 | Channel examples   |    6 |    34 |            0 |         1 |    46 |      8470.99 |
 | libavoid examples  |    6 |    34 |            0 |         1 |    46 |      8418.99 |
 | Current book maps  |   23 |   226 |           14 |        19 |   262 |     35547.26 |
-| Channel book maps  |   23 |   226 |            3 |        16 |   256 |     32728.00 |
+| Channel book maps  |   23 |   226 |            3 |        19 |   256 |     32684.00 |
 | libavoid book maps |   23 |   226 |            3 |        22 |   258 |     30344.00 |
 | Current total      |   29 |   260 |           14 |        20 |   307 |     43783.75 |
-| Channel total      |   29 |   260 |            3 |        17 |   302 |     41198.99 |
+| Channel total      |   29 |   260 |            3 |        20 |   302 |     41154.99 |
 | libavoid total     |   29 |   260 |            3 |        23 |   304 |     38762.99 |
 
 ## Method
@@ -54,8 +54,8 @@ pairs, gaps, constraint verdicts and reading shares remain in each map report.
 | Contact       | Channel | libavoid |
 | ------------- | ------: | -------: |
 | Label / label |   3 / 0 |    5 / 0 |
-| Label / line  |  26 / 0 |   28 / 0 |
-| Label / box   |  54 / 0 |   45 / 0 |
+| Label / line  |  25 / 0 |   28 / 0 |
+| Label / box   |  53 / 0 |   45 / 0 |
 | Step / label  |   2 / 3 |    1 / 3 |
 | Step / box    |  12 / 0 |   15 / 0 |
 | Step / step   |   0 / 0 |    1 / 0 |
@@ -66,7 +66,7 @@ candidates: this checker measures progress between node centres, which do not
 move. Reading share cannot distinguish paths around those fixed boxes.
 Crossings exclude collinear overlaps, so the channel router's coincident
 parallel segments are not penalised by that number. The separate
-[shared-line audit](overlap.md) records 42 channel edge pairs sharing 2654.25
+[shared-line audit](overlap.md) records 12 channel edge pairs sharing 201.00
 units, compared with 12 pairs and 145.50 units for libavoid.
 
 ## Viewport and browser limits
@@ -107,4 +107,4 @@ maps, hashes of both lockfiles, the Node version and all overflowing routes.
 No timing is implied by `routingTimeMs: null`: routing-only five-run samples
 remain in `timing/`. Assembly and reporting are excluded from those samples
 and from the router-only download sizes. Channel geometry, timings and size
-were remeasured after adding viewport bounds; libavoid geometry is unchanged.
+were remeasured after ordered spacing; libavoid geometry is unchanged.

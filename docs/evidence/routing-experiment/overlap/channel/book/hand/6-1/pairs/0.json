@@ -1,18 +1,12 @@
 {
   "edges": ["calls", "screen"],
-  "length": 47,
+  "length": 6,
   "spans": [
     {
       "axis": "x",
       "coordinate": 158,
       "start": 202,
-      "end": 210
-    },
-    {
-      "axis": "y",
-      "coordinate": 210,
-      "start": 158,
-      "end": 197
+      "end": 208
     }
   ]
 }

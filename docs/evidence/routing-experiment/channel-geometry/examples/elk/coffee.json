@@ -2,7 +2,7 @@
   "id": "examples/elk/coffee",
   "stage": "channel geometry only",
   "inputSha256": "66c45bb7417949e1fdc491b0e96ac74e97065aa4a33c68450422f16adab13cde",
-  "routesSha256": "f5270a5bdd7d8060efcecb200095e96e511cd67590dc6934a7077d5d15f88e66",
+  "routesSha256": "f6607968a58bc3153ff97c4d26bc4b9507cb585240bc29a40ab49cb9d8289e2b",
   "edges": 5,
   "routed": 5,
   "failures": [],

@@ -4,69 +4,69 @@
     "step": "all",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 6
+    "tight": 8
   },
   {
     "scenario": "api",
     "step": "you-start-the-runner",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 2
+    "tight": 4
   },
   {
     "scenario": "api",
     "step": "the-runner-loads-the-config",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 3
+    "tight": 5
   },
   {
     "scenario": "api",
     "step": "it-finds-tests-and-groups-them",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 3
+    "tight": 5
   },
   {
     "scenario": "api",
     "step": "the-dispatcher-starts-a-worker",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 4
+    "tight": 6
   },
   {
     "scenario": "api",
     "step": "your-test-asks-for-request",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 4
+    "tight": 6
   },
   {
     "scenario": "api",
     "step": "request-needs-no-browser",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 4
+    "tight": 6
   },
   {
     "scenario": "api",
     "step": "node-sends-the-http-request",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 5
+    "tight": 7
   },
   {
     "scenario": "api",
     "step": "the-request-fixture-owns-its-coo",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 5
+    "tight": 7
   },
   {
     "scenario": "api",
     "step": "after-the-test-the-api-context-i",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 5
+    "tight": 7
   }
 ]

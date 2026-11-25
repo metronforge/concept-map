@@ -1,7 +1,7 @@
 # Routing time and browser download
 
 These measurements cover the current geometry prototypes, not production
-routers. The channel candidate still lacks parallel spacing; neither candidate
+routers. Channel includes ordered track spacing; neither candidate
 places labels or step numbers. Size and speed cannot decide drawing quality.
 
 ## Routing time
@@ -13,8 +13,8 @@ load; there is no timing threshold or claim of statistical significance.
 
 | Candidate | Maps / edges | Sum of map medians, ms | Median map, ms | Smallest map median, ms | Largest map median, ms |
 | --------- | -----------: | ---------------------: | -------------: | ----------------------: | ---------------------: |
-| Channel   |     29 / 260 |                  28.95 |          0.573 |                   0.103 |                  4.601 |
-| libavoid  |     29 / 260 |                  20.82 |          0.615 |                   0.350 |                  1.958 |
+| Channel   |     29 / 260 |                  19.73 |          0.380 |                   0.069 |                  2.750 |
+| libavoid  |     29 / 260 |                  13.40 |          0.386 |                   0.203 |                  1.346 |
 
 Each map/candidate has one warm-up followed by five sequential calls. Candidate
 order alternates across maps. Reports retain all five samples, their median,
@@ -23,9 +23,9 @@ median of five complete corpus runs. The median map is the middle of the 29 map
 medians; it does not describe a particular input size.
 
 The clock covers each synchronous adapter call: channel graph construction and
-search, or libavoid router allocation, shape/connector registration, routing,
+search, coupled ordering, spacing and its geometry guard, or libavoid router allocation, shape/connector registration, routing,
 output conversion and router deletion. Module loading, WASM compilation and
-initialisation, placement, input preparation/copying, geometry audits, output
+initialisation, placement, input preparation/copying, external geometry audits, output
 comparison, reporting and disk writes are excluded. These are warm Node times,
 not browser latency or cold-start measurements. Garbage collection may occur
 inside a sample; no sample is removed or replaced.
@@ -44,7 +44,7 @@ compressing each file separately. WASM is the package's unmodified binary;
 
 | Candidate / asset                                  |   Bytes | Gzip bytes |
 | -------------------------------------------------- | ------: | ---------: |
-| Channel: implementation and adapter (`channel.js`) |   2,526 |      1,237 |
+| Channel: implementation and adapter (`channel.js`) |   9,844 |      3,855 |
 | libavoid: adapter (`avoid.js`)                     |     799 |        493 |
 | libavoid: separately loaded JS (`libavoid.js`)     |  59,889 |     21,846 |
 | libavoid: separately loaded WASM (`libavoid.wasm`) | 476,036 |    178,650 |
@@ -94,5 +94,5 @@ hashes without writing. Without `--check` it also writes browser assets under
 - `download/<candidate>.json`: two reports with browser asset counts and hashes.
 
 The [decision report](decision.md) combines these figures with the quality
-and browser results, including unfinished channel spacing and paint review.
+and browser results, including remaining terminal fan-outs and paint review.
 Changed candidate implementations need new size and timing measurements.

@@ -1,7 +1,7 @@
 {
   "id": "examples/dagre/coffee",
   "candidate": "channel",
-  "resolvedSha256": "36458ad1aad12271e5b16abe664faabb662f548b1b35a0de763dda0fc35a04c3",
+  "resolvedSha256": "a8a94a3a6c9470c42ec8756bb10305c8abb721030bef01d1e859af622efb9a3e",
   "nodes": 3,
   "edges": 5,
   "quality": {
@@ -28,7 +28,7 @@
           "a": "label:empty",
           "b": "node:barista",
           "band": "tight",
-          "gap": 0.06
+          "gap": 0.155
         }
       ]
     },
@@ -69,6 +69,6 @@
   "routeLength": 1154.7158516444931,
   "routingTimeMs": null,
   "inputSha256": "215af6f4b5761d00cdd7bb7f0ff60dac4269465f0659e7fe2e1c03de3f112509",
-  "routesSha256": "af354e479d29bb3240872879522c80a7e6bbae0be0d40326b1f7c00507439001",
+  "routesSha256": "69b0edfefd61de55034fe559bcdc75520375c273c071dd3b3a6443fa1b6ae7f2",
   "outsideViewport": []
 }

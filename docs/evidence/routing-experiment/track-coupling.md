@@ -1,9 +1,13 @@
 # Track orders through shared bends
 
+This report describes the stage before ordered spacing. Its numeric comparison
+is historical; [spacing](spacing.md) records the current result. Order and
+coupling commands still use independent paths so these diagnostics reproduce.
+
 The experiment now connects the [branch orders](track-order.md) across
 coincident right-angle turns. The new `coupleChannels` function chooses orders
-for connected groups together. It does not move routes and is not yet called
-by `routeChannel`. Shared line remains 2654.25 units; the target is 291.00.
+for connected groups together. It does not move routes itself; `routeChannel` now consumes its orders
+through the spacing pass. Independent paths have 2654.25 shared units; the target is 291.00.
 
 | Joint-order result                         | Original 29 maps | Two aligned maps |
 | ------------------------------------------ | ---------------: | ---------------: |
@@ -98,9 +102,7 @@ Corpus tests inspect original path vertices to find all six bend links,
 check every returned branch and bend constraint, and verify route preservation
 and invariance under arrow reversal and input permutation.
 
-All earlier measurements remain unchanged: channel has 3 hard defects,
-17 crossings, 302 bends, route length 41198.99 and no outside routes. Its
-browser download remains 2526 minified / 1237 gzip bytes, excluding these
-unintegrated ordering modules. Libavoid remains 200989 gzip bytes. Timing
-and picture refreshes are unnecessary while router implementations and
-drawings are identical. Existing browser text-size failures remain explicit.
+Before integration, channel had 3 hard defects, 17 crossings, 302 bends,
+41198.99 units of route length and no outside routes. Its 2526 minified / 1237
+gzip bytes excluded these ordering modules. The [spacing report](spacing.md)
+records the integrated result, timing, download and picture refreshes.

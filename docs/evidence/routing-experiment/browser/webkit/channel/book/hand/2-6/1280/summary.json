@@ -4,8 +4,8 @@
   "browser": "webkit",
   "browserVersion": "27.2",
   "width": 1280,
-  "inputSha256": "9779064353202c0423fae4fda894b995fd0f620f026c390e481fd6df31306bf3",
-  "drawnSha256": "6e024b6135ecb96e59a7041a09590aa0b1eab93be781016134e4ad41faf4355c",
+  "inputSha256": "991e72c308a9dea9f5c4ad69d896e5b9cc4a535829d985304c90d61d60ef0d94",
+  "drawnSha256": "cc619c7b9e469eac518590b586d8139ac64d2cc2e41fcb5cc0ab7d622e3716b4",
   "fixedGeometryPreserved": true,
   "measurement": "dom",
   "text": {

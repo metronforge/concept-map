@@ -35,17 +35,17 @@
     "uncertainty": 0.024
   },
   {
-    "a": "label:retry",
+    "a": "label:blocked",
     "b": "line:blocked",
     "band": "tight",
-    "gap": 0.198,
+    "gap": 0.19,
     "uncertainty": 0.024
   },
   {
     "a": "label:retry",
     "b": "line:retry",
     "band": "tight",
-    "gap": 0.198,
+    "gap": 0.007,
     "uncertainty": 0.024
   }
 ]

@@ -1,7 +1,7 @@
 {
   "id": "examples/elk/coffee",
   "candidate": "channel",
-  "resolvedSha256": "ad34e9ccf6a74e8d1e8caecaf83931569e9d117ba16f5ea50f7ae5065cf299d3",
+  "resolvedSha256": "6a05aa58d88f8ba8d3f8304c61e5c7654792a474535d1762360e56e1ff41ebca",
   "nodes": 3,
   "edges": 5,
   "quality": {
@@ -13,14 +13,7 @@
       "boxes": []
     },
     "steps": {
-      "labels": [
-        {
-          "a": "label:offer",
-          "b": "step:order",
-          "band": "tight",
-          "gap": 0.178
-        }
-      ],
+      "labels": [],
       "boxes": [],
       "steps": []
     },
@@ -56,6 +49,6 @@
   "routeLength": 1494.5939999999998,
   "routingTimeMs": null,
   "inputSha256": "66c45bb7417949e1fdc491b0e96ac74e97065aa4a33c68450422f16adab13cde",
-  "routesSha256": "f5270a5bdd7d8060efcecb200095e96e511cd67590dc6934a7077d5d15f88e66",
+  "routesSha256": "f6607968a58bc3153ff97c4d26bc4b9507cb585240bc29a40ab49cb9d8289e2b",
   "outsideViewport": []
 }

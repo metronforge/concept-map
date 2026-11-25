@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { inputs, sameRankInputs } from "./inputs.mjs";
 import { prepare } from "./prepare.mjs";
-import { routeChannel } from "./channel.mjs";
+import { routeIndependent as routeChannel } from "./channel-independent.mjs";
 import { coupleChannels } from "./channel-coupling.mjs";
 import { orderChannels } from "./channel-order.mjs";
 

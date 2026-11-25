@@ -8,9 +8,9 @@
     "maps": 29,
     "edges": 260,
     "hard": 3,
-    "crossings": 17,
+    "crossings": 20,
     "bends": 302,
-    "routeLength": 41198.99329187111
+    "routeLength": 41154.99329187111
   },
   "examples": {
     "maps": 6,
@@ -24,9 +24,9 @@
     "maps": 23,
     "edges": 226,
     "hard": 3,
-    "crossings": 16,
+    "crossings": 19,
     "bends": 256,
-    "routeLength": 32728
+    "routeLength": 32684
   },
   "outsideViewport": []
 }

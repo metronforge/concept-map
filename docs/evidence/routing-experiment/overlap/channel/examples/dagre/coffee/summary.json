@@ -3,10 +3,10 @@
   "candidate": "channel",
   "edges": 5,
   "referenceSha256": "dfc3188b83184b3ac999d653f714f48ffbddaacb70becdb7d67619d88b1bd945",
-  "pathsSha256": "6b34ad2731b5e08cc4fcaf9b0e1a689c4564335b4991259b09637530fc38eb94",
-  "edgePairs": 1,
+  "pathsSha256": "82118d58d54af4866f5201f501d39109704e01e78e9e75ee9b5e61faa3263d39",
+  "edgePairs": 0,
   "retracedEdges": 0,
-  "sharedLength": 0.22038519605987972,
+  "sharedLength": 0,
   "retracedLength": 0,
   "ignoredDiagonalSegments": 0,
   "ignoredDiagonalLength": 0

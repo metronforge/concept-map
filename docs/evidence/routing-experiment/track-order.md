@@ -1,9 +1,13 @@
 # Track order before channel spacing
 
-The experiment now derives an order for coincident straight runs from their
+This report describes the stage before ordered spacing. Its numeric comparison
+is historical; [spacing](spacing.md) records the current result. Order and
+coupling commands still use independent paths so these diagnostics reproduce.
+
+The experiment derives an order for coincident straight runs from their
 entering and leaving branches. This is a separate, executable part of spacing;
-`routeChannel` does not call it yet. No route, label, box or viewport changes.
-The author's shared-line target remains unmet at 2654.25 units against 291.00.
+`routeChannel` now consumes it through coupling and spacing. The diagnostic
+command itself moves no geometry; independent paths have 2654.25 shared units.
 
 | Branch-order result                                  | Original 29 maps | Two aligned maps |
 | ---------------------------------------------------- | ---------------: | ---------------: |
@@ -98,9 +102,7 @@ the valid orders with the solver's result and uniqueness claim. Corpus tests
 cover all 42 edge pairs from the existing overlap audit, preserve every route
 hash and verify invariance under arrow reversal and input permutation.
 
-The existing eight measurement commands still reproduce their reports without
-changes. Channel remains at 3 hard defects, 17 crossings, 302 bends, 41198.99
-units of route length and no outside routes. The measured router download
-remains 2526 minified bytes / 1237 gzip bytes; this separate ordering module is
-not included until integrated. Libavoid remains 200989 gzip bytes. No timing
-refresh or pictures are needed for unchanged implementations and drawings.
+At this earlier stage, channel had 3 hard defects, 17 crossings, 302 bends,
+41198.99 units of route length and no outside routes. Its download was 2526
+minified / 1237 gzip bytes, excluding ordering. The [spacing report](spacing.md)
+records the integrated implementation and fresh measurements.

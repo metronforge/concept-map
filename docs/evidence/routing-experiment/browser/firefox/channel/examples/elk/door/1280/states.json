@@ -4,8 +4,8 @@
   "browser": "firefox",
   "browserVersion": "157.0",
   "width": 1280,
-  "inputSha256": "79f46c954af803b6549ad01b1fae0b7933ede9185d6d64d0327b3ded2be85598",
-  "drawnSha256": "57d04411896816dee1b7448eae83762aec143804a6b422300f61010e7e852092",
+  "inputSha256": "1bccbb108a140dc72dea28611d20fea0d2647f86b5796db7046ff71d46810bed",
+  "drawnSha256": "41b9bd1747a6273bdbf8fcb9d718fe072dde80fdcc15d9a59dda737e224bdb97",
   "fixedGeometryPreserved": true,
   "measurement": "dom",
   "states": [
@@ -14,56 +14,56 @@
       "step": "start",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 13
+      "tight": 3
     },
     {
       "scenario": "locked-door",
       "step": "lock",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 13
+      "tight": 3
     },
     {
       "scenario": "locked-door",
       "step": "try",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 13
+      "tight": 3
     },
     {
       "scenario": "locked-door",
       "step": "unlock",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 13
+      "tight": 3
     },
     {
       "scenario": "locked-door",
       "step": "open",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 13
+      "tight": 3
     },
     {
       "scenario": "locked-door",
       "step": "close",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 13
+      "tight": 3
     },
     {
       "scenario": "locked-door",
       "step": "end",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 13
+      "tight": 3
     },
     {
       "scenario": "locked-door",
       "step": "all",
       "presentation": "drawing",
       "hard": 0,
-      "tight": 13
+      "tight": 3
     }
   ],
   "defects": [],

@@ -4,69 +4,69 @@
     "step": "all",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 5
+    "tight": 4
   },
   {
     "scenario": "combined",
     "step": "you-start-the-runner",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 2
+    "tight": 1
   },
   {
     "scenario": "combined",
     "step": "the-runner-loads-the-config",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 3
+    "tight": 2
   },
   {
     "scenario": "combined",
     "step": "it-finds-tests-and-groups-them",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 3
+    "tight": 2
   },
   {
     "scenario": "combined",
     "step": "the-dispatcher-starts-a-worker",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 4
+    "tight": 3
   },
   {
     "scenario": "combined",
     "step": "your-test-asks-for-fixtures",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 4
+    "tight": 3
   },
   {
     "scenario": "combined",
     "step": "fixtures-start-dependencies-firs",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 4
+    "tight": 3
   },
   {
     "scenario": "combined",
     "step": "browser-launches-a-browser-proce",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 4
+    "tight": 3
   },
   {
     "scenario": "combined",
     "step": "each-test-gets-a-new-context-and",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 5
+    "tight": 4
   },
   {
     "scenario": "combined",
     "step": "page-request-shares-the-context",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 6
+    "tight": 5
   }
 ]

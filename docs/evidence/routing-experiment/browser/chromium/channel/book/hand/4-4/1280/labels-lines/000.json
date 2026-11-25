@@ -7,24 +7,10 @@
     "uncertainty": 0.016
   },
   {
-    "a": "label:budget_dispatch",
-    "b": "line:copies_dispatch",
-    "band": "tight",
-    "gap": 0.155,
-    "uncertainty": 0.016
-  },
-  {
     "a": "label:fresh_retry",
     "b": "line:fresh_retry",
     "band": "tight",
     "gap": 0.011,
-    "uncertainty": 0.016
-  },
-  {
-    "a": "label:later_stop",
-    "b": "line:later_stop",
-    "band": "tight",
-    "gap": 0.252,
     "uncertainty": 0.016
   }
 ]

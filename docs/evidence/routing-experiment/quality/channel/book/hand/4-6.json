@@ -1,7 +1,7 @@
 {
   "id": "book/hand/4-6",
   "candidate": "channel",
-  "resolvedSha256": "2c79627f6609aad7a1afb11fe88d1b1fe17bd10c308d6a743407dab37dea6993",
+  "resolvedSha256": "aa86d374b0e12bdf28cbbbd6de0c876e2ec0b0e3acb67641768f96db0658aed5",
   "nodes": 10,
   "edges": 11,
   "quality": {
@@ -36,13 +36,19 @@
           "a": "label:test_setup",
           "b": "node:setup",
           "band": "tight",
-          "gap": 0.036
+          "gap": 0.043
         },
         {
           "a": "label:elapsed_body",
           "b": "node:body",
           "band": "tight",
           "gap": 0.001
+        },
+        {
+          "a": "label:fixture_setup",
+          "b": "node:ownSetup",
+          "band": "tight",
+          "gap": 0.162
         },
         {
           "a": "label:action_expired",
@@ -53,7 +59,14 @@
       ]
     },
     "steps": {
-      "labels": [],
+      "labels": [
+        {
+          "a": "label:fixture_teardown",
+          "b": "step:body_after",
+          "band": "tight",
+          "gap": 0
+        }
+      ],
       "boxes": [],
       "steps": []
     },
@@ -61,8 +74,11 @@
       "boxes": []
     },
     "crossings": {
-      "count": 0,
-      "pairs": []
+      "count": 2,
+      "pairs": [
+        ["fixture_setup", "body_after"],
+        ["body_after", "fixture_teardown"]
+      ]
     },
     "reading": {
       "edges": 10,
@@ -86,9 +102,9 @@
     }
   },
   "bends": 27,
-  "routeLength": 2471,
+  "routeLength": 2451,
   "routingTimeMs": null,
   "inputSha256": "7a6725f96c420858493ddf881feef82a1279357f8d2c30d9060bd8633cf07ad1",
-  "routesSha256": "677285cf2442dc92d3ae88d55eab5afbae9d4de8d7f8d8b49d5b279f7b2e9284",
+  "routesSha256": "708ca25970e3554cc873bd128f2eff95d94e1917d25bb01951a43a467690fef2",
   "outsideViewport": []
 }

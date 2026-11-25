@@ -3,7 +3,7 @@
     "a": "label:test_setup",
     "b": "node:setup",
     "band": "tight",
-    "gap": 0.036,
+    "gap": 0.043,
     "uncertainty": 0.016
   },
   {
@@ -11,6 +11,13 @@
     "b": "node:body",
     "band": "tight",
     "gap": 0.001,
+    "uncertainty": 0.016
+  },
+  {
+    "a": "label:fixture_setup",
+    "b": "node:ownSetup",
+    "band": "tight",
+    "gap": 0.162,
     "uncertainty": 0.016
   },
   {

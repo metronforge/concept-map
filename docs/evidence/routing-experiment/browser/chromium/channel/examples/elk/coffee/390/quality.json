@@ -1,5 +1,5 @@
 {
-  "hard": 5,
+  "hard": 3,
   "constraints": [],
   "lines": { "boxes": [] },
   "crossings": { "count": 0, "pairs": [] },

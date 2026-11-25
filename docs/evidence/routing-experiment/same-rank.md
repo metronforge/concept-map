@@ -34,12 +34,12 @@ from y=62 to y=84. These inputs show no quality gain
 from replacing stretching and contain no shared runs to exercise spacing.
 They remain useful regression inputs for the future routing pass.
 
-One warm-up followed by five calls gives channel medians of 0.697 ms (dagre
-placement) and 0.429 ms (ELK placement). Input preparation, annotation, audits
+One warm-up followed by five calls gives channel medians of 0.450 ms (dagre
+placement) and 0.282 ms (ELK placement). Input preparation, annotation, audits
 and rendering are excluded. Raw samples, hashes and environment are retained.
 No timing for stretching is claimed: it occurs inside the alignment pipeline,
 so timing a complete layout would not be a comparable routing-only measure.
-After adding viewport bounds, channel is 2526 minified bytes / 1237 gzip bytes;
+After ordered spacing, channel is 9844 minified bytes / 3855 gzip bytes;
 the original libavoid comparison remains 536724 / 200989 bytes.
 
 ## Browser results
@@ -91,5 +91,5 @@ it checks stored sample arithmetic and current input/route hashes, rather
 than comparing variable elapsed times. The original commands and reports
 remain separate; see the [main README](README.md#files-and-reproduction).
 
-Viewport containment now passes on the original corpus; ordered parallel
-spacing remains unfinished. The author's target is not met; see [the decision](decision.md).
+Ordered spacing now meets the author's target on the original corpus.
+These two aligned drawings stay unchanged; see [the decision](decision.md).

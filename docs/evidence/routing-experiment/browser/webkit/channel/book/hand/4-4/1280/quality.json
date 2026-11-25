@@ -9,9 +9,10 @@
     }
   ],
   "crossings": {
-    "count": 3,
+    "count": 4,
     "pairs": [
       ["failed_later", "later_stop"],
+      ["failed_stop", "dispatch_fresh"],
       ["stop_budget", "fresh_retry"],
       ["dispatch_fresh", "later_stop"]
     ]

@@ -1,7 +1,7 @@
 {
   "id": "book/hand/2-6",
   "candidate": "channel",
-  "resolvedSha256": "9779064353202c0423fae4fda894b995fd0f620f026c390e481fd6df31306bf3",
+  "resolvedSha256": "991e72c308a9dea9f5c4ad69d896e5b9cc4a535829d985304c90d61d60ef0d94",
   "nodes": 14,
   "edges": 12,
   "quality": {
@@ -80,6 +80,6 @@
   "routeLength": 2862,
   "routingTimeMs": null,
   "inputSha256": "80ea4d0646cd9bb1bd6ceb101094d13d72475f0842b9da1ca0f60a96ee38678b",
-  "routesSha256": "5ed438c9a13e1b8ad54ac09fbf6b8f2770e9a854a40c2b050d80e6781f697873",
+  "routesSha256": "a815dbb730f5101acf0624be1161226382ca255463c75882da37a6cb46e4c3d0",
   "outsideViewport": []
 }

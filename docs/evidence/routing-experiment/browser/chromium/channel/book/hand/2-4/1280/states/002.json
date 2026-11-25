@@ -4,41 +4,41 @@
     "step": "all",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 9
+    "tight": 8
   },
   {
     "scenario": "late",
     "step": "before-the-input-the-point-hits",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 9
+    "tight": 8
   },
   {
     "scenario": "late",
     "step": "a-toast-appears-over-the-button",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 9
+    "tight": 8
   },
   {
     "scenario": "late",
     "step": "the-first-event-hits-the-toast-p",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 9
+    "tight": 8
   },
   {
     "scenario": "late",
     "step": "after-the-input-playwright-reads",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 9
+    "tight": 8
   },
   {
     "scenario": "late",
     "step": "all",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 9
+    "tight": 8
   }
 ]

@@ -15,10 +15,7 @@ test("overlap reports reproduce and reject altered spans without repairing them"
   try {
     const written = run(directory);
     assert.equal(written.status, 0, written.stderr);
-    const path = join(
-      directory,
-      "overlap/channel/examples/elk/door/pairs/0.json",
-    );
+    const path = join(directory, "overlap/channel/book/hand/2-1/pairs/0.json");
     const before = readFileSync(path, "utf8");
     const checked = run(directory, "--check");
     assert.equal(checked.status, 0, checked.stderr);
@@ -29,7 +26,7 @@ test("overlap reports reproduce and reject altered spans without repairing them"
     writeFileSync(path, altered);
     const rejected = run(directory, "--check");
     assert.notEqual(rejected.status, 0);
-    assert.match(rejected.stderr, /door/);
+    assert.match(rejected.stderr, /2-1/);
     assert.equal(readFileSync(path, "utf8"), altered);
   } finally {
     rmSync(directory, { recursive: true, force: true });

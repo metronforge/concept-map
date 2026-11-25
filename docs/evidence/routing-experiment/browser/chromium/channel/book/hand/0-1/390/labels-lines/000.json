@@ -3,7 +3,7 @@
     "a": "label:request_cookies",
     "b": "line:request_cookies",
     "band": "tight",
-    "gap": 0.065,
-    "uncertainty": 0.016
+    "gap": 0.052,
+    "uncertainty": 0.024
   }
 ]

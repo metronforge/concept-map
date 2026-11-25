@@ -41,7 +41,7 @@ being a fixed-box routing comparison.
 The unfiltered `check()` reports still include labels that the player hides
 in panel presentation, and all potential scenario badges. They contain zero
 hard defects at 1280 px. At 390 px, their hard totals across the 18 drawings
-per route set are 107 current, 115 channel and 148 libavoid. These are not
+per route set are 107 current, 152 channel and 148 libavoid. These are not
 defects in the displayed states, and they differ between browsers. The reports
 retain them; the displayed-state result does not overwrite the raw result.
 Panel presentation cannot fix the undersized node titles.
@@ -79,8 +79,10 @@ outlines pixel by pixel, clipping by the SVG viewport, marker paint, or every
 piece of panel text. The checker uses its existing real-font rectangles and
 uncertainty allowance. A zero displayed contact count is not proof of all
 visual requirements. The text-size failures prevent that conclusion already.
-No drawings changed in this iteration, so no new pictures were made. The prior
-local pictures show server annotations, not this browser refinement.
+Ordered spacing changes four example drawings. Local before/after pictures
+are listed in [the spacing report](spacing.md#browser-evidence-and-local-pictures).
+Raw channel narrow defects rise from 115 to 152; displayed hard contacts remain
+zero because those labels move to the panel. This is not visual acceptance.
 
 ## Files and reproduction
 
@@ -110,8 +112,8 @@ defects are data, not suppressed assertions or claims of acceptance.
   Together with `quality.json` these reconstruct the complete raw report.
 - `browser/summary.json`: coverage and outcome totals, lockfile and font hashes.
 
-All 865 reports are at most 170 lines. No timing or router download changed;
-the measurement harness is not part of a router's runtime download.
+The reports remain split by subject and below the file limit. Router timing
+and size were refreshed after spacing; this harness is excluded from the download.
 The [decision report](decision.md) includes the comparison and recommendation
-with parallel channel spacing and paint-bound review explicitly unfinished.
+with the numeric spacing target met and paint-bound review unfinished.
 [Production effort](production-readiness.md) is assessed separately.

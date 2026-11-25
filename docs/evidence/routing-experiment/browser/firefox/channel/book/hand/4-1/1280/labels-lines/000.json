@@ -14,6 +14,13 @@
     "uncertainty": 0.016
   },
   {
+    "a": "label:returned_server",
+    "b": "line:returned_server",
+    "band": "tight",
+    "gap": 0.155,
+    "uncertainty": 0.016
+  },
+  {
     "a": "label:ready_server",
     "b": "line:ready_server",
     "band": "tight",

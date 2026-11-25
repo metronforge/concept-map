@@ -48,8 +48,9 @@ The reference starts with its hand annotations; both candidates start with
 fresh shared annotation placement. The real player then performs normal DOM
 measurement, wrapping, refinement and selection between drawing and panel
 labels. Differences cannot be attributed to routing alone. The book fixture
-and libavoid routes are unchanged. The [viewport update](viewport.md) moves
-two channel routes and refreshes their browser measurements.
+and libavoid routes are unchanged. [Ordered spacing](spacing.md) now changes
+ten book drawings; all book states were measured again in all three browsers.
+The earlier [viewport update](viewport.md) changed two routes.
 At 390 px, book 2-3 gains one tight `retry` label/line contact per state in
 each browser. Hard contacts are unchanged; the tighter clearance is retained.
 
@@ -88,7 +89,7 @@ node --test experiments/routing/*.test.mjs
 
 Use a fresh output directory for a new measurement. `--check` compares reports
 without writing; it does not remove or reject unrelated extra files. The
-existing command without `--book` still checks the example reports unchanged.
+command without `--book` checks the corresponding example reports.
 Measurements serve an in-memory bundle through Playwright, without a demo
 server. Drawing defects are recorded data, while missing fonts, changed
 geometry, missing state coverage or browser errors fail the command.
@@ -112,7 +113,7 @@ long scenarios and contact lists within the experiment's 200-line file limit;
 they do not truncate them. Tests reconstruct the full state and quality data
 and verify that altered evidence is rejected without rewriting it.
 
-The [decision report](decision.md) includes these results and records unfinished
-parallel channel spacing and paint-bound review. Updated routing sizes and
+The [decision report](decision.md) includes these results and records remaining
+terminal fan-outs and paint-bound review. Updated routing sizes and
 timings are in [performance](performance.md); this browser harness is excluded
 from the download.

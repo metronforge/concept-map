@@ -4,8 +4,8 @@
   "browser": "chromium",
   "browserVersion": "156.0.8078.4",
   "width": 1280,
-  "inputSha256": "4a805640a4f1610753beff161f96b198acdb97a7df3c42566be4b022889c4f53",
-  "drawnSha256": "f2fa242e5d7db458fe298f80a5c98a3ecd82e84693239757cd6b9fc27584f0a6",
+  "inputSha256": "d441d0973d230ec33f3f1a13a6c57071809c5d5398f6035ce99355334b1252e3",
+  "drawnSha256": "49686cee83ba45df44890d6e108ce9aa4575d590fe667c64670a91a36329f763",
   "fixedGeometryPreserved": true,
   "measurement": "dom",
   "text": {
@@ -27,9 +27,7 @@
     ],
     "defects": [],
     "labels-labels": [],
-    "labels-lines": [
-      "chromium/channel/book/hand/0-1/1280/labels-lines/000.json"
-    ],
+    "labels-lines": [],
     "labels-boxes": [
       "chromium/channel/book/hand/0-1/1280/labels-boxes/000.json"
     ],

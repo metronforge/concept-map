@@ -1,15 +1,10 @@
-import { channelGrid } from "./channel-grid.mjs";
-import { shortestChannel } from "./channel-search.mjs";
+import { routeIndependent } from "./channel-independent.mjs";
+import { spaceChannels } from "./channel-spacing.mjs";
 
-/** Experimental geometry only; labels and parallel-channel spacing follow later. */
+/** Experimental geometry: independent paths followed by ordered track spacing. */
 export function routeChannel(problem) {
-  return problem.edges.map((edge) => {
-    const points = shortestChannel(
-      channelGrid(problem.nodes, edge, problem.viewBox),
-      edge,
-    );
-    return points
-      ? { id: edge.id, points }
-      : { id: edge.id, failure: "no channel path" };
-  });
+  const routes = routeIndependent(problem);
+  return problem.viewBox && routes.every((route) => route.points)
+    ? spaceChannels(problem, routes)
+    : routes;
 }

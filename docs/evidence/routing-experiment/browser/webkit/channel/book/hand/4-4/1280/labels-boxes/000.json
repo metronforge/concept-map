@@ -1,7 +1,7 @@
 [
   {
     "a": "label:first_failed",
-    "b": "node:fresh",
+    "b": "node:failed",
     "band": "tight",
     "gap": 0.002,
     "uncertainty": 0.016
@@ -17,7 +17,7 @@
     "a": "label:failed_stop",
     "b": "node:stop",
     "band": "tight",
-    "gap": 0.229,
+    "gap": 0.038,
     "uncertainty": 0.016
   },
   {
@@ -38,7 +38,7 @@
     "a": "label:later_stop",
     "b": "node:later",
     "band": "tight",
-    "gap": 0.212,
+    "gap": 0.002,
     "uncertainty": 0.016
   }
 ]

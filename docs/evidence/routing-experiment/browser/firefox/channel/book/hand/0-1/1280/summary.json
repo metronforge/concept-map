@@ -4,8 +4,8 @@
   "browser": "firefox",
   "browserVersion": "157.0",
   "width": 1280,
-  "inputSha256": "4a805640a4f1610753beff161f96b198acdb97a7df3c42566be4b022889c4f53",
-  "drawnSha256": "f7c8cb711558630ef4d244af9c072cbfdc2b9439b2e80bd3aa611f5c38deb30d",
+  "inputSha256": "d441d0973d230ec33f3f1a13a6c57071809c5d5398f6035ce99355334b1252e3",
+  "drawnSha256": "7918613b29f3937a1b71e6dc87dee7cb1ccc471d5c0cc26b94c704f44dd066fa",
   "fixedGeometryPreserved": true,
   "measurement": "dom",
   "text": {
@@ -27,9 +27,7 @@
     ],
     "defects": [],
     "labels-labels": [],
-    "labels-lines": [
-      "firefox/channel/book/hand/0-1/1280/labels-lines/000.json"
-    ],
+    "labels-lines": [],
     "labels-boxes": [
       "firefox/channel/book/hand/0-1/1280/labels-boxes/000.json"
     ],

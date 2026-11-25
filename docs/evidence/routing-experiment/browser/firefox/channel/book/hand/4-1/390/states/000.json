@@ -4,69 +4,69 @@
     "step": "the-first-defined-retries-value",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   },
   {
     "scenario": "how",
     "step": "the-server-plugin-waits-for-read",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   },
   {
     "scenario": "how",
     "step": "plugin-setup-precedes-globalsetu",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   },
   {
     "scenario": "how",
     "step": "dependencies-establish-project-p",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   },
   {
     "scenario": "how",
     "step": "success-is-checked-separately",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   },
   {
     "scenario": "how",
     "step": "teardown-waits-for-setup-and-its",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   },
   {
     "scenario": "how",
     "step": "returned-globalsetup-cleanup-run",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   },
   {
     "scenario": "how",
     "step": "server-cleanup-runs-after-global",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   },
   {
     "scenario": "how",
     "step": "all",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   },
   {
     "scenario": "success",
     "step": "retries-0-wins-the-web-server-is",
     "presentation": "drawing",
     "hard": 0,
-    "tight": 7
+    "tight": 6
   }
 ]

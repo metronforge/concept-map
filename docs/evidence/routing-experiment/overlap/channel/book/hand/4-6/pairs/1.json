@@ -1,12 +1,12 @@
 {
-  "edges": ["elapsed_body", "body_after"],
+  "edges": ["own_body", "body_action"],
   "length": 14,
   "spans": [
     {
       "axis": "x",
       "coordinate": 158,
-      "start": 212,
-      "end": 226
+      "start": 400,
+      "end": 414
     }
   ]
 }

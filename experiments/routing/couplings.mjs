@@ -4,7 +4,7 @@ import { dirname, join } from "node:path";
 import { format } from "prettier";
 import { inputs, sameRankInputs } from "./inputs.mjs";
 import { prepare } from "./prepare.mjs";
-import { routeChannel } from "./channel.mjs";
+import { routeIndependent as routeChannel } from "./channel-independent.mjs";
 import { coupleChannels } from "./channel-coupling.mjs";
 import { hash } from "./metrics.mjs";
 

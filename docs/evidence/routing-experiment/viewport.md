@@ -1,8 +1,12 @@
 # Keep channel routes inside the drawing
 
+This report describes the stage before ordered spacing. Its numeric comparison
+is historical; [spacing](spacing.md) records the current result. Order and
+coupling commands still use independent paths so these diagnostics reproduce.
+
 The channel search now receives the reference viewport alongside the fixed
 boxes and ports. All 260 routes stay inside it. This completes the route-bound
-part of the author's target; ordered parallel spacing remains unfinished.
+part of the author's target; parallel spacing was still unfinished at this stage.
 
 ## Method and limits
 
@@ -41,9 +45,9 @@ and quality measurements are unchanged. Input hashes change for both candidates.
 | Route length              |       41234.99 |        41198.99 | 38762.99 |              — |
 | Router gzip bytes         |           1144 |            1237 |   200989 |              — |
 
-The target is still unmet because shared line exceeds twice libavoid's value.
+At this stage the target was unmet because shared line exceeded twice libavoid's value.
 The two same-rank inputs retain identical route geometry and quality. Updated
-[timings and downloads](performance.md) identify the bounded implementation.
+[timings and downloads](performance.md) now identify the later spaced implementation.
 No public package code, example, checker band or recorded baseline changes.
 
 Containment here covers route centre lines only. Marker tips, strokes, glyphs

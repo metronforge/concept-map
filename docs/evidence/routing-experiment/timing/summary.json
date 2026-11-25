@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-11-21T11:08:56.901Z",
+  "recordedAt": "2026-11-25T17:34:21.291Z",
   "environment": {
     "node": "v26.13.1",
     "v8": "14.6.202.34-node.40",
@@ -15,17 +15,17 @@
   "channel": {
     "maps": 29,
     "edges": 260,
-    "sumOfMapMediansMs": 28.950108999999884,
-    "medianMapMs": 0.5730439999999817,
-    "minMapMedianMs": 0.10324800000000778,
-    "maxMapMedianMs": 4.601447000000007
+    "sumOfMapMediansMs": 19.731991000000335,
+    "medianMapMs": 0.38025399999997944,
+    "minMapMedianMs": 0.06909600000000182,
+    "maxMapMedianMs": 2.750088000000005
   },
   "libavoid": {
     "maps": 29,
     "edges": 260,
-    "sumOfMapMediansMs": 20.819608999999787,
-    "medianMapMs": 0.6150760000000446,
-    "minMapMedianMs": 0.34962899999993624,
-    "maxMapMedianMs": 1.9582400000000462
+    "sumOfMapMediansMs": 13.398015000000328,
+    "medianMapMs": 0.38629100000002836,
+    "minMapMedianMs": 0.20338500000002568,
+    "maxMapMedianMs": 1.3459699999999657
   }
 }

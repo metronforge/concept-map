@@ -4,8 +4,8 @@
   "browser": "webkit",
   "browserVersion": "27.2",
   "width": 390,
-  "inputSha256": "2c79627f6609aad7a1afb11fe88d1b1fe17bd10c308d6a743407dab37dea6993",
-  "drawnSha256": "b85653925060e33bbd1785b614c96f80a7154e835b2a6fa24f67d6963ef9610f",
+  "inputSha256": "aa86d374b0e12bdf28cbbbd6de0c876e2ec0b0e3acb67641768f96db0658aed5",
+  "drawnSha256": "adac775719bedd24101121def3f5dd4e762bcc05b3c16242dcb057f69e0ad5d7",
   "fixedGeometryPreserved": true,
   "measurement": "dom",
   "text": {
@@ -25,7 +25,9 @@
       "webkit/channel/book/hand/4-6/390/states/002.json"
     ],
     "defects": [],
-    "labels-labels": [],
+    "labels-labels": [
+      "webkit/channel/book/hand/4-6/390/labels-labels/000.json"
+    ],
     "labels-lines": ["webkit/channel/book/hand/4-6/390/labels-lines/000.json"],
     "labels-boxes": ["webkit/channel/book/hand/4-6/390/labels-boxes/000.json"],
     "steps-labels": ["webkit/channel/book/hand/4-6/390/steps-labels/000.json"],

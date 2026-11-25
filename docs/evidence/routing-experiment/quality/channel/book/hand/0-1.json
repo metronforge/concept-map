@@ -1,7 +1,7 @@
 {
   "id": "book/hand/0-1",
   "candidate": "channel",
-  "resolvedSha256": "4a805640a4f1610753beff161f96b198acdb97a7df3c42566be4b022889c4f53",
+  "resolvedSha256": "d441d0973d230ec33f3f1a13a6c57071809c5d5398f6035ce99355334b1252e3",
   "nodes": 20,
   "edges": 19,
   "quality": {
@@ -16,14 +16,7 @@
     ],
     "labels": {
       "labels": [],
-      "lines": [
-        {
-          "a": "label:request_cookies",
-          "b": "line:request_cookies",
-          "band": "tight",
-          "gap": 0.065
-        }
-      ],
+      "lines": [],
       "boxes": [
         {
           "a": "label:shared",
@@ -67,13 +60,12 @@
       "boxes": []
     },
     "crossings": {
-      "count": 7,
+      "count": 5,
       "pairs": [
         ["mk_ctx", "shared"],
         ["mk_page", "shared"],
         ["mk_page", "request_cookies"],
         ["server_page", "shared"],
-        ["server_page", "request_cookies"],
         ["page_app", "shared"]
       ]
     },
@@ -102,6 +94,6 @@
   "routeLength": 2878,
   "routingTimeMs": null,
   "inputSha256": "b4c797ac9e7bc7acfd68680c421e2d027811f38c05fee3099ea4791a69a9bbdf",
-  "routesSha256": "fe70f8408b5ecc666e2b16ece7b7e438a285b41b5a1ff361bc46fc3a80e7cbb2",
+  "routesSha256": "2c2371df471b9ba35d8fa765e82a4399bf72f959e8d509166658e6a6561da7ca",
   "outsideViewport": []
 }

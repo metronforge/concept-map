@@ -7,14 +7,14 @@
     "uncertainty": 0.025
   },
   {
-    "a": "label:lock",
-    "b": "node:closed",
+    "a": "label:close",
+    "b": "node:open",
     "band": "tight",
-    "gap": 0.209,
+    "gap": 0.001,
     "uncertainty": 0.025
   },
   {
-    "a": "label:blocked",
+    "a": "label:lock",
     "b": "node:locked",
     "band": "tight",
     "gap": 0.001,

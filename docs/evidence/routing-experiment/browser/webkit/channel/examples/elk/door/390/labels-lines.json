@@ -1,72 +1,86 @@
 [
   {
-    "a": "label:close",
+    "a": "label:open",
     "b": "line:open",
-    "band": "tight",
-    "gap": 0.271,
+    "band": "defect",
+    "gap": -6.298,
     "uncertainty": 0.054
   },
   {
-    "a": "label:close",
+    "a": "label:open",
     "b": "line:close",
-    "band": "tight",
-    "gap": 0.271,
+    "band": "defect",
+    "gap": -5.155,
     "uncertainty": 0.054
   },
   {
-    "a": "label:close",
-    "b": "line:lock",
-    "band": "tight",
-    "gap": 0.271,
-    "uncertainty": 0.054
-  },
-  {
-    "a": "label:close",
-    "b": "line:unlock",
-    "band": "tight",
-    "gap": 0.271,
-    "uncertainty": 0.054
-  },
-  {
-    "a": "label:lock",
+    "a": "label:open",
     "b": "line:lock",
     "band": "defect",
-    "gap": -0.336,
+    "gap": -3.617,
     "uncertainty": 0.054
   },
   {
-    "a": "label:lock",
+    "a": "label:open",
     "b": "line:unlock",
-    "band": "tight",
-    "gap": 0.235,
+    "band": "defect",
+    "gap": -3.998,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:unlock",
+    "b": "line:open",
+    "band": "defect",
+    "gap": -1.345,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:unlock",
+    "b": "line:close",
+    "band": "defect",
+    "gap": -0.203,
     "uncertainty": 0.054
   },
   {
     "a": "label:unlock",
     "b": "line:lock",
-    "band": "tight",
-    "gap": 0.051,
+    "band": "defect",
+    "gap": -4.393,
     "uncertainty": 0.054
   },
   {
     "a": "label:unlock",
     "b": "line:unlock",
-    "band": "tight",
-    "gap": 0.051,
+    "band": "defect",
+    "gap": -5.536,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:blocked",
+    "b": "line:open",
+    "band": "defect",
+    "gap": -2.547,
+    "uncertainty": 0.054
+  },
+  {
+    "a": "label:blocked",
+    "b": "line:close",
+    "band": "defect",
+    "gap": -1.404,
     "uncertainty": 0.054
   },
   {
     "a": "label:blocked",
     "b": "line:lock",
     "band": "defect",
-    "gap": -5.534,
+    "gap": -3.192,
     "uncertainty": 0.054
   },
   {
     "a": "label:blocked",
     "b": "line:unlock",
     "band": "defect",
-    "gap": -4.392,
+    "gap": -4.334,
     "uncertainty": 0.054
   },
   {
@@ -74,13 +88,6 @@
     "b": "line:blocked",
     "band": "defect",
     "gap": -3.149,
-    "uncertainty": 0.054
-  },
-  {
-    "a": "label:finish",
-    "b": "line:finish",
-    "band": "tight",
-    "gap": 0.237,
     "uncertainty": 0.054
   }
 ]

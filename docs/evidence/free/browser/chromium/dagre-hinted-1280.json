@@ -1,0 +1,137 @@
+{
+  "viewport": 1280,
+  "engine": "dagre",
+  "hinted": true,
+  "measurement": {
+    "name": "font-table",
+    "labels": {}
+  },
+  "report": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "free",
+        "edge": "feedback",
+        "strength": "required",
+        "origin": "stated",
+        "path": "layout.hints[0]",
+        "holds": null,
+        "message": "layout.hints[0]: free (feedback): not verifiable from the drawing"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 1,
+      "pairs": [["review", "feedback"]]
+    },
+    "reading": {
+      "edges": 4,
+      "forward": 3,
+      "share": 0.75,
+      "nonReturn": {
+        "edges": 3,
+        "forward": 3,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 19.67,
+      "height": 16
+    }
+  },
+  "boxes": {
+    "plan": [26, 16, 60, 36],
+    "requirements": [130.5, 16, 60, 36],
+    "review": [115.5, 116, 70, 36],
+    "build": [16, 116, 60, 36]
+  },
+  "states": [
+    {
+      "scenario": 0,
+      "step": 0,
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046988498789347, 19.046988498789347, 19.046988498789347,
+        19.046988498789347
+      ],
+      "badges": []
+    },
+    {
+      "scenario": 0,
+      "step": 1,
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046988498789347, 19.046988498789347, 19.046988498789347,
+        19.046988498789347
+      ],
+      "badges": [[46.062141837789056, 83.68929081105472]]
+    },
+    {
+      "scenario": 0,
+      "step": 2,
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046988498789347, 19.046988498789347, 19.046988498789347,
+        19.046988498789347
+      ],
+      "badges": [
+        [104.11746083978338, 83.60562973173543],
+        [46.062141837789056, 83.68929081105472],
+        [160.43785816221094, 84.31070918894528]
+      ]
+    },
+    {
+      "scenario": 0,
+      "step": 3,
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046988498789347, 19.046988498789347, 19.046988498789347,
+        19.046988498789347
+      ],
+      "badges": [
+        [104.11746083978338, 83.60562973173543],
+        [46.062141837789056, 83.68929081105472],
+        [160.43785816221094, 84.31070918894528],
+        [123.25, 84]
+      ]
+    },
+    {
+      "scenario": 0,
+      "step": "all",
+      "overflow": 0,
+      "pageFont": 16,
+      "textSizes": [
+        19.046988498789347, 19.046988498789347, 19.046988498789347,
+        19.046988498789347
+      ],
+      "badges": [
+        [104.11746083978338, 83.60562973173543],
+        [46.062141837789056, 83.68929081105472],
+        [160.43785816221094, 84.31070918894528],
+        [123.25, 84]
+      ]
+    }
+  ]
+}

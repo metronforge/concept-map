@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { readFileSync } from "node:fs";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { SourceMapSchema } from "../../src/schema";
 import { layout } from "../../src/layout/index";
 import { dagreEngine } from "../../src/layout/dagre";
@@ -13,7 +13,7 @@ for (const width of [1280, 390])
     for (const hinted of [false, true])
       test(`free ${name} ${hinted ? "hinted" : "plain"} ${width}: real-font geometry holds in every state`, async ({
         page,
-      }) => {
+      }, info) => {
         const input = JSON.parse(
           readFileSync("examples/free/map.json", "utf8"),
         );
@@ -42,6 +42,8 @@ for (const width of [1280, 390])
           { [name]: map },
         );
         await mountSameRank(page, map, markup);
+        const states = [];
+        let finalReport;
         for (const [scenario, story] of map.scenarios.entries())
           for (const step of [...story.steps.keys(), "all"] as const) {
             const state = await sameRankState(page, scenario, step);
@@ -62,5 +64,32 @@ for (const width of [1280, 390])
               expect(size).toBeGreaterThanOrEqual(state.pageFont - 0.1);
               expect(size).toBeLessThanOrEqual(state.pageFont * 1.25);
             }
+            states.push(state);
+            finalReport = report;
           }
+        const evidence = {
+          viewport: width,
+          engine: name,
+          hinted,
+          measurement: map.measurement,
+          report: finalReport,
+          boxes: Object.fromEntries(
+            Object.entries(map.nodes).map(([id, node]) => [id, node.box]),
+          ),
+          states,
+        };
+        const json = JSON.stringify(evidence, null, 2) + "\n";
+        expect(json.trimEnd().split("\n").length).toBeLessThanOrEqual(500);
+        await info.attach("free", {
+          body: json,
+          contentType: "application/json",
+        });
+        if (process.env.FREE_EVIDENCE_DIR) {
+          const dir = `${process.env.FREE_EVIDENCE_DIR}/browser/${info.project.name}`;
+          mkdirSync(dir, { recursive: true });
+          writeFileSync(
+            `${dir}/${name}-${hinted ? "hinted" : "plain"}-${width}.json`,
+            json,
+          );
+        }
       });

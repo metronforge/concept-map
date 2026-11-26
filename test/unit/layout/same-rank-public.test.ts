@@ -55,7 +55,7 @@ for (const [name, engine] of [
       });
     });
 
-    test(`${name}/${direction}: mixed refusals report once with checked conflicts`, async () => {
+    test(`${name}/${direction}: combined hints report only checked same-rank conflicts`, async () => {
       const source = laneSource(direction, true);
       source.layout.hints[0].strength = "preferred";
       source.layout.hints.unshift({
@@ -71,16 +71,12 @@ for (const [name, engine] of [
       expect(calls).toHaveLength(1);
       expect(calls[0]).toEqual([
         expect.objectContaining({
-          path: "layout.hints[0]",
-          reason: "unsupported",
-        }),
-        expect.objectContaining({
           path: "layout.hints[1]",
           reason: "contradiction",
         }),
       ]);
       for (const path of ["lanes.first", "lanes.second", "layout.hints[1]"])
-        expect(calls[0][1].conflicts?.some((id) => id.startsWith(path))).toBe(
+        expect(calls[0][0].conflicts?.some((id) => id.startsWith(path))).toBe(
           true,
         );
       expect(check(source, resolved).hard).toBe(0);

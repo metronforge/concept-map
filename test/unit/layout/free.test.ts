@@ -102,6 +102,15 @@ test("unknown free edges fail before measurement or placement", async () => {
 });
 
 for (const engine of [dagreEngine, elkEngine]) {
+  test(`${engine.name}: a free arrow can join boxes on the same rank`, async () => {
+    const map = source([
+      { ...hint, strength: "required" },
+      { kind: "sameRank", nodes: ["a", "b"], strength: "required" },
+    ]);
+    const resolved = await layout(map, engine, { intent: false });
+    expect(resolved.nodes.a.box[0]).toBe(resolved.nodes.b.box[0]);
+    expect(resolved.edges.ab.path).toMatch(/^M/);
+  });
   test(`${engine.name}: lists literal rank exclusion as unsupported`, async () => {
     // Bypass format parsing here so the test catches today's misleading capability.
     const map = source([]);

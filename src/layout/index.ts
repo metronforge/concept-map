@@ -132,15 +132,16 @@ async function resolveSource(
   const placer = asPlacer(engine);
   const sameRank = map.layout?.hints.some((h) => h.kind === "sameRank");
   const free = map.layout?.hints.some((h) => h.kind === "free");
-  const outcome = sameRank
-    ? await (
-        await import("./place-same-rank.js")
-      ).placeSameRank(map, problem, placer, measurer, refinement)
-    : free
+  const outcome =
+    sameRank && !free
       ? await (
-          await import("./place-free.js")
-        ).placeFree(map, problem, placer, measurer, refinement)
-      : await place(problem, placer);
+          await import("./place-same-rank.js")
+        ).placeSameRank(map, problem, placer, measurer, refinement)
+      : free
+        ? await (
+            await import("./place-free.js")
+          ).placeFree(map, problem, placer, measurer, refinement)
+        : await place(problem, placer);
   if (outcome.kind === "engine-failed") throw new EngineFailedError(outcome);
   if (outcome.kind === "unsupported-constraints")
     throw new UnsupportedConstraintsError(outcome);

@@ -1,8 +1,8 @@
 # Zod Mini experiment
 
-The package still uses classic Zod. The immutable `classic/` reports preserve
+Zod Mini is adopted for 0.3.0. The immutable `classic/` reports preserve
 the baseline; [the isolated Mini rewrite](mini.md) records measured savings,
-locale behavior and compatibility without switching the public API.
+locale behavior and compatibility before the public API switch.
 The [public migration audit](migration.md) counts the book's affected calls
 and checks extension, composition and error identity against both builds.
 
@@ -86,5 +86,5 @@ in [the audit](migration.md#reproduce) to reproduce them. The book has two
 affected consumer method calls; it still needs its separate format-3 migration.
 
 The [decision report](decision.md) estimates the private-validator alternative,
-explains its drift risk and compares all three options. Adoption remains the
-author's decision; no public schema switch is made in this experiment.
+explains its drift risk and compares all three options. The adoption change is
+tracked in the pull request for this migration.

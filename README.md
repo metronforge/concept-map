@@ -174,6 +174,14 @@ strong marks. HTML is escaped. `SourceMapSchema` validates maps without geometry
 `ResolvedMapSchema` validates geometry for playback. `layout()` checks semantic
 references before running an engine. See the [format guide](docs/FORMAT.md).
 
+## Breaking changes in 0.3.0
+
+The exported schemas use Zod Mini. `parse()` and `safeParse()` still work;
+compose schemas with `zod/mini` and use its functional helpers instead of
+classic schema methods. Check validation errors through `issues` (or package
+errors through `kind`), not `instanceof` a classic `ZodError`. Map data and
+validation messages are unchanged. See the [format guide](docs/FORMAT.md).
+
 ## Stability
 
 Before 1.0 any minor version may change the API. The data format has its own

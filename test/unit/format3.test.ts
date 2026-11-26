@@ -138,10 +138,11 @@ test("shared kernel still specializes text and link leaves", () => {
     source: z.string(),
     deeper: z.string(),
   });
-  expect(kernel.shape.format.value).toBe(3);
+  expect(kernel.shape.format._zod.def.values[0]).toBe(3);
   expect(
-    kernel.shape.scenarios.element.shape.steps.element.shape.text.safeParse(1)
-      .success,
+    kernel.shape.scenarios._zod.def.element.shape.steps._zod.def.element.shape.text.safeParse(
+      1,
+    ).success,
   ).toBe(true);
 });
 

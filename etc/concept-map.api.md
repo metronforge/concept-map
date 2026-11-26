@@ -4,7 +4,7 @@
 
 ```ts
 
-import * as z from 'zod';
+import * as z from 'zod/mini';
 
 // @public (undocumented)
 export type Action = {
@@ -86,178 +86,178 @@ export interface Frame {
 export const initialState: Readonly<PlayerState>;
 
 // @public
-export function mapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.ZodType>(leaf: {
+export function mapSchema<T extends z.core.$ZodType, S extends z.core.$ZodType, D extends z.core.$ZodType>(leaf: {
     text: T;
     source: S;
     deeper: D;
-}): z.ZodObject<{
-    definitions: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        term: z.ZodString;
+}): z.ZodMiniObject<{
+    definitions: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        term: z.ZodMiniString<string>;
         text: T;
     }, z.core.$strip>>>;
-    code: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        title: z.ZodString;
-        source: z.ZodOptional<S>;
-        lines: z.ZodArray<z.ZodString>;
+    code: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        title: z.ZodMiniString<string>;
+        source: z.ZodMiniOptional<S>;
+        lines: z.ZodMiniArray<z.ZodMiniString<string>>;
     }, z.core.$strip>>>;
-    conceptScenario: z.ZodOptional<z.ZodString>;
-    concepts: z.ZodDefault<z.ZodArray<z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        items: z.ZodArray<z.ZodObject<{
-            definition: z.ZodString;
+    conceptScenario: z.ZodMiniOptional<z.ZodMiniString<string>>;
+    concepts: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        items: z.ZodMiniArray<z.ZodMiniObject<{
+            definition: z.ZodMiniString<string>;
             short: T;
-            nodes: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            step: z.ZodObject<{
-                scenario: z.ZodOptional<z.ZodString>;
-                step: z.ZodString;
+            nodes: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            step: z.ZodMiniObject<{
+                scenario: z.ZodMiniOptional<z.ZodMiniString<string>>;
+                step: z.ZodMiniString<string>;
             }, z.core.$strip>;
-            source: z.ZodOptional<S>;
+            source: z.ZodMiniOptional<S>;
         }, z.core.$strip>>;
     }, z.core.$strip>>>;
-    callouts: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodDefault<z.ZodArray<z.ZodString>>>>;
-    deeper: z.ZodDefault<z.ZodArray<D>>;
-    format: z.ZodLiteral<3>;
-    id: z.ZodString;
-    title: z.ZodString;
-    direction: z.ZodOptional<z.ZodEnum<{
+    callouts: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>>>;
+    deeper: z.ZodMiniDefault<z.ZodMiniArray<D>>;
+    format: z.ZodMiniLiteral<3>;
+    id: z.ZodMiniString<string>;
+    title: z.ZodMiniString<string>;
+    direction: z.ZodMiniOptional<z.ZodMiniEnum<{
         right: "right";
         down: "down";
     }>>;
-    layout: z.ZodOptional<z.ZodObject<{
-        hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
-            kind: z.ZodLiteral<"free">;
-            edge: z.ZodString;
-            strength: z.ZodDefault<z.ZodEnum<{
+    layout: z.ZodMiniOptional<z.ZodMiniObject<{
+        hints: z.ZodMiniArray<z.ZodMiniUnion<readonly [z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"free">;
+            edge: z.ZodMiniString<string>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>, z.ZodObject<{
-            kind: z.ZodLiteral<"sameRank">;
-            nodes: z.ZodArray<z.ZodString>;
-            strength: z.ZodDefault<z.ZodEnum<{
+        }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"sameRank">;
+            nodes: z.ZodMiniArray<z.ZodMiniString<string>>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>, z.ZodObject<{
-            kind: z.ZodLiteral<"side">;
-            edge: z.ZodString;
-            end: z.ZodEnum<{
+        }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"side">;
+            edge: z.ZodMiniString<string>;
+            end: z.ZodMiniEnum<{
                 from: "from";
                 to: "to";
             }>;
-            side: z.ZodEnum<{
+            side: z.ZodMiniEnum<{
                 left: "left";
                 top: "top";
                 right: "right";
                 bottom: "bottom";
             }>;
-            strength: z.ZodDefault<z.ZodEnum<{
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
         }, z.core.$strict>]>>;
     }, z.core.$strict>>;
-    layers: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
+    layers: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
     }, z.core.$strip>>;
-    viewBox: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
-    measurement: z.ZodOptional<z.ZodObject<{
-        name: z.ZodString;
-        labels: z.ZodRecord<z.ZodString, z.ZodObject<{
-            width: z.ZodNumber;
-            height: z.ZodNumber;
-            left: z.ZodOptional<z.ZodNumber>;
-            ascent: z.ZodOptional<z.ZodNumber>;
-            padding: z.ZodOptional<z.ZodNumber>;
-            uncertainty: z.ZodOptional<z.ZodNumber>;
-            wrap: z.ZodOptional<z.ZodObject<{
-                lines: z.ZodArray<z.ZodString>;
-                lineHeight: z.ZodNumber;
+    viewBox: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
+    measurement: z.ZodMiniOptional<z.ZodMiniObject<{
+        name: z.ZodMiniString<string>;
+        labels: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+            width: z.ZodMiniNumber<number>;
+            height: z.ZodMiniNumber<number>;
+            left: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+            ascent: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+            padding: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+            uncertainty: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+            wrap: z.ZodMiniOptional<z.ZodMiniObject<{
+                lines: z.ZodMiniArray<z.ZodMiniString<string>>;
+                lineHeight: z.ZodMiniNumber<number>;
             }, z.core.$strip>>;
         }, z.core.$strip>>;
     }, z.core.$strip>>;
-    lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        y: z.ZodNumber;
-        h: z.ZodNumber;
-        x: z.ZodOptional<z.ZodNumber>;
-        w: z.ZodOptional<z.ZodNumber>;
+    lanes: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        y: z.ZodMiniNumber<number>;
+        h: z.ZodMiniNumber<number>;
+        x: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+        w: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
     }, z.core.$strict>>>;
-    frames: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        showWith: z.ZodDefault<z.ZodArray<z.ZodString>>;
-        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+    frames: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        showWith: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+        box: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>, z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
     }, z.core.$strict>>>;
-    nodes: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        lane: z.ZodOptional<z.ZodString>;
-        tag: z.ZodOptional<z.ZodString>;
-        mono: z.ZodOptional<z.ZodBoolean>;
-        fail: z.ZodOptional<z.ZodBoolean>;
-        custom: z.ZodOptional<z.ZodBoolean>;
-        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+    nodes: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        lane: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        tag: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        mono: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        fail: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        custom: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        box: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>, z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
     }, z.core.$strict>>;
-    edges: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        from: z.ZodString;
-        to: z.ZodString;
-        dashed: z.ZodOptional<z.ZodBoolean>;
-        path: z.ZodString;
-        badge: z.ZodOptional<z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>>;
-        label: z.ZodOptional<z.ZodObject<{
-            at: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
-            text: z.ZodString;
+    edges: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        from: z.ZodMiniString<string>;
+        to: z.ZodMiniString<string>;
+        dashed: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        path: z.ZodMiniString<string>;
+        badge: z.ZodMiniOptional<z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>>;
+        label: z.ZodMiniOptional<z.ZodMiniObject<{
+            at: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
+            text: z.ZodMiniString<string>;
         }, z.core.$strip>>;
     }, z.core.$strict>>>;
-    scenarios: z.ZodArray<z.ZodObject<{
-        id: z.ZodString;
-        label: z.ZodString;
-        display: z.ZodPrefault<z.ZodObject<{
-            counterLabel: z.ZodDefault<z.ZodBoolean>;
-            edges: z.ZodDefault<z.ZodEnum<{
+    scenarios: z.ZodMiniArray<z.ZodMiniObject<{
+        id: z.ZodMiniString<string>;
+        label: z.ZodMiniString<string>;
+        display: z.ZodMiniPrefault<z.ZodMiniObject<{
+            counterLabel: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            edges: z.ZodMiniDefault<z.ZodMiniEnum<{
                 progressive: "progressive";
                 all: "all";
             }>>;
-            edgeBadges: z.ZodDefault<z.ZodBoolean>;
-            nodeBadges: z.ZodDefault<z.ZodBoolean>;
-            log: z.ZodDefault<z.ZodEnum<{
+            edgeBadges: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            nodeBadges: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            log: z.ZodMiniDefault<z.ZodMiniEnum<{
                 incremental: "incremental";
                 cumulative: "cumulative";
             }>>;
         }, z.core.$strip>>;
-        nodeLabels: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
-        whole: z.ZodOptional<z.ZodObject<{
-            title: z.ZodOptional<z.ZodString>;
-            text: z.ZodOptional<T>;
+        nodeLabels: z.ZodMiniOptional<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniString<string>>>;
+        whole: z.ZodMiniOptional<z.ZodMiniObject<{
+            title: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            text: z.ZodMiniOptional<T>;
         }, z.core.$strip>>;
-        steps: z.ZodArray<z.ZodObject<{
-            id: z.ZodString;
-            title: z.ZodString;
+        steps: z.ZodMiniArray<z.ZodMiniObject<{
+            id: z.ZodMiniString<string>;
+            title: z.ZodMiniString<string>;
             text: T;
-            show: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            current: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            edges: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            defs: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            code: z.ZodOptional<z.ZodString>;
-            log: z.ZodOptional<z.ZodArray<z.ZodString>>;
-            fix: z.ZodOptional<T>;
-            sources: z.ZodDefault<z.ZodArray<S>>;
-            deeper: z.ZodDefault<z.ZodArray<D>>;
+            show: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            current: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            edges: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            defs: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            code: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            log: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            fix: z.ZodMiniOptional<T>;
+            sources: z.ZodMiniDefault<z.ZodMiniArray<S>>;
+            deeper: z.ZodMiniDefault<z.ZodMiniArray<D>>;
         }, z.core.$strip>>;
-        flow: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            node: z.ZodString;
-            step: z.ZodString;
-            log: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            edge: z.ZodOptional<z.ZodString>;
-            reverse: z.ZodOptional<z.ZodBoolean>;
-            fail: z.ZodOptional<z.ZodBoolean>;
+        flow: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniObject<{
+            node: z.ZodMiniString<string>;
+            step: z.ZodMiniString<string>;
+            log: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            edge: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            reverse: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+            fail: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
         }, z.core.$strip>>>;
-        repeatBadges: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            edge: z.ZodString;
-            step: z.ZodString;
-            at: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
+        repeatBadges: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniObject<{
+            edge: z.ZodMiniString<string>;
+            step: z.ZodMiniString<string>;
+            at: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
         }, z.core.$strict>>>;
     }, z.core.$strip>>;
 }, z.core.$strict>;
@@ -325,191 +325,191 @@ export function renderSvg(map: ResolvedMap, options?: {
 export type ResolvedMap = z.infer<typeof ResolvedMapSchema>;
 
 // @public (undocumented)
-export const ResolvedMapSchema: z.ZodObject<{
-    definitions: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        term: z.ZodString;
-        text: z.ZodString;
+export const ResolvedMapSchema: z.ZodMiniObject<{
+    definitions: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        term: z.ZodMiniString<string>;
+        text: z.ZodMiniString<string>;
     }, z.core.$strip>>>;
-    code: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        title: z.ZodString;
-        source: z.ZodOptional<z.ZodObject<{
-            label: z.ZodString;
-            url: z.ZodURL;
+    code: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        title: z.ZodMiniString<string>;
+        source: z.ZodMiniOptional<z.ZodMiniObject<{
+            label: z.ZodMiniString<string>;
+            url: z.ZodMiniURL;
         }, z.core.$strip>>;
-        lines: z.ZodArray<z.ZodString>;
+        lines: z.ZodMiniArray<z.ZodMiniString<string>>;
     }, z.core.$strip>>>;
-    conceptScenario: z.ZodOptional<z.ZodString>;
-    concepts: z.ZodDefault<z.ZodArray<z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        items: z.ZodArray<z.ZodObject<{
-            definition: z.ZodString;
-            short: z.ZodString;
-            nodes: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            step: z.ZodObject<{
-                scenario: z.ZodOptional<z.ZodString>;
-                step: z.ZodString;
+    conceptScenario: z.ZodMiniOptional<z.ZodMiniString<string>>;
+    concepts: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        items: z.ZodMiniArray<z.ZodMiniObject<{
+            definition: z.ZodMiniString<string>;
+            short: z.ZodMiniString<string>;
+            nodes: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            step: z.ZodMiniObject<{
+                scenario: z.ZodMiniOptional<z.ZodMiniString<string>>;
+                step: z.ZodMiniString<string>;
             }, z.core.$strip>;
-            source: z.ZodOptional<z.ZodObject<{
-                label: z.ZodString;
-                url: z.ZodURL;
+            source: z.ZodMiniOptional<z.ZodMiniObject<{
+                label: z.ZodMiniString<string>;
+                url: z.ZodMiniURL;
             }, z.core.$strip>>;
         }, z.core.$strip>>;
     }, z.core.$strip>>>;
-    callouts: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodDefault<z.ZodArray<z.ZodString>>>>;
-    format: z.ZodLiteral<3>;
-    id: z.ZodString;
-    title: z.ZodString;
-    direction: z.ZodOptional<z.ZodEnum<{
+    callouts: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>>>;
+    format: z.ZodMiniLiteral<3>;
+    id: z.ZodMiniString<string>;
+    title: z.ZodMiniString<string>;
+    direction: z.ZodMiniOptional<z.ZodMiniEnum<{
         right: "right";
         down: "down";
     }>>;
-    layout: z.ZodOptional<z.ZodObject<{
-        hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
-            kind: z.ZodLiteral<"free">;
-            edge: z.ZodString;
-            strength: z.ZodDefault<z.ZodEnum<{
+    layout: z.ZodMiniOptional<z.ZodMiniObject<{
+        hints: z.ZodMiniArray<z.ZodMiniUnion<readonly [z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"free">;
+            edge: z.ZodMiniString<string>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>, z.ZodObject<{
-            kind: z.ZodLiteral<"sameRank">;
-            nodes: z.ZodArray<z.ZodString>;
-            strength: z.ZodDefault<z.ZodEnum<{
+        }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"sameRank">;
+            nodes: z.ZodMiniArray<z.ZodMiniString<string>>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>, z.ZodObject<{
-            kind: z.ZodLiteral<"side">;
-            edge: z.ZodString;
-            end: z.ZodEnum<{
+        }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"side">;
+            edge: z.ZodMiniString<string>;
+            end: z.ZodMiniEnum<{
                 from: "from";
                 to: "to";
             }>;
-            side: z.ZodEnum<{
+            side: z.ZodMiniEnum<{
                 left: "left";
                 top: "top";
                 right: "right";
                 bottom: "bottom";
             }>;
-            strength: z.ZodDefault<z.ZodEnum<{
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
         }, z.core.$strict>]>>;
     }, z.core.$strict>>;
-    layers: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
+    layers: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
     }, z.core.$strip>>;
-    viewBox: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
-    measurement: z.ZodOptional<z.ZodObject<{
-        name: z.ZodString;
-        labels: z.ZodRecord<z.ZodString, z.ZodObject<{
-            width: z.ZodNumber;
-            height: z.ZodNumber;
-            left: z.ZodOptional<z.ZodNumber>;
-            ascent: z.ZodOptional<z.ZodNumber>;
-            padding: z.ZodOptional<z.ZodNumber>;
-            uncertainty: z.ZodOptional<z.ZodNumber>;
-            wrap: z.ZodOptional<z.ZodObject<{
-                lines: z.ZodArray<z.ZodString>;
-                lineHeight: z.ZodNumber;
+    viewBox: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
+    measurement: z.ZodMiniOptional<z.ZodMiniObject<{
+        name: z.ZodMiniString<string>;
+        labels: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+            width: z.ZodMiniNumber<number>;
+            height: z.ZodMiniNumber<number>;
+            left: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+            ascent: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+            padding: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+            uncertainty: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+            wrap: z.ZodMiniOptional<z.ZodMiniObject<{
+                lines: z.ZodMiniArray<z.ZodMiniString<string>>;
+                lineHeight: z.ZodMiniNumber<number>;
             }, z.core.$strip>>;
         }, z.core.$strip>>;
     }, z.core.$strip>>;
-    lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        y: z.ZodNumber;
-        h: z.ZodNumber;
-        x: z.ZodOptional<z.ZodNumber>;
-        w: z.ZodOptional<z.ZodNumber>;
+    lanes: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        y: z.ZodMiniNumber<number>;
+        h: z.ZodMiniNumber<number>;
+        x: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
+        w: z.ZodMiniOptional<z.ZodMiniNumber<number>>;
     }, z.core.$strict>>>;
-    frames: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        showWith: z.ZodDefault<z.ZodArray<z.ZodString>>;
-        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+    frames: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        showWith: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+        box: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>, z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
     }, z.core.$strict>>>;
-    nodes: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        lane: z.ZodOptional<z.ZodString>;
-        tag: z.ZodOptional<z.ZodString>;
-        mono: z.ZodOptional<z.ZodBoolean>;
-        fail: z.ZodOptional<z.ZodBoolean>;
-        custom: z.ZodOptional<z.ZodBoolean>;
-        box: z.ZodTuple<[z.ZodNumber, z.ZodNumber, z.ZodNumber, z.ZodNumber], null>;
+    nodes: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        lane: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        tag: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        mono: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        fail: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        custom: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        box: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>, z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
     }, z.core.$strict>>;
-    edges: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        from: z.ZodString;
-        to: z.ZodString;
-        dashed: z.ZodOptional<z.ZodBoolean>;
-        path: z.ZodString;
-        badge: z.ZodOptional<z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>>;
-        label: z.ZodOptional<z.ZodObject<{
-            at: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
-            text: z.ZodString;
+    edges: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        from: z.ZodMiniString<string>;
+        to: z.ZodMiniString<string>;
+        dashed: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        path: z.ZodMiniString<string>;
+        badge: z.ZodMiniOptional<z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>>;
+        label: z.ZodMiniOptional<z.ZodMiniObject<{
+            at: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
+            text: z.ZodMiniString<string>;
         }, z.core.$strip>>;
     }, z.core.$strict>>>;
-    scenarios: z.ZodArray<z.ZodObject<{
-        id: z.ZodString;
-        label: z.ZodString;
-        display: z.ZodPrefault<z.ZodObject<{
-            counterLabel: z.ZodDefault<z.ZodBoolean>;
-            edges: z.ZodDefault<z.ZodEnum<{
+    scenarios: z.ZodMiniArray<z.ZodMiniObject<{
+        id: z.ZodMiniString<string>;
+        label: z.ZodMiniString<string>;
+        display: z.ZodMiniPrefault<z.ZodMiniObject<{
+            counterLabel: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            edges: z.ZodMiniDefault<z.ZodMiniEnum<{
                 progressive: "progressive";
                 all: "all";
             }>>;
-            edgeBadges: z.ZodDefault<z.ZodBoolean>;
-            nodeBadges: z.ZodDefault<z.ZodBoolean>;
-            log: z.ZodDefault<z.ZodEnum<{
+            edgeBadges: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            nodeBadges: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            log: z.ZodMiniDefault<z.ZodMiniEnum<{
                 incremental: "incremental";
                 cumulative: "cumulative";
             }>>;
         }, z.core.$strip>>;
-        nodeLabels: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
-        whole: z.ZodOptional<z.ZodObject<{
-            title: z.ZodOptional<z.ZodString>;
-            text: z.ZodOptional<z.ZodString>;
+        nodeLabels: z.ZodMiniOptional<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniString<string>>>;
+        whole: z.ZodMiniOptional<z.ZodMiniObject<{
+            title: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            text: z.ZodMiniOptional<z.ZodMiniString<string>>;
         }, z.core.$strip>>;
-        steps: z.ZodArray<z.ZodObject<{
-            id: z.ZodString;
-            title: z.ZodString;
-            text: z.ZodString;
-            show: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            current: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            edges: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            defs: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            code: z.ZodOptional<z.ZodString>;
-            log: z.ZodOptional<z.ZodArray<z.ZodString>>;
-            fix: z.ZodOptional<z.ZodString>;
-            sources: z.ZodDefault<z.ZodArray<z.ZodObject<{
-                label: z.ZodString;
-                url: z.ZodURL;
+        steps: z.ZodMiniArray<z.ZodMiniObject<{
+            id: z.ZodMiniString<string>;
+            title: z.ZodMiniString<string>;
+            text: z.ZodMiniString<string>;
+            show: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            current: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            edges: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            defs: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            code: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            log: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            fix: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            sources: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+                label: z.ZodMiniString<string>;
+                url: z.ZodMiniURL;
             }, z.core.$strip>>>;
-            deeper: z.ZodDefault<z.ZodArray<z.ZodObject<{
-                title: z.ZodString;
-                href: z.ZodString;
+            deeper: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+                title: z.ZodMiniString<string>;
+                href: z.ZodMiniString<string>;
             }, z.core.$strip>>>;
         }, z.core.$strip>>;
-        flow: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            node: z.ZodString;
-            step: z.ZodString;
-            log: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            edge: z.ZodOptional<z.ZodString>;
-            reverse: z.ZodOptional<z.ZodBoolean>;
-            fail: z.ZodOptional<z.ZodBoolean>;
+        flow: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniObject<{
+            node: z.ZodMiniString<string>;
+            step: z.ZodMiniString<string>;
+            log: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            edge: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            reverse: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+            fail: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
         }, z.core.$strip>>>;
-        repeatBadges: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            edge: z.ZodString;
-            step: z.ZodString;
-            at: z.ZodTuple<[z.ZodNumber, z.ZodNumber], null>;
+        repeatBadges: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniObject<{
+            edge: z.ZodMiniString<string>;
+            step: z.ZodMiniString<string>;
+            at: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
         }, z.core.$strict>>>;
     }, z.core.$strip>>;
-    deeper: z.ZodDefault<z.ZodArray<z.ZodObject<{
-        title: z.ZodString;
-        href: z.ZodString;
-        why: z.ZodString;
+    deeper: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+        title: z.ZodMiniString<string>;
+        href: z.ZodMiniString<string>;
+        why: z.ZodMiniString<string>;
     }, z.core.$strip>>>;
 }, z.core.$strict>;
 
@@ -517,311 +517,311 @@ export const ResolvedMapSchema: z.ZodObject<{
 export type SourceMap = z.infer<typeof SourceMapSchema>;
 
 // @public (undocumented)
-export const SourceMapSchema: z.ZodObject<{
-    definitions: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        term: z.ZodString;
-        text: z.ZodString;
+export const SourceMapSchema: z.ZodMiniObject<{
+    definitions: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        term: z.ZodMiniString<string>;
+        text: z.ZodMiniString<string>;
     }, z.core.$strip>>>;
-    code: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        title: z.ZodString;
-        source: z.ZodOptional<z.ZodObject<{
-            label: z.ZodString;
-            url: z.ZodURL;
+    code: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        title: z.ZodMiniString<string>;
+        source: z.ZodMiniOptional<z.ZodMiniObject<{
+            label: z.ZodMiniString<string>;
+            url: z.ZodMiniURL;
         }, z.core.$strip>>;
-        lines: z.ZodArray<z.ZodString>;
+        lines: z.ZodMiniArray<z.ZodMiniString<string>>;
     }, z.core.$strip>>>;
-    conceptScenario: z.ZodOptional<z.ZodString>;
-    concepts: z.ZodDefault<z.ZodArray<z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        items: z.ZodArray<z.ZodObject<{
-            definition: z.ZodString;
-            short: z.ZodString;
-            nodes: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            step: z.ZodObject<{
-                scenario: z.ZodOptional<z.ZodString>;
-                step: z.ZodString;
+    conceptScenario: z.ZodMiniOptional<z.ZodMiniString<string>>;
+    concepts: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        items: z.ZodMiniArray<z.ZodMiniObject<{
+            definition: z.ZodMiniString<string>;
+            short: z.ZodMiniString<string>;
+            nodes: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            step: z.ZodMiniObject<{
+                scenario: z.ZodMiniOptional<z.ZodMiniString<string>>;
+                step: z.ZodMiniString<string>;
             }, z.core.$strip>;
-            source: z.ZodOptional<z.ZodObject<{
-                label: z.ZodString;
-                url: z.ZodURL;
+            source: z.ZodMiniOptional<z.ZodMiniObject<{
+                label: z.ZodMiniString<string>;
+                url: z.ZodMiniURL;
             }, z.core.$strip>>;
         }, z.core.$strip>>;
     }, z.core.$strip>>>;
-    callouts: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodDefault<z.ZodArray<z.ZodString>>>>;
-    format: z.ZodLiteral<3>;
-    id: z.ZodString;
-    title: z.ZodString;
-    direction: z.ZodOptional<z.ZodEnum<{
+    callouts: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>>>;
+    format: z.ZodMiniLiteral<3>;
+    id: z.ZodMiniString<string>;
+    title: z.ZodMiniString<string>;
+    direction: z.ZodMiniOptional<z.ZodMiniEnum<{
         right: "right";
         down: "down";
     }>>;
-    layout: z.ZodOptional<z.ZodObject<{
-        hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
-            kind: z.ZodLiteral<"free">;
-            edge: z.ZodString;
-            strength: z.ZodDefault<z.ZodEnum<{
+    layout: z.ZodMiniOptional<z.ZodMiniObject<{
+        hints: z.ZodMiniArray<z.ZodMiniUnion<readonly [z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"free">;
+            edge: z.ZodMiniString<string>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>, z.ZodObject<{
-            kind: z.ZodLiteral<"sameRank">;
-            nodes: z.ZodArray<z.ZodString>;
-            strength: z.ZodDefault<z.ZodEnum<{
+        }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"sameRank">;
+            nodes: z.ZodMiniArray<z.ZodMiniString<string>>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>, z.ZodObject<{
-            kind: z.ZodLiteral<"side">;
-            edge: z.ZodString;
-            end: z.ZodEnum<{
+        }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"side">;
+            edge: z.ZodMiniString<string>;
+            end: z.ZodMiniEnum<{
                 from: "from";
                 to: "to";
             }>;
-            side: z.ZodEnum<{
+            side: z.ZodMiniEnum<{
                 left: "left";
                 top: "top";
                 right: "right";
                 bottom: "bottom";
             }>;
-            strength: z.ZodDefault<z.ZodEnum<{
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
         }, z.core.$strict>]>>;
     }, z.core.$strict>>;
-    layers: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
+    layers: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
     }, z.core.$strip>>;
-    lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
+    lanes: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
     }, z.core.$strict>>>;
-    frames: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        showWith: z.ZodDefault<z.ZodArray<z.ZodString>>;
+    frames: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        showWith: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
     }, z.core.$strict>>>;
-    nodes: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        lane: z.ZodOptional<z.ZodString>;
-        tag: z.ZodOptional<z.ZodString>;
-        mono: z.ZodOptional<z.ZodBoolean>;
-        fail: z.ZodOptional<z.ZodBoolean>;
-        custom: z.ZodOptional<z.ZodBoolean>;
+    nodes: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        lane: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        tag: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        mono: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        fail: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        custom: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
     }, z.core.$strict>>;
-    edges: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        from: z.ZodString;
-        to: z.ZodString;
-        label: z.ZodOptional<z.ZodString>;
-        dashed: z.ZodOptional<z.ZodBoolean>;
+    edges: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        from: z.ZodMiniString<string>;
+        to: z.ZodMiniString<string>;
+        label: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        dashed: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
     }, z.core.$strict>>>;
-    scenarios: z.ZodArray<z.ZodObject<{
-        id: z.ZodString;
-        label: z.ZodString;
-        display: z.ZodPrefault<z.ZodObject<{
-            counterLabel: z.ZodDefault<z.ZodBoolean>;
-            edges: z.ZodDefault<z.ZodEnum<{
+    scenarios: z.ZodMiniArray<z.ZodMiniObject<{
+        id: z.ZodMiniString<string>;
+        label: z.ZodMiniString<string>;
+        display: z.ZodMiniPrefault<z.ZodMiniObject<{
+            counterLabel: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            edges: z.ZodMiniDefault<z.ZodMiniEnum<{
                 progressive: "progressive";
                 all: "all";
             }>>;
-            edgeBadges: z.ZodDefault<z.ZodBoolean>;
-            nodeBadges: z.ZodDefault<z.ZodBoolean>;
-            log: z.ZodDefault<z.ZodEnum<{
+            edgeBadges: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            nodeBadges: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            log: z.ZodMiniDefault<z.ZodMiniEnum<{
                 incremental: "incremental";
                 cumulative: "cumulative";
             }>>;
         }, z.core.$strip>>;
-        nodeLabels: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
-        whole: z.ZodOptional<z.ZodObject<{
-            title: z.ZodOptional<z.ZodString>;
-            text: z.ZodOptional<z.ZodString>;
+        nodeLabels: z.ZodMiniOptional<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniString<string>>>;
+        whole: z.ZodMiniOptional<z.ZodMiniObject<{
+            title: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            text: z.ZodMiniOptional<z.ZodMiniString<string>>;
         }, z.core.$strip>>;
-        steps: z.ZodArray<z.ZodObject<{
-            id: z.ZodString;
-            title: z.ZodString;
-            text: z.ZodString;
-            show: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            current: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            edges: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            defs: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            code: z.ZodOptional<z.ZodString>;
-            log: z.ZodOptional<z.ZodArray<z.ZodString>>;
-            fix: z.ZodOptional<z.ZodString>;
-            sources: z.ZodDefault<z.ZodArray<z.ZodObject<{
-                label: z.ZodString;
-                url: z.ZodURL;
+        steps: z.ZodMiniArray<z.ZodMiniObject<{
+            id: z.ZodMiniString<string>;
+            title: z.ZodMiniString<string>;
+            text: z.ZodMiniString<string>;
+            show: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            current: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            edges: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            defs: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            code: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            log: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            fix: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            sources: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+                label: z.ZodMiniString<string>;
+                url: z.ZodMiniURL;
             }, z.core.$strip>>>;
-            deeper: z.ZodDefault<z.ZodArray<z.ZodObject<{
-                title: z.ZodString;
-                href: z.ZodString;
+            deeper: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+                title: z.ZodMiniString<string>;
+                href: z.ZodMiniString<string>;
             }, z.core.$strip>>>;
         }, z.core.$strip>>;
-        flow: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            node: z.ZodString;
-            step: z.ZodString;
-            log: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            edge: z.ZodOptional<z.ZodString>;
-            reverse: z.ZodOptional<z.ZodBoolean>;
-            fail: z.ZodOptional<z.ZodBoolean>;
+        flow: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniObject<{
+            node: z.ZodMiniString<string>;
+            step: z.ZodMiniString<string>;
+            log: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            edge: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            reverse: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+            fail: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
         }, z.core.$strip>>>;
-        repeatBadges: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            edge: z.ZodString;
-            step: z.ZodString;
+        repeatBadges: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniObject<{
+            edge: z.ZodMiniString<string>;
+            step: z.ZodMiniString<string>;
         }, z.core.$strict>>>;
     }, z.core.$strip>>;
-    deeper: z.ZodDefault<z.ZodArray<z.ZodObject<{
-        title: z.ZodString;
-        href: z.ZodString;
-        why: z.ZodString;
+    deeper: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+        title: z.ZodMiniString<string>;
+        href: z.ZodMiniString<string>;
+        why: z.ZodMiniString<string>;
     }, z.core.$strip>>>;
 }, z.core.$strict>;
 
 // @public
-export function sourceMapSchema<T extends z.ZodType, S extends z.ZodType, D extends z.ZodType>(leaf: {
+export function sourceMapSchema<T extends z.core.$ZodType, S extends z.core.$ZodType, D extends z.core.$ZodType>(leaf: {
     text: T;
     source: S;
     deeper: D;
-}): z.ZodObject<{
-    definitions: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        term: z.ZodString;
+}): z.ZodMiniObject<{
+    definitions: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        term: z.ZodMiniString<string>;
         text: T;
     }, z.core.$strip>>>;
-    code: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        title: z.ZodString;
-        source: z.ZodOptional<S>;
-        lines: z.ZodArray<z.ZodString>;
+    code: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        title: z.ZodMiniString<string>;
+        source: z.ZodMiniOptional<S>;
+        lines: z.ZodMiniArray<z.ZodMiniString<string>>;
     }, z.core.$strip>>>;
-    conceptScenario: z.ZodOptional<z.ZodString>;
-    concepts: z.ZodDefault<z.ZodArray<z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        items: z.ZodArray<z.ZodObject<{
-            definition: z.ZodString;
+    conceptScenario: z.ZodMiniOptional<z.ZodMiniString<string>>;
+    concepts: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        items: z.ZodMiniArray<z.ZodMiniObject<{
+            definition: z.ZodMiniString<string>;
             short: T;
-            nodes: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            step: z.ZodObject<{
-                scenario: z.ZodOptional<z.ZodString>;
-                step: z.ZodString;
+            nodes: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            step: z.ZodMiniObject<{
+                scenario: z.ZodMiniOptional<z.ZodMiniString<string>>;
+                step: z.ZodMiniString<string>;
             }, z.core.$strip>;
-            source: z.ZodOptional<S>;
+            source: z.ZodMiniOptional<S>;
         }, z.core.$strip>>;
     }, z.core.$strip>>>;
-    callouts: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodDefault<z.ZodArray<z.ZodString>>>>;
-    deeper: z.ZodDefault<z.ZodArray<D>>;
-    format: z.ZodLiteral<3>;
-    id: z.ZodString;
-    title: z.ZodString;
-    direction: z.ZodOptional<z.ZodEnum<{
+    callouts: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>>>;
+    deeper: z.ZodMiniDefault<z.ZodMiniArray<D>>;
+    format: z.ZodMiniLiteral<3>;
+    id: z.ZodMiniString<string>;
+    title: z.ZodMiniString<string>;
+    direction: z.ZodMiniOptional<z.ZodMiniEnum<{
         right: "right";
         down: "down";
     }>>;
-    layout: z.ZodOptional<z.ZodObject<{
-        hints: z.ZodArray<z.ZodUnion<readonly [z.ZodObject<{
-            kind: z.ZodLiteral<"free">;
-            edge: z.ZodString;
-            strength: z.ZodDefault<z.ZodEnum<{
+    layout: z.ZodMiniOptional<z.ZodMiniObject<{
+        hints: z.ZodMiniArray<z.ZodMiniUnion<readonly [z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"free">;
+            edge: z.ZodMiniString<string>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>, z.ZodObject<{
-            kind: z.ZodLiteral<"sameRank">;
-            nodes: z.ZodArray<z.ZodString>;
-            strength: z.ZodDefault<z.ZodEnum<{
+        }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"sameRank">;
+            nodes: z.ZodMiniArray<z.ZodMiniString<string>>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
-        }, z.core.$strict>, z.ZodObject<{
-            kind: z.ZodLiteral<"side">;
-            edge: z.ZodString;
-            end: z.ZodEnum<{
+        }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"side">;
+            edge: z.ZodMiniString<string>;
+            end: z.ZodMiniEnum<{
                 from: "from";
                 to: "to";
             }>;
-            side: z.ZodEnum<{
+            side: z.ZodMiniEnum<{
                 left: "left";
                 top: "top";
                 right: "right";
                 bottom: "bottom";
             }>;
-            strength: z.ZodDefault<z.ZodEnum<{
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";
             }>>;
         }, z.core.$strict>]>>;
     }, z.core.$strict>>;
-    layers: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
+    layers: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
     }, z.core.$strip>>;
-    lanes: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
+    lanes: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
     }, z.core.$strict>>>;
-    frames: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        showWith: z.ZodDefault<z.ZodArray<z.ZodString>>;
+    frames: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        showWith: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
     }, z.core.$strict>>>;
-    nodes: z.ZodRecord<z.ZodString, z.ZodObject<{
-        label: z.ZodString;
-        layer: z.ZodString;
-        lane: z.ZodOptional<z.ZodString>;
-        tag: z.ZodOptional<z.ZodString>;
-        mono: z.ZodOptional<z.ZodBoolean>;
-        fail: z.ZodOptional<z.ZodBoolean>;
-        custom: z.ZodOptional<z.ZodBoolean>;
+    nodes: z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        label: z.ZodMiniString<string>;
+        layer: z.ZodMiniString<string>;
+        lane: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        tag: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        mono: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        fail: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+        custom: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
     }, z.core.$strict>>;
-    edges: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
-        from: z.ZodString;
-        to: z.ZodString;
-        label: z.ZodOptional<z.ZodString>;
-        dashed: z.ZodOptional<z.ZodBoolean>;
+    edges: z.ZodMiniDefault<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniObject<{
+        from: z.ZodMiniString<string>;
+        to: z.ZodMiniString<string>;
+        label: z.ZodMiniOptional<z.ZodMiniString<string>>;
+        dashed: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
     }, z.core.$strict>>>;
-    scenarios: z.ZodArray<z.ZodObject<{
-        id: z.ZodString;
-        label: z.ZodString;
-        display: z.ZodPrefault<z.ZodObject<{
-            counterLabel: z.ZodDefault<z.ZodBoolean>;
-            edges: z.ZodDefault<z.ZodEnum<{
+    scenarios: z.ZodMiniArray<z.ZodMiniObject<{
+        id: z.ZodMiniString<string>;
+        label: z.ZodMiniString<string>;
+        display: z.ZodMiniPrefault<z.ZodMiniObject<{
+            counterLabel: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            edges: z.ZodMiniDefault<z.ZodMiniEnum<{
                 progressive: "progressive";
                 all: "all";
             }>>;
-            edgeBadges: z.ZodDefault<z.ZodBoolean>;
-            nodeBadges: z.ZodDefault<z.ZodBoolean>;
-            log: z.ZodDefault<z.ZodEnum<{
+            edgeBadges: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            nodeBadges: z.ZodMiniDefault<z.ZodMiniBoolean<boolean>>;
+            log: z.ZodMiniDefault<z.ZodMiniEnum<{
                 incremental: "incremental";
                 cumulative: "cumulative";
             }>>;
         }, z.core.$strip>>;
-        nodeLabels: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
-        whole: z.ZodOptional<z.ZodObject<{
-            title: z.ZodOptional<z.ZodString>;
-            text: z.ZodOptional<T>;
+        nodeLabels: z.ZodMiniOptional<z.ZodMiniRecord<z.ZodMiniString<string>, z.ZodMiniString<string>>>;
+        whole: z.ZodMiniOptional<z.ZodMiniObject<{
+            title: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            text: z.ZodMiniOptional<T>;
         }, z.core.$strip>>;
-        steps: z.ZodArray<z.ZodObject<{
-            id: z.ZodString;
-            title: z.ZodString;
+        steps: z.ZodMiniArray<z.ZodMiniObject<{
+            id: z.ZodMiniString<string>;
+            title: z.ZodMiniString<string>;
             text: T;
-            show: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            current: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            edges: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            defs: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            code: z.ZodOptional<z.ZodString>;
-            log: z.ZodOptional<z.ZodArray<z.ZodString>>;
-            fix: z.ZodOptional<T>;
-            sources: z.ZodDefault<z.ZodArray<S>>;
-            deeper: z.ZodDefault<z.ZodArray<D>>;
+            show: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            current: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            edges: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            defs: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            code: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            log: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            fix: z.ZodMiniOptional<T>;
+            sources: z.ZodMiniDefault<z.ZodMiniArray<S>>;
+            deeper: z.ZodMiniDefault<z.ZodMiniArray<D>>;
         }, z.core.$strip>>;
-        flow: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            node: z.ZodString;
-            step: z.ZodString;
-            log: z.ZodDefault<z.ZodArray<z.ZodString>>;
-            edge: z.ZodOptional<z.ZodString>;
-            reverse: z.ZodOptional<z.ZodBoolean>;
-            fail: z.ZodOptional<z.ZodBoolean>;
+        flow: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniObject<{
+            node: z.ZodMiniString<string>;
+            step: z.ZodMiniString<string>;
+            log: z.ZodMiniDefault<z.ZodMiniArray<z.ZodMiniString<string>>>;
+            edge: z.ZodMiniOptional<z.ZodMiniString<string>>;
+            reverse: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
+            fail: z.ZodMiniOptional<z.ZodMiniBoolean<boolean>>;
         }, z.core.$strip>>>;
-        repeatBadges: z.ZodOptional<z.ZodArray<z.ZodObject<{
-            edge: z.ZodString;
-            step: z.ZodString;
+        repeatBadges: z.ZodMiniOptional<z.ZodMiniArray<z.ZodMiniObject<{
+            edge: z.ZodMiniString<string>;
+            step: z.ZodMiniString<string>;
         }, z.core.$strict>>>;
     }, z.core.$strip>>;
 }, z.core.$strict>;

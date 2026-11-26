@@ -6,8 +6,8 @@ const cases = [
     path: "dist/element.js",
     entry: ["element"],
     gzip: true,
-    // Measured 48157 B + 1000 B margin.
-    limit: "49157 B",
+    // Measured 32108 B + 963 B margin.
+    limit: "33071 B",
   },
   {
     name: "browser player (pre-resolved map)",
@@ -37,8 +37,8 @@ const cases = [
       "dist/index.js": "{ SourceMapSchema, ResolvedMapSchema }",
     },
     gzip: true,
-    // Measured 27165 B + 814 B margin.
-    limit: "27979 B",
+    // Measured 11053 B + 331 B margin.
+    limit: "11384 B",
   },
   {
     name: "layout port (with Zod; engine supplied by host)",
@@ -48,16 +48,16 @@ const cases = [
       "dist/layout/index.js": "{ layout, measureLabel }",
     },
     gzip: true,
-    // Static entry: measured 40134 B + 1000 B; deferred alignment is below.
-    limit: "41134 B",
+    // Static entry: measured 24088 B + 722 B; deferred alignment is below.
+    limit: "24810 B",
   },
   {
     name: "same-rank alignment (standalone on-demand entry; includes shared Zod)",
     path: "dist/layout/place-same-rank.js",
     gzip: true,
-    // Complete lazy stage: 39497 B + 1000 B, replacing the solver-only budget.
+    // Complete lazy stage: 23328 B + 699 B, replacing the solver-only budget.
     // Author approved a separate budget; shared geometry and Zod are imported.
-    limit: "40497 B",
+    limit: "24027 B",
   },
   {
     name: "layout check (quality report with font tables, without Zod)",
@@ -73,8 +73,8 @@ const cases = [
     name: "complete root API (with Zod)",
     path: "dist/index.js",
     gzip: true,
-    // Measured 33032 B + 990 B margin.
-    limit: "34022 B",
+    // Measured 16908 B + 507 B margin.
+    limit: "17415 B",
   },
 ];
 export default cases.map((check) => ({

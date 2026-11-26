@@ -35,6 +35,19 @@ This item supplies schemas, not automatic layout. Before playback, supply
 `viewBox` and node boxes (and geometry for any lanes, frames or edges), then
 parse with `ResolvedMapSchema`. Do not pass source maps directly to `MapPlayer`.
 
+The exported schemas are Zod Mini schemas. `SourceMapSchema.parse(value)` and
+`SourceMapSchema.safeParse(value)` remain available, as do the corresponding
+resolved-map methods. Compose them with Mini:
+
+```js
+import * as z from "zod/mini";
+const envelope = z.object({ map: SourceMapSchema });
+```
+
+Use a failed `safeParse` result's `error.issues` to inspect validation errors,
+and package errors' `kind` where applicable. Do not rely on `instanceof` a
+classic `ZodError` for Mini validation errors.
+
 ## Shared fields
 
 Required root fields: `format`, `id`, `title`, `layers`, `nodes`, `scenarios`.

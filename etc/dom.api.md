@@ -4,7 +4,7 @@
 
 ```ts
 
-import * as z from 'zod';
+import * as z from 'zod/mini';
 
 // @public (undocumented)
 export interface Animator {

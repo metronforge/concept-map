@@ -28,16 +28,10 @@ export function createRouteInspector(
     refinement
       ? atWidth(refinement.measurer, map, refinement.widthEm)
       : measurer;
-  const resolve = (result: LayoutResult) => {
-    const map = placeAnnotations(
-      resolveMeasured(source, graph, result, measurer),
-    );
-    return refinement ? refine(map, measuredAt(map)) : map;
-  };
-  const before = resolve(original);
-  return (candidate) => {
-    const after = resolve(candidate);
-    return routingConflictEdges(
+  const resolve = (result: LayoutResult) =>
+    placeAnnotations(resolveMeasured(source, graph, result, measurer));
+  const compare = (before: ResolvedMap, after: ResolvedMap) =>
+    routingConflictEdges(
       newRoutingDefects(
         source,
         before,
@@ -47,6 +41,16 @@ export function createRouteInspector(
       ),
       after,
     );
+  const before = resolve(original);
+  const refinedBefore = refinement ? refine(before, measuredAt(before)) : null;
+  return (candidate) => {
+    const after = resolve(candidate);
+    const rawConflicts = compare(before, after);
+    if (!refinedBefore) return rawConflicts;
+    const refinedAfter = refine(after, measuredAt(after));
+    return [
+      ...new Set([...rawConflicts, ...compare(refinedBefore, refinedAfter)]),
+    ];
   };
 }
 

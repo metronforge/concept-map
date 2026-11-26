@@ -119,10 +119,13 @@ including for required hints and hand drawings. It never claims the hint is
 honoured, and the unknown verdict adds no hard defect. The reading report counts
 stated free arrows as returns, even if scenario intent classified them as forward.
 
-Both built-in engines currently declare literal `free` unsupported: preferred
-hints are listed and required hints fail. Their derived return-arrow reversal
-still applies, but it does not exclude arrows from ranking. Stated free hints
-are not treated as instructions to reverse an arrow.
+For a map with a stated `free` hint and no `sameRank` hint, `layout()` places
+the full graph as a baseline, then places it without the free arrow and routes
+that arrow around the boxes. It accepts the new drawing only when it adds no
+hard defect at either the raw or refined width. Otherwise a preferred hint is
+listed as unsupported and a required hint fails. Derived return-arrow reversal
+still applies; stated free hints do not reverse arrows. Maps that state both
+`free` and `sameRank` still use the baseline free-arrow behavior.
 
 `side` names an edge, its `from` or `to` end, and the box side: `top`, `right`,
 `bottom` or `left`. For example:
@@ -164,7 +167,7 @@ Support through `layout()`:
 | ---------- | ------------------------------------------------- | ------------------------------------------------- |
 | `sameRank` | preferred and required, through the shared solver | preferred and required, through the shared solver |
 | `side`     | unsupported                                       | preferred and required                            |
-| `free`     | unsupported                                       | unsupported                                       |
+| `free`     | preferred and required, through shared routing    | preferred and required, through shared routing    |
 
 Same-rank alignment loads only when a source map states a `sameRank` hint.
 It follows engine placement, including for custom engines. Boxes move only

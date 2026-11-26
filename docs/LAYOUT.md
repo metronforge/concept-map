@@ -215,7 +215,9 @@ for stated free hints, while derived free constraints remain unsupported.
 An omitted origin has no support; it never inherits the other origin's strength.
 This lets an adapter add literal rank exclusion without claiming that its
 existing derived reversal excludes edges from ranks. Both built-in adapters
-currently declare `free: {}`, supporting neither origin.
+currently declare `free: {}`, supporting neither origin directly. The shared
+layout pipeline supports stated `free` hints by placing without those arrows
+and routing them afterward.
 
 `layout()` handles stated `sameRank` hints after placement through a shared,
 on-demand solver. This supports preferred and required groups with either engine
@@ -236,9 +238,12 @@ arrows higher straightness priority during node placement. ELK uses scenario
 node order to guide cycle breaking and gives forward arrows higher direction
 priority. Required lane order takes precedence. Like dagre, it reverses return
 arrows for ranking and restores their travel direction afterwards. Both adapters
-keep this derived reversal preference but declare literal rank exclusion (`free`)
-unsupported: reversing an arrow still lets it influence ranks. Unsupported
-stated free preferences are listed and do not reverse arrows; required ones fail.
+keep this derived reversal preference; reversing an arrow still lets it
+influence ranks. For maps with stated `free` hints and no `sameRank` hints,
+`layout()` places again without the free arrows and routes them around the
+placed boxes. It uses the routed drawing only if raw and refined checks find
+no new hard defects. Otherwise preferred hints are listed as unsupported and
+required hints fail.
 
 Intent is enabled by default. To compare an engine's graph-only placement
 with these preferences, pass `{ intent: false }` to `layout()`. This omits

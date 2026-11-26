@@ -20,11 +20,13 @@ test("standalone comparison sources include defaults before reference validation
     "door",
     "gcd",
     "side-hints",
+    "free",
+    "free-plain",
     "same-rank",
     "same-rank-plain",
   ]);
   for (const { id, source } of examples) {
-    const name = id === "same-rank-plain" ? "same-rank" : id;
+    const name = id.endsWith("-plain") ? id.slice(0, -6) : id;
     const original = JSON.parse(
       readFileSync(`examples/${name}/map.json`, "utf8"),
     );
@@ -33,6 +35,17 @@ test("standalone comparison sources include defaults before reference validation
     expect(source.frames).toEqual({});
     expect(() => validateReferences(source)).not.toThrow();
   }
+});
+
+test("the plain free comparison removes only the stated hint", () => {
+  const examples = exampleMaps();
+  const hinted = examples.find(({ id }) => id === "free")!.source;
+  const plain = examples.find(({ id }) => id === "free-plain")!.source;
+  const { layout, ...withoutHint } = hinted;
+  expect(layout.hints).toEqual([
+    { kind: "free", edge: "feedback", strength: "required" },
+  ]);
+  expect(plain).toEqual(withoutHint);
 });
 
 test("the plain same-rank comparison removes only the stated hint", () => {

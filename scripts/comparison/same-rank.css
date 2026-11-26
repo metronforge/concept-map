@@ -1,5 +1,6 @@
-/* Keep this small alignment example at the player's page-relative text size. */
-[data-map^="same-rank"] .canvas svg {
+/* Keep small hint examples at the player's page-relative text size. */
+[data-map^="same-rank"] .canvas svg,
+[data-map^="free"] .canvas svg {
   width: auto;
   height: auto;
 }

@@ -61,24 +61,30 @@ export function exampleMaps() {
     "door",
     "gcd",
     "side-hints",
+    "free",
+    "free-plain",
     "same-rank",
     "same-rank-plain",
   ].map((id) => ({
     id,
     source: SourceMapSchema.parse(exampleSource(id)),
-    note: id.startsWith("same-rank")
-      ? id === "same-rank"
-        ? "Quick and Finish are parallel outcomes. A required sameRank hint aligns them in both engines. Compare the next section, which removes only that hint. Plain columns disable scenario intent, not stated hints."
-        : "The same source with only the sameRank hint removed. Both engines place Quick before Finish because its path is shorter. Compare the aligned outcomes in the preceding section."
-      : id === "side-hints"
-        ? "ELK honours the stated box sides, including the Retry loop above Waiting. Dagre lists side hints as unsupported. Both ELK columns keep stated hints; plain disables only derived scenario intent."
-        : "Current standalone example. No hand-drawn reference is available.",
+    note: id.startsWith("free")
+      ? id === "free"
+        ? "Review feedback returns to the plan without influencing ranks. Both engines keep the plan above review. The next section removes only the free hint."
+        : "The same source with only the free hint removed. Without derived intent, both engines put review above the plan and push building down."
+      : id.startsWith("same-rank")
+        ? id === "same-rank"
+          ? "Quick and Finish are parallel outcomes. A required sameRank hint aligns them in both engines. Compare the next section, which removes only that hint. Plain columns disable scenario intent, not stated hints."
+          : "The same source with only the sameRank hint removed. Both engines place Quick before Finish because its path is shorter. Compare the aligned outcomes in the preceding section."
+        : id === "side-hints"
+          ? "ELK honours the stated box sides, including the Retry loop above Waiting. Dagre lists side hints as unsupported. Both ELK columns keep stated hints; plain disables only derived scenario intent."
+          : "Current standalone example. No hand-drawn reference is available.",
   }));
 }
 
 function exampleSource(id) {
-  const name = id === "same-rank-plain" ? "same-rank" : id;
+  const name = id.endsWith("-plain") ? id.slice(0, -6) : id;
   const source = JSON.parse(readFileSync(`examples/${name}/map.json`, "utf8"));
-  if (id === "same-rank-plain") delete source.layout;
+  if (id.endsWith("-plain")) delete source.layout;
   return source;
 }

@@ -55,9 +55,9 @@ const cases = [
     name: "same-rank alignment (standalone on-demand entry; includes shared Zod)",
     path: "dist/layout/place-same-rank.js",
     gzip: true,
-    // Complete lazy stage: 23328 B + 699 B, replacing the solver-only budget.
-    // Author approved a separate budget; shared geometry and Zod are imported.
-    limit: "24027 B",
+    // Complete lazy stage: 27351 B + 815 B; includes channel routing.
+    // Author approved the 4 KB rise for this on-demand alignment entry.
+    limit: "28166 B",
   },
   {
     name: "channel routing (standalone on-demand entry)",

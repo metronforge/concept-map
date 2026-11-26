@@ -9,7 +9,7 @@ import { check } from "../../../src/layout/stages/report.js";
 import { hint, routingFixture } from "./same-rank-routing-fixture.js";
 
 for (const down of [false, true]) {
-  test(`${down ? "down" : "right"}: measured inspection refuses source penetration`, () => {
+  test(`${down ? "down" : "right"}: measured inspection accepts a channel around the source`, () => {
     const f = routingFixture([hint(["a", "c"])], down);
     const inspect = createRouteInspector(
       f.source,
@@ -25,11 +25,11 @@ for (const down of [false, true]) {
       32,
       inspect,
     );
-    expect(outcome).toMatchObject({
-      status: "determined",
-      result: f.original,
-      dropped: [{ reason: "unsupported", conflicts: ["ab"] }],
-    });
+    expect(outcome.status).toBe("determined");
+    if (outcome.status !== "determined") throw new Error(outcome.status);
+    expect(outcome.dropped).toEqual([]);
+    expect(outcome.result.nodes.a).not.toEqual(f.original.nodes.a);
+    expect(inspect(outcome.result)).toEqual([]);
   });
 }
 

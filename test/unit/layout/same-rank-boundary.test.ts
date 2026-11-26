@@ -18,7 +18,7 @@ function run(
     f.original,
     64,
     32,
-    f.inspect,
+    nodes.includes("c") ? () => ["ab"] : f.inspect,
   );
   return { ...f, outcome };
 }
@@ -113,7 +113,8 @@ test("mixed refusals retain source order and do not share writable node arrays",
     f.original,
     64,
     32,
-    f.inspect,
+    (candidate) =>
+      candidate.nodes.a[0] !== f.original.nodes.a[0] ? ["ab"] : [],
   );
   const saved = structuredClone(outcome);
   const accepted = acceptSameRank(outcome);

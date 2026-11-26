@@ -2,6 +2,7 @@ import { expect, test } from "vitest";
 import { test as property, fc } from "@fast-check/vitest";
 import { alignSameRank } from "../../../src/layout/same-rank.js";
 import { check } from "../../../src/layout/stages/report.js";
+import { rerouteMovedEdges } from "../../../src/layout/moved-routes.js";
 import { hint, routingFixture } from "./same-rank-routing-fixture.js";
 
 for (const down of [false, true]) {
@@ -16,7 +17,7 @@ for (const down of [false, true]) {
       f.original,
       64,
       32,
-      f.inspect,
+      () => ["ab"],
     );
     expect(outcome.status).toBe("determined");
     if (outcome.status !== "determined") throw new Error(outcome.status);
@@ -36,7 +37,7 @@ for (const down of [false, true]) {
       f.original,
       64,
       32,
-      f.inspect,
+      () => ["ab"],
     );
     expect(outcome).toMatchObject({
       status: "routing-failed",
@@ -65,7 +66,8 @@ test.each(["preferred", "required"] as const)(
       f.original,
       64,
       32,
-      f.inspect,
+      (candidate) =>
+        candidate.nodes.a[0] !== f.original.nodes.a[0] ? ["ab"] : [],
     );
     if (outcome.status !== "determined") throw new Error(outcome.status);
     expect(outcome.result.nodes.a).toEqual(f.original.nodes.a);
@@ -83,19 +85,30 @@ test("a required routing failure cannot be rescued by an earlier preference", ()
     hint(["b", "c"], "preferred", 0),
     hint(["a", "c"], "required", 1),
   ]);
+  const outcome = alignSameRank(f.problem, f.graph, f.original, 64, 32, () => [
+    "ab",
+  ]);
+  expect(outcome).toMatchObject({
+    status: "routing-failed",
+    hints: [f.problem.constraints[2]],
+    conflicts: ["ab"],
+  });
+});
+
+test("a rejected channel falls back to a safe stretched route", () => {
+  const f = routingFixture([hint(["a", "c"], "required")]);
   const outcome = alignSameRank(
     f.problem,
     f.graph,
     f.original,
     64,
     32,
-    f.inspect,
+    (candidate) => (candidate.edges.ab.points[1][0] === 200 ? ["ab"] : []),
   );
-  expect(outcome).toMatchObject({
-    status: "routing-failed",
-    hints: [f.problem.constraints[2]],
-    conflicts: ["ab"],
-  });
+  if (outcome.status !== "determined") throw new Error(outcome.status);
+  expect(outcome.result).toEqual(
+    rerouteMovedEdges(f.graph, f.original, outcome.result.nodes),
+  );
 });
 
 test("no hints retain the original without inspecting a candidate", () => {
@@ -113,7 +126,7 @@ test("no hints retain the original without inspecting a candidate", () => {
 property.prop([fc.integer({ min: 30 * 64, max: 60 * 64 }), fc.boolean()], {
   numRuns: 1000,
 })(
-  "preferred source-penetrating stretches are rolled back for fractional positions",
+  "preferred source-penetrating stretches use safe channels for fractional positions",
   (ticks, down) => {
     const f = routingFixture([hint(["a", "c"])], down, ticks / 64);
     const outcome = alignSameRank(
@@ -124,12 +137,13 @@ property.prop([fc.integer({ min: 30 * 64, max: 60 * 64 }), fc.boolean()], {
       32,
       f.inspect,
     );
-    expect(outcome).toMatchObject({
-      status: "determined",
-      result: f.original,
-      dropped: [{ reason: "unsupported", conflicts: ["ab"] }],
-    });
+    expect(outcome.status).toBe("determined");
+    if (outcome.status !== "determined") throw new Error(outcome.status);
+    expect(outcome.dropped).toEqual([]);
+    expect(outcome.result.nodes.a).not.toEqual(f.original.nodes.a);
+    expect(f.inspect(outcome.result)).toEqual([]);
   },
+  30000,
 );
 
 test("required groups are checked together when one movement repairs another route", () => {

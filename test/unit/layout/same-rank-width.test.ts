@@ -55,7 +55,7 @@ for (const finalConflict of [false, true]) {
 }
 
 test.each(["required", "preferred"] as const)(
-  "public routing refusal for %s hints names the arrow",
+  "public routing for %s hints clears the moved arrow",
   async (strength) => {
     const f = routingFixture([hint(["a", "c"], strength)]);
     f.source.layout = {
@@ -70,16 +70,8 @@ test.each(["required", "preferred"] as const)(
         onUnsupportedHints: (h) => calls.push(h),
       },
     );
-    if (strength === "required") {
-      await expect(result).rejects.toMatchObject({
-        kind: "same-rank-routing",
-        data: { conflicts: ["ab"] },
-      });
-    } else {
-      expect((await result).nodes.a.box).toEqual([16, 16, 60, 36]);
-      expect(calls).toEqual([
-        [expect.objectContaining({ reason: "unsupported", conflicts: ["ab"] })],
-      ]);
-    }
+    const resolved = await result;
+    expect(resolved.nodes.a.box).toEqual([56, 16, 60, 36]);
+    expect(calls).toEqual([]);
   },
 );

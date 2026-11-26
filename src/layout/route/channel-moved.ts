@@ -17,5 +17,5 @@ export function routeMoved(
   );
   return edges.length
     ? routeLayout({ ...graph, edges }, original, nodes, viewBox)
-    : original;
+    : { ...original, nodes };
 }

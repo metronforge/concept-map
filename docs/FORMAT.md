@@ -119,13 +119,14 @@ including for required hints and hand drawings. It never claims the hint is
 honoured, and the unknown verdict adds no hard defect. The reading report counts
 stated free arrows as returns, even if scenario intent classified them as forward.
 
-For a map with a stated `free` hint and no `sameRank` hint, `layout()` places
-the full graph as a baseline, then places it without the free arrow and routes
-that arrow around the boxes. It accepts the new drawing only when it adds no
-hard defect at either the raw or refined width. Otherwise a preferred hint is
-listed as unsupported and a required hint fails. Derived return-arrow reversal
-still applies; stated free hints do not reverse arrows. Maps that state both
-`free` and `sameRank` still use the baseline free-arrow behavior.
+For a map with a stated `free` hint, `layout()` places the full graph as a
+baseline, then places it without the free arrow and routes that arrow around
+the boxes. It accepts the new drawing only when it adds no hard defect in the
+raw or refined check. Otherwise a preferred hint is listed as unsupported and
+a required hint fails. The same process applies when the map also states
+`sameRank`: alignment uses the placement without the free arrow when routing
+succeeds. Derived return-arrow reversal still applies; stated free hints do
+not reverse arrows.
 
 `side` names an edge, its `from` or `to` end, and the box side: `top`, `right`,
 `bottom` or `left`. For example:
@@ -177,11 +178,12 @@ spanning different lanes, or members joined by a forward path, contradicts those
 constraints. Required groups fail with the hint path and checked conflict paths;
 preferred groups are dropped with `reason: "contradiction"`.
 
-Moved arrows provisionally stretch their engine routes. If that introduces a
-hard contact, a required group throws a routing error naming the hint and arrow;
-a preferred group is dropped with `reason: "unsupported"` and arrow ids in
-`conflicts`. Dropped groups leave no movement behind. Unsupported required
-`side` or `free` hints fail before engine placement.
+Arrows attached to moved boxes first route through channels around the placed
+boxes. If that adds a hard contact, layout tries stretching the engine routes.
+If both routes fail, a required group throws a routing error naming the hint
+and arrow; a preferred group is dropped with `reason: "unsupported"` and arrow
+ids in `conflicts`. Dropped groups leave no movement behind. Unsupported
+required `side` hints fail before engine placement.
 
 `check(source, resolved)` independently judges every hint. Geometric hints have
 boolean `holds` values. A missed preferred hint is not a hard defect; a missed

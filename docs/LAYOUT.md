@@ -223,8 +223,9 @@ and routing them afterward.
 on-demand solver. This supports preferred and required groups with either engine
 without adding engine rank options. Rank and cross-axis minimum gaps use the
 built-in engines' 64 and 32 units. Required lane order and containment take
-precedence; stretched routes are checked before accepting movement. Custom
-engines use the same shared gap policy. See [hint support and refusals](FORMAT.md#layout-hints).
+precedence. Arrows of moved boxes route through channels first; stretching
+their engine routes is checked as a fallback. Custom engines use the same
+shared gap policy. See [hint support and refusals](FORMAT.md#layout-hints).
 Maps without same-rank hints do not load this stage.
 
 The first scenario supplies preferred node order, main-path arrows, and
@@ -239,11 +240,11 @@ node order to guide cycle breaking and gives forward arrows higher direction
 priority. Required lane order takes precedence. Like dagre, it reverses return
 arrows for ranking and restores their travel direction afterwards. Both adapters
 keep this derived reversal preference; reversing an arrow still lets it
-influence ranks. For maps with stated `free` hints and no `sameRank` hints,
-`layout()` places again without the free arrows and routes them around the
-placed boxes. It uses the routed drawing only if raw and refined checks find
-no new hard defects. Otherwise preferred hints are listed as unsupported and
-required hints fail.
+influence ranks. For maps with stated `free` hints, `layout()` places again
+without the free arrows and routes them around the placed boxes, including when
+the map also states `sameRank`. It uses the routed drawing only if raw and
+refined checks find no new hard defects. Otherwise preferred hints are listed
+as unsupported and required hints fail.
 
 Intent is enabled by default. To compare an engine's graph-only placement
 with these preferences, pass `{ intent: false }` to `layout()`. This omits

@@ -19,6 +19,24 @@ export function stripGeometry(resolved) {
   return SourceMapSchema.parse(map);
 }
 
+/** Turn hand box centres into source hints for sketch comparisons. */
+export function sketchSource(manual, strength = "preferred") {
+  const source = stripGeometry(manual);
+  const pins = Object.entries(manual.nodes).map(([node, { box }]) => ({
+    kind: "pin",
+    node,
+    at: [box[0] + box[2] / 2, box[1] + box[3] / 2],
+    strength,
+  }));
+  return SourceMapSchema.parse({
+    ...source,
+    layout: {
+      ...source.layout,
+      hints: [...(source.layout?.hints ?? []), ...pins],
+    },
+  });
+}
+
 export function comparisonCopy(original) {
   const map = ResolvedMapSchema.parse(original);
   if (map.id !== "2.1") return map;

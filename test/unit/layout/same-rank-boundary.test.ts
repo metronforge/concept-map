@@ -1,7 +1,11 @@
 import { expect, test } from "vitest";
 import { alignSameRank } from "../../../src/layout/same-rank.js";
 import { acceptSameRank } from "../../../src/layout/same-rank-boundary.js";
-import { LayoutError, isLayoutError } from "../../../src/layout/index.js";
+import {
+  LayoutError,
+  isLayoutError,
+  isSameRankContradictionError,
+} from "../../../src/layout/index.js";
 import { checkRelations } from "../../../src/layout/relations/check.js";
 import { rankRelations } from "../../../src/layout/relations/rank.js";
 import { hint, routingFixture } from "./same-rank-routing-fixture.js";
@@ -42,13 +46,21 @@ for (const down of [false, true]) {
       name: "SameRankContradictionError",
       kind: "same-rank-contradiction",
     });
-    expect(error.data).toBe(f.outcome);
+    expect(isSameRankContradictionError(error)).toBe(true);
+    if (!isSameRankContradictionError(error)) throw new Error(error.kind);
+    expect(error.data.hints[0].path).toBe("layout.hints[4]");
+    expect(error.data.conflicts).toEqual([
+      "layout.hints[4].nodes[1]",
+      "edges.ab",
+    ]);
     expect(error.message).toContain("layout.hints[4].nodes[1]");
     expect(error.message).toContain("edges.ab");
     expect(
       checkRelations(rankRelations(f.problem, f.original.nodes, 64), f.outcome),
     ).toBe(true);
     expect(error.data).not.toHaveProperty("result");
+    expect(error.data).not.toHaveProperty("cycle");
+    expect(error.data).not.toHaveProperty("sum");
   });
 
   test(`${down ? "down" : "right"}: routing errors name the hint and arrow without claiming a contradiction`, () => {

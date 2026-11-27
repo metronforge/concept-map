@@ -12,7 +12,7 @@ export type DroppedHint = {
   | { reason: "unsupported" }
 );
 export type AlignmentCandidate =
-  | (Contradiction & { message: string })
+  | (Contradiction & { hints: readonly SameRankHint[]; message: string })
   | {
       status: "routing-failed";
       hints: readonly SameRankHint[];

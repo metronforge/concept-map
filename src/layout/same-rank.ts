@@ -72,6 +72,7 @@ export function alignSameRank(
       const ids = [...new Set(aligned.cycle.map((source) => source.id))];
       return {
         ...aligned,
+        hints: accepted.filter((c) => c.kind === "sameRank"),
         message: `Conflicting same-rank relations: ${ids.join(", ")}`,
       };
     }

@@ -299,12 +299,8 @@ export class ResultRejectedError extends LayoutError<"result-rejected", {
 // @public
 export type SameRankContradictionData = {
     status: "contradictory";
-    cycle: {
-        kind: "relation" | "anchor";
-        id: string;
-        reverse: boolean;
-    }[];
-    sum: number;
+    hints: readonly SameRankHint[];
+    conflicts: readonly string[];
     message: string;
 };
 
@@ -314,15 +310,18 @@ export class SameRankContradictionError extends LayoutError<"same-rank-contradic
 }
 
 // @public
+export type SameRankHint = {
+    kind: "sameRank";
+    nodes: readonly string[];
+    strength: "required" | "preferred";
+    origin?: "stated";
+    path?: string;
+};
+
+// @public
 export type SameRankRoutingData = {
     status: "routing-failed";
-    hints: readonly {
-        kind: "sameRank";
-        nodes: readonly string[];
-        strength: "required" | "preferred";
-        origin?: "stated";
-        path?: string;
-    }[];
+    hints: readonly SameRankHint[];
     conflicts: readonly string[];
     message: string;
 };

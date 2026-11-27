@@ -37,6 +37,7 @@ export {
   isLayoutDefectsError,
 } from "./errors.js";
 export type {
+  SameRankHint,
   SameRankContradictionData,
   SameRankRoutingData,
 } from "./errors.js";

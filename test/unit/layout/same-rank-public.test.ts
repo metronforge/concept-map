@@ -1,5 +1,9 @@
 import { expect, test } from "vitest";
-import { layout, check } from "../../../src/layout/index.js";
+import {
+  layout,
+  check,
+  isSameRankContradictionError,
+} from "../../../src/layout/index.js";
 import { dagreEngine } from "../../../src/layout/dagre.js";
 import { elkEngine } from "../../../src/layout/elk.js";
 import type { UnsupportedHint } from "../../../src/layout/types.js";
@@ -42,17 +46,17 @@ for (const [name, engine] of [
     test(`${name}/${direction}: a forward-path contradiction names the hint and arrow`, async () => {
       const source = laneSource(direction, false);
       source.layout.hints[0].nodes = ["start", "prepare"];
-      await expect(
-        layout(source, engine, { intent: false }),
-      ).rejects.toMatchObject({
-        kind: "same-rank-contradiction",
-        message: expect.stringMatching(/layout\.hints\[0\]/),
-        data: {
-          cycle: expect.arrayContaining([
-            expect.objectContaining({ id: "edges.prepare" }),
-          ]),
-        },
-      });
+      try {
+        await layout(source, engine, { intent: false });
+        throw new Error("Expected a contradiction");
+      } catch (error) {
+        expect(isSameRankContradictionError(error)).toBe(true);
+        if (!isSameRankContradictionError(error)) throw error;
+        expect(error.data.hints[0].path).toBe("layout.hints[0]");
+        expect(error.data.conflicts).toContain("edges.prepare");
+        expect(error.data.conflicts).toContain("layout.hints[0].nodes[1]");
+        expect(error.data).not.toHaveProperty("cycle");
+      }
     });
 
     test(`${name}/${direction}: combined hints report only checked same-rank conflicts`, async () => {

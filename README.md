@@ -115,6 +115,8 @@ reports `reason: "contradiction"` and ordered `conflicts` paths for dropped
 same-rank groups. Both engines support same-rank alignment through an on-demand
 solver. Unsafe stretched routes report `reason: "unsupported"` with arrow ids.
 Required unsupported, contradictory or unroutable hints throw. See [hint diagnostics](docs/FORMAT.md#layout-hints).
+Layout hints also accept `pin` with a node id and box-centre coordinates;
+placement support is still in progress.
 
 ### Check a drawing
 

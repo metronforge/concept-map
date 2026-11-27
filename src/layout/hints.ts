@@ -16,11 +16,13 @@ export function constraintName(constraint: Constraint): string {
   const ids =
     constraint.kind === "side"
       ? `${constraint.edge}, ${constraint.end}, ${constraint.side}`
-      : "edge" in constraint
-        ? constraint.edge
-        : "nodes" in constraint
-          ? constraint.nodes.join(", ")
-          : "";
+      : constraint.kind === "pin"
+        ? constraint.node
+        : "edge" in constraint
+          ? constraint.edge
+          : "nodes" in constraint
+            ? constraint.nodes.join(", ")
+            : "";
   return `${constraint.path}: ${constraint.kind} (${ids})`;
 }
 
@@ -38,6 +40,16 @@ export function reportUnsupportedHints(
     };
     if (c.kind === "sameRank")
       return [{ ...c, ...origin, nodes: [...c.nodes] }];
+    if (c.kind === "pin")
+      return [
+        {
+          kind: "pin",
+          node: c.node,
+          at: [c.position[0], c.position[1]],
+          strength: c.strength,
+          ...origin,
+        },
+      ];
     return c.kind === "side" || c.kind === "free" ? [{ ...c, ...origin }] : [];
   });
   if (hints.length || dropped.length) notify?.([...hints, ...dropped]);

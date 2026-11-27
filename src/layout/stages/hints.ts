@@ -40,6 +40,19 @@ export function checkHints(
 ): ConstraintVerdict[] {
   const axis = source.direction === "right" ? 0 : 1;
   return statedHints(source).map((hint): ConstraintVerdict => {
+    if (hint.kind === "pin") {
+      const box = resolved.nodes[hint.node]?.box;
+      const distance = box
+        ? Math.hypot(
+            box[0] + box[2] / 2 - hint.at[0],
+            box[1] + box[3] / 2 - hint.at[1],
+          )
+        : Infinity;
+      const message = `${hint.path}: pin (${hint.node}): ${distance} units from box centre`;
+      return hint.strength === "required"
+        ? { ...hint, holds: distance <= 1e-6, message }
+        : { ...hint, holds: null, message };
+    }
     if (hint.kind === "free")
       return {
         ...hint,

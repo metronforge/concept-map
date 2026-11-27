@@ -62,10 +62,17 @@ const summary = {
   maps: rows.length,
   boxes: rows.reduce((sum, row) => sum + row.boxes, 0),
   handHardDefects: rows.reduce((sum, row) => sum + row.hand.hardDefects, 0),
+  handCrossings: rows.reduce((sum, row) => sum + row.hand.crossings, 0),
+  handBends: rows.reduce((sum, row) => sum + row.hand.bends, 0),
   preferredHardDefects: rows.reduce(
     (sum, row) => sum + row.preferredElk.hardDefects,
     0,
   ),
+  preferredCrossings: rows.reduce(
+    (sum, row) => sum + row.preferredElk.crossings,
+    0,
+  ),
+  preferredBends: rows.reduce((sum, row) => sum + row.preferredElk.bends, 0),
   meanAbsolutePinDistance:
     rows.reduce(
       (sum, row) =>
@@ -75,6 +82,12 @@ const summary = {
   maximumAbsolutePinDistance: Math.max(
     ...rows.map((row) => row.preferredElk.pinDistance.absolute.max),
   ),
+  meanTranslatedPinDistance:
+    rows.reduce(
+      (sum, row) =>
+        sum + row.boxes * row.preferredElk.pinDistance.afterTranslation.mean,
+      0,
+    ) / rows.reduce((sum, row) => sum + row.boxes, 0),
 };
 writeFileSync(
   `${destination}/summary.json`,

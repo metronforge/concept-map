@@ -10,14 +10,18 @@ also records mean and maximum distance from the pin to each drawn box centre.
 `pinDistance.absolute` uses the stated drawing coordinates. The optional
 `afterTranslation` figure removes only the average x and y offset between the
 two drawings; it helps distinguish a shifted drawing from a changed arrangement.
-It does not affect the required absolute distance or any layout output.
+It does not affect the required absolute distance or any layout output. The
+summary also totals crossings and bends, so an option that moves boxes nearer
+their pins cannot hide a loss in arrow clarity.
 
 Run `npm run build && node scripts/sketches/score.mjs` from the repository root
 to regenerate the reports. `summary.json` aggregates the 23 per-map files.
 The measurements use the server font table, as in the comparison page. The
 browser visual checks use real fonts separately.
 
-Across 283 boxes, preferred ELK has 0 hard defects versus 14 in the hand
-drawings. Its mean absolute pin distance is 360.03 drawing units; the maximum
-is 1,079.75. These figures describe the current interactive ELK options. They
-do not decide whether another option set can better preserve the sketches.
+Across 283 boxes, preferred ELK has 0 hard defects, 0 crossings and 164 bends,
+versus 14, 19 and 260 in the hand drawings. Its mean absolute pin distance is
+360.03 drawing units; the maximum is 1,079.75. After removing translation,
+the mean is 234.25. These figures describe interactive layering with
+semi-interactive crossing minimization. They do not decide whether another
+option set can better preserve the sketches.

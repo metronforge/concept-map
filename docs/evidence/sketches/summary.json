@@ -2,7 +2,12 @@
   "maps": 23,
   "boxes": 283,
   "handHardDefects": 14,
+  "handCrossings": 19,
+  "handBends": 260,
   "preferredHardDefects": 0,
+  "preferredCrossings": 0,
+  "preferredBends": 164,
   "meanAbsolutePinDistance": 360.0269720292542,
-  "maximumAbsolutePinDistance": 1079.746641578477
+  "maximumAbsolutePinDistance": 1079.746641578477,
+  "meanTranslatedPinDistance": 234.25415924609038
 }

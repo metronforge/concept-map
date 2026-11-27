@@ -246,6 +246,11 @@ the map also states `sameRank`. It uses the routed drawing only if raw and
 refined checks find no new hard defects. Otherwise preferred hints are listed
 as unsupported and required hints fail.
 
+ELK receives preferred pin centres as starting box positions. For pinned maps,
+interactive layering and semi-interactive crossing minimization let parallel
+boxes follow the sketch. These positions guide order; they do not promise exact
+coordinates. Dagre reports preferred pins as unsupported.
+
 Intent is enabled by default. To compare an engine's graph-only placement
 with these preferences, pass `{ intent: false }` to `layout()`. This omits
 only the derived order, main path and free-edge constraints; direction and

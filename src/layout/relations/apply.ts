@@ -49,6 +49,13 @@ function restoreEnginePositions(
   const groups = equalGroups(system)
     .filter(([id]) => Object.hasOwn(boxes, id))
     .filter(
+      (ids) =>
+        !(
+          system.anchors.some((anchor) => !anchor.variable.startsWith("$")) &&
+          ids.some((id) => id.startsWith("$lane."))
+        ),
+    )
+    .filter(
       (ids) => !system.anchors.some((anchor) => ids.includes(anchor.variable)),
     )
     .sort(([a], [b]) => nodes[a][axis] - nodes[b][axis]);

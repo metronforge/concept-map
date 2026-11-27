@@ -4,9 +4,11 @@
   "handHardDefects": 14,
   "handCrossings": 19,
   "handBends": 260,
+  "meanHandReadingShare": 0.6673913043478261,
   "preferredHardDefects": 0,
   "preferredCrossings": 0,
   "preferredBends": 164,
+  "meanPreferredReadingShare": 0.852086956521739,
   "meanAbsolutePinDistance": 360.0269720292542,
   "maximumAbsolutePinDistance": 1079.746641578477,
   "meanTranslatedPinDistance": 234.25415924609038

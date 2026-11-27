@@ -64,6 +64,8 @@ const summary = {
   handHardDefects: rows.reduce((sum, row) => sum + row.hand.hardDefects, 0),
   handCrossings: rows.reduce((sum, row) => sum + row.hand.crossings, 0),
   handBends: rows.reduce((sum, row) => sum + row.hand.bends, 0),
+  meanHandReadingShare:
+    rows.reduce((sum, row) => sum + row.hand.readingShare, 0) / rows.length,
   preferredHardDefects: rows.reduce(
     (sum, row) => sum + row.preferredElk.hardDefects,
     0,
@@ -73,6 +75,9 @@ const summary = {
     0,
   ),
   preferredBends: rows.reduce((sum, row) => sum + row.preferredElk.bends, 0),
+  meanPreferredReadingShare:
+    rows.reduce((sum, row) => sum + row.preferredElk.readingShare, 0) /
+    rows.length,
   meanAbsolutePinDistance:
     rows.reduce(
       (sum, row) =>

@@ -11,8 +11,9 @@ also records mean and maximum distance from the pin to each drawn box centre.
 `afterTranslation` figure removes only the average x and y offset between the
 two drawings; it helps distinguish a shifted drawing from a changed arrangement.
 It does not affect the required absolute distance or any layout output. The
-summary also totals crossings and bends, so an option that moves boxes nearer
-their pins cannot hide a loss in arrow clarity.
+summary also totals crossings and bends, and gives the mean reading share
+across maps. Each map has equal weight in that mean. These figures keep an
+option that moves boxes nearer its pins from hiding a loss in arrow clarity.
 
 Run `npm run build && node scripts/sketches/score.mjs` from the repository root
 to regenerate the reports. `summary.json` aggregates the 23 per-map files.
@@ -22,7 +23,8 @@ browser visual checks use real fonts separately.
 Across 283 boxes, preferred ELK has 0 hard defects, 0 crossings and 164 bends,
 versus 14, 19 and 260 in the hand drawings. Its mean absolute pin distance is
 360.03 drawing units; the maximum is 1,079.75. After removing translation,
-the mean is 234.25. These figures describe interactive layering. Adding
+the mean is 234.25. Mean reading share is 0.852 for ELK and 0.667 for the
+hand drawings. These figures describe interactive layering. Adding
 semi-interactive crossing minimization produced identical figures on all 23
 maps, so the simpler option set is used. Other interactive options moved boxes
 closer to pins but added crossings and bends; pin distance alone does not

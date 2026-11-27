@@ -102,6 +102,15 @@ test("unknown free edges fail before measurement or placement", async () => {
 });
 
 for (const engine of [dagreEngine, elkEngine]) {
+  test(`${engine.name}: a free arrow can join boxes on the same rank`, async () => {
+    const map = source([
+      { ...hint, strength: "required" },
+      { kind: "sameRank", nodes: ["a", "b"], strength: "required" },
+    ]);
+    const resolved = await layout(map, engine, { intent: false });
+    expect(resolved.nodes.a.box[0]).toBe(resolved.nodes.b.box[0]);
+    expect(resolved.edges.ab.path).toMatch(/^M/);
+  });
   test(`${engine.name}: lists literal rank exclusion as unsupported`, async () => {
     // Bypass format parsing here so the test catches today's misleading capability.
     const map = source([]);
@@ -130,7 +139,7 @@ for (const engine of [dagreEngine, elkEngine]) {
     });
   });
   for (const intent of [true, false])
-    test(`${engine.name}: unsupported free hints do not reverse forward arrows, intent=${intent}`, async () => {
+    test(`${engine.name}: preferred free hints exclude and route arrows, intent=${intent}`, async () => {
       const map = source(),
         unsupported: unknown[] = [];
       const plain = { ...map };
@@ -140,27 +149,18 @@ for (const engine of [dagreEngine, elkEngine]) {
         widthEm: 5,
         onUnsupportedHints: (hints) => unsupported.push(...hints),
       });
-      expect(resolved).toEqual({
-        ...(await layout(plain, engine, { intent, widthEm: 5 })),
-        layout: map.layout,
-      });
-      expect(unsupported).toEqual([
-        {
-          ...hint,
-          strength: "preferred",
-          origin: "stated",
-          path: "layout.hints[0]",
-          reason: "unsupported",
-        },
-      ]);
+      const baseline = await layout(plain, engine, { intent, widthEm: 5 });
+      expect(resolved.nodes).not.toEqual(baseline.nodes);
+      expect(resolved.edges.ab.path).toMatch(/^M/);
+      expect(unsupported).toEqual([]);
     });
-  test(`${engine.name}: required free hints fail naming path and edge`, async () => {
-    await expect(
-      layout(source([{ ...hint, strength: "required" }]), engine),
-    ).rejects.toMatchObject({
-      kind: "unsupported-constraints",
-      message: expect.stringMatching(/layout\.hints\[0\].*free.*ab/s),
-    });
+  test(`${engine.name}: required free hints route the omitted arrow`, async () => {
+    const resolved = await layout(
+      source([{ ...hint, strength: "required" }]),
+      engine,
+    );
+    expect(resolved.edges.ab.path).toMatch(/^M/);
+    expect(check(source(), resolved).constraints[0].holds).toBeNull();
   });
 }
 
@@ -217,46 +217,4 @@ test("required free metadata preserves hand geometry and does not invent a hard 
   expect(refined.nodes).toEqual(map.nodes);
   expect(refined.edges.ab.path).toBe(map.edges.ab.path);
   expect(check(map, refined).constraints[0].holds).toBeNull();
-});
-
-const fixedPlacer = {
-  name: "fixed boxes",
-  capabilities: { free: "required" as const, side: "required" as const },
-  layout: dagreEngine.layout,
-  place: async () => ({
-    nodes: { a: [10, 10, 100, 60], b: [210, 10, 100, 60] },
-    edges: {
-      ab: {
-        points: [
-          [110, 40],
-          [210, 40],
-        ],
-      },
-    },
-    lanes: {},
-  }),
-};
-
-test("a supported required free hint is not rejected by the geometric checker", async () => {
-  const map = source([{ ...hint, strength: "required" }]);
-  const resolved = await layout(map, fixedPlacer, { strict: true });
-  expect(check(map, resolved).constraints[0].holds).toBeNull();
-});
-
-test("an unverifiable required free hint does not hide a broken required side", async () => {
-  const map = source([
-    { ...hint, strength: "required" },
-    {
-      kind: "side",
-      edge: "ab",
-      end: "from",
-      side: "left",
-      strength: "required",
-    },
-  ]);
-  await expect(layout(map, fixedPlacer)).rejects.toMatchObject({
-    kind: "result-rejected",
-    constraint: "side",
-    message: expect.stringContaining("layout.hints[1]"),
-  });
 });

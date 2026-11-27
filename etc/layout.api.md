@@ -91,6 +91,12 @@ export const isLayoutError: (value: unknown) => value is LayoutError;
 export const isResultRejectedError: (value: unknown) => value is ResultRejectedError;
 
 // @public
+export const isSameRankContradictionError: (value: unknown) => value is SameRankContradictionError;
+
+// @public
+export const isSameRankRoutingError: (value: unknown) => value is SameRankRoutingError;
+
+// @public
 export const isUnsupportedConstraintsError: (value: unknown) => value is UnsupportedConstraintsError;
 
 // @public (undocumented)
@@ -288,6 +294,42 @@ export class ResultRejectedError extends LayoutError<"result-rejected", {
     readonly constraint: string;
     // (undocumented)
     readonly placer: string;
+}
+
+// @public
+export type SameRankContradictionData = {
+    status: "contradictory";
+    cycle: {
+        kind: "relation" | "anchor";
+        id: string;
+        reverse: boolean;
+    }[];
+    sum: number;
+    message: string;
+};
+
+// @public
+export class SameRankContradictionError extends LayoutError<"same-rank-contradiction", SameRankContradictionData> {
+    constructor(data: SameRankContradictionData);
+}
+
+// @public
+export type SameRankRoutingData = {
+    status: "routing-failed";
+    hints: readonly {
+        kind: "sameRank";
+        nodes: readonly string[];
+        strength: "required" | "preferred";
+        origin?: "stated";
+        path?: string;
+    }[];
+    conflicts: readonly string[];
+    message: string;
+};
+
+// @public
+export class SameRankRoutingError extends LayoutError<"same-rank-routing", SameRankRoutingData> {
+    constructor(data: SameRankRoutingData);
 }
 
 // @public

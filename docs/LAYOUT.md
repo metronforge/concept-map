@@ -215,14 +215,17 @@ for stated free hints, while derived free constraints remain unsupported.
 An omitted origin has no support; it never inherits the other origin's strength.
 This lets an adapter add literal rank exclusion without claiming that its
 existing derived reversal excludes edges from ranks. Both built-in adapters
-currently declare `free: {}`, supporting neither origin.
+currently declare `free: {}`, supporting neither origin directly. The shared
+layout pipeline supports stated `free` hints by placing without those arrows
+and routing them afterward.
 
 `layout()` handles stated `sameRank` hints after placement through a shared,
 on-demand solver. This supports preferred and required groups with either engine
 without adding engine rank options. Rank and cross-axis minimum gaps use the
 built-in engines' 64 and 32 units. Required lane order and containment take
-precedence; stretched routes are checked before accepting movement. Custom
-engines use the same shared gap policy. See [hint support and refusals](FORMAT.md#layout-hints).
+precedence. Arrows of moved boxes route through channels first; stretching
+their engine routes is checked as a fallback. Custom engines use the same
+shared gap policy. See [hint support and refusals](FORMAT.md#layout-hints).
 Maps without same-rank hints do not load this stage.
 
 The first scenario supplies preferred node order, main-path arrows, and
@@ -236,9 +239,12 @@ arrows higher straightness priority during node placement. ELK uses scenario
 node order to guide cycle breaking and gives forward arrows higher direction
 priority. Required lane order takes precedence. Like dagre, it reverses return
 arrows for ranking and restores their travel direction afterwards. Both adapters
-keep this derived reversal preference but declare literal rank exclusion (`free`)
-unsupported: reversing an arrow still lets it influence ranks. Unsupported
-stated free preferences are listed and do not reverse arrows; required ones fail.
+keep this derived reversal preference; reversing an arrow still lets it
+influence ranks. For maps with stated `free` hints, `layout()` places again
+without the free arrows and routes them around the placed boxes, including when
+the map also states `sameRank`. It uses the routed drawing only if raw and
+refined checks find no new hard defects. Otherwise preferred hints are listed
+as unsupported and required hints fail.
 
 Intent is enabled by default. To compare an engine's graph-only placement
 with these preferences, pass `{ intent: false }` to `layout()`. This omits
@@ -295,7 +301,11 @@ uses the existing `reading` facts, not a forward-edge requirement.
 carries `placer` and `constraint` for a rejected proposed drawing, and
 `UnsupportedConstraintsError` carries `placer` and `constraints`.
 `LayoutDefectsError` retains its name and full `report` for strict quality
-failures. They extend `LayoutError`, which carries `kind` and `data`.
+failures. `SameRankContradictionError` carries the cycle proving conflicting
+required alignments; `SameRankRoutingError` identifies the hints and arrows
+whose alignment would introduce hard contacts. Their `data` properties have
+the public types `SameRankContradictionData` and `SameRankRoutingData`.
+They extend `LayoutError`, which carries `kind` and `data`.
 All classes and their `is…` guards are exported by the layout entry point.
 Guards check names and kinds rather than prototypes, so duplicate bundles
 work. Rejection of a drawing is not proof that the map is contradictory.

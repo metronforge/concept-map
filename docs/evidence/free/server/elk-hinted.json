@@ -1,0 +1,63 @@
+{
+  "engine": "elk",
+  "hinted": true,
+  "elapsedMs": 35.630566999999985,
+  "report": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "free",
+        "edge": "feedback",
+        "strength": "required",
+        "origin": "stated",
+        "path": "layout.hints[0]",
+        "holds": null,
+        "message": "layout.hints[0]: free (feedback): not verifiable from the drawing"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 1,
+      "pairs": [["review", "feedback"]]
+    },
+    "reading": {
+      "edges": 4,
+      "forward": 3,
+      "share": 0.75,
+      "nonReturn": {
+        "edges": 3,
+        "forward": 3,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 19.11,
+      "height": 16
+    }
+  },
+  "boxes": {
+    "plan": [114.66666666666666, 16, 60, 36],
+    "requirements": [16, 16, 60, 36],
+    "review": [22.666666666666664, 116, 70, 36],
+    "build": [124.66666666666666, 116, 60, 36]
+  },
+  "viewBox": [200.66666666666666, 168]
+}

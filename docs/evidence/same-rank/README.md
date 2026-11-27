@@ -5,7 +5,10 @@ Start → Prepare → Finish. Both engines place Quick at rank coordinate 116
 and Finish at 216 without the hint. With the required `sameRank` hint, both
 are at 216. Start and Prepare keep their positions. All four server drawings
 have zero hard defects. The source has no arrow labels or self-loops; its
-step numbers, boxes and lines are checked independently.
+step numbers, boxes and lines are checked independently. In the refreshed
+browser reports, channel routing moves the first step number on dagre's
+hinted drawing while preserving zero hard defects in both widths and all
+three browsers. The plain and ELK drawings are unchanged.
 
 The comparison page has two sections: `#map-same-rank` with the hint and
 `#map-same-rank-plain` without it. Each section also includes both scenario
@@ -17,7 +20,7 @@ labels or edges. In this example intent does not change either drawing.
 - `server/<engine>-<hinted|plain>.json`: one complete font-table report,
   box coordinates and view box per engine and hint setting. Intent is on.
 - `server/meta.json`: Node and engine versions, source and lock hashes,
-  and the parent revision on which this example was added.
+  and the revision used for this evidence refresh.
 - `browser/<browser>/<engine>-<hinted|plain>-<width>.json`: one DOM-font report
   after `document.fonts.ready`, measurement metadata, outcome coordinates,
   and observations for all four steps and whole-map mode.

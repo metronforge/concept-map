@@ -85,10 +85,13 @@ listed in the report. Nothing is dropped silently.
 Same-rank support is supplied after engine placement by the shared relation
 solver, loaded only for source maps that state it. Engine capabilities continue
 to describe raw placement. The shared pass preserves forward-arrow gaps, lane
-order and containment; required groups precede preferences. It stretches affected
-routes and refuses groups that add hard contacts until the separate routing
-experiment chooses a replacement. Required contradictions retain checked cycle
-witnesses; routing failures remain distinct from contradictions.
+order and containment; required groups precede preferences. It routes arrows
+of moved boxes through channels, then tries stretching the engine routes if
+channel routing adds a hard contact. Required contradictions retain checked
+cycle witnesses; routing failures remain distinct from contradictions. Stated
+free arrows are omitted from a second engine placement and routed around the
+placed boxes, including when the map also states same-rank alignment. The full
+engine drawing remains the defect baseline.
 
 ### 2. Stages
 

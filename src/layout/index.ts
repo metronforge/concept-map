@@ -26,11 +26,19 @@ export {
   ResultRejectedError,
   UnsupportedConstraintsError,
   LayoutDefectsError,
+  SameRankContradictionError,
+  SameRankRoutingError,
+  isSameRankContradictionError,
+  isSameRankRoutingError,
   isLayoutError,
   isEngineFailedError,
   isResultRejectedError,
   isUnsupportedConstraintsError,
   isLayoutDefectsError,
+} from "./errors.js";
+export type {
+  SameRankContradictionData,
+  SameRankRoutingData,
 } from "./errors.js";
 export type { Measurer } from "./ports.js";
 export { labelsInPanel } from "./stages/presentation.js";
@@ -122,11 +130,18 @@ async function resolveSource(
   const problem = buildProblem(map, measure, options.intent);
   const graph = problemGraph(problem);
   const placer = asPlacer(engine);
-  const outcome = map.layout?.hints.some((h) => h.kind === "sameRank")
-    ? await (
-        await import("./place-same-rank.js")
-      ).placeSameRank(map, problem, placer, measurer, refinement)
-    : await place(problem, placer);
+  const sameRank = map.layout?.hints.some((h) => h.kind === "sameRank");
+  const free = map.layout?.hints.some((h) => h.kind === "free");
+  const outcome =
+    sameRank && !free
+      ? await (
+          await import("./place-same-rank.js")
+        ).placeSameRank(map, problem, placer, measurer, refinement)
+      : free
+        ? await (
+            await import("./place-free.js")
+          ).placeFree(map, problem, placer, measurer, refinement)
+        : await place(problem, placer);
   if (outcome.kind === "engine-failed") throw new EngineFailedError(outcome);
   if (outcome.kind === "unsupported-constraints")
     throw new UnsupportedConstraintsError(outcome);

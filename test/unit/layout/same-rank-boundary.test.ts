@@ -18,7 +18,7 @@ function run(
     f.original,
     64,
     32,
-    f.inspect,
+    nodes.includes("c") ? () => ["ab"] : f.inspect,
   );
   return { ...f, outcome };
 }
@@ -113,7 +113,8 @@ test("mixed refusals retain source order and do not share writable node arrays",
     f.original,
     64,
     32,
-    f.inspect,
+    (candidate) =>
+      candidate.nodes.a[0] !== f.original.nodes.a[0] ? ["ab"] : [],
   );
   const saved = structuredClone(outcome);
   const accepted = acceptSameRank(outcome);
@@ -153,3 +154,20 @@ test.each([
     expect(isLayoutError({ name: "wrong", kind })).toBe(false);
   },
 );
+
+test("same-rank errors and guards are available from the layout entry point", async () => {
+  const api = await import("../../../src/layout/index.js");
+  for (const [name, kind, guard] of [
+    [
+      "SameRankContradictionError",
+      "same-rank-contradiction",
+      "isSameRankContradictionError",
+    ],
+    ["SameRankRoutingError", "same-rank-routing", "isSameRankRoutingError"],
+  ] as const) {
+    expect(api[name]).toBeTypeOf("function");
+    expect(api[guard]({ name, kind })).toBe(true);
+    expect(api[guard]({ name, kind: "wrong" })).toBe(false);
+    expect(api[guard]({ name: "wrong", kind })).toBe(false);
+  }
+});

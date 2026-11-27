@@ -1,0 +1,60 @@
+{
+  "format": 3,
+  "id": "free",
+  "title": "Review feedback without moving the plan",
+  "direction": "down",
+  "layers": {
+    "work": { "label": "Work" }
+  },
+  "nodes": {
+    "plan": { "label": "Plan", "layer": "work" },
+    "requirements": { "label": "Rules", "layer": "work" },
+    "review": { "label": "Review", "layer": "work" },
+    "build": { "label": "Build", "layer": "work" }
+  },
+  "edges": {
+    "review": { "from": "plan", "to": "review" },
+    "build": { "from": "plan", "to": "build" },
+    "criteria": { "from": "requirements", "to": "review" },
+    "feedback": { "from": "review", "to": "plan" }
+  },
+  "layout": {
+    "hints": [{ "kind": "free", "edge": "feedback", "strength": "required" }]
+  },
+  "scenarios": [
+    {
+      "id": "review-cycle",
+      "label": "Review cycle",
+      "steps": [
+        {
+          "id": "plan",
+          "title": "Plan the work",
+          "text": "The plan starts the work.",
+          "show": ["plan", "requirements"],
+          "edges": []
+        },
+        {
+          "id": "options",
+          "title": "Prepare the work",
+          "text": "The plan also starts building.",
+          "show": ["plan", "requirements", "build"],
+          "edges": ["build"]
+        },
+        {
+          "id": "review",
+          "title": "Review the plan",
+          "text": "The review uses the plan and the requirements.",
+          "show": ["plan", "requirements", "review", "build"],
+          "edges": ["review", "build", "criteria"]
+        },
+        {
+          "id": "feedback",
+          "title": "Send feedback",
+          "text": "Feedback returns to the plan without deciding its rank.",
+          "show": ["plan", "requirements", "review", "build"],
+          "edges": ["review", "build", "criteria", "feedback"]
+        }
+      ]
+    }
+  ]
+}

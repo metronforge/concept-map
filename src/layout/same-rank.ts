@@ -2,6 +2,8 @@ import type { Constraint, LayoutProblem } from "./problem.js";
 import type { LayoutGraph, LayoutResult } from "./types.js";
 import { alignLayout } from "./relations/align-layout.js";
 import { rerouteMovedEdges } from "./moved-routes.js";
+import { routeMoved } from "./route/channel-moved.js";
+import { chooseRoute } from "./route/choose-route.js";
 import type {
   AlignmentCandidate,
   AlignmentOutcome,
@@ -73,14 +75,41 @@ export function alignSameRank(
         message: `Conflicting same-rank relations: ${ids.join(", ")}`,
       };
     }
-    const result = rerouteMovedEdges(graph, original, aligned.nodes, accepted);
-    return inspectCandidate(
-      withLanes(result, aligned.lanes),
+    const chosen = routeAligned(
+      graph,
       original,
+      aligned.nodes,
+      aligned.lanes,
       accepted,
       inspectRoutes,
     );
+    return inspectCandidate(chosen.result, accepted, chosen.conflicts);
   });
+}
+
+function routeAligned(
+  graph: LayoutGraph,
+  original: LayoutResult,
+  nodes: LayoutResult["nodes"],
+  lanes: LayoutResult["lanes"],
+  constraints: Constraint[],
+  inspect: InspectRoutes,
+) {
+  const stretch = () =>
+    withLanes(rerouteMovedEdges(graph, original, nodes, constraints), lanes);
+  const stretched = stretch();
+  if (stretched === original) return { result: original, conflicts: [] };
+  const channel = routeMoved(graph, original, nodes, routeBounds(nodes));
+  const routed = channel ? withLanes(channel, lanes) : null;
+  return chooseRoute(routed, () => stretched, inspect);
+}
+
+function routeBounds(nodes: LayoutResult["nodes"]): [number, number] {
+  const boxes = Object.values(nodes);
+  return [
+    Math.max(...boxes.map((box) => box[0] + box[2])) + 20,
+    Math.max(...boxes.map((box) => box[1] + box[3])) + 20,
+  ];
 }
 
 function withLanes(result: LayoutResult, lanes: LayoutResult["lanes"]) {
@@ -92,12 +121,9 @@ function withLanes(result: LayoutResult, lanes: LayoutResult["lanes"]) {
 
 function inspectCandidate(
   result: LayoutResult,
-  original: LayoutResult,
   constraints: Constraint[],
-  inspectRoutes: InspectRoutes,
+  conflicts: readonly string[],
 ): AlignmentCandidate {
-  const conflicts =
-    result === original ? [] : [...new Set(inspectRoutes(result))];
   if (!conflicts.length) return { status: "determined", result };
   const hints = constraints.filter((c) => c.kind === "sameRank");
   return {

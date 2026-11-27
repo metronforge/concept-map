@@ -5,6 +5,11 @@ import type { Constraint, LayoutProblem } from "../../../src/layout/problem.js";
 import type { LayoutResult } from "../../../src/layout/types.js";
 import { rankRelations } from "../../../src/layout/relations/rank.js";
 import { checkRelations } from "../../../src/layout/relations/check.js";
+import { routeMoved } from "../../../src/layout/route/channel-moved.js";
+import {
+  hint as routingHint,
+  routingFixture,
+} from "./same-rank-routing-fixture.js";
 
 function hint(
   nodes: string[],
@@ -157,6 +162,34 @@ test("compatible overlapping groups are accepted without mutating inputs", () =>
   expect(outcome.result.nodes.b[1]).toBe(168);
   expect(outcome.result.edges.ab.points.at(-1)).toEqual([20, 168]);
   expect({ problem, graph, placed }).toEqual(before);
+});
+
+test("moved same-rank arrows use channel routes before stretching", () => {
+  const { problem, graph, original } = routingFixture([
+    routingHint(["a", "c"], "required"),
+  ]);
+  const outcome = alignSameRank(problem, graph, original, 64, 32, () => []);
+  if (outcome.status !== "determined") throw new Error(outcome.status);
+  const bounds: [number, number] = [
+    Math.max(
+      ...Object.values(outcome.result.nodes).map((box) => box[0] + box[2]),
+    ) + 20,
+    Math.max(
+      ...Object.values(outcome.result.nodes).map((box) => box[1] + box[3]),
+    ) + 20,
+  ];
+  const channel = routeMoved(graph, original, outcome.result.nodes, bounds);
+  expect(channel).not.toBeNull();
+  expect(outcome.result.edges.ab).toEqual(channel!.edges.ab);
+});
+
+test("alignment keeps moved boxes when no arrow touches them", () => {
+  const { problem, graph, original } = routingFixture([
+    routingHint(["s", "t"], "required"),
+  ]);
+  const outcome = alignSameRank(problem, graph, original, 64, 32, () => []);
+  if (outcome.status !== "determined") throw new Error(outcome.status);
+  expect(outcome.result.nodes.s[0]).toBe(400);
 });
 
 test("no same-rank hints preserve the exact placement and routes", () => {

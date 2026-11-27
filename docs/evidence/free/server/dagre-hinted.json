@@ -1,0 +1,63 @@
+{
+  "engine": "dagre",
+  "hinted": true,
+  "elapsedMs": 25.670716,
+  "report": {
+    "hard": 0,
+    "constraints": [
+      {
+        "kind": "free",
+        "edge": "feedback",
+        "strength": "required",
+        "origin": "stated",
+        "path": "layout.hints[0]",
+        "holds": null,
+        "message": "layout.hints[0]: free (feedback): not verifiable from the drawing"
+      }
+    ],
+    "labels": {
+      "labels": [],
+      "lines": [],
+      "boxes": []
+    },
+    "steps": {
+      "labels": [],
+      "boxes": [],
+      "steps": []
+    },
+    "lines": {
+      "boxes": []
+    },
+    "crossings": {
+      "count": 1,
+      "pairs": [["review", "feedback"]]
+    },
+    "reading": {
+      "edges": 4,
+      "forward": 3,
+      "share": 0.75,
+      "nonReturn": {
+        "edges": 3,
+        "forward": 3,
+        "share": 1
+      },
+      "returns": {
+        "edges": 1,
+        "backward": 1,
+        "share": 1,
+        "selfLoops": 0
+      }
+    },
+    "text": {
+      "width": 19.67,
+      "height": 16
+    }
+  },
+  "boxes": {
+    "plan": [26, 16, 60, 36],
+    "requirements": [130.5, 16, 60, 36],
+    "review": [115.5, 116, 70, 36],
+    "build": [16, 116, 60, 36]
+  },
+  "viewBox": [206.5, 168]
+}

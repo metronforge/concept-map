@@ -63,3 +63,21 @@ test("both relation axes fix required pins and release their engine minima", () 
     expect(system.relations.some((r) => r.id === "engine.guest")).toBe(true);
   }
 });
+
+test("an engine-forward arrow does not separate two required pins", () => {
+  const edge = { id: "owns", from: "cashier", to: "guest" };
+  const pinned: LayoutProblem = {
+    ...problem,
+    edges: [edge],
+    constraints: problem.constraints.map((hint) =>
+      hint.kind === "pin" ? { ...hint, strength: "required" } : hint,
+    ),
+  };
+  const system = rankRelations(pinned, boxes, 20);
+  expect(system.relations).not.toContainEqual(
+    expect.objectContaining({ id: "edges.owns" }),
+  );
+  expect(
+    rankRelations({ ...problem, edges: [edge] }, boxes, 20).relations,
+  ).toContainEqual(expect.objectContaining({ id: "edges.owns" }));
+});

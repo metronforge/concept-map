@@ -15,8 +15,18 @@ function forwardRelations(
   const free = new Set(
     problem.constraints.flatMap((c) => (c.kind === "free" ? [c.edge] : [])),
   );
+  const pinned = new Set(
+    problem.constraints.flatMap((c) =>
+      c.kind === "pin" && c.strength === "required" ? [c.node] : [],
+    ),
+  );
   return problem.edges
-    .filter((e) => !free.has(e.id) && boxes[e.to][axis] > boxes[e.from][axis])
+    .filter(
+      (e) =>
+        !free.has(e.id) &&
+        !(pinned.has(e.from) && pinned.has(e.to)) &&
+        boxes[e.to][axis] > boxes[e.from][axis],
+    )
     .map((e) => ({
       id: `edges.${e.id}`,
       from: e.from,

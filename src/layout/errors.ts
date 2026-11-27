@@ -83,23 +83,26 @@ export class LayoutDefectsError extends LayoutError<
     super("layout-defects", report, message);
   }
 }
-/** A cycle of source bounds proving that alignment constraints conflict. */
+/** A stated same-rank hint involved in an alignment error. */
+export type SameRankHint = {
+  kind: "sameRank";
+  nodes: readonly string[];
+  strength: "required" | "preferred";
+  origin?: "stated";
+  path?: string;
+};
+/** Source references proving that required alignments conflict. */
 export type SameRankContradictionData = {
   status: "contradictory";
-  cycle: { kind: "relation" | "anchor"; id: string; reverse: boolean }[];
-  sum: number;
+  hints: readonly SameRankHint[];
+  /** Source paths of hints and lanes, and arrow ids, in cycle order, without duplicates. */
+  conflicts: readonly string[];
   message: string;
 };
 /** The hints and arrows involved when alignment introduces hard contacts. */
 export type SameRankRoutingData = {
   status: "routing-failed";
-  hints: readonly {
-    kind: "sameRank";
-    nodes: readonly string[];
-    strength: "required" | "preferred";
-    origin?: "stated";
-    path?: string;
-  }[];
+  hints: readonly SameRankHint[];
   conflicts: readonly string[];
   message: string;
 };

@@ -301,8 +301,9 @@ uses the existing `reading` facts, not a forward-edge requirement.
 carries `placer` and `constraint` for a rejected proposed drawing, and
 `UnsupportedConstraintsError` carries `placer` and `constraints`.
 `LayoutDefectsError` retains its name and full `report` for strict quality
-failures. `SameRankContradictionError` carries the cycle proving conflicting
-required alignments; `SameRankRoutingError` identifies the hints and arrows
+failures. `SameRankContradictionError` names the required hints and ordered
+source paths of hints and lanes, and arrow ids, in the checked conflict;
+`SameRankRoutingError` identifies the hints and arrows
 whose alignment would introduce hard contacts. Their `data` properties have
 the public types `SameRankContradictionData` and `SameRankRoutingData`.
 They extend `LayoutError`, which carries `kind` and `data`.

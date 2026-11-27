@@ -96,7 +96,14 @@ for (const [name, engine] of [
       expect(() => acceptSameRank(outcome)).toThrowError(
         expect.objectContaining({
           kind: "same-rank-contradiction",
-          data: outcome,
+          data: expect.objectContaining({
+            hints: [expect.objectContaining({ path: "layout.hints[0]" })],
+            conflicts: expect.arrayContaining([
+              expect.stringMatching(/^lanes\.first/),
+              expect.stringMatching(/^lanes\.second/),
+              expect.stringMatching(/^layout\.hints\[0\]/),
+            ]),
+          }),
           message: expect.stringMatching(/lanes\.first.*lanes\.second/s),
         }),
       );

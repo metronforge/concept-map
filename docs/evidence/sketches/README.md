@@ -22,6 +22,8 @@ browser visual checks use real fonts separately.
 Across 283 boxes, preferred ELK has 0 hard defects, 0 crossings and 164 bends,
 versus 14, 19 and 260 in the hand drawings. Its mean absolute pin distance is
 360.03 drawing units; the maximum is 1,079.75. After removing translation,
-the mean is 234.25. These figures describe interactive layering with
-semi-interactive crossing minimization. They do not decide whether another
-option set can better preserve the sketches.
+the mean is 234.25. These figures describe interactive layering. Adding
+semi-interactive crossing minimization produced identical figures on all 23
+maps, so the simpler option set is used. Other interactive options moved boxes
+closer to pins but added crossings and bends; pin distance alone does not
+decide sketch quality.

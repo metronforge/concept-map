@@ -1,0 +1,26 @@
+{
+  "id": "0-1",
+  "boxes": 20,
+  "hand": {
+    "hardDefects": 4,
+    "crossings": 5,
+    "bends": 17,
+    "readingShare": 0.643
+  },
+  "preferredElk": {
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 12,
+    "readingShare": 1,
+    "pinDistance": {
+      "absolute": {
+        "mean": 459.149019731554,
+        "max": 699.188023241245
+      },
+      "afterTranslation": {
+        "mean": 216.7829173853435,
+        "max": 426.1393193708941
+      }
+    }
+  }
+}

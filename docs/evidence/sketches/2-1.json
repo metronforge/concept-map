@@ -1,0 +1,27 @@
+{
+  "id": "2-1",
+  "boxes": 13,
+  "note": "Every variant omits only timeout_outer (timeout to the outer frame) and its step reference. Frame endpoints are not implemented yet. The original book fixture is unchanged.",
+  "hand": {
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 13,
+    "readingShare": 0.556
+  },
+  "preferredElk": {
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 12,
+    "readingShare": 1,
+    "pinDistance": {
+      "absolute": {
+        "mean": 421.12799882822594,
+        "max": 746.7678688856397
+      },
+      "afterTranslation": {
+        "mean": 289.77207900963,
+        "max": 413.3795242765839
+      }
+    }
+  }
+}

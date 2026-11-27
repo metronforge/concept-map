@@ -132,9 +132,12 @@ async function resolveSource(
   const graph = problemGraph(problem);
   const placer = asPlacer(engine);
   const sameRank = map.layout?.hints.some((h) => h.kind === "sameRank");
+  const requiredPin = map.layout?.hints.some(
+    (h) => h.kind === "pin" && h.strength === "required",
+  );
   const free = map.layout?.hints.some((h) => h.kind === "free");
   const outcome =
-    sameRank && !free
+    (sameRank || requiredPin) && !free
       ? await (
           await import("./place-same-rank.js")
         ).placeSameRank(map, problem, placer, measurer, refinement)

@@ -45,7 +45,14 @@ export function alignLayout(
 ) {
   const ranked = alignLaneRanks(problem, original, rankGap);
   if (ranked.status === "contradictory") return ranked;
-  if (!problem.constraints.some((c) => c.kind === "sameRank")) return ranked;
+  if (
+    !problem.constraints.some(
+      (c) =>
+        c.kind === "sameRank" ||
+        (c.kind === "pin" && c.strength === "required"),
+    )
+  )
+    return ranked;
   const direction = problem.constraints.find((c) => c.kind === "direction");
   const cross = direction?.direction === "right" ? 1 : 0;
   const system = crossRelations(problem, ranked.nodes, nodeGap);

@@ -48,6 +48,9 @@ function restoreEnginePositions(
 ): void {
   const groups = equalGroups(system)
     .filter(([id]) => Object.hasOwn(boxes, id))
+    .filter(
+      (ids) => !system.anchors.some((anchor) => ids.includes(anchor.variable)),
+    )
     .sort(([a], [b]) => nodes[a][axis] - nodes[b][axis]);
   // Zero-gap bounds can tie in position order (a node at a lane start).
   // Each group restores at most once; repeat until no predecessor changes.

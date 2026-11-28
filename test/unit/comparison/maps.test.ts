@@ -24,9 +24,16 @@ test("standalone comparison sources include defaults before reference validation
     "free-plain",
     "same-rank",
     "same-rank-plain",
+    "sketch",
+    "sketch-plain",
+    "sketch-required",
   ]);
   for (const { id, source } of examples) {
-    const name = id.endsWith("-plain") ? id.slice(0, -6) : id;
+    const name = id.endsWith("-plain")
+      ? id.slice(0, -6)
+      : id.endsWith("-required")
+        ? id.slice(0, -9)
+        : id;
     const original = JSON.parse(
       readFileSync(`examples/${name}/map.json`, "utf8"),
     );

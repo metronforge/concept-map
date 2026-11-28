@@ -39,6 +39,11 @@ within-rank pairs (39.5%) with no crossings. Interactive crossing minimization
 alone kept 84 pairs (73.7%) with 228 crossings; interactive node placement
 alone kept 84 pairs with no crossings. Using both kept 110 pairs (96.5%) with
 228 crossings. Interactive cycle breaking did not change that result.
+Replacing interactive crossing minimization with semi-interactive crossing
+minimization kept 84 pairs (73.7%) and no crossings, even with interactive
+node placement. ELK's global interactive flag gave the same figures. Adding
+semi-interactive crossing minimization to the interactive crossing strategy
+left the 110 pairs and 228 crossings unchanged.
 
 Preferred pins keep most of the sketch's order: 1,402 of 1,559 box pairs
 (89.9%) keep their hand rank order, and 110 of 114 pairs (96.5%) keep their

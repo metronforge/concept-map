@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/metronforge/concept-map/compare/v0.3.0...v0.3.1) (2026-11-28)
+
+
+### Bug Fixes
+
+* keep clear authored labels and step numbers in place ([6c29bc7](https://github.com/metronforge/concept-map/commit/6c29bc74fa0ac453eb86c19cea33d3e3534eaee1))
+
 ## [0.3.0](https://github.com/metronforge/concept-map/compare/v0.2.1...v0.3.0) (2026-11-28)
 
 

@@ -19,6 +19,24 @@ export function stripGeometry(resolved) {
   return SourceMapSchema.parse(map);
 }
 
+/** Turn hand box centres into source hints for sketch comparisons. */
+export function sketchSource(manual, strength = "preferred") {
+  const source = stripGeometry(manual);
+  const pins = Object.entries(manual.nodes).map(([node, { box }]) => ({
+    kind: "pin",
+    node,
+    at: [box[0] + box[2] / 2, box[1] + box[3] / 2],
+    strength,
+  }));
+  return SourceMapSchema.parse({
+    ...source,
+    layout: {
+      ...source.layout,
+      hints: [...(source.layout?.hints ?? []), ...pins],
+    },
+  });
+}
+
 export function comparisonCopy(original) {
   const map = ResolvedMapSchema.parse(original);
   if (map.id !== "2.1") return map;
@@ -65,26 +83,41 @@ export function exampleMaps() {
     "free-plain",
     "same-rank",
     "same-rank-plain",
+    "sketch",
+    "sketch-plain",
+    "sketch-required",
   ].map((id) => ({
     id,
     source: SourceMapSchema.parse(exampleSource(id)),
-    note: id.startsWith("free")
-      ? id === "free"
-        ? "Review feedback returns to the plan without influencing ranks. Both engines keep the plan above review. The next section removes only the free hint."
-        : "The same source with only the free hint removed. Without derived intent, both engines put review above the plan and push building down."
-      : id.startsWith("same-rank")
-        ? id === "same-rank"
-          ? "Quick and Finish are parallel outcomes. A required sameRank hint aligns them in both engines. Compare the next section, which removes only that hint. Plain columns disable scenario intent, not stated hints."
-          : "The same source with only the sameRank hint removed. Both engines place Quick before Finish because its path is shorter. Compare the aligned outcomes in the preceding section."
-        : id === "side-hints"
-          ? "ELK honours the stated box sides, including the Retry loop above Waiting. Dagre lists side hints as unsupported. Both ELK columns keep stated hints; plain disables only derived scenario intent."
-          : "Current standalone example. No hand-drawn reference is available.",
+    note: id.startsWith("sketch")
+      ? id === "sketch"
+        ? "Preferred pins sketch the box centres. ELK starts from these positions but may move boxes to improve the drawing."
+        : id === "sketch-plain"
+          ? "The same source without pins shows what ELK draws without the sketch."
+          : "Required pins reproduce the stated centres exactly; both engines use the relation solver and channel router."
+      : id.startsWith("free")
+        ? id === "free"
+          ? "Review feedback returns to the plan without influencing ranks. Both engines keep the plan above review. The next section removes only the free hint."
+          : "The same source with only the free hint removed. Without derived intent, both engines put review above the plan and push building down."
+        : id.startsWith("same-rank")
+          ? id === "same-rank"
+            ? "Quick and Finish are parallel outcomes. A required sameRank hint aligns them in both engines. Compare the next section, which removes only that hint. Plain columns disable scenario intent, not stated hints."
+            : "The same source with only the sameRank hint removed. Both engines place Quick before Finish because its path is shorter. Compare the aligned outcomes in the preceding section."
+          : id === "side-hints"
+            ? "ELK honours the stated box sides, including the Retry loop above Waiting. Dagre lists side hints as unsupported. Both ELK columns keep stated hints; plain disables only derived scenario intent."
+            : "Current standalone example. No hand-drawn reference is available.",
   }));
 }
 
 function exampleSource(id) {
-  const name = id.endsWith("-plain") ? id.slice(0, -6) : id;
+  const name = id.endsWith("-plain")
+    ? id.slice(0, -6)
+    : id.endsWith("-required")
+      ? id.slice(0, -9)
+      : id;
   const source = JSON.parse(readFileSync(`examples/${name}/map.json`, "utf8"));
   if (id.endsWith("-plain")) delete source.layout;
+  if (id.endsWith("-required"))
+    for (const hint of source.layout.hints) hint.strength = "required";
   return source;
 }

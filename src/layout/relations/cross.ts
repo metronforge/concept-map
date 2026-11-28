@@ -1,6 +1,7 @@
 import type { LayoutProblem } from "../problem.js";
 import type { LayoutResult } from "../types.js";
 import type { DifferenceRelation, RelationSystem } from "./types.js";
+import { pinAnchors } from "./pin-anchors.js";
 
 // Source node ids cannot contain "$", so the fixed origin cannot collide.
 const origin = "$cross-origin";
@@ -10,6 +11,7 @@ function separationRelations(
   boxes: LayoutResult["nodes"],
   axis: 0 | 1,
   nodeGap: number,
+  pinned: Set<string>,
 ): DifferenceRelation[] {
   // A total order keeps all separation bounds acyclic, including ties.
   const ordered = [...ids].sort(
@@ -20,6 +22,8 @@ function separationRelations(
   for (const [i, from] of ordered.entries()) {
     const a = boxes[from];
     for (const to of ordered.slice(i + 1)) {
+      // Two exact hand positions may overlap; the checker reports that defect.
+      if (pinned.has(from) && pinned.has(to)) continue;
       const b = boxes[to];
       if (a[rank] >= b[rank] + b[rank + 2]) continue;
       if (b[rank] >= a[rank] + a[rank + 2]) continue;
@@ -44,25 +48,30 @@ export function crossRelations(
 ): RelationSystem {
   const direction = problem.constraints.find((c) => c.kind === "direction");
   const axis = direction?.direction === "right" ? 1 : 0;
+  const pins = pinAnchors(problem, boxes, axis);
+  const pinned = new Set(pins.map((pin) => pin.variable));
   return {
     variables: [
       { id: origin, size: 0 },
       ...problem.nodes.map(({ id }) => ({ id, size: boxes[id][axis + 2] })),
     ],
-    anchors: [{ id: "cross-origin", variable: origin, position: 0 }],
+    anchors: [{ id: "cross-origin", variable: origin, position: 0 }, ...pins],
     relations: [
-      ...problem.nodes.map(({ id }): DifferenceRelation => ({
-        id: `engine.${id}`,
-        from: origin,
-        to: id,
-        kind: "minimum",
-        gap: boxes[id][axis],
-      })),
+      ...problem.nodes
+        .filter(({ id }) => !pinned.has(id))
+        .map(({ id }): DifferenceRelation => ({
+          id: `engine.${id}`,
+          from: origin,
+          to: id,
+          kind: "minimum",
+          gap: boxes[id][axis],
+        })),
       ...separationRelations(
         problem.nodes.map(({ id }) => id),
         boxes,
         axis,
         nodeGap,
+        pinned,
       ),
     ],
   };

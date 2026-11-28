@@ -18,16 +18,18 @@ export function channelInput(
   const edges = [];
   for (const { id, from, to } of graph.edges) {
     if (!nodes[from] || !nodes[to]) return null;
-    const points = original.edges[id]?.points;
-    if (!points || points.length < 2) {
-      const selected = sides[id];
-      if (!selected) return null;
+    const selected = sides[id];
+    if (selected) {
       edges.push({
         id,
         from: channelPort(from, nodes[from], selected.from),
         to: channelPort(to, nodes[to], selected.to),
       });
       continue;
+    }
+    const points = original.edges[id]?.points;
+    if (!points || points.length < 2) {
+      return null;
     }
     if (!original.nodes[from] || !original.nodes[to]) return null;
     const start = terminal(from, points[0], original.nodes[from], nodes[from]);

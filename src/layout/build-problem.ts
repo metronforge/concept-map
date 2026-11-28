@@ -29,7 +29,11 @@ export function buildProblem(
           ]
         : []),
       ...(intent ? deriveIntent(map) : []),
-      ...statedHints(map),
+      ...statedHints(map).map((hint) => {
+        if (hint.kind !== "pin") return hint;
+        const { at, ...constraint } = hint;
+        return { ...constraint, position: at };
+      }),
     ],
   };
 }

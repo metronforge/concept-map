@@ -88,6 +88,47 @@
                 "properties": {
                   "kind": {
                     "type": "string",
+                    "const": "pin"
+                  },
+                  "node": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                  },
+                  "at": {
+                    "type": "array",
+                    "prefixItems": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ],
+                    "items": false,
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "strength": {
+                    "default": "preferred",
+                    "type": "string",
+                    "enum": [
+                      "preferred",
+                      "required"
+                    ]
+                  }
+                },
+                "required": [
+                  "kind",
+                  "node",
+                  "at"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
                     "const": "side"
                   },
                   "edge": {

@@ -110,6 +110,20 @@ function resolvedScenarios(map: SourceMap, badge: (id: string) => LayoutPoint) {
       : {}),
   }));
 }
+
+function drawingSpace(map: SourceMap, b: LayoutBox) {
+  const requiredPin = map.layout?.hints.some(
+    (hint) => hint.kind === "pin" && hint.strength === "required",
+  );
+  const offset: LayoutPoint = requiredPin ? [0, 0] : [b[0] - 16, b[1] - 16];
+  return {
+    move: ([x, y]: LayoutPoint): LayoutPoint => [x - offset[0], y - offset[1]],
+    viewBox: requiredPin
+      ? [b[0] + b[2] + 16, b[1] + b[3] + 16]
+      : [b[2] + 32, b[3] + 32],
+  };
+}
+
 export function resolveGeometry(
   map: SourceMap,
   graph: LayoutGraph,
@@ -119,15 +133,12 @@ export function resolveGeometry(
   const frames = frameBoxes(map, result, measure),
     badges = badgePositions(graph, result),
     b = viewport(graph, result, frames, badges);
-  const move = ([x, y]: LayoutPoint): LayoutPoint => [
-    x - b[0] + 16,
-    y - b[1] + 16,
-  ];
+  const { move, viewBox } = drawingSpace(map, b);
   const box = ([x, y, w, h]: LayoutBox): LayoutBox => [...move([x, y]), w, h];
   const edges = edgeGeometry(map, graph, result, move, badges);
   return ResolvedMapSchema.parse({
     ...map,
-    viewBox: [b[2] + 32, b[3] + 32],
+    viewBox,
     nodes: Object.fromEntries(
       Object.entries(map.nodes).map(([id, n]) => [
         id,

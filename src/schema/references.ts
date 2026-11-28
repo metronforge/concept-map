@@ -84,6 +84,7 @@ function concepts(map: MapData, check: Check) {
 }
 function hints(map: MapData, check: Check, errors: string[]) {
   const required = new Map<string, { side: string; path: string }>();
+  const pins = new Map<string, string>();
   map.layout?.hints.forEach((hint, i) => {
     const path = `layout.hints[${i}]`;
     if (hint.kind === "sameRank") {
@@ -91,6 +92,14 @@ function hints(map: MapData, check: Check, errors: string[]) {
       hint.nodes.forEach((id, j) =>
         check(`${path}.nodes[${j}]`, "node", id, map.nodes),
       );
+    } else if (hint.kind === "pin") {
+      check(`${path}.node`, "node", hint.node, map.nodes);
+      const previous = pins.get(hint.node);
+      if (previous)
+        errors.push(
+          `${path}.node: duplicate pin for ${hint.node} (${previous})`,
+        );
+      else pins.set(hint.node, path);
     } else {
       check(`${path}.edge`, "edge", hint.edge, map.edges);
       if (

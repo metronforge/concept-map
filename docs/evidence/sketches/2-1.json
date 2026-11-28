@@ -1,0 +1,65 @@
+{
+  "id": "2-1",
+  "boxes": 13,
+  "note": "Every variant omits only timeout_outer (timeout to the outer frame) and its step reference. Frame endpoints are not implemented yet. The original book fixture is unchanged.",
+  "hand": {
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 13,
+    "readingShare": 0.556
+  },
+  "preferredElk": {
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 48,
+    "readingShare": 1,
+    "pinDistance": {
+      "absolute": {
+        "mean": 378.0791880248279,
+        "max": 734.2206752741304
+      },
+      "afterTranslation": {
+        "mean": 262.00707787480854,
+        "max": 466.3285341635744
+      }
+    },
+    "sketchOrder": {
+      "rank": {
+        "matching": 70,
+        "pairs": 70,
+        "share": 1
+      },
+      "withinRank": {
+        "matching": 7,
+        "pairs": 8,
+        "share": 0.875
+      }
+    }
+  },
+  "requiredElk": {
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 3,
+    "bends": 26,
+    "readingShare": 0.556,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
+  },
+  "requiredDagre": {
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 3,
+    "bends": 26,
+    "readingShare": 0.556,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
+  }
+}

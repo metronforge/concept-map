@@ -86,3 +86,22 @@ test("fractional nodes touching a lane start retain their exact position", () =>
     lanes: result.lanes,
   });
 });
+
+test("a required pin can move its lane before the engine's lane start", () => {
+  const { problem, result } = laneFixture();
+  problem.constraints = problem.constraints.filter(
+    (hint) => hint.kind !== "sameRank",
+  );
+  problem.constraints.push({
+    kind: "pin",
+    node: "a",
+    position: [10, -10],
+    strength: "required",
+    path: "layout.hints[1]",
+  });
+  const aligned = alignLaneRanks(problem, result, 20);
+  expect(aligned.status).toBe("determined");
+  if (aligned.status !== "determined") return;
+  expect(aligned.nodes.a[1]).toBe(-20);
+  expect(aligned.lanes.first[1]).toBeLessThanOrEqual(-20);
+});

@@ -140,6 +140,14 @@ export function mapSchema<T extends z.core.$ZodType, S extends z.core.$ZodType, 
                 required: "required";
             }>>;
         }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"pin">;
+            node: z.ZodMiniString<string>;
+            at: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>, z.ZodMiniObject<{
             kind: z.ZodMiniLiteral<"side">;
             edge: z.ZodMiniString<string>;
             end: z.ZodMiniEnum<{
@@ -380,6 +388,14 @@ export const ResolvedMapSchema: z.ZodMiniObject<{
                 required: "required";
             }>>;
         }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"pin">;
+            node: z.ZodMiniString<string>;
+            at: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>, z.ZodMiniObject<{
             kind: z.ZodMiniLiteral<"side">;
             edge: z.ZodMiniString<string>;
             end: z.ZodMiniEnum<{
@@ -572,6 +588,14 @@ export const SourceMapSchema: z.ZodMiniObject<{
                 required: "required";
             }>>;
         }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"pin">;
+            node: z.ZodMiniString<string>;
+            at: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>, z.ZodMiniObject<{
             kind: z.ZodMiniLiteral<"side">;
             edge: z.ZodMiniString<string>;
             end: z.ZodMiniEnum<{
@@ -727,6 +751,14 @@ export function sourceMapSchema<T extends z.core.$ZodType, S extends z.core.$Zod
         }, z.core.$strict>, z.ZodMiniObject<{
             kind: z.ZodMiniLiteral<"sameRank">;
             nodes: z.ZodMiniArray<z.ZodMiniString<string>>;
+            strength: z.ZodMiniDefault<z.ZodMiniEnum<{
+                preferred: "preferred";
+                required: "required";
+            }>>;
+        }, z.core.$strict>, z.ZodMiniObject<{
+            kind: z.ZodMiniLiteral<"pin">;
+            node: z.ZodMiniString<string>;
+            at: z.ZodMiniTuple<readonly [z.ZodMiniNumber<number>, z.ZodMiniNumber<number>], null>;
             strength: z.ZodMiniDefault<z.ZodMiniEnum<{
                 preferred: "preferred";
                 required: "required";

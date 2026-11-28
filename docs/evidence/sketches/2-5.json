@@ -1,0 +1,64 @@
+{
+  "id": "2-5",
+  "boxes": 10,
+  "hand": {
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 6,
+    "readingShare": 1
+  },
+  "preferredElk": {
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 36,
+    "readingShare": 1,
+    "pinDistance": {
+      "absolute": {
+        "mean": 275.30903298418235,
+        "max": 477.31959942998367
+      },
+      "afterTranslation": {
+        "mean": 139.94249219851127,
+        "max": 343.1162520196326
+      }
+    },
+    "sketchOrder": {
+      "rank": {
+        "matching": 43,
+        "pairs": 45,
+        "share": 0.9555555555555556
+      },
+      "withinRank": {
+        "matching": 0,
+        "pairs": 0,
+        "share": null
+      }
+    }
+  },
+  "requiredElk": {
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 6,
+    "readingShare": 1,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
+  },
+  "requiredDagre": {
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 6,
+    "readingShare": 1,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
+  }
+}

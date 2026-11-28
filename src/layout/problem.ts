@@ -47,6 +47,7 @@ export interface LayoutProblem {
 /** Independent verdict about source intent on a drawing. */
 export type ConstraintVerdict = { message: string } & (
   | ({ holds: null } & Extract<StatedHint, { kind: "free" }>)
+  | ({ holds: null } & Extract<StatedHint, { kind: "pin" }>)
   | ({ holds: boolean } & (
       | { kind: "lanes"; strength: "required" }
       | {
@@ -57,5 +58,6 @@ export type ConstraintVerdict = { message: string } & (
           nodes: readonly string[];
         }
       | Extract<StatedHint, { kind: "side" }>
+      | Extract<StatedHint, { kind: "pin" }>
     ))
 );

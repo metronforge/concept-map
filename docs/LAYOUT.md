@@ -246,6 +246,15 @@ the map also states `sameRank`. It uses the routed drawing only if raw and
 refined checks find no new hard defects. Otherwise preferred hints are listed
 as unsupported and required hints fail.
 
+ELK receives preferred pin centres as starting box positions. For pinned maps,
+interactive layering and node placement guide the sketch. Preferred pins keep
+about 90% of the sketch's rank order and about 74% of the order within ranks.
+In the 23 book sketches, 1,402 of 1,559 box pairs (89.9%) keep their rank
+order, while 84 of 114 pairs (73.7%) keep their order within a hand-drawn
+rank, with no extra crossings. Exact coordinates do not follow the sketch;
+use `required` pins for them. Dagre reports preferred pins as unsupported.
+Required pins use the shared on-demand solver with either engine.
+
 Intent is enabled by default. To compare an engine's graph-only placement
 with these preferences, pass `{ intent: false }` to `layout()`. This omits
 only the derived order, main path and free-edge constraints; direction and

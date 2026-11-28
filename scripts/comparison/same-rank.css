@@ -1,6 +1,7 @@
 /* Keep small hint examples at the player's page-relative text size. */
 [data-map^="same-rank"] .canvas svg,
-[data-map^="free"] .canvas svg {
+[data-map^="free"] .canvas svg,
+[data-map^="sketch"] .canvas svg {
   width: auto;
   height: auto;
 }

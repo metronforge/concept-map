@@ -1,0 +1,56 @@
+{
+  "format": 3,
+  "id": "sketch",
+  "title": "Sketch two paths to publication",
+  "direction": "down",
+  "layers": { "work": { "label": "Work" } },
+  "nodes": {
+    "start": { "label": "Draft", "layer": "work" },
+    "review": { "label": "Review", "layer": "work" },
+    "approve": { "label": "Approve", "layer": "work" },
+    "publish": { "label": "Publish", "layer": "work" }
+  },
+  "edges": {
+    "review": { "from": "start", "to": "review" },
+    "approve": { "from": "start", "to": "approve" },
+    "review_publish": { "from": "review", "to": "publish" },
+    "approve_publish": { "from": "approve", "to": "publish" }
+  },
+  "layout": {
+    "hints": [
+      { "kind": "pin", "node": "start", "at": [140, 80] },
+      { "kind": "pin", "node": "review", "at": [210, 220] },
+      { "kind": "pin", "node": "approve", "at": [70, 220] },
+      { "kind": "pin", "node": "publish", "at": [140, 360] }
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "publication",
+      "label": "Publication",
+      "steps": [
+        {
+          "id": "draft",
+          "title": "Draft",
+          "text": "Start the draft.",
+          "show": ["start"],
+          "edges": []
+        },
+        {
+          "id": "paths",
+          "title": "Parallel checks",
+          "text": "Review and approval follow the draft in parallel.",
+          "show": ["start", "review", "approve"],
+          "edges": ["review", "approve"]
+        },
+        {
+          "id": "publish",
+          "title": "Publish",
+          "text": "Both paths lead to publication.",
+          "show": ["start", "review", "approve", "publish"],
+          "edges": ["review", "approve", "review_publish", "approve_publish"]
+        }
+      ]
+    }
+  ]
+}

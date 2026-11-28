@@ -31,6 +31,10 @@ export type ConstraintVerdict = {
 } & Extract<StatedHint, {
     kind: "free";
 }>) | ({
+    holds: null;
+} & Extract<StatedHint, {
+    kind: "pin";
+}>) | ({
     holds: boolean;
 } & ({
     kind: "lanes";
@@ -43,6 +47,8 @@ export type ConstraintVerdict = {
     nodes: readonly string[];
 } | Extract<StatedHint, {
     kind: "side";
+}> | Extract<StatedHint, {
+    kind: "pin";
 }>)));
 
 // @public

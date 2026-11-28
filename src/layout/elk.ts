@@ -66,12 +66,13 @@ async function layoutElk(
   main: ReadonlySet<string> = new Set(),
   modelOrder = false,
   ports = sidePorts(graph, [], new Set()),
+  pins: ReadonlyMap<string, readonly [number, number]> = new Map(),
 ): Promise<LayoutResult> {
   const nodes = engineNodes(graph),
     elk = new (ELK as unknown as { new (): ElkApi })();
   // Bundled ELK uses an in-process worker; there is no worker to terminate.
   {
-    const input = elkGraph(graph, nodes, main, ports);
+    const input = elkGraph(graph, nodes, main, ports, pins);
     if (modelOrder) preferModelOrder(input);
     const output = await elk.layout(input);
     const result: LayoutResult = { nodes: {}, edges: {}, lanes: {} };
@@ -96,6 +97,7 @@ const adapter: LayoutEngine & Placer = {
     mainPath: "preferred",
     order: "preferred",
     side: "required",
+    pin: { stated: "preferred" },
     free: {}, // Neither derived reversal nor stated hints exclude edges from ranks.
   },
   async place(problem) {
@@ -116,6 +118,13 @@ const adapter: LayoutEngine & Placer = {
       main,
       problem.constraints.some((c) => c.kind === "order"),
       sidePorts(graph, problem.constraints, free),
+      new Map(
+        problem.constraints.flatMap((c) =>
+          c.kind === "pin" && c.strength === "preferred"
+            ? [[c.node, c.position] as const]
+            : [],
+        ),
+      ),
     );
     return restoreFreeEdges(graph, result, free);
   },

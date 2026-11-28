@@ -22,7 +22,11 @@ export async function placeSameRank(
   const outcome = await place(
     {
       ...problem,
-      constraints: problem.constraints.filter((c) => c.kind !== "sameRank"),
+      constraints: problem.constraints.filter(
+        (c) =>
+          c.kind !== "sameRank" &&
+          !(c.kind === "pin" && c.strength === "required"),
+      ),
     },
     placer,
   );

@@ -81,6 +81,34 @@ defaults to `"strength": "preferred"`; explicit `preferred` is also accepted.
 Use `"strength": "required"` when layout must refuse an engine that cannot honour
 the hint. Diagnostics identify its path, kind and referenced ids.
 
+`pin` gives the centre of a box in drawing units. The centre stays fixed as
+the box changes size to fit its label. A map may pin each node once; unknown
+nodes and repeated pins are reference errors.
+
+```json
+{
+  "layout": {
+    "hints": [
+      { "kind": "pin", "node": "cashier", "at": [240, 120] },
+      {
+        "kind": "pin",
+        "node": "guest",
+        "at": [80, 120],
+        "strength": "required"
+      }
+    ]
+  }
+}
+```
+
+The checker reports a preferred pin's distance from the drawn box centre
+without counting it as a defect. A required pin holds when the centre is at
+the requested point within the measurement tolerance. Preferred ELK pins keep
+about 90% of the sketch's rank order and about 74% of the order within ranks:
+across 23 book sketches, 89.9% of rank-order box pairs and 73.7% of
+within-rank pairs match the hand drawings, with no extra crossings. These
+orders are approximate; use `required` for exact positions.
+
 `sameRank` names at least two distinct nodes. With direction `down`, their box
 `y` coordinates must agree (a row); with direction `right`, their `x` coordinates
 must agree (a column). Widths and heights may differ.
@@ -164,11 +192,12 @@ shows a loop attached to the top of a box.
 
 Support through `layout()`:
 
-| Hint       | Dagre                                             | ELK                                               |
-| ---------- | ------------------------------------------------- | ------------------------------------------------- |
-| `sameRank` | preferred and required, through the shared solver | preferred and required, through the shared solver |
-| `side`     | unsupported                                       | preferred and required                            |
-| `free`     | preferred and required, through shared routing    | preferred and required, through shared routing    |
+| Hint       | Dagre                                                     | ELK                                                                     |
+| ---------- | --------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `sameRank` | preferred and required, through the shared solver         | preferred and required, through the shared solver                       |
+| `side`     | unsupported                                               | preferred and required                                                  |
+| `free`     | preferred and required, through shared routing            | preferred and required, through shared routing                          |
+| `pin`      | required through the shared solver; preferred unsupported | preferred with interactive layering; required through the shared solver |
 
 Same-rank alignment loads only when a source map states a `sameRank` hint.
 It follows engine placement, including for custom engines. Boxes move only

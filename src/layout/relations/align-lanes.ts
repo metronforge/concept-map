@@ -58,7 +58,13 @@ export function alignLaneRanks(
   original: LayoutResult,
   rankGap: number,
 ) {
-  if (!problem.constraints.some((c) => c.kind === "sameRank"))
+  if (
+    !problem.constraints.some(
+      (c) =>
+        c.kind === "sameRank" ||
+        (c.kind === "pin" && c.strength === "required"),
+    )
+  )
     return {
       status: "determined" as const,
       nodes: original.nodes,

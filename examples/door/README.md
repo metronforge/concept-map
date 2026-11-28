@@ -32,10 +32,10 @@ as a `file:` URL: the component fetches its JSON. Internet access is needed for 
 
 <!-- x-release-please-start-version -->
 
-The module and stylesheet use the published npm version 0.3.1 through esm.sh:
+The module and stylesheet use the published npm version 0.3.2 through esm.sh:
 
-- Module: `https://esm.sh/@metronforge/concept-map@0.3.1/element`
-- Stylesheet: `https://esm.sh/@metronforge/concept-map@0.3.1/css`
+- Module: `https://esm.sh/@metronforge/concept-map@0.3.2/element`
+- Stylesheet: `https://esm.sh/@metronforge/concept-map@0.3.2/css`
 
 <!-- x-release-please-end -->
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/metronforge/concept-map/compare/v0.3.1...v0.3.2) (2026-11-28)
+
+
+### Bug Fixes
+
+* keep authored label anchors on maps without measurements ([5e459e1](https://github.com/metronforge/concept-map/commit/5e459e1fb7031922f1a904da05952333f89ebe12))
+
 ## [0.3.1](https://github.com/metronforge/concept-map/compare/v0.3.0...v0.3.1) (2026-11-28)
 
 

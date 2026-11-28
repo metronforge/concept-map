@@ -89,3 +89,23 @@ for (const direction of ["down", "right"] as const) {
 test("an empty map has a checked origin and no box positions", () => {
   expect(positions({}, "down")).toEqual({});
 });
+
+test("overlapping required pins do not force cross-axis separation", () => {
+  const boxes: LayoutResult["nodes"] = {
+    a: [0, 100, 40, 40],
+    b: [20, 110, 40, 40],
+    c: [30, 120, 40, 40],
+  };
+  const problem = input(boxes, "down");
+  problem.constraints.push(
+    { kind: "pin", node: "a", position: [20, 120], strength: "required" },
+    { kind: "pin", node: "b", position: [40, 130], strength: "required" },
+  );
+  const system = crossRelations(problem, boxes, 32);
+  expect(system.relations.some((r) => r.id === "separate.a:b")).toBe(false);
+  expect(system.relations.some((r) => r.id === "separate.a:c")).toBe(true);
+  expect(system.relations.some((r) => r.id === "separate.b:c")).toBe(true);
+  const result = solveRelations(system);
+  expect(checkRelations(system, result)).toBe(true);
+  expect(result.status).toBe("determined");
+});

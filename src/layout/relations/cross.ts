@@ -11,6 +11,7 @@ function separationRelations(
   boxes: LayoutResult["nodes"],
   axis: 0 | 1,
   nodeGap: number,
+  pinned: Set<string>,
 ): DifferenceRelation[] {
   // A total order keeps all separation bounds acyclic, including ties.
   const ordered = [...ids].sort(
@@ -21,6 +22,8 @@ function separationRelations(
   for (const [i, from] of ordered.entries()) {
     const a = boxes[from];
     for (const to of ordered.slice(i + 1)) {
+      // Two exact hand positions may overlap; the checker reports that defect.
+      if (pinned.has(from) && pinned.has(to)) continue;
       const b = boxes[to];
       if (a[rank] >= b[rank] + b[rank + 2]) continue;
       if (b[rank] >= a[rank] + a[rank + 2]) continue;
@@ -68,6 +71,7 @@ export function crossRelations(
         boxes,
         axis,
         nodeGap,
+        pinned,
       ),
     ],
   };

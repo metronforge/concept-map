@@ -11,5 +11,11 @@
   "meanPreferredReadingShare": 0.852086956521739,
   "meanAbsolutePinDistance": 360.0269720292542,
   "maximumAbsolutePinDistance": 1079.746641578477,
-  "meanTranslatedPinDistance": 234.25415924609038
+  "meanTranslatedPinDistance": 234.25415924609038,
+  "requiredElkDrawn": 7,
+  "requiredDagreDrawn": 5,
+  "requiredElkExact": 7,
+  "requiredDagreExact": 5,
+  "requiredElkWithinHandDefects": 7,
+  "requiredDagreWithinHandDefects": 5
 }

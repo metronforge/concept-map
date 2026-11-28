@@ -22,5 +22,15 @@
         "max": 355.4747685585575
       }
     }
+  },
+  "requiredElk": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows elapsed_body, body_after, body_action, test_setup, fixture_setup, after_teardown, action_expired"
+  },
+  "requiredDagre": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows elapsed_body, fixture_setup, body_after, body_action, test_setup, own_body, after_teardown, action_expired"
   }
 }

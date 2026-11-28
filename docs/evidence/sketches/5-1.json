@@ -22,5 +22,15 @@
         "max": 482.6320861763726
       }
     }
+  },
+  "requiredElk": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows blockRetry, value, throws, pollRetry, deadline, record"
+  },
+  "requiredDagre": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows value, pollRetry, throws, blockRetry, deadline, record, injected, locatorRetry"
   }
 }

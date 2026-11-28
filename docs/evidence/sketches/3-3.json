@@ -22,5 +22,15 @@
         "max": 589.7296416187787
       }
     }
+  },
+  "requiredElk": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows releaseOne, missing, hook"
+  },
+  "requiredDagre": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows hook, missing, releaseOne"
   }
 }

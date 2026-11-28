@@ -22,5 +22,31 @@
         "max": 275.90159238272076
       }
     }
+  },
+  "requiredElk": {
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 3,
+    "bends": 18,
+    "readingShare": 0.444,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
+  },
+  "requiredDagre": {
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 1,
+    "bends": 14,
+    "readingShare": 0.444,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   }
 }

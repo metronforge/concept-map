@@ -6,6 +6,11 @@ removes resolved geometry, and pins each box at the hand drawing's centre.
 The `hand` and `preferredElk` fields contain the same `check()` quality figures:
 hard defects, crossings, bends and first-scenario reading share. The ELK field
 also records mean and maximum distance from the pin to each drawn box centre.
+`requiredElk` and `requiredDagre` attempt the same source map with exact pins.
+A drawn result records whether every centre is exact (within 0.000001 drawing
+units), whether its hard defect count stays within the hand drawing's count,
+and its quality figures. A failed result records the error type and message;
+it contributes to neither success count in `summary.json`.
 
 `pinDistance.absolute` uses the stated drawing coordinates. The optional
 `afterTranslation` figure removes only the average x and y offset between the
@@ -29,3 +34,8 @@ semi-interactive crossing minimization produced identical figures on all 23
 maps, so the simpler option set is used. Other interactive options moved boxes
 closer to pins but added crossings and bends; pin distance alone does not
 decide sketch quality.
+
+Required pins currently draw 7 of 23 maps with ELK and 5 with dagre. Every
+drawn map has exact box centres and no more hard defects than its hand drawing.
+The other attempts fail during arrow routing. The per-map reports name the
+arrows that prevent a result; they do not claim those sketches are impossible.

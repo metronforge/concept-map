@@ -22,5 +22,23 @@
         "max": 471.34522507744344
       }
     }
+  },
+  "requiredElk": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows ma, mf, hr"
+  },
+  "requiredDagre": {
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 12,
+    "readingShare": 0.8,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   }
 }

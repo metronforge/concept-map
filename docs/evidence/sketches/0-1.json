@@ -22,5 +22,23 @@
         "max": 426.1393193708941
       }
     }
+  },
+  "requiredElk": {
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 5,
+    "bends": 60,
+    "readingShare": 0.643,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
+  },
+  "requiredDagre": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows request_cookies, config_files, files_dispatch, dispatch_test, browser_ctx, ctx_page, mk_browser, mk_ctx, mk_page, server_page, page_app, server_app, shared, cli_config, pw_browser, pw_request, test_client"
   }
 }

@@ -22,5 +22,15 @@
         "max": 471.2910251925391
       }
     }
+  },
+  "requiredElk": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows enable, skip, release, ignores, url_load, commit, load"
+  },
+  "requiredDagre": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows enable, skip, release, ignores, url_load, load"
   }
 }

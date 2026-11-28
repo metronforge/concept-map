@@ -22,5 +22,15 @@
         "max": 316.8885150461736
       }
     }
+  },
+  "requiredElk": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows mainDOM, belongs, replace"
+  },
+  "requiredDagre": {
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows mainDOM, belongs, globals, dom, replace"
   }
 }

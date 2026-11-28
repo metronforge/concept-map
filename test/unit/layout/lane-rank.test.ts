@@ -48,6 +48,34 @@ test("no lanes leaves the rank system unchanged", () => {
   );
 });
 
+test("required pins may close an engine lane gap while keeping lane order", () => {
+  const { problem, result } = laneFixture();
+  problem.groups = problem.groups.filter(({ id }) => id !== "empty");
+  delete result.lanes.empty;
+  problem.constraints = problem.constraints.filter(
+    (c) => c.kind !== "sameRank",
+  );
+  problem.constraints.push({
+    kind: "pin",
+    node: "observer",
+    position: [10, 120],
+    strength: "required",
+    path: "layout.hints[1]",
+  });
+  const system = laneRankRelations(problem, result, 20);
+  const solution = solveRelations(system);
+  expect(checkRelations(system, solution)).toBe(true);
+  expect(solution.status).toBe("determined");
+  if (solution.status !== "determined") return;
+  const positions = Object.fromEntries(
+    solution.placements.map((p) => [p.variable, p.position]),
+  );
+  expect(positions.observer).toBe(110);
+  expect(positions["$lane.last.start"]).toBeGreaterThanOrEqual(
+    positions["$lane.first.end"],
+  );
+});
+
 test("without a hint, every lane boundary and node retains its engine rank", () => {
   const { problem, result } = laneFixture();
   const system = laneRankRelations({ ...problem, constraints: [] }, result, 20);

@@ -24,6 +24,7 @@ function laneBounds(
   origin: string,
   startFloor: number,
   previous?: LaneExtent,
+  requiredPin = false,
 ): DifferenceRelation[] {
   const start = `$lane.${lane.id}.start`,
     end = `$lane.${lane.id}.end`;
@@ -37,7 +38,7 @@ function laneBounds(
             `lanes.${lane.id}.order`,
             `$lane.${previous.id}.end`,
             start,
-            lane.start - previous.end,
+            requiredPin ? 0 : lane.start - previous.end,
           ),
         ]
       : []),
@@ -94,6 +95,22 @@ function afterLanes(
   );
 }
 
+function pinnedStarts(
+  problem: LayoutProblem,
+  original: LayoutResult,
+  lane: LaneExtent,
+  axis: 0 | 1,
+): number[] {
+  return problem.constraints.flatMap((hint) => {
+    if (hint.kind !== "pin" || hint.strength !== "required") return [];
+    if (problem.nodes.find((node) => node.id === hint.node)?.lane !== lane.id)
+      return [];
+    const box = original.nodes[hint.node];
+    const position = hint.position[axis] - box[axis + 2] / 2;
+    return [position - (box[axis] - lane.start)];
+  });
+}
+
 function addLanes(
   system: RelationSystem,
   problem: LayoutProblem,
@@ -105,21 +122,23 @@ function addLanes(
     start: original.lanes[id][axis],
     end: original.lanes[id][axis] + original.lanes[id][axis + 2],
   }));
+  const requiredPin = system.anchors.length > 1;
   for (const [i, lane] of lanes.entries()) {
     const start = `$lane.${lane.id}.start`,
       end = `$lane.${lane.id}.end`;
     system.variables.push({ id: start, size: 0 }, { id: end, size: 0 });
-    const pinnedStarts = problem.constraints.flatMap((hint) => {
-      if (hint.kind !== "pin" || hint.strength !== "required") return [];
-      if (problem.nodes.find((node) => node.id === hint.node)?.lane !== lane.id)
-        return [];
-      const box = original.nodes[hint.node];
-      const position = hint.position[axis] - box[axis + 2] / 2;
-      return [position - (box[axis] - lane.start)];
-    });
-    const startFloor = Math.min(lane.start, ...pinnedStarts);
+    const startFloor = Math.min(
+      lane.start,
+      ...pinnedStarts(problem, original, lane, axis),
+    );
     system.relations.push(
-      ...laneBounds(lane, system.anchors[0].variable, startFloor, lanes[i - 1]),
+      ...laneBounds(
+        lane,
+        system.anchors[0].variable,
+        startFloor,
+        lanes[i - 1],
+        requiredPin,
+      ),
     );
     system.relations.push(
       ...containment(

@@ -1,0 +1,21 @@
+{
+  "baselineCommit": "b50565a",
+  "implementationCommit": "23684fe",
+  "before": {
+    "maps": 23,
+    "moved": 19,
+    "clearMoved": 0,
+    "hard": 2
+  },
+  "after": {
+    "maps": 23,
+    "moved": 19,
+    "clearMoved": 0,
+    "hard": 2
+  },
+  "identicalServerExamples": 6,
+  "browserReports": 96,
+  "changedBrowserReports": 6,
+  "hardRegressions": 0,
+  "newContacts": 0
+}

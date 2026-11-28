@@ -1,0 +1,51 @@
+{
+  "id": "0-1",
+  "moved": [
+    {
+      "id": "step:mk_page",
+      "before": [340, 470],
+      "after": [340, 510],
+      "contacts": [
+        {
+          "a": "label:shared",
+          "b": "step:mk_page",
+          "band": "tight",
+          "gap": 0.143
+        },
+        {
+          "a": "node:apiCookies",
+          "b": "step:mk_page",
+          "band": "defect",
+          "gap": -1.524
+        }
+      ]
+    },
+    {
+      "id": "label:shared",
+      "before": [220, 490],
+      "after": [48, 490],
+      "contacts": [
+        {
+          "a": "label:shared",
+          "b": "line:mk_page",
+          "band": "defect",
+          "gap": -1.815
+        },
+        {
+          "a": "label:shared",
+          "b": "node:apiCookies",
+          "band": "tight",
+          "gap": 0.143
+        },
+        {
+          "a": "label:shared",
+          "b": "step:mk_page",
+          "band": "tight",
+          "gap": 0.143
+        }
+      ]
+    }
+  ],
+  "hard": 2,
+  "beforeHard": 2
+}

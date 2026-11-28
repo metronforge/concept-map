@@ -1,0 +1,37 @@
+{
+  "viewport": 390,
+  "raw": {
+    "beforeHard": 0,
+    "afterHard": 0,
+    "newContacts": []
+  },
+  "presented": {
+    "beforeHard": 0,
+    "afterHard": 0,
+    "newContacts": []
+  },
+  "beforePresentation": "wide",
+  "afterPresentation": "wide",
+  "beforeMoved": [
+    "label:input",
+    "label:no",
+    "label:assign",
+    "label:loop",
+    "step:loop",
+    "label:yes",
+    "repeat:0:turn-1",
+    "repeat:0:turn-3"
+  ],
+  "afterMoved": [
+    "label:input",
+    "label:no",
+    "label:assign",
+    "label:loop",
+    "step:loop",
+    "label:yes"
+  ],
+  "nowKept": ["repeat:0:turn-1", "repeat:0:turn-3"],
+  "beforeSha256": "e91ce1da98980d41f86ef8bebd68b26eb27871065df5e4814410aa4ae783fbdb",
+  "afterSha256": "169fe599af608010bd71cac2a3535d5fc81f57901adc7514c8a9556d34d93e6f",
+  "identical": false
+}

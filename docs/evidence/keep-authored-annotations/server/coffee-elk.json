@@ -1,0 +1,7 @@
+{
+  "name": "coffee",
+  "engine": "elk",
+  "beforeSha256": "94649bdea410574ec18e8ee198abd96fed20bc51656887d76e354e9b52ec0a58",
+  "afterSha256": "94649bdea410574ec18e8ee198abd96fed20bc51656887d76e354e9b52ec0a58",
+  "identical": true
+}

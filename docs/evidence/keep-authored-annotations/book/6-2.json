@@ -1,0 +1,20 @@
+{
+  "id": "6-2",
+  "moved": [
+    {
+      "id": "label:calls",
+      "before": [161, 396],
+      "after": [175.58362499999998, 400.515625],
+      "contacts": [
+        {
+          "a": "label:calls",
+          "b": "node:generate",
+          "band": "defect",
+          "gap": -0.429
+        }
+      ]
+    }
+  ],
+  "hard": 0,
+  "beforeHard": 0
+}

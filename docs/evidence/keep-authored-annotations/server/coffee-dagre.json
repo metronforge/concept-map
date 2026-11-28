@@ -1,0 +1,7 @@
+{
+  "name": "coffee",
+  "engine": "dagre",
+  "beforeSha256": "dfc3188b83184b3ac999d653f714f48ffbddaacb70becdb7d67619d88b1bd945",
+  "afterSha256": "dfc3188b83184b3ac999d653f714f48ffbddaacb70becdb7d67619d88b1bd945",
+  "identical": true
+}

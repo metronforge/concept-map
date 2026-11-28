@@ -45,3 +45,37 @@ it("routes arrows of moved boxes and preserves untouched routes", () => {
   expect(routed?.edges.cd).toBe(original.edges.cd);
   expect(original.edges.ab.points[0]).toEqual([10, 5]);
 });
+
+it("routes between overlapping pinned peers without entering either box", () => {
+  const graph: LayoutGraph = {
+    nodes: [],
+    lanes: [],
+    edges: [{ id: "ab", from: "a", to: "b" }],
+  };
+  const original: LayoutResult = {
+    nodes: { a: [0, 0, 10, 10], b: [30, 0, 10, 10] },
+    lanes: {},
+    edges: {
+      ab: {
+        points: [
+          [10, 5],
+          [30, 5],
+        ],
+      },
+    },
+  };
+  const nodes = {
+    a: [0, 0, 10, 10],
+    b: [8, 0, 10, 10],
+  } as LayoutResult["nodes"];
+  const routed = routeMoved(
+    graph,
+    original,
+    nodes,
+    [38, 30],
+    new Set(["a", "b"]),
+  );
+  expect(routed).not.toBeNull();
+  expect(routed?.edges.ab.points[0]).toEqual([5, 10]);
+  expect(routed?.edges.ab.points.at(-1)).toEqual([13, 10]);
+});

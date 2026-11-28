@@ -12,10 +12,10 @@
   "meanAbsolutePinDistance": 360.0269720292542,
   "maximumAbsolutePinDistance": 1079.746641578477,
   "meanTranslatedPinDistance": 234.25415924609038,
-  "requiredElkDrawn": 22,
-  "requiredDagreDrawn": 22,
-  "requiredElkExact": 22,
-  "requiredDagreExact": 22,
-  "requiredElkWithinHandDefects": 22,
-  "requiredDagreWithinHandDefects": 22
+  "requiredElkDrawn": 23,
+  "requiredDagreDrawn": 23,
+  "requiredElkExact": 23,
+  "requiredDagreExact": 23,
+  "requiredElkWithinHandDefects": 23,
+  "requiredDagreWithinHandDefects": 23
 }

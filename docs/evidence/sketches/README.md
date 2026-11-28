@@ -35,11 +35,10 @@ maps, so the simpler option set is used. Other interactive options moved boxes
 closer to pins but added crossings and bends; pin distance alone does not
 decide sketch quality.
 
-Required pins currently draw 22 of 23 maps with both ELK and dagre. Every
-drawn map has exact box centres and no more hard defects than its hand drawing.
-Map 0-1 still fails during arrow routing. Its per-map report names
-the arrows that prevent a result; they do not claim those sketches are
-impossible. Selecting arrow ports from the pinned box positions lets the
-channel router draw the horizontal peer arrows that previously retained
-vertical engine ports. Label placement now also keeps arrow labels clear of
-step numbers drawn on boxes; that resolves four more maps with either engine.
+Required pins draw all 23 maps with both ELK and dagre. Every map has exact
+box centres and no more hard defects than its hand drawing. Selecting arrow
+ports from the pinned box positions lets the channel router draw horizontal
+peer arrows that previously retained vertical engine ports. Where pinned
+boxes overlap, arrows use ports outside both boxes instead of facing ports
+inside their neighbour. Label placement also keeps arrow labels clear of step
+numbers drawn on boxes.

@@ -28,7 +28,7 @@
     "exact": true,
     "withinHandDefects": true,
     "hardDefects": 0,
-    "crossings": 1,
+    "crossings": 0,
     "bends": 2,
     "readingShare": 1,
     "pinDistance": {
@@ -37,8 +37,16 @@
     }
   },
   "requiredDagre": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows check, fill, calls"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 2,
+    "readingShare": 1,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   }
 }

@@ -24,13 +24,29 @@
     }
   },
   "requiredElk": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows elapsed_body, body_after, body_action, test_setup, fixture_setup, after_teardown, action_expired"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 5,
+    "bends": 10,
+    "readingShare": 0.5,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   },
   "requiredDagre": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows elapsed_body, fixture_setup, body_after, body_action, test_setup, own_body, after_teardown, action_expired"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 5,
+    "bends": 10,
+    "readingShare": 0.5,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   }
 }

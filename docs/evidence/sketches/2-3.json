@@ -24,17 +24,25 @@
     }
   },
   "requiredElk": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows changed, retry, nextframe, first, then"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 2,
+    "bends": 16,
+    "readingShare": 0.643,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   },
   "requiredDagre": {
     "status": "drawn",
     "exact": true,
     "withinHandDefects": true,
     "hardDefects": 0,
-    "crossings": 3,
-    "bends": 28,
+    "crossings": 2,
+    "bends": 16,
     "readingShare": 0.643,
     "pinDistance": {
       "mean": 0,

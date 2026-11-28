@@ -24,13 +24,29 @@
     }
   },
   "requiredElk": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows mainDOM, belongs, replace"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 1,
+    "bends": 6,
+    "readingShare": 0.6,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   },
   "requiredDagre": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows mainDOM, belongs, globals, dom, replace"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 1,
+    "bends": 6,
+    "readingShare": 0.6,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   }
 }

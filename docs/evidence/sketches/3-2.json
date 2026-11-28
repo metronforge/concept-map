@@ -24,9 +24,17 @@
     }
   },
   "requiredElk": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows ma, mf, hr"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 8,
+    "readingShare": 0.8,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   },
   "requiredDagre": {
     "status": "drawn",
@@ -34,7 +42,7 @@
     "withinHandDefects": true,
     "hardDefects": 0,
     "crossings": 0,
-    "bends": 12,
+    "bends": 8,
     "readingShare": 0.8,
     "pinDistance": {
       "mean": 0,

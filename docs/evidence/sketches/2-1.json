@@ -29,8 +29,8 @@
     "exact": true,
     "withinHandDefects": true,
     "hardDefects": 0,
-    "crossings": 9,
-    "bends": 40,
+    "crossings": 3,
+    "bends": 26,
     "readingShare": 0.556,
     "pinDistance": {
       "mean": 0,
@@ -38,8 +38,16 @@
     }
   },
   "requiredDagre": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows detached, scroll_hit, click_mouse, retry_stable, enabled_inert, inert_scroll, resolve_strict, stable_visible, visible_enabled, hit_click"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 3,
+    "bends": 26,
+    "readingShare": 0.556,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   }
 }

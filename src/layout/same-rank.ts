@@ -100,7 +100,18 @@ function routeAligned(
     withLanes(rerouteMovedEdges(graph, original, nodes, constraints), lanes);
   const stretched = stretch();
   if (stretched === original) return { result: original, conflicts: [] };
-  const channel = routeMoved(graph, original, nodes, routeBounds(nodes));
+  const pinned = new Set(
+    constraints.flatMap((c) =>
+      c.kind === "pin" && c.strength === "required" ? [c.node] : [],
+    ),
+  );
+  const channel = routeMoved(
+    graph,
+    original,
+    nodes,
+    routeBounds(nodes),
+    pinned,
+  );
   const routed = channel ? withLanes(channel, lanes) : null;
   return chooseRoute(routed, () => stretched, inspect);
 }

@@ -1,5 +1,7 @@
 import { expect, test } from "vitest";
 import { SourceMapSchema } from "../../../src/schema.js";
+import { layout, check } from "../../../src/layout/index.js";
+import { elkEngine } from "../../../src/layout/elk.js";
 import {
   bookMaps,
   sketchSource,
@@ -28,5 +30,21 @@ test("all book drawings become source sketches at their hand box centres", () =>
     expect(sketchSource(manual, "required").layout?.hints).toEqual(
       source.layout?.hints.map((hint) => ({ ...hint, strength: "required" })),
     );
+  }
+});
+
+test("required book sketch keeps horizontal arrows between pinned peers", async () => {
+  const manual = bookMaps().find(({ id }) => id === "1-2")!.manual;
+  const source = sketchSource(manual, "required");
+  const resolved = await layout(source, elkEngine);
+  expect(check(source, resolved).hard).toBeLessThanOrEqual(
+    check(source, manual).hard,
+  );
+  for (const [id, node] of Object.entries(manual.nodes)) {
+    const [x, y, width, height] = resolved.nodes[id].box;
+    expect([x + width / 2, y + height / 2]).toEqual([
+      node.box[0] + node.box[2] / 2,
+      node.box[1] + node.box[3] / 2,
+    ]);
   }
 });

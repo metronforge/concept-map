@@ -24,17 +24,9 @@
     }
   },
   "requiredElk": {
-    "status": "drawn",
-    "exact": true,
-    "withinHandDefects": true,
-    "hardDefects": 0,
-    "crossings": 5,
-    "bends": 60,
-    "readingShare": 0.643,
-    "pinDistance": {
-      "mean": 0,
-      "max": 0
-    }
+    "status": "failed",
+    "reason": "SameRankRoutingError",
+    "message": "Cannot route same-rank hints : arrows mk_browser, mk_page, server_page, page_app, server_app, shared, request_cookies, cli_config, files_dispatch, browser_ctx, ctx_page, pw_request, client_server"
   },
   "requiredDagre": {
     "status": "failed",

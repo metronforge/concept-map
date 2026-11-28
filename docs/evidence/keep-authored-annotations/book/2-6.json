@@ -1,0 +1,20 @@
+{
+  "id": "2-6",
+  "moved": [
+    {
+      "id": "step:listens",
+      "before": [376, 72],
+      "after": [379.06146745892073, 79.39103626009029],
+      "contacts": [
+        {
+          "a": "node:subscribe",
+          "b": "step:listens",
+          "band": "defect",
+          "gap": -0.381
+        }
+      ]
+    }
+  ],
+  "hard": 0,
+  "beforeHard": 0
+}

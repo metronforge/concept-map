@@ -1,0 +1,7 @@
+{
+  "name": "door",
+  "engine": "elk",
+  "beforeSha256": "e2c951a45d67402b967e9cc1e3f518d8ecbf5fedf1d95a9e1eaaf850c31e0362",
+  "afterSha256": "e2c951a45d67402b967e9cc1e3f518d8ecbf5fedf1d95a9e1eaaf850c31e0362",
+  "identical": true
+}

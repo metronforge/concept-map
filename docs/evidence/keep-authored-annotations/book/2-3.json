@@ -1,0 +1,58 @@
+{
+  "id": "2-3",
+  "moved": [
+    {
+      "id": "step:first",
+      "before": [210, 340],
+      "after": [210, 368],
+      "contacts": [
+        {
+          "a": "node:box",
+          "b": "step:first",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:stored",
+          "b": "step:first",
+          "band": "defect",
+          "gap": -0.19
+        }
+      ]
+    },
+    {
+      "id": "step:changed",
+      "before": [210, 428],
+      "after": [210, 400],
+      "contacts": [
+        {
+          "a": "node:compare",
+          "b": "step:changed",
+          "band": "defect",
+          "gap": -0.19
+        },
+        {
+          "a": "node:changed",
+          "b": "step:changed",
+          "band": "defect",
+          "gap": -0.19
+        }
+      ]
+    },
+    {
+      "id": "label:then",
+      "before": [166, 640],
+      "after": [164.466, 637.9000000000001],
+      "contacts": [
+        {
+          "a": "label:then",
+          "b": "line:then",
+          "band": "defect",
+          "gap": -0.122
+        }
+      ]
+    }
+  ],
+  "hard": 0,
+  "beforeHard": 0
+}

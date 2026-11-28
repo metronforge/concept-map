@@ -1,0 +1,51 @@
+{
+  "viewport": 390,
+  "raw": {
+    "beforeHard": 28,
+    "afterHard": 28,
+    "newContacts": []
+  },
+  "presented": {
+    "beforeHard": 0,
+    "afterHard": 0,
+    "newContacts": []
+  },
+  "beforePresentation": "panel",
+  "afterPresentation": "panel",
+  "beforeMoved": [
+    "label:start",
+    "step:start",
+    "label:open",
+    "step:open",
+    "label:close",
+    "step:close",
+    "label:lock",
+    "step:lock",
+    "label:unlock",
+    "step:unlock",
+    "label:blocked",
+    "step:blocked",
+    "label:finish",
+    "step:finish"
+  ],
+  "afterMoved": [
+    "label:start",
+    "step:start",
+    "label:open",
+    "step:open",
+    "label:close",
+    "step:close",
+    "label:lock",
+    "step:lock",
+    "label:unlock",
+    "step:unlock",
+    "label:blocked",
+    "step:blocked",
+    "label:finish",
+    "step:finish"
+  ],
+  "nowKept": [],
+  "beforeSha256": "2fb4c9c8d299e96233eaab8f8bc5e4048598007ca157fec26b81aadbee12d015",
+  "afterSha256": "2fb4c9c8d299e96233eaab8f8bc5e4048598007ca157fec26b81aadbee12d015",
+  "identical": true
+}

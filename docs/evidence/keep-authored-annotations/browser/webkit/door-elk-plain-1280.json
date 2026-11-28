@@ -1,0 +1,49 @@
+{
+  "viewport": 1280,
+  "raw": {
+    "beforeHard": 0,
+    "afterHard": 0,
+    "newContacts": []
+  },
+  "presented": {
+    "beforeHard": 0,
+    "afterHard": 0,
+    "newContacts": []
+  },
+  "beforePresentation": "wide",
+  "afterPresentation": "wide",
+  "beforeMoved": [
+    "label:start",
+    "step:start",
+    "label:open",
+    "step:open",
+    "label:close",
+    "step:close",
+    "label:lock",
+    "step:lock",
+    "label:unlock",
+    "step:unlock",
+    "label:blocked",
+    "label:finish",
+    "step:finish"
+  ],
+  "afterMoved": [
+    "label:start",
+    "step:start",
+    "label:open",
+    "step:open",
+    "label:close",
+    "step:close",
+    "label:lock",
+    "step:lock",
+    "label:unlock",
+    "step:unlock",
+    "label:blocked",
+    "label:finish",
+    "step:finish"
+  ],
+  "nowKept": [],
+  "beforeSha256": "04ab947b19f18ee6ce6a641d0d249d99198c5b5ee146bc62c360a5f1b0b34de1",
+  "afterSha256": "04ab947b19f18ee6ce6a641d0d249d99198c5b5ee146bc62c360a5f1b0b34de1",
+  "identical": true
+}

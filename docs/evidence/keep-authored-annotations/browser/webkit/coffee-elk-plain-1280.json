@@ -1,0 +1,35 @@
+{
+  "viewport": 1280,
+  "raw": {
+    "beforeHard": 0,
+    "afterHard": 0,
+    "newContacts": []
+  },
+  "presented": {
+    "beforeHard": 0,
+    "afterHard": 0,
+    "newContacts": []
+  },
+  "beforePresentation": "wide",
+  "afterPresentation": "wide",
+  "beforeMoved": [
+    "label:order",
+    "label:ticket",
+    "label:ready",
+    "label:empty",
+    "label:offer",
+    "step:offer"
+  ],
+  "afterMoved": [
+    "label:order",
+    "label:ticket",
+    "label:ready",
+    "label:empty",
+    "label:offer",
+    "step:offer"
+  ],
+  "nowKept": [],
+  "beforeSha256": "3d8608c29aebd968a42ac5beabc1e61d10fec33e3c312ac1b8f14bbe6ce42210",
+  "afterSha256": "3d8608c29aebd968a42ac5beabc1e61d10fec33e3c312ac1b8f14bbe6ce42210",
+  "identical": true
+}

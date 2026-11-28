@@ -1,0 +1,33 @@
+{
+  "id": "4-5",
+  "moved": [
+    {
+      "id": "step:describe_reset",
+      "before": [244, 172],
+      "after": [249.65685424949237, 177.65685424949237],
+      "contacts": [
+        {
+          "a": "node:describe",
+          "b": "step:describe_reset",
+          "band": "defect",
+          "gap": -0.19
+        }
+      ]
+    },
+    {
+      "id": "step:reset_config",
+      "before": [111, 126],
+      "after": [51.87170991927764, 101.50826032863426],
+      "contacts": [
+        {
+          "a": "node:reset",
+          "b": "step:reset_config",
+          "band": "defect",
+          "gap": -0.381
+        }
+      ]
+    }
+  ],
+  "hard": 0,
+  "beforeHard": 0
+}

@@ -1,0 +1,20 @@
+{
+  "id": "6-1",
+  "moved": [
+    {
+      "id": "label:start",
+      "before": [124, 84],
+      "after": [125.53073372946037, 87.69551813004514],
+      "contacts": [
+        {
+          "a": "label:start",
+          "b": "node:start",
+          "band": "tight",
+          "gap": -0.048
+        }
+      ]
+    }
+  ],
+  "hard": 0,
+  "beforeHard": 0
+}

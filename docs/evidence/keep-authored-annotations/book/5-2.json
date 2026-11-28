@@ -1,0 +1,117 @@
+{
+  "id": "5-2",
+  "moved": [
+    {
+      "id": "step:caught",
+      "before": [113, 179],
+      "after": [105, 179],
+      "contacts": [
+        {
+          "a": "label:caught",
+          "b": "step:caught",
+          "band": "tight",
+          "gap": -0.095
+        }
+      ]
+    },
+    {
+      "id": "step:save",
+      "before": [307, 179],
+      "after": [299, 179],
+      "contacts": [
+        {
+          "a": "label:save",
+          "b": "step:save",
+          "band": "tight",
+          "gap": -0.095
+        }
+      ]
+    },
+    {
+      "id": "step:include",
+      "before": [307, 242],
+      "after": [299, 242],
+      "contacts": [
+        {
+          "a": "label:include",
+          "b": "step:include",
+          "band": "tight",
+          "gap": -0.095
+        }
+      ]
+    },
+    {
+      "id": "step:patchIds",
+      "before": [113, 306],
+      "after": [105, 306],
+      "contacts": [
+        {
+          "a": "label:patchIds",
+          "b": "step:patchIds",
+          "band": "tight",
+          "gap": -0.095
+        }
+      ]
+    },
+    {
+      "id": "step:offset",
+      "before": [209, 336],
+      "after": [209, 364],
+      "contacts": [
+        {
+          "a": "node:ids",
+          "b": "step:offset",
+          "band": "tight",
+          "gap": -0.095
+        },
+        {
+          "a": "node:workers",
+          "b": "step:offset",
+          "band": "tight",
+          "gap": 0.095
+        }
+      ]
+    },
+    {
+      "id": "step:dispatch",
+      "before": [307, 369],
+      "after": [299, 369],
+      "contacts": [
+        {
+          "a": "label:dispatch",
+          "b": "step:dispatch",
+          "band": "tight",
+          "gap": -0.095
+        }
+      ]
+    },
+    {
+      "id": "step:pass",
+      "before": [113, 434],
+      "after": [105, 434],
+      "contacts": [
+        {
+          "a": "label:pass",
+          "b": "step:pass",
+          "band": "tight",
+          "gap": -0.095
+        }
+      ]
+    },
+    {
+      "id": "step:fail",
+      "before": [307, 434],
+      "after": [299, 434],
+      "contacts": [
+        {
+          "a": "label:fail",
+          "b": "step:fail",
+          "band": "tight",
+          "gap": -0.095
+        }
+      ]
+    }
+  ],
+  "hard": 0,
+  "beforeHard": 0
+}

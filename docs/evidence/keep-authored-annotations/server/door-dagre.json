@@ -1,0 +1,7 @@
+{
+  "name": "door",
+  "engine": "dagre",
+  "beforeSha256": "9377f1ff5fc990479f6815b267fc644b6c6ed75c70e7a20826c5693edc66256c",
+  "afterSha256": "9377f1ff5fc990479f6815b267fc644b6c6ed75c70e7a20826c5693edc66256c",
+  "identical": true
+}

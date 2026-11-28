@@ -1,0 +1,21 @@
+{
+  "viewport": 390,
+  "raw": {
+    "beforeHard": 0,
+    "afterHard": 0,
+    "newContacts": []
+  },
+  "presented": {
+    "beforeHard": 0,
+    "afterHard": 0,
+    "newContacts": []
+  },
+  "beforePresentation": "wide",
+  "afterPresentation": "wide",
+  "beforeMoved": ["label:retry", "label:send"],
+  "afterMoved": ["label:retry", "label:send"],
+  "nowKept": [],
+  "beforeSha256": "1273a40999359f8b7babe930c7448d926cceb3b91d6b5fc3b45bcbe7421b2560",
+  "afterSha256": "1273a40999359f8b7babe930c7448d926cceb3b91d6b5fc3b45bcbe7421b2560",
+  "identical": true
+}

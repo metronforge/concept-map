@@ -1,0 +1,20 @@
+{
+  "id": "3-1",
+  "moved": [
+    {
+      "id": "step:df",
+      "before": [356, 350],
+      "after": [356, 362],
+      "contacts": [
+        {
+          "a": "step:cn",
+          "b": "step:df",
+          "band": "defect",
+          "gap": -0.498
+        }
+      ]
+    }
+  ],
+  "hard": 0,
+  "beforeHard": 0
+}

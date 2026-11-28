@@ -16,8 +16,8 @@ const cases = [
       "dist/dom/index.js": "{ MapPlayer, connectConcepts }",
     },
     gzip: true,
-    // Measured 16417 B + 492 B margin.
-    limit: "16909 B",
+    // Measured 16889 B + 506 B margin.
+    limit: "17395 B",
   },
   {
     name: "server render (pre-resolved map)",

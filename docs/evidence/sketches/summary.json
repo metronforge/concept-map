@@ -6,21 +6,21 @@
   "handBends": 260,
   "meanHandReadingShare": 0.6673913043478261,
   "preferredHardDefects": 0,
-  "preferredCrossings": 228,
-  "preferredBends": 1050,
+  "preferredCrossings": 0,
+  "preferredBends": 962,
   "meanPreferredReadingShare": 0.852086956521739,
-  "meanAbsolutePinDistance": 277.239671612513,
-  "maximumAbsolutePinDistance": 948.8102041536729,
-  "meanTranslatedPinDistance": 172.56400786669516,
+  "meanAbsolutePinDistance": 305.7477237032209,
+  "maximumAbsolutePinDistance": 1306.7342652582429,
+  "meanTranslatedPinDistance": 201.5401130570839,
   "preferredRankOrder": {
     "matching": 1402,
     "pairs": 1559,
     "share": 0.8992944194996793
   },
   "preferredWithinRankOrder": {
-    "matching": 110,
+    "matching": 84,
     "pairs": 114,
-    "share": 0.9649122807017544
+    "share": 0.7368421052631579
   },
   "requiredElkDrawn": 23,
   "requiredDagreDrawn": 23,

@@ -30,10 +30,10 @@ to regenerate the reports. `summary.json` aggregates the 23 per-map files.
 The measurements use the server font table, as in the comparison page. The
 browser visual checks use real fonts separately.
 
-Across 283 boxes, preferred ELK has 0 hard defects, 228 crossings and 1,050
+Across 283 boxes, preferred ELK has 0 hard defects, 0 crossings and 962
 bends, versus 14, 19 and 260 in the hand drawings. Its mean absolute pin
-distance is 277.24 drawing units; the maximum is 948.81. After removing
-translation, the mean is 172.56. Mean reading share is 0.852 for ELK and
+distance is 305.75 drawing units; the maximum is 1,306.73. After removing
+translation, the mean is 201.54. Mean reading share is 0.852 for ELK and
 0.667 for the hand drawings. Interactive layering alone kept 45 of 114
 within-rank pairs (39.5%) with no crossings. Interactive crossing minimization
 alone kept 84 pairs (73.7%) with 228 crossings; interactive node placement
@@ -45,14 +45,13 @@ node placement. ELK's global interactive flag gave the same figures. Adding
 semi-interactive crossing minimization to the interactive crossing strategy
 left the 110 pairs and 228 crossings unchanged.
 
-Preferred pins keep most sketch ranks, but order within a rank is not
-guaranteed: 1,402 of 1,559 box pairs (89.9%) keep their hand rank order, and
-110 of 114 pairs (96.5%) keep their order within a hand-drawn rank with the
-selected option set. That set has zero hard defects but 228 crossings, above
-the hand drawings' 19. Tested zero-crossing options kept at most 84 of 114
-within-rank pairs (73.7%), short of the 90% target. No tested option met both
-targets. Exact positions do not follow the sketch; use `required` pins for
-them.
+Preferred pins keep about 90% of the sketch's rank order and about 74% of the
+order within ranks: 1,402 of 1,559 box pairs (89.9%) keep their hand rank
+order, and 84 of 114 pairs (73.7%) keep their order within a hand-drawn rank.
+The selected interactive layering and node placement set has zero hard defects
+and zero crossings. The alternative with interactive crossing minimization
+kept 110 within-rank pairs (96.5%) but made 228 crossings, above the hand
+drawings' 19. Exact positions need `required` pins.
 
 Required pins draw all 23 maps with both ELK and dagre. Every map has exact
 box centres and no more hard defects than its hand drawing. Selecting arrow

@@ -9,17 +9,17 @@
   },
   "preferredElk": {
     "hardDefects": 0,
-    "crossings": 12,
-    "bends": 46,
+    "crossings": 0,
+    "bends": 44,
     "readingShare": 0.9,
     "pinDistance": {
       "absolute": {
-        "mean": 203.2973143742583,
-        "max": 399.2078280795606
+        "mean": 224.76708317665333,
+        "max": 399.6056055662883
       },
       "afterTranslation": {
-        "mean": 138.13673359649007,
-        "max": 233.29419125293285
+        "mean": 156.67607561314816,
+        "max": 353.19456451083727
       }
     },
     "sketchOrder": {
@@ -29,9 +29,9 @@
         "share": 0.875
       },
       "withinRank": {
-        "matching": 5,
+        "matching": 4,
         "pairs": 5,
-        "share": 1
+        "share": 0.8
       }
     }
   },

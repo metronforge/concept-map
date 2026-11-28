@@ -12,7 +12,6 @@ const elkOptions = {
 };
 const interactiveOptions = {
   "elk.layered.layering.strategy": "INTERACTIVE",
-  "elk.layered.crossingMinimization.strategy": "INTERACTIVE",
   "elk.layered.nodePlacement.strategy": "INTERACTIVE",
 };
 function pinnedPosition(

@@ -14,12 +14,12 @@
     "readingShare": 0.5,
     "pinDistance": {
       "absolute": {
-        "mean": 236.0689926824249,
-        "max": 513.1239713753392
+        "mean": 314.0995368994289,
+        "max": 882.1401305915065
       },
       "afterTranslation": {
-        "mean": 194.64766894367025,
-        "max": 377.25795986834214
+        "mean": 281.0875867073671,
+        "max": 687.2094514180833
       }
     },
     "sketchOrder": {
@@ -29,9 +29,9 @@
         "share": 0.8194444444444444
       },
       "withinRank": {
-        "matching": 6,
+        "matching": 3,
         "pairs": 6,
-        "share": 1
+        "share": 0.5
       }
     }
   },

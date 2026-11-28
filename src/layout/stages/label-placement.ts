@@ -13,12 +13,15 @@ import {
 import { labelBox } from "./number-placement.js";
 
 /** Keep clear labels; reduce overlaps without introducing or deepening any. */
-export function placeLabels(map: ResolvedMap): ResolvedMap {
+export function placeLabels(
+  map: ResolvedMap,
+  fixed: ReadonlySet<string> = new Set(),
+): ResolvedMap {
   // Every move reduces an integer penetration sum without worsening any gap,
   // so the initial finite sum bounds the number of successful passes.
   let current = map;
   for (;;) {
-    const next = placeLabelPass(current);
+    const next = placeLabelPass(current, fixed);
     if (
       Object.keys(next.edges).every(
         (id) => next.edges[id] === current.edges[id],
@@ -29,16 +32,16 @@ export function placeLabels(map: ResolvedMap): ResolvedMap {
   }
 }
 
-function placeLabelPass(map: ResolvedMap): ResolvedMap {
+function placeLabelPass(
+  map: ResolvedMap,
+  fixed: ReadonlySet<string>,
+): ResolvedMap {
   const { boxes, nodes, lines, steps, nodeStepPoints } = obstacles(map);
   const gaps = lineGaps(Object.values(lines).flat());
   const edges = { ...map.edges };
   for (const [id, box] of Object.entries(boxes)) {
-    const obstacles = nodes.concat(
-      Object.entries(boxes)
-        .filter(([key]) => key !== id)
-        .map(([, b]) => b),
-    );
+    if (fixed.has(`label:${id}`)) continue;
+    const obstacles = nodes.concat(otherValues(boxes, id));
     const contacts = contactReduction(box, [
       ...obstacles.map((o) => (b: LayoutBox) => rectGap(b, o)),
       ...gaps,
@@ -58,9 +61,7 @@ function placeLabelPass(map: ResolvedMap): ResolvedMap {
       size,
       obstacles,
       lines[id],
-      Object.entries(lines)
-        .filter(([key]) => key !== id)
-        .flatMap(([, route]) => route),
+      otherValues(lines, id).flat(),
     );
     if (at === edge.label!.at) continue;
     edges[id] = { ...edge, label: { ...edge.label!, at } };
@@ -165,4 +166,10 @@ function candidateBaseline(
   const x = Math.max(padding, Math.min(viewBox[0] - box[2] - padding, cx));
   const y = Math.max(padding, Math.min(viewBox[1] - box[3] - padding, cy));
   return [at[0] + x - box[0], at[1] + y - box[1]];
+}
+
+function otherValues<T>(values: Record<string, T>, id: string): T[] {
+  return Object.entries(values)
+    .filter(([key]) => key !== id)
+    .map(([, value]) => value);
 }

@@ -24,13 +24,29 @@
     }
   },
   "requiredElk": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route hints layout.hints[2], layout.hints[3], layout.hints[6], layout.hints[7], layout.hints[8], layout.hints[9], layout.hints[10], layout.hints[11]: arrows blockRetry, value, throws, pollRetry, deadline, record"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 2,
+    "readingShare": 0.111,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   },
   "requiredDagre": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route hints layout.hints[2], layout.hints[3], layout.hints[6], layout.hints[7], layout.hints[8], layout.hints[9], layout.hints[10], layout.hints[11], layout.hints[12], layout.hints[14]: arrows value, pollRetry, throws, blockRetry, deadline, record, injected, locatorRetry"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 2,
+    "readingShare": 0.111,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   }
 }

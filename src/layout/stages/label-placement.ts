@@ -4,6 +4,7 @@ import { polylines } from "./paths.js";
 import { rectGap } from "./plane.js";
 import { contactReduction, lineGaps } from "./contact-reduction.js";
 import { clearOf } from "./badge-placement.js";
+import { nodeSteps, TEXT } from "./drawn.js";
 import {
   labelCandidates,
   labelCost,
@@ -85,6 +86,7 @@ function obstacles(map: ResolvedMap) {
   const steps = [
     ...entries.flatMap(([, edge]) => (edge.badge ? [edge.badge] : [])),
     ...map.scenarios.flatMap((s) => (s.repeatBadges ?? []).map((b) => b.at)),
+    ...nodeSteps(map, TEXT).map((step): LayoutPoint => [...step.at]),
   ];
   return { boxes, nodes, lines, steps };
 }

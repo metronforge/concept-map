@@ -66,3 +66,19 @@ test("failed required sketch names the pin paths that need routing", async () =>
     expect((error as Error).message).toContain("releaseOne");
   }
 });
+
+test("required sketch routes labels clear of node step numbers", async () => {
+  const manual = bookMaps().find(({ id }) => id === "2-6")!.manual;
+  const source = sketchSource(manual, "required");
+  const resolved = await layout(source, elkEngine);
+  expect(check(source, resolved).hard).toBeLessThanOrEqual(
+    check(source, manual).hard,
+  );
+  for (const [id, node] of Object.entries(manual.nodes)) {
+    const [x, y, width, height] = resolved.nodes[id].box;
+    expect([x + width / 2, y + height / 2]).toEqual([
+      node.box[0] + node.box[2] / 2,
+      node.box[1] + node.box[3] / 2,
+    ]);
+  }
+});

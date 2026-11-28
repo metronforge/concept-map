@@ -110,7 +110,7 @@ function sameStructure(source: SourceMap | ResolvedMap, resolved: ResolvedMap) {
 }
 
 /** Node step numbers intentionally sit on their box, but must not cover labels. */
-function nodeSteps(map: ResolvedMap, size: number): Drawn["nodeSteps"] {
+export function nodeSteps(map: ResolvedMap, size: number): Drawn["nodeSteps"] {
   const inset = (2 * size) / TEXT;
   return map.scenarios.flatMap((scenario, i) =>
     !scenario.display.nodeBadges

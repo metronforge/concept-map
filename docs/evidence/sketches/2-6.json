@@ -24,13 +24,29 @@
     }
   },
   "requiredElk": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route hints layout.hints[0], layout.hints[1], layout.hints[3], layout.hints[4], layout.hints[5], layout.hints[7], layout.hints[8], layout.hints[9], layout.hints[10]: arrows enable, skip, release, ignores, url_load, commit, load"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 5,
+    "bends": 20,
+    "readingShare": 0.917,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   },
   "requiredDagre": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route hints layout.hints[0], layout.hints[1], layout.hints[3], layout.hints[4], layout.hints[5], layout.hints[8], layout.hints[9], layout.hints[10]: arrows enable, skip, release, ignores, url_load, load"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 5,
+    "bends": 20,
+    "readingShare": 0.917,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   }
 }

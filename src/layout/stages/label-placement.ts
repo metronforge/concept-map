@@ -30,7 +30,7 @@ export function placeLabels(map: ResolvedMap): ResolvedMap {
 }
 
 function placeLabelPass(map: ResolvedMap): ResolvedMap {
-  const { boxes, nodes, lines, steps } = obstacles(map);
+  const { boxes, nodes, lines, steps, nodeStepPoints } = obstacles(map);
   const gaps = lineGaps(Object.values(lines).flat());
   const edges = { ...map.edges };
   for (const [id, box] of Object.entries(boxes)) {
@@ -43,13 +43,17 @@ function placeLabelPass(map: ResolvedMap): ResolvedMap {
       ...obstacles.map((o) => (b: LayoutBox) => rectGap(b, o)),
       ...gaps,
     ]);
-    if (!contacts) continue;
     const edge = map.edges[id];
     const size = map.measurement!.labels[id];
+    if (
+      !contacts &&
+      !requiredPinStepContact(map, edge.label!.at, size, box, nodeStepPoints)
+    )
+      continue;
     const at = position(
       edge.label!.at,
       map.viewBox,
-      contacts,
+      contacts ?? (() => 0),
       steps,
       size,
       obstacles,
@@ -63,6 +67,23 @@ function placeLabelPass(map: ResolvedMap): ResolvedMap {
     boxes[id] = labelBox(at, size, 0);
   }
   return { ...map, edges };
+}
+
+function requiredPinStepContact(
+  map: ResolvedMap,
+  at: LayoutPoint,
+  size: LabelSize,
+  box: LayoutBox,
+  steps: LayoutPoint[],
+) {
+  if (
+    !map.layout?.hints.some(
+      (h) => h.kind === "pin" && h.strength === "required",
+    )
+  )
+    return false;
+  const paint = labelBox(at, size, size.padding ?? 0);
+  return steps.some((p) => !clearOf(p, box, 4) || !clearOf(p, paint, 1 / 64));
 }
 
 function obstacles(map: ResolvedMap) {
@@ -83,12 +104,15 @@ function obstacles(map: ResolvedMap) {
       ),
     ]),
   );
+  const nodeStepPoints = nodeSteps(map, TEXT).map((step): LayoutPoint => [
+    ...step.at,
+  ]);
   const steps = [
     ...entries.flatMap(([, edge]) => (edge.badge ? [edge.badge] : [])),
     ...map.scenarios.flatMap((s) => (s.repeatBadges ?? []).map((b) => b.at)),
-    ...nodeSteps(map, TEXT).map((step): LayoutPoint => [...step.at]),
+    ...nodeStepPoints,
   ];
-  return { boxes, nodes, lines, steps };
+  return { boxes, nodes, lines, steps, nodeStepPoints };
 }
 
 function position(

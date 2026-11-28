@@ -24,13 +24,29 @@
     }
   },
   "requiredElk": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route hints layout.hints[2], layout.hints[3], layout.hints[4], layout.hints[5], layout.hints[10], layout.hints[11]: arrows missing, hook, releaseOne"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 2,
+    "readingShare": 0,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   },
   "requiredDagre": {
-    "status": "failed",
-    "reason": "SameRankRoutingError",
-    "message": "Cannot route hints layout.hints[2], layout.hints[3], layout.hints[4], layout.hints[5], layout.hints[10], layout.hints[11]: arrows missing, hook, releaseOne"
+    "status": "drawn",
+    "exact": true,
+    "withinHandDefects": true,
+    "hardDefects": 0,
+    "crossings": 0,
+    "bends": 2,
+    "readingShare": 0,
+    "pinDistance": {
+      "mean": 0,
+      "max": 0
+    }
   }
 }

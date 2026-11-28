@@ -248,12 +248,14 @@ as unsupported and required hints fail.
 
 ELK receives preferred pin centres as starting box positions. For pinned maps,
 interactive layering, crossing minimization and node placement guide the
-sketch. In the 23 book sketches, 1,402 of 1,559 box pairs (89.9%) keep their
-rank order, while 110 of 114 pairs (96.5%) keep their order within a
+sketch. Preferred pins keep most sketch ranks, but order within a rank is not
+guaranteed. In the 23 book sketches, 1,402 of 1,559 box pairs (89.9%) keep
+their rank order, while 110 of 114 pairs (96.5%) keep their order within a
 hand-drawn rank. This option set produces 228 arrow crossings versus 19 in
-the hand drawings. Exact coordinates do not follow the sketch; use `required`
-pins for them. Dagre reports preferred pins as
-unsupported. Required pins use the shared on-demand solver with either engine.
+the hand drawings; tested options with zero crossings kept at most 84 of 114
+within-rank pairs (73.7%). Exact coordinates do not follow the sketch; use
+`required` pins for them. Dagre reports preferred pins as unsupported.
+Required pins use the shared on-demand solver with either engine.
 
 Intent is enabled by default. To compare an engine's graph-only placement
 with these preferences, pass `{ intent: false }` to `layout()`. This omits

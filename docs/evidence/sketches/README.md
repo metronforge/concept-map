@@ -45,11 +45,14 @@ node placement. ELK's global interactive flag gave the same figures. Adding
 semi-interactive crossing minimization to the interactive crossing strategy
 left the 110 pairs and 228 crossings unchanged.
 
-Preferred pins keep most of the sketch's order: 1,402 of 1,559 box pairs
-(89.9%) keep their hand rank order, and 110 of 114 pairs (96.5%) keep their
-order within a hand-drawn rank. Exact positions do not follow the sketch; use
-`required` pins for them. The crossing count exceeds the hand drawing's 19,
-so this option set has not met the book comparison target.
+Preferred pins keep most sketch ranks, but order within a rank is not
+guaranteed: 1,402 of 1,559 box pairs (89.9%) keep their hand rank order, and
+110 of 114 pairs (96.5%) keep their order within a hand-drawn rank with the
+selected option set. That set has zero hard defects but 228 crossings, above
+the hand drawings' 19. Tested zero-crossing options kept at most 84 of 114
+within-rank pairs (73.7%), short of the 90% target. No tested option met both
+targets. Exact positions do not follow the sketch; use `required` pins for
+them.
 
 Required pins draw all 23 maps with both ELK and dagre. Every map has exact
 box centres and no more hard defects than its hand drawing. Selecting arrow

@@ -1,7 +1,6 @@
 import type { ResolvedMap } from "../../schema.js";
 import type { Measurer } from "../ports.js";
 import type { LabelSize, LayoutPoint } from "../types.js";
-import { measureMono } from "../text-size.js";
 import { measured } from "../measured.js";
 import { placeAnnotations } from "./placement.js";
 import { fixedAnnotations } from "./fixed-annotations.js";
@@ -12,12 +11,11 @@ function labels(map: ResolvedMap, measurer: Measurer) {
   const edges = Object.fromEntries(
     Object.entries(map.edges).map(([id, edge]) => {
       if (!edge.label) return [id, edge];
-      const previous =
-        map.measurement?.labels[id] ?? measureMono(edge.label.text, style);
       const size = measured(measurer.measure.bind(measurer), edge.label.text, {
         ...style,
         edge: id,
       });
+      const previous = map.measurement?.labels[id] ?? size;
       const [x, y] = edge.label.at;
       const at: LayoutPoint = [
         x +
@@ -36,7 +34,7 @@ function labels(map: ResolvedMap, measurer: Measurer) {
 }
 
 /** Re-measure text and place labels and numbers, keeping all fixed geometry.
- * Old maps without measurements use font-table sizes to recover label centres.
+ * Authored anchors stay put until a previous measurement is available.
  * No input is mutated; the checker measures independently of this metadata. */
 export function refine(map: ResolvedMap, measurer: Measurer): ResolvedMap {
   const text = labels(map, measurer);

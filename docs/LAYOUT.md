@@ -122,8 +122,9 @@ Font tables and legacy functions omit the allowance, preserving their reports.
 Uncertainty applies only to contacts involving text. Step numbers against
 boxes or other step numbers remain exact.
 
-`refine` is pure: it returns a new map, preserves label centres, and moves a
-step number only when it covers measured text, its paint clearance, or a node box. It uses the
+`refine` is pure: it returns a new map. Without recorded measurements, it keeps
+authored label anchors and records the measured sizes. Later refinements preserve
+label centres using the previous measurements. It moves a step number only when it covers measured text, its paint clearance, or a node box. It uses the
 existing outward candidate search. Node boxes, lanes, frames, paths and the
 view box stay unchanged. It does not fix lines crossing labels or overlapping
 numbers; `check` reports remaining defects. Measurement provenance occupies

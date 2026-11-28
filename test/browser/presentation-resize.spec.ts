@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { ResolvedMapSchema } from "../../src/schema";
+import { fontTableMeasurer } from "../../src/layout/index";
 
 test("panel labels wait for one em of container growth before returning", async ({
   page,
@@ -17,6 +18,14 @@ test("panel labels wait for one em of container growth before returning", async 
   map.nodes.b.box = [0, 108, 600, 92];
   map.edges.ab.path = "M35 92 V108";
   map.edges.ab.label = { text: "go", at: [65, 104] };
+  // This synthetic gap was sized around a font-table label centre. Record
+  // that size so resizing tests the same geometry as measured layout maps.
+  map.measurement = {
+    name: fontTableMeasurer.name,
+    labels: {
+      ab: fontTableMeasurer.measure("go", { fontSize: 10.5, mono: true }),
+    },
+  };
   await page.evaluate(async (map) => {
     const { mount } = await import("/assets/integration.js");
     document.body.replaceChildren();

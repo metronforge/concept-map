@@ -1,6 +1,7 @@
 import type { LayoutProblem } from "../problem.js";
 import type { LayoutResult } from "../types.js";
 import { rankRelations } from "./rank.js";
+import { hasPinnedMember, pinBounds } from "./lane-pins.js";
 import type { DifferenceRelation, RelationSystem } from "./types.js";
 
 interface LaneExtent {
@@ -23,15 +24,22 @@ function laneBounds(
   lane: LaneExtent,
   origin: string,
   startFloor: number,
+  endFloor: number,
   previous?: LaneExtent,
   requiredPin = false,
+  pinnedLane = false,
 ): DifferenceRelation[] {
   const start = `$lane.${lane.id}.start`,
     end = `$lane.${lane.id}.end`;
   return [
     minimum(`lanes.${lane.id}.start`, origin, start, startFloor),
-    minimum(`lanes.${lane.id}.end`, origin, end, lane.end),
-    minimum(`lanes.${lane.id}.size`, start, end, lane.end - lane.start),
+    minimum(`lanes.${lane.id}.end`, origin, end, endFloor),
+    minimum(
+      `lanes.${lane.id}.size`,
+      start,
+      end,
+      pinnedLane ? 0 : lane.end - lane.start,
+    ),
     ...(previous
       ? [
           minimum(
@@ -95,22 +103,6 @@ function afterLanes(
   );
 }
 
-function pinnedStarts(
-  problem: LayoutProblem,
-  original: LayoutResult,
-  lane: LaneExtent,
-  axis: 0 | 1,
-): number[] {
-  return problem.constraints.flatMap((hint) => {
-    if (hint.kind !== "pin" || hint.strength !== "required") return [];
-    if (problem.nodes.find((node) => node.id === hint.node)?.lane !== lane.id)
-      return [];
-    const box = original.nodes[hint.node];
-    const position = hint.position[axis] - box[axis + 2] / 2;
-    return [position - (box[axis] - lane.start)];
-  });
-}
-
 function addLanes(
   system: RelationSystem,
   problem: LayoutProblem,
@@ -127,20 +119,17 @@ function addLanes(
     const start = `$lane.${lane.id}.start`,
       end = `$lane.${lane.id}.end`;
     system.variables.push({ id: start, size: 0 }, { id: end, size: 0 });
-    const startFloor = Math.min(
-      lane.start,
-      ...pinnedStarts(problem, original, lane, axis),
-    );
+    const [startFloor, endFloor] = pinBounds(problem, original, lane, axis);
     system.relations.push(
       ...laneBounds(
         lane,
         system.anchors[0].variable,
         startFloor,
+        endFloor,
         lanes[i - 1],
         requiredPin,
+        hasPinnedMember(problem, lane),
       ),
-    );
-    system.relations.push(
       ...containment(
         lane,
         problem.nodes.filter((n) => n.lane === lane.id),

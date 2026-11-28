@@ -187,3 +187,14 @@ test("rounded search clearance does not move an already clear number", () => {
     refine(map, { name: "paint", measure: () => size }).edges.ab.badge,
   ).toEqual([10, 60]);
 });
+
+test("keeps clear diagonal numbers across serialization", () => {
+  const map = ResolvedMapSchema.parse(fixture);
+  map.edges.ab.badge = [110, 90];
+  map.scenarios[0].repeatBadges![0].at = [96.4, 76.4];
+  expect(check(map, map).steps.steps).toEqual([]);
+  const result = refine(map, fixed);
+  expect(result.edges.ab.badge).toEqual([110, 90]);
+  expect(result.scenarios[0].repeatBadges![0].at).toEqual([96.4, 76.4]);
+  expect(refine(JSON.parse(JSON.stringify(result)), fixed)).toEqual(result);
+});

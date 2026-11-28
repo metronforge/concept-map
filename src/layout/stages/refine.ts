@@ -4,6 +4,7 @@ import type { LabelSize, LayoutPoint } from "../types.js";
 import { measureMono } from "../text-size.js";
 import { measured } from "../measured.js";
 import { placeAnnotations } from "./placement.js";
+import { fixedAnnotations } from "./fixed-annotations.js";
 const style = { fontSize: 10.5, mono: true };
 
 function labels(map: ResolvedMap, measurer: Measurer) {
@@ -39,9 +40,10 @@ function labels(map: ResolvedMap, measurer: Measurer) {
  * No input is mutated; the checker measures independently of this metadata. */
 export function refine(map: ResolvedMap, measurer: Measurer): ResolvedMap {
   const text = labels(map, measurer);
-  return placeAnnotations({
+  const measuredMap = {
     ...map,
     measurement: { name: measurer.name, labels: text.sizes },
     edges: text.edges,
-  });
+  };
+  return placeAnnotations(measuredMap, fixedAnnotations(measuredMap, measurer));
 }

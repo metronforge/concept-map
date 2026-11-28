@@ -30,20 +30,21 @@ to regenerate the reports. `summary.json` aggregates the 23 per-map files.
 The measurements use the server font table, as in the comparison page. The
 browser visual checks use real fonts separately.
 
-Across 283 boxes, preferred ELK has 0 hard defects, 0 crossings and 164 bends,
-versus 14, 19 and 260 in the hand drawings. Its mean absolute pin distance is
-360.03 drawing units; the maximum is 1,079.75. After removing translation,
-the mean is 234.25. Mean reading share is 0.852 for ELK and 0.667 for the
-hand drawings. These figures describe interactive layering. Adding
-semi-interactive crossing minimization produced identical figures on all 23
-maps, so the simpler option set is used. Other interactive options moved boxes
-closer to pins but added crossings and bends; pin distance alone does not
-decide sketch quality.
+Across 283 boxes, preferred ELK has 0 hard defects, 228 crossings and 1,050
+bends, versus 14, 19 and 260 in the hand drawings. Its mean absolute pin
+distance is 277.24 drawing units; the maximum is 948.81. After removing
+translation, the mean is 172.56. Mean reading share is 0.852 for ELK and
+0.667 for the hand drawings. Interactive layering alone kept 45 of 114
+within-rank pairs (39.5%) with no crossings. Interactive crossing minimization
+alone kept 84 pairs (73.7%) with 228 crossings; interactive node placement
+alone kept 84 pairs with no crossings. Using both kept 110 pairs (96.5%) with
+228 crossings. Interactive cycle breaking did not change that result.
 
-Preferred pins guide rank order: 1,402 of 1,559 box pairs (89.9%) keep their
-hand rank order. Within a hand rank, only 45 of 114 pairs (39.5%) keep their
-cross-axis order. ELK does not preserve exact positions or reliably keep the
-order of parallel boxes; use `required` pins for exact positions.
+Preferred pins keep most of the sketch's order: 1,402 of 1,559 box pairs
+(89.9%) keep their hand rank order, and 110 of 114 pairs (96.5%) keep their
+order within a hand-drawn rank. Exact positions do not follow the sketch; use
+`required` pins for them. The crossing count exceeds the hand drawing's 19,
+so this option set has not met the book comparison target.
 
 Required pins draw all 23 maps with both ELK and dagre. Every map has exact
 box centres and no more hard defects than its hand drawing. Selecting arrow

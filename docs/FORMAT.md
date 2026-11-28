@@ -104,9 +104,10 @@ nodes and repeated pins are reference errors.
 The checker reports a preferred pin's distance from the drawn box centre
 without counting it as a defect. A required pin holds when the centre is at
 the requested point within the measurement tolerance. Preferred ELK pins guide
-rank placement, but do not fix coordinates or reliably preserve order within a
-rank: across 23 book sketches, 89.9% of rank-order box pairs and 39.5% of
-within-rank pairs match the hand drawings. Use `required` for exact positions.
+ranks and the order within them, but do not fix coordinates: across 23 book
+sketches, 89.9% of rank-order box pairs and 96.5% of within-rank pairs match
+the hand drawings. The interactive ordering produces more arrow crossings
+than the hand drawings (228 versus 19); use `required` for exact positions.
 
 `sameRank` names at least two distinct nodes. With direction `down`, their box
 `y` coordinates must agree (a row); with direction `right`, their `x` coordinates

@@ -6,6 +6,11 @@ removes resolved geometry, and pins each box at the hand drawing's centre.
 The `hand` and `preferredElk` fields contain the same `check()` quality figures:
 hard defects, crossings, bends and first-scenario reading share. The ELK field
 also records mean and maximum distance from the pin to each drawn box centre.
+`sketchOrder` compares every pair of box centres with the hand drawing. Pairs
+at different hand ranks test order along the reading axis; pairs at the same
+hand rank test order across it. Pairs tied on the tested axis are omitted.
+Each report gives matching and eligible pair counts and their share;
+`summary.json` weights every eligible pair equally across maps.
 `requiredElk` and `requiredDagre` attempt the same source map with exact pins.
 A drawn result records whether every centre is exact (within 0.000001 drawing
 units), whether its hard defect count stays within the hand drawing's count,
@@ -34,6 +39,11 @@ semi-interactive crossing minimization produced identical figures on all 23
 maps, so the simpler option set is used. Other interactive options moved boxes
 closer to pins but added crossings and bends; pin distance alone does not
 decide sketch quality.
+
+Preferred pins guide rank order: 1,402 of 1,559 box pairs (89.9%) keep their
+hand rank order. Within a hand rank, only 45 of 114 pairs (39.5%) keep their
+cross-axis order. ELK does not preserve exact positions or reliably keep the
+order of parallel boxes; use `required` pins for exact positions.
 
 Required pins draw all 23 maps with both ELK and dagre. Every map has exact
 box centres and no more hard defects than its hand drawing. Selecting arrow

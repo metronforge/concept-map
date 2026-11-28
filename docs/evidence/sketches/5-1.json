@@ -21,6 +21,18 @@
         "mean": 251.41176672091666,
         "max": 482.6320861763726
       }
+    },
+    "sketchOrder": {
+      "rank": {
+        "matching": 92,
+        "pairs": 98,
+        "share": 0.9387755102040817
+      },
+      "withinRank": {
+        "matching": 2,
+        "pairs": 7,
+        "share": 0.2857142857142857
+      }
     }
   },
   "requiredElk": {

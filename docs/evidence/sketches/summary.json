@@ -12,6 +12,16 @@
   "meanAbsolutePinDistance": 360.0269720292542,
   "maximumAbsolutePinDistance": 1079.746641578477,
   "meanTranslatedPinDistance": 234.25415924609038,
+  "preferredRankOrder": {
+    "matching": 1402,
+    "pairs": 1559,
+    "share": 0.8992944194996793
+  },
+  "preferredWithinRankOrder": {
+    "matching": 45,
+    "pairs": 114,
+    "share": 0.39473684210526316
+  },
   "requiredElkDrawn": 23,
   "requiredDagreDrawn": 23,
   "requiredElkExact": 23,

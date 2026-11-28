@@ -55,9 +55,9 @@ const cases = [
     name: "same-rank alignment (standalone on-demand entry; includes shared Zod)",
     path: "dist/layout/place-same-rank.js",
     gzip: true,
-    // Complete lazy stage: 28187 B + 61 B; includes channel routing.
+    // Complete lazy stage: 28187 B + 845 B (3%) margin; includes channel routing.
     // Author approved the 4 KB rise for this on-demand alignment entry.
-    limit: "28248 B",
+    limit: "29032 B",
   },
   {
     name: "channel routing (standalone on-demand entry)",

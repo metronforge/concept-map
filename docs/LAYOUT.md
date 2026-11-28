@@ -247,9 +247,11 @@ refined checks find no new hard defects. Otherwise preferred hints are listed
 as unsupported and required hints fail.
 
 ELK receives preferred pin centres as starting box positions. For pinned maps,
-interactive layering and semi-interactive crossing minimization let parallel
-boxes follow the sketch. These positions guide order; they do not promise exact
-coordinates. Dagre reports preferred pins as unsupported.
+interactive layering guides the ranks. In the 23 book sketches, 1,402 of 1,559
+box pairs (89.9%) keep their rank order, while 45 of 114 pairs (39.5%) keep
+their order within a hand-drawn rank. Exact coordinates do not follow the
+sketch; use `required` pins for them. Dagre reports preferred pins as
+unsupported. Required pins use the shared on-demand solver with either engine.
 
 Intent is enabled by default. To compare an engine's graph-only placement
 with these preferences, pass `{ intent: false }` to `layout()`. This omits

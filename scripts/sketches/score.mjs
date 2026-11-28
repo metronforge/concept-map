@@ -30,6 +30,41 @@ function pinDistances(source, resolved) {
   };
 }
 
+function sketchOrder(source, hand, resolved) {
+  const rankAxis = source.direction === "right" ? 0 : 1;
+  const crossAxis = 1 - rankAxis;
+  const centre = (box, axis) => box[axis] + box[axis + 2] / 2;
+  const ids = Object.keys(hand.nodes);
+  const rank = { matching: 0, pairs: 0 };
+  const withinRank = { matching: 0, pairs: 0 };
+  for (let i = 0; i < ids.length; i++) {
+    for (let j = i + 1; j < ids.length; j++) {
+      const first = hand.nodes[ids[i]].box;
+      const second = hand.nodes[ids[j]].box;
+      const axis =
+        centre(first, rankAxis) === centre(second, rankAxis)
+          ? crossAxis
+          : rankAxis;
+      const count = axis === rankAxis ? rank : withinRank;
+      const handOrder = Math.sign(centre(first, axis) - centre(second, axis));
+      if (handOrder === 0) continue;
+      const drawnOrder = Math.sign(
+        centre(resolved.nodes[ids[i]].box, axis) -
+          centre(resolved.nodes[ids[j]].box, axis),
+      );
+      count.pairs++;
+      if (drawnOrder === handOrder) count.matching++;
+    }
+  }
+  return {
+    rank: { ...rank, share: rank.pairs ? rank.matching / rank.pairs : null },
+    withinRank: {
+      ...withinRank,
+      share: withinRank.pairs ? withinRank.matching / withinRank.pairs : null,
+    },
+  };
+}
+
 function quality(source, resolved) {
   const result = geometryMetrics(source, resolved);
   return {
@@ -64,6 +99,18 @@ async function requiredResult(manual, engine) {
   }
 }
 
+function orderTotal(rows, kind) {
+  const matching = rows.reduce(
+    (sum, row) => sum + row.preferredElk.sketchOrder[kind].matching,
+    0,
+  );
+  const pairs = rows.reduce(
+    (sum, row) => sum + row.preferredElk.sketchOrder[kind].pairs,
+    0,
+  );
+  return { matching, pairs, share: pairs ? matching / pairs : null };
+}
+
 mkdirSync(destination, { recursive: true });
 const rows = [];
 for (const { id, manual, note } of bookMaps()) {
@@ -75,7 +122,11 @@ for (const { id, manual, note } of bookMaps()) {
     boxes: Object.keys(manual.nodes).length,
     ...(note ? { note } : {}),
     hand: quality(source, manual),
-    preferredElk: { ...quality(source, resolved), pinDistance: pins },
+    preferredElk: {
+      ...quality(source, resolved),
+      pinDistance: pins,
+      sketchOrder: sketchOrder(source, manual, resolved),
+    },
     requiredElk: await requiredResult(manual, elkEngine),
     requiredDagre: await requiredResult(manual, dagreEngine),
   };
@@ -120,6 +171,8 @@ const summary = {
         sum + row.boxes * row.preferredElk.pinDistance.afterTranslation.mean,
       0,
     ) / rows.reduce((sum, row) => sum + row.boxes, 0),
+  preferredRankOrder: orderTotal(rows, "rank"),
+  preferredWithinRankOrder: orderTotal(rows, "withinRank"),
   requiredElkDrawn: rows.filter((row) => row.requiredElk.status === "drawn")
     .length,
   requiredDagreDrawn: rows.filter((row) => row.requiredDagre.status === "drawn")

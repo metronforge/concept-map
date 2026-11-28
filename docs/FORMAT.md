@@ -103,8 +103,10 @@ nodes and repeated pins are reference errors.
 
 The checker reports a preferred pin's distance from the drawn box centre
 without counting it as a defect. A required pin holds when the centre is at
-the requested point within the measurement tolerance. Engine placement for
-pins is not yet available; a required pin cannot be laid out until it is.
+the requested point within the measurement tolerance. Preferred ELK pins guide
+rank placement, but do not fix coordinates or reliably preserve order within a
+rank: across 23 book sketches, 89.9% of rank-order box pairs and 39.5% of
+within-rank pairs match the hand drawings. Use `required` for exact positions.
 
 `sameRank` names at least two distinct nodes. With direction `down`, their box
 `y` coordinates must agree (a row); with direction `right`, their `x` coordinates
@@ -189,12 +191,12 @@ shows a loop attached to the top of a box.
 
 Support through `layout()`:
 
-| Hint       | Dagre                                             | ELK                                               |
-| ---------- | ------------------------------------------------- | ------------------------------------------------- |
-| `sameRank` | preferred and required, through the shared solver | preferred and required, through the shared solver |
-| `side`     | unsupported                                       | preferred and required                            |
-| `free`     | preferred and required, through shared routing    | preferred and required, through shared routing    |
-| `pin`      | unsupported                                       | unsupported                                       |
+| Hint       | Dagre                                                     | ELK                                                                     |
+| ---------- | --------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `sameRank` | preferred and required, through the shared solver         | preferred and required, through the shared solver                       |
+| `side`     | unsupported                                               | preferred and required                                                  |
+| `free`     | preferred and required, through shared routing            | preferred and required, through shared routing                          |
+| `pin`      | required through the shared solver; preferred unsupported | preferred with interactive layering; required through the shared solver |
 
 Same-rank alignment loads only when a source map states a `sameRank` hint.
 It follows engine placement, including for custom engines. Boxes move only

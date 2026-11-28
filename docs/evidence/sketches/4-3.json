@@ -26,11 +26,11 @@
   "requiredElk": {
     "status": "failed",
     "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows shard, replace, parallel, limit, next, last"
+    "message": "Cannot route hints layout.hints[1], layout.hints[2], layout.hints[5], layout.hints[6], layout.hints[7], layout.hints[8], layout.hints[9], layout.hints[10], layout.hints[11], layout.hints[12]: arrows shard, replace, parallel, limit, next, last"
   },
   "requiredDagre": {
     "status": "failed",
     "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows shard, replace, parallel, limit, next, last"
+    "message": "Cannot route hints layout.hints[1], layout.hints[2], layout.hints[5], layout.hints[6], layout.hints[7], layout.hints[8], layout.hints[9], layout.hints[10], layout.hints[11], layout.hints[12]: arrows shard, replace, parallel, limit, next, last"
   }
 }

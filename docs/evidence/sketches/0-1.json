@@ -26,11 +26,11 @@
   "requiredElk": {
     "status": "failed",
     "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows mk_browser, mk_page, server_page, page_app, server_app, shared, request_cookies, cli_config, files_dispatch, browser_ctx, ctx_page, pw_request, client_server"
+    "message": "Cannot route hints layout.hints[0], layout.hints[1], layout.hints[2], layout.hints[3], layout.hints[5], layout.hints[6], layout.hints[7], layout.hints[8], layout.hints[10], layout.hints[11], layout.hints[12], layout.hints[13], layout.hints[15], layout.hints[16], layout.hints[17], layout.hints[18], layout.hints[19]: arrows mk_browser, mk_page, server_page, page_app, server_app, shared, request_cookies, cli_config, files_dispatch, browser_ctx, ctx_page, pw_request, client_server"
   },
   "requiredDagre": {
     "status": "failed",
     "reason": "SameRankRoutingError",
-    "message": "Cannot route same-rank hints : arrows request_cookies, config_files, files_dispatch, dispatch_test, browser_ctx, ctx_page, mk_browser, mk_ctx, mk_page, server_page, page_app, server_app, shared, cli_config, pw_browser, pw_request, test_client"
+    "message": "Cannot route hints layout.hints[0], layout.hints[1], layout.hints[2], layout.hints[3], layout.hints[4], layout.hints[5], layout.hints[6], layout.hints[7], layout.hints[8], layout.hints[10], layout.hints[11], layout.hints[12], layout.hints[13], layout.hints[14], layout.hints[15], layout.hints[16], layout.hints[17], layout.hints[18], layout.hints[19]: arrows request_cookies, config_files, files_dispatch, dispatch_test, browser_ctx, ctx_page, mk_browser, mk_ctx, mk_page, server_page, page_app, server_app, shared, cli_config, pw_browser, pw_request, test_client"
   }
 }
